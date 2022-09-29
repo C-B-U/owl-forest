@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+
+import Btn1 from './Components/Btn1';
+import Btn2 from './Components/Btn2';
+import FilterBtn from './Components/FilterBtn';
+import Input from './Components/Input';
+import PlusBtn from './Components/PlusBtn';
+import MinusBtn from './Components/MinusBtn';
+import Menu from './Components/Menu';
+import Scroll from './Components/Scroll';
+import Popup from './Components/Popup';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Btn1 />
+      <Btn2 />
+      <FilterBtn />
+      <Input />
+      <PlusBtn />
+      <MinusBtn />
+      <Menu />
+      <Scroll />
+      <Popup />
     </div>
   );
 }
