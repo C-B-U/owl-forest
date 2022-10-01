@@ -1,7 +1,6 @@
 import './App.css';
 
 import Btn from './Components/Btn';
-import FilterBtn from './Components/FilterBtn';
 import Input from './Components/Input';
 import SignBtn from './Components/SignBtn';
 import Menu from './Components/Menu';
@@ -13,7 +12,6 @@ function App() {
   return (
     <div>
       <Btn />
-      <FilterBtn />
       <Input />
       <SignBtn />
       <Menu />
