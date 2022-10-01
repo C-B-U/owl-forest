@@ -6,14 +6,23 @@ const Sign = styled.button`
   align-items: center;
   justify-content: center;
   display: flex;
-  color: blue;
-  width: 1.5rem;
-  height: 1.5rem;
   border: 0.1rem solid black;
   border-radius: 100%;
   background-color: white;
+  color: ${(props) => props.color};
+  background: ${(props) => props.background};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  content: '-';
 `;
 
-export default function SignBtn() {
-  return <Sign>+</Sign>;
+export default function SignBtn(color, background, width, height) {
+  return (
+    <Sign
+      color={color}
+      background={background}
+      width={width}
+      height={height}
+    ></Sign>
+  );
 }

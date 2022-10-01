@@ -11,10 +11,10 @@ const Btn = styled.button`
   height: ${(props) => props.height};
 `;
 
-export default function Btn1({ color, background, width, height }) {
+export default function Btn1({ color, background, width, height, name }) {
   return (
     <Btn color={color} background={background} width={width} height={height}>
-      Btn1
+      {name}
     </Btn>
   );
 }
