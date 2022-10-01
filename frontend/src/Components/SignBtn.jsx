@@ -13,16 +13,12 @@ const Sign = styled.button`
   background: ${(props) => props.background};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  content: '-';
 `;
 
-export default function SignBtn(color, background, width, height) {
+export default function SignBtn(color, background, width, height, sign) {
   return (
-    <Sign
-      color={color}
-      background={background}
-      width={width}
-      height={height}
-    ></Sign>
+    <Sign color={color} background={background} width={width} height={height}>
+      {sign}
+    </Sign>
   );
 }
