@@ -1,7 +1,6 @@
 import './App.css';
 
-import Btn1 from './Components/Btn1';
-import Btn2 from './Components/Btn2';
+import Btn from './Components/Btn';
 import FilterBtn from './Components/FilterBtn';
 import Input from './Components/Input';
 import PlusBtn from './Components/PlusBtn';
@@ -14,8 +13,7 @@ import Search from './Components/Search';
 function App() {
   return (
     <div>
-      <Btn1 />
-      <Btn2 />
+      <Btn />
       <FilterBtn />
       <Input />
       <PlusBtn />
