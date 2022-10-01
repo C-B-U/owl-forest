@@ -3,8 +3,7 @@ import './App.css';
 import Btn from './Components/Btn';
 import FilterBtn from './Components/FilterBtn';
 import Input from './Components/Input';
-import PlusBtn from './Components/PlusBtn';
-import MinusBtn from './Components/MinusBtn';
+import SignBtn from './Components/SignBtn';
 import Menu from './Components/Menu';
 import Scroll from './Components/Scroll';
 import Popup from './Components/Popup';
@@ -16,8 +15,7 @@ function App() {
       <Btn />
       <FilterBtn />
       <Input />
-      <PlusBtn />
-      <MinusBtn />
+      <SignBtn />
       <Menu />
       <Scroll />
       <Popup />

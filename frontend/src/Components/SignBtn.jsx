@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PlusBtn1 = styled.button`
+const Sign = styled.button`
   font-size: 1rem;
   align-items: center;
   justify-content: center;
@@ -14,6 +14,6 @@ const PlusBtn1 = styled.button`
   background-color: white;
 `;
 
-export default function PlusBtn() {
-  return <PlusBtn1>+</PlusBtn1>;
+export default function SignBtn() {
+  return <Sign>+</Sign>;
 }
