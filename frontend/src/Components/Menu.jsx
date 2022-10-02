@@ -5,8 +5,8 @@ const MenuBody = styled.div`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border-radius: 0.5rem;
-  background: rgba(128, 109, 70);
+  border-radius: 1rem;
+  background: #b39283;
   width: 20rem;
   height: 4rem;
   display: flex;
@@ -19,7 +19,7 @@ const List = styled.a`
   padding: 0.3rem;
   box-sizing: border-box;
   border-radius: 1rem;
-  background: rgba(158, 197, 124);
+  background: #b7e39c;
   font-family: sans-serif;
   font-size: 1.5rem;
   text-align: center;
