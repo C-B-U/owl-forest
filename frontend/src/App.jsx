@@ -1,23 +1,23 @@
 import './App.css';
-
-import Btn from './Components/Btn';
-import Input from './Components/Input';
-import SignBtn from './Components/SignBtn';
-import Menu from './Components/Menu';
-import Scroll from './Components/Scroll';
-import Popup from './Components/Popup';
-import Search from './Components/Search';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import BookReg from './Pages/BR_BookReg';
+import BorrowList from './Pages/BR_BorrowList';
+import ReviewDetail from './Pages/BR_ReviewDetail';
+import ReviewList from './Pages/BR_ReviewList';
+import ReviewReg from './Pages/BR_ReviewReg';
 
 function App() {
   return (
-    <div>
-      <Btn />
-      <Input />
-      <SignBtn />
-      <Menu />
-      <Scroll />
-      <Popup />
-      <Search />
+    <div className='App'>
+      <Router>
+        <Routes>
+          <Route path='/' element={<BorrowList />} />
+          <Route path='/BookRegister' element={<BookReg />} />
+          <Route path='/ReviewDetail' element={<ReviewDetail />} />
+          <Route path='/ReviewList' element={<ReviewList />} />
+          <Route path='/ReviewRegister' element={<ReviewReg />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

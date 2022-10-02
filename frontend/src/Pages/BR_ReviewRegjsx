@@ -1,7 +1,0 @@
-import React from 'react';
-
-function BR_ReviewRegjsx() {
-  return <div>BR_ReviewRegjsx</div>;
-}
-
-export default BR_ReviewRegjsx;
