@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import SearchIcon from '../../pulic/image/SearchIcon';
+import SearchIcon from '../Image/searchIcon.jpeg';
 
 const boxFade = keyframes`
 100%{
@@ -22,9 +22,11 @@ const SearchBox = styled.form`
   position: relative;
   top: 50%;
   left: 50%;
-  width: 50px;
-  height: 50px;
+  width: 3rem;
+  height: 3rem;
   background-image: url(${SearchIcon});
+  background-size: 2.7rem;
+  background-repeat: no-repeat;
   box-sizing: border-box;
   border-radius: 25px;
   border: 4px solid rgba(128, 109, 70);
@@ -39,8 +41,8 @@ const InputBox = styled.input`
   position: absolute;
   top: 0;
   left: 0;
-  width: 150px;
-  height: 42.5px;
+  width: 9.5rem;
+  height: 2.5rem;
   line-height: 30px;
   outline: 0;
   border: 0;
