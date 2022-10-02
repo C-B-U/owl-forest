@@ -24,11 +24,18 @@ const Buttons = styled.div`
   text-align: right;
 `;
 
-export default function Popup({ color, background, width, height }) {
+export default function Popup({
+  color,
+  background,
+  width,
+  height,
+  title,
+  message,
+}) {
   return (
     <Wrap>
-      <Title>제목 확인</Title>
-      <Message>메세지 확인</Message>
+      <Title>{title}</Title>
+      <Message>{message}</Message>
       <Buttons>
         <Btn
           color={color}
