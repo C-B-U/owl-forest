@@ -10,6 +10,9 @@ const HeaderWrapper = styled.div`
   background-color: #ffffff;
 
   padding: 0px 150px;
+
+  position: sticky;
+  top: 0px;
 `;
 const Title = styled.h1`
   font-style: normal;
