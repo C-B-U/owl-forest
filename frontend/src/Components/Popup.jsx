@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import Btn from './Btn';
 
 const Wrap = styled.div`
-  width: 25rem;
-  height: wrap-content;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   border-radius: 0.3rem;
-  border: 0.15rem solid rgba(128, 109, 70);
+  border: 0.15rem solid ${(props) => props.color};
   font-family: 'Noto Sans KR', sans-serif;
   div {
     margin: 1.2rem;
@@ -22,32 +22,29 @@ const Message = styled.div``;
 
 const Buttons = styled.div`
   text-align: right;
+  /* display: inline-flex */
+  /* margin: 0.5rem; */
 `;
 
-export default function Popup({
-  color,
-  background,
-  width,
-  height,
-  title,
-  message,
-}) {
+export default function Popup({ color, width, height, title, message }) {
   return (
     <Wrap>
       <Title>{title}</Title>
       <Message>{message}</Message>
       <Buttons>
         <Btn
-          color={color}
-          background={background}
-          width={width}
-          height={height}
+          color={'white'}
+          background={'blue'}
+          width={'5rem'}
+          height={'3rem'}
+          name={'확인'}
         />
         <Btn
-          color={color}
-          background={background}
-          width={width}
-          height={height}
+          color={'white'}
+          background={'red'}
+          width={'5rem'}
+          height={'3rem'}
+          name={'취소'}
         />
       </Buttons>
     </Wrap>
