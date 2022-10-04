@@ -1,23 +1,29 @@
 import './App.css';
-
-import Btn from './Components/Btn';
-import Input from './Components/Input';
-import SignBtn from './Components/SignBtn';
-import Menu from './Components/Menu';
-import Scroll from './Components/Scroll';
-import Popup from './Components/Popup';
-import Search from './Components/Search';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ActivityLog from './Pages/ActivityLog';
+import PlanMake from './Pages/PlanMake';
+import StudyCreation from './Pages/StudyCreation';
+import StudyCrew from './Pages/StudyCrew';
+import StudyLeader from './Pages/StudyLeader';
+import StudyManage from './Pages/StudyManage';
+import StudyLog from './Pages/StudyLog';
+import Writing from './Pages/Writing';
 
 function App() {
   return (
-    <div>
-      <Btn />
-      <Input />
-      <SignBtn />
-      <Menu />
-      <Scroll />
-      <Popup />
-      <Search />
+    <div className='App'>
+      <Router>
+        <Routes>
+          <Route path='/' element={<ActivityLog />} />
+          <Route path='/PlanMake' element={<PlanMake />} />
+          <Route path='/StudyCreation' element={<StudyCreation />} />
+          <Route path='/StudyCrew' element={<StudyCrew />} />
+          <Route path='/StudyLeader' element={<StudyLeader />} />
+          <Route path='/StudyLog' element={<StudyLog />} />
+          <Route path='/StudyManage' element={<StudyManage />} />
+          <Route path='/Writing' element={<Writing />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
