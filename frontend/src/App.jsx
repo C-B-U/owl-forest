@@ -14,11 +14,11 @@ import MemList from './Pages/MM_MemList';
 import MemListCon from './Pages/MM_MemListCon';
 import Reg from './Pages/MM_Reg';
 import Profile from './Pages/MM_Profile';
-import BookReg from './Pages/BR_BookReg';
-import BorrowList from './Pages/BR_BorrowList';
-import ReviewDetail from './Pages/BR_ReviewDetail';
-import ReviewList from './Pages/BR_ReviewList';
-import ReviewReg from './Pages/BR_ReviewReg';
+import BookReg from './Pages/BR_Pages/BR_BookReg';
+import BorrowList from './Pages/BR_Pages/BR_BorrowList';
+import ReviewDetail from './Pages/BR_Pages/BR_ReviewDetail';
+import ReviewList from './Pages/BR_Pages/BR_ReviewList';
+import ReviewReg from './Pages/BR_Pages/BR_ReviewReg';
 
 function App() {
   return (
