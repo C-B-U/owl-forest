@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Welcome from './Pages/Welcome';
 import ActivityLog from './Pages/AL_Pages/ActivityLog';
 import PlanMake from './Pages/AL_Pages/PlanMake';
 import StudyCreation from './Pages/AL_Pages/StudyCreation';
@@ -13,7 +14,7 @@ import Login from './Pages/MM_Pages/MM_Login';
 import MemList from './Pages/MM_Pages/MM_MemList';
 import MemListCon from './Pages/MM_Pages/MM_MemListCon';
 import Reg from './Pages/MM_Pages/MM_Reg';
-import Profile from './Pages/MM_Profile';
+import Profile from './Pages/MM_Pages/MM_Profile';
 import BookReg from './Pages/BR_Pages/BR_BookReg';
 import BorrowList from './Pages/BR_Pages/BR_BorrowList';
 import ReviewDetail from './Pages/BR_Pages/BR_ReviewDetail';
@@ -25,6 +26,8 @@ function App() {
     <div className='App'>
       <Router>
         <Routes>
+          {/* ---- 메인페이지 ---- */}
+          <Route path='/' element={<Welcome />} />
           {/* ---- 활동일지 ---- */}
           <Route path='/ActivityLog' element={<ActivityLog />} />
           <Route path='/PlanMake' element={<PlanMake />} />
