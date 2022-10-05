@@ -44,7 +44,7 @@ function ActivityLog() {
           <StudyList />
           <BtnWrap>
             <StudyBtn
-              background={'#6C63FF'}
+              background={'rgb(108,99,255)'}
               color={'white'}
               width={'75rem'}
               height={'3.5rem'}
