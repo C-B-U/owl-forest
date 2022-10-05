@@ -14,4 +14,10 @@ public class StudyGroupService {
 
     private final StudyGroupRepository studyGroupRepository;
 
+    public void updateLike(Long studyGroupId, Integer like) {
+        studyGroupRepository
+                .findById(studyGroupId)
+                .ifPresent(studyGroup -> studyGroup.updateLike(like));
+    }
+
 }
