@@ -1,6 +1,7 @@
 package com.cbu.backend.studyGroup.service;
 
 import com.cbu.backend.studyGroup.dto.request.CreateStudyGroupRequestDTO;
+import com.cbu.backend.studyGroup.dto.response.StudyGroupResponseDTO;
 import com.cbu.backend.studyGroup.entity.StudyGroup;
 import com.cbu.backend.studyGroup.repository.StudyGroupRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class StudyGroupService {
     /*
     public Long registerStudyGroup(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) {
         StudyGroup studyGroup = createStudyGroupRequestDTO.toStudyGroup();
-        if(studyGroup.isDuplicatedMember(studyGroup)){
+        if(studyGroup.isMemberDuplicated(studyGroup)){
             throw new RuntimeException(); // Exception 수정 필요
         }
         studyGroupRepository.save(studyGroup);
@@ -26,12 +27,12 @@ public class StudyGroupService {
     }
     */
 
-    public StudyGroup searchById(Long id) {
+    public StudyGroupResponseDTO searchById(Long id) {
         Optional<StudyGroup> studyGroup = studyGroupRepository.findById(id);
         if(!studyGroup.isPresent()) {
             throw new EntityNotFoundException();
         }
-        return studyGroup.get();
+        return null; // StudyGroupResponseDTO.of(studyGroup.get());
     }
 
     public void updateLike(Long studyGroupId, Integer like) {

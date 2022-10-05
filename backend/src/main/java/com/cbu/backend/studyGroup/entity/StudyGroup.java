@@ -31,10 +31,10 @@ public class StudyGroup {
     @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
     private Member teamLeader;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "member")
     private List<Member> teamMembers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "studyJournal", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "studyJournal")
     private List<StudyJournal> journals = new ArrayList<>();
 
     private Integer like = 0;
@@ -61,9 +61,10 @@ public class StudyGroup {
         return this;
     }
 
-    public boolean isDuplicatedMember(StudyGroup studyGroup) {
+    public boolean isMemberDuplicated(StudyGroup studyGroup) {
         return studyGroup.getTeamMembers().stream()
-                .distinct().count() == studyGroup.getTeamMembers().size();
+//                .mapToLong(i -> i.getId())
+                .distinct().mapToInt(i -> 1).sum() == studyGroup.getTeamMembers().size();
     }
 
     public void updateLike(Integer like) { // like는 -1(좋아요 취소) or +1(좋아요)
