@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Pf = styled.div`
   width: 20rem;
-  height: 40rem;
+  height: 45rem;
   border-radius: 1rem;
   border: 0.1rem solid black;
   margin: 3rem;
