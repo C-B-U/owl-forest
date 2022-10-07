@@ -23,6 +23,7 @@ public class StudyGroupService {
     private final StudyGroupMapper studyGroupMapper;
     private final StudyJournalService studyJournalService;
 
+    // CreateStudyGroupRequestDTO 이름 변경, toEntity 광범위한 이름
     public Long registerStudyGroup(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 등록
         StudyGroup studyGroup = studyGroupMapper.toEntity(createStudyGroupRequestDTO);
         if(studyGroup.isMemberDuplicated(studyGroup)){ // 중복 스터디원 존재 여부
@@ -73,4 +74,12 @@ public class StudyGroupService {
                 .collect(Collectors.toList());
     }
 
+    public void updateStudyGroup(Long studyGroupId) { // 스터디 수정
+        Optional<StudyGroup> oStudyGroup = studyGroupRepository.findById(studyGroupId);
+        if (!oStudyGroup.isPresent()) {
+            throw new RuntimeException();
+        }
+        StudyGroup studyGroup = oStudyGroup.get();
+        studyGroup.update(studyGroup);
+    }
 }
