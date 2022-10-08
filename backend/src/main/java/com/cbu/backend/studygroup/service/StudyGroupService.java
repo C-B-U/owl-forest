@@ -68,12 +68,13 @@ public class StudyGroupService {
                 .collect(Collectors.toList());
     }
 
-    public void updateStudyGroup(Long studyGroupId) { // 스터디 수정
+    public void updateStudyGroup(Long studyGroupId, CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 수정
         Optional<StudyGroup> oStudyGroup = studyGroupRepository.findById(studyGroupId);
         if (!oStudyGroup.isPresent()) {
             throw new RuntimeException();
         }
         StudyGroup studyGroup = oStudyGroup.get();
-        studyGroup.update(studyGroup);
+        StudyGroup updatedStudyGroup = studyGroupMapper.toEntity(createStudyGroupRequestDTO);
+        studyGroup.update(updatedStudyGroup);
     }
 }
