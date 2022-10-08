@@ -74,8 +74,6 @@ public class StudyGroup {
         this.summary = studyGroup.getSummary();
         this.teamLeader = studyGroup.getTeamLeader();
         this.teamMembers = studyGroup.getTeamMembers();
-        this.studyPlan = studyGroup.getStudyPlan();
-        this.journals = studyGroup.getJournals();
         this.like = studyGroup.getLike();
 
         return this;
