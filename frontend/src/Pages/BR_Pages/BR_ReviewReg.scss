@@ -1,0 +1,66 @@
+.wrap {
+  margin: 12rem auto 0rem auto;
+  width: 55rem;
+  height: fit-content;
+  background-color: rgb(218, 201, 194);
+  padding: 3rem;
+
+  box-sizing: content-box;
+}
+
+.wrap_content {
+  display: flex;
+}
+
+.book_image {
+  width: 12rem;
+  height: 15rem;
+  background-color: #ffffff;
+}
+
+.wrap_review {
+  margin-left: 3rem;
+}
+
+.onelinereview {
+  width: 30rem;
+  height: 3rem;
+  background-color: white;
+  border-radius: 0.2rem;
+}
+
+.wrap_detailreview {
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  background-color: rgb(186, 176, 176);
+  border-radius: 0.2rem;
+  margin-top: 2rem;
+}
+
+.wrap_starscore {
+  display: flex;
+}
+
+.score {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detailreview {
+  width: 30rem;
+  height: 5rem;
+  background-color: white;
+  border-radius: 0.2rem;
+  margin: auto;
+}
+
+.RegButton {
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 1rem;
+  color: black;
+  background: rgba(179, 146, 131);
+  width: 5rem;
+  height: 2rem;
+}
