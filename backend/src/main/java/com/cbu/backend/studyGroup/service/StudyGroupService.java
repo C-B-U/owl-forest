@@ -13,6 +13,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,29 +47,24 @@ public class StudyGroupService {
                 .ifPresent(studyGroup -> studyGroup.updateLike(like));
     }
 
-    public List<StudyGroupResponseDTO> sortByLatest() { // 스터디 일지 최신순 조회
-        return studyGroupRepository
-                .findAll()
-                .stream()
-                .sorted(Comparator.comparing(studyJournalService::searchLatestJournalCreatedAt, Comparator.reverseOrder()))
-                .map(studyGroupMapper::toResponseDTO)
-                .collect(Collectors.toList());
+    public List<StudyGroupResponseDTO> searchStudyOrderByCreatedAt() { // 스터디 일지 최신순 조회
+        return sort(studyJournalService::searchLatestJournalCreatedAt);
     }
 
-    public List<StudyGroupResponseDTO> sortByJournal() { // 스터디 일지 개수순 조회
-        return studyGroupRepository
-                .findAll()
-                .stream()
-                .sorted(Comparator.comparing(studyGroup -> studyGroup.getJournals().size(), Comparator.reverseOrder()))
-                .map(studyGroupMapper::toResponseDTO)
-                .collect(Collectors.toList());
+    public List<StudyGroupResponseDTO> searchStudyOrderByJournalsNum() { // 스터디 일지 개수순 조회
+        return sort(studyGroup -> studyGroup.getJournals().size());
     }
 
-    public List<StudyGroupResponseDTO> sortByLike() { // 스터디 좋아요순(많은 순서) 조회
+    public List<StudyGroupResponseDTO> searchStudyOrderByLike() { // 스터디 좋아요순(많은 순서) 조회
+        return sort(StudyGroup::getLike);
+    }
+
+    private List<StudyGroupResponseDTO> sort(Function<StudyGroup, Comparable> function) {
         return studyGroupRepository
                 .findAll()
                 .stream()
-                .sorted(Comparator.comparing(StudyGroup::getLike, Comparator.reverseOrder()))
+                .sorted(Comparator.comparing(function, Comparator.reverseOrder())
+                .thenComparing(StudyGroup::getSeason, Comparator.reverseOrder()))
                 .map(studyGroupMapper::toResponseDTO)
                 .collect(Collectors.toList());
     }

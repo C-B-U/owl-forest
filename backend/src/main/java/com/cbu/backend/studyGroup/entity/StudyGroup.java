@@ -48,6 +48,8 @@ public class StudyGroup {
 
     private Integer like = 0;
 
+    private Integer season;
+
     @CreatedDate
     private LocalDateTime createdAt = LocalDateTime.parse(LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
@@ -58,7 +60,7 @@ public class StudyGroup {
 
     @Builder
     public StudyGroup(Long id, String name, String summary, Member teamLeader, List<Member> teamMembers,
-                      StudyPlan studyPlan, List<StudyJournal> journals, Integer like) {
+                      StudyPlan studyPlan, List<StudyJournal> journals, Integer like, Integer season) {
         this.id = id;
         this.name = name;
         this.summary = summary;
@@ -67,16 +69,14 @@ public class StudyGroup {
         this.studyPlan = studyPlan;
         this.journals = journals;
         this.like = like;
+        this.season = season;
     }
 
-    public StudyGroup update(StudyGroup studyGroup) {
+    public StudyGroup update(StudyGroup studyGroup) { // 매개변수 request DTO로 수정 필요
         this.name = studyGroup.getName();
         this.summary = studyGroup.getSummary();
         this.teamLeader = studyGroup.getTeamLeader();
         this.teamMembers = studyGroup.getTeamMembers();
-        this.studyPlan = studyGroup.getStudyPlan();
-        this.journals = studyGroup.getJournals();
-        this.like = studyGroup.getLike();
 
         return this;
     }
