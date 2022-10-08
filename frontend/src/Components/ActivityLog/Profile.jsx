@@ -5,24 +5,29 @@ const Pf = styled.div`
   width: 20rem;
   height: 45rem;
   border-radius: 1rem;
-  border: 0.1rem solid black;
   margin: 3rem;
+  margin-left: 5rem;
   display: inline-block;
+  background-color: rgba(255, 255, 255, 1);
 `;
 
 const Circle = styled.div`
   width: 8rem;
   height: 8rem;
   border-radius: 100%;
-  background-color: gray;
+  background-color: rgba(217, 217, 217, 1);
   margin: auto;
-  margin-top: 3rem;
+  margin-top: 5rem;
 `;
 
 const Name = styled.div`
   width: 5rem;
   height: 2rem;
-  border: 0.1rem solid black;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 15pt;
   margin: auto;
   margin-top: 1rem;
 `;
@@ -30,7 +35,6 @@ const Name = styled.div`
 const EnjoyStudy = styled.div`
   width: 16rem;
   height: 16rem;
-  border: 0.1rem solid black;
   margin: auto;
   margin-top: 4rem;
   display: flex;
@@ -43,7 +47,12 @@ const StudyList = styled.ul`
 `;
 
 const Study = styled.li`
+  width: 8.5rem;
+  list-style: none;
+  list-style-position: inside;
   margin: 1rem;
+  padding: 0.3rem;
+  background-color: rgba(217, 217, 217, 1);
 `;
 
 function Profile() {
@@ -51,7 +60,7 @@ function Profile() {
     <div>
       <Pf>
         <Circle />
-        <Name />
+        <Name>이름</Name>
         <EnjoyStudy>
           <StudyList>
             참여중인 스터디
