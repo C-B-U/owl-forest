@@ -1,5 +1,4 @@
 import React from 'react';
-// import style from './Input.module.css';
 import styled from 'styled-components';
 
 const Input1 = styled.input`
@@ -14,10 +13,11 @@ const Input1 = styled.input`
     outline: none;
   }
 `;
-export default function Input({ width, height }) {
+
+export default function Input({ width, height, placeholder }) {
   return (
     <div>
-      <Input1 placeholder='something' />
+      <Input1 width={width} height={height} placeholder={placeholder} />
     </div>
   );
 }
