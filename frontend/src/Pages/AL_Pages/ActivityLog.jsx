@@ -1,18 +1,12 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
+import theme from '../../Components/Color';
 import StudyBtn from '../../Components/Btn';
 import Header from '../../Components/ActivityLog/Header';
 import Profile from '../../Components/ActivityLog/Profile';
 import EmptyHeart from '../../Image/EmptyHeart.png';
 import FullHeart from '../../Image/FullHeart.png';
-
-const theme = {
-  palette: {
-    primary: ['rgba(108, 99, 255, 0.1)'],
-    secondary: ['rgba(172, 172, 172, 1)'],
-  },
-};
 
 const MainWrap = styled.div`
   display: flex;
