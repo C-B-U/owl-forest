@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react'
 import styled from 'styled-components'
-import { Input1 } from '../../Components/Input'
+import { InputStyle } from '../../Components/Input'
 import Btn from '../../Components/Btn'
 import imgfile from '../../Image/CbuIcon.png';
 
@@ -26,7 +26,7 @@ const Squbox = styled.div`
   display:inline-block;
   text-align: center;
 `
-const FindKey = styled(Input1)`
+const FindKey = styled(InputStyle)`
   border: 0.15rem solid rgba(247, 232, 211);
   background-color : rgba(247, 232, 211);
   border-radius:4rem;
