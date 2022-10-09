@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "studyGroup")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StudyGroup extends BaseTimeEntity {
+public class StudyGroup {
 
     @Id
     @GeneratedValue
