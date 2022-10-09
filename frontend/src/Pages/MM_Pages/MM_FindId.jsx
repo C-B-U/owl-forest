@@ -29,12 +29,12 @@ const Squbox = styled.div`      //Squarebox 줄여서 Squbox
   text-align: center;
 `
 const FindKey = styled(InputStyle)`
-  border: 0.15rem solid rgba(247, 232, 211);
-  background-color : rgba(247, 232, 211);
+  border: 0.15rem solid ${palette('PsLightBrown', 0)};
+  background-color : ${palette('PsLightBrown', 0)};
   border-radius:4rem;
   display:block;
   margin : auto;
-  margin-bottom : 0.45rem;  
+  margin-bottom : 0.45rem;
 `
 const FindWrap = styled.div`    //div로 버튼 감싸서 버튼 위치 조정 (div로 감싸주지 않으면 btn 내부에서만 속성이 바뀌기 때문에 div로 감싸줘야 함)
   margin-top : 3rem;
