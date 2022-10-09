@@ -1,4 +1,4 @@
-package com.cbu.backend.bookReview.dto.request;
+package com.cbu.backend.bookreview.dto.request;
 
 public class CreateBookReviewRequestDTO {
 }

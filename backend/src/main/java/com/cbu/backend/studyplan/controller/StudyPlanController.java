@@ -1,7 +1,7 @@
-package com.cbu.backend.bookreview.controller;
+package com.cbu.backend.studyplan.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BookReviewController {
+public class StudyPlanController {
 }

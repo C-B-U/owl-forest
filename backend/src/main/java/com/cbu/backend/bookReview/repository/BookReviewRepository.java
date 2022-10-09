@@ -1,4 +1,4 @@
-package com.cbu.backend.bookReview.repository;
+package com.cbu.backend.bookreview.repository;
 
 import org.springframework.stereotype.Repository;
 

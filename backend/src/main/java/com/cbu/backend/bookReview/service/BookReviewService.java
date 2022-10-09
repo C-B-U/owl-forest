@@ -1,4 +1,4 @@
-package com.cbu.backend.bookReview.service;
+package com.cbu.backend.bookreview.service;
 
 import org.springframework.stereotype.Service;
 

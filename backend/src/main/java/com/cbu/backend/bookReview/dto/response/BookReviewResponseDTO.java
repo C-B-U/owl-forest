@@ -1,4 +1,4 @@
-package com.cbu.backend.bookReview.dto.response;
+package com.cbu.backend.bookreview.dto.response;
 
 public class BookReviewResponseDTO {
 }

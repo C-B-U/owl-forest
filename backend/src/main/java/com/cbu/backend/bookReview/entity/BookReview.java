@@ -1,4 +1,4 @@
-package com.cbu.backend.bookReview.entity;
+package com.cbu.backend.bookreview.entity;
 
 public class BookReview {
 }
