@@ -72,7 +72,7 @@ function MM_FindId() {
           <FindKey width={'22rem'} height={'2rem'} placeholder={'학번'} />
           <FindKey width={'22rem'} height={'2rem'} placeholder={'이메일'} />
           <FindWrap>
-            <Btn color={'black'} background={'rgba(179, 146, 131)'} width={'4rem'} height={'2rem'} name={'찾기'} />
+            <Btn color={'black'} background={palette('PsBtn', 0)} width={'4rem'} height={'2rem'} name={'찾기'} />
           </FindWrap>
         </Squbox>
       </All >
