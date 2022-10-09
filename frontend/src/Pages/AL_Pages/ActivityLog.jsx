@@ -29,7 +29,7 @@ const NavItems = styled.div`
   margin: 2rem;
   &:hover {
     cursor: pointer;
-    color: rgba(108, 99, 255, 1);
+    color: ${palette('secondary', 1)};
     text-decoration: underline;
     text-underline-position: under;
   }
