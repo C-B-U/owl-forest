@@ -6,14 +6,14 @@ import Btn from '../../Components/Btn'
 import imgfile from '../../Image/CbuIcon.png';
 
 const All = styled.div`
-  position : absolute;
+  position : absolute;    //absolute 추가(세로 중앙정렬)
   width :100%;
   height: 100%;
   align-items:center;
   justify-content:center;
   display:flex;
   text-align: center;
-  margin : 0 auto;
+  margin : 0 auto;    //세로 중앙정렬을 위한 margin 값
 `
 
 const Squbox = styled.div`
@@ -34,7 +34,7 @@ const FindKey = styled(Input1)`
   margin : auto;
   margin-bottom : 0.45rem;  
 `
-const FindWrap = styled.div`
+const FindWrap = styled.div`    //div로 버튼 감싸서 버튼 위치 조정 (div로 감싸주지 않으면 btn 내부에서만 속성이 바뀌기 때문에 div로 감싸줘야 함)
   margin-top : 3rem;
 `
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Btn = styled.button`
+export const Btn = styled.button`   //export 추가해서 다른 페이지에서 작업할 때 덮어쓰기 할 수 있게 추가됨.
   font-size: 1rem;
   text-align: center;
   border-radius: 1rem;
