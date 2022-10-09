@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import imgfile from '../../Image/Loginlogo.png';
+import githubbtn from '../../Image/githubbtn.png'
+import googlebtn from '../../Image/googlebtn.png'
+import kakaobtn from '../../Image/kakaobtn.png'
+import naverbtn from '../../Image/naverbtn.png'
 
 //1rem = 대략 16px
 
@@ -77,6 +81,24 @@ const LinkWrap = styled.div`
   
 `;
 
+const Line = styled.div`
+  margin-top: 1rem; //위의 아이디/비번 찾기와의 간격 띄우기 위함
+  
+`;
+
+
+const SocialWrap = styled.div`
+  display:flex;
+`;
+
+
+
+const SocialImg = styled.img`
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 3rem;
+
+`;
 
 function MM_Login() {
   //선언
@@ -114,7 +136,18 @@ function MM_Login() {
           style={{ color: 'inherit', textDecoration: 'inherit' }}
         >비밀번호 찾기</Link>
        </LinkWrap>
-      
+
+       <Line>
+        <hr style={{width: '25rem', }}></hr>
+       </Line>
+    <SocialWrap>
+      <SocialImg style={{margin: '1rem'}} src={googlebtn}/>
+      <SocialImg style={{margin: '1rem'}} src={githubbtn}/>
+      <SocialImg style={{margin: '1rem'}} src={kakaobtn}/>
+      <SocialImg style={{margin: '1rem'}} src={naverbtn}/>
+    </SocialWrap>
+
+
     </LoginWrap>
   );
 }
