@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 import React from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import { palette } from 'styled-tools';
+import theme from '../../Components/Color';
 import { InputStyle } from '../../Components/Input'
 import Btn from '../../Components/Btn'
 import imgfile from '../../Image/CbuIcon.png';
@@ -16,11 +18,11 @@ const All = styled.div`
   margin : 0 auto;    //세로 중앙정렬을 위한 margin 값
 `
 
-const Squbox = styled.div`
+const Squbox = styled.div`      //Squarebox 줄여서 Squbox
   width : 35rem;
   height : 25rem;
   border-radius:2rem;
-  border: 0.2rem solid rgba(128, 109, 70);
+  border: 0.2rem solid ${palette('PsCocoa', 1)};
   align-items:center;
   justify-content:center;
   display:inline-block;
@@ -48,7 +50,7 @@ const CbuImg = styled.img`
 
 `
 
-const Msg = styled.div`
+const Msg = styled.div`   //Message 줄여서 Msg
   display:flex;
   font-size: 12pt;
   font-family: 'Noto Sans KR', sans-serif;
@@ -62,18 +64,19 @@ const Msg = styled.div`
 
 function MM_FindId() {
   return (
-    <All>
-      <Squbox>
-        <Msg><CbuImg src={imgfile} />아이디가 기억이 안나시나요?<CbuImg src={imgfile} /></Msg>
-        <FindKey width={'22rem'} height={'2rem'} placeholder={'이름'} />
-        <FindKey width={'22rem'} height={'2rem'} placeholder={'학번'} />
-        <FindKey width={'22rem'} height={'2rem'} placeholder={'이메일'} />
-        <FindWrap>
-          <Btn color={'black'} background={'rgba(179, 146, 131)'} width={'4rem'} height={'2rem'} name={'찾기'} />
-        </FindWrap>
-      </Squbox>
-    </All >
-
+    <ThemeProvider theme={theme}>
+      <All>
+        <Squbox>
+          <Msg><CbuImg src={imgfile} />아이디가 기억이 안나시나요?<CbuImg src={imgfile} /></Msg>
+          <FindKey width={'22rem'} height={'2rem'} placeholder={'이름'} />
+          <FindKey width={'22rem'} height={'2rem'} placeholder={'학번'} />
+          <FindKey width={'22rem'} height={'2rem'} placeholder={'이메일'} />
+          <FindWrap>
+            <Btn color={'black'} background={'rgba(179, 146, 131)'} width={'4rem'} height={'2rem'} name={'찾기'} />
+          </FindWrap>
+        </Squbox>
+      </All >
+    </ThemeProvider>
   )
 }
 
