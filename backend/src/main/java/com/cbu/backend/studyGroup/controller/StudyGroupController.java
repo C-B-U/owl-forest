@@ -1,14 +1,11 @@
 package com.cbu.backend.studyGroup.controller;
 
 import com.cbu.backend.studyGroup.dto.response.StudyGroupResponseDTO;
-import com.cbu.backend.studyGroup.entity.SortValue;
 import com.cbu.backend.studyGroup.service.StudyGroupService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,11 +17,19 @@ public class StudyGroupController {
 
     private final StudyGroupService studyGroupService;
 
-    @GetMapping
-    public ResponseEntity<List<StudyGroupResponseDTO>> findStudy(
-            @RequestParam(name = "sortby", defaultValue = "createdat") String sortBy,
-            @RequestParam(name = "sort", defaultValue = "desc") String sort) {
-        return ResponseEntity.ok(SortValue.valueOf(sortBy).of(studyGroupService).get());
+    @GetMapping(params = {"sortby=createdat", "sort=desc"})
+    public ResponseEntity<List<StudyGroupResponseDTO>> findStudyGroupSortByCreatedAt() {
+        return ResponseEntity.ok(studyGroupService.searchStudyOrderByCreatedAt());
+    }
+
+    @GetMapping(params = {"sortby=journal", "sort=desc"})
+    public ResponseEntity<List<StudyGroupResponseDTO>> findStudyGroupSortByJournal() {
+        return ResponseEntity.ok(studyGroupService.searchStudyOrderByJournalsNum());
+    }
+
+    @GetMapping(params = {"sortby=like", "sort=desc"})
+    public ResponseEntity<List<StudyGroupResponseDTO>> findStudyGroupSortByLike() {
+        return ResponseEntity.ok(studyGroupService.searchStudyOrderByLike());
     }
 
 }
