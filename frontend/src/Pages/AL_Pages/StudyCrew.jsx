@@ -4,6 +4,7 @@ import theme from '../../Components/Color';
 import { palette } from 'styled-tools';
 import Logo10 from '../../Image/Logo10.png';
 import Input from '../../Components/Input';
+import Btn from '../../Components/Btn';
 // import Scroll from '../../Components/Scroll';
 
 const HeaderWrapper = styled.div`
@@ -33,41 +34,56 @@ const Title = styled.h1`
 `;
 
 const MainWrap = styled.div`
-  display: flex;
+  display: inline-block;
   background-color: ${palette('PsCocoa', 0)};
   background-size: cover;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 `;
 
-const ListWrap = styled.div`
+const StudyWrap = styled.div`
   display: inline-block;
+  text-align: center;
 `;
 
 const OutLine = styled.div`
-  width: 90rem;
-  height: 45rem;
+  width: 60rem;
+  height: 48rem;
   border-radius: 1rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin: auto;
   background-color: ${palette('PsLightBrown')};
   display: inline-block;
+  text-align: center;
 `;
 
 const StudyIndex = styled.div`
-  width: 200rem;
   display: flex;
   margin: 1rem;
   align-items: center;
 `;
 
 const StudyHeader = styled.header`
-  width: 10rem;
+  width: 60rem;
   height: 4rem;
   margin-top: 1rem;
-  padding-left: 4rem;
+  margin-left: 1rem;
   font-size: 20pt;
   font-weight: bold;
   align-items: center;
   justify-content: left;
+  display: flex;
+`;
+
+const Studylist = styled.header`
+  width: 10rem;
+  height: 4rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  font-size: 20pt;
+  font-weight: bold;
+  align-items: center;
+  justify-content: right;
   display: flex;
 `;
 
@@ -80,42 +96,49 @@ function StudyCrew() {
           <Title>활동일지 서비스</Title>
         </HeaderWrapper>
         <MainWrap>
-          <ListWrap>
+          <StudyWrap>
             <StudyHeader>스터디 수정</StudyHeader>
             <OutLine>
               {/* <Scroll> */}
               <StudyIndex>
-                <StudyHeader>스터디 개요</StudyHeader>
+                <Studylist>스터디 개요</Studylist>
                 <Input width={'40rem'} height={'10rem'} />
               </StudyIndex>
               <StudyIndex>
-                <StudyHeader>팀장</StudyHeader>
-                <Input width={'7rem'} height={'4rem'} />
-                <Input width={'30rem'} height={'4rem'} />
+                <Studylist>팀장</Studylist>
+                <Input width={'7rem'} height={'3rem'} />
+                <Input width={'30rem'} height={'3rem'} />
               </StudyIndex>
               <StudyIndex>
-                <StudyHeader>팀원</StudyHeader>
-                <Input width={'7rem'} height={'4rem'} />
-                <Input width={'30rem'} height={'4rem'} />
+                <Studylist>팀원</Studylist>
+                <Input width={'7rem'} height={'3rem'} />
+                <Input width={'30rem'} height={'3rem'} />
               </StudyIndex>
               <StudyIndex>
-                <StudyHeader></StudyHeader>
-                <Input width={'7rem'} height={'4rem'} />
-                <Input width={'30rem'} height={'4rem'} />
+                <Studylist></Studylist>
+                <Input width={'7rem'} height={'3rem'} />
+                <Input width={'30rem'} height={'3rem'} />
               </StudyIndex>
               <StudyIndex>
-                <StudyHeader></StudyHeader>
-                <Input width={'7rem'} height={'4rem'} />
-                <Input width={'30rem'} height={'4rem'} />
+                <Studylist></Studylist>
+                <Input width={'7rem'} height={'3rem'} />
+                <Input width={'30rem'} height={'3rem'} />
               </StudyIndex>
               <StudyIndex>
-                <StudyHeader></StudyHeader>
-                <Input width={'7rem'} height={'4rem'} />
-                <Input width={'30rem'} height={'4rem'} />
+                <Studylist></Studylist>
+                <Input width={'7rem'} height={'3rem'} />
+                <Input width={'30rem'} height={'3rem'} />
               </StudyIndex>
               {/* </Scroll> */}
+              <Btn
+                background={palette('PsBtn')}
+                color={palette('PsYellow')}
+                width={'50rem'}
+                height={'3.5rem'}
+                name={'수정하기'}
+              />
             </OutLine>
-          </ListWrap>
+          </StudyWrap>
         </MainWrap>
       </ThemeProvider>
     </div>
