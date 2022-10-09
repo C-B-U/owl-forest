@@ -1,14 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import { palette } from 'styled-tools';
 import StudyBtn from '../../Components/Btn';
 import Header from '../../Components/ActivityLog/Header';
 import Profile from '../../Components/ActivityLog/Profile';
 import EmptyHeart from '../../Image/EmptyHeart.png';
 import FullHeart from '../../Image/FullHeart.png';
 
+const theme = {
+  palette: {
+    primary: ['rgba(108, 99, 255, 0.1)'],
+    secondary: ['rgba(172, 172, 172, 1)'],
+  },
+};
+
 const MainWrap = styled.div`
   display: flex;
-  background-color: rgba(108, 99, 255, 0.1);
+  background-color: ${palette('primary')};
 `;
 
 const ListWrap = styled.div`
@@ -111,48 +119,50 @@ function ActivityLog() {
   return (
     <div>
       <Header />
-      <MainWrap>
-        <Profile />
-        <ListWrap>
-          <ListHeader>
-            스터디 목록
-            <Nav>
-              <NavItems>최신순</NavItems>
-              <NavItems>활동일지순</NavItems>
-              <NavItems>인기순</NavItems>
-            </Nav>
-          </ListHeader>
-          <StudyList>
-            <StudyName>
-              스터디 이름
-              <Heart />
-            </StudyName>
-            <StudyInput>
-              스터디 개요~~~~
-              <br />
-              <br />
-              <br />
-              팀장 : 씨부엉
-              <br />
-              팀원 : 부엉일, 부엉이, 부엉삼, 부엉사
-              <LastStudy>
-                최근 일지 : 2022년 10월 08일<StudyCnt>활동일지 2개</StudyCnt>
-              </LastStudy>
-            </StudyInput>
-          </StudyList>
-          <StudyList />
-          <StudyList />
-          <BtnWrap>
-            <StudyBtn
-              background={'rgb(108,99,255)'}
-              color={'white'}
-              width={'74rem'}
-              height={'3.5rem'}
-              name={'스터디 생성'}
-            ></StudyBtn>
-          </BtnWrap>
-        </ListWrap>
-      </MainWrap>
+      <ThemeProvider theme={theme}>
+        <MainWrap>
+          <Profile />
+          <ListWrap>
+            <ListHeader>
+              스터디 목록
+              <Nav>
+                <NavItems>최신순</NavItems>
+                <NavItems>활동일지순</NavItems>
+                <NavItems>인기순</NavItems>
+              </Nav>
+            </ListHeader>
+            <StudyList>
+              <StudyName>
+                스터디 이름
+                <Heart />
+              </StudyName>
+              <StudyInput>
+                스터디 개요~~~~
+                <br />
+                <br />
+                <br />
+                팀장 : 씨부엉
+                <br />
+                팀원 : 부엉일, 부엉이, 부엉삼, 부엉사
+                <LastStudy>
+                  최근 일지 : 2022년 10월 08일<StudyCnt>활동일지 2개</StudyCnt>
+                </LastStudy>
+              </StudyInput>
+            </StudyList>
+            <StudyList />
+            <StudyList />
+            <BtnWrap>
+              <StudyBtn
+                background={'rgb(108,99,255)'}
+                color={'white'}
+                width={'74rem'}
+                height={'3.5rem'}
+                name={'스터디 생성'}
+              ></StudyBtn>
+            </BtnWrap>
+          </ListWrap>
+        </MainWrap>
+      </ThemeProvider>
     </div>
   );
 }
