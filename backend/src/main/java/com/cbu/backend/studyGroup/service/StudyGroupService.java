@@ -25,9 +25,9 @@ public class StudyGroupService {
     private final StudyJournalService studyJournalService;
 
     public Long registerStudyGroup(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 등록
-        StudyGroup studyGroup = studyGroupMapper.toEntity(createStudyGroupRequestDTO);
+        StudyGroup studyGroup = studyGroupMapper.mapToEntity(createStudyGroupRequestDTO);
         if(studyGroup.isMemberDuplicated(studyGroup)){ // 중복 스터디원 존재 여부
-            throw new RuntimeException(); // Exception 수정 필요 (생성 후 적용)
+            throw new RuntimeException(); // TODO Exception 수정 필요 (생성 후 적용)
         }
         studyGroupRepository.save(studyGroup);
         return studyGroup.getId();
@@ -47,23 +47,23 @@ public class StudyGroupService {
                 .ifPresent(studyGroup -> studyGroup.updateLike(like));
     }
 
-    public List<StudyGroupResponseDTO> searchStudyOrderByCreatedAt() { // 스터디 일지 최신순 조회
-        return sort(studyJournalService::searchLatestJournalCreatedAt);
+    public List<StudyGroupResponseDTO> searchStudyOrderByCreatedAt(Comparator<Comparable> sortDirection) { // 스터디 일지 최신순 조회
+        return sort(studyJournalService::searchLatestJournalCreatedAt, sortDirection);
     }
 
-    public List<StudyGroupResponseDTO> searchStudyOrderByJournalsNum() { // 스터디 일지 개수순 조회
-        return sort(studyGroup -> studyGroup.getJournals().size());
+    public List<StudyGroupResponseDTO> searchStudyOrderByJournalsNum(Comparator<Comparable> sortDirection) { // 스터디 일지 개수순 조회
+        return sort(studyGroup -> studyGroup.getJournals().size(), sortDirection);
     }
 
-    public List<StudyGroupResponseDTO> searchStudyOrderByLike() { // 스터디 좋아요순(많은 순서) 조회
-        return sort(StudyGroup::getLike);
+    public List<StudyGroupResponseDTO> searchStudyOrderByLike(Comparator<Comparable> sortDirection) { // 스터디 좋아요순(많은 순서) 조회
+        return sort(StudyGroup::getLike, sortDirection);
     }
 
-    private List<StudyGroupResponseDTO> sort(Function<StudyGroup, Comparable> function) {
+    private List<StudyGroupResponseDTO> sort(Function<StudyGroup, Comparable> function, Comparator<Comparable> sortDirection) {
         return studyGroupRepository
                 .findAll()
                 .stream()
-                .sorted(Comparator.comparing(function, Comparator.reverseOrder())
+                .sorted(Comparator.comparing(function, sortDirection)
                 .thenComparing(StudyGroup::getSeason, Comparator.reverseOrder()))
                 .map(studyGroupMapper::toResponseDTO)
                 .collect(Collectors.toList());

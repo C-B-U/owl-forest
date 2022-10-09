@@ -1,19 +1,14 @@
 package com.cbu.backend.studyGroup.entity;
 
+import com.cbu.backend.common.domain.BaseTimeEntity;
 import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studyJournal.entity.StudyJournal;
-import com.cbu.backend.studyPlan.entity.StudyPlan;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,16 +17,14 @@ import java.util.List;
 @Table(name = "studyGroup")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StudyGroup {
+public class StudyGroup extends BaseTimeEntity {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @NotBlank
     private String name;
 
-    @NotBlank
     private String summary;
 
     @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
@@ -40,9 +33,6 @@ public class StudyGroup {
     @OneToMany(mappedBy = "member")
     private List<Member> teamMembers = new ArrayList<>();
 
-    @OneToOne(mappedBy = "plan", fetch = FetchType.LAZY)
-    private StudyPlan studyPlan;
-
     @OneToMany(mappedBy = "studyJournal")
     private List<StudyJournal> journals = new ArrayList<>();
 
@@ -50,23 +40,17 @@ public class StudyGroup {
 
     private Integer season;
 
-    @CreatedDate
-    private LocalDateTime createdAt = LocalDateTime.parse(LocalDateTime.now()
-            .format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
-
-    @LastModifiedDate
-    private LocalDateTime updatedAt = LocalDateTime.parse(LocalDateTime.now()
-            .format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
+    @Embedded
+    private BaseTimeEntity baseTime;
 
     @Builder
     public StudyGroup(Long id, String name, String summary, Member teamLeader, List<Member> teamMembers,
-                      StudyPlan studyPlan, List<StudyJournal> journals, Integer like, Integer season) {
+                      List<StudyJournal> journals, Integer like, Integer season) {
         this.id = id;
         this.name = name;
         this.summary = summary;
         this.teamLeader = teamLeader;
         this.teamMembers = teamMembers;
-        this.studyPlan = studyPlan;
         this.journals = journals;
         this.like = like;
         this.season = season;
