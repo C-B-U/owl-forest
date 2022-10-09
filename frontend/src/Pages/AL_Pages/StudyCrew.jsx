@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from '../../Components/Color';
 import { palette } from 'styled-tools';
 import Logo10 from '../../Image/Logo10.png';
 
@@ -19,6 +20,7 @@ const Logo = styled.div`
   background-image: url(${Logo10});
   background-size: 4.4rem;
   background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const Title = styled.h1`
@@ -31,10 +33,12 @@ const Title = styled.h1`
 function StudyCrew() {
   return (
     <div>
-      <HeaderWrapper>
-        <Logo />
-        <Title>활동일지 서비스</Title>
-      </HeaderWrapper>
+      <ThemeProvider theme={theme}>
+        <HeaderWrapper>
+          <Logo />
+          <Title>활동일지 서비스</Title>
+        </HeaderWrapper>
+      </ThemeProvider>
     </div>
   );
 }
