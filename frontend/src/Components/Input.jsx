@@ -9,7 +9,7 @@ export const Input1 = styled.input`
   padding: 0rem 1.5rem 0rem 0.5rem;
   font-family: 'Noto Sans KR', sans-serif;
   
-  input:focus {
+  &:focus {
     outline: none;
   }
 `;

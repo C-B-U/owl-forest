@@ -6,7 +6,7 @@ export const Btn = styled.button`
   text-align: center;
   border-radius: 1rem;
   color: ${(props) => props.color};
-  background: ${(props) => props.background};
+  background-color: ${(props) => props.background};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;

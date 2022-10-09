@@ -6,13 +6,14 @@ import Btn from '../../Components/Btn'
 import imgfile from '../../Image/CbuIcon.png';
 
 const All = styled.div`
-  width : 100%;
+  position : absolute;
+  width :100%;
   height: 100%;
   align-items:center;
   justify-content:center;
-  display:inline-block;
+  display:flex;
   text-align: center;
-  margin-top : 5rem; //rem말고 진짜 세로 정렬하는 법?
+  margin : 0 auto;
 `
 
 const Squbox = styled.div`
@@ -24,7 +25,6 @@ const Squbox = styled.div`
   justify-content:center;
   display:inline-block;
   text-align: center;
-  
 `
 const FindKey = styled(Input1)`
   border: 0.15rem solid rgba(247, 232, 211);
@@ -34,10 +34,10 @@ const FindKey = styled(Input1)`
   margin : auto;
   margin-bottom : 0.45rem;  
 `
-const Find = styled(Btn)`
-  display : block;
-  margin-top : 2rem;
+const FindWrap = styled.div`
+  margin-top : 3rem;
 `
+
 const CbuImg = styled.img`
   width : 2rem;
   height : 2rem;
@@ -64,11 +64,13 @@ function MM_FindId() {
   return (
     <All>
       <Squbox>
-        <Msg><CbuImg src={imgfile}></CbuImg>아이디가 기억이 안나시나요?<CbuImg src={imgfile}></CbuImg></Msg>
-        <FindKey width={'22rem'} height={'2rem'} placeholder={'이름'} ></FindKey >
-        <FindKey width={'22rem'} height={'2rem'} placeholder={'학번'} ></FindKey >
-        <FindKey width={'22rem'} height={'2rem'} placeholder={'이메일'} ></FindKey >
-        <Find color={'black'} background={'rgba(179, 146, 131)'} width={'4rem'} height={'2rem'}>  </Find>
+        <Msg><CbuImg src={imgfile} />아이디가 기억이 안나시나요?<CbuImg src={imgfile} /></Msg>
+        <FindKey width={'22rem'} height={'2rem'} placeholder={'이름'} />
+        <FindKey width={'22rem'} height={'2rem'} placeholder={'학번'} />
+        <FindKey width={'22rem'} height={'2rem'} placeholder={'이메일'} />
+        <FindWrap>
+          <Btn color={'black'} background={'rgba(179, 146, 131)'} width={'4rem'} height={'2rem'} name={'찾기'} />
+        </FindWrap>
       </Squbox>
     </All >
 
