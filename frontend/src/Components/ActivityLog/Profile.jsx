@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { palette } from 'styled-tools';
 
 const Pf = styled.div`
   width: 20rem;
@@ -8,7 +9,7 @@ const Pf = styled.div`
   margin: 3rem;
   margin-left: 5rem;
   display: inline-block;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: ${palette('PsLightBrown')};
 `;
 
 const Circle = styled.div`

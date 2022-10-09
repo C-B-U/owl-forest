@@ -10,7 +10,7 @@ import FullHeart from '../../Image/FullHeart.png';
 
 const MainWrap = styled.div`
   display: flex;
-  background-color: ${palette('primary')};
+  background-color: ${palette('PsCocoa', 0)};
 `;
 
 const ListWrap = styled.div`
@@ -21,7 +21,7 @@ const Nav = styled.nav`
   margin-left: auto;
   margin-right: 0.5rem;
   display: flex;
-  color: rgba(172, 172, 172, 1);
+  color: ${palette('PsYellow', 0)};
 `;
 
 const NavItems = styled.div`
@@ -42,6 +42,7 @@ const ListHeader = styled.header`
   padding-left: 1rem;
   font-size: 20pt;
   font-weight: bold;
+  color: #fafad2;
   align-items: center;
   justify-content: left;
   display: flex;
@@ -54,7 +55,7 @@ const StudyList = styled.div`
   margin-top: 0.8rem;
   padding: 1.5rem;
   display: inline-block;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: ${palette('PsLightBrown')};
 `;
 
 const StudyName = styled.div`
@@ -95,7 +96,7 @@ const Heart = styled.button`
   margin-left: auto;
   margin-right: 1rem;
   border-style: none;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: ${palette('PsLightBrown')};
   background-image: url(${EmptyHeart});
   background-size: 2rem;
   background-repeat: no-repeat;
@@ -112,8 +113,8 @@ const BtnWrap = styled.div`
 function ActivityLog() {
   return (
     <div>
-      <Header />
       <ThemeProvider theme={theme}>
+        <Header />
         <MainWrap>
           <Profile />
           <ListWrap>
@@ -147,12 +148,12 @@ function ActivityLog() {
             <StudyList />
             <BtnWrap>
               <StudyBtn
-                background={'rgb(108,99,255)'}
-                color={'white'}
+                background={palette('PsBtn')}
+                color={palette('PsYellow')}
                 width={'74rem'}
                 height={'3.5rem'}
                 name={'스터디 생성'}
-              ></StudyBtn>
+              />
             </BtnWrap>
           </ListWrap>
         </MainWrap>
