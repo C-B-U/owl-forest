@@ -8,7 +8,7 @@ const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
-  background-color: ${palette('PsGreen', 0)};
+  background-color: ${palette('PsGreen')};
   padding: 0 5rem;
 `;
 
