@@ -5,11 +5,9 @@ import Logo10 from '../../Image/Logo10.png';
 
 const HeaderWrapper = styled.div`
   height: 4rem;
-
-  display: flex;
-  justify-content: center;
   align-items: center;
-
+  justify-content: center;
+  display: flex;
   background-color: ${palette('PsGreen', 0)};
   padding: 0 5rem;
 `;
@@ -30,7 +28,7 @@ const Logo = styled.div`
 
 const Title = styled.h1`
   font-style: normal;
-  font-weight: 700;
+  font-weight: bold;
   font-size: 20pt;
   display: flex;
   align-items: center;
@@ -44,39 +42,32 @@ const Nav = styled.ul`
 `;
 
 const NavItem = styled.li`
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15pt;
-  list-style: none;
-  margin-right: 4rem;
-  color: ${({ clicked }) => (clicked ? 'rgba(250,250,210,1)' : '#000000')};
-  cursor: pointer;
-`;
-
-const NavItem2 = styled.li`
-  width: 8rem;
-  height: 5rem;
+  width: 7rem;
+  height: 4rem;
   align-items: center;
   justify-content: center;
   display: flex;
-  border-top-left-radius: 30%;
-  border-top-right-radius: 30%;
-  text-align: center;
   font-style: normal;
   font-weight: bold;
   font-size: 15pt;
   list-style: none;
-  background-color: rgba(179, 146, 131, 1);
-  margin-right: 3rem;
-  color: ${({ clicked }) => (clicked ? 'rgba(250,250,210,1)' : '#000000')};
+  margin-right: 2rem;
+  &:hover {
+    cursor: pointer;
+    background-color: ${palette('PsCocoa', 0)};
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+    color: ${palette('PsYellow')};
+  }
 `;
+
 export default function Header() {
   return (
     <HeaderWrapper>
       <Logo />
       <Title>활동일지 서비스</Title>
       <Nav>
-        <NavItem2 clicked>활동일지</NavItem2>
+        <NavItem>활동일지</NavItem>
         <NavItem>북 리뷰</NavItem>
         <NavItem>부원관리</NavItem>
       </Nav>
