@@ -29,9 +29,10 @@ const NavItems = styled.div`
   margin: 2rem;
   &:hover {
     cursor: pointer;
-    color: ${palette('secondary', 1)};
     text-decoration: underline;
     text-underline-position: under;
+    text-decoration-thickness: 0.2rem;
+    text-decoration-color: ${palette('PsPurple', 0)};
   }
 `;
 
