@@ -67,7 +67,7 @@ function MM_FindPw() {
     <ThemeProvider theme={theme}>
       <All>
         <Squbox>
-          <Msg><CbuImg src={imgfile} />아이디가 기억이 안나시나요?<CbuImg src={imgfile} /></Msg>
+          <Msg><CbuImg src={imgfile} />비밀번호가 기억이 안나시나요?<CbuImg src={imgfile} /></Msg>
           <FindKey width={'22rem'} height={'2rem'} placeholder={'이름'} />
           <FindKey width={'22rem'} height={'2rem'} placeholder={'학번'} />
           <FindKey width={'22rem'} height={'2rem'} placeholder={'이메일'} />
