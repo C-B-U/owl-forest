@@ -37,7 +37,7 @@ const FindKey = styled(InputStyle)`
   margin-bottom : 0.45rem;
 `
 const FindWrap = styled.div`    //div로 버튼 감싸서 버튼 위치 조정 (div로 감싸주지 않으면 btn 내부에서만 속성이 바뀌기 때문에 div로 감싸줘야 함)
-  margin-top : 3rem;
+  margin-top : 1.5rem;
 `
 
 const CbuImg = styled.img`
