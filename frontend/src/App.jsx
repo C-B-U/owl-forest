@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Welcome from './Pages/Welcome';
 import ActivityLog from './Pages/AL_Pages/ActivityLog';

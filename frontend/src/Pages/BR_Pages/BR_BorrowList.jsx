@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 
 function BR_BorrowList() {

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
