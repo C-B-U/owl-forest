@@ -145,7 +145,7 @@ function MM_Login() {
           </Line>
 
           <LinkWrap>
-            소셜 계정으로 간단하게 로그인하세요!
+            소셜 계정으로 간편하게 로그인하세요!
           </LinkWrap>
 
         <SocialWrap>
