@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("api/study-group")
@@ -26,14 +25,16 @@ public class StudyPlanController {
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
+
+
     //스터디 계획서 조회
-    @PutMapping("{studyGroupId}/plan")
+/*    @PutMapping("{studyGroupId}/plan")
     public ResponseEntity<StudyPlanResponseDTO> getByStudyGroupId(StudyPlanRequestDTO dto, @PathVariable Long studyGroupId) {
 
         StudyPlanResponseDTO result = studyPlanService.getByStudyGroupId(dto, studyGroupId);
 
-        return  ResponseEntity.status(HttpStatus.OK).body(result);
-    }
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }*/
 
     @PutMapping("{studyGroupId}/plan")
     //스터디 계획서 수정
@@ -44,12 +45,12 @@ public class StudyPlanController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
-    @DeleteMapping("{studyGroupId}/plan")
+/*    @DeleteMapping("{studyGroupId}/plan")
     //스터디 계획서 삭제
     public ResponseEntity<Void> deleteStudyplan(StudyPlanRequestDTO dto, @PathVariable Long studyGroupId){
 
         StudyPlanResponseDTO result = studyPlanService.delete(dto, studyGroupId);
 
         return ResponseEntity.status()
-    }
+    }*/
 }
