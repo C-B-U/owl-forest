@@ -12,19 +12,16 @@ import javax.persistence.Id;
 
 @Entity
 @Getter
-@Table(name = "studyActivityLog")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyActivityLog {
     @Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
 
     private Integer count;
     
-    @DateTimeFormat(pattern = "yyyy-MM-dd/HH:mm:ss")
     private LocalDateTime startTime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd/HH:mm:ss")
     private LocalDateTime endTime;
 
     private String place;
