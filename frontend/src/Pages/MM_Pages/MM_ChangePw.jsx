@@ -28,7 +28,9 @@ const Squbox = styled.div`      //Squarebox 줄여서 Squbox
   display:inline-block;
   text-align: center;
 `
-const FindKey = styled(InputStyle)`
+const PwKey = styled.input.attrs(props => ({
+  type: "password",
+}))`
   border: 0.15rem solid ${palette('PsLightBrown', 0)};
   background-color : ${palette('PsLightBrown', 0)};
   border-radius:4rem;
@@ -69,9 +71,9 @@ function MM_ChangePw() {
       <All>
         <Squbox>
           <Msg><CbuImg src={imgfile} />비밀번호를 변경하시겠습니까?<CbuImg src={imgfile} /></Msg>
-          <FindKey width={'22rem'} height={'2rem'} placeholder={'기존 비밀번호'} />
-          <FindKey width={'22rem'} height={'2rem'} placeholder={'새로운 비밀번호'} />
-          <FindKey width={'22rem'} height={'2rem'} placeholder={'새로운 비밀번호 확인'} />
+          <PwKey width={'22rem'} height={'2rem'} placeholder={'기존 비밀번호'} />
+          <PwKey width={'22rem'} height={'2rem'} placeholder={'새로운 비밀번호'} />
+          <PwKey width={'22rem'} height={'2rem'} placeholder={'새로운 비밀번호 확인'} />
           <FindWrap>
             <Btn color={'black'} background={palette('PsBtn', 0)} width={'4rem'} height={'2rem'} name={'변경'} />
           </FindWrap>
