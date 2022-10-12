@@ -28,8 +28,8 @@ const Squbox = styled.div`      //Squarebox 줄여서 Squbox
   display:inline-block;
   text-align: center;
 `
-const PwKey = styled.input.attrs(props => ({
-  type: "password",
+const PwKey = styled(InputStyle).attrs(props => ({
+  type: "password"
 }))`
   border: 0.15rem solid ${palette('PsLightBrown', 0)};
   background-color : ${palette('PsLightBrown', 0)};
@@ -37,7 +37,7 @@ const PwKey = styled.input.attrs(props => ({
   display:block;
   margin : auto;
   margin-bottom : 1rem;
-`
+`;
 
 
 const CbuImg = styled.img`
