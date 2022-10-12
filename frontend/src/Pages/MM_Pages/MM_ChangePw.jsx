@@ -5,6 +5,7 @@ import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import { InputStyle } from '../../Components/Input'
 import Btn from '../../Components/Btn'
+import imgfile from '../../Image/CbuIcon.png';
 
 const All = styled.div`
   position : absolute;    //absolute 추가(세로 중앙정렬)
@@ -18,8 +19,8 @@ const All = styled.div`
 `
 
 const Squbox = styled.div`      //Squarebox 줄여서 Squbox
-  width : 35rem;
-  height : 25rem;
+  width : 30rem;
+  height : 30rem;
   border-radius:2rem;
   border: 0.2rem solid ${palette('PsCocoa', 1)};
   align-items:center;
@@ -33,11 +34,9 @@ const FindKey = styled(InputStyle)`
   border-radius:4rem;
   display:block;
   margin : auto;
-  margin-bottom : 0.45rem;
+  margin-bottom : 1rem;
 `
-const FindWrap = styled.div`    //div로 버튼 감싸서 버튼 위치 조정 (div로 감싸주지 않으면 btn 내부에서만 속성이 바뀌기 때문에 div로 감싸줘야 함)
-  margin-top : 1.5rem;
-`
+
 
 const CbuImg = styled.img`
   width : 2rem;
@@ -56,22 +55,25 @@ const Msg = styled.div`   //Message 줄여서 Msg
   align-items:center;
   justify-content:center;
   padding:3rem;
+  margin : 1rem 0;
   text-align: center;
   
 `
-
+const FindWrap = styled.div`    //div로 버튼 감싸서 버튼 위치 조정 (div로 감싸주지 않으면 btn 내부에서만 속성이 바뀌기 때문에 div로 감싸줘야 함)
+  margin-top : 2.5rem;
+`
 
 function MM_ChangePw() {
   return (
     <ThemeProvider theme={theme}>
       <All>
         <Squbox>
-          <Msg><CbuImg src={imgfile} />아이디가 기억이 안나시나요?<CbuImg src={imgfile} /></Msg>
-          <FindKey width={'22rem'} height={'2rem'} placeholder={'이름'} />
-          <FindKey width={'22rem'} height={'2rem'} placeholder={'학번'} />
-          <FindKey width={'22rem'} height={'2rem'} placeholder={'이메일'} />
+          <Msg><CbuImg src={imgfile} />비밀번호를 변경하시겠습니까?<CbuImg src={imgfile} /></Msg>
+          <FindKey width={'22rem'} height={'2rem'} placeholder={'기존 비밀번호'} />
+          <FindKey width={'22rem'} height={'2rem'} placeholder={'새로운 비밀번호'} />
+          <FindKey width={'22rem'} height={'2rem'} placeholder={'새로운 비밀번호 확인'} />
           <FindWrap>
-            <Btn color={'black'} background={palette('PsBtn', 0)} width={'4rem'} height={'2rem'} name={'찾기'} />
+            <Btn color={'black'} background={palette('PsBtn', 0)} width={'4rem'} height={'2rem'} name={'변경'} />
           </FindWrap>
         </Squbox>
       </All >
