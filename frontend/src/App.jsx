@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Welcome from './Pages/Welcome';
-import ActivityLog from './Pages/AL_Pages/ActivityLog';
+import StudyActivityLog from './Pages/AL_Pages/StudyActivityLog';
 import PlanMake from './Pages/AL_Pages/PlanMake';
 import StudyCreation from './Pages/AL_Pages/StudyCreation';
 import StudyCrew from './Pages/AL_Pages/StudyCrew';
@@ -29,7 +29,7 @@ function App() {
           {/* ---- 메인페이지 ---- */}
           <Route path='/' element={<Welcome />} />
           {/* ---- 활동일지 ---- */}
-          <Route path='/ActivityLog' element={<ActivityLog />} />
+          <Route path='/StudyActivityLog' element={<StudyActivityLog />} />
           <Route path='/PlanMake' element={<PlanMake />} />
           <Route path='/StudyCreation' element={<StudyCreation />} />
           <Route path='/StudyCrew' element={<StudyCrew />} />
