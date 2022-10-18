@@ -25,7 +25,7 @@ public class BoardMapper {
                 .content(entity.getContent())
                 .writer(entity.getWriter())
                 .boardType(entity.getBoardType().name())
-                .isPublic(entity.isPublic())
+                .isPublic(entity.getIsPublic())
                 .createdAt(entity.getBaseTime().getCreatedAt())
                 .updatedAt(entity.getBaseTime().getUpdatedAt())
                 .build();

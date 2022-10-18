@@ -1,5 +1,6 @@
 package com.cbu.backend.board.entity;
 
+import com.cbu.backend.boardcomment.entity.BoardComment;
 import com.cbu.backend.global.BaseTime;
 import lombok.*;
 

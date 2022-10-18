@@ -1,6 +1,6 @@
-package com.cbu.backend.board.repository;
+package com.cbu.backend.boardcomment.repository;
 
-import com.cbu.backend.board.entity.BoardComment;
+import com.cbu.backend.boardcomment.entity.BoardComment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

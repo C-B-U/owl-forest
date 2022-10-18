@@ -1,5 +1,6 @@
-package com.cbu.backend.board.entity;
+package com.cbu.backend.boardcomment.entity;
 
+import com.cbu.backend.board.entity.Board;
 import com.cbu.backend.global.BaseTime;
 
 import javax.persistence.*;
@@ -21,4 +22,10 @@ public class BoardComment {
 
     @Embedded
     private BaseTime baseTime;
+
+    public BoardComment(String content, String writer, Board board) {
+        this.content = content;
+        this.writer = writer;
+        this.board = board;
+    }
 }
