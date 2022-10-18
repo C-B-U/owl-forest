@@ -14,10 +14,10 @@ public class ResponseDTO<T> {
         this.code = status.getCode();
         this.message = status.getMessage();
     }
-
     public ResponseDTO(ResponseStatus status, T result) {
         this.code = status.getCode();
         this.message = status.getMessage();
         this.result = result;
     }
+
 }
