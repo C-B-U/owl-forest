@@ -14,7 +14,6 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "studyGroup")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyGroup {
@@ -27,14 +26,11 @@ public class StudyGroup {
 
     private String summary;
 
-    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Member teamLeader;
 
-    @OneToMany(mappedBy = "member")
-    private List<Member> teamMembers = new ArrayList<>();
-
-    @OneToMany(mappedBy = "studyJournal")
-    private List<StudyActivityLog> journals = new ArrayList<>();
+    @OneToMany(mappedBy = "studyGroup")
+    private List<StudyActivityLog> studyActivityLogs = new ArrayList<>();
 
     private Integer like = 0;
 
@@ -44,14 +40,13 @@ public class StudyGroup {
     private BaseTimeEntity baseTime;
 
     @Builder
-    public StudyGroup(Long id, String name, String summary, Member teamLeader, List<Member> teamMembers,
-                      List<StudyActivityLog> journals, Integer like, Integer season) {
+    public StudyGroup(Long id, String name, String summary, Member teamLeader,
+                      List<StudyActivityLog> studyActivityLogs, Integer like, Integer season) {
         this.id = id;
         this.name = name;
         this.summary = summary;
         this.teamLeader = teamLeader;
-        this.teamMembers = teamMembers;
-        this.journals = journals;
+        this.studyActivityLogs = studyActivityLogs;
         this.like = like;
         this.season = season;
     }
@@ -60,18 +55,17 @@ public class StudyGroup {
         this.name = studyGroup.getName();
         this.summary = studyGroup.getSummary();
         this.teamLeader = studyGroup.getTeamLeader();
-        this.teamMembers = studyGroup.getTeamMembers();
 
         return this;
     }
 
-    public boolean isMemberDuplicated(StudyGroup studyGroup) {
+ /*   public boolean isMemberDuplicated(StudyGroup studyGroup) {
         return studyGroup.getTeamMembers()
                 .stream()
                 .distinct()
                 .mapToInt(i -> 1)
                 .sum() == studyGroup.getTeamMembers().size();
-    }
+    }*/
 
     public void updateLike(Integer like) { // like는 -1(좋아요 취소) or +1(좋아요)
         if(isPositive(like)){

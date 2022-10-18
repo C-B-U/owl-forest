@@ -1,9 +1,12 @@
 package com.cbu.backend.board.entity;
 
+import com.cbu.backend.boardcomment.entity.BoardComment;
 import com.cbu.backend.global.BaseTime;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,7 +27,6 @@ public class Board {
     private String content;
 
     @Column(nullable = false)
-
     private String writer; // TODO Member 클래스로 변경해야
 
     @Enumerated(EnumType.STRING)
@@ -33,6 +35,9 @@ public class Board {
     @Column(nullable = false)
     @Setter
     private Boolean isPublic;
+
+    @OneToMany(mappedBy = "board")
+    private List<BoardComment> comments = new ArrayList<>();
 
     @Embedded
     private BaseTime baseTime;
