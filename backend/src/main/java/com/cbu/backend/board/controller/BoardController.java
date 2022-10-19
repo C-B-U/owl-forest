@@ -34,7 +34,7 @@ public class BoardController {
         BoardResponseDTO updatedBoard = boardService.update(id, dto);
         ResponseDTO<BoardResponseDTO> responseBody = new ResponseDTO<>(ResponseStatus.UPDATE_BOARD_SUCCESS, updatedBoard);
 
-        return ResponseEntity.status(HttpStatus.OK).body(responseBody);
+        return ResponseEntity.ok(responseBody);
     }
 
     @DeleteMapping("{id}")
@@ -42,7 +42,7 @@ public class BoardController {
         BoardResponseDTO deletedBoard = boardService.delete(id);
         ResponseDTO<BoardResponseDTO> responseBody = new ResponseDTO<>(ResponseStatus.DELETE_BOARD_SUCCESS, deletedBoard);
 
-        return ResponseEntity.status(HttpStatus.OK).body(responseBody);
+        return ResponseEntity.ok(responseBody);
     }
 
     @GetMapping("{id}")
@@ -50,14 +50,14 @@ public class BoardController {
         BoardResponseDTO board = boardService.get(id);
         ResponseDTO<BoardResponseDTO> responseBody = new ResponseDTO<>(ResponseStatus.GET_BOARD_SUCCESS, board);
 
-        return ResponseEntity.status(HttpStatus.OK).body(responseBody);
+        return ResponseEntity.ok(responseBody);
     }
 
     @GetMapping
     public ResponseEntity<ResponseDTO<List<BoardResponseDTO>>> getAllBoard() {
-        List<BoardResponseDTO> board = boardService.getAll();
-        ResponseDTO< List<BoardResponseDTO>> responseBody = new ResponseDTO<>(ResponseStatus.GET_BOARD_LIST_SUCCESS, board);
+        List<BoardResponseDTO> boards = boardService.getAll();
+        ResponseDTO< List<BoardResponseDTO>> responseBody = new ResponseDTO<>(ResponseStatus.GET_BOARD_LIST_SUCCESS, boards);
 
-        return ResponseEntity.status(HttpStatus.OK).body(responseBody);
+        return ResponseEntity.ok(responseBody);
     }
 }
