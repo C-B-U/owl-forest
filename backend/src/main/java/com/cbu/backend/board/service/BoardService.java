@@ -30,7 +30,7 @@ public class BoardService {
 
     @Transactional
     public BoardResponseDTO update(Long id, UpdateBoardRequestDTO dto) {
-        Board board = getBoardEntity(id);
+        Board board = getEntity(id);
         modifyBoard(board, dto);
 
         return boardMapper.toDto(board);
@@ -44,14 +44,14 @@ public class BoardService {
 
     @Transactional
     public BoardResponseDTO delete(Long id) {
-        Board board = getBoardEntity(id);
+        Board board = getEntity(id);
         board.getBaseTime().delete();
 
         return boardMapper.toDto(board);
     }
 
     public BoardResponseDTO get(Long id) {
-        Board board = getBoardEntity(id);
+        Board board = getEntity(id);
 
         return boardMapper.toDto(board);
     }
@@ -64,7 +64,7 @@ public class BoardService {
                 .collect(Collectors.toList());
     }
 
-    private Board getBoardEntity(Long id) {
+    public Board getEntity(Long id) {
 
         return boardRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);

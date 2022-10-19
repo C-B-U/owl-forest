@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BoardCommentRequestDTO {
+public class UpdateBoardCommentRequestDTO {
     private String content;
-    private String writer;
 }
