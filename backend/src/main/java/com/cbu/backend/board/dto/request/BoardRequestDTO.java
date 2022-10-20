@@ -8,10 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardRequestDTO {
-    private Long id;
-    private String title;
-    private String content;
-    private String writer;
-    private String boardType;
-    private Boolean isPublic;
+
+    private String name;
+    private String description;
+    private Long managerId;
 }

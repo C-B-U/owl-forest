@@ -1,12 +1,10 @@
 package com.cbu.backend.board.entity;
 
-import com.cbu.backend.boardcomment.entity.BoardComment;
 import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.member.entity.Member;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -19,35 +17,23 @@ public class Board {
 
     @Column(nullable = false)
     @Setter
-    private String title;
+    private String name;
 
-    @Lob
-    @Column(nullable = false)
     @Setter
-    private String content;
+    private String description;
 
-    @Column(nullable = false)
-    private String writer; // TODO Member 클래스로 변경해야
-
-    @Enumerated(EnumType.STRING)
-    private BoardType boardType;
-
-    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
     @Setter
-    private Boolean isPublic;
-
-    @OneToMany(mappedBy = "board")
-    private List<BoardComment> comments = new ArrayList<>();
+    private Member manager;
 
     @Embedded
     private BaseTime baseTime;
 
     @Builder
-    public Board(String title, String content, String writer, BoardType boardType, boolean isPublic) {
-        this.title = title;
-        this.content = content;
-        this.writer = writer;
-        this.boardType = boardType;
-        this.isPublic = isPublic;
+    public Board(String name, String description, Member manager) {
+        this.name = name;
+        this.description = description;
+        this.manager = manager;
     }
 }
