@@ -6,7 +6,10 @@ import com.cbu.backend.board.dto.response.BoardResponseDTO;
 import com.cbu.backend.board.entity.Board;
 import com.cbu.backend.board.mapper.BoardMapper;
 import com.cbu.backend.board.repository.BoardRepository;
+import com.cbu.backend.member.entity.Member;
+import com.cbu.backend.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -21,9 +24,12 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final BoardMapper boardMapper;
 
+    private final MemberService memberService;
+
     @Transactional
     public BoardResponseDTO save(BoardRequestDTO dto) {
-        Board result = boardRepository.save(boardMapper.toEntity(dto));
+        Member manager = memberService.getEntity(dto.getManagerId());
+        Board result = boardRepository.save(boardMapper.toEntity(dto, manager));
 
         return boardMapper.toDto(result);
     }
@@ -37,9 +43,11 @@ public class BoardService {
     }
 
     private void modifyBoard(Board board, UpdateBoardRequestDTO dto) {
-        board.setTitle(dto.getTitle());
-        board.setContent(dto.getContent());
-        board.setIsPublic(dto.getIsPublic());
+        Member manager = memberService.getEntity(dto.getMangerId());
+
+        board.setName(dto.getName());
+        board.setDescription(dto.getDescription());
+        board.setManager(manager);
     }
 
     @Transactional
@@ -56,9 +64,9 @@ public class BoardService {
         return boardMapper.toDto(board);
     }
 
-    public List<BoardResponseDTO> getAll() {
+    public List<BoardResponseDTO> getAll(Pageable pageable) {
 
-        return boardRepository.findAll()
+        return boardRepository.findAll(pageable)
                 .stream()
                 .map(boardMapper::toDto)
                 .collect(Collectors.toList());

@@ -15,21 +15,27 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum ResponseStatus {
-    //게시글 (BOARD) 응답 상태
+    //게시판 (BOARD) 응답 상태
     //Head Name : BD
-    POST_BOARD_SUCCESS("BD000", "게시글 업로드 성공"),
-    UPDATE_BOARD_SUCCESS("BD001", "게시글 수정 성공"),
-    DELETE_BOARD_SUCCESS("BD002", "게시글 삭제 성공"),
+    POST_BOARD_SUCCESS("BD000", "게시판 업로드 성공"),
+    UPDATE_BOARD_SUCCESS("BD001", "게시판 수정 성공"),
+    DELETE_BOARD_SUCCESS("BD002", "게시판 삭제 성공"),
+    GET_BOARD_LIST_SUCCESS("BD100", "게시판 목록 조회 성공"),
+    GET_BOARD_SUCCESS("BD101", "게시판 조회 성공"),
 
-    GET_BOARD_SUCCESS("BD100", "게시글 조회 성공"),
-    GET_BOARD_LIST_SUCCESS("BD101", "게시글 목록 조회 성공"),
+    // 게시글(Article) 응답 상태
+    // Head Name : A
+    POST_ARTICLE_SUCCESS("A000", "게시글 업로드 성공"),
+    UPDATE_ARTICLE_SUCCESS("A001", "게시글 수정 성공"),
+    DELETE_ARTICLE_SUCCESS("A002", "게시글 삭제 성공"),
+    GET_ARTICLE_LIST_SUCCESS("A100", "게시글 목록 조회 성공"),
+    GET_ARTICLE_SUCCESS("A101", "게시글 조회 성공"),
 
-    //게시글 댓글 (BoardCOmment) 응답 상태
-    // Head Name : BC
-    POST_BOARDCOMMENT_SUCCESS("BC000", "댓글 업로드 성공"),
-    UPDATE_BOARDCOMMENT_SUCCESS("BC001", "댓글 수정 성공"),
-    DELETE_BOARDCOMMENT_SUCCESS("BC002", "댓글 삭제 성공"),
-    GET_BOARDCOMMENT_LIST_SUCCESS("BC100", "댓글 목록 조회 성공"),
+    //게시글 댓글 (ArticleComment) 응답 상태
+    // Head Name : AC
+    POST_ARTICLECOMMENT_SUCCESS("AC000", "댓글 업로드 성공"),
+    UPDATE_ARTICLECOMMENT_SUCCESS("AC001", "댓글 수정 성공"),
+    DELETE_ARTICLECOMMENT_SUCCESS("AC002", "댓글 삭제 성공"),
     ;
 
     //책 (Book) 응답 상태

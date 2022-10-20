@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UpdateBoardRequestDTO {
 
-    private String title;
-    private String content;
-    private Boolean isPublic;
+    private String name;
+    private String description;
+    private Long mangerId;
 
 }
