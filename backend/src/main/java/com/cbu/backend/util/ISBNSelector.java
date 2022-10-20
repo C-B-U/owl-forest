@@ -3,5 +3,5 @@ package com.cbu.backend.util;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ISBNSeletor {
+public class ISBNSelector {
 }
