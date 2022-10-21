@@ -12,6 +12,5 @@ public class ArticleRequestDTO {
     private String title;
     private String content;
     private Long authorId;
-    private Long boardId;
     private Boolean isPublic;
 }

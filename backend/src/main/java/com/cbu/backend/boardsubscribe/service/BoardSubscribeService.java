@@ -18,6 +18,6 @@ public class BoardSubscribeService {
     private final MemberService memberService;
 
     public BoardSubscribeResponseDTO subscribe(BoardSubscribeRequestDTO dto) {
-
+        throw new UnsupportedOperationException();
     }
 }
