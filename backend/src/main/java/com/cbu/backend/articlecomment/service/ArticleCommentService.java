@@ -36,8 +36,8 @@ public class ArticleCommentService {
         return articleCommentMapper.toDto(savedArticleComment);
     }
 
-    public List<ArticleCommentResponseDTO> getAllByBoardId(Long boardId) {
-        return articleCommentRepository.findAllByBoardId(boardId)
+    public List<ArticleCommentResponseDTO> getAllByBoardId(Long articleId) {
+        return articleCommentRepository.findAllByArticleId(articleId)
                 .stream()
                 .map(articleCommentMapper::toDto)
                 .collect(Collectors.toList());

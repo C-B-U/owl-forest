@@ -24,7 +24,7 @@ public class ArticleComment {
     private Member writer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_id", nullable = false)
+    @JoinColumn(name = "article_id", nullable = false)
     private Article article;
 
     @Embedded
