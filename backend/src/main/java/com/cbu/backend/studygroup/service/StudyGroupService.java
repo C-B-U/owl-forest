@@ -54,7 +54,7 @@ public class StudyGroupService {
     }
 
     public List<StudyGroupResponseDTO> searchStudyOrderByLike(Comparator<Comparable> sortDirection) { // 스터디 좋아요순(많은 순서) 조회
-        return sort(StudyGroup::getLike, sortDirection);
+        return sort(StudyGroup::getLikeCount, sortDirection);
     }
 
     private List<StudyGroupResponseDTO> sort(Function<StudyGroup, Comparable> function, Comparator<Comparable> sortDirection) {

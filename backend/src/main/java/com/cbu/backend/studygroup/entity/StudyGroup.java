@@ -32,7 +32,7 @@ public class StudyGroup {
     @OneToMany(mappedBy = "studyGroup")
     private List<StudyActivityLog> studyActivityLogs = new ArrayList<>();
 
-    private Integer like = 0;
+    private Integer likeCount = 0;
 
     private Integer season;
 
@@ -41,13 +41,13 @@ public class StudyGroup {
 
     @Builder
     public StudyGroup(Long id, String name, String summary, Member teamLeader,
-                      List<StudyActivityLog> studyActivityLogs, Integer like, Integer season) {
+                      List<StudyActivityLog> studyActivityLogs, Integer likeCount, Integer season) {
         this.id = id;
         this.name = name;
         this.summary = summary;
         this.teamLeader = teamLeader;
         this.studyActivityLogs = studyActivityLogs;
-        this.like = like;
+        this.likeCount = likeCount;
         this.season = season;
     }
 
@@ -69,12 +69,12 @@ public class StudyGroup {
 
     public void updateLike(Integer like) { // like는 -1(좋아요 취소) or +1(좋아요)
         if(isPositive(like)){
-            this.like += like;
+            this.likeCount += like;
         }
     }
 
     private boolean isPositive(Integer like) {
-        return this.like + like >= 0;
+        return this.likeCount + like >= 0;
     }
 
 }
