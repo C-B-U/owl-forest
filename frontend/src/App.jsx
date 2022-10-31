@@ -15,6 +15,7 @@ import MemList from './Pages/MM_Pages/MM_MemList';
 import MemListCon from './Pages/MM_Pages/MM_MemListCon';
 import Reg from './Pages/MM_Pages/MM_Reg';
 import Profile from './Pages/MM_Pages/MM_Profile';
+import ChangePw from './Pages/MM_Pages/MM_ChangePw';
 import BookReg from './Pages/BR_Pages/BR_BookReg';
 import BorrowList from './Pages/BR_Pages/BR_BorrowList';
 import ReviewDetail from './Pages/BR_Pages/BR_ReviewDetail';
@@ -24,6 +25,7 @@ import ReviewReg from './Pages/BR_Pages/BR_ReviewReg';
 function App() {
   return (
     <div className='App'>
+
       <Router>
         <Routes>
           {/* ---- 메인페이지 ---- */}
@@ -45,6 +47,7 @@ function App() {
           <Route path='/MemListCon' element={<MemListCon />} />
           <Route path='/Reg' element={<Reg />} />
           <Route path='/Profile' element={<Profile />} />
+          <Route path='/ChangePw' element={<ChangePw />} />
           {/* ---- 북리뷰 ---- */}
           <Route path='/BorrowList' element={<BorrowList />} />
           <Route path='/BookRegister' element={<BookReg />} />
