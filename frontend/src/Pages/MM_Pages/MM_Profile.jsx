@@ -13,7 +13,6 @@ const Profileimg = styled.img`
 `;
 const All = styled.div`
   display:flex;
-  justify-content: space-around;
 `
 const Left = styled.div`
   display:flex;
