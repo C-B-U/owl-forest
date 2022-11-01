@@ -11,8 +11,9 @@ const Profileimg = styled.img`
   height:5rem;
   border-radius :100%;
 `;
-const All = styled.div`
+const Wrap = styled.div`
   display:flex;
+  flex-wrap:nowrap;
 `
 const Left = styled.div`
   display:flex;
@@ -25,14 +26,14 @@ const Right = styled.div`
 function MM_Profile() {
   return (
     <div>
-      <All>
+      <Wrap>
         <Left>
           <Profileimg src={imgfile}></Profileimg>
         </Left>
         <Right>
           <Profileimg src={imgfile}></Profileimg>
         </Right>
-      </All>
+      </Wrap>
     </div>
 
   )
