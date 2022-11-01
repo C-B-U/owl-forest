@@ -14,7 +14,6 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "studyGroup")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyGroup {
@@ -27,16 +26,13 @@ public class StudyGroup {
 
     private String summary;
 
-    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Member teamLeader;
 
-    @OneToMany(mappedBy = "member")
-    private List<Member> teamMembers = new ArrayList<>();
+    @OneToMany(mappedBy = "studyGroup")
+    private List<StudyActivityLog> studyActivityLogs = new ArrayList<>();
 
-    @OneToMany(mappedBy = "studyJournal")
-    private List<StudyActivityLog> journals = new ArrayList<>();
-
-    private Integer like = 0;
+    private Integer likeCount = 0;
 
     private Integer season;
 
@@ -44,15 +40,14 @@ public class StudyGroup {
     private BaseTimeEntity baseTime;
 
     @Builder
-    public StudyGroup(Long id, String name, String summary, Member teamLeader, List<Member> teamMembers,
-                      List<StudyActivityLog> journals, Integer like, Integer season) {
+    public StudyGroup(Long id, String name, String summary, Member teamLeader,
+                      List<StudyActivityLog> studyActivityLogs, Integer likeCount, Integer season) {
         this.id = id;
         this.name = name;
         this.summary = summary;
         this.teamLeader = teamLeader;
-        this.teamMembers = teamMembers;
-        this.journals = journals;
-        this.like = like;
+        this.studyActivityLogs = studyActivityLogs;
+        this.likeCount = likeCount;
         this.season = season;
     }
 
@@ -60,27 +55,26 @@ public class StudyGroup {
         this.name = studyGroup.getName();
         this.summary = studyGroup.getSummary();
         this.teamLeader = studyGroup.getTeamLeader();
-        this.teamMembers = studyGroup.getTeamMembers();
 
         return this;
     }
 
-    public boolean isMemberDuplicated(StudyGroup studyGroup) {
+ /*   public boolean isMemberDuplicated(StudyGroup studyGroup) {
         return studyGroup.getTeamMembers()
                 .stream()
                 .distinct()
                 .mapToInt(i -> 1)
                 .sum() == studyGroup.getTeamMembers().size();
-    }
+    }*/
 
     public void updateLike(Integer like) { // like는 -1(좋아요 취소) or +1(좋아요)
         if(isPositive(like)){
-            this.like += like;
+            this.likeCount += like;
         }
     }
 
     private boolean isPositive(Integer like) {
-        return this.like + like >= 0;
+        return this.likeCount + like >= 0;
     }
 
 }
