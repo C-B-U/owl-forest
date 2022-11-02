@@ -9,26 +9,30 @@ import imgfile from '../../Image/Logo10.png';
 const Wrap = styled.div`
   position:relative;
   display:flex;
+  
 `
-const LeftFixedWrap = styled.div`
-  height:10rem;
-  width:10rem;
-  background-color:blue;
+const LeftFixedWrap = styled.div` //왼쪽 자신의 프로필 화면을 fixed시키기 위한 Wrap
   position:fixed;
 `
-const LeftWrap = styled.div`
+const LeftWrap = styled.div`  //Left로 프로필 화면부분을 감싸줌
+  background-color:aqua;
   height:50rem;
   width:10rem;
   flex-grow:1;
   border: 1px solid gray;
-  margin-right:1rem;
+  @media (max-width:50rem){
+    display:none;
+  }
 `
 
-const RightWrap = styled.div`
+const RightWrap = styled.div`   //Right로 오른쪽에 부원리스트 화면 부분 나타내는 영역임
   border: 1px solid gray;
+  background-color:tomato;
   flex-grow:5;
+  margin-left:1rem;
+
 `
-const Profileimg = styled.img`
+const Profileimg = styled.img`    //자신의 프로필 이미지
   width:5rem;
   height:5rem;
   border-radius :100%;
