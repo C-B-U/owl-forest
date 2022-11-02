@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import imgfile from '../../Image/Logo10.png';
+import { InputStyle } from '../../Components/Input'
 
 
 const Wrap = styled.div`
@@ -21,8 +22,8 @@ const LeftWrap = styled.div`  //Left로 프로필 화면부분을 감싸줌
   flex-grow:1;
   text-align: center;
   border: 1px solid gray;
-  @media (max-width:50rem){   //창화면이 커지면 자신의 프로필을 사라지게 함.
-    display:none;
+  @media (max-width:40rem){   //창화면이 커지면 자신의 프로필만 나타나게 함.
+    
   }
 `
 
@@ -30,10 +31,8 @@ const RightWrap = styled.div`   //Right로 오른쪽에 부원리스트 화면 �
   border: 1px solid gray;
   flex-grow:5;
   margin-left:1rem;
-  @media (max-width:50rem){   //창화면 작아지면 리스트화면을 화면가득 채움
-    width:100vw;
-    height:100vh;
-    margin-left:0;
+  @media (max-width:40rem){   //창화면 작아지면 프로필 수정 영역 안보이게 함.
+    display:none;
   }
 `
 const Profileimg = styled.img`    //자신의 프로필 이미지
@@ -43,7 +42,13 @@ const Profileimg = styled.img`    //자신의 프로필 이미지
   margin-top: 5rem;
   
 `
-
+const Intro = styled.div`   //introduction 줄여서 intro ->한 줄 소개하는 영역
+  width:15rem;
+  height:5rem;
+  display:inline-block;
+  background-color:${palette('PsBtn')};
+  margin-top:1rem;
+`
 
 function MM_Profile() {
   return (
@@ -52,6 +57,7 @@ function MM_Profile() {
         <Wrap>
           <LeftWrap>
             <Profileimg src={imgfile} />
+            <Intro />
           </LeftWrap>
           <RightWrap>
           </RightWrap>
