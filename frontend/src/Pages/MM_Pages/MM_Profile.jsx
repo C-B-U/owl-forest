@@ -45,7 +45,10 @@ const Intro = styled.div`   //introduction 줄여서 intro ->한 줄 소개하�
   width:18rem;
   height:5rem;
   background-color:${palette('PsCocoa')};
+  font-family: sans-serif;
+  font-weight:bold;
   border-radius:0.2rem;
+  color : white;
   margin: auto;       //블록요소인 div가운데 정렬
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;                  //
@@ -58,7 +61,6 @@ const Intro = styled.div`   //introduction 줄여서 intro ->한 줄 소개하�
 const TechBox = styled.div`     //Tech Stack을 나타내는 박스
   width:14rem;
   height:18rem;
-  border : 0.5pt solid gray;
   background-color:${palette('PsLightBrown')};
   margin: 3rem auto auto;       //블록요소인 div가운데 정렬
   border-radius:0.5rem;
@@ -72,7 +74,7 @@ const TechBox = styled.div`     //Tech Stack을 나타내는 박스
 
 const TechMsg = styled.div`   //TechMessage줄임. 화면상에 TECH STACK을 표시하는 텍스트 영역
   font-size:20px;
-  
+  font-family: sans-serif;
 `
 const TechMsgWrap = styled.div`   //TechMsg를 감싸줌
   width : 100%;
@@ -88,6 +90,7 @@ const Tech = styled.div`
   padding : 0.3rem 0.5rem;
   border-radius : 1rem;
   font-weight: 500;
+  font-family: sans-serif;
 `
 
 function MM_Profile() {
@@ -97,7 +100,7 @@ function MM_Profile() {
         <Wrap>
           <LeftWrap>
             <Profileimg src={imgfile} />
-            <Intro>짧은 자기소개를 해주세요.</Intro>
+            <Intro>자기소개 흰색으로 할까요? 검은색으로 할까요?</Intro>
             <TechBox>
               <TechMsgWrap>
                 <TechMsg>Tech Stack</TechMsg>
