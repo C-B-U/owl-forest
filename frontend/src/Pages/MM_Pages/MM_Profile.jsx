@@ -19,9 +19,8 @@ const Wrap = styled.div`
 const LeftWrap = styled.div`  //Left로 프로필 화면부분을 감싸줌
   height:50rem;
   width:10rem;
-  flex-grow:1;
+  flex-grow:2;
   text-align: center;
-  border: 1px solid gray;
   @media (max-width:60rem){   //창화면이 커지면 자신의 프로필만 나타나게 함.
     text-align: center;
   }
@@ -42,7 +41,7 @@ const Profileimg = styled.img`    //자신의 프로필 이미지
   margin: 5rem 0 2rem;
 `
 const Intro = styled.div`   //introduction 줄여서 intro ->한 줄 소개하는 영역
-  width:15rem;
+  width:20rem;
   height:5rem;
   background-color:${palette('PsCocoa')};
   font-family: sans-serif;
@@ -60,7 +59,7 @@ const Intro = styled.div`   //introduction 줄여서 intro ->한 줄 소개하�
   }
 `
 const TechBox = styled.div`     //Tech Stack을 나타내는 박스
-  width:14rem;
+  width:18rem;
   height:18rem;
   padding :0.5rem;
   background-color:${palette('PsLightBrown')};
