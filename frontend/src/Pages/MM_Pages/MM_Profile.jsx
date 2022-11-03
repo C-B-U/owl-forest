@@ -42,7 +42,7 @@ const Profileimg = styled.img`    //자신의 프로필 이미지
   margin: 5rem 0 2rem;
 `
 const Intro = styled.div`   //introduction 줄여서 intro ->한 줄 소개하는 영역
-  width:18rem;
+  width:15rem;
   height:5rem;
   background-color:${palette('PsCocoa')};
   font-family: sans-serif;
@@ -50,6 +50,7 @@ const Intro = styled.div`   //introduction 줄여서 intro ->한 줄 소개하�
   border-radius:0.2rem;
   color : white;
   margin: auto;       //블록요소인 div가운데 정렬
+  padding :0.5rem;
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;                  //
   align-items: center;            //요소 내부 세로 정렬
@@ -61,6 +62,7 @@ const Intro = styled.div`   //introduction 줄여서 intro ->한 줄 소개하�
 const TechBox = styled.div`     //Tech Stack을 나타내는 박스
   width:14rem;
   height:18rem;
+  padding :0.5rem;
   background-color:${palette('PsLightBrown')};
   margin: 3rem auto auto;       //블록요소인 div가운데 정렬
   border-radius:0.5rem;
@@ -105,7 +107,7 @@ function MM_Profile() {
               <TechMsgWrap>
                 <TechMsg>Tech Stack</TechMsg>
               </TechMsgWrap>
-              <Tech>Java</Tech><Tech>Python</Tech><Tech>C++</Tech><Tech>React</Tech>
+              <Tech>Java</Tech><Tech>Python</Tech><Tech>C++</Tech><Tech>React</Tech><Tech>SpringBoot</Tech><Tech>Amazon AWS</Tech><Tech>Kotlin</Tech>
             </TechBox>
           </LeftWrap>
           <RightWrap>
