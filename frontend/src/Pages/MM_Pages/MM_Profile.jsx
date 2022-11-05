@@ -4,7 +4,7 @@ import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import imgfile from '../../Image/Logo10.png';
 import { InputStyle } from '../../Components/Input'
-import Btn from '../../Components/Btn'
+import { BtnStyle } from '../../Components/Btn'
 
 
 
@@ -29,7 +29,6 @@ const LeftWrap = styled.div`  //Left로 프로필 화면부분을 감싸줌
 `
 
 const RightWrap = styled.div`   //Right로 오른쪽에 부원리스트 화면 부분 나타내는 영역임
-  border: 1px solid gray;
   flex-grow:5;
   margin-left:1rem;
   position:relative;
@@ -105,19 +104,26 @@ const EditPro = styled(InputStyle)`   //프로필 편집 input박스
   background-color : ${palette('PsLightBrown', 0)};
   border-radius:0.5rem;
   margin-bottom : 2rem;
-  
+`
 
+const EditSaveBtn = styled(BtnStyle)`
+  border : none;
 `
 const InputWrap = styled.div`
   margin-top:10rem;
   position:absolute;
   left:50%;
   transform:translate(-50%,0);
-
 `
-const BtnWrap = styled.div`
+const BtnWrap1 = styled.div`
+  margin-top:3rem;
   position:absolute;
-
+  left:0%;
+`
+const BtnWrap2 = styled.div`
+  margin-top:3rem;
+  position:absolute;
+  right:0%;
 `
 
 function MM_Profile() {
@@ -141,9 +147,12 @@ function MM_Profile() {
               <EditPro width={'35rem'} height={'2.8rem'} placeholder={'Grade'} />
               <EditPro width={'35rem'} height={'2.8rem'} placeholder={'Department'} />
               <EditPro width={'35rem'} height={'2.8rem'} placeholder={'E-mail'} />
-              <BtnWrap>
-                <Btn color={'black'} background={palette('PsGreen', 0)} width={'4rem'} height={'2rem'} name={'수정'} /><Btn color={'black'} background={palette('PsGreen', 0)} width={'4rem'} height={'2rem'} name={'저장'} />
-              </BtnWrap>
+              <BtnWrap1>
+                <EditSaveBtn color={'black'} background={palette('PsGreen', 0)} width={'7rem'} height={'2rem'} >수정</EditSaveBtn>
+              </BtnWrap1>
+              <BtnWrap2>
+                <EditSaveBtn color={'black'} background={palette('PsGreen', 0)} width={'7rem'} height={'2rem'} >저장</EditSaveBtn>
+              </BtnWrap2>
             </InputWrap>
 
           </RightWrap>
