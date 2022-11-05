@@ -6,4 +6,4 @@ function MM_Login() {
   )
 }
 
-export default MM_Login
+export default MM_Login;
