@@ -42,7 +42,7 @@ const Profileimg = styled.img`    //자신의 프로필 이미지
   width:12rem;
   height:12rem;
   border-radius :100%; 
-  margin: 5rem 0 2rem;
+  margin: 3rem 0 2rem;
 `
 const Intro = styled.div`   //introduction 줄여서 intro ->한 줄 소개하는 영역
   width:20rem;
@@ -102,7 +102,7 @@ const EditPro = styled(InputStyle)`   //프로필 편집 input박스
   border: 0.15rem solid ${palette('PsLightBrown', 0)};
   background-color : ${palette('PsLightBrown', 0)};
   border-radius:0.5rem;
-  margin-bottom : 1.5rem;
+  margin-bottom : 2rem;
   
 
 `
