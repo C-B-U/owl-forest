@@ -30,9 +30,13 @@ const RightWrap = styled.div`   //Right로 오른쪽에 부원리스트 화면 �
   border: 1px solid gray;
   flex-grow:5;
   margin-left:1rem;
+  position:relative;
+
   @media (max-width:60rem){   //창화면 작아지면 프로필 수정 영역 안보이게 함.
     display:none;
   }
+
+  
 `
 const Profileimg = styled.img`    //자신의 프로필 이미지
   width:12rem;
@@ -98,11 +102,16 @@ const EditPro = styled(InputStyle)`   //프로필 편집 input박스
   border: 0.15rem solid ${palette('PsLightBrown', 0)};
   background-color : ${palette('PsLightBrown', 0)};
   border-radius:0.5rem;
-  display:block;
   margin-bottom : 1.5rem;
+  
+
 `
 const InputWrap = styled.div`
-  margin-top:5rem;
+  margin-top:10rem;
+  position:absolute;
+  left:50%;
+  transform:translate(-50%,0);
+
 `
 
 function MM_Profile() {
@@ -122,10 +131,10 @@ function MM_Profile() {
           </LeftWrap>
           <RightWrap>
             <InputWrap>
-              <EditPro width={'22rem'} height={'2.2rem'} placeholder={'Name'} />
-              <EditPro width={'22rem'} height={'2.2rem'} placeholder={'Grade'} />
-              <EditPro width={'22rem'} height={'2.2rem'} placeholder={'Department'} />
-              <EditPro width={'22rem'} height={'2.2rem'} placeholder={'E-mail'} />
+              <EditPro width={'35rem'} height={'2.8rem'} placeholder={'Name'} />
+              <EditPro width={'35rem'} height={'2.8rem'} placeholder={'Grade'} />
+              <EditPro width={'35rem'} height={'2.8rem'} placeholder={'Department'} />
+              <EditPro width={'35rem'} height={'2.8rem'} placeholder={'E-mail'} />
             </InputWrap>
           </RightWrap>
         </Wrap>
