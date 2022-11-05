@@ -4,6 +4,8 @@ import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import imgfile from '../../Image/Logo10.png';
 import { InputStyle } from '../../Components/Input'
+import Btn from '../../Components/Btn'
+
 
 
 const Wrap = styled.div`
@@ -113,6 +115,10 @@ const InputWrap = styled.div`
   transform:translate(-50%,0);
 
 `
+const BtnWrap = styled.div`
+  position:absolute;
+
+`
 
 function MM_Profile() {
   return (
@@ -135,7 +141,11 @@ function MM_Profile() {
               <EditPro width={'35rem'} height={'2.8rem'} placeholder={'Grade'} />
               <EditPro width={'35rem'} height={'2.8rem'} placeholder={'Department'} />
               <EditPro width={'35rem'} height={'2.8rem'} placeholder={'E-mail'} />
+              <BtnWrap>
+                <Btn color={'black'} background={palette('PsGreen', 0)} width={'4rem'} height={'2rem'} name={'수정'} /><Btn color={'black'} background={palette('PsGreen', 0)} width={'4rem'} height={'2rem'} name={'저장'} />
+              </BtnWrap>
             </InputWrap>
+
           </RightWrap>
         </Wrap>
       </ThemeProvider>
