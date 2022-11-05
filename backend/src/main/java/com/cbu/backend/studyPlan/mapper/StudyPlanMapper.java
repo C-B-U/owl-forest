@@ -15,6 +15,7 @@ public class StudyPlanMapper {
                 .rule(dto.getRule())
                 .teamMember(dto.getTeamMember())
                 .book(dto.getBook())
+                .studyGroupId(dto.getStudyGroupId())
                 .build();
     }
 
@@ -26,7 +27,7 @@ public class StudyPlanMapper {
                 .rule(entity.getRule())
                 .teamMember(entity.getTeamMember())
                 .book(entity.getBook())
+                .studyGroupId(entity.getStudyGroupId())
                 .build();
-
     }
 }

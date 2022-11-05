@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityExistsException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,13 +20,15 @@ public class StudyPlanService {
     private final StudyPlanRepository studyPlanRepository;
     private final StudyPlanMapper studyPlanMapper;
 
-    public StudyPlanResponseDTO create(StudyPlanRequestDTO dto, Long studyGroupId) {
-        //studyPlanRepository.save(dto.toEntity());
+    // 스터디 계획서 생성
+    public StudyPlanResponseDTO create(StudyPlanRequestDTO requestDto, Long studyGroupId) {
+        StudyPlan studyPlan = studyPlanMapper.mapToEntity(requestDto);
+        studyPlanRepository.save(studyPlan);
 
         return null;
     }
 
-    // 스터디 계획서 수정
+    // 스터디 계획서 수정 (미완)
     public StudyPlanResponseDTO update(StudyPlanRequestDTO requestDto, Long studyPlanId){
         Optional<StudyPlan> update = studyPlanRepository.findById(studyPlanId);
         StudyPlan studyPlan = studyPlanMapper.mapToEntity(requestDto);
@@ -45,9 +48,16 @@ public class StudyPlanService {
                 }
                 studyPlan = studyPlanRepository.save(update.get());
             }
-
         }
         return studyPlanMapper.mapToDTO(studyPlan);
+    }
+
+    public List<StudyPlanResponseDTO> getAll(){
+        return studyPlanRepository.findAll()
+                .stream()
+                .map(studyPlanMapper::mapToDTO)
+                .collect(Collectors.toList());
+
     }
 
     public void delete(StudyPlanRequestDTO dto){

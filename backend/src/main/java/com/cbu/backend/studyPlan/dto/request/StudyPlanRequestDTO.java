@@ -11,4 +11,5 @@ public class StudyPlanRequestDTO {
     private String rule;
     private String teamMember;
     private String book;
+    private String studyGroupId;
 }
