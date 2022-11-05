@@ -82,7 +82,6 @@ const TechMsgWrap = styled.div`   //TechMsg를 감싸줌
   margin:1rem 0;
   font-size:20px;
   font-weight : bold;
-
 `
 const Tech = styled.div`
   height : 1.5rem;
@@ -92,6 +91,18 @@ const Tech = styled.div`
   border-radius : 1rem;
   font-weight: 500;
   font-family: sans-serif;
+`
+/* 오르쪽 부분 */
+
+const EditPro = styled(InputStyle)`   //프로필 편집 input박스
+  border: 0.15rem solid ${palette('PsLightBrown', 0)};
+  background-color : ${palette('PsLightBrown', 0)};
+  border-radius:0.5rem;
+  display:block;
+  margin-bottom : 1.5rem;
+`
+const InputWrap = styled.div`
+  margin-top:5rem;
 `
 
 function MM_Profile() {
@@ -110,6 +121,12 @@ function MM_Profile() {
             </TechBox>
           </LeftWrap>
           <RightWrap>
+            <InputWrap>
+              <EditPro width={'22rem'} height={'2.2rem'} placeholder={'Name'} />
+              <EditPro width={'22rem'} height={'2.2rem'} placeholder={'Grade'} />
+              <EditPro width={'22rem'} height={'2.2rem'} placeholder={'Department'} />
+              <EditPro width={'22rem'} height={'2.2rem'} placeholder={'E-mail'} />
+            </InputWrap>
           </RightWrap>
         </Wrap>
       </ThemeProvider>
