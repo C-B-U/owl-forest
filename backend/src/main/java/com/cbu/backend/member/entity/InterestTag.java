@@ -3,13 +3,11 @@ package com.cbu.backend.member.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InterestTag {
 
@@ -17,7 +15,11 @@ public class InterestTag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     @ManyToOne
-    @JoinColumn(name = "id") //연관관계 주인 지정
+    @JoinColumn(name = "member_id") //연관관계 주인 지정
     private Member member;
+
+
 }

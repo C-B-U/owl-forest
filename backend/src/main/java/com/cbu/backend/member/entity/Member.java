@@ -10,14 +10,12 @@ import java.util.Set;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long memberId;
 
     private String name;
     private String study;
@@ -27,7 +25,7 @@ public class Member {
 
     private String email;
 
-    private int grade;
+    private Integer grade;
 
     private String major;
 
@@ -55,7 +53,6 @@ public class Member {
     //user객체와 권한객체의 다대다 관계를 일대다, 다대일 관계의 jointable로 정의
     @OneToMany(mappedBy = "member")
     private List<InterestTag> tags = new ArrayList<InterestTag>();
-
 }
 
 // 다 = 태그, 일 = 멤버
