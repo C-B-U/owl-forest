@@ -16,5 +16,6 @@ public class CreateStudyGroupRequestDTO {
     private String summary;
     private Member teamLeader;
     private List<Member> teamMembers = new ArrayList<>();
-    private Integer like;
+    private Integer likeCount;
+    private Integer season;
 }

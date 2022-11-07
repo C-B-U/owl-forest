@@ -6,7 +6,7 @@ import com.cbu.backend.studyGroup.entity.StudyGroup;
 
 public class StudyGroupMapper { // 덤프 클래스입니다.
 
-    public StudyGroup toEntity(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) {
+    public StudyGroup mapToEntity(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) {
         return StudyGroup.builder().build(); // 추후 수정 필요
     }
 

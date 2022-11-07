@@ -8,6 +8,7 @@ import com.cbu.backend.studyGroup.repository.StudyGroupRepository;
 import com.cbu.backend.studyJournal.service.StudyJournalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Comparator;
@@ -25,7 +26,7 @@ public class StudyGroupService {
 
     // CreateStudyGroupRequestDTO 이름 변경, toEntity 광범위한 이름
     public Long registerStudyGroup(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 등록
-        StudyGroup studyGroup = studyGroupMapper.toEntity(createStudyGroupRequestDTO);
+        StudyGroup studyGroup = studyGroupMapper.mapToEntity(createStudyGroupRequestDTO);
         if(studyGroup.isMemberDuplicated(studyGroup)){ // 중복 스터디원 존재 여부
             throw new RuntimeException(); // Exception 수정 필요 (생성 후 적용)
         }
@@ -69,18 +70,19 @@ public class StudyGroupService {
         return studyGroupRepository
                 .findAll()
                 .stream()
-                .sorted(Comparator.comparing(StudyGroup::getLike, Comparator.reverseOrder()))
+                .sorted(Comparator.comparing(StudyGroup::getLikeCount, Comparator.reverseOrder()))
                 .map(studyGroupMapper::toResponseDTO)
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public void updateStudyGroup(Long studyGroupId, CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 수정
         Optional<StudyGroup> oStudyGroup = studyGroupRepository.findById(studyGroupId);
         if (!oStudyGroup.isPresent()) {
             throw new RuntimeException();
         }
         StudyGroup studyGroup = oStudyGroup.get();
-        StudyGroup updatedStudyGroup = studyGroupMapper.toEntity(createStudyGroupRequestDTO);
+        StudyGroup updatedStudyGroup = studyGroupMapper.mapToEntity(createStudyGroupRequestDTO);
         studyGroup.update(updatedStudyGroup);
     }
 }

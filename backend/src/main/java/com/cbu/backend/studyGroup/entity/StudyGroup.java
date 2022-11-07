@@ -46,7 +46,9 @@ public class StudyGroup {
     @OneToMany(mappedBy = "studyJournal")
     private List<StudyJournal> journals = new ArrayList<>();
 
-    private Integer like = 0;
+    private Integer likeCount = 0;
+
+    private Integer season;
 
     @CreatedDate
     private LocalDateTime createdAt = LocalDateTime.parse(LocalDateTime.now()
@@ -58,7 +60,7 @@ public class StudyGroup {
 
     @Builder
     public StudyGroup(Long id, String name, String summary, Member teamLeader, List<Member> teamMembers,
-                      StudyPlan studyPlan, List<StudyJournal> journals, Integer like) {
+                      StudyPlan studyPlan, List<StudyJournal> journals, Integer likeCount, Integer season) {
         this.id = id;
         this.name = name;
         this.summary = summary;
@@ -66,7 +68,8 @@ public class StudyGroup {
         this.teamMembers = teamMembers;
         this.studyPlan = studyPlan;
         this.journals = journals;
-        this.like = like;
+        this.likeCount = likeCount;
+        this.season = season;
     }
 
     public StudyGroup update(StudyGroup studyGroup) {
@@ -74,7 +77,8 @@ public class StudyGroup {
         this.summary = studyGroup.getSummary();
         this.teamLeader = studyGroup.getTeamLeader();
         this.teamMembers = studyGroup.getTeamMembers();
-        this.like = studyGroup.getLike();
+        this.likeCount = studyGroup.getLikeCount();
+        this.season = studyGroup.getSeason();
 
         return this;
     }
@@ -87,14 +91,14 @@ public class StudyGroup {
                 .sum() == studyGroup.getTeamMembers().size();
     }
 
-    public void updateLike(Integer like) { // like는 -1(좋아요 취소) or +1(좋아요)
-        if(isPositive(like)){
-            this.like += like;
+    public void updateLike(Integer _likeCount) { // like는 -1(좋아요 취소) or +1(좋아요)
+        if(isPositive(_likeCount)){
+            this.likeCount += _likeCount;
         }
     }
 
-    private boolean isPositive(Integer like) {
-        return this.like + like >= 0;
+    private boolean isPositive(Integer _likeCount) {
+        return this.likeCount + _likeCount >= 0;
     }
 
 }
