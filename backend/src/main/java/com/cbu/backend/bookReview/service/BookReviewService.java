@@ -4,7 +4,6 @@ import com.cbu.backend.bookReview.dto.request.CreateBookReviewRequestDTO;
 import com.cbu.backend.bookReview.dto.response.BookReviewResponseDTO;
 
 import java.util.List;
-import java.util.Map;
 
 public interface BookReviewService {
 
