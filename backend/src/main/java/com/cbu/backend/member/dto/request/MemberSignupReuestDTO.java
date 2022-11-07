@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Builder
@@ -14,34 +17,38 @@ import javax.validation.constraints.Email;
 @NoArgsConstructor
 public class MemberSignupReuestDTO {
 
+    @NotBlank
+    @Size
     private String name;
 
-    private String study;
-
+    @NotBlank
     private String password;
 
+    @NotBlank
     private String accountId;
 
-    @Email
+    @NotBlank
     private String email;
 
-    private int grade;
+    @NotBlank
+    private Integer grade;
 
+    @NotBlank
     private String major;
 
-    private String studentId;
+    @NotBlank
+    private Integer studentId;
 
-    private String generation;
+    @NotBlank
+    private Integer generation;
 
-    
+    @NotBlank
     private String phoneNumber;
 
-    @URL
     private String blogUrl;
 
     private String githubId;
 
-    @URL
     private String profileUrl;
 
     private String introduction;
