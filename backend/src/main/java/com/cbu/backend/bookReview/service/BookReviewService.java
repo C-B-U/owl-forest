@@ -1,7 +1,17 @@
 package com.cbu.backend.bookReview.service;
 
-import org.springframework.stereotype.Service;
+import com.cbu.backend.bookReview.dto.request.CreateBookReviewRequestDTO;
+import com.cbu.backend.bookReview.dto.response.BookReviewResponseDTO;
 
-@Service
-public class BookReviewService {
+import java.util.List;
+import java.util.Map;
+
+public interface BookReviewService {
+
+    void saveBookReview(CreateBookReviewRequestDTO createBookReviewRequestDTO) throws Exception;
+    List<BookReviewResponseDTO> getBookReviewListAll() throws Exception;
+    List<BookReviewResponseDTO> getBookReviewBySimpleReview(String title) throws Exception;
+    BookReviewResponseDTO getBookReviewById(Long id) throws Exception;
+    void deleteBookReview(Long id) throws Exception;
+
 }
