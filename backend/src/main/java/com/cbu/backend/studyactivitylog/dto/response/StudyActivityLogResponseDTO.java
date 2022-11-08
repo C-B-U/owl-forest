@@ -1,12 +1,10 @@
 package com.cbu.backend.studyactivitylog.dto.response;
 
-import com.cbu.backend.member.entity.Member;
-
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,11 +13,12 @@ import java.util.List;
 @AllArgsConstructor
 public class StudyActivityLogResponseDTO {
     private Long id;
-    private Integer count;
+    private Integer week;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String place;
-    private List<Member> teamMembers = new ArrayList<>();
-    private String activityDetail;
+    private List<StudyParticipantResponseDTO> teamMembers;
+    private String title;
+    private String description;
     private String assignment;
 }
