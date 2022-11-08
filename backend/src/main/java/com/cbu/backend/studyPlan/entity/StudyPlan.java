@@ -1,5 +1,6 @@
 package com.cbu.backend.studyPlan.entity;
 
+import com.cbu.backend.global.BaseTime;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,6 +27,13 @@ public class StudyPlan {
     private String book;
     @Column(nullable = false)
     private String studyGroupId;
+
+    @Embedded
+    private BaseTime baseTime;
+
+//    @OneToOne
+//    @JoinColumn(name = "studyGroupId")
+//    private
 
     @Builder
     public StudyPlan(String title, String  generationNum, String rule, String teamMember, String book, String studyGroupId) {

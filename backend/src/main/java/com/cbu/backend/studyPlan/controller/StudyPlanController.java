@@ -1,9 +1,14 @@
 package com.cbu.backend.studyPlan.controller;
 
+import com.cbu.backend.global.ResponseBody;
+import com.cbu.backend.global.ResponseStatus;
 import com.cbu.backend.studyPlan.dto.request.StudyPlanRequestDTO;
+import com.cbu.backend.studyPlan.dto.request.UpdateStudyPlanRequestDTO;
 import com.cbu.backend.studyPlan.dto.response.StudyPlanResponseDTO;
 import com.cbu.backend.studyPlan.service.StudyPlanService;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +25,10 @@ public class StudyPlanController {
 
     //스터디 계획서 생성
     @PostMapping("{studyGroupId}/plan")
-    public ResponseEntity<StudyPlanResponseDTO> create(StudyPlanRequestDTO dto, @PathVariable Long studyGroupId) {
-
+    public ResponseEntity<ResponseBody<StudyPlanResponseDTO>> create(StudyPlanRequestDTO dto, @PathVariable Long studyGroupId) {
         StudyPlanResponseDTO result = studyPlanService.create(dto, studyGroupId);
-        //studyPlanService.create(dto, studyGroupId);
-
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(result);
+        ResponseBody<StudyPlanResponseDTO> responseBody = new ResponseBody<>(ResponseStatus.POST_STUDYPLAN_SUCCESS, result);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
     }
 
     // 스터디 계획 조회
@@ -36,27 +37,22 @@ public class StudyPlanController {
         return ResponseEntity.ok(studyPlanService.getAll());
     }
 
-// {studyGroupId}
-
-
-    @PutMapping("{studyGroupId}/plan")
+    @PatchMapping("{studyGroupId}/plan")
     //스터디 계획서 수정
-    public ResponseEntity<StudyPlanResponseDTO> updateStudyPlan(StudyPlanRequestDTO dto, @PathVariable Long studyGroupId){
+    public ResponseEntity<ResponseBody<StudyPlanResponseDTO>> updateStudyPlan(UpdateStudyPlanRequestDTO dto, @PathVariable Long studyGroupId){
 
-        StudyPlanResponseDTO result = studyPlanService.update(dto, studyGroupId);
+        //StudyPlanResponseDTO result = studyPlanService.update(dto, studyGroupId);
+        StudyPlanResponseDTO updateStudyPlan = studyPlanService.update(dto, studyGroupId);
+        ResponseBody<StudyPlanResponseDTO> responseBody = new ResponseBody<>(ResponseStatus.UPDATE_STUDYPLAN_SUCCESS, updateStudyPlan);
 
-        return ResponseEntity.status(HttpStatus.OK).body(result);
+        return ResponseEntity.ok(responseBody);
     }
 
-//    @DeleteMapping("{studyGroupId}/plan")
-//    public ResponseEntity
-
-/*    @DeleteMapping("{studyGroupId}/plan")
-    //스터디 계획서 삭제
-    public ResponseEntity<Void> deleteStudyplan(StudyPlanRequestDTO dto, @PathVariable Long studyGroupId){
-
-        StudyPlanResponseDTO result = studyPlanService.delete(dto, studyGroupId);
-
-        return ResponseEntity.status()
-    }*/
+    // 스터디 계획서 삭제
+    @DeleteMapping("{studyGroupId}/plan")
+    public ResponseEntity<ResponseBody<StudyPlanResponseDTO>> deleteStudyPlan(@PathVariable Long studyGroupId){
+        StudyPlanResponseDTO deleteStudyPlan = studyPlanService.delete(studyGroupId);
+        ResponseBody<StudyPlanResponseDTO> responseBody = new ResponseBody<>(ResponseStatus.DELETE_STUDYPLAN_SUCCESS, deleteStudyPlan);
+        return ResponseEntity.ok(responseBody);
+    }
 }
