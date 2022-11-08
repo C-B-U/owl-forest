@@ -14,11 +14,12 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyActivityLog {
+
     @Id
     @GeneratedValue
     private Long id;
 
-    private Integer count;
+    private Integer week;
     
     private LocalDateTime startTime;
 
@@ -26,8 +27,18 @@ public class StudyActivityLog {
 
     private String place;
 
-    @OneToMany(mappedBy = "member")
-    private List<Member> teamMembers = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private List<Long> teamMembers = new ArrayList<>();
 
     private String activityDetail;
+
+    @Builder
+    public StudyActivityLog(Integer week, LocalDateTime startTime, LocalDateTime endTime, String place, StudyGroup studyGroup, String activityDetail) {
+        this.count = count;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.place = place;
+        this.studyGroup = studyGroup;
+        this.activityDetail = activityDetail;
+    }
 }
