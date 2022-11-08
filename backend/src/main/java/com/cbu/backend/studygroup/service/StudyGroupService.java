@@ -26,9 +26,7 @@ public class StudyGroupService {
 
     public Long registerStudyGroup(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 등록
         StudyGroup studyGroup = studyGroupMapper.mapToEntity(createStudyGroupRequestDTO);
-        if(studyGroup.isMemberDuplicated(studyGroup)){ // 중복 스터디원 존재 여부
-            throw new RuntimeException(); // TODO Exception 수정 필요 (생성 후 적용)
-        }
+
         studyGroupRepository.save(studyGroup);
         return studyGroup.getId();
     }
@@ -52,11 +50,11 @@ public class StudyGroupService {
     }
 
     public List<StudyGroupResponseDTO> searchStudyOrderByJournalsNum(Comparator<Comparable> sortDirection) { // 스터디 일지 개수순 조회
-        return sort(studyGroup -> studyGroup.getJournals().size(), sortDirection);
+        return sort(studyGroup -> studyGroup.getStudyActivityLogs().size(), sortDirection);
     }
 
     public List<StudyGroupResponseDTO> searchStudyOrderByLike(Comparator<Comparable> sortDirection) { // 스터디 좋아요순(많은 순서) 조회
-        return sort(StudyGroup::getLike, sortDirection);
+        return sort(StudyGroup::getLikeCount, sortDirection);
     }
 
     private List<StudyGroupResponseDTO> sort(Function<StudyGroup, Comparable> function, Comparator<Comparable> sortDirection) {

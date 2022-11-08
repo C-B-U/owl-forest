@@ -42,3 +42,9 @@ public class StudyActivityLog {
         this.activityDetail = activityDetail;
     }
 }
+    private String title;
+    private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private StudyGroup studyGroup;
+}
