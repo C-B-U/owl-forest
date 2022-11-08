@@ -36,6 +36,8 @@ public class StudyGroup {
 
     private Integer season;
 
+    private Boolean isActive = true;
+
     @Embedded
     private BaseTimeEntity baseTime;
 
@@ -75,6 +77,10 @@ public class StudyGroup {
 
     private boolean isPositive(Integer like) {
         return this.likeCount + like >= 0;
+    }
+
+    public void updateIsActive() {
+        this.isActive = !this.isActive;
     }
 
 }
