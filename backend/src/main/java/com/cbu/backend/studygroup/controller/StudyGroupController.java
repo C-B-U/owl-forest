@@ -29,6 +29,15 @@ public class StudyGroupController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponseBody<StudyGroupResponseDTO>> findById(@PathVariable Long id) {
+        StudyGroupResponseDTO studyGroup = studyGroupService.searchById(id);
+        ResponseBody<StudyGroupResponseDTO> responseBody
+                = new ResponseBody<>(ResponseStatus.GET_STUDYGROUP_SUCCESS, studyGroup);
+
+        return ResponseEntity.ok(responseBody);
+    }
+
     @GetMapping(params = "sortby=createdat")
     public ResponseEntity<ResponseBody<List<StudyGroupResponseDTO>>> findStudyGroupSortByCreatedAt(
             @RequestParam(name = "sort") SortDirection sort) {
@@ -41,7 +50,7 @@ public class StudyGroupController {
     }
 
     @GetMapping(params = "sortby=activitylog")
-    public ResponseEntity<ResponseBody<List<StudyGroupResponseDTO>>> findStudyGroupSortByStudyActivityLogs(
+    public ResponseEntity<ResponseBody<List<StudyGroupResponseDTO>>> findStudyGroupSortByStudyActivityLog(
             @RequestParam(name = "sort") SortDirection sort) {
         List<StudyGroupResponseDTO> studyGroupList
                 = studyGroupService.searchStudyOrderByStudyActivityLog(sort.getSortClassifier());
