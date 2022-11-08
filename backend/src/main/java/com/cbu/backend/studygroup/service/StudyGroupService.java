@@ -39,10 +39,10 @@ public class StudyGroupService {
         return studyGroupMapper.toResponseDTO(studyGroup.get());
     }
 
-    public void updateLikeCount(Long studyGroupId, Integer like) { // 스터디 좋아요 업데이트(Integer like는 -1 or +1)
+    public void updateLikeCount(Long studyGroupId, Integer likeCount) { // 스터디 좋아요 업데이트(Integer like는 -1 or +1)
         studyGroupRepository
                 .findById(studyGroupId)
-                .ifPresent(studyGroup -> studyGroup.updateLike(like));
+                .ifPresent(studyGroup -> studyGroup.updateLike(likeCount));
     }
 
     public List<StudyGroupResponseDTO> searchStudyOrderByCreatedAt(Comparator<Comparable> sortDirection) { // 스터디 일지 최신순 조회

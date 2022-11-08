@@ -38,6 +38,15 @@ public class StudyGroupController {
         return ResponseEntity.ok(responseBody);
     }
 
+    @PatchMapping("/{id}/likecount")
+    public ResponseEntity<ResponseBody<Void>> modifyUpdateCount(@PathVariable Long id, Integer likeCount) {
+        studyGroupService.updateLikeCount(id, likeCount);
+        ResponseBody<Void> responseBody = new ResponseBody<>(ResponseStatus.PATCH_STUDYGROUP_LIKECOUNT_SUCCESS);
+
+        return ResponseEntity.ok(responseBody);
+    }
+
+
     @GetMapping(params = "sortby=createdat")
     public ResponseEntity<ResponseBody<List<StudyGroupResponseDTO>>> findStudyGroupSortByCreatedAt(
             @RequestParam(name = "sort") SortDirection sort) {
