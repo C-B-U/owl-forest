@@ -1,12 +1,10 @@
 package com.cbu.backend.member.entity;
 
 import lombok.*;
-import org.hibernate.annotations.Table;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -30,7 +28,7 @@ public class Member {
 
     private Integer studentId;
 
-    private Integer generation;
+    private String generation;
 
     private String blogUrl;
 
