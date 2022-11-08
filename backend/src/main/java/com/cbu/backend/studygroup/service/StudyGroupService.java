@@ -24,11 +24,11 @@ public class StudyGroupService {
     private final StudyGroupMapper studyGroupMapper;
     private final StudyActivityLogService studyJournalService;
 
-    public Long registerStudyGroup(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 등록
+    public StudyGroupResponseDTO registerStudyGroup(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 등록
         StudyGroup studyGroup = studyGroupMapper.mapToEntity(createStudyGroupRequestDTO);
-
         studyGroupRepository.save(studyGroup);
-        return studyGroup.getId();
+
+        return studyGroupMapper.toResponseDTO(studyGroup);
     }
 
     public StudyGroupResponseDTO searchById(Long id) { // 스터디 ID로 조회
@@ -39,7 +39,7 @@ public class StudyGroupService {
         return studyGroupMapper.toResponseDTO(studyGroup.get());
     }
 
-    public void updateLike(Long studyGroupId, Integer like) { // 스터디 좋아요 업데이트(Integer like는 -1 or +1)
+    public void updateLikeCount(Long studyGroupId, Integer like) { // 스터디 좋아요 업데이트(Integer like는 -1 or +1)
         studyGroupRepository
                 .findById(studyGroupId)
                 .ifPresent(studyGroup -> studyGroup.updateLike(like));
@@ -49,11 +49,11 @@ public class StudyGroupService {
         return sort(studyJournalService::searchLatestJournalCreatedAt, sortDirection);
     }
 
-    public List<StudyGroupResponseDTO> searchStudyOrderByJournalsNum(Comparator<Comparable> sortDirection) { // 스터디 일지 개수순 조회
+    public List<StudyGroupResponseDTO> searchStudyOrderByStudyActivityLog(Comparator<Comparable> sortDirection) { // 스터디 일지 개수순 조회
         return sort(studyGroup -> studyGroup.getStudyActivityLogs().size(), sortDirection);
     }
 
-    public List<StudyGroupResponseDTO> searchStudyOrderByLike(Comparator<Comparable> sortDirection) { // 스터디 좋아요순(많은 순서) 조회
+    public List<StudyGroupResponseDTO> searchStudyOrderByLikeCount(Comparator<Comparable> sortDirection) { // 스터디 좋아요순(많은 순서) 조회
         return sort(StudyGroup::getLikeCount, sortDirection);
     }
 
