@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import MLProfile from '../../Components/MMList/MLProfile';
-
+import Profilepic from '../../Components/MMList/MLProfile';
 //--------------------------------------
 //리스트 왼쪽 margin은 1.5로 주기!
 //---------------------------------------
@@ -62,11 +62,11 @@ const InfoButton = styled.button`
   margin-right: 48.5rem;
 `;
 
-const SearchBox = styled.div`
-  width: 15rem;
-  height: 2.8rem;
+const SearchBox = styled.input`
+  width: 12rem;
+  height: 1.5rem;
   background-color: ${palette('PsGreen')};
-  border-radius: 3rem;
+  border-radius: 2rem;
   font-family: 'Noto Sans KR', sans-serif;
   border: 0.5rem;
   font-size: 12pt;
@@ -77,19 +77,30 @@ const SearchBox = styled.div`
 `;
 const MemList = styled.div`
   width: 75rem;
-  height: 1rem;
+  height: 3rem;
   border-radius: 3rem;
   margin-top: 0.8rem;
-  padding: 1.5rem;
+  padding-left: 1.5rem;
+  padding-top: 1.2rem;
   display: flex;
   background-color: ${palette('PsLightBrown')};
   margin-left: 1.5rem;
 `;
 const MemListInput = styled.div`
-  font-size: 10pt;
+  font-size: 1.2rem;
   font-weight: bold;
   display: flex;
-  justify-content: center;
+`;
+const MemNav = styled.div`
+  width: 75rem;
+  height: 3rem;
+  border-radius: 3rem;
+  margin-top: 0.8rem;
+  padding-left: 1.5rem;
+  padding-top: 0.6rem;
+  display: flex;
+  background-color: ${palette('PsLightBrown')};
+  margin-left: 1.5rem;
 `;
 const Wrap = styled.div`
   position: fixed;
@@ -109,50 +120,95 @@ function MM_MemList() {
               <SearchBox></SearchBox>
             </SearchWrap>
 
+            <MemNav>
+              <MemListInput style={{ fontSize: '1.8rem' }}>
+                이름&emsp; 학과&emsp;&emsp;&emsp; 학년&emsp; 기수&emsp;
+                스터디/스택
+              </MemListInput>
+            </MemNav>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
             <MemList>
-              <MemListInput>안녕하세요</MemListInput>
-            </MemList>
-            <MemList>
-              <MemListInput>안녕하세요</MemListInput>
+              <MemListInput>
+                씨부엉이&emsp; 컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+              </MemListInput>
             </MemList>
           </LineUp>
         </MainWrap>
