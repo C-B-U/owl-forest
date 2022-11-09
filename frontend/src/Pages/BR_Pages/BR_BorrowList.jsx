@@ -7,6 +7,7 @@ import Header from '../../Components/ActivityLog/Header';
 import Search from '../../Components/Search';
 import BorrowButton from '../../Components/Btn.jsx';
 
+
 const MainWrap = styled.div`
   position: absolute;
   background-color: ${palette('PsCocoa', 0)};
@@ -17,7 +18,6 @@ const MainWrap = styled.div`
 const WrapSearchbar = styled.div`
   float: right;
   margin: 2rem 10rem;
-
 `;
 const Wrap=styled.div`
   display: flex;
@@ -53,6 +53,7 @@ function BR_BorrowList() {
             <Search/>
           </WrapSearchbar>
           <Wrap>
+  
             <BookImage/>
             <WrapContent>
           <p>책이름</p>
@@ -70,6 +71,7 @@ function BR_BorrowList() {
         width='5.5rem'
         height='2.5rem'
         name='대여하기'/>
+
         </WrapContent>
       
       </Wrap>

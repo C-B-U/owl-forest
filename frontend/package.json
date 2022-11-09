@@ -17,7 +17,8 @@
     "react-virtualized": "^9.22.3",
     "styled-components": "^5.3.6",
     "styled-tools": "^1.7.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "react-scripts start",
