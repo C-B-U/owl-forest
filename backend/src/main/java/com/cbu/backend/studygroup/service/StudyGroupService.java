@@ -22,7 +22,7 @@ public class StudyGroupService {
 
     private final StudyGroupRepository studyGroupRepository;
     private final StudyGroupMapper studyGroupMapper;
-    private final StudyActivityLogService studyJournalService;
+    private final StudyActivityLogService studyActivityLogService;
 
     public StudyGroupResponseDTO registerStudyGroup(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 등록
         StudyGroup studyGroup = studyGroupMapper.mapToEntity(createStudyGroupRequestDTO);
@@ -46,7 +46,7 @@ public class StudyGroupService {
     }
 
     public List<StudyGroupResponseDTO> searchStudyOrderByCreatedAt(Comparator<Comparable> sortDirection) { // 스터디 일지 최신순 조회
-        return sort(studyJournalService::searchLatestJournalCreatedAt, sortDirection);
+        return sort(studyActivityLogService::searchLatestStudyActivityLogCreatedAt, sortDirection);
     }
 
     public List<StudyGroupResponseDTO> searchStudyOrderByStudyActivityLog(Comparator<Comparable> sortDirection) { // 스터디 일지 개수순 조회

@@ -58,7 +58,7 @@ public class StudyGroupController {
         return ResponseEntity.ok(responseBody);
     }
 
-    @GetMapping(params = "sortby=activitylog")
+    @GetMapping(params = "sortby=studyactivitylog")
     public ResponseEntity<ResponseBody<List<StudyGroupResponseDTO>>> findStudyGroupSortByStudyActivityLog(
             @RequestParam(name = "sort") SortDirection sort) {
         List<StudyGroupResponseDTO> studyGroupList
