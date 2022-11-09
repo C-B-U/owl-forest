@@ -4,15 +4,17 @@ import { palette } from 'styled-tools';
 import Logo10 from '../../Image/Logo10.png';
 
 const HeaderWrapper = styled.div`
+  width: 100vw;
   height: 4rem;
   align-items: center;
   justify-content: center;
   display: flex;
   background-color: ${palette('PsGreen')};
-  padding: 0 5rem;
+  position: fixed;
 `;
 
 const Logo = styled.div`
+  margin-left: 5rem;
   width: 4rem;
   height: 4rem;
   border-radius: 100%;
@@ -39,6 +41,7 @@ const Nav = styled.ul`
   align-items: center;
   justify-content: center;
   margin-left: auto;
+  margin-right: 5rem;
 `;
 
 const NavItem = styled.li`
