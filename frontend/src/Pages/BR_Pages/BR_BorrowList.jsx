@@ -29,9 +29,6 @@ const Wrap=styled.div`
   gap: 0rem;
   width: 100%;
   max-height: 100vh;
-  height: auto;
-<<<<<<< HEAD
-=======
 
 >>>>>>> BR_BookList
   overflow: auto;
