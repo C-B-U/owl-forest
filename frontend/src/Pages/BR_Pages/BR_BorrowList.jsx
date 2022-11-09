@@ -30,6 +30,10 @@ const Wrap=styled.div`
   width: 100%;
   max-height: 100vh;
   height: auto;
+<<<<<<< HEAD
+=======
+
+>>>>>>> BR_BookList
   overflow: auto;
   &::-webkit-scrollbar {
     width: 11px;
