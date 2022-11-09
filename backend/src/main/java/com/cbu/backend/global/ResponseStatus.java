@@ -50,7 +50,7 @@ public enum ResponseStatus {
     // Head Name : SG
     GET_STUDYGROUP_LIST_SORTBY_CREATEDAT_SUCCESS("SG100", "스터디 최신순 조회 성공"),
     GET_STUDYGROUP_LIST_SORTBY_STUDYACTIVITYLOG_SUCCESS("SG101", "스터디 일지순 조회 성공"),
-    GET_STUDYGROUP_LIST_SORTBY_LIKE_SUCCESS("SG102", "스터디 좋아요순 조회 성공"),
+    GET_STUDYGROUP_LIST_SORTBY_LIKECOUNT_SUCCESS("SG102", "스터디 좋아요순 조회 성공"),
     GET_STUDYGROUP_SUCCESS("SG103", "스터디 조회 성공"),
     POST_STUDYGROUP_SUCCESS("SG000", "스터디 생성 성공"),
     PATCH_STUDYGROUP_LIKECOUNT_SUCCESS("SG001", "스터디 좋아요 업데이트 성공");

@@ -75,7 +75,7 @@ public class StudyGroupController {
         List<StudyGroupResponseDTO> studyGroupList
                 = studyGroupService.searchStudyOrderByLikeCount(sort.getSortClassifier());
         ResponseBody<List<StudyGroupResponseDTO>> responseBody
-                = new ResponseBody<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_LIKE_SUCCESS, studyGroupList);
+                = new ResponseBody<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_LIKECOUNT_SUCCESS, studyGroupList);
 
         return ResponseEntity.ok(responseBody);
     }

@@ -26,9 +26,6 @@ public class StudyGroup {
 
     private String summary;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Member teamLeader;
-
     @OneToMany(mappedBy = "studyGroup")
     private List<StudyActivityLog> studyActivityLogs = new ArrayList<>();
 
@@ -42,21 +39,16 @@ public class StudyGroup {
     private BaseTimeEntity baseTime;
 
     @Builder
-    public StudyGroup(Long id, String name, String summary, Member teamLeader,
-                      List<StudyActivityLog> studyActivityLogs, Integer likeCount, Integer season) {
-        this.id = id;
+    public StudyGroup(String name, String summary, List<StudyActivityLog> studyActivityLogs, Integer season) {
         this.name = name;
         this.summary = summary;
-        this.teamLeader = teamLeader;
         this.studyActivityLogs = studyActivityLogs;
-        this.likeCount = likeCount;
         this.season = season;
     }
 
     public StudyGroup update(StudyGroup studyGroup) { // 매개변수 request DTO로 수정 필요
         this.name = studyGroup.getName();
         this.summary = studyGroup.getSummary();
-        this.teamLeader = studyGroup.getTeamLeader();
 
         return this;
     }
