@@ -18,6 +18,7 @@ const MainWrap = styled.div`
 
 const SecondWrap = styled.div`
   display: inline-block;
+  overflow-x: hidden;
 `;
 
 const LineUp = styled.div`
