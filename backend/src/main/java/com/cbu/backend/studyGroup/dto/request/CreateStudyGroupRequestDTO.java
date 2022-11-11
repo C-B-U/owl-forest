@@ -1,4 +1,4 @@
-package com.cbu.backend.studyGroup.dto.request;
+package com.cbu.backend.studygroup.dto.request;
 
 import com.cbu.backend.member.entity.Member;
 import lombok.AllArgsConstructor;
