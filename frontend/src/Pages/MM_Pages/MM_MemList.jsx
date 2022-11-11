@@ -25,7 +25,7 @@ const LineUp = styled.div`
   //position: fixed;
   //padding-left: 25rem;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   overflow: auto;
 `;
 
