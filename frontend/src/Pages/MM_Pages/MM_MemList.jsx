@@ -25,13 +25,14 @@ const LineUp = styled.div`
   //position: fixed;
   //padding-left: 25rem;
   width: 100vw;
-  height: 90vh;
+  height: 74vh;
   overflow: auto;
 `;
 
 //마이페이지, 검색의 가로 정렬을 위해 사용
 const SearchWrap = styled.div`
   display: flex;
+  white-space: wrap;
 `;
 
 const Memlist = styled.li`
@@ -152,17 +153,16 @@ function MM_MemList() {
               <SelcBox>&nbsp;▼</SelcBox>
               <SearchBox />
             </SearchWrap>
+            <MemNav>
+              <MemListInput style={{ fontSize: '1.8rem', paddingTop: '1rem' }}>
+                프사 &nbsp; 이름&emsp; 학과&emsp;&emsp;&emsp; 학년&emsp;
+                기수&emsp; 스터디/스택
+              </MemListInput>
+            </MemNav>
+            <SortOption>이름순 ↑↓</SortOption>
+
             <LineUp>
               <Scroll>
-                <MemNav>
-                  <MemListInput
-                    style={{ fontSize: '1.8rem', paddingTop: '1rem' }}
-                  >
-                    프사 &nbsp; 이름&emsp; 학과&emsp;&emsp;&emsp; 학년&emsp;
-                    기수&emsp; 스터디/스택
-                  </MemListInput>
-                </MemNav>
-                <SortOption>이름순 ↑↓</SortOption>
                 <MemList>
                   <MemListInput>
                     <Photo />
