@@ -70,9 +70,9 @@ const SearchBox = styled.input`
   padding: 0rem 1rem;
   border: 0.5rem;
   font-size: 12pt;
-  margin-top: 3rem;
+  margin-top: 2.8rem;
   font-weight: bolder;
-  margin-left: auto;
+  margin-left: 1rem
   margin-right: 1rem;
 `;
 const MemList = styled.div`
@@ -138,14 +138,13 @@ const Photo = styled.div`
   margin-top: -0.5rem;
 `;
 
-
 function MM_MemList() {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <MainWrap>
           <MLProfile />
-          
+
           <SecondWrap>
             <SearchWrap>
               <InfoButton>마이페이지</InfoButton>
@@ -260,8 +259,8 @@ function MM_MemList() {
                   </MemListInput>
                 </MemList>
               </Scroll>
-              </LineUp>
-            </SecondWrap> 
+            </LineUp>
+          </SecondWrap>
         </MainWrap>
       </ThemeProvider>
     </div>
