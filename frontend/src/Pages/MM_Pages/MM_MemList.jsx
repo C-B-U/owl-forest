@@ -4,8 +4,10 @@ import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import MLProfile from '../../Components/MMList/MLProfile';
 import profileimg from '../../Image/cbu_circle.png';
+
 //--------------------------------------
 //리스트 왼쪽 margin은 1.5로 주기!
+//전체화면 키고 작업,,,하자,,,
 //---------------------------------------
 
 //가로 정렬
@@ -14,9 +16,16 @@ const MainWrap = styled.div`
   background-color: ${palette('PsWhite')};
 `;
 
+const SecondWrap = styled.div`
+  display: inline-block;
+`;
+
 const LineUp = styled.div`
-  position: fixed;
-  padding-left: 25rem;
+  //position: fixed;
+  //padding-left: 25rem;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
 `;
 
 //마이페이지, 검색의 가로 정렬을 위해 사용
@@ -95,7 +104,7 @@ const MemNav = styled.div`
 `;
 
 const Scroll = styled.div`
-  overflow-y: scroll;
+  overflow: auto;
 `;
 const Wrap1 = styled.div`
   overflow-y: auto;
@@ -128,19 +137,22 @@ const Photo = styled.div`
   background-size: 3.5rem;
   margin-top: -0.5rem;
 `;
+
+
 function MM_MemList() {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <MainWrap>
           <MLProfile />
-          <LineUp>
+          
+          <SecondWrap>
             <SearchWrap>
               <InfoButton>마이페이지</InfoButton>
               <SelcBox>&nbsp;▼</SelcBox>
               <SearchBox />
             </SearchWrap>
-            <Wrap1>
+            <LineUp>
               <Scroll>
                 <MemNav>
                   <MemListInput
@@ -239,9 +251,17 @@ function MM_MemList() {
                     14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
                   </MemListInput>
                 </MemList>
+                <MemList>
+                  <MemListInput>
+                    <Photo />
+                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
+                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
+                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+                  </MemListInput>
+                </MemList>
               </Scroll>
-            </Wrap1>
-          </LineUp>
+              </LineUp>
+            </SecondWrap> 
         </MainWrap>
       </ThemeProvider>
     </div>
