@@ -1,8 +1,8 @@
-package com.cbu.backend.studyGroup.mapper;
+package com.cbu.backend.studygroup.mapper;
 
-import com.cbu.backend.studyGroup.dto.request.CreateStudyGroupRequestDTO;
-import com.cbu.backend.studyGroup.dto.response.StudyGroupResponseDTO;
-import com.cbu.backend.studyGroup.entity.StudyGroup;
+import com.cbu.backend.studygroup.dto.request.CreateStudyGroupRequestDTO;
+import com.cbu.backend.studygroup.dto.response.StudyGroupResponseDTO;
+import com.cbu.backend.studygroup.entity.StudyGroup;
 
 public class StudyGroupMapper { // 덤프 클래스입니다.
 
