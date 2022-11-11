@@ -1,12 +1,8 @@
 package com.cbu.backend.studygroup.dto.request;
 
-import com.cbu.backend.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Builder
 @NoArgsConstructor
