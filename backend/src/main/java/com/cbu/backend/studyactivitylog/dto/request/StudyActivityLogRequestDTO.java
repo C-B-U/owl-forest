@@ -1,23 +1,22 @@
-package com.cbu.backend.studyactivitylog.dto.response;
+package com.cbu.backend.studyactivitylog.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 @Getter
-@Builder
+@NoArgsConstructor
 @AllArgsConstructor
-public class StudyActivityLogResponseDTO {
-    private Long id;
-    private Integer week;
+@Builder
+public class StudyActivityLogRequestDTO {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String place;
-    private List<StudyParticipantResponseDTO> teamMembers;
+    private List<Long> teamMembers;
     private String title;
     private String description;
     private String assignment;

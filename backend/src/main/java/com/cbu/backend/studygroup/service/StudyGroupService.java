@@ -8,6 +8,7 @@ import com.cbu.backend.studygroup.repository.StudyGroupRepository;
 import com.cbu.backend.studyactivitylog.service.StudyActivityLogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Comparator;
@@ -24,6 +25,7 @@ public class StudyGroupService {
     private final StudyGroupMapper studyGroupMapper;
     private final StudyActivityLogService studyJournalService;
 
+    // CreateStudyGroupRequestDTO 이름 변경, toEntity 광범위한 이름
     public Long registerStudyGroup(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 등록
         StudyGroup studyGroup = studyGroupMapper.mapToEntity(createStudyGroupRequestDTO);
 
@@ -67,4 +69,14 @@ public class StudyGroupService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public void updateStudyGroup(Long studyGroupId, CreateStudyGroupRequestDTO createStudyGroupRequestDTO) { // 스터디 수정
+        Optional<StudyGroup> oStudyGroup = studyGroupRepository.findById(studyGroupId);
+        if (!oStudyGroup.isPresent()) {
+            throw new RuntimeException();
+        }
+        StudyGroup studyGroup = oStudyGroup.get();
+        StudyGroup updatedStudyGroup = studyGroupMapper.mapToEntity(createStudyGroupRequestDTO);
+        studyGroup.update(updatedStudyGroup);
+    }
 }
