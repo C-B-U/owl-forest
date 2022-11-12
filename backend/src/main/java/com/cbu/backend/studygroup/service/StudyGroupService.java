@@ -1,11 +1,11 @@
 package com.cbu.backend.studygroup.service;
 
+import com.cbu.backend.studyactivitylog.service.StudyActivityLogService;
 import com.cbu.backend.studygroup.dto.request.CreateStudyGroupRequestDTO;
 import com.cbu.backend.studygroup.dto.response.StudyGroupResponseDTO;
 import com.cbu.backend.studygroup.entity.StudyGroup;
 import com.cbu.backend.studygroup.mapper.StudyGroupMapper;
 import com.cbu.backend.studygroup.repository.StudyGroupRepository;
-import com.cbu.backend.studyactivitylog.service.StudyActivityLogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
