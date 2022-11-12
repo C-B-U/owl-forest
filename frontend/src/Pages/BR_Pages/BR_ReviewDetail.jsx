@@ -20,8 +20,6 @@ const Wrap = styled.div`
 `;
 const WrapContent = styled.div`
   display: flex;
-
-  /* margin: auto 0; */
 `;
 
 const Title = styled.h1`
@@ -49,10 +47,6 @@ const BookImage = styled.div`
 `; //책이미지
 
 const OneLineReview = styled.div`
-  /* width: fit-content;
-  height: fit-content;
-  background-color: white;
-  border-radius: 0.2rem; */
   margin-top: 2rem;
 `; //책한줄평
 
@@ -62,11 +56,9 @@ const WrapReview = styled.div`
   height: fit-cotent;
   padding: 1rem;
   background-color: ${palette("PsCocoa", 1)};
-  /* background-color: white; */
   border-radius: 0.2rem;
   margin-top: 1rem;
   position: relative;
-  /* float: right; */
 `;
 
 const WrapStarScore = styled.div`
