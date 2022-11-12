@@ -156,7 +156,7 @@ function BR_ReviewDetail() {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Header></Header> {/*헤더*/}
+        <Header /> {/*헤더*/}
         <MainWrap>
           <Wrap>
             <Title>북리뷰 상세</Title>
@@ -192,7 +192,6 @@ function BR_ReviewDetail() {
               <CommentName>댓글</CommentName>
               <Scrollbar>
                 <CommentView>
-                  {" "}
                   {/*comment view 한개가 댓글 1개*/}
                   <Commenter>작성자</Commenter>
                   <CommentContent>dsadadasdhakdsadjkh</CommentContent>
@@ -234,7 +233,6 @@ function BR_ReviewDetail() {
               <CommentName>이 책의 다른 리뷰</CommentName>
               <Scrollbar>
                 <CommentView>
-                  {" "}
                   {/*comment view 하나가 리뷰 블록 1개*/}
                   <Commenter>작성자</Commenter>
                   <WrapotherStarScore>
