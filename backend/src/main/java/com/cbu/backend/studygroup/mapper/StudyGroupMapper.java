@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 public class StudyGroupMapper { // 덤프 클래스입니다.
 
     public StudyGroup mapToEntity(CreateStudyGroupRequestDTO createStudyGroupRequestDTO) {
-        return StudyGroup.builder().build(); // TODO 스터디 그룹 생성
+        return StudyGroup.builder().build(); // 추후 수정 필요
     }
 
     public StudyGroupResponseDTO toResponseDTO(StudyGroup studyGroup) {
-        return new StudyGroupResponseDTO(); // TODO 스터디 그룹 Response DTO 생성
+        return new StudyGroupResponseDTO(); // 추후 수정 필요
     }
 
 }
