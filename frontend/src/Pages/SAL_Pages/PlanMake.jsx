@@ -6,7 +6,9 @@ import Profile from '../../Components/ActivityLog/Profile';
 import { palette } from 'styled-tools';
 
 const MainWrap = styled.div`
-  display: flex;
+  /* 데스크톱 */
+  @media all and (min-width:1024px) {display: flex;}
+  padding-bottom: 1rem;
   justify-content:center;
   background-color: ${palette('PsCocoa', 0)};
 `;
@@ -47,16 +49,38 @@ const SubmitBtn = styled.button`
     cursor: pointer;
 `
 const ReferenceSession = styled.div`
-  width: 50rem;
+  /* 데스크톱 */
+  @media all and (min-width:1024px) {
+    width: 50rem;
+    margin: 0px 28px 48px 28px;
+  }
+
+  /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+  @media all and (max-width:1023px) { 
+    width: 70%;
+    margin:auto;
+    margin-bottom: 20px;
+  }
+
   padding: 18px 93px 39px 28px;
-  margin: 0px 28px 48px 28px;
   border-radius: 10px;
   background-color:  white;
 `;
 
 const DetailSession = styled.div`
-  width: 50rem;
-  margin: 4px 28px 48px 28px;
+  /* 데스크톱 */
+  @media all and (min-width:1024px) {
+    width: 50rem;
+    margin: 0px 28px 48px 28px;
+  }
+
+  /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+  @media all and (max-width:1023px) { 
+    width: 70%;
+    margin:auto;
+    margin-bottom: 10px;
+  }
+
   padding: 18px 93px 39px 28px;
   border-radius: 10px;
   background-color:  white;
@@ -65,7 +89,6 @@ const DetailSession = styled.div`
     margin-left: 3rem;
   }
   div{
-    margin-bottom: 2rem;
     background-color: #d3d3d3;
     padding: 1rem;
     border-radius: 10px;
@@ -74,17 +97,27 @@ const DetailSession = styled.div`
 `;
 
 const ContentWrap = styled.div`
-  height: 45rem;
-  overflow: scroll;
+  /* 데스크톱 */
+  @media all and (min-width:1024px) {
+    height: 45rem;
+    overflow: scroll;
+  }
+
+  /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+  @media all and (min-width:768px) and (max-width:1023px) { 
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
 `;
 
 const StyledInput = styled.input`
-  width: 50rem;
+  width: 90%;
   height: 30pt;
   font-size: 15pt;
   border-radius: 5px;
   border: none;
   padding: 5px 0rem 5px 2rem;
+  justify-items:center;
   background-color: ${palette('PsLightBrown', 0)};
 `;
 
