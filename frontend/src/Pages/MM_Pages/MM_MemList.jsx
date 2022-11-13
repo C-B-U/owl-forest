@@ -1,14 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import MLProfile from '../../Components/MMList/MLProfile';
 import profileimg from '../../Image/cbu_circle.png';
-
-//--------------------------------------
-//리스트 왼쪽 margin은 1.5로 주기!
-//전체화면 키고 작업,,,하자,,,
-//---------------------------------------
 
 //가로 정렬
 const MainWrap = styled.div`
@@ -22,10 +18,8 @@ const SecondWrap = styled.div`
 `;
 
 const LineUp = styled.div`
-  //position: fixed;
-  //padding-left: 25rem;
   width: 100vw;
-  height: 74vh;
+  height: 75.5vh;
   overflow: auto;
 `;
 
@@ -74,16 +68,16 @@ const SearchBox = styled.input`
   font-size: 12pt;
   margin-top: 2.8rem;
   font-weight: bolder;
-  margin-left: 1rem
+  margin-left: 1rem;
   margin-right: 1rem;
 `;
+
 const MemList = styled.div`
   width: 75rem;
-  height: 3rem;
+  height: 3.5rem;
   border-radius: 3rem;
   margin-top: 0.8rem;
   padding-left: 1.5rem;
-  padding-top: 1.2rem;
   display: flex;
   background-color: ${palette('PsLightBrown')};
   margin-left: 1.5rem;
@@ -92,6 +86,7 @@ const MemListInput = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
   display: flex;
+  align-items: center;
 `;
 const MemNav = styled.div`
   width: 75rem;
@@ -99,10 +94,10 @@ const MemNav = styled.div`
   border-radius: 3rem;
   margin-top: 0.8rem;
   padding-left: 1.5rem;
-  padding-top: 0.6rem;
   display: flex;
   background-color: ${palette('PsLightBrown')};
   margin-left: 1.5rem;
+  align-items: center;
 `;
 
 const Scroll = styled.div`
@@ -137,7 +132,7 @@ const Photo = styled.div`
   background-image: url(${profileimg});
   background-position: center;
   background-size: 3.5rem;
-  margin-top: -0.5rem;
+  background-repeat: no-repeat;
 `;
 
 function MM_MemList() {
@@ -154,7 +149,7 @@ function MM_MemList() {
               <SearchBox />
             </SearchWrap>
             <MemNav>
-              <MemListInput style={{ fontSize: '1.8rem', paddingTop: '1rem' }}>
+              <MemListInput style={{ fontSize: '1.8rem' }}>
                 프사 &nbsp; 이름&emsp; 학과&emsp;&emsp;&emsp; 학년&emsp;
                 기수&emsp; 스터디/스택
               </MemListInput>
