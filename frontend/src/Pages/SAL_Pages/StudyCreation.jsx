@@ -122,42 +122,50 @@ function StudyCreation() {
             <Center>
               <InputWrapper>
                 <InputTitle>스터디 이름</InputTitle>
-                <Input width='600px' height='50px' />
+                <Input
+                  width='600px'
+                  height='50px'
+                  placeholder={'스터디 이름'}
+                />
               </InputWrapper>
               <InputWrapper>
                 <InputTitle>스터디 개요</InputTitle>
-                <Input width='600px' height='200px' />
+                <Input
+                  width='600px'
+                  height='200px'
+                  placeholder={'스터디 개요'}
+                />
               </InputWrapper>
 
               <ScorllWrapper>
                 <InputWrapper>
                   <InputTitle>팀장</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' />
-                    <Input width='360px' height='50px' />
+                    <Input width='130px' height='50px' placeholder={'이름'} />
+                    <Input width='360px' height='50px' placeholder={'학번'} />
                   </InputMemberWrapper>
                 </InputWrapper>
                 <InputWrapper>
                   <InputTitle>팀원</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' />
-                    <Input width='360px' height='50px' />
+                    <Input width='130px' height='50px' placeholder={'이름'} />
+                    <Input width='360px' height='50px' placeholder={'학번'} />
                     <InputIcon>+</InputIcon>
                   </InputMemberWrapper>
                 </InputWrapper>
                 <InputWrapper>
                   <InputTitle>팀원</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' />
-                    <Input width='360px' height='50px' />
+                    <Input width='130px' height='50px' placeholder={'이름'} />
+                    <Input width='360px' height='50px' placeholder={'학번'} />
                     <InputIcon color={'red'}>-</InputIcon>
                   </InputMemberWrapper>
                 </InputWrapper>
                 <InputWrapper>
                   <InputTitle>팀원</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' />
-                    <Input width='360px' height='50px' />
+                    <Input width='130px' height='50px' placeholder={'이름'} />
+                    <Input width='360px' height='50px' placeholder={'학번'} />
                     <InputIcon color={'red'}>-</InputIcon>
                   </InputMemberWrapper>
                 </InputWrapper>
