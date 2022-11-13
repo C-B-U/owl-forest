@@ -1,67 +1,87 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useState, useRef } from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import { palette } from 'styled-tools';
+import theme from '../Components/Color';
 import SearchIcon from '../Image/SearchIcon.png';
 
-const boxFade = keyframes`
-100%{
-  width:200px;
-  transform:translateX(-50%);
-}
-`;
-
-const inputFade = keyframes`
-0%{
-  opacity:0;
-}
-100%{
-  opacity:1;
-}
-`;
-
-const SearchBox = styled.form`
+const Form = styled.form`
   position: relative;
-  top: 50%;
-  left: 50%;
-  width: 3rem;
-  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: ${palette('PsCocoa', 0)};
   background-image: url(${SearchIcon});
-  background-size: 2rem;
+  background-size: 1rem;
   background-repeat: no-repeat;
   background-position: center;
-  box-sizing: border-box;
-  border-radius: 25px;
-  border: 4px solid rgba(128, 109, 70);
-  padding: 5px;
-  &:hover {
-    cursor: pointer;
-    animation: ${boxFade} 1s forwards;
-  }
+  width: ${(props) => (props.barOpened ? '10rem' : '1rem')};
+  cursor: ${(props) => (props.barOpened ? 'auto' : 'pointer')};
+  padding: 1rem;
+  height: 1rem;
+  border-radius: 10rem;
+  transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 `;
 
-const InputBox = styled.input`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 9.5rem;
-  height: 2.5rem;
-  line-height: 30px;
-  outline: 0;
-  border: 0;
-  opacity: 0;
-  font-size: 1em;
-  border-radius: 20px;
-  padding: 0 20px;
-  &:hover {
-    display: block;
-    cursor: pointer;
-    animation: ${inputFade} 1s forwards;
-  }
+const Input = styled.input`
+  font-size: 10pt;
+  line-height: 1;
+  background-color: ${palette('PsCocoa', 0)};
+  width: 100%;
+  margin-left: ${(props) => (props.barOpened ? '1rem' : '0rem')};
+  border: none;
 `;
 
+const SearchBtn = styled.button`
+  line-height: 1;
+  pointer-events: ${(props) => (props.barOpened ? 'auto' : 'none')};
+  cursor: ${(props) => (props.barOpened ? 'pointer' : 'none')};
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+`;
 export default function Search() {
+  const [input, setInput] = useState('');
+  const [barOpened, setBarOpened] = useState(false);
+  const formRef = useRef();
+  const inputFocus = useRef();
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    setInput('');
+    setBarOpened(false);
+  };
+
   return (
-    <SearchBox action=''>
-      <InputBox type='text' placeholder='Search' onChange />
-    </SearchBox>
+    <div>
+      <ThemeProvider theme={theme}>
+        <Form
+          barOpened={barOpened}
+          onClick={() => {
+            setBarOpened(true);
+            inputFocus.current.focus();
+          }}
+          onFocus={() => {
+            setBarOpened(true);
+            inputFocus.current.focus();
+          }}
+          onBlur={() => {
+            setBarOpened(false);
+          }}
+          onSubmit={onFormSubmit}
+          ref={formRef}
+        >
+          <SearchBtn type='submit' barOpened={barOpened} />
+          <Input
+            onChange={(e) => setInput(e.target.value)}
+            ref={inputFocus}
+            value={input}
+            barOpened={barOpened}
+            placeholder='search for ...'
+          />
+        </Form>
+      </ThemeProvider>
+    </div>
   );
 }
