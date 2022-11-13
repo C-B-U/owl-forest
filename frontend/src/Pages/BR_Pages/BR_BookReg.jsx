@@ -35,7 +35,7 @@ const WrapPopup = styled.div`
 
 const ISBNSearch = styled.div`
   font-size: 3rem;
-  margin-top: 2rem;
+  margin-top: 4rem;
   align-items: center;
   justify-content: center;
   text-align: center;
