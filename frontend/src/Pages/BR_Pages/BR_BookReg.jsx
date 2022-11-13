@@ -4,7 +4,7 @@ import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import SearchBar from '../../Components/Input';
 import SearchIcon from '../../Image/SearchIcon.png';
-import SerachButton from '../../Components/Btn';
+import SearchButton from '../../Components/Btn';
 
 const Wrap = styled.div`
   width: 100vw;
@@ -20,7 +20,10 @@ const WrapPopupBackground = styled.div`
   background-color: rgba(255, 255, 255, 0.2);
 `;
 
-// Wrap 뒤로
+// Wrap~~ --> ~~~Wrap으로 이름 바꾸기
+
+// x 버튼 구현
+// input 안으로 돋보기 버튼 넣기
 
 const WrapPopup = styled.div`
   position: absolute;
