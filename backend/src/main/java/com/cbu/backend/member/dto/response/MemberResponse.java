@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class MemberResponseDTO {
+public class MemberResponse {
     private Long id;
     // TODO Member 구현 이후 추가
 }
