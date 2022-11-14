@@ -43,20 +43,6 @@ const Memlist = styled.li`
   margin-left: 1.2 rem;
 `;
 
-const InfoButton = styled.button`
-  width: 15rem;
-  height: 2.8rem;
-  background-color: ${palette('PsGreen')};
-  border-radius: 3rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  border: none;
-  font-size: 12pt;
-  margin-top: 2rem;
-  margin-left: 1.7rem;
-  font-weight: bolder;
-  margin-right: 43.2rem;
-`;
-
 const SearchBox = styled.input`
   width: 10rem;
   height: 2rem;
@@ -117,6 +103,7 @@ const SelcBox = styled.div`
   margin-top: 3rem;
   font-weight: bolder;
   margin-right: 0.4rem;
+  margin-left: 60rem;
 `;
 
 const SortOption = styled.div`
@@ -144,7 +131,6 @@ function MM_MemListCon() {
 
           <SecondWrap>
             <SearchWrap>
-              <InfoButton>마이페이지</InfoButton>
               <SelcBox>&nbsp;▼</SelcBox>
               <SearchBox />
             </SearchWrap>
