@@ -79,4 +79,13 @@ public class StudyGroupService {
         StudyGroup updatedStudyGroup = studyGroupMapper.mapToEntity(createStudyGroupRequestDTO);
         studyGroup.update(updatedStudyGroup);
     }
+
+    public void closeStudyGroup(Long studyGroupId) {
+        Optional<StudyGroup> oStudyGroup = studyGroupRepository.findById(studyGroupId);
+        if (!oStudyGroup.isPresent()) {
+            throw new RuntimeException();
+        }
+        StudyGroup studyGroup = oStudyGroup.get();
+        studyGroup.updateIsActive();
+    }
 }
