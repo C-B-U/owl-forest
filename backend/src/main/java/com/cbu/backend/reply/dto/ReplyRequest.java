@@ -1,4 +1,4 @@
-package com.cbu.backend.dto;
+package com.cbu.backend.reply.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

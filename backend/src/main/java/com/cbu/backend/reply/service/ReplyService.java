@@ -1,11 +1,11 @@
-package com.cbu.backend.service;
+package com.cbu.backend.reply.service;
 
-import com.cbu.backend.dto.ReplyRequest;
-import com.cbu.backend.dto.ReplyResponse;
-import com.cbu.backend.dto.ReplyUpdateRequest;
-import com.cbu.backend.entity.Reply;
-import com.cbu.backend.entity.ReplyRepository;
-import com.cbu.backend.mapper.ReplyMapper;
+import com.cbu.backend.reply.dto.ReplyRequest;
+import com.cbu.backend.reply.dto.ReplyResponse;
+import com.cbu.backend.reply.dto.ReplyUpdateRequest;
+import com.cbu.backend.reply.entity.Reply;
+import com.cbu.backend.reply.entity.ReplyRepository;
+import com.cbu.backend.reply.mapper.ReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,10 @@
-package com.cbu.backend.controller;
+package com.cbu.backend.reply.controller;
 
-import com.cbu.backend.dto.ReplyRequest;
-import com.cbu.backend.dto.ReplyResponse;
-import com.cbu.backend.dto.ReplyUpdateRequest;
-import com.cbu.backend.entity.ReplyRepository;
-import com.cbu.backend.service.ReplyService;
+import com.cbu.backend.reply.dto.ReplyRequest;
+import com.cbu.backend.reply.dto.ReplyResponse;
+import com.cbu.backend.reply.dto.ReplyUpdateRequest;
+import com.cbu.backend.reply.entity.ReplyRepository;
+import com.cbu.backend.reply.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

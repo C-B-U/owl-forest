@@ -1,4 +1,4 @@
-package com.cbu.backend.entity;
+package com.cbu.backend.reply.entity;
 
 
 import lombok.AccessLevel;

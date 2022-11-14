@@ -1,8 +1,8 @@
-package com.cbu.backend.mapper;
+package com.cbu.backend.reply.mapper;
 
-import com.cbu.backend.dto.ReplyRequest;
-import com.cbu.backend.dto.ReplyResponse;
-import com.cbu.backend.entity.Reply;
+import com.cbu.backend.reply.dto.ReplyRequest;
+import com.cbu.backend.reply.dto.ReplyResponse;
+import com.cbu.backend.reply.entity.Reply;
 import org.springframework.stereotype.Component;
 
 @Component

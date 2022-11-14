@@ -1,4 +1,4 @@
-package com.cbu.backend.entity;
+package com.cbu.backend.reply.entity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
