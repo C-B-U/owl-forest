@@ -3,7 +3,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
-import MLProfile from '../../Components/MMList/MLProfile';
+import MLProfileCon from '../../Components/MMList/MLProfileCon';
 import profileimg from '../../Image/cbu_circle.png';
 
 //가로 정렬
@@ -140,7 +140,7 @@ function MM_MemListCon() {
     <div>
       <ThemeProvider theme={theme}>
         <MainWrap>
-          <MLProfile />
+          <MLProfileCon />
 
           <SecondWrap>
             <SearchWrap>
