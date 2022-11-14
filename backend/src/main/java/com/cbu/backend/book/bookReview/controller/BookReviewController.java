@@ -1,6 +1,6 @@
 package com.cbu.backend.bookReview.controller;
 
-import com.cbu.backend.bookReview.dto.request.CreateBookReviewRequestDTO;
+import com.cbu.backend.bookReview.dto.request.CreateBookReviewRequest;
 import com.cbu.backend.bookReview.service.BookReviewService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ public class BookReviewController {
 
     //북피뷰 등록
     @PostMapping
-    public void enrollBookReview(@RequestBody CreateBookReviewRequestDTO createBookReviewRequestDTO) {
+    public void enrollBookReview(@RequestBody CreateBookReviewRequest createBookReviewRequestDTO) {
         BookReviewService bookReviewService = new BookReviewService();
         bookReviewService.createBookReview(createBookReviewRequestDTO);
     }

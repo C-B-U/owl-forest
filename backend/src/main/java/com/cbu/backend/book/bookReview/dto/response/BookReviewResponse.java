@@ -1,4 +1,4 @@
-package com.cbu.backend.bookReview.dto.request;
+package com.cbu.backend.bookReview.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 @AllArgsConstructor
-public class CreateBookReviewRequestDTO {
+public class BookReviewResponse {
+
+    private Long id;
 
     private Long bookId;
     private Long writerId;
@@ -19,5 +21,6 @@ public class CreateBookReviewRequestDTO {
     private double starLevel;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
+
 
 }

@@ -1,4 +1,4 @@
 package com.cbu.backend.book.dto.response;
 
-public class BookResponseDTO {
+public class BookResponse {
 }

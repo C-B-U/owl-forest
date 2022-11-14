@@ -1,4 +1,4 @@
 package com.cbu.backend.comment.dto.response;
 
-public class CommentResponseDTO {
+public class CommentResponse {
 }
