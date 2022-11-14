@@ -1,6 +1,6 @@
 package com.cbu.backend.studygroup.entity;
 
-import com.cbu.backend.common.domain.BaseTimeEntity;
+import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studyactivitylog.entity.StudyActivityLog;
 import lombok.AccessLevel;
@@ -37,7 +37,7 @@ public class StudyGroup {
     private Integer season;
 
     @Embedded
-    private BaseTimeEntity baseTime;
+    private BaseTime baseTime;
 
     @Builder
     public StudyGroup(Long id, String name, String summary, Member teamLeader,
