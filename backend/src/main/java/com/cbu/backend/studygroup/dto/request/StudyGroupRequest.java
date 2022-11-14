@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateStudyGroupRequestDTO {
+public class StudyGroupRequest {
     private String name;
     private String summary;
     //private Member teamLeader;
