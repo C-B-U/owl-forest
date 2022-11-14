@@ -36,7 +36,6 @@ public enum ResponseStatus {
     POST_ARTICLECOMMENT_SUCCESS("AC000", "댓글 업로드 성공"),
     UPDATE_ARTICLECOMMENT_SUCCESS("AC001", "댓글 수정 성공"),
     DELETE_ARTICLECOMMENT_SUCCESS("AC002", "댓글 삭제 성공"),
-    ;
 
     //책 (Book) 응답 상태
     // Head Name : B
@@ -49,6 +48,14 @@ public enum ResponseStatus {
 
     // 스터디 그룹 (StudyGroup) 응답 상태
     // Head Name : SG
+    GET_STUDYGROUP_LIST_SORTBY_CREATEDAT_SUCCESS("SG100", "스터디 최신순 조회 성공"),
+    GET_STUDYGROUP_LIST_SORTBY_STUDYACTIVITYLOG_SUCCESS("SG101", "스터디 일지순 조회 성공"),
+    GET_STUDYGROUP_LIST_SORTBY_LIKECOUNT_SUCCESS("SG102", "스터디 좋아요순 조회 성공"),
+    GET_STUDYGROUP_SUCCESS("SG103", "스터디 조회 성공"),
+    POST_STUDYGROUP_SUCCESS("SG000", "스터디 생성 성공"),
+    PATCH_STUDYGROUP_LIKECOUNT_SUCCESS("SG001", "스터디 좋아요 업데이트 성공");
+
+
 
     // 스터디 계획 (StudyPlan) 응답 상태
     // Head Name : SP
