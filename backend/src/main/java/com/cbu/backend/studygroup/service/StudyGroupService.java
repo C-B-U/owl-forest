@@ -80,6 +80,7 @@ public class StudyGroupService {
         studyGroup.update(updatedStudyGroup);
     }
 
+    @Transactional
     public void closeStudyGroup(Long studyGroupId) {
         Optional<StudyGroup> oStudyGroup = studyGroupRepository.findById(studyGroupId);
         if (!oStudyGroup.isPresent()) {
