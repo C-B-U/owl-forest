@@ -24,6 +24,8 @@ import java.util.stream.Collectors;
 public class JwtTokenProvider {
 
     private final Key key;
+    private final Long ACCESS_TOKEN_VALIDATION_PERIOD = 60L * 60 * 24 * 1000;
+    private final Long REFRESH_TOKEN_VALIDATION_PERIOD = 60L * 60 * 24 * 14 * 1000;
 
     public JwtTokenProvider(@Value("${jwt.secret}") String secretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
@@ -33,35 +35,21 @@ public class JwtTokenProvider {
     // 유저 정보를 가지고 AccessToken, RefreshToken 을 생성하는 메서드
     public TokenDTO generateToken(Authentication authentication) {
         // 권한 가져오기
-        String authorities = authentication.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.joining(","));
+        String authorities = getAuthorities(authentication);
 
-        long now = (new Date()).getTime();
+        long now = getNow();
         // Access Token 생성
-        Date accessTokenExpiresIn = new Date(now + 86400000);
-        String accessToken = Jwts.builder()
-                .setSubject(authentication.getName())
-                .claim("auth", authorities)
-                .setExpiration(accessTokenExpiresIn)
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
+        Date accessTokenExpiresIn = getAccessTokenExpiresIn(now);
+        String accessToken = getAccessToken(authentication, authorities, accessTokenExpiresIn);
 
         // Refresh Token 생성
-        String refreshToken = Jwts.builder()
-                .setExpiration(new Date(now + 86400000))
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
+        String refreshToken = getRefreshToken(now);
 
-        return TokenDTO.builder()
-                .grantType("Bearer")
-                .accessToken(accessToken)
-                .refreshToken(refreshToken)
-                .build();
+        return getTokenDTO(accessToken, refreshToken);
     }
 
     // JWT 토큰을 복호화하여 토큰에 들어있는 정보를 꺼내는 메서드
-    public UsernamePasswordAuthenticationToken getAuthentication(String accessToken) {
+    public Authentication getAuthentication(String accessToken) {
         // 토큰 복호화
         Claims claims = parseClaims(accessToken);
 
@@ -104,4 +92,48 @@ public class JwtTokenProvider {
             return e.getClaims();
         }
     }
+
+    private static long getNow() {
+        return (new Date()).getTime();
+    }
+
+    private static String getAuthorities(Authentication authentication) {
+        return authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+    }
+
+    private static TokenDTO getTokenDTO(String accessToken, String refreshToken) {
+        return TokenDTO.builder()
+                .grantType("Bearer")
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .build();
+    }
+
+    private String getRefreshToken(long now) {
+        return Jwts.builder()
+                .setExpiration(getRefreshTokenExpires(now))
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    private Date getRefreshTokenExpires(long now) {
+        return new Date(now + REFRESH_TOKEN_VALIDATION_PERIOD);
+    }
+
+    private Date getAccessTokenExpiresIn(long now) {
+        return new Date(now + ACCESS_TOKEN_VALIDATION_PERIOD);
+    }
+
+    private String getAccessToken(Authentication authentication, String authorities, Date accessTokenExpiresIn) {
+        return Jwts.builder()
+                .setSubject(authentication.getName())
+                .claim("auth", authorities)
+                .setExpiration(accessTokenExpiresIn)
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+
 }
