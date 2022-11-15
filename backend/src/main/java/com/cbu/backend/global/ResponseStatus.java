@@ -45,6 +45,8 @@ public enum ResponseStatus {
 
     // 스터디 활동일지 (StudyActivityLog) 응답 상태
     // Head Name : SAL
+    DELETE_STUDYACTIVITYLOG_SUCCESS("SAL002", "스터디일지 삭제 성공"),
+    GET_STUDYACTIVITYLOG_SUCCESS("SAL103", "스터디일지 조회 성공"),
 
     // 스터디 그룹 (StudyGroup) 응답 상태
     // Head Name : SG
@@ -54,6 +56,8 @@ public enum ResponseStatus {
     GET_STUDYGROUP_SUCCESS("SG103", "스터디 조회 성공"),
     POST_STUDYGROUP_SUCCESS("SG000", "스터디 생성 성공"),
     PATCH_STUDYGROUP_LIKECOUNT_SUCCESS("SG001", "스터디 좋아요 업데이트 성공");
+
+
 
 
 
