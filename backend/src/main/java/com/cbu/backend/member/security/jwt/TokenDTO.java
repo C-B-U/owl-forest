@@ -1,4 +1,4 @@
-package com.cbu.backend.member.jwt;
+package com.cbu.backend.member.security.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
