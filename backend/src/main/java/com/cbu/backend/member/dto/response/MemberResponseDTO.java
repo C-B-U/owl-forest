@@ -9,5 +9,4 @@ import lombok.Getter;
 @AllArgsConstructor
 public class MemberResponseDTO {
     private Long id;
-    // TODO Member 구현 이후 추가
 }
