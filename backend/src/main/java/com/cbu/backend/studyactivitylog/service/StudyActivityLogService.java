@@ -1,17 +1,39 @@
 package com.cbu.backend.studyactivitylog.service;
 
-import com.cbu.backend.studygroup.entity.StudyGroup;
+import com.cbu.backend.studyactivitylog.dto.request.StudyActivityLogRequestDTO;
+import com.cbu.backend.studyactivitylog.dto.response.StudyActivityLogResponseDTO;
+import com.cbu.backend.studyactivitylog.entity.StudyActivityLog;
+import com.cbu.backend.studyactivitylog.mapper.StudyActivityLogMapper;
+import com.cbu.backend.studyactivitylog.repository.StudyActivityLogRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import javax.persistence.EntityNotFoundException;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class StudyActivityLogService {
 
-    // TODO 덤프 메소드입니다. 가장 최근 스터디 일지의 생성 시간을 반환하도록 추후 구현해주세요.
+    private final StudyActivityLogRepository studyActivityLogRepository;
+    private final StudyActivityLogMapper studyActivityLogMapper;
 
-    public LocalDateTime searchLatestStudyActivityLogCreatedAt(StudyGroup studyGroup) {
-        return null;
+    private final MemberService memberService;
+
+
+    public StudyActivityLogResponseDTO registerStudyActivityLog(StudyActivityLogRequestDTO studyActivityLogRequestDTO) {
+        StudyActivityLog studyActivityLog = studyActivityLogMapper.toEntity(studyActivityLogRequestDTO);
+        StudyActivityLog result = studyActivityLogRepository.save(studyActivityLog);
+        result.getTeamMembers();
+        return studyActivityLogMapper.toDto(result,);
+    }
+
+    public StudyActivityLogResponseDTO searchById(Long studyActivityLogId){
+        Optional<StudyActivityLog> studyActivityLog = studyActivityLogRepository.findById(studyActivityLogId);
+        if(!studyActivityLog.isPresent()){
+            throw new EntityNotFoundException();
+        }
+        return studyActivityLogMapper.toDto(studyActivityLog.get(), members);
     }
 
 }
