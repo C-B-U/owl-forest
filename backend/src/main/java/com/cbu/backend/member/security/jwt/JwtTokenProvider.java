@@ -1,4 +1,4 @@
-package com.cbu.backend.member.jwt;
+package com.cbu.backend.member.security.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
