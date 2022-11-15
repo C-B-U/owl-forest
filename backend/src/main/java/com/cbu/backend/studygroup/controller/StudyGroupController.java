@@ -1,6 +1,6 @@
 package com.cbu.backend.studygroup.controller;
 
-import com.cbu.backend.global.ResponseBody;
+import com.cbu.backend.global.ResponseFormat;
 import com.cbu.backend.global.ResponseStatus;
 import com.cbu.backend.studygroup.dto.request.CreateStudyGroupRequestDTO;
 import com.cbu.backend.studygroup.dto.response.StudyGroupResponseDTO;
@@ -21,63 +21,63 @@ public class StudyGroupController {
     private final StudyGroupService studyGroupService;
 
     @PostMapping
-    public ResponseEntity<ResponseBody<StudyGroupResponseDTO>> createStudyGroup(CreateStudyGroupRequestDTO dto) {
+    public ResponseEntity<ResponseFormat<StudyGroupResponseDTO>> createStudyGroup(CreateStudyGroupRequestDTO dto) {
         StudyGroupResponseDTO createdStudyGroup = studyGroupService.registerStudyGroup(dto);
-        ResponseBody<StudyGroupResponseDTO> responseBody
-                = new ResponseBody<>(ResponseStatus.POST_STUDYGROUP_SUCCESS, createdStudyGroup);
+        ResponseFormat<StudyGroupResponseDTO> responseFormat
+                = new ResponseFormat<>(ResponseStatus.POST_STUDYGROUP_SUCCESS, createdStudyGroup);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseFormat);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseBody<StudyGroupResponseDTO>> findById(@PathVariable Long id) {
+    public ResponseEntity<ResponseFormat<StudyGroupResponseDTO>> findById(@PathVariable Long id) {
         StudyGroupResponseDTO studyGroup = studyGroupService.searchById(id);
-        ResponseBody<StudyGroupResponseDTO> responseBody
-                = new ResponseBody<>(ResponseStatus.GET_STUDYGROUP_SUCCESS, studyGroup);
+        ResponseFormat<StudyGroupResponseDTO> responseFormat
+                = new ResponseFormat<>(ResponseStatus.GET_STUDYGROUP_SUCCESS, studyGroup);
 
-        return ResponseEntity.ok(responseBody);
+        return ResponseEntity.ok(responseFormat);
     }
 
     @PatchMapping("/{id}/likecount")
-    public ResponseEntity<ResponseBody<Void>> modifyUpdateCount(@PathVariable Long id, Integer likeCount) {
+    public ResponseEntity<ResponseFormat<Void>> modifyUpdateCount(@PathVariable Long id, Integer likeCount) {
         studyGroupService.updateLikeCount(id, likeCount);
-        ResponseBody<Void> responseBody = new ResponseBody<>(ResponseStatus.PATCH_STUDYGROUP_LIKECOUNT_SUCCESS);
+        ResponseFormat<Void> responseFormat = new ResponseFormat<>(ResponseStatus.PATCH_STUDYGROUP_LIKECOUNT_SUCCESS);
 
-        return ResponseEntity.ok(responseBody);
+        return ResponseEntity.ok(responseFormat);
     }
 
 
     @GetMapping(params = "sortby=createdat")
-    public ResponseEntity<ResponseBody<List<StudyGroupResponseDTO>>> findStudyGroupSortByCreatedAt(
+    public ResponseEntity<ResponseFormat<List<StudyGroupResponseDTO>>> findStudyGroupSortByCreatedAt(
             @RequestParam(name = "sort") SortDirection sort) {
         List<StudyGroupResponseDTO> studyGroupList
                 = studyGroupService.searchStudyOrderByCreatedAt(sort.getSortClassifier());
-        ResponseBody<List<StudyGroupResponseDTO>> responseBody
-                = new ResponseBody<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_CREATEDAT_SUCCESS, studyGroupList);
+        ResponseFormat<List<StudyGroupResponseDTO>> responseFormat
+                = new ResponseFormat<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_CREATEDAT_SUCCESS, studyGroupList);
 
-        return ResponseEntity.ok(responseBody);
+        return ResponseEntity.ok(responseFormat);
     }
 
     @GetMapping(params = "sortby=studyactivitylog")
-    public ResponseEntity<ResponseBody<List<StudyGroupResponseDTO>>> findStudyGroupSortByStudyActivityLog(
+    public ResponseEntity<ResponseFormat<List<StudyGroupResponseDTO>>> findStudyGroupSortByStudyActivityLog(
             @RequestParam(name = "sort") SortDirection sort) {
         List<StudyGroupResponseDTO> studyGroupList
                 = studyGroupService.searchStudyOrderByStudyActivityLog(sort.getSortClassifier());
-        ResponseBody<List<StudyGroupResponseDTO>> responseBody
-                = new ResponseBody<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_STUDYACTIVITYLOG_SUCCESS, studyGroupList);
+        ResponseFormat<List<StudyGroupResponseDTO>> responseFormat
+                = new ResponseFormat<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_STUDYACTIVITYLOG_SUCCESS, studyGroupList);
 
-        return ResponseEntity.ok(responseBody);
+        return ResponseEntity.ok(responseFormat);
     }
 
     @GetMapping(params = "sortby=likecount")
-    public ResponseEntity<ResponseBody<List<StudyGroupResponseDTO>>> findStudyGroupSortByLike(
+    public ResponseEntity<ResponseFormat<List<StudyGroupResponseDTO>>> findStudyGroupSortByLike(
             @RequestParam(name = "sort") SortDirection sort) {
         List<StudyGroupResponseDTO> studyGroupList
                 = studyGroupService.searchStudyOrderByLikeCount(sort.getSortClassifier());
-        ResponseBody<List<StudyGroupResponseDTO>> responseBody
-                = new ResponseBody<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_LIKECOUNT_SUCCESS, studyGroupList);
+        ResponseFormat<List<StudyGroupResponseDTO>> responseFormat
+                = new ResponseFormat<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_LIKECOUNT_SUCCESS, studyGroupList);
 
-        return ResponseEntity.ok(responseBody);
+        return ResponseEntity.ok(responseFormat);
     }
 
 }
