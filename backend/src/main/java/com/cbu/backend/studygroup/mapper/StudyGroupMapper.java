@@ -3,7 +3,9 @@ package com.cbu.backend.studygroup.mapper;
 import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.response.StudyGroupResponse;
 import com.cbu.backend.studygroup.entity.StudyGroup;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StudyGroupMapper { // 덤프 클래스입니다.
 
     public StudyGroup mapToEntity(StudyGroupRequest studyGroupRequest) {
