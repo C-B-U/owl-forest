@@ -4,6 +4,7 @@ import com.cbu.backend.global.Mapper;
 import com.cbu.backend.studygroup.dto.request.CreateStudyGroupRequestDTO;
 import com.cbu.backend.studygroup.dto.response.StudyGroupResponseDTO;
 import com.cbu.backend.studygroup.entity.StudyGroup;
+import org.springframework.stereotype.Component;
 
 @Mapper
 public class StudyGroupMapper { // 덤프 클래스입니다.
