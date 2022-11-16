@@ -2,8 +2,8 @@ package com.cbu.backend.studygroup.controller;
 
 import com.cbu.backend.global.ResponseFormat;
 import com.cbu.backend.global.ResponseStatus;
-import com.cbu.backend.studygroup.dto.request.CreateStudyGroupRequestDTO;
-import com.cbu.backend.studygroup.dto.response.StudyGroupResponseDTO;
+import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
+import com.cbu.backend.studygroup.dto.response.StudyGroupResponse;
 import com.cbu.backend.studygroup.entity.SortDirection;
 import com.cbu.backend.studygroup.service.StudyGroupService;
 import lombok.RequiredArgsConstructor;
@@ -21,18 +21,18 @@ public class StudyGroupController {
     private final StudyGroupService studyGroupService;
 
     @PostMapping
-    public ResponseEntity<ResponseFormat<StudyGroupResponseDTO>> createStudyGroup(CreateStudyGroupRequestDTO dto) {
-        StudyGroupResponseDTO createdStudyGroup = studyGroupService.registerStudyGroup(dto);
-        ResponseFormat<StudyGroupResponseDTO> responseFormat
+    public ResponseEntity<ResponseFormat<StudyGroupResponse>> createStudyGroup(StudyGroupRequest dto) {
+        StudyGroupResponse createdStudyGroup = studyGroupService.registerStudyGroup(dto);
+        ResponseFormat<StudyGroupResponse> responseFormat
                 = new ResponseFormat<>(ResponseStatus.POST_STUDYGROUP_SUCCESS, createdStudyGroup);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseFormat);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseFormat<StudyGroupResponseDTO>> findById(@PathVariable Long id) {
-        StudyGroupResponseDTO studyGroup = studyGroupService.searchById(id);
-        ResponseFormat<StudyGroupResponseDTO> responseFormat
+    public ResponseEntity<ResponseFormat<StudyGroupResponse>> findById(@PathVariable Long id) {
+        StudyGroupResponse studyGroup = studyGroupService.searchById(id);
+        ResponseFormat<StudyGroupResponse> responseFormat
                 = new ResponseFormat<>(ResponseStatus.GET_STUDYGROUP_SUCCESS, studyGroup);
 
         return ResponseEntity.ok(responseFormat);
@@ -48,33 +48,33 @@ public class StudyGroupController {
 
 
     @GetMapping(params = "sortby=createdat")
-    public ResponseEntity<ResponseFormat<List<StudyGroupResponseDTO>>> findStudyGroupSortByCreatedAt(
+    public ResponseEntity<ResponseFormat<List<StudyGroupResponse>>> findStudyGroupSortByCreatedAt(
             @RequestParam(name = "sort") SortDirection sort) {
-        List<StudyGroupResponseDTO> studyGroupList
+        List<StudyGroupResponse> studyGroupList
                 = studyGroupService.searchStudyOrderByCreatedAt(sort.getSortClassifier());
-        ResponseFormat<List<StudyGroupResponseDTO>> responseFormat
+        ResponseFormat<List<StudyGroupResponse>> responseFormat
                 = new ResponseFormat<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_CREATEDAT_SUCCESS, studyGroupList);
 
         return ResponseEntity.ok(responseFormat);
     }
 
     @GetMapping(params = "sortby=studyactivitylog")
-    public ResponseEntity<ResponseFormat<List<StudyGroupResponseDTO>>> findStudyGroupSortByStudyActivityLog(
+    public ResponseEntity<ResponseFormat<List<StudyGroupResponse>>> findStudyGroupSortByStudyActivityLog(
             @RequestParam(name = "sort") SortDirection sort) {
-        List<StudyGroupResponseDTO> studyGroupList
+        List<StudyGroupResponse> studyGroupList
                 = studyGroupService.searchStudyOrderByStudyActivityLog(sort.getSortClassifier());
-        ResponseFormat<List<StudyGroupResponseDTO>> responseFormat
+        ResponseFormat<List<StudyGroupResponse>> responseFormat
                 = new ResponseFormat<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_STUDYACTIVITYLOG_SUCCESS, studyGroupList);
 
         return ResponseEntity.ok(responseFormat);
     }
 
     @GetMapping(params = "sortby=likecount")
-    public ResponseEntity<ResponseFormat<List<StudyGroupResponseDTO>>> findStudyGroupSortByLike(
+    public ResponseEntity<ResponseFormat<List<StudyGroupResponse>>> findStudyGroupSortByLike(
             @RequestParam(name = "sort") SortDirection sort) {
-        List<StudyGroupResponseDTO> studyGroupList
+        List<StudyGroupResponse> studyGroupList
                 = studyGroupService.searchStudyOrderByLikeCount(sort.getSortClassifier());
-        ResponseFormat<List<StudyGroupResponseDTO>> responseFormat
+        ResponseFormat<List<StudyGroupResponse>> responseFormat
                 = new ResponseFormat<>(ResponseStatus.GET_STUDYGROUP_LIST_SORTBY_LIKECOUNT_SUCCESS, studyGroupList);
 
         return ResponseEntity.ok(responseFormat);
