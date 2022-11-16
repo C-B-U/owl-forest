@@ -1,7 +1,7 @@
 package com.cbu.backend.boardsubscribe.controller;
 
-import com.cbu.backend.boardsubscribe.dto.request.BoardSubscribeRequestDTO;
-import com.cbu.backend.boardsubscribe.dto.response.BoardSubscribeResponseDTO;
+import com.cbu.backend.boardsubscribe.dto.request.BoardSubscribeRequest;
+import com.cbu.backend.boardsubscribe.dto.response.BoardSubscribeResponse;
 import com.cbu.backend.boardsubscribe.service.BoardSubscribeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class BoardSubscribeController {
     private final BoardSubscribeService boardSubscribeService;
 
     @PostMapping
-    public ResponseEntity<BoardSubscribeResponseDTO> subscribe(@RequestBody BoardSubscribeRequestDTO dto) {
+    public ResponseEntity<BoardSubscribeResponse> subscribe(@RequestBody BoardSubscribeRequest dto) {
         boardSubscribeService.subscribe(dto);
 
         throw new UnsupportedOperationException("Not supported yet.");

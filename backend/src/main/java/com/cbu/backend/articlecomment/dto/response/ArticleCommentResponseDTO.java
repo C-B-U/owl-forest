@@ -1,6 +1,6 @@
 package com.cbu.backend.articlecomment.dto.response;
 
-import com.cbu.backend.member.dto.response.MemberResponseDTO;
+import com.cbu.backend.member.dto.response.MemberResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class ArticleCommentResponseDTO {
     private Long id;
     private String content;
-    private MemberResponseDTO writer;
+    private MemberResponse writer;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

@@ -29,7 +29,7 @@ public class ArticleCommentService {
 
     public ArticleCommentResponseDTO save(Long boardId, ArticleCommentRequestDTO dto) {
         Article article = articleService.getEntity(boardId);
-        Member writer = memberService.getEntity(dto.getWriterId());
+        Member writer = memberService.findById(dto.getWriterId());
         ArticleComment savedArticleComment =
                 articleCommentRepository.save(articleCommentMapper.toEntity(dto, article, writer));
 

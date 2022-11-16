@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BoardSubscribeRequestDTO {
+public class BoardSubscribeRequest {
     private Long boardId;
     private Long memberId;
 }

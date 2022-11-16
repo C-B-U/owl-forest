@@ -1,0 +1,20 @@
+{
+  "workbench.colorTheme": "Default Dark+",
+  "redhat.telemetry.enabled": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "git.enableSmartCommit": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "files.associations": {
+    "*.tsx": "typescriptreact",
+    ".eslintrc.js": "typescriptreact"
+  },
+  "[typescriptreact]": {},
+  "Typescript.tsc.autoDetect": "off",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "autoprefixer.formatOnSave": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "npm.keybindingsChangedWarningShown": true,
+  "code-runner.runInTerminal": true
+}

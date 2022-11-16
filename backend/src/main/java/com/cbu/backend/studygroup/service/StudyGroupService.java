@@ -24,7 +24,7 @@ public class StudyGroupService {
     private final StudyGroupRepository studyGroupRepository;
     private final StudyGroupMapper studyGroupMapper;
     private final StudyActivityLogService studyActivityLogService;
-    
+
     // CreateStudyGroupRequestDTO 이름 변경, toEntity 광범위한 이름
     public StudyGroupResponse registerStudyGroup(StudyGroupRequest studyGroupRequest) { // 스터디 등록
         StudyGroup studyGroup = studyGroupMapper.mapToEntity(studyGroupRequest);
@@ -35,7 +35,7 @@ public class StudyGroupService {
 
     public StudyGroupResponse searchById(Long id) { // 스터디 ID로 조회
         Optional<StudyGroup> studyGroup = studyGroupRepository.findById(id);
-        if(!studyGroup.isPresent()) { // 조회 실패
+        if (!studyGroup.isPresent()) { // 조회 실패
             throw new EntityNotFoundException();
         }
         return studyGroupMapper.toResponseDTO(studyGroup.get());
@@ -64,7 +64,7 @@ public class StudyGroupService {
                 .findAll()
                 .stream()
                 .sorted(Comparator.comparing(function, sortDirection)
-                .thenComparing(StudyGroup::getSeason, Comparator.reverseOrder()))
+                        .thenComparing(StudyGroup::getSeason, Comparator.reverseOrder()))
                 .map(studyGroupMapper::toResponseDTO)
                 .collect(Collectors.toList());
     }
