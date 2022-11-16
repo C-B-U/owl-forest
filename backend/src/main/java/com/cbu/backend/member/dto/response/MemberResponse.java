@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Builder
 @AllArgsConstructor
-public class MemberResponseDTO {
+public class MemberResponse {
     @JsonView(MemberView.Normal.class)
     private Long id;
     @JsonView(MemberView.Normal.class)
