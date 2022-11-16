@@ -63,8 +63,8 @@ const OutLine = styled.div`
 /** 블럭 간격 조절 */
 const StudyIndex = styled.div`
   display: flex;
-  margin: 1rem;
-  margin-right: 10rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 const BtnWrap = styled.div`
@@ -185,53 +185,54 @@ function StudyCrew() {
                     {/* 스터디 개요 작성 */}
                     <Input width={'43.5rem'} height={'8rem'} />
                   </StudyIndex>
-                  <StudyIndex>
-                    {/* 팀장 작성 */}
-                    <Input
-                      width={'7rem'}
-                      height={'3rem'}
-                      margin={'0 1rem 0 0'}
-                    />
-                    <Input width={'30rem'} height={'3rem'} />
-                  </StudyIndex>
-                  <StudyIndex>
-                    {/* 팀원작성 */}
-                    <Input
-                      width={'7rem'}
-                      height={'3rem'}
-                      margin={'0 1rem 0 0'}
-                    />
-                    <Input width={'30rem'} height={'3rem'} />
-                    <PlusBtn></PlusBtn>
-                  </StudyIndex>
-                  <StudyIndex>
-                    <Input
-                      width={'7rem'}
-                      height={'3rem'}
-                      margin={'0 1rem 0 0'}
-                    />
-                    <Input width={'30rem'} height={'3rem'} />
-                    <MinusBtn></MinusBtn>
-                  </StudyIndex>
-                  <StudyIndex>
-                    <Input
-                      width={'7rem'}
-                      height={'3rem'}
-                      margin={'0 1rem 0 0'}
-                    />
-                    <Input width={'30rem'} height={'3rem'} />
-                    <MinusBtn></MinusBtn>
-                  </StudyIndex>
-                  <StudyIndex>
-                    <Input
-                      width={'7rem'}
-                      height={'3rem'}
-                      margin={'0 1rem 0 0'}
-                    />
-                    <Input width={'30rem'} height={'3rem'} />
-                    <MinusBtn></MinusBtn>
-                  </StudyIndex>
-
+                  <div>
+                    <StudyIndex>
+                      {/* 팀장 작성 */}
+                      <Input
+                        width={'7rem'}
+                        height={'3rem'}
+                        margin={'0 1rem 0 0'}
+                      />
+                      <Input width={'30rem'} height={'3rem'} />
+                    </StudyIndex>
+                    <StudyIndex>
+                      {/* 팀원작성 */}
+                      <Input
+                        width={'7rem'}
+                        height={'3rem'}
+                        margin={'0 1rem 0 0'}
+                      />
+                      <Input width={'30rem'} height={'3rem'} />
+                      <PlusBtn></PlusBtn>
+                    </StudyIndex>
+                    <StudyIndex>
+                      <Input
+                        width={'7rem'}
+                        height={'3rem'}
+                        margin={'0 1rem 0 0'}
+                      />
+                      <Input width={'30rem'} height={'3rem'} />
+                      <MinusBtn></MinusBtn>
+                    </StudyIndex>
+                    <StudyIndex>
+                      <Input
+                        width={'7rem'}
+                        height={'3rem'}
+                        margin={'0 1rem 0 0'}
+                      />
+                      <Input width={'30rem'} height={'3rem'} />
+                      <MinusBtn></MinusBtn>
+                    </StudyIndex>
+                    <StudyIndex>
+                      <Input
+                        width={'7rem'}
+                        height={'3rem'}
+                        margin={'0 1rem 0 0'}
+                      />
+                      <Input width={'30rem'} height={'3rem'} />
+                      <MinusBtn></MinusBtn>
+                    </StudyIndex>
+                  </div>
                   {/* 버튼 */}
                   <BtnWrap>
                     <Btn
