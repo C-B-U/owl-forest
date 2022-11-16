@@ -1,6 +1,6 @@
 package com.cbu.backend.board.dto.response;
 
-import com.cbu.backend.member.dto.response.MemberResponseDTO;
+import com.cbu.backend.member.dto.response.MemberResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +15,7 @@ public class BoardResponseDTO {
     private Long id;
     private String name;
     private String description;
-    private MemberResponseDTO manager;
+    private MemberResponse manager;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
