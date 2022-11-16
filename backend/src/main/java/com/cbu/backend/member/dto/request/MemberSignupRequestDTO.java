@@ -1,18 +1,19 @@
 package com.cbu.backend.member.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.cbu.backend.member.entity.Member;
+import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberSignupReuestDTO {
+public class MemberSignupRequestDTO {
 
     @NotBlank
     @Size
@@ -28,13 +29,13 @@ public class MemberSignupReuestDTO {
     private String email;
 
     @NotBlank
-    private Integer grade;
+    private Integer grade; //이거 왜 String아님?
 
     @NotBlank
     private String major;
 
     @NotBlank
-    private Integer studentId;
+    private Integer studentId; //이거도 왜 아님?
 
     @NotBlank
     private String generation;
@@ -49,4 +50,5 @@ public class MemberSignupReuestDTO {
     private String profileUrl;
 
     private String introduction;
+
 }

@@ -1,9 +1,6 @@
 package com.cbu.backend.member.entity;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
@@ -20,7 +18,6 @@ public class Member {
 
     private String name;
     private String password;
-
     private String accountId;
 
     private String email;
@@ -43,11 +40,15 @@ public class Member {
 
     private String introduction;
 
+    //회원가입 방식?
+
     @Builder
-    public Member(String name, String study, String password) {
+    public Member(String name, String password, String accountId) {
         this.name = name;
         this.password = password;
+        this.accountId = accountId;
     }
+
     @OneToMany(mappedBy = "member")
     private List<InterestTag> tags = new ArrayList<InterestTag>();
 }
