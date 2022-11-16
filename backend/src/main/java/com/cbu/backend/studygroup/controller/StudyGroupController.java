@@ -24,7 +24,7 @@ public class StudyGroupController {
     public ResponseEntity<ResponseFormat<StudyGroupResponse>> createStudyGroup(StudyGroupRequest dto) {
         StudyGroupResponse createdStudyGroup = studyGroupService.registerStudyGroup(dto);
         ResponseFormat<StudyGroupResponse> responseFormat
-                = new ResponseBody<>(ResponseStatus.POST_STUDYGROUP_SUCCESS, createdStudyGroup);
+                = new ResponseFormat<>(ResponseStatus.POST_STUDYGROUP_SUCCESS, createdStudyGroup);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseFormat);
     }
@@ -33,7 +33,7 @@ public class StudyGroupController {
     public ResponseEntity<ResponseFormat<StudyGroupResponse>> findById(@PathVariable Long id) {
         StudyGroupResponse studyGroup = studyGroupService.searchById(id);
         ResponseFormat<StudyGroupResponse> responseFormat
-                = new ResponseBody<>(ResponseStatus.GET_STUDYGROUP_SUCCESS, studyGroup);
+                = new ResponseFormat<>(ResponseStatus.GET_STUDYGROUP_SUCCESS, studyGroup);
 
         return ResponseEntity.ok(responseFormat);
     }
