@@ -1,8 +1,8 @@
 package com.cbu.backend.studyactivitylog.service;
 
 import com.cbu.backend.member.entity.Member;
-import com.cbu.backend.studyactivitylog.dto.request.StudyActivityLogRequestDTO;
-import com.cbu.backend.studyactivitylog.dto.response.StudyActivityLogResponseDTO;
+import com.cbu.backend.studyactivitylog.dto.request.StudyActivityLogRequest;
+import com.cbu.backend.studyactivitylog.dto.response.StudyActivityLogResponse;
 import com.cbu.backend.studyactivitylog.entity.StudyActivityLog;
 import com.cbu.backend.studyactivitylog.entity.StudyParticipant;
 import com.cbu.backend.studyactivitylog.mapper.StudyActivityLogMapper;
@@ -24,7 +24,7 @@ public class StudyActivityLogService {
     private final StudyActivityLogRepository studyActivityLogRepository;
     private final StudyActivityLogMapper studyActivityLogMapper;
 
-    public StudyActivityLogResponseDTO registerStudyActivityLog(Long groupId, StudyActivityLogRequestDTO studyActivityLogRequestDTO) {
+    public StudyActivityLogResponse registerStudyActivityLog(Long groupId, StudyActivityLogRequest studyActivityLogRequestDTO) {
         StudyActivityLog studyActivityLog = studyActivityLogMapper.toEntity(studyActivityLogRequestDTO);
         StudyActivityLog result = studyActivityLogRepository.save(studyActivityLog);
         //List<Member> teamMembers = result.getTeamMembers().stream()
@@ -40,7 +40,7 @@ public class StudyActivityLogService {
         return studyActivityLogMapper.toDto(result,members);
     }
 
-    public StudyActivityLogResponseDTO searchById(Long studyActivityLogId){
+    public StudyActivityLogResponse searchById(Long studyActivityLogId){
         StudyActivityLog studyActivityLog = studyActivityLogRepository.findById(studyActivityLogId)
                 .orElseThrow(EntityNotFoundException::new);
 
