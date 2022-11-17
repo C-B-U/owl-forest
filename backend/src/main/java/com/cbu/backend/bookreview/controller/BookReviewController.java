@@ -5,8 +5,8 @@ import com.cbu.backend.bookreview.service.BookReviewService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-
-@RestController
+//
+//@RestController
 @RequestMapping("/bookReview")
 public class BookReviewController {
 
