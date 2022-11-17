@@ -7,14 +7,26 @@ import SearchBar from '../../Components/Input';
 import SearchIcon from '../../Image/SearchIcon.png';
 import SearchButton from '../../Components/Btn';
 import Input from '../../Components/Input.jsx';
+import RegButton from '../../Components/Btn.jsx';
+
+const MainWrap = styled.div`
+  position: absolute;
+  background-color: ${palette('PsCocoa', 0)};
+  width: 100%;
+  height: calc(100% - 4rem);
+`;
 
 const Wrap = styled.div`
   margin: 8rem auto 0rem auto;
-  // width: fit-content;
-  // height: fit-content;
-  background-color: #DAC9C2;
+  width: fit-content;
+  height: fit-content;
+  background-color: ${palette('PsCocoa', 1)};
   padding: 3rem;
   box-sizing: content-box;
+`;
+
+const Title = styled.h1`
+  color: ${palette('PsYellow')};
 `;
 
 const WrapContent = styled.div`
@@ -23,141 +35,114 @@ const WrapContent = styled.div`
   /* margin: auto 0; */
 `;
 
-const BookImage = styled.div`
+const WrapBookImage = styled.div`
   width: 15rem;
   height: 19rem;
   background-color: #ffffff;
-
 `;
 
-const Title = styled.h1`
-  color: ${palette('Black')};
-  text-align: left;
-
+const WrapRegister = styled.div`
+  margin-left: 3rem;
+`;
+const WrapBookTitle = styled.div`
+  /* width: fit-content;
+  height: fit-content;
+  background-color: white;
+  border-radius: 0.2rem; */
 `;
 
-const CalendarImage = styled.div`
-    width : 15rem;
-    height: 19rem;
-    background-color: #aaaa;
-
+const WrapBookDetail = styled.div`
+  /* width: fit-content;
+  height: fit-content;
+  background-color: white;
+  border-radius: 0.2rem; */
+  margin-top: 1rem;
 `;
 
 
-// const Title = styled.h1`
-//   color: ${palette('PsYellow')};
-// `;
+const WrapBookReturn = styled.div`
+  width: fit-content;
+  height: 13.3rem;
+  padding: 1rem;
+  background-color: ${palette('PsLightBrown', 0)};
+  /* background-color: white; */
+  border-radius: 0.2rem;
+  margin-top: 2rem;
+  /* float: right; */
+`;
 
-// const WrapPopupBackground = styled.div`
-//   position: absolute;
-//   width: 100vw;
-//   height: 100vh;
-//   /* background-color: rgba(0, 0, 0, 0.5); */
-//   background-color: rgba(255, 255, 255, 0.2);
-// `;
+const WrapReturnAlert = styled.div`
+  display: flex;
+`;
 
-// Wrap~~ --> ~~~Wrap으로 이름 바꾸기
+const ReturnAlert = styled.div`
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+`;
 
-// x 버튼 구현
-// input 안으로 돋보기 버튼 넣기
+const DetailDate = styled.div`
+  margin-bottom: 1rem;
+`;
 
-// const RegisterWrap
+const WrapRegButton = styled.div`
+  float: right;
+  /* margin-right: auto; */
+`;
 
-// const WrapPopup = styled.div`
-//   position: absolute;
-//   width: 60rem;
-//   height: 35rem;
-//   background-color: ${palette('PsCocoa', 1)};
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   border-radius: 1rem;
-// `;
-
-// const Title = styled.div`
-//   width: 15rem;
-//   white-space: normal;
-//   text-align: center;
-//   /* border: 1px solid green; */
-//   /* word-break: break-all; */
-// `;
-
-// const Writer = styled.div`
-//   width: 12rem;
-//   white-space: normal;
-//   /* word-break: break-all; */
-//   /* border: 1px solid green; */
-//   margin-left: 1rem;
-//   text-align: center;
-// `;
-
-// const Publisher = styled.div`
-//   width: 10rem;
-//   white-space: normal;
-//   word-break: break-all;
-//   /* border: 1px solid green; */
-//   margin-left: 1rem;
-//   text-align: center;
-// `;
-// const ReleaseDate = styled.div`
-//   width: 8rem;
-//   white-space: normal;
-//   word-break: break-all;
-//   /* border: 1px solid green; */
-//   margin-left: 1rem;
-//   text-align: center;
-// `;
 
 function BR_BookReg() {
   return (
     <div>
-    <ThemeProvider theme={theme}>
-      <Header />
-      <Wrap>
-        <Title>도서등록</Title>
-        <CalendarImage></CalendarImage>
-        <WrapContent>
-          <BookImage />
-
-        </WrapContent>
-      </Wrap>
-      
-      {/* <WrapPopupBackground>
-        <WrapPopup>
-          <ISBNSearch>ISBN 검색</ISBNSearch>
-          <WrapSearchbar>
-            {/* <SearchForm></SearchForm> */}
-            {/* <SearchBar
-              width={'40rem'}
-              height={'3.2rem'}
-              placeholder='ISBN을 적어주세요.'
-            ></SearchBar>
-            <WrapSearchIcon />
-          // </WrapSearchbar> */}
-
-          {/* <WrapList>
-            <List>
-              <Title>프로그래밍 대회에서 배우는 알고리즘 문제 해결 전략1</Title>
-              <Writer>천인국, 공용해, 하상호</Writer>
-              <Publisher>생능출판사</Publisher>
-              <ReleaseDate>2022.02.22</ReleaseDate>
-            </List>
-
-            <List>
-              <Title>유닉스 이론과 실습</Title>
-              <Writer>윤소정, 이종원</Writer>
-              <Publisher>한빛아카데미</Publisher>
-              <ReleaseDate>2022.02.22</ReleaseDate>
-            </List>
-
-          </WrapList>
-        </WrapPopup>
-      </WrapPopupBackground> */}
-
-      <Wrap></Wrap>
-    </ThemeProvider>
-  </div>
-    
+      <ThemeProvider theme={theme}>
+        <Header />
+        <MainWrap>
+          <Wrap>
+            <Title>도서 등록</Title>
+            <WrapContent>
+              <WrapBookImage />
+              <WrapRegister>
+                <WrapBookTitle>
+                  <Input
+                    width={'40rem'}
+                    height={'2.3rem'}
+                    placeholder='책 제목'
+                  />
+                </WrapBookTitle>
+                <WrapBookDetail>
+                  <Input
+                    width={'40rem'}
+                    height={'2.3rem'}
+                    placeholder='( 작가 | 출판사 | 출판일 )'
+                  />
+                </WrapBookDetail>
+                <WrapBookReturn>
+                  <WrapReturnAlert>
+                    <ReturnAlert>반납 마감일</ReturnAlert>
+                    <ReturnAlert>반납날짜 : 연도 | 월 | 일 </ReturnAlert>
+                  </WrapReturnAlert>
+                  <DetailDate>
+                    <Input
+                      width={'38rem'}
+                      height={'7rem'}
+                      placeholder='달력..이미지 어떡하죠'
+                    />
+                  </DetailDate>
+                  <WrapRegButton>
+                    <RegButton
+                      color={palette('PsYellow')}
+                      background={palette('PsBtn')}
+                      width={'5.5rem'}
+                      height={'2.5rem'}
+                      name='게시하기'
+                    />
+                  </WrapRegButton>
+                </WrapBookReturn>
+              </WrapRegister>
+            </WrapContent>
+          </Wrap>
+        </MainWrap>
+      </ThemeProvider>
+    </div>
   );
 }
 
