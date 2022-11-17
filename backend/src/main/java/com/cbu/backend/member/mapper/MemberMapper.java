@@ -1,8 +1,8 @@
 package com.cbu.backend.member.mapper;
 
 import com.cbu.backend.global.Mapper;
-import com.cbu.backend.member.dto.request.MemberSignupRequestDTO;
 import com.cbu.backend.member.dto.response.MemberResponseDTO;
+import com.cbu.backend.member.dto.request.MemberSignupRequestDTO;
 import com.cbu.backend.member.dto.response.MemberView;
 import com.cbu.backend.member.entity.Authority;
 import com.cbu.backend.member.entity.Member;
@@ -20,8 +20,8 @@ public class MemberMapper {
         return objectMapper.writerWithView(memberViewClass).writeValueAsString(member);
     }
 
-    public MemberResponseDTO toDto(Member member) {
-        return MemberResponseDTO.builder()
+    public MemberResponse toDto(Member member) {
+        return MemberResponse.builder()
                 .id(member.getId())
                 .accountId(member.getAccountId())
                 .email(member.getEmail())

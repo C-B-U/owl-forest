@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityExistsException;
 
+import javax.persistence.EntityNotFoundException;
+
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -22,6 +24,8 @@ public class MemberService {
 
     public Member getEntity(Long id) {
         throw new UnsupportedOperationException("Member service is not supported");
+    public Member findById(Long id) {
+        return memberRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     public MemberResponseDTO signup(MemberSignupRequestDTO dto) {

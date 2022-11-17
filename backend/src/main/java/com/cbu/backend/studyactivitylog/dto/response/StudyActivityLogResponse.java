@@ -11,13 +11,13 @@ import java.util.List;
 @Getter
 @Builder
 @AllArgsConstructor
-public class StudyActivityLogResponseDTO {
+public class StudyActivityLogResponse {
     private Long id;
     private Integer week;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String place;
-    private List<StudyParticipantResponseDTO> teamMembers;
+    private List<StudyParticipantResponse> teamMembers;
     private String title;
     private String description;
     private String assignment;

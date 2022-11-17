@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StudyActivityLogRequestDTO {
+public class StudyActivityLogRequest {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String place;

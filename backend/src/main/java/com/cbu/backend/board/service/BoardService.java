@@ -28,7 +28,7 @@ public class BoardService {
 
     @Transactional
     public BoardResponseDTO save(BoardRequestDTO dto) {
-        Member manager = memberService.getEntity(dto.getManagerId());
+        Member manager = memberService.findById(dto.getManagerId());
         Board result = boardRepository.save(boardMapper.toEntity(dto, manager));
 
         return boardMapper.toDto(result);
@@ -43,7 +43,7 @@ public class BoardService {
     }
 
     private void modifyBoard(Board board, UpdateBoardRequestDTO dto) {
-        Member manager = memberService.getEntity(dto.getMangerId());
+        Member manager = memberService.findById(dto.getMangerId());
 
         board.setName(dto.getName());
         board.setDescription(dto.getDescription());
