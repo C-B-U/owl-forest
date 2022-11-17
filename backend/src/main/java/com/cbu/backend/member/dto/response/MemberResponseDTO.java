@@ -20,6 +20,6 @@ public class MemberResponseDTO {
     private String accountId;
     @JsonView(MemberView.NormalExtra.class)
     private String email;
-    private Integer generation;
     @JsonView(MemberView.Normal.class)
+    private Integer generation;
 }

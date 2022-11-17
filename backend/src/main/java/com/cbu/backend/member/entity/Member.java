@@ -4,11 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
@@ -26,9 +26,9 @@ public class Member {
 
     private String major;
 
-    private Integer studentId;
+    private String studentId;
 
-    private String generation;
+    private Integer generation;
 
     private String blogUrl;
 
@@ -40,15 +40,35 @@ public class Member {
 
     private String introduction;
 
-    //회원가입 방식?
+    @OneToMany(mappedBy = "member")
+    private List<InterestTag> tags = new ArrayList<InterestTag>();
+
+    @Setter
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
 
     @Builder
-    public Member(String name, String password, String accountId) {
+    public Member(String name, String password, String accountId, String email, int grade, String major,
+                  String studentId, int generation, String blogUrl, String githubId, String profileUrl,
+                  String phoneNumber, String introduction) {
+
         this.name = name;
         this.password = password;
         this.accountId = accountId;
+        this.email = email;
+        this.grade = grade;
+        this.major = major;
+        this.studentId = studentId;
+        this.generation = generation;
+        this.blogUrl = blogUrl;
+        this.githubId = githubId;
+        this.profileUrl = profileUrl;
+        this.phoneNumber = phoneNumber;
+        this.introduction = introduction;
     }
 
-    @OneToMany(mappedBy = "member")
-    private List<InterestTag> tags = new ArrayList<InterestTag>();
 }
+
+
+
+

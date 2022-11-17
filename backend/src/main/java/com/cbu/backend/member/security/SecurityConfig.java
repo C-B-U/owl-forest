@@ -28,8 +28,8 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("").permitAll()
-                .antMatchers("").hasRole("USER")
+                .antMatchers("/api/member").permitAll()
+                .antMatchers("/api/login").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

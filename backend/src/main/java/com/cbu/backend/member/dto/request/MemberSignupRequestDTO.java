@@ -29,16 +29,16 @@ public class MemberSignupRequestDTO {
     private String email;
 
     @NotBlank
-    private Integer grade; //이거 왜 String아님?
+    private Integer grade;
 
     @NotBlank
     private String major;
 
     @NotBlank
-    private Integer studentId; //이거도 왜 아님?
+    private String studentId;
 
     @NotBlank
-    private String generation;
+    private Integer generation;
 
     @NotBlank
     private String phoneNumber;
