@@ -1,7 +1,6 @@
 package com.cbu.backend.member.controller;
-
-import com.cbu.backend.member.dto.request.MemberSignupRequestDTO;
-import com.cbu.backend.member.dto.response.MemberResponseDTO;
+import com.cbu.backend.member.dto.request.MemberSignupRequest;
+import com.cbu.backend.member.dto.response.MemberResponse;
 import com.cbu.backend.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,14 +19,14 @@ public class MemberController {
 
 
     @GetMapping("/api/member/")
-    public ResponseEntity<MemberResponseDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<MemberResponse> getById(@PathVariable Long id) {
         return null;
     }
 
 
 
     @GetMapping("/api/members")
-    public ResponseEntity<List<MemberResponseDTO>> getAll() {
+    public ResponseEntity<List<MemberResponse>> getAll() {
 //        return ResponseEntity.ok(MemberService.getAll());
         return null;
     }
@@ -35,8 +34,8 @@ public class MemberController {
 
     //회원가입
     @PostMapping
-    public ResponseEntity<MemberResponseDTO> signup(@RequestBody MemberSignupRequestDTO dto) {
-        MemberResponseDTO result = memberService.signup(dto);
+    public ResponseEntity<MemberResponse> signup(@RequestBody MemberSignupRequest dto) {
+        MemberResponse result = memberService.signup(dto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(result);
@@ -44,7 +43,7 @@ public class MemberController {
 
 
     @PutMapping("/api/member")
-    public ResponseEntity<Void> update(MemberSignupRequestDTO dto) {
+    public ResponseEntity<Void> update(MemberSignupRequest dto) {
 //        memberService.update(dto);
 //        return ResponseEntity
 //                .status(HttpStatus.OK)

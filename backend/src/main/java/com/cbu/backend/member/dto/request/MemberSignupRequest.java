@@ -1,17 +1,15 @@
 package com.cbu.backend.member.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.URL;
+import com.cbu.backend.member.entity.Member;
+import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.validation.constraints.Email;
+
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,7 +35,7 @@ public class MemberSignupRequest {
     private String major;
 
     @NotBlank
-    private Integer studentId;
+    private String studentId;
 
     @NotBlank
     private Integer generation;
@@ -52,4 +50,5 @@ public class MemberSignupRequest {
     private String profileUrl;
 
     private String introduction;
+
 }

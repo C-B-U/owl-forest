@@ -1,8 +1,8 @@
 package com.cbu.backend.member.mapper;
 
 import com.cbu.backend.global.Mapper;
+import com.cbu.backend.member.dto.request.MemberSignupRequest;
 import com.cbu.backend.member.dto.response.MemberResponse;
-import com.cbu.backend.member.dto.request.MemberSignupRequestDTO;
 import com.cbu.backend.member.dto.response.MemberView;
 import com.cbu.backend.member.entity.Authority;
 import com.cbu.backend.member.entity.Member;
@@ -31,7 +31,7 @@ public class MemberMapper {
 
     }
 
-    public Member toEntity(MemberSignupRequestDTO dto, PasswordEncoder passwordEncoder) {
+    public Member toEntity(MemberSignupRequest dto, PasswordEncoder passwordEncoder) {
         Member member = Member.builder()
                 .name(dto.getName())
                 .password(passwordEncoder.encode(dto.getPassword()))

@@ -1,7 +1,7 @@
 package com.cbu.backend.member.service;
 
-import com.cbu.backend.member.dto.request.MemberSignupRequestDTO;
-import com.cbu.backend.member.dto.response.MemberResponseDTO;
+import com.cbu.backend.member.dto.request.MemberSignupRequest;
+import com.cbu.backend.member.dto.response.MemberResponse;
 import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.member.mapper.MemberMapper;
 import com.cbu.backend.member.repository.MemberRepository;
@@ -22,13 +22,17 @@ public class MemberService {
 
     private final MemberMapper memberMapper;
 
+
+
     public Member getEntity(Long id) {
         throw new UnsupportedOperationException("Member service is not supported");
+    }
+
     public Member findById(Long id) {
         return memberRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
-    public MemberResponseDTO signup(MemberSignupRequestDTO dto) {
+    public MemberResponse signup(MemberSignupRequest dto) {
 
         //유효성 검사
         memberRepository.findByAccountId(dto.getAccountId())
