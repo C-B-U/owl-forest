@@ -82,11 +82,7 @@ public class StudyGroupService {
 
     @Transactional
     public void closeStudyGroup(Long studyGroupId) {
-        Optional<StudyGroup> oStudyGroup = studyGroupRepository.findById(studyGroupId);
-        if (!oStudyGroup.isPresent()) {
-            throw new RuntimeException();
-        }
-        StudyGroup studyGroup = oStudyGroup.get();
+        StudyGroup studyGroup = studyGroupRepository.findById(studyGroupId).orElseThrow(RuntimeException::new);
         studyGroup.updateIsActive();
     }
 }
