@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +53,11 @@ public class StudyActivityLogService {
     }
 
     public LocalDateTime searchLatestStudyActivityLogCreatedAt(StudyGroup studyGroup) {
-        return null;
+        return studyGroup.getStudyActivityLogs().stream()
+                .map(studyActivityLog -> studyActivityLog.getBaseTime().getCreatedAt())
+                .sorted(Comparator.reverseOrder())
+                .findFirst()
+                .orElseThrow(EntityNotFoundException::new);
     }
 
 }
