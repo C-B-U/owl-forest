@@ -137,7 +137,7 @@ function MM_MemListCon() {
             <MemNav>
               <MemListInput style={{ fontSize: '1.8rem' }}>
                 프사 &nbsp; 이름&emsp; 학과&emsp;&emsp;&emsp; 학년&emsp;
-                기수&emsp; 스터디/스택
+                기수&emsp; 관심분야
               </MemListInput>
             </MemNav>
             <SortOption>이름순 ↑↓</SortOption>
