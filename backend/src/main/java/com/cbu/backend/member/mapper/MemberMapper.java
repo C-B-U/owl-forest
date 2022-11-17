@@ -1,7 +1,7 @@
 package com.cbu.backend.member.mapper;
 
 import com.cbu.backend.global.Mapper;
-import com.cbu.backend.member.dto.response.MemberResponseDTO;
+import com.cbu.backend.member.dto.response.MemberResponse;
 import com.cbu.backend.member.dto.request.MemberSignupRequestDTO;
 import com.cbu.backend.member.dto.response.MemberView;
 import com.cbu.backend.member.entity.Authority;
