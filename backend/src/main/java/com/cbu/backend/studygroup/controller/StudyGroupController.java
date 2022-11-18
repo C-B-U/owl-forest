@@ -21,7 +21,7 @@ public class StudyGroupController {
     private final StudyGroupService studyGroupService;
 
     @PostMapping
-    public ResponseEntity<ResponseFormat<StudyGroupResponse>> createStudyGroup(StudyGroupRequest dto) {
+    public ResponseEntity<ResponseFormat<StudyGroupResponse>> create(StudyGroupRequest dto) {
         StudyGroupResponse createdStudyGroup = studyGroupService.registerStudyGroup(dto);
         ResponseFormat<StudyGroupResponse> responseFormat
                 = new ResponseFormat<>(ResponseStatus.POST_STUDYGROUP_SUCCESS, createdStudyGroup);

@@ -1,8 +1,8 @@
 package com.cbu.backend.articlecomment.mapper;
 
 import com.cbu.backend.article.entity.Article;
-import com.cbu.backend.articlecomment.dto.request.ArticleCommentRequestDTO;
-import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponseDTO;
+import com.cbu.backend.articlecomment.dto.request.ArticleCommentRequest;
+import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponse;
 import com.cbu.backend.articlecomment.entity.ArticleComment;
 import com.cbu.backend.global.Mapper;
 import com.cbu.backend.member.entity.Member;
@@ -18,7 +18,7 @@ public class ArticleCommentMapper {
 
     private final MemberMapper memberMapper;
 
-    public ArticleComment toEntity(ArticleCommentRequestDTO dto, Article article, Member writer) {
+    public ArticleComment toEntity(ArticleCommentRequest dto, Article article, Member writer) {
         return ArticleComment.builder()
                 .article(article)
                 .writer(writer)
@@ -26,8 +26,8 @@ public class ArticleCommentMapper {
                 .build();
     }
 
-    public ArticleCommentResponseDTO toDto(ArticleComment entity) {
-        return ArticleCommentResponseDTO.builder()
+    public ArticleCommentResponse toDto(ArticleComment entity) {
+        return ArticleCommentResponse.builder()
                 .id(entity.getId())
                 .content(entity.getContent())
                 .writer(memberMapper.toDto(entity.getWriter()))
@@ -36,7 +36,7 @@ public class ArticleCommentMapper {
                 .build();
     }
 
-    public List<ArticleCommentResponseDTO> toListDto(List<ArticleComment> entitys) {
+    public List<ArticleCommentResponse> toListDto(List<ArticleComment> entitys) {
         return entitys.stream()
                 .map(this::toDto)
                 .collect(Collectors.toList());

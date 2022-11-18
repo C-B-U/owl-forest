@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    Optional<Member> findByAccountId(String accountId); //null의 가능성때문에 Optional사용
-    //save 메소드는 JpaRepository가 상속받는 CrudRepository에 정의되어 있음
+    Optional<Member> findByAccountId(String accountId);
+    boolean existsByAccountId(String accountId);
 
 }

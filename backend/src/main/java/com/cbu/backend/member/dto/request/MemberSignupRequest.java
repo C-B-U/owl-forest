@@ -1,18 +1,16 @@
 package com.cbu.backend.member.dto.request;
 
-import com.cbu.backend.member.entity.Member;
-import lombok.*;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter
-@Setter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class MemberSignupRequest {
 
     @NotBlank
@@ -20,6 +18,7 @@ public class MemberSignupRequest {
     private String name;
 
     @NotBlank
+    @Setter
     private String password;
 
     @NotBlank

@@ -1,19 +1,16 @@
-package com.cbu.backend.studyPlan.dto.response;
+package com.cbu.backend.studyplan.dto.request;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Builder
+@Getter
+@NoArgsConstructor
 @AllArgsConstructor
-@Data
-
-public class StudyPlanResponseDTO {
-    private Long id;
+public class UpdateStudyPlanRequest {
     private String title;
     private String generationNum;
     private String rule;
     private String teamMember;
     private String book;
-    private String studyGroupId;
 }

@@ -1,10 +1,10 @@
 package com.cbu.backend.bookreview.entity;
 
 
+import com.cbu.backend.global.BaseTime;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -36,8 +36,7 @@ public class BookReview {
     @Column(nullable = false)
     private double starLevel;
 
-    private LocalDateTime createAt;
-
-    private LocalDateTime updateAt;
+    @Embedded
+    private BaseTime baseTime;
 
 }

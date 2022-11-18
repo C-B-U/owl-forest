@@ -24,7 +24,7 @@ public class StudyActivityLogService {
     private final StudyActivityLogRepository studyActivityLogRepository;
     private final StudyActivityLogMapper studyActivityLogMapper;
 
-    public StudyActivityLogResponse registerStudyActivityLog(Long groupId, StudyActivityLogRequest studyActivityLogRequestDTO) {
+    public StudyActivityLogResponse create(Long groupId, StudyActivityLogRequest studyActivityLogRequestDTO) {
         StudyActivityLog studyActivityLog = studyActivityLogMapper.toEntity(studyActivityLogRequestDTO);
         StudyActivityLog result = studyActivityLogRepository.save(studyActivityLog);
         //List<Member> teamMembers = result.getTeamMembers().stream()
@@ -40,7 +40,7 @@ public class StudyActivityLogService {
         return studyActivityLogMapper.toDto(result,members);
     }
 
-    public StudyActivityLogResponse searchById(Long studyActivityLogId){
+    public StudyActivityLogResponse findById(Long studyActivityLogId){
         StudyActivityLog studyActivityLog = studyActivityLogRepository.findById(studyActivityLogId)
                 .orElseThrow(EntityNotFoundException::new);
 
