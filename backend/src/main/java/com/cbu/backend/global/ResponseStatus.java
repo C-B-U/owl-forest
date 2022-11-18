@@ -55,12 +55,15 @@ public enum ResponseStatus {
     GET_STUDYGROUP_LIST_SORTBY_LIKECOUNT_SUCCESS("SG102", "스터디 좋아요순 조회 성공"),
     GET_STUDYGROUP_SUCCESS("SG103", "스터디 조회 성공"),
     POST_STUDYGROUP_SUCCESS("SG000", "스터디 생성 성공"),
-    PATCH_STUDYGROUP_LIKECOUNT_SUCCESS("SG001", "스터디 좋아요 업데이트 성공");
+    PATCH_STUDYGROUP_LIKECOUNT_SUCCESS("SG001", "스터디 좋아요 업데이트 성공"),
 
 
 
     // 스터디 계획 (StudyPlan) 응답 상태
     // Head Name : SP
+    POST_STUDYPLAN_SUCCESS("SP000", "스터디 계획 생성 성공"),
+    UPDATE_STUDYPLAN_SUCCESS("SP001", "스터디 계획 수정 성공"),
+    DELETE_STUDYPLAN_SUCCESS("SP002", "스터디 계획 삭제 성공");
 
 
     private final String code;

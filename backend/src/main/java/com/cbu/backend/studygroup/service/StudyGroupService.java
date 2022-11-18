@@ -78,4 +78,10 @@ public class StudyGroupService {
         StudyGroup updatedStudyGroup = studyGroupMapper.mapToEntity(studyGroupRequest);
         studyGroup.update(updatedStudyGroup);
     }
+
+    @Transactional
+    public void closeStudyGroup(Long studyGroupId) {
+        StudyGroup studyGroup = studyGroupRepository.findById(studyGroupId).orElseThrow(RuntimeException::new);
+        studyGroup.updateIsActive();
+    }
 }

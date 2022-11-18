@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudyPlanRequest {
+public class UpdateStudyPlanRequest {
     private String title;
     private String generationNum;
     private String rule;
     private String teamMember;
     private String book;
-    private String studyGroupId;
 }
