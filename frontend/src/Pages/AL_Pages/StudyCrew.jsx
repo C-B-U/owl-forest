@@ -135,7 +135,6 @@ const StudySummary = styled.header`
 const StudyLeader = styled.header`
   width: 10rem;
   height: 4rem;
-  /* margin-top: 1rem; */
   margin-right: 1rem;
   font-size: 20pt;
   font-weight: bold;
@@ -200,8 +199,6 @@ function StudyCrew() {
                   <StudyLeader>팀장</StudyLeader>
                   <StudyMember>팀원</StudyMember>
                 </WordWrap>
-
-                {/* 블럭 */}
                 <BlockWrap>
                   <StudyIndex>
                     {/* 스터디 개요 작성 */}
@@ -226,7 +223,7 @@ function StudyCrew() {
                         margin={'0 1rem 0 0'}
                       />
                       <Input width={'30rem'} height={'3rem'} />
-                      <PlusBtn></PlusBtn>
+                      <PlusBtn />
                     </StudyIndex>
                     <StudyIndex>
                       <Input
@@ -235,7 +232,7 @@ function StudyCrew() {
                         margin={'0 1rem 0 0'}
                       />
                       <Input width={'30rem'} height={'3rem'} />
-                      <MinusBtn></MinusBtn>
+                      <MinusBtn />
                     </StudyIndex>
                     <StudyIndex>
                       <Input
@@ -274,8 +271,6 @@ function StudyCrew() {
                       <MinusBtn></MinusBtn>
                     </StudyIndex>
                   </ScrollBar>
-
-                  {/* 버튼 */}
                   <BtnWrap>
                     <Btn
                       background={palette('PsBtn')}
