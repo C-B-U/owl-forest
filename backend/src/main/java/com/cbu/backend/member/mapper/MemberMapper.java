@@ -9,7 +9,6 @@ import com.cbu.backend.member.entity.Member;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Mapper
 @RequiredArgsConstructor
@@ -31,10 +30,10 @@ public class MemberMapper {
 
     }
 
-    public Member toEntity(MemberSignupRequest dto, PasswordEncoder passwordEncoder) {
+    public Member toEntity(MemberSignupRequest dto) {
         Member member = Member.builder()
                 .name(dto.getName())
-                .password(passwordEncoder.encode(dto.getPassword()))
+                .password(dto.getPassword())
                 .accountId(dto.getAccountId())
                 .email(dto.getEmail())
                 .grade(dto.getGrade())

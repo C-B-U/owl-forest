@@ -17,10 +17,10 @@ public class StudyActivityLogController {
     private final StudyActivityLogService studyActivityLogService;
 
     @PostMapping
-    public ResponseEntity<ResponseFormat<StudyActivityLogResponse>> createStudyActivityLog(
+    public ResponseEntity<ResponseFormat<StudyActivityLogResponse>> create(
             @PathVariable Long studyGroupId,
             @RequestBody StudyActivityLogRequest dto){
-        StudyActivityLogResponse createdStudyActivityLog = studyActivityLogService.registerStudyActivityLog(studyGroupId, dto);
+        StudyActivityLogResponse createdStudyActivityLog = studyActivityLogService.create(studyGroupId, dto);
         ResponseFormat<StudyActivityLogResponse> responseFormat = new ResponseFormat<>(ResponseStatus.POST_STUDYACTIVITYLOG_SUCCESS, createdStudyActivityLog);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseFormat);
@@ -29,7 +29,7 @@ public class StudyActivityLogController {
 
     @GetMapping("/{studyActivityLogId}")
     public ResponseEntity<ResponseFormat<StudyActivityLogResponse>> findById(@PathVariable Long studyActivityLogId) {
-        StudyActivityLogResponse studyActivityLog = studyActivityLogService.searchById(studyActivityLogId);
+        StudyActivityLogResponse studyActivityLog = studyActivityLogService.findById(studyActivityLogId);
         ResponseFormat<StudyActivityLogResponse> responseFormat = new ResponseFormat<>(ResponseStatus.GET_STUDYACTIVITYLOG_SUCCESS, studyActivityLog);
 
         return ResponseEntity.ok(responseFormat);

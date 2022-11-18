@@ -1,8 +1,8 @@
 package com.cbu.backend.board.service;
 
-import com.cbu.backend.board.dto.request.BoardRequestDTO;
-import com.cbu.backend.board.dto.request.UpdateBoardRequestDTO;
-import com.cbu.backend.board.dto.response.BoardResponseDTO;
+import com.cbu.backend.board.dto.request.BoardRequest;
+import com.cbu.backend.board.dto.request.UpdateBoardRequest;
+import com.cbu.backend.board.dto.response.BoardResponse;
 import com.cbu.backend.board.entity.Board;
 import com.cbu.backend.board.mapper.BoardMapper;
 import com.cbu.backend.board.repository.BoardRepository;
@@ -27,7 +27,7 @@ public class BoardService {
     private final MemberService memberService;
 
     @Transactional
-    public BoardResponseDTO save(BoardRequestDTO dto) {
+    public BoardResponse create(BoardRequest dto) {
         Member manager = memberService.findById(dto.getManagerId());
         Board result = boardRepository.save(boardMapper.toEntity(dto, manager));
 
@@ -35,14 +35,14 @@ public class BoardService {
     }
 
     @Transactional
-    public BoardResponseDTO update(Long id, UpdateBoardRequestDTO dto) {
+    public BoardResponse updateById(Long id, UpdateBoardRequest dto) {
         Board board = getEntity(id);
         modifyBoard(board, dto);
 
         return boardMapper.toDto(board);
     }
 
-    private void modifyBoard(Board board, UpdateBoardRequestDTO dto) {
+    private void modifyBoard(Board board, UpdateBoardRequest dto) {
         Member manager = memberService.findById(dto.getMangerId());
 
         board.setName(dto.getName());
@@ -51,20 +51,20 @@ public class BoardService {
     }
 
     @Transactional
-    public BoardResponseDTO delete(Long id) {
+    public BoardResponse deleteById(Long id) {
         Board board = getEntity(id);
         board.getBaseTime().delete();
 
         return boardMapper.toDto(board);
     }
 
-    public BoardResponseDTO get(Long id) {
+    public BoardResponse findById(Long id) {
         Board board = getEntity(id);
 
         return boardMapper.toDto(board);
     }
 
-    public List<BoardResponseDTO> getAll(Pageable pageable) {
+    public List<BoardResponse> getAll(Pageable pageable) {
 
         return boardRepository.findAll(pageable)
                 .stream()

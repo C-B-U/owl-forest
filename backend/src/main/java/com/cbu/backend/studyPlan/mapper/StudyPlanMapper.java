@@ -1,14 +1,14 @@
-package com.cbu.backend.studyPlan.mapper;
+package com.cbu.backend.studyplan.mapper;
 
-import com.cbu.backend.studyPlan.dto.request.StudyPlanRequestDTO;
-import com.cbu.backend.studyPlan.dto.response.StudyPlanResponseDTO;
-import com.cbu.backend.studyPlan.entity.StudyPlan;
+import com.cbu.backend.studyplan.dto.request.StudyPlanRequest;
+import com.cbu.backend.studyplan.dto.response.StudyPlanResponse;
+import com.cbu.backend.studyplan.entity.StudyPlan;
 import org.springframework.stereotype.Component;
 
 @Component
 public class StudyPlanMapper {
 
-    public StudyPlan mapToEntity(StudyPlanRequestDTO dto){
+    public StudyPlan mapToEntity(StudyPlanRequest dto){
         return StudyPlan.builder()
                 .title(dto.getTitle())
                 .generationNum(dto.getGenerationNum())
@@ -19,8 +19,8 @@ public class StudyPlanMapper {
                 .build();
     }
 
-    public StudyPlanResponseDTO mapToDTO(StudyPlan entity){
-        return StudyPlanResponseDTO.builder()
+    public StudyPlanResponse mapToDTO(StudyPlan entity){
+        return StudyPlanResponse.builder()
                 .id(entity.getId())
                 .title(entity.getTitle())
                 .generationNum(entity.getGenerationNum())

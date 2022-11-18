@@ -1,4 +1,4 @@
-package com.cbu.backend.studyPlan.entity;
+package com.cbu.backend.studyplan.entity;
 
 import com.cbu.backend.global.BaseTime;
 import lombok.*;

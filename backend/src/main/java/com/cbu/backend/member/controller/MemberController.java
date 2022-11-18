@@ -18,17 +18,17 @@ public class MemberController {
     private final MemberService memberService;
 
 
-    @GetMapping("/api/member/")
-    public ResponseEntity<MemberResponse> getById(@PathVariable Long id) {
-        return null;
+    @GetMapping("{id}")
+    public ResponseEntity<MemberResponse> findById(@PathVariable Long id) {
+        throw new UnsupportedOperationException("Not supported yet");
     }
 
 
 
-    @GetMapping("/api/members")
-    public ResponseEntity<List<MemberResponse>> getAll() {
+    @GetMapping
+    public ResponseEntity<List<MemberResponse>> findAll() {
 //        return ResponseEntity.ok(MemberService.getAll());
-        return null;
+        throw new UnsupportedOperationException("Not supported yet");
     }
 
 
@@ -41,14 +41,13 @@ public class MemberController {
                 .body(result);
     }
 
-
     @PutMapping("/api/member")
     public ResponseEntity<Void> update(MemberSignupRequest dto) {
 //        memberService.update(dto);
 //        return ResponseEntity
 //                .status(HttpStatus.OK)
 //                .build();
-        return null;
+        throw new UnsupportedOperationException("Not supported yet");
     }
 
 
@@ -58,6 +57,6 @@ public class MemberController {
 //        return ResponseEntity
 //                .status(HttpStatus.OK)
 //                .build();
-        return null;
+        throw new UnsupportedOperationException("Not supported yet");
     }
 }
