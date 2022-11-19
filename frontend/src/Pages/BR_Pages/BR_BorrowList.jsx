@@ -11,6 +11,7 @@ import BorrowButton from '../../Components/Btn.jsx';
 const MainWrap= styled.div`
   display: inline-block;
   width: 100%;
+  height: 100%;
   
 `
 
@@ -19,12 +20,11 @@ const ListWrap = styled.div`
   margin-top: 4rem;
   background-color: ${palette('PsCocoa', 0)};
   width: 100%;
-  height: 100%;
-  display: flex;
+
+
 `;
 
 const WrapSearchbar = styled.div`
-  background-color: ${palette('PsCocoa', 0)};
   padding: 0.5rem 0;
   position: fixed;
   margin-right: -10rem;
@@ -38,9 +38,25 @@ const Wrap=styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 0rem;
   width: 100%;
-  height: 100%;
+  max-height: 91.9vh;
 
-  overflow: hidden;
+
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #eeeeee;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${palette('PsGreen')};
+    border-radius: 10px;
+  }
+  
+ 
   
 `
 const WrapContent=styled.div`
