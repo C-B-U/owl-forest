@@ -42,6 +42,13 @@ public enum ResponseStatus {
 
     //북리뷰 (BookReview) 응답 상태
     // Head Name : BR
+    POST_BOOKREVIEW_SUCCESS("BR000", "북리뷰 업로드 성공"),
+    UPDATE_BOOKREVIEW_SUCCESS("BR001", "북리뷰 수정 성공"),
+    DELETE_BOOKREVIEW_SUCCESS("BR002", "북리뷰 삭제 성공"),
+    GET_BOOKREVIEW_LIST_SUCCESS("BR100", "북리뷰 목록 조회 성공"),
+    GET_BOOKREVIEW_SUCCESS("BR101", "북리뷰 조회 성공"),
+
+
 
     // 스터디 활동일지 (StudyActivityLog) 응답 상태
     // Head Name : SAL
