@@ -1,5 +1,6 @@
 package com.cbu.backend.studyactivitylog.entity;
 
+import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.studygroup.entity.StudyGroup;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -32,6 +33,9 @@ public class StudyActivityLog {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_group_id")
     private StudyGroup studyGroup;
+
+    @Embedded
+    private BaseTime baseTime;
 
     @Builder
     public StudyActivityLog(LocalDateTime startTime, LocalDateTime endTime, String place, String title, String description, String assignment) {
