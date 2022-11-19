@@ -1,43 +1,56 @@
 package com.cbu.backend.bookreview.entity;
 
 
+import com.cbu.backend.book.entity.Book;
+import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.member.entity.Member;
 import lombok.*;
-
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
+@EnableJpaAuditing
 public class BookReview {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
+
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member writer;
+
+    @Setter
     @Column(nullable = false)
-    private Long bookId;
+    private String title;
 
+    @Setter
     @Column(nullable = false)
-    private Long writerId;
+    private String review;
 
+    @Setter
     @Column(nullable = false)
-    private String detailReview;
+    private double star;
 
+    @Setter
     @Column(nullable = false)
-    private String simpleReview;
+    private double level;
 
+    @Setter
     @Column(nullable = false)
-    private double starPoint;
+    private Boolean like;
 
-    @Column(nullable = false)
-    private double starLevel;
-
-    private LocalDateTime createAt;
-
-    private LocalDateTime updateAt;
+    @Embedded
+    private BaseTime baseTime;
 
 }
