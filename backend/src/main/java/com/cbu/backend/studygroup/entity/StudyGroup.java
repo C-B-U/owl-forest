@@ -1,6 +1,6 @@
 package com.cbu.backend.studygroup.entity;
 
-import com.cbu.backend.common.domain.BaseTimeEntity;
+import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studyactivitylog.entity.StudyActivityLog;
 import lombok.AccessLevel;
@@ -14,7 +14,6 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "studyGroup")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyGroup {
@@ -27,60 +26,54 @@ public class StudyGroup {
 
     private String summary;
 
-    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
-    private Member teamLeader;
+    @OneToMany(mappedBy = "studyGroup")
+    private List<StudyActivityLog> studyActivityLogs = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
-    private List<Member> teamMembers = new ArrayList<>();
-
-    @OneToMany(mappedBy = "studyJournal")
-    private List<StudyActivityLog> journals = new ArrayList<>();
-
-    private Integer like = 0;
+    private Integer likeCount = 0;
 
     private Integer season;
 
+    private Boolean isActive = true;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Member studyGroupLeader;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "studyGroup")
+    private List<StudyGroupMember> studyGroupMembers = new ArrayList<>();
+
     @Embedded
-    private BaseTimeEntity baseTime;
+    private BaseTime baseTime;
 
     @Builder
-    public StudyGroup(Long id, String name, String summary, Member teamLeader, List<Member> teamMembers,
-                      List<StudyActivityLog> journals, Integer like, Integer season) {
-        this.id = id;
+    public StudyGroup(String name, String summary, List<StudyActivityLog> studyActivityLogs, Integer season,
+                      Member studyGroupLeader, List<StudyGroupMember> studyGroupMembers) {
         this.name = name;
         this.summary = summary;
-        this.teamLeader = teamLeader;
-        this.teamMembers = teamMembers;
-        this.journals = journals;
-        this.like = like;
+        this.studyActivityLogs = studyActivityLogs;
         this.season = season;
+        this.studyGroupLeader = studyGroupLeader;
+        this.studyGroupMembers = studyGroupMembers;
     }
 
     public StudyGroup update(StudyGroup studyGroup) { // 매개변수 request DTO로 수정 필요
         this.name = studyGroup.getName();
         this.summary = studyGroup.getSummary();
-        this.teamLeader = studyGroup.getTeamLeader();
-        this.teamMembers = studyGroup.getTeamMembers();
 
         return this;
     }
 
-    public boolean isMemberDuplicated(StudyGroup studyGroup) {
-        return studyGroup.getTeamMembers()
-                .stream()
-                .distinct()
-                .mapToInt(i -> 1)
-                .sum() == studyGroup.getTeamMembers().size();
-    }
-
     public void updateLike(Integer like) { // like는 -1(좋아요 취소) or +1(좋아요)
         if(isPositive(like)){
-            this.like += like;
+            this.likeCount += like;
         }
     }
 
     private boolean isPositive(Integer like) {
-        return this.like + like >= 0;
+        return this.likeCount + like >= 0;
+    }
+
+    public void updateIsActive() {
+        this.isActive = !this.isActive;
     }
 
 }
