@@ -10,6 +10,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Mapper
 @RequiredArgsConstructor
 public class MemberMapper {
@@ -57,5 +60,10 @@ public class MemberMapper {
 
         member.setAuthority(Authority.USER);
         return member;
+    }
+
+    public List<MemberResponse> toDtoList(List<Member> list) {
+        return list.stream().map(this::toDto)
+                .collect(Collectors.toList());
     }
 }

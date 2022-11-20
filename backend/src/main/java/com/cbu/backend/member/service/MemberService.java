@@ -21,7 +21,6 @@ import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -43,36 +42,31 @@ public class MemberService {
         return memberRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
+    public MemberResponse findById(Long id ) {
+        return memberMapper.toDto(memberRepository.findById(id).orElseThrow((EntityNotFoundException::new)));
+    }
+
     public MemberResponse findByAccountId(String accountId) {
-        return memberMapper.toDto(memberRepository.findByAccountId(accountId));
+        return memberMapper.toDto(memberRepository.findByAccountId(accountId).orElseThrow((EntityNotFoundException::new)));
     }
 
     public List<MemberResponse> findByName(String name) {
 
-//        List<MemberResponse> memberResponseList = new ArrayList<>();
-//        memberList.forEach(m -> {memberResponseList.add(memberMapper.toDto(m));});
-
-        return memberRepository.findByName(name).stream()
-                .map(memberMapper::toDto)
-                .collect(Collectors.toList());
+        return memberMapper.toDtoList(memberRepository.findByName(name));
     }
 
     public List<MemberResponse> findByGeneration(int generation) {
-        return memberRepository.findByGeneration(generation).stream()
-                .map(memberMapper::toDto)
-                .collect(Collectors.toList());
+
+        return memberMapper.toDtoList(memberRepository.findByGeneration(generation));
     }
 
     public List<MemberResponse> findByMajor(String major) {
-        return memberRepository.findByMajor(major).stream()
-        .map(memberMapper::toDto)
-        .collect(Collectors.toList());
+
+        return memberMapper.toDtoList(memberRepository.findByMajor(major));
     }
 
     public List<MemberResponse> findByGrade(int grade) {
-        return memberRepository.findByGrade(grade).stream()
-                .map(memberMapper::toDto)
-                .collect(Collectors.toList());
-    }
 
+        return memberMapper.toDtoList(memberRepository.findByGrade(grade));
+    }
 }

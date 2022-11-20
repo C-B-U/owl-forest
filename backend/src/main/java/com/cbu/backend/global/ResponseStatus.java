@@ -19,11 +19,11 @@ public enum ResponseStatus {
 
     // 회원(Member) 응답 상태
     // Head Name : M
-    POST_MEMBER_SUCCESS("A000", "회원 가입 성공"),
-    UPDATE_MEMBER_SUCCESS("A001", "회원 수정 성공"),
-    DELETE_MEMBER_SUCCESS("A002", "회원 삭제 성공"),
-    GET_MEMBER_LIST_SUCCESS("A100", "회원 목록 조회 성공"),
-    GET_MEMBER_SUCCESS("A101", "회원 조회 성공"),
+    POST_MEMBER_SUCCESS("M000", "회원 가입 성공"),
+    UPDATE_MEMBER_SUCCESS("M001", "회원 수정 성공"),
+    DELETE_MEMBER_SUCCESS("M002", "회원 삭제 성공"),
+    GET_MEMBER_LIST_SUCCESS("M100", "회원 목록 조회 성공"),
+    GET_MEMBER_SUCCESS("M101", "회원 조회 성공"),
 
 
     //게시판 (BOARD) 응답 상태
