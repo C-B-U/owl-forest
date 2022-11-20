@@ -6,33 +6,26 @@ import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import Search from '../../Components/Search';
 import BorrowButton from '../../Components/Btn.jsx';
-// import {Scrollbars} from 'react-custom-scrollbars';
 
-const MainWrap= styled.div`
+const MainWrap = styled.div`
   display: inline-block;
   width: 100%;
   height: 100%;
-  
-`
+`;
 
 const ListWrap = styled.div`
   /* position: absolute; */
-  margin-top: 4rem;
+  margin-top: 5rem;
   background-color: ${palette('PsCocoa', 0)};
   width: 100%;
-
-
 `;
 
 const WrapSearchbar = styled.div`
-  padding: 0.5rem 0;
-  position: fixed;
-  margin-right: -10rem;
-  width: 100%;
-
+  float: right;
+  margin-left: auto;
 `;
 
-const Wrap=styled.div`
+const Wrap = styled.div`
   margin-top: 60px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -40,8 +33,8 @@ const Wrap=styled.div`
   width: 100%;
   max-height: 91.9vh;
 
+  overflow: auto;
 
-  overflow: scroll;
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -55,19 +48,16 @@ const Wrap=styled.div`
     background: ${palette('PsGreen')};
     border-radius: 10px;
   }
-  
- 
-  
-`
-const WrapContent=styled.div`
+`;
+const WrapContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 const WrapInfo = styled.div`
   float: center;
   margin-left: 1rem;
-`
+`;
 const BookImage = styled.div`
   width: 13rem;
   height: 18rem;
@@ -84,246 +74,233 @@ const StarScore = styled.div`
 `;
 
 function BR_BorrowList() {
-  return(
+  return (
     <div>
       <ThemeProvider theme={theme}>
         <MainWrap>
-        <Header/>
-        <ListWrap>
-          
-          <WrapSearchbar>
-            <Search/>
-          </WrapSearchbar>
-          <Wrap>
-          <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+          <Header />
+          <ListWrap>
+            <WrapSearchbar>
+              <Search />
+            </WrapSearchbar>
+            <Wrap>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-              </WrapInfo>
-            </WrapContent>
-            <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-              </WrapInfo>
-            </WrapContent>
-            
-            
-            <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
 
-              </WrapInfo>
-            </WrapContent>
-            <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-              </WrapInfo>
-            </WrapContent>
-            <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-              </WrapInfo>
-            </WrapContent>
-            <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-              </WrapInfo>
-            </WrapContent>
-            <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-              </WrapInfo>
-            </WrapContent>
-            <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-              </WrapInfo>
-            </WrapContent>
-            <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-              </WrapInfo>
-            </WrapContent>
-            <WrapContent>
-            <BookImage/>
-            <WrapInfo>
-              <p>책이름</p>
-              <p>저자   출판사</p>
-              <WrapStarScore>
-                <StarScore>난이도</StarScore>
-                <StarScore>평점</StarScore>
-              </WrapStarScore>
-      
-              <p>마감일:</p>
-              <p>대여일:</p>
-              <BorrowButton
-                  color={palette('PsYellow')}
-                  background={palette('PsBtn')}
-                  width='5.5rem'
-                  height='2.5rem'
-                  name='대여하기'/>
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-              </WrapInfo>
-            </WrapContent>
-            
-  
-            
-      </Wrap>
-      
-      
-        </ListWrap>
-      </MainWrap>
-      
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <p>책이름</p>
+                  <p>저자 출판사</p>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
 
-
+                  <p>마감일:</p>
+                  <p>대여일:</p>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='대여하기'
+                  />
+                </WrapInfo>
+              </WrapContent>
+            </Wrap>
+          </ListWrap>
+        </MainWrap>
       </ThemeProvider>
-      
-      
     </div>
-    
-  )
+  );
 }
 
 export default BR_BorrowList;

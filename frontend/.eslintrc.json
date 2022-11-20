@@ -24,7 +24,7 @@
     }
   },
   "rules": {
-    "camelcase": ["error", {"properties": "never"}],
+    "camelcase": ["error", { "properties": "never" }],
     "linebreak-style": 0,
     "import/no-dynamic-require": 0,
     "import/no-unresolved": 0,
@@ -34,6 +34,7 @@
     "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-props-no-spreading": 0,
     "react/forbid-prop-types": 0,
+    "spaced-comment": "off",
     "react/jsx-filename-extension": [
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
