@@ -12,9 +12,20 @@ import lombok.Getter;
  * 데이터에 대한 조회(예: 목록 조회, 단일 조회)는 1XX
  * 이후 코드 번호는 구현순으로
  */
+
 @Getter
 @AllArgsConstructor
 public enum ResponseStatus {
+
+    // 회원(Member) 응답 상태
+    // Head Name : M
+    POST_MEMBER_SUCCESS("A000", "회원 가입 성공"),
+    UPDATE_MEMBER_SUCCESS("A001", "회원 수정 성공"),
+    DELETE_MEMBER_SUCCESS("A002", "회원 삭제 성공"),
+    GET_MEMBER_LIST_SUCCESS("A100", "회원 목록 조회 성공"),
+    GET_MEMBER_SUCCESS("A101", "회원 조회 성공"),
+
+
     //게시판 (BOARD) 응답 상태
     //Head Name : BD
     POST_BOARD_SUCCESS("BD000", "게시판 업로드 성공"),

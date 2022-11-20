@@ -22,12 +22,20 @@ public class MemberMapper {
     public MemberResponse toDto(Member member) {
         return MemberResponse.builder()
                 .id(member.getId())
+                .grade(member.getGrade())
+                .major(member.getMajor())
+                .blogUrl(member.getBlogUrl())
+                .profileUrl(member.getProfileUrl())
+                .studentId(member.getStudentId())
+                .githubId(member.getGithubId())
+                .interestTags(member.getTags())
+                .phoneNumber(member.getPhoneNumber())
                 .accountId(member.getAccountId())
                 .email(member.getEmail())
+                .introduction(member.getIntroduction())
                 .name(member.getName())
                 .generation(member.getGeneration())
                 .build();
-
     }
 
     public Member toEntity(MemberSignupRequest dto) {

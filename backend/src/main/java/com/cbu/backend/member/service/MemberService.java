@@ -6,14 +6,22 @@ import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.member.mapper.MemberMapper;
 import com.cbu.backend.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -21,20 +29,50 @@ public class MemberService {
 
     private final MemberMapper memberMapper;
 
-
-
-
-    public Member findById(Long id) {
-        return memberRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-    }
-
-    public MemberResponse signup(MemberSignupRequest dto) {
+    @Transactional
+    public Member signup(MemberSignupRequest dto) {
         if(memberRepository.existsByAccountId(dto.getAccountId())) {
             throw new EntityExistsException();
         }
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         Member createdMember = memberRepository.save(memberMapper.toEntity(dto));
-
-        return memberMapper.toDto(createdMember);
+        return createdMember;
     }
+
+    public Member getEntity(Long id) {
+        return memberRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public MemberResponse findByAccountId(String accountId) {
+        return memberMapper.toDto(memberRepository.findByAccountId(accountId));
+    }
+
+    public List<MemberResponse> findByName(String name) {
+
+//        List<MemberResponse> memberResponseList = new ArrayList<>();
+//        memberList.forEach(m -> {memberResponseList.add(memberMapper.toDto(m));});
+
+        return memberRepository.findByName(name).stream()
+                .map(memberMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<MemberResponse> findByGeneration(int generation) {
+        return memberRepository.findByGeneration(generation).stream()
+                .map(memberMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<MemberResponse> findByMajor(String major) {
+        return memberRepository.findByMajor(major).stream()
+        .map(memberMapper::toDto)
+        .collect(Collectors.toList());
+    }
+
+    public List<MemberResponse> findByGrade(int grade) {
+        return memberRepository.findByGrade(grade).stream()
+                .map(memberMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
 }
