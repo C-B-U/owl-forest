@@ -29,7 +29,7 @@ public class ArticleService {
     private final MemberService memberService;
 
     public ArticleResponse create(Long boardId, ArticleRequest dto) {
-        Member author = memberService.findById(dto.getAuthorId());
+        Member author = memberService.getEntity(dto.getAuthorId());
         Board board = boardService.getEntity(boardId);
         Article savedArticle = articleRepository
                 .save(articleMapper.toEntity(dto, board, author));
