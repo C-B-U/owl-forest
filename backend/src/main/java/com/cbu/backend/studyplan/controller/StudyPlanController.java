@@ -5,13 +5,13 @@ import com.cbu.backend.global.ResponseStatus;
 import com.cbu.backend.studyplan.dto.request.StudyPlanRequest;
 import com.cbu.backend.studyplan.dto.request.UpdateStudyPlanRequest;
 import com.cbu.backend.studyplan.dto.response.StudyPlanResponse;
+import com.cbu.backend.studyplan.entity.StudyPlan;
 import com.cbu.backend.studyplan.service.StudyPlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 
 @RestController
@@ -29,10 +29,13 @@ public class StudyPlanController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
     }
 
-    // 스터디 계획 조회
+    // 스터디 계획서 조회
     @GetMapping("{studyGroupId}/plan")
-    public ResponseEntity<List<StudyPlanResponse>> getAll(){
-        return ResponseEntity.ok(studyPlanService.getAll());
+    public ResponseEntity<ResponseFormat<StudyPlanResponse>> findByStudyGroupId(@PathVariable Long studyGroupId){
+        StudyPlanResponse studyPlan = studyPlanService.findByStudyGroupId(studyGroupId);
+        ResponseFormat<StudyPlanResponse> responseFormat = new ResponseFormat<>(ResponseStatus.GET_STUDYPLAN_SUCCESS, studyPlan);
+
+        return ResponseEntity.ok(responseFormat);
     }
 
     @PatchMapping("{studyGroupId}/plan")
@@ -49,7 +52,7 @@ public class StudyPlanController {
     // 스터디 계획서 삭제
     @DeleteMapping("{studyGroupId}/plan")
     public ResponseEntity<ResponseFormat<StudyPlanResponse>> deleteStudyPlan(@PathVariable Long studyGroupId){
-        StudyPlanResponse deleteStudyPlan = studyPlanService.delete(studyGroupId);
+        StudyPlanResponse deleteStudyPlan = studyPlanService.deleteById(studyGroupId);
         ResponseFormat<StudyPlanResponse> responseBody = new ResponseFormat<>(ResponseStatus.DELETE_STUDYPLAN_SUCCESS, deleteStudyPlan);
         return ResponseEntity.ok(responseBody);
     }

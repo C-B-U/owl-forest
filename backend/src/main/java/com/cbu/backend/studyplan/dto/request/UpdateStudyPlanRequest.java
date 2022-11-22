@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateStudyPlanRequest {
-    private String title;
-    private String generationNum;
     private String rule;
-    private String teamMember;
     private String book;
 }

@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -45,24 +43,37 @@ public class StudyPlanService {
     private void changeStudyPlan(StudyPlan studyPlan, UpdateStudyPlanRequest dto){
         studyPlan.setBook(dto.getBook());
         studyPlan.setRule(dto.getRule());
-        studyPlan.setTitle(dto.getTitle());
-        studyPlan.setTeamMember(dto.getTeamMember());
+        //studyPlan.setTitle(dto.getTitle());
+        //studyPlan.setTeamMember(dto.getTeamMember());
     }
 
-    public List<StudyPlanResponse> getAll(){
-        return studyPlanRepository.findAll()
-                .stream()
-                .map(studyPlanMapper::mapToDTO)
-                .collect(Collectors.toList());
+//    public List<StudyPlanResponse> getAll(){
+//        return studyPlanRepository.findAll()
+//                .stream()
+//                .map(studyPlanMapper::mapToDTO)
+//                .collect(Collectors.toList());
+//    }
 
-    }
+//    public List<StudyPlanResponse> findAllByStudyGroupId(Long studyGroupId){
+////        StudyPlan studyPlan = getEntity(findByStudyGroupId(studyGroupId).orElseThrow((EntityNotFoundException::new)));
+////
+////        return studyPlanMapper.mapToDTO(studyPlan);
+//        return studyPlanRepository.findAllByStudyGroupId(studyGroupId)
+//                .stream()
+//                .map(studyPlanMapper::mapToDTO)
+//                .collect(Collectors.toList());
+//    }
 
     @Transactional
-    public StudyPlanResponse delete(Long studyGroupId){
-        //studyPlanRepository.delete(dto.toEntity());
+    public StudyPlanResponse deleteById(Long studyGroupId){
         StudyPlan studyPlan = getEntity(studyGroupId);
         studyPlan.getBaseTime().delete();
 
+        return studyPlanMapper.mapToDTO(studyPlan);
+    }
+
+    public StudyPlanResponse findByStudyGroupId(Long studyGroupId){
+        StudyPlan studyPlan = getEntity(studyGroupId);
         return studyPlanMapper.mapToDTO(studyPlan);
     }
 

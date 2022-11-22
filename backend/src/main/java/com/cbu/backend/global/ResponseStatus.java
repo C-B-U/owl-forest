@@ -74,7 +74,8 @@ public enum ResponseStatus {
     // Head Name : SP
     POST_STUDYPLAN_SUCCESS("SP000", "스터디 계획 생성 성공"),
     UPDATE_STUDYPLAN_SUCCESS("SP001", "스터디 계획 수정 성공"),
-    DELETE_STUDYPLAN_SUCCESS("SP002", "스터디 계획 삭제 성공");
+    DELETE_STUDYPLAN_SUCCESS("SP002", "스터디 계획 삭제 성공"),
+    GET_STUDYPLAN_SUCCESS("SP100", "스터디 계획 조회 성공");
 
 
     private final String code;

@@ -1,6 +1,7 @@
 package com.cbu.backend.studyplan.entity;
 
 import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.studygroup.entity.StudyGroup;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,34 +16,27 @@ public class StudyPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String title;
-    @Column(nullable = false)
-    private String generationNum;
+//    @Column(nullable = false)
+//    private String title;
+//    @Column(nullable = false)
+//    private String generationNum;
     @Column(nullable = false)
     private String rule;
-    @Column(nullable = false)
-    private String teamMember;
+
     @Column(nullable = false)
     private String book;
-    @Column(nullable = false)
-    private String studyGroupId;
 
     @Embedded
     private BaseTime baseTime;
 
-//    @OneToOne
-//    @JoinColumn(name = "studyGroupId")
-//    private
+    @OneToOne
+    @JoinColumn(name = "studyGroupId") // 스터디 그룹 아이디
+    private StudyGroup studyGroup;
 
     @Builder
-    public StudyPlan(String title, String  generationNum, String rule, String teamMember, String book, String studyGroupId) {
-        this.title = title;
-        this.generationNum = generationNum;
+    public StudyPlan(String rule, String book, String studyGroupId) {
         this.rule = rule;
-        this.teamMember = teamMember;
         this.book = book;
-        this.studyGroupId = studyGroupId;
     }
 }
 
