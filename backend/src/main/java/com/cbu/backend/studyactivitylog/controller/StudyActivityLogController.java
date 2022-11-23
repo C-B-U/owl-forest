@@ -9,26 +9,26 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/study-group/{id}/journal")
+@RequestMapping("/api/study-group/{studyGroupId}/studyActivityLog")
 @RequiredArgsConstructor
 public class StudyActivityLogController {
 
     private StudyActivityLogService studyActivityLogService;
 
-    @DeleteMapping("{journalId}}")
+    @DeleteMapping("{studyActivityLogId}")
     public ResponseEntity<ResponseFormat<StudyActivityLogResponseDTO>> deleteStudyActivityLog(
-            @PathVariable Long id,
-            @PathVariable Long journalId
+            @PathVariable Long studyGroupId,
+            @PathVariable Long studyActivityLogId
     ) {
-        StudyActivityLogResponseDTO deleteStudyActivityLog = studyActivityLogService.delete(journalId);
-        ResponseFormat<StudyActivityLogResponseDTO> responseBody = new ResponseFormat<>(ResponseStatus.DELETE_STUDYACTIVITYLOG_SUCCESS, deleteStudyActivityLog);
+        StudyActivityLogResponseDTO studyActivityLog = studyActivityLogService.delete(studyGroupId);
+        ResponseFormat<StudyActivityLogResponseDTO> responseBody = new ResponseFormat<>(ResponseStatus.DELETE_STUDYACTIVITYLOG_SUCCESS, studyActivityLog);
         return ResponseEntity.ok(responseBody);
     }
 
     @GetMapping
-    public ResponseEntity<ResponseFormat<StudyActivityLogResponseDTO>> getAllStudyActivityLog(@PathVariable Long id) {
-        StudyActivityLogResponseDTO getAllStudyActivityLog = studyActivityLogService.getAll();
-        ResponseFormat<StudyActivityLogResponseDTO> responseBody = new ResponseFormat<>(ResponseStatus.GET_STUDYACTIVITYLOG_SUCCESS, getAllStudyActivityLog);
+    public ResponseEntity<ResponseFormat<StudyActivityLogResponseDTO>> findAllStudyActivityLog(@PathVariable Long studyGroupId) {
+        StudyActivityLogResponseDTO studyActivityLog = studyActivityLogService.findAll();
+        ResponseFormat<StudyActivityLogResponseDTO> responseBody = new ResponseFormat<>(ResponseStatus.GET_STUDYACTIVITYLOG_SUCCESS, studyActivityLog);
         return ResponseEntity.ok(responseBody);
     }
 }
