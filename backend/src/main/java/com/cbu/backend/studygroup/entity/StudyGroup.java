@@ -36,7 +36,7 @@ public class StudyGroup {
     private Boolean isActive = true;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Member studyGroupLeader;
+    private StudyGroupMember studyGroupLeader;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "studyGroup")
     private List<StudyGroupMember> studyGroupMembers = new ArrayList<>();
@@ -46,7 +46,7 @@ public class StudyGroup {
 
     @Builder
     public StudyGroup(String name, String summary, List<StudyActivityLog> studyActivityLogs, Integer season,
-                      Member studyGroupLeader, List<StudyGroupMember> studyGroupMembers) {
+                      StudyGroupMember studyGroupLeader, List<StudyGroupMember> studyGroupMembers) {
         this.name = name;
         this.summary = summary;
         this.studyActivityLogs = studyActivityLogs;
