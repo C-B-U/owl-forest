@@ -1,5 +1,6 @@
 package com.cbu.backend.member.dto.response;
 
+import com.cbu.backend.member.entity.InterestTag;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +11,7 @@ import java.util.List;
 @Getter
 @Builder
 @AllArgsConstructor
-public class MemberResponseDTO {
+public class MemberResponse {
     @JsonView(MemberView.Normal.class)
     private Long id;
     @JsonView(MemberView.Normal.class)
@@ -24,7 +25,7 @@ public class MemberResponseDTO {
     @JsonView(MemberView.NormalExtra.class)
     private String major;
     @JsonView(MemberView.AdminExtra.class)
-    private Integer studentId;
+    private String studentId;
     @JsonView(MemberView.Normal.class)
     private Integer generation;
     @JsonView(MemberView.NormalExtra.class)
@@ -38,5 +39,5 @@ public class MemberResponseDTO {
     @JsonView(MemberView.NormalExtra.class)
     private String introduction;
     @JsonView(MemberView.Normal.class)
-    private List<String> interestTags;
+    private List<InterestTag> interestTags;
 }

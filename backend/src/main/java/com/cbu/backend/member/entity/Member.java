@@ -1,12 +1,10 @@
 package com.cbu.backend.member.entity;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -20,7 +18,6 @@ public class Member {
 
     private String name;
     private String password;
-
     private String accountId;
 
     private String email;
@@ -29,7 +26,7 @@ public class Member {
 
     private String major;
 
-    private Integer studentId;
+    private String studentId;
 
     private Integer generation;
 
@@ -43,12 +40,35 @@ public class Member {
 
     private String introduction;
 
-    @Builder
-    public Member(String name, String study, String password) {
-        this.name = name;
-        this.password = password;
-    }
-
     @OneToMany(mappedBy = "member")
     private List<InterestTag> tags = new ArrayList<InterestTag>();
+
+    @Setter
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
+    @Builder
+    public Member(String name, String password, String accountId, String email, int grade, String major,
+                  String studentId, int generation, String blogUrl, String githubId, String profileUrl,
+                  String phoneNumber, String introduction) {
+
+        this.name = name;
+        this.password = password;
+        this.accountId = accountId;
+        this.email = email;
+        this.grade = grade;
+        this.major = major;
+        this.studentId = studentId;
+        this.generation = generation;
+        this.blogUrl = blogUrl;
+        this.githubId = githubId;
+        this.profileUrl = profileUrl;
+        this.phoneNumber = phoneNumber;
+        this.introduction = introduction;
+    }
+
 }
+
+
+
+

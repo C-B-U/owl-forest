@@ -2,16 +2,21 @@ package com.cbu.backend.studygroup.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateStudyGroupRequestDTO {
+public class StudyGroupRequest {
     private String name;
     private String summary;
-    //private Member teamLeader;
-    //private List<Member> teamMembers = new ArrayList<>();
+    private Long studyGroupLeader;
+    private List<Long> studyGroupMembers = new ArrayList<>();
     private Integer likeCount;
     private Integer season;
 }

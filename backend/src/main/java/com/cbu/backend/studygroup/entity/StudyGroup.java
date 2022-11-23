@@ -35,15 +35,24 @@ public class StudyGroup {
 
     private Boolean isActive = true;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Member studyGroupLeader;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "studyGroup")
+    private List<StudyGroupMember> studyGroupMembers = new ArrayList<>();
+
     @Embedded
     private BaseTime baseTime;
 
     @Builder
-    public StudyGroup(String name, String summary, List<StudyActivityLog> studyActivityLogs, Integer season) {
+    public StudyGroup(String name, String summary, List<StudyActivityLog> studyActivityLogs, Integer season,
+                      Member studyGroupLeader, List<StudyGroupMember> studyGroupMembers) {
         this.name = name;
         this.summary = summary;
         this.studyActivityLogs = studyActivityLogs;
         this.season = season;
+        this.studyGroupLeader = studyGroupLeader;
+        this.studyGroupMembers = studyGroupMembers;
     }
 
     public StudyGroup update(StudyGroup studyGroup) { // 매개변수 request DTO로 수정 필요
@@ -52,14 +61,6 @@ public class StudyGroup {
 
         return this;
     }
-
- /*   public boolean isMemberDuplicated(StudyGroup studyGroup) {
-        return studyGroup.getTeamMembers()
-                .stream()
-                .distinct()
-                .mapToInt(i -> 1)
-                .sum() == studyGroup.getTeamMembers().size();
-    }*/
 
     public void updateLike(Integer like) { // like는 -1(좋아요 취소) or +1(좋아요)
         if(isPositive(like)){

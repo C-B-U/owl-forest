@@ -2,9 +2,9 @@ package com.cbu.backend.articlecomment.service;
 
 import com.cbu.backend.article.entity.Article;
 import com.cbu.backend.article.service.ArticleService;
-import com.cbu.backend.articlecomment.dto.request.ArticleCommentRequestDTO;
-import com.cbu.backend.articlecomment.dto.request.UpdateArticleCommentRequestDTO;
-import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponseDTO;
+import com.cbu.backend.articlecomment.dto.request.ArticleCommentRequest;
+import com.cbu.backend.articlecomment.dto.request.UpdateArticleCommentRequest;
+import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponse;
 import com.cbu.backend.articlecomment.entity.ArticleComment;
 import com.cbu.backend.articlecomment.mapper.ArticleCommentMapper;
 import com.cbu.backend.articlecomment.repository.ArticleCommentRepository;
@@ -27,7 +27,7 @@ public class ArticleCommentService {
     private final ArticleService articleService;
     private final MemberService memberService;
 
-    public ArticleCommentResponseDTO save(Long boardId, ArticleCommentRequestDTO dto) {
+    public ArticleCommentResponse save(Long boardId, ArticleCommentRequest dto) {
         Article article = articleService.getEntity(boardId);
         Member writer = memberService.getEntity(dto.getWriterId());
         ArticleComment savedArticleComment =
@@ -36,7 +36,7 @@ public class ArticleCommentService {
         return articleCommentMapper.toDto(savedArticleComment);
     }
 
-    public List<ArticleCommentResponseDTO> getAllByBoardId(Long articleId) {
+    public List<ArticleCommentResponse> findAllByBoardId(Long articleId) {
         return articleCommentRepository.findAllByArticleId(articleId)
                 .stream()
                 .map(articleCommentMapper::toDto)
@@ -44,20 +44,20 @@ public class ArticleCommentService {
     }
 
     @Transactional
-    public ArticleCommentResponseDTO delete(Long id) {
+    public ArticleCommentResponse deleteById(Long id) {
         ArticleComment articleComment = getEntity(id);
         articleComment.getBaseTime().delete();
         return articleCommentMapper.toDto(articleComment);
     }
 
-    public ArticleCommentResponseDTO update(Long id, UpdateArticleCommentRequestDTO dto) {
+    public ArticleCommentResponse updateById(Long id, UpdateArticleCommentRequest dto) {
         ArticleComment articleComment = getEntity(id);
         modifyBoardComment(articleComment, dto);
 
         return articleCommentMapper.toDto(articleComment);
     }
 
-    private void modifyBoardComment(ArticleComment articleComment, UpdateArticleCommentRequestDTO dto) {
+    private void modifyBoardComment(ArticleComment articleComment, UpdateArticleCommentRequest dto) {
         articleComment.setContent(dto.getContent());
     }
 

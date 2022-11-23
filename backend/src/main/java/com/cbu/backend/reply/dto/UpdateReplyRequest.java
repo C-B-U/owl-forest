@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReplyUpdateRequest {
+public class UpdateReplyRequest {
     private String content;
 }

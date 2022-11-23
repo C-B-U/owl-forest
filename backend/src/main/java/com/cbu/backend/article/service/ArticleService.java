@@ -1,7 +1,7 @@
 package com.cbu.backend.article.service;
 
-import com.cbu.backend.article.dto.request.ArticleRequestDTO;
-import com.cbu.backend.article.dto.response.ArticleResponseDTO;
+import com.cbu.backend.article.dto.request.ArticleRequest;
+import com.cbu.backend.article.dto.response.ArticleResponse;
 import com.cbu.backend.article.entity.Article;
 import com.cbu.backend.article.mapper.ArticleMapper;
 import com.cbu.backend.article.repository.ArticleRepository;
@@ -28,7 +28,7 @@ public class ArticleService {
     private final BoardService boardService;
     private final MemberService memberService;
 
-    public ArticleResponseDTO save(Long boardId, ArticleRequestDTO dto) {
+    public ArticleResponse create(Long boardId, ArticleRequest dto) {
         Member author = memberService.getEntity(dto.getAuthorId());
         Board board = boardService.getEntity(boardId);
         Article savedArticle = articleRepository
@@ -37,13 +37,13 @@ public class ArticleService {
         return articleMapper.toDto(savedArticle);
     }
 
-    public List<ArticleResponseDTO> getAllByBoardId(Long boardId, Pageable pageable) {
+    public List<ArticleResponse> findAllByBoardId(Long boardId, Pageable pageable) {
         return articleRepository.findAllByBoardId(boardId, pageable).stream()
                 .map(articleMapper::toDto)
                 .collect(Collectors.toList());
     }
 
-    public ArticleResponseDTO get(Long id) {
+    public ArticleResponse findById(Long id) {
         return articleMapper.toDto(getEntity(id));
     }
 
