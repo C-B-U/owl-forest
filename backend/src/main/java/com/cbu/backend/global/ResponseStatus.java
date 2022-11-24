@@ -57,11 +57,11 @@ public enum ResponseStatus {
     // 스터디 활동일지 (StudyActivityLog) 응답 상태
     // Head Name : SAL
 
-    DELETE_STUDYACTIVITYLOG_SUCCESS("SAL002", "스터디일지 삭제 성공"),
-    GET_STUDYACTIVITYLOG_SUCCESS("SAL103", "스터디일지 조회 성공"),
 
     POST_STUDYACTIVITYLOG_SUCCESS("SAL000", "스터디 일지 생성 성공"),
-    GET_ALL_STUDYACTIVITYLOG_SUCCESS("SAL001", "스터디 일지 조회 성공"),
+    DELETE_STUDYACTIVITYLOG_SUCCESS("SAL002", "스터디일지 삭제 성공"),
+    GET_STUDYACTIVITYLOG_LIST_SUCCESS("SAL100", "스터디 일지 목록 조회 성공"),
+    GET_STUDYACTIVITYLOG_SUCCESS("SAL101", "스터디일지 조회 성공"),
 
 
     // 스터디 그룹 (StudyGroup) 응답 상태

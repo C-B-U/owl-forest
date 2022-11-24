@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 public class StudyActivityLogService {
 
     // TODO 덤프 메소드입니다. 가장 최근 스터디 일지의 생성 시간을 반환하도록 추후 구현해주세요.
-    private StudyActivityLogRepository studyActivityLogRepository;
-    private StudyActivityLogMapper studyActivityLogMapper;
+    private final StudyActivityLogRepository studyActivityLogRepository;
+    private final StudyActivityLogMapper studyActivityLogMapper;
 
 
     public StudyActivityLogResponse create(Long groupId, StudyActivityLogRequest studyActivityLogRequestDTO) {

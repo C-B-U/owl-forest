@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class StudyActivityLogController {
 
 
-    private StudyActivityLogService studyActivityLogService;
+    private final StudyActivityLogService studyActivityLogService;
 
     @DeleteMapping("{studyActivityLogId}")
     public ResponseEntity<ResponseFormat<StudyActivityLogResponse>> deleteStudyActivityLog(
@@ -32,7 +32,7 @@ public class StudyActivityLogController {
     @GetMapping
     public ResponseEntity<ResponseFormat<StudyActivityLogResponse>> findAllStudyActivityLog(@PathVariable Long studyGroupId) {
         StudyActivityLogResponse studyActivityLog = studyActivityLogService.findAll();
-        ResponseFormat<StudyActivityLogResponse> responseBody = new ResponseFormat<>(ResponseStatus.GET_STUDYACTIVITYLOG_SUCCESS, studyActivityLog);
+        ResponseFormat<StudyActivityLogResponse> responseBody = new ResponseFormat<>(ResponseStatus.GET_STUDYACTIVITYLOG_LIST_SUCCESS, studyActivityLog);
         return ResponseEntity.ok(responseBody);
     }
 
