@@ -1,10 +1,7 @@
 package com.cbu.backend.studyactivitylog.entity;
 
 import com.cbu.backend.studygroup.entity.StudyGroup;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,14 +17,21 @@ public class StudyActivityLog {
     @GeneratedValue
     private Long id;
     private Integer week;
+    @Setter
     private LocalDateTime startTime;
+    @Setter
     private LocalDateTime endTime;
+    @Setter
     private String place;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "studyActivityLog")
+    @Setter
     private List<StudyParticipant> teamMembers = new ArrayList<>();
+    @Setter
     private String title;
+    @Setter
     private String description;
+    @Setter
     private String assignment;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_group_id")

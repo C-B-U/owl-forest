@@ -45,6 +45,8 @@ public enum ResponseStatus {
 
     // 스터디 활동일지 (StudyActivityLog) 응답 상태
     // Head Name : SAL
+    UPDATE_STUDYACTICITYLOG_SUCCESS("SAL000", "활동일지 수정 성공"),
+    DOWN_STUDYACTICITYLOG_SUCCESS("SAL001", "스터디 사진 다운 성공"),
 
     // 스터디 그룹 (StudyGroup) 응답 상태
     // Head Name : SG
