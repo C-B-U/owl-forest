@@ -25,6 +25,18 @@ const WrapSearchbar = styled.div`
   margin-left: auto;
 `;
 
+const WrapBtn = styled.div`
+    width: 5rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    margin-left: 1rem;
+    justify-content: center;
+    color: ${palette('PsCocoa', 0)};
+    background-color:  ${palette('PsLightBrown', 0)};
+    font-weight:bold;
+    cursor: pointer;
+`;
+
 const Wrap = styled.div`
   margin-top: 60px;
   display: grid;
@@ -32,9 +44,7 @@ const Wrap = styled.div`
   gap: 0rem;
   width: 100%;
   max-height: 91.9vh;
-
   overflow: auto;
-
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -82,6 +92,36 @@ function BR_BorrowList() {
           <ListWrap>
             <WrapSearchbar>
               <Search />
+              <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='채팅이동'
+                  />
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='전체북리뷰'
+                  />
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='내북리스트'
+                  />
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.5rem'
+                    name='도서등록'
+                  />
+          
+
             </WrapSearchbar>
             <Wrap>
               <WrapContent>
