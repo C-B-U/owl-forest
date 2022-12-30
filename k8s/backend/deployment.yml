@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: owlforest-backend
+spec:
+  selector:
+    matchLabels:
+      app: owlforest-backend
+      component: owlforest-backend
+      tier: back
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: owlforest-backend
+        component: owlforest-backend
+        tier: back
+    spec:
+      containers:
+        - name: owlforest-backend
+          image: phjppo0918/owlforest-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: database.host
+            - name: DATABASE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: database.port
+            - name: DATABASE_SCHEMA
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: database.schema
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: database.username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: database.password
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "4Gi"
+            limits:
+              cpu: "500m"
+              memory: "8Gi"

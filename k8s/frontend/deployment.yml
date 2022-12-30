@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: owlforest-frontend
+  labels:
+    app: owlforest-frontend
+    tier: front
+spec:
+  selector:
+    matchLabels:
+      app: owlforest-frontend
+      tier: front
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: owlforest-frontend
+        tier: front
+    spec:
+      containers:
+        - name: owlforest-frontend
+          image: phjppo0918/owlforest-frontend:latest
+          imagePullPolicy: Always
+          env:
+            - name: SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: server-secret
+                  key: server.url
+            - name: SERVER_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: server-secret
+                  key: server.port
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "1Gi"
+            limits:
+              cpu: "500m"
+              memory: "2Gi"
+          ports:
+            - containerPort: 80
