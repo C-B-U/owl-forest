@@ -1,20 +1,21 @@
-import React from "react";
-import theme from "../../Components/Color";
-import { palette } from "styled-tools";
-import styled, { ThemeProvider } from "styled-components";
-import Header from "../../Components/ActivityLog/Header";
-import RegButton from "../../Components/Btn.jsx";
-import Input from "../../Components/Input.jsx";
+import React from 'react';
+import { palette } from 'styled-tools';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from '../../Components/Color';
+import Header from '../../Components/ActivityLog/Header';
+import RegButton from '../../Components/Btn.jsx';
+import Input from '../../Components/Input.jsx';
+
 const MainWrap = styled.div`
   position: absolute;
-  background-color: ${palette("PsCocoa", 0)};
+  background-color: ${palette('PsCocoa', 0)};
   width: 100%;
 `;
 const Wrap = styled.div`
   margin: 8rem auto 0rem auto;
   width: fit-content;
   height: fit-content;
-  background-color: ${palette("PsCocoa", 1)};
+  background-color: ${palette('PsCocoa', 1)};
   padding: 3rem;
   box-sizing: content-box;
 `;
@@ -23,7 +24,7 @@ const WrapContent = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${palette("PsYellow")};
+  color: ${palette('PsYellow')};
 `;
 
 const BookInfos = styled.div`
@@ -44,18 +45,18 @@ const BookImage = styled.div`
   width: 23rem;
   height: 26rem;
   background-color: #ffffff;
-`; //책이미지
+`; // 책이미지
 
 const OneLineReview = styled.div`
   margin-top: 2rem;
-`; //책한줄평
+`; // 책한줄평
 
 const WrapReview = styled.div`
   margin-left: 3rem;
   width: fit-content;
   height: fit-cotent;
   padding: 1rem;
-  background-color: ${palette("PsCocoa", 1)};
+  background-color: ${palette('PsCocoa', 1)};
   border-radius: 0.2rem;
   margin-top: 1rem;
   position: relative;
@@ -76,7 +77,7 @@ const WrapotherStarScore = styled.div`
 const StarScore = styled.div`
   margin-right: 1rem;
   margin-bottom: 1rem;
-`; //별 평점 난이도
+`; // 별 평점 난이도
 
 const DetailReview = styled.div`
   margin-top: 0.5rem;
@@ -105,7 +106,7 @@ const Scrollbar = styled.nav`
 const Comment = styled.div`
   margin-top: 2rem;
   margin-bottom: 1rem;
-`; //댓글
+`; // 댓글
 
 const CommentView = styled.div`
   position: relative;
@@ -121,7 +122,7 @@ const CommentView = styled.div`
 const Commenter = styled.div`
   margin-left: 1rem;
   margin-top: 1rem;
-`; //댓글작성자
+`; // 댓글작성자
 
 const CommentContent = styled.div`
   margin-left: 1rem;
@@ -148,7 +149,7 @@ function BR_ReviewDetail() {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Header /> {/*헤더*/}
+        <Header /> {/* 헤더 */}
         <MainWrap>
           <Wrap>
             <Title>북리뷰 상세</Title>
@@ -160,18 +161,18 @@ function BR_ReviewDetail() {
                 <OneLineReview>
                   <ReviewName>한줄평</ReviewName>
                   <Input
-                    width={"40rem"}
-                    height={"2.3rem"}
-                    placeholder={"한줄평을 작성해 주세요"}
+                    width='40rem'
+                    height='2.3rem'
+                    placeholder='한줄평을 작성해 주세요'
                   />
                 </OneLineReview>
 
                 <DetailReview>
                   <ReviewName>상세평</ReviewName>
                   <Input
-                    width={"40rem"}
-                    height={"7rem"}
-                    placeholder={"상세평을 작성해 주세요"}
+                    width='40rem'
+                    height='7rem'
+                    placeholder='상세평을 작성해 주세요'
                   />
                 </DetailReview>
                 <WrapStarScore>
@@ -184,7 +185,7 @@ function BR_ReviewDetail() {
               <CommentName>댓글</CommentName>
               <Scrollbar>
                 <CommentView>
-                  {/*comment view 한개가 댓글 1개*/}
+                  {/* comment view 한개가 댓글 1개 */}
                   <Commenter>작성자</Commenter>
                   <CommentContent>dsadadasdhakdsadjkh</CommentContent>
                 </CommentView>
@@ -210,14 +211,14 @@ function BR_ReviewDetail() {
             </Comment>
             <CommentWrite>
               <CommentInput>
-                <Input width={"40rem"} height={"2.3rem"} placeholder="댓글" />
+                <Input width='40rem' height='2.3rem' placeholder='댓글' />
               </CommentInput>
               <RegButton
-                color={palette("PsYellow")}
-                background={palette("PsBtn")}
-                width={"5.5rem"}
-                height={"2.5rem"}
-                name="등 록"
+                color={palette('PsYellow')}
+                background={palette('PsBtn')}
+                width='5.5rem'
+                height='2.5rem'
+                name='등 록'
               />
             </CommentWrite>
 
@@ -225,14 +226,14 @@ function BR_ReviewDetail() {
               <CommentName>이 책의 다른 리뷰</CommentName>
               <Scrollbar>
                 <CommentView>
-                  {/*comment view 하나가 리뷰 블록 1개*/}
+                  {/* comment view 하나가 리뷰 블록 1개 */}
                   <Commenter>작성자</Commenter>
                   <WrapotherStarScore>
                     <StarScore>난이도</StarScore>
                     <StarScore>평점</StarScore>
                   </WrapotherStarScore>
                   <CommentContent>
-                    {/*코멘트 내용*/}
+                    {/* 코멘트 내용 */}
                     dsadadasddasdasddadasdasdadasdadadasdasdadasdasdadasdsadasdasddasdasdadasdadadsa
                   </CommentContent>
                 </CommentView>

@@ -151,9 +151,9 @@ function ActivityLog() {
               <StudyBtn
                 background={palette('PsBtn')}
                 color={palette('PsYellow')}
-                width={'74rem'}
-                height={'3.5rem'}
-                name={'스터디 생성'}
+                width='74rem'
+                height='3.5rem'
+                name='스터디 생성'
               />
             </BtnWrap>
           </ListWrap>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Welcome from './Pages/Welcome';
 import StudyActivityLog from './Pages/SAL_Pages/StudyActivityLog';
@@ -25,7 +26,6 @@ import ReviewReg from './Pages/BR_Pages/BR_ReviewReg';
 function App() {
   return (
     <div className='App'>
-
       <Router>
         <Routes>
           {/* ---- 메인페이지 ---- */}

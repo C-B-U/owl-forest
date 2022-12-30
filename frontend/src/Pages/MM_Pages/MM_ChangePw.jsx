@@ -75,28 +75,20 @@ function MM_ChangePw() {
             비밀번호를 변경하시겠습니까?
             <CbuImg src={imgfile} />
           </Msg>
+          <PwKey width='22rem' height='2rem' placeholder='기존 비밀번호' />
+          <PwKey width='22rem' height='2rem' placeholder='새로운 비밀번호' />
           <PwKey
-            width={'22rem'}
-            height={'2rem'}
-            placeholder={'기존 비밀번호'}
-          />
-          <PwKey
-            width={'22rem'}
-            height={'2rem'}
-            placeholder={'새로운 비밀번호'}
-          />
-          <PwKey
-            width={'22rem'}
-            height={'2rem'}
-            placeholder={'새로운 비밀번호 확인'}
+            width='22rem'
+            height='2rem'
+            placeholder='새로운 비밀번호 확인'
           />
           <FindWrap>
             <Btn
-              color={'black'}
+              color='black'
               background={palette('PsBtn', 0)}
-              width={'4rem'}
-              height={'2rem'}
-              name={'변경'}
+              width='4rem'
+              height='2rem'
+              name='변경'
             />
           </FindWrap>
         </Squbox>

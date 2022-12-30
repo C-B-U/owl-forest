@@ -6,7 +6,7 @@ import theme from '../../Components/Color';
 import MLProfileCon from '../../Components/MMList/MLProfileCon';
 import profileimg from '../../Image/cbu_circle.png';
 
-//가로 정렬
+// 가로 정렬
 const MainWrap = styled.div`
   display: flex;
   background-color: ${palette('PsWhite')};
@@ -23,7 +23,7 @@ const LineUp = styled.div`
   overflow: auto;
 `;
 
-//마이페이지, 검색의 가로 정렬을 위해 사용
+// 마이페이지, 검색의 가로 정렬을 위해 사용
 const SearchWrap = styled.div`
   display: flex;
   white-space: wrap;
