@@ -35,7 +35,7 @@ public class AuthAccountService {
             return findByAccountId(accountId);
         }
         Member member = setUpMember(oAuth2Request);
-        //memberService.save(member); //TODO SAVE 호출 안해도 JPA에서 AUTO SAVE 하는지 확인
+        memberService.save(member); //TODO SAVE 호출 안해도 JPA에서 AUTO SAVE 하는지 확인
         AuthAccount authAccount = setUpAuthAccount(oAuth2Request, member);
         authAccountRepository.save(authAccount);
 

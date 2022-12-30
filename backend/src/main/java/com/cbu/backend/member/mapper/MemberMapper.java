@@ -1,19 +1,18 @@
 package com.cbu.backend.member.mapper;
 
-import com.cbu.backend.global.Mapper;
 import com.cbu.backend.member.dto.request.MemberSignupRequest;
 import com.cbu.backend.member.dto.response.MemberResponse;
 import com.cbu.backend.member.dto.response.MemberView;
-import com.cbu.backend.member.entity.Authority;
 import com.cbu.backend.member.entity.Member;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Mapper
+@Component
 @RequiredArgsConstructor
 public class MemberMapper {
     private final ObjectMapper objectMapper;

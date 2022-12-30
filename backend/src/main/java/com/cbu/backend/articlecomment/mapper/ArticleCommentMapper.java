@@ -4,15 +4,15 @@ import com.cbu.backend.article.entity.Article;
 import com.cbu.backend.articlecomment.dto.request.ArticleCommentRequest;
 import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponse;
 import com.cbu.backend.articlecomment.entity.ArticleComment;
-import com.cbu.backend.global.Mapper;
 import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.member.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Mapper
+@Component
 @RequiredArgsConstructor
 public class ArticleCommentMapper {
 

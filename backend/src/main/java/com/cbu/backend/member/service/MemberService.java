@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -30,29 +29,5 @@ public class MemberService {
 
     public MemberResponse findById(Long id) {
         return memberMapper.toDto(memberRepository.findById(id).orElseThrow((EntityNotFoundException::new)));
-    }
-
-    public MemberResponse findByAccountId(String accountId) {
-        return memberMapper.toDto(memberRepository.findByAccountId(accountId).orElseThrow((EntityNotFoundException::new)));
-    }
-
-    public List<MemberResponse> findByName(String name) {
-
-        return memberMapper.toDtoList(memberRepository.findByName(name));
-    }
-
-    public List<MemberResponse> findByGeneration(int generation) {
-
-        return memberMapper.toDtoList(memberRepository.findByGeneration(generation));
-    }
-
-    public List<MemberResponse> findByMajor(String major) {
-
-        return memberMapper.toDtoList(memberRepository.findByMajor(major));
-    }
-
-    public List<MemberResponse> findByGrade(int grade) {
-
-        return memberMapper.toDtoList(memberRepository.findByGrade(grade));
     }
 }
