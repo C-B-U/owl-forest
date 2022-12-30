@@ -1,17 +1,17 @@
 package com.cbu.backend.studygroup.mapper;
 
-import com.cbu.backend.global.Mapper;
 import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.response.StudyGroupMemberResponse;
 import com.cbu.backend.studygroup.dto.response.StudyGroupResponse;
 import com.cbu.backend.studygroup.entity.StudyGroup;
 import com.cbu.backend.studygroup.entity.StudyGroupMember;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Mapper
-public class StudyGroupMapper { // 덤프 클래스입니다.
+@Component
+public class StudyGroupMapper {
 
     public StudyGroup mapToEntity(StudyGroupRequest studyGroupRequest) {
         return StudyGroup.builder()
@@ -36,14 +36,11 @@ public class StudyGroupMapper { // 덤프 클래스입니다.
         return StudyGroupMemberResponse.builder()
                 .id(studyGroupMember.getId())
                 .name(studyGroupMember.getTeamMembers().getName())
-                .major(studyGroupMember.getTeamMembers().getMajor())
-                .profileUrl(studyGroupMember.getTeamMembers().getProfileUrl())
-                .grade(studyGroupMember.getTeamMembers().getGrade())
                 .build();
     }
     private List<StudyGroupMemberResponse> toMemberListResponse(List<StudyGroupMember> studyGroupMembers){
         return studyGroupMembers.stream()
-                .map(studyGroupMember -> toMemberResponse(studyGroupMember))
+                .map(this::toMemberResponse)
                 .collect(Collectors.toList());
     }
 

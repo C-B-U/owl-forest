@@ -55,9 +55,9 @@ public class StudyActivityLogMapper {
         return StudyParticipantResponse.builder()
                 .id(member.getId())
                 .name(member.getName())
-                .major(member.getMajor())
-                .grade(member.getGrade())
-                .profileUrl(member.getProfileUrl())
+//                .major(member.getMajor())
+//                .grade(member.getGrade())
+//                .profileUrl(member.getProfileUrl())
                 .build();
     }
 }

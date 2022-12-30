@@ -1,14 +1,15 @@
 package com.cbu.backend.member.controller;
+
 import com.cbu.backend.global.ResponseFormat;
 import com.cbu.backend.global.ResponseStatus;
-import com.cbu.backend.member.dto.request.MemberSignupRequest;
 import com.cbu.backend.member.dto.response.MemberResponse;
-import com.cbu.backend.member.mapper.MemberMapper;
 import com.cbu.backend.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -19,7 +20,6 @@ import java.util.List;
 public class MemberController {
 
     private final MemberService memberService;
-    private final MemberMapper memberMapper;
 
     @GetMapping(params = "accountId")
     public ResponseEntity<ResponseFormat<MemberResponse>> findByAccountId(@RequestParam String accountId) {
@@ -62,13 +62,6 @@ public class MemberController {
         List<MemberResponse> members = memberService.findByGrade(grade);
         ResponseFormat<List<MemberResponse>> responseFormat = new ResponseFormat<>(ResponseStatus.GET_MEMBER_LIST_SUCCESS, members);
 
-        return ResponseEntity.ok(responseFormat);
-    }
-
-    @PostMapping
-    public ResponseEntity<ResponseFormat<MemberResponse>> signup(@RequestBody MemberSignupRequest dto) {
-        MemberResponse member = memberMapper.toDto(memberService.signup(dto));
-        ResponseFormat<MemberResponse> responseFormat = new ResponseFormat<>(ResponseStatus.POST_MEMBER_SUCCESS, member);
         return ResponseEntity.ok(responseFormat);
     }
 }
