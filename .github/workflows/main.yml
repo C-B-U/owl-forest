@@ -1,8 +1,18 @@
 name: OWL-FOREST Github Actions
 on: [push, pull_request]
 jobs:
-  test:
+  unit-test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: cd backend
-      - run: echo "hello world"
+      - run: ./gradlew test
+  
+  replace-google-format:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd github-action-back
+      - uses: axel-op/googlejavaformat-action@v3
+        with:
+          args: "--replace"
