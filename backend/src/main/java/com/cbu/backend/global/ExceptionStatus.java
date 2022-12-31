@@ -1,4 +1,3 @@
 package com.cbu.backend.global;
 
-public enum ExceptionStatus {
-}
+public enum ExceptionStatus {}

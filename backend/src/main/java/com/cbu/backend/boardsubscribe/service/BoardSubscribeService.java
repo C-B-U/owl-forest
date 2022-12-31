@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BoardSubscribeService {
 
-    private final BoardSubscribeRepository boardSubscribeRepository;
+  private final BoardSubscribeRepository boardSubscribeRepository;
 
-    private final BoardService boardService;
-    private final MemberService memberService;
+  private final BoardService boardService;
+  private final MemberService memberService;
 
-    public BoardSubscribeResponse subscribe(BoardSubscribeRequest dto) {
-        throw new UnsupportedOperationException();
-    }
+  public BoardSubscribeResponse subscribe(BoardSubscribeRequest dto) {
+    throw new UnsupportedOperationException();
+  }
 }

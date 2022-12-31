@@ -12,24 +12,24 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class BoardMapper {
 
-    private final MemberMapper memberMapper;
+  private final MemberMapper memberMapper;
 
-    public Board toEntity(BoardRequest dto, Member member) {
-        return Board.builder()
-                .name(dto.getName())
-                .description(dto.getDescription())
-                .manager(member)
-                .build();
-    }
+  public Board toEntity(BoardRequest dto, Member member) {
+    return Board.builder()
+        .name(dto.getName())
+        .description(dto.getDescription())
+        .manager(member)
+        .build();
+  }
 
-    public BoardResponse toDto(Board entity) {
-        return BoardResponse.builder()
-                .id(entity.getId())
-                .name(entity.getName())
-                .description(entity.getDescription())
-                .manager(memberMapper.toDto(entity.getManager()))
-                .createdAt(entity.getBaseTime().getCreatedAt())
-                .updatedAt(entity.getBaseTime().getUpdatedAt())
-                .build();
-    }
+  public BoardResponse toDto(Board entity) {
+    return BoardResponse.builder()
+        .id(entity.getId())
+        .name(entity.getName())
+        .description(entity.getDescription())
+        .manager(memberMapper.toDto(entity.getManager()))
+        .createdAt(entity.getBaseTime().getCreatedAt())
+        .updatedAt(entity.getBaseTime().getUpdatedAt())
+        .build();
+  }
 }

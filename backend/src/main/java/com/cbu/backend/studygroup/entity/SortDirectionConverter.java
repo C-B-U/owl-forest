@@ -6,9 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SortDirectionConverter implements Converter<String, SortDirection> {
 
-    @Override
-    public SortDirection convert(String source) {
-        return SortDirection.valueOf(source.toUpperCase());
-    }
-
+  @Override
+  public SortDirection convert(String source) {
+    return SortDirection.valueOf(source.toUpperCase());
+  }
 }

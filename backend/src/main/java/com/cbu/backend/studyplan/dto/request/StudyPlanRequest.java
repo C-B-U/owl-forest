@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudyPlanRequest {
-    private String title;
-    private String generationNum;
-    private String rule;
-    private String teamMember;
-    private String book;
-    private String studyGroupId;
+  private String title;
+  private String generationNum;
+  private String rule;
+  private String teamMember;
+  private String book;
+  private String studyGroupId;
 }

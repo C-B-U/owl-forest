@@ -13,18 +13,16 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("api/board/{boardId}/comment")
 public class ArticleCommentController {
-    private final ArticleCommentService articleCommentService;
+  private final ArticleCommentService articleCommentService;
 
+  @PostMapping
+  public ResponseEntity<ResponseFormat<ArticleCommentResponse>> create(
+      @PathVariable Long boardId, @RequestBody ArticleCommentRequest dto) {
 
-    @PostMapping
-    public ResponseEntity<ResponseFormat<ArticleCommentResponse>> create(
-            @PathVariable Long boardId,
-            @RequestBody ArticleCommentRequest dto) {
+    ArticleCommentResponse savedComment = articleCommentService.save(boardId, dto);
+    ResponseFormat<ArticleCommentResponse> responseFormat =
+        new ResponseFormat<>(ResponseStatus.POST_ARTICLECOMMENT_SUCCESS, savedComment);
 
-        ArticleCommentResponse savedComment = articleCommentService.save(boardId, dto);
-        ResponseFormat<ArticleCommentResponse> responseFormat =
-                new ResponseFormat<>(ResponseStatus.POST_ARTICLECOMMENT_SUCCESS, savedComment);
-
-        return ResponseEntity.ok(responseFormat);
-    }
+    return ResponseEntity.ok(responseFormat);
+  }
 }

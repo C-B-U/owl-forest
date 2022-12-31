@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReplyRequest {
 
-    private String name;
-    private String content;
-
+  private String name;
+  private String content;
 }
-

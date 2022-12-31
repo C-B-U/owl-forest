@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/boardSubscribe")
 @RequiredArgsConstructor
 public class BoardSubscribeController {
-    private final BoardSubscribeService boardSubscribeService;
+  private final BoardSubscribeService boardSubscribeService;
 
-    @PostMapping
-    public ResponseEntity<BoardSubscribeResponse> subscribe(@RequestBody BoardSubscribeRequest dto) {
-        boardSubscribeService.subscribe(dto);
+  @PostMapping
+  public ResponseEntity<BoardSubscribeResponse> subscribe(@RequestBody BoardSubscribeRequest dto) {
+    boardSubscribeService.subscribe(dto);
 
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
 }

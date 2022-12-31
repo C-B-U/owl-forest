@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class MemberPrivacy {
-    private String studentId;
+  private String studentId;
 
-    private String phoneNumber;
+  private String phoneNumber;
 }

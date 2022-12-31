@@ -1,4 +1,3 @@
 package com.cbu.backend.member.entity;
 
-public enum Major {
-}
+public enum Major {}

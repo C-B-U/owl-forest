@@ -1,7 +1,6 @@
 package com.cbu.backend.config.security.oauth2.attributemapper;
 
 import com.cbu.backend.config.security.oauth2.OAuth2Request;
-
 import java.util.Map;
 
 /**
@@ -10,7 +9,5 @@ import java.util.Map;
  * @author Hyeonjun Park
  */
 public interface AttributeMappable {
-    OAuth2Request mapToDTO(Map<String, Object> attributes);
-
-
+  OAuth2Request mapToDTO(Map<String, Object> attributes);
 }

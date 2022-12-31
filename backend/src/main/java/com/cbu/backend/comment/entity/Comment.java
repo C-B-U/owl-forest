@@ -1,4 +1,3 @@
 package com.cbu.backend.comment.entity;
 
-public class Comment {
-}
+public class Comment {}

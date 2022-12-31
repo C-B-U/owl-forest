@@ -7,6 +7,4 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class BoardSubscribeResponse {
-
-}
+public class BoardSubscribeResponse {}

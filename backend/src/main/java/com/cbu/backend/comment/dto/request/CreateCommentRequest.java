@@ -1,4 +1,3 @@
 package com.cbu.backend.comment.dto.request;
 
-public class CreateCommentRequest {
-}
+public class CreateCommentRequest {}

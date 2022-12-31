@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BoardRequest {
 
-    private String name;
-    private String description;
-    private Long managerId;
+  private String name;
+  private String description;
+  private Long managerId;
 }

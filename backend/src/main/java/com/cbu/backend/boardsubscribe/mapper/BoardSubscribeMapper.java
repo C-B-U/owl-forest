@@ -9,16 +9,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class BoardSubscribeMapper {
 
-    public BoardSubscribe toEntity(Board board, Member member) {
-        return BoardSubscribe.builder()
-                .board(board)
-                .member(member)
-                .build();
-    }
+  public BoardSubscribe toEntity(Board board, Member member) {
+    return BoardSubscribe.builder().board(board).member(member).build();
+  }
 
-    public BoardSubscribeResponse toDto(BoardSubscribe entity) {
-        // 응답 할게 없어...
+  public BoardSubscribeResponse toDto(BoardSubscribe entity) {
+    // 응답 할게 없어...
 
-        return BoardSubscribeResponse.builder().build();
-    }
+    return BoardSubscribeResponse.builder().build();
+  }
 }

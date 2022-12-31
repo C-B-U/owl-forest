@@ -14,24 +14,27 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/study-group/{studyGroupId}/studyActivityLog")
 @RequiredArgsConstructor
 public class StudyActivityLogController {
-    private final StudyActivityLogService studyActivityLogService;
+  private final StudyActivityLogService studyActivityLogService;
 
-    @PostMapping
-    public ResponseEntity<ResponseFormat<StudyActivityLogResponse>> create(
-            @PathVariable Long studyGroupId,
-            @RequestBody StudyActivityLogRequest dto){
-        StudyActivityLogResponse createdStudyActivityLog = studyActivityLogService.create(studyGroupId, dto);
-        ResponseFormat<StudyActivityLogResponse> responseFormat = new ResponseFormat<>(ResponseStatus.POST_STUDYACTIVITYLOG_SUCCESS, createdStudyActivityLog);
+  @PostMapping
+  public ResponseEntity<ResponseFormat<StudyActivityLogResponse>> create(
+      @PathVariable Long studyGroupId, @RequestBody StudyActivityLogRequest dto) {
+    StudyActivityLogResponse createdStudyActivityLog =
+        studyActivityLogService.create(studyGroupId, dto);
+    ResponseFormat<StudyActivityLogResponse> responseFormat =
+        new ResponseFormat<>(ResponseStatus.POST_STUDYACTIVITYLOG_SUCCESS, createdStudyActivityLog);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseFormat);
+    return ResponseEntity.status(HttpStatus.CREATED).body(responseFormat);
+  }
 
-    }
+  @GetMapping("/{studyActivityLogId}")
+  public ResponseEntity<ResponseFormat<StudyActivityLogResponse>> findById(
+      @PathVariable Long studyActivityLogId) {
+    StudyActivityLogResponse studyActivityLog =
+        studyActivityLogService.findById(studyActivityLogId);
+    ResponseFormat<StudyActivityLogResponse> responseFormat =
+        new ResponseFormat<>(ResponseStatus.GET_STUDYACTIVITYLOG_SUCCESS, studyActivityLog);
 
-    @GetMapping("/{studyActivityLogId}")
-    public ResponseEntity<ResponseFormat<StudyActivityLogResponse>> findById(@PathVariable Long studyActivityLogId) {
-        StudyActivityLogResponse studyActivityLog = studyActivityLogService.findById(studyActivityLogId);
-        ResponseFormat<StudyActivityLogResponse> responseFormat = new ResponseFormat<>(ResponseStatus.GET_STUDYACTIVITYLOG_SUCCESS, studyActivityLog);
-
-        return ResponseEntity.ok(responseFormat);
-    }
+    return ResponseEntity.ok(responseFormat);
+  }
 }

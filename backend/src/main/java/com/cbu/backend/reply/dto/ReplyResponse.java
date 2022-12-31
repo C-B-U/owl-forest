@@ -8,9 +8,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class ReplyResponse {
-    private Long id;
-    private String name;
-    private String content;
-    private String date;
-
+  private Long id;
+  private String name;
+  private String content;
+  private String date;
 }
