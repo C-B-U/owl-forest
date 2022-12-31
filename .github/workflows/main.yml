@@ -10,11 +10,11 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'adopt'
+          distribution: 'temurin'
           architecture: x64
       - uses: gradle/gradle-build-action@v2
         with:
-          arguments: tes
+          arguments: test
 
   replace-google-format:
     runs-on: ubuntu-latest
