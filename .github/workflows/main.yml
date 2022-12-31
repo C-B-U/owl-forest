@@ -3,9 +3,10 @@ on: [push, pull_request]
 jobs:
   unit-test:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./backend
     steps:
       - uses: actions/checkout@v3
-      - run: cd backend
       - uses: actions/setup-java@v3
         with:
           java-version: '17'
@@ -13,12 +14,14 @@ jobs:
           architecture: x64
       - run: chmod +x gradlew
       - run: ./gradlew test
-  
+
   replace-google-format:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./backend
     steps:
       - uses: actions/checkout@v3
-      - run: cd backend
       - uses: axel-op/googlejavaformat-action@v3
         with:
-          args: "--replace"
+          args: '--replace'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
