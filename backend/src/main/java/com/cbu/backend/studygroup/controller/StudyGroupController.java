@@ -117,10 +117,11 @@ public class StudyGroupController {
 
   /** 스터디 그룹 삭제 API */
   @DeleteMapping("{id}")
-  public ResponseEntity<ResponseFormat<StudyGroupResponse>> deleteStudyGroup(@PathVariable Long id) {
+  public ResponseEntity<ResponseFormat<StudyGroupResponse>> deleteStudyGroup(
+      @PathVariable Long id) {
     StudyGroupResponse studyGroupResponse = studyGroupService.deleteStudyGroup(id);
     ResponseFormat<StudyGroupResponse> responseFormat =
-            new ResponseFormat<>(ResponseStatus.DELETE_STUDYGROUP_SUCCESS, studyGroupResponse);
+        new ResponseFormat<>(ResponseStatus.DELETE_STUDYGROUP_SUCCESS, studyGroupResponse);
 
     return ResponseEntity.ok(responseFormat);
   }

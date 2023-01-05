@@ -113,7 +113,6 @@ public class StudyGroupService {
   }
 
   private StudyGroup getEntity(Long id) {
-    return studyGroupRepository.findById(id)
-            .orElseThrow(EntityNotFoundException::new);
+    return studyGroupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
   }
 }
