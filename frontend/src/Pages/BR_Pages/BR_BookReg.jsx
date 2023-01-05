@@ -214,9 +214,9 @@ function BR_BookReg() {
       <ThemeProvider theme={theme}>
         <Header />
         <MainWrap>
-          {/* -----------------------------------------
+          {/* 
               ---------------- 팝업창 작업----------------
-              ----------------------------------------- */}
+          */}
 
           <WrapPopupBackground style={{ display: isShown ? 'block' : 'none' }}>
             <WrapPopup>
@@ -252,9 +252,9 @@ function BR_BookReg() {
             </WrapPopup>
           </WrapPopupBackground>
 
-          {/* -----------------------------------------
+          {/*
               ------------- 책등록 페이지 작업 -------------
-              ----------------------------------------- */}
+           */}
 
           <Wrap>
             <Title>도서 등록</Title>
