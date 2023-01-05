@@ -1,9 +1,9 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.3'
-    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id 'com.google.cloud.tools.jib' version '3.2.1'
     id "org.asciidoctor.jvm.convert" version "3.3.2"
-    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
     id 'java'
 }
 
@@ -28,25 +28,39 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    querydsl.extendsFrom compileClasspath
 }
 
 repositories {
     mavenCentral()
 }
 
+ext {
+    queryDslVersion = "5.0.0"
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
-    implementation 'com.querydsl:querydsl-jpa'
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}"
 
     testRuntimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 def querydslDir = "$buildDir/generated/querydsl"

@@ -1,6 +1,6 @@
 package com.cbu.backend.studygroup.entity;
 
-import com.cbu.backend.common.domain.BaseTimeEntity;
+import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studyactivitylog.entity.StudyActivityLog;
 import lombok.AccessLevel;
@@ -26,9 +26,6 @@ public class StudyGroup {
 
     private String summary;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Member teamLeader;
-
     @OneToMany(mappedBy = "studyGroup")
     private List<StudyActivityLog> studyActivityLogs = new ArrayList<>();
 
@@ -36,36 +33,34 @@ public class StudyGroup {
 
     private Integer season;
 
+    private Boolean isActive = true;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private StudyGroupMember studyGroupLeader;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "studyGroup")
+    private List<StudyGroupMember> studyGroupMembers = new ArrayList<>();
+
     @Embedded
-    private BaseTimeEntity baseTime;
+    private BaseTime baseTime;
 
     @Builder
-    public StudyGroup(Long id, String name, String summary, Member teamLeader,
-                      List<StudyActivityLog> studyActivityLogs, Integer likeCount, Integer season) {
-        this.id = id;
+    public StudyGroup(String name, String summary, List<StudyActivityLog> studyActivityLogs, Integer season,
+                      StudyGroupMember studyGroupLeader, List<StudyGroupMember> studyGroupMembers) {
         this.name = name;
         this.summary = summary;
-        this.teamLeader = teamLeader;
         this.studyActivityLogs = studyActivityLogs;
-        this.likeCount = likeCount;
         this.season = season;
+        this.studyGroupLeader = studyGroupLeader;
+        this.studyGroupMembers = studyGroupMembers;
     }
 
     public StudyGroup update(StudyGroup studyGroup) { // 매개변수 request DTO로 수정 필요
         this.name = studyGroup.getName();
         this.summary = studyGroup.getSummary();
-        this.teamLeader = studyGroup.getTeamLeader();
 
         return this;
     }
-
- /*   public boolean isMemberDuplicated(StudyGroup studyGroup) {
-        return studyGroup.getTeamMembers()
-                .stream()
-                .distinct()
-                .mapToInt(i -> 1)
-                .sum() == studyGroup.getTeamMembers().size();
-    }*/
 
     public void updateLike(Integer like) { // like는 -1(좋아요 취소) or +1(좋아요)
         if(isPositive(like)){
@@ -75,6 +70,10 @@ public class StudyGroup {
 
     private boolean isPositive(Integer like) {
         return this.likeCount + like >= 0;
+    }
+
+    public void updateIsActive() {
+        this.isActive = !this.isActive;
     }
 
 }

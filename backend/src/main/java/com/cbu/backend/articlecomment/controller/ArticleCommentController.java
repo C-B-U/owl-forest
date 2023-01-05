@@ -1,9 +1,9 @@
 package com.cbu.backend.articlecomment.controller;
 
-import com.cbu.backend.articlecomment.dto.request.ArticleCommentRequestDTO;
-import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponseDTO;
+import com.cbu.backend.articlecomment.dto.request.ArticleCommentRequest;
+import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponse;
 import com.cbu.backend.articlecomment.service.ArticleCommentService;
-import com.cbu.backend.global.ResponseBody;
+import com.cbu.backend.global.ResponseFormat;
 import com.cbu.backend.global.ResponseStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +17,14 @@ public class ArticleCommentController {
 
 
     @PostMapping
-    public ResponseEntity<ResponseBody<ArticleCommentResponseDTO>> createComment(
+    public ResponseEntity<ResponseFormat<ArticleCommentResponse>> create(
             @PathVariable Long boardId,
-            @RequestBody ArticleCommentRequestDTO dto) {
+            @RequestBody ArticleCommentRequest dto) {
 
-        ArticleCommentResponseDTO savedComment = articleCommentService.save(boardId, dto);
-        ResponseBody<ArticleCommentResponseDTO> responseBody =
-                new ResponseBody<>(ResponseStatus.POST_ARTICLECOMMENT_SUCCESS, savedComment);
+        ArticleCommentResponse savedComment = articleCommentService.save(boardId, dto);
+        ResponseFormat<ArticleCommentResponse> responseFormat =
+                new ResponseFormat<>(ResponseStatus.POST_ARTICLECOMMENT_SUCCESS, savedComment);
 
-        return ResponseEntity.ok(responseBody);
+        return ResponseEntity.ok(responseFormat);
     }
 }

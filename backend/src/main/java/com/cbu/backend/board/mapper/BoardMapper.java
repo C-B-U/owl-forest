@@ -1,7 +1,7 @@
 package com.cbu.backend.board.mapper;
 
-import com.cbu.backend.board.dto.request.BoardRequestDTO;
-import com.cbu.backend.board.dto.response.BoardResponseDTO;
+import com.cbu.backend.board.dto.request.BoardRequest;
+import com.cbu.backend.board.dto.response.BoardResponse;
 import com.cbu.backend.board.entity.Board;
 import com.cbu.backend.global.Mapper;
 import com.cbu.backend.member.entity.Member;
@@ -14,7 +14,7 @@ public class BoardMapper {
 
     private final MemberMapper memberMapper;
 
-    public Board toEntity(BoardRequestDTO dto, Member member) {
+    public Board toEntity(BoardRequest dto, Member member) {
         return Board.builder()
                 .name(dto.getName())
                 .description(dto.getDescription())
@@ -22,8 +22,8 @@ public class BoardMapper {
                 .build();
     }
 
-    public BoardResponseDTO toDto(Board entity) {
-        return BoardResponseDTO.builder()
+    public BoardResponse toDto(Board entity) {
+        return BoardResponse.builder()
                 .id(entity.getId())
                 .name(entity.getName())
                 .description(entity.getDescription())
