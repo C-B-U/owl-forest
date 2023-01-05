@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
  *
  * @author ohksj(김승진)
  */
-
 @Component
 public class SortDirectionConverter implements Converter<String, SortDirection> {
 

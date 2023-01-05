@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
  *
  * @author ohksj(김승진)
  */
-
 @Builder
 @Getter
 @NoArgsConstructor

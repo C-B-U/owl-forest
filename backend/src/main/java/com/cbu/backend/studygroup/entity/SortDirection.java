@@ -9,7 +9,6 @@ import lombok.Getter;
  *
  * @author ohksj(김승진)
  */
-
 @AllArgsConstructor
 @Getter
 public enum SortDirection {

@@ -33,7 +33,10 @@ public class StudyGroupService {
 
   public StudyGroupResponse createStudyGroup(StudyGroupRequest studyGroupRequest) { // 스터디 등록
     Member leader = memberService.getEntity(studyGroupRequest.getStudyGroupLeader());
-    List<Member> members = studyGroupRequest.getStudyGroupMembers().stream().map(memberService::getEntity).collect(Collectors.toList());
+    List<Member> members =
+        studyGroupRequest.getStudyGroupMembers().stream()
+            .map(memberService::getEntity)
+            .collect(Collectors.toList());
     StudyGroup studyGroup = studyGroupMapper.mapToEntity(studyGroupRequest);
     studyGroup.organizeMembers(leader, members);
     studyGroupRepository.save(studyGroup);
@@ -85,13 +88,14 @@ public class StudyGroupService {
             Comparator.comparing(function, sortDirection)
                 .thenComparing(StudyGroup::getSeason, Comparator.reverseOrder()))
         .map(studyGroupMapper::toResponse)
-            .toList();
+        .toList();
   }
 
   @Transactional
-  public StudyGroupResponse updateStudyGroup(Long studyGroupId, StudyGroupRequest studyGroupRequest) { // 스터디 수정
-    StudyGroup studyGroup = studyGroupRepository.findById(studyGroupId)
-            .orElseThrow(EntityNotFoundException::new);
+  public StudyGroupResponse updateStudyGroup(
+      Long studyGroupId, StudyGroupRequest studyGroupRequest) { // 스터디 수정
+    StudyGroup studyGroup =
+        studyGroupRepository.findById(studyGroupId).orElseThrow(EntityNotFoundException::new);
     StudyGroup updatedStudyGroup = studyGroup.update(studyGroupRequest);
 
     return studyGroupMapper.toResponse(updatedStudyGroup);

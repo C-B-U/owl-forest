@@ -1,9 +1,8 @@
 package com.cbu.backend.studygroup.dto.response;
 
+import com.cbu.backend.studyactivitylog.dto.response.StudyActivityLogResponse;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.cbu.backend.studyactivitylog.dto.response.StudyActivityLogResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,6 @@ import lombok.NoArgsConstructor;
  *
  * @author ohksj(김승진)
  */
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
