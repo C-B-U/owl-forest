@@ -44,11 +44,8 @@ public class StudyGroupService {
     return studyGroupMapper.toResponse(studyGroup);
   }
 
-  public StudyGroupResponse findById(Long studyGroupId) { // 스터디 ID로 조회
-    StudyGroup studyGroup =
-        studyGroupRepository.findById(studyGroupId).orElseThrow(EntityNotFoundException::new);
-
-    return studyGroupMapper.toResponse(studyGroup);
+  public StudyGroupResponse findById(Long id) { // 스터디 ID로 조회
+    return studyGroupMapper.toResponse(getEntity(id));
   }
 
   @Transactional
@@ -94,19 +91,29 @@ public class StudyGroupService {
   @Transactional
   public StudyGroupResponse updateStudyGroup(
       Long studyGroupId, StudyGroupRequest studyGroupRequest) { // 스터디 수정
-    StudyGroup studyGroup =
-        studyGroupRepository.findById(studyGroupId).orElseThrow(EntityNotFoundException::new);
+    StudyGroup studyGroup = getEntity(studyGroupId);
     StudyGroup updatedStudyGroup = studyGroup.update(studyGroupRequest);
 
     return studyGroupMapper.toResponse(updatedStudyGroup);
   }
 
   @Transactional
-  public void finishStudyGroup(Long studyGroupId) {
-    StudyGroup studyGroup =
-        studyGroupRepository.findById(studyGroupId).orElseThrow(EntityNotFoundException::new);
+  public void finishStudyGroup(Long id) { // 스터디 마감
+    StudyGroup studyGroup = getEntity(id);
     if (studyGroup.getIsActive()) {
       studyGroup.updateIsActive();
     }
+  }
+
+  @Transactional
+  public StudyGroupResponse deleteStudyGroup(Long id) { // 스터디 삭제
+    StudyGroup studyGroup = getEntity(id);
+    studyGroup.getBaseTime().delete();
+    return studyGroupMapper.toResponse(studyGroup);
+  }
+
+  private StudyGroup getEntity(Long id) {
+    return studyGroupRepository.findById(id)
+            .orElseThrow(EntityNotFoundException::new);
   }
 }

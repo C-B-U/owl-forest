@@ -22,6 +22,7 @@ public class StudyGroupMapper {
 
   public StudyGroupResponse toResponse(StudyGroup studyGroup) {
     return StudyGroupResponse.builder()
+        .id(studyGroup.getId())
         .studyGroupLeader(toMemberResponse(studyGroup.getStudyGroupLeader()))
         .studyGroupMembers(toMemberListResponse(studyGroup.getStudyGroupMembers()))
         .summary(studyGroup.getSummary())
@@ -34,7 +35,7 @@ public class StudyGroupMapper {
 
   private StudyGroupMemberResponse toMemberResponse(StudyGroupMember studyGroupMember) {
     return StudyGroupMemberResponse.builder()
-        .id(studyGroupMember.getId())
+        .memberId(studyGroupMember.getTeamMember().getId())
         .name(studyGroupMember.getTeamMember().getName())
         .build();
   }

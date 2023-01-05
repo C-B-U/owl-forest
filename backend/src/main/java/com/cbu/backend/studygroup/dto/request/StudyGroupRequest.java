@@ -21,6 +21,5 @@ public class StudyGroupRequest {
   private String summary;
   private Long studyGroupLeader;
   private List<Long> studyGroupMembers = new ArrayList<>();
-  private Integer likeCount;
   private Integer season;
 }

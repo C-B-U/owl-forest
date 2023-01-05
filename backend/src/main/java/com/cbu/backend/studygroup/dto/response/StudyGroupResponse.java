@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudyGroupResponse {
+  private Long id;
   private String name;
   private String summary;
   private StudyGroupMemberResponse studyGroupLeader;
