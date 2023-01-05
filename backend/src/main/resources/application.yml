@@ -18,8 +18,8 @@ spring:
       client:
         registration:
           google:
-            client-id: asdf
-            client-secret: asdf
+            client-id: 
+            client-secret:
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             scope: email, profile
 jwt:
