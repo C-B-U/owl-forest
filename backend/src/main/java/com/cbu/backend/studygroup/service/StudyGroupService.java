@@ -29,14 +29,14 @@ public class StudyGroupService {
         StudyGroup studyGroup = studyGroupMapper.mapToEntity(studyGroupRequest);
         studyGroupRepository.save(studyGroup);
 
-        return studyGroupMapper.toResponseDTO(studyGroup);
+        return studyGroupMapper.toResponse(studyGroup);
     }
 
     public StudyGroupResponse searchById(Long studyGroupId) { // 스터디 ID로 조회
         StudyGroup studyGroup = studyGroupRepository.findById(studyGroupId)
                 .orElseThrow(EntityNotFoundException::new);
 
-        return studyGroupMapper.toResponseDTO(studyGroup);
+        return studyGroupMapper.toResponse(studyGroup);
     }
 
     @Transactional
@@ -64,7 +64,7 @@ public class StudyGroupService {
                 .stream()
                 .sorted(Comparator.comparing(function, sortDirection)
                         .thenComparing(StudyGroup::getSeason, Comparator.reverseOrder()))
-                .map(studyGroupMapper::toResponseDTO)
+                .map(studyGroupMapper::toResponse)
                 .collect(Collectors.toList());
     }
 
