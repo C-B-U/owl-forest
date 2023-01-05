@@ -10,9 +10,7 @@ import CloseButton from '../../Components/Btn';
 import Input from '../../Components/Input.jsx';
 import RegButton from '../../Components/Btn.jsx';
 
-// -----------------------------------------
-// ------------- 책등록 페이지 작업 -------------
-// -----------------------------------------
+// ------------- 책등록 페이지 -------------
 
 const MainWrap = styled.div`
   position: absolute;
