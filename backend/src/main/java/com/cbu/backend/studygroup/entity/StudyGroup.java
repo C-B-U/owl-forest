@@ -1,10 +1,13 @@
 package com.cbu.backend.studygroup.entity;
 
 import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studyactivitylog.entity.StudyActivityLog;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+
+import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -54,7 +57,7 @@ public class StudyGroup {
     this.studyGroupMembers = studyGroupMembers;
   }
 
-  public StudyGroup update(StudyGroup studyGroup) { // 매개변수 request DTO로 수정 필요
+  public StudyGroup update(StudyGroupRequest studyGroup) { // 매개변수 request DTO로 수정 필요
     this.name = studyGroup.getName();
     this.summary = studyGroup.getSummary();
 
@@ -73,5 +76,10 @@ public class StudyGroup {
 
   public void updateIsActive() {
     this.isActive = !this.isActive;
+  }
+
+  public void organizeMembers(Member leader, List<Member> members) {
+    this.studyGroupLeader = new StudyGroupMember(leader, this);
+    members.forEach(member -> this.studyGroupMembers.add(new StudyGroupMember(member, this)));
   }
 }

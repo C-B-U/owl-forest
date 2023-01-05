@@ -7,6 +7,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * 스터디 그룹에 대한 Request DTO
+ *
+ * @author ohksj(김승진)
+ */
+
 @Builder
 @Getter
 @NoArgsConstructor

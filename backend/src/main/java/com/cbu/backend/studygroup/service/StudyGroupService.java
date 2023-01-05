@@ -1,5 +1,7 @@
 package com.cbu.backend.studygroup.service;
 
+import com.cbu.backend.member.entity.Member;
+import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.studyactivitylog.service.StudyActivityLogService;
 import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.response.StudyGroupResponse;
@@ -8,7 +10,6 @@ import com.cbu.backend.studygroup.mapper.StudyGroupMapper;
 import com.cbu.backend.studygroup.repository.StudyGroupRepository;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
@@ -16,6 +17,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 스터디 그룹 API의 서비스 로직을 담당하는 클래스
+ *
+ * @author ohksj(김승진)
+ */
 @Service
 @RequiredArgsConstructor
 public class StudyGroupService {
@@ -23,15 +29,19 @@ public class StudyGroupService {
   private final StudyGroupRepository studyGroupRepository;
   private final StudyGroupMapper studyGroupMapper;
   private final StudyActivityLogService studyActivityLogService;
+  private final MemberService memberService;
 
-  public StudyGroupResponse registerStudyGroup(StudyGroupRequest studyGroupRequest) { // 스터디 등록
+  public StudyGroupResponse createStudyGroup(StudyGroupRequest studyGroupRequest) { // 스터디 등록
+    Member leader = memberService.getEntity(studyGroupRequest.getStudyGroupLeader());
+    List<Member> members = studyGroupRequest.getStudyGroupMembers().stream().map(memberService::getEntity).collect(Collectors.toList());
     StudyGroup studyGroup = studyGroupMapper.mapToEntity(studyGroupRequest);
+    studyGroup.organizeMembers(leader, members);
     studyGroupRepository.save(studyGroup);
 
     return studyGroupMapper.toResponse(studyGroup);
   }
 
-  public StudyGroupResponse searchById(Long studyGroupId) { // 스터디 ID로 조회
+  public StudyGroupResponse findById(Long studyGroupId) { // 스터디 ID로 조회
     StudyGroup studyGroup =
         studyGroupRepository.findById(studyGroupId).orElseThrow(EntityNotFoundException::new);
 
@@ -46,21 +56,28 @@ public class StudyGroupService {
         .ifPresent(studyGroup -> studyGroup.updateLike(likeCount));
   }
 
-  public List<StudyGroupResponse> searchStudyOrderByCreatedAt(
+  public List<StudyGroupResponse> findStudyGroupSortByCreatedAt(
       Comparator<Comparable> sortDirection) { // 스터디 일지 최신순 조회
     return sort(studyActivityLogService::searchLatestStudyActivityLogCreatedAt, sortDirection);
   }
 
-  public List<StudyGroupResponse> searchStudyOrderByStudyActivityLog(
+  public List<StudyGroupResponse> findStudyGroupSortByStudyActivityLog(
       Comparator<Comparable> sortDirection) { // 스터디 일지 개수순 조회
     return sort(studyGroup -> studyGroup.getStudyActivityLogs().size(), sortDirection);
   }
 
-  public List<StudyGroupResponse> searchStudyOrderByLikeCount(
+  public List<StudyGroupResponse> findStudyGroupSortByLikeCount(
       Comparator<Comparable> sortDirection) { // 스터디 좋아요순(많은 순서) 조회
     return sort(StudyGroup::getLikeCount, sortDirection);
   }
 
+  /**
+   * 세가지 기준으로 정렬해 스터디 그룹을 찾는 서비스들의 공통 로직 빼낸 메서드
+   *
+   * @param function
+   * @param sortDirection
+   * @return List<StudyGroupResponse>
+   */
   private List<StudyGroupResponse> sort(
       Function<StudyGroup, Comparable> function, Comparator<Comparable> sortDirection) {
     return studyGroupRepository.findAll().stream()
@@ -68,24 +85,24 @@ public class StudyGroupService {
             Comparator.comparing(function, sortDirection)
                 .thenComparing(StudyGroup::getSeason, Comparator.reverseOrder()))
         .map(studyGroupMapper::toResponse)
-        .collect(Collectors.toList());
+            .toList();
   }
 
   @Transactional
-  public void updateStudyGroup(Long studyGroupId, StudyGroupRequest studyGroupRequest) { // 스터디 수정
-    Optional<StudyGroup> oStudyGroup = studyGroupRepository.findById(studyGroupId);
-    if (!oStudyGroup.isPresent()) {
-      throw new RuntimeException();
-    }
-    StudyGroup studyGroup = oStudyGroup.get();
-    StudyGroup updatedStudyGroup = studyGroupMapper.mapToEntity(studyGroupRequest);
-    studyGroup.update(updatedStudyGroup);
+  public StudyGroupResponse updateStudyGroup(Long studyGroupId, StudyGroupRequest studyGroupRequest) { // 스터디 수정
+    StudyGroup studyGroup = studyGroupRepository.findById(studyGroupId)
+            .orElseThrow(EntityNotFoundException::new);
+    StudyGroup updatedStudyGroup = studyGroup.update(studyGroupRequest);
+
+    return studyGroupMapper.toResponse(updatedStudyGroup);
   }
 
   @Transactional
-  public void closeStudyGroup(Long studyGroupId) {
+  public void finishStudyGroup(Long studyGroupId) {
     StudyGroup studyGroup =
-        studyGroupRepository.findById(studyGroupId).orElseThrow(RuntimeException::new);
-    studyGroup.updateIsActive();
+        studyGroupRepository.findById(studyGroupId).orElseThrow(EntityNotFoundException::new);
+    if (studyGroup.getIsActive()) {
+      studyGroup.updateIsActive();
+    }
   }
 }

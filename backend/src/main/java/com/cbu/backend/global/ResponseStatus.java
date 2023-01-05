@@ -61,6 +61,8 @@ public enum ResponseStatus {
   GET_STUDYGROUP_SUCCESS("SG103", "스터디 조회 성공"),
   POST_STUDYGROUP_SUCCESS("SG000", "스터디 생성 성공"),
   PATCH_STUDYGROUP_LIKECOUNT_SUCCESS("SG001", "스터디 좋아요 업데이트 성공"),
+  PUT_STUDYGROUP_SUCCESS("SG002", "스터디 수정 성공"),
+  PATCH_STUDYGROUP_FINISH_SUCCESS("SG003", "스터디 종료 성공"),
 
   // 스터디 계획 (StudyPlan) 응답 상태
   // Head Name : SP

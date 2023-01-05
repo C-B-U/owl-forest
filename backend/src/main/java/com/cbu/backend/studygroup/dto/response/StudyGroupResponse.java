@@ -2,9 +2,17 @@ package com.cbu.backend.studygroup.dto.response;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.cbu.backend.studyactivitylog.dto.response.StudyActivityLogResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+
+/**
+ * 스터디 그룹에 대한 Response DTO
+ *
+ * @author ohksj(김승진)
+ */
 
 @Builder
 @NoArgsConstructor
@@ -17,5 +25,5 @@ public class StudyGroupResponse {
   private Boolean isActive;
   private Integer likeCount;
   private Integer season;
-  // ToDo StudyActivityLog 처리 필요
+  private List<StudyActivityLogResponse> studyActivityLogs = new ArrayList<>();
 }

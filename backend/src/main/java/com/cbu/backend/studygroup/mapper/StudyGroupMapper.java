@@ -17,7 +17,7 @@ public class StudyGroupMapper {
         .name(studyGroupRequest.getName())
         .season(studyGroupRequest.getSeason())
         .summary(studyGroupRequest.getSummary())
-        .build(); // 추후 수정 필요
+        .build();
   }
 
   public StudyGroupResponse toResponse(StudyGroup studyGroup) {
@@ -35,7 +35,7 @@ public class StudyGroupMapper {
   private StudyGroupMemberResponse toMemberResponse(StudyGroupMember studyGroupMember) {
     return StudyGroupMemberResponse.builder()
         .id(studyGroupMember.getId())
-        .name(studyGroupMember.getTeamMembers().getName())
+        .name(studyGroupMember.getTeamMember().getName())
         .build();
   }
 
