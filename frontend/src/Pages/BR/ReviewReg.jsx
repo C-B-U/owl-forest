@@ -77,7 +77,7 @@ const WrapRegButton = styled.div`
   /* margin-right: auto; */
 `;
 
-function BR_ReviewReg() {
+function ReviewReg() {
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -89,11 +89,7 @@ function BR_ReviewReg() {
               <BookImage />
               <WrapReview>
                 <OneLineReview>
-                  <Input
-                    width={'40rem'}
-                    height={'2.3rem'}
-                    placeholder='한줄평'
-                  />
+                  <Input width='40rem' height='2.3rem' placeholder='한줄평' />
                 </OneLineReview>
                 <WrapDetailReview>
                   <WrapStarScore>
@@ -101,18 +97,14 @@ function BR_ReviewReg() {
                     <StarScore>평점</StarScore>
                   </WrapStarScore>
                   <DetailReview>
-                    <Input
-                      width={'38rem'}
-                      height={'7rem'}
-                      placeholder='상세평'
-                    />
+                    <Input width='38rem' height='7rem' placeholder='상세평' />
                   </DetailReview>
                   <WrapRegButton>
                     <RegButton
                       color={palette('PsYellow')}
                       background={palette('PsBtn')}
-                      width={'5.5rem'}
-                      height={'2.5rem'}
+                      width='5.5rem'
+                      height='2.5rem'
                       name='등 록'
                     />
                   </WrapRegButton>
@@ -126,4 +118,4 @@ function BR_ReviewReg() {
   );
 }
 
-export default BR_ReviewReg;
+export default ReviewReg;

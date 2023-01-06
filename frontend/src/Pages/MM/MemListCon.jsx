@@ -6,7 +6,7 @@ import theme from '../../Components/Color';
 import MLProfileCon from '../../Components/MMList/MLProfileCon';
 import profileimg from '../../Image/cbu_circle.png';
 
-//가로 정렬
+// 가로 정렬
 const MainWrap = styled.div`
   display: flex;
   background-color: ${palette('PsWhite')};
@@ -23,7 +23,7 @@ const LineUp = styled.div`
   overflow: auto;
 `;
 
-//마이페이지, 검색의 가로 정렬을 위해 사용
+// 마이페이지, 검색의 가로 정렬을 위해 사용
 const SearchWrap = styled.div`
   display: flex;
   white-space: wrap;
@@ -122,7 +122,7 @@ const Photo = styled.div`
   background-repeat: no-repeat;
 `;
 
-function MM_MemListCon() {
+function MemListCon() {
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -248,4 +248,4 @@ function MM_MemListCon() {
     </div>
   );
 }
-export default MM_MemListCon;
+export default MemListCon;

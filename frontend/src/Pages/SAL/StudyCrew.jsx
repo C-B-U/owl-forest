@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import theme from '../../Components/Color';
 import { palette } from 'styled-tools';
+import theme from '../../Components/Color';
 import Logo10 from '../../Image/Logo10.png';
 import Input from '../../Components/Input';
 import Btn from '../../Components/Btn';
@@ -202,82 +202,54 @@ function StudyCrew() {
                 <BlockWrap>
                   <StudyIndex>
                     {/* 스터디 개요 작성 */}
-                    <Input width={'45rem'} height={'8rem'} />
+                    <Input width='45rem' height='8rem' />
                   </StudyIndex>
                   {/* 스크롤 */}
                   <ScrollBar>
                     <StudyIndex>
                       {/* 팀장 작성 */}
-                      <Input
-                        width={'7rem'}
-                        height={'3rem'}
-                        margin={'0 1rem 0 0'}
-                      />
-                      <Input width={'30rem'} height={'3rem'} />
+                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
+                      <Input width='30rem' height='3rem' />
                     </StudyIndex>
                     <StudyIndex>
                       {/* 팀원작성 */}
-                      <Input
-                        width={'7rem'}
-                        height={'3rem'}
-                        margin={'0 1rem 0 0'}
-                      />
-                      <Input width={'30rem'} height={'3rem'} />
+                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
+                      <Input width='30rem' height='3rem' />
                       <PlusBtn />
                     </StudyIndex>
                     <StudyIndex>
-                      <Input
-                        width={'7rem'}
-                        height={'3rem'}
-                        margin={'0 1rem 0 0'}
-                      />
-                      <Input width={'30rem'} height={'3rem'} />
+                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
+                      <Input width='30rem' height='3rem' />
                       <MinusBtn />
                     </StudyIndex>
                     <StudyIndex>
-                      <Input
-                        width={'7rem'}
-                        height={'3rem'}
-                        margin={'0 1rem 0 0'}
-                      />
-                      <Input width={'30rem'} height={'3rem'} />
-                      <MinusBtn></MinusBtn>
+                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
+                      <Input width='30rem' height='3rem' />
+                      <MinusBtn />
                     </StudyIndex>
                     <StudyIndex>
-                      <Input
-                        width={'7rem'}
-                        height={'3rem'}
-                        margin={'0 1rem 0 0'}
-                      />
-                      <Input width={'30rem'} height={'3rem'} />
-                      <MinusBtn></MinusBtn>
+                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
+                      <Input width='30rem' height='3rem' />
+                      <MinusBtn />
                     </StudyIndex>
                     <StudyIndex>
-                      <Input
-                        width={'7rem'}
-                        height={'3rem'}
-                        margin={'0 1rem 0 0'}
-                      />
-                      <Input width={'30rem'} height={'3rem'} />
-                      <MinusBtn></MinusBtn>
+                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
+                      <Input width='30rem' height='3rem' />
+                      <MinusBtn />
                     </StudyIndex>
                     <StudyIndex>
-                      <Input
-                        width={'7rem'}
-                        height={'3rem'}
-                        margin={'0 1rem 0 0'}
-                      />
-                      <Input width={'30rem'} height={'3rem'} />
-                      <MinusBtn></MinusBtn>
+                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
+                      <Input width='30rem' height='3rem' />
+                      <MinusBtn />
                     </StudyIndex>
                   </ScrollBar>
                   <BtnWrap>
                     <Btn
                       background={palette('PsBtn')}
                       color={palette('PsYellow')}
-                      width={'45.5rem'}
-                      height={'3.5rem'}
-                      name={'수정하기'}
+                      width='45.5rem'
+                      height='3.5rem'
+                      name='수정하기'
                     />
                   </BtnWrap>
                 </BlockWrap>

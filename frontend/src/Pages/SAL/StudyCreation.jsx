@@ -6,6 +6,7 @@ import StudyBtn from '../../Components/Btn';
 import Header from '../../Components/ActivityLog/Header';
 import Profile from '../../Components/ActivityLog/Profile';
 import Input from '../../Components/Input';
+
 const MainWrap = styled.div`
   display: flex;
   height: calc(100vh - 64px);
@@ -122,59 +123,43 @@ function StudyCreation() {
             <Center>
               <InputWrapper>
                 <InputTitle>스터디 이름</InputTitle>
-                <Input
-                  width='600px'
-                  height='50px'
-                  placeholder={'스터디 이름'}
-                />
+                <Input width='600px' height='50px' placeholder='스터디 이름' />
               </InputWrapper>
               <InputWrapper>
                 <InputTitle>스터디 개요</InputTitle>
-                <Input
-                  width='600px'
-                  height='200px'
-                  placeholder={'스터디 개요'}
-                />
+                <Input width='600px' height='200px' placeholder='스터디 개요' />
               </InputWrapper>
 
               <ScorllWrapper>
                 <InputWrapper>
                   <InputTitle>팀장</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder={'이름'} />
-                    <Input width='360px' height='50px' placeholder={'학번'} />
+                    <Input width='130px' height='50px' placeholder='이름' />
+                    <Input width='360px' height='50px' placeholder='학번' />
                   </InputMemberWrapper>
                 </InputWrapper>
                 <InputWrapper>
                   <InputTitle>팀원</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder={'이름'} />
-                    <Input width='360px' height='50px' placeholder={'학번'} />
+                    <Input width='130px' height='50px' placeholder='이름' />
+                    <Input width='360px' height='50px' placeholder='학번' />
                     <InputIcon>+</InputIcon>
                   </InputMemberWrapper>
                 </InputWrapper>
                 <InputWrapper>
                   <InputTitle>팀원</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder={'이름'} />
-                    <Input width='360px' height='50px' placeholder={'학번'} />
-                    <InputIcon color={'red'}>-</InputIcon>
+                    <Input width='130px' height='50px' placeholder='이름' />
+                    <Input width='360px' height='50px' placeholder='학번' />
+                    <InputIcon color='red'>-</InputIcon>
                   </InputMemberWrapper>
                 </InputWrapper>
                 <InputWrapper>
                   <InputTitle>팀원</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder={'이름'} />
-                    <Input width='360px' height='50px' placeholder={'학번'} />
-                    <InputIcon color={'red'}>-</InputIcon>
-                  </InputMemberWrapper>
-                </InputWrapper>
-                <InputWrapper>
-                  <InputTitle>팀원</InputTitle>
-                  <InputMemberWrapper>
-                    <Input width='130px' height='50px' />
-                    <Input width='360px' height='50px' />
-                    <InputIcon color={'red'}>-</InputIcon>
+                    <Input width='130px' height='50px' placeholder='이름' />
+                    <Input width='360px' height='50px' placeholder='학번' />
+                    <InputIcon color='red'>-</InputIcon>
                   </InputMemberWrapper>
                 </InputWrapper>
                 <InputWrapper>
@@ -182,7 +167,15 @@ function StudyCreation() {
                   <InputMemberWrapper>
                     <Input width='130px' height='50px' />
                     <Input width='360px' height='50px' />
-                    <InputIcon color={'red'}>-</InputIcon>
+                    <InputIcon color='red'>-</InputIcon>
+                  </InputMemberWrapper>
+                </InputWrapper>
+                <InputWrapper>
+                  <InputTitle>팀원</InputTitle>
+                  <InputMemberWrapper>
+                    <Input width='130px' height='50px' />
+                    <Input width='360px' height='50px' />
+                    <InputIcon color='red'>-</InputIcon>
                   </InputMemberWrapper>
                 </InputWrapper>
               </ScorllWrapper>
@@ -191,9 +184,9 @@ function StudyCreation() {
                 <StudyBtn
                   background={palette('PsBtn')}
                   color={palette('PsYellow')}
-                  width={'100%'}
-                  height={'3.5rem'}
-                  name={'생성하기'}
+                  width='100%'
+                  height='3.5rem'
+                  name='생성하기'
                 />
               </BtnWrap>
             </Center>
