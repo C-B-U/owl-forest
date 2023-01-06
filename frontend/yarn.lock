@@ -2690,6 +2690,16 @@ array.prototype.flatmap@^1.3.0:
     "es-abstract" "^1.20.4"
     "es-shim-unscopables" "^1.0.0"
 
+"array.prototype.flatmap@^1.3.1":
+  "integrity" "sha512-8UGn9O1FDVvMNB0UlLv4voxRMze7+FpHyF5mSMRjWHUMlpoDViniy05870VlxhfgTnLbpuwTzvD76MTtWxB/mQ=="
+  "resolved" "https://registry.npmjs.org/array.prototype.flatmap/-/array.prototype.flatmap-1.3.1.tgz"
+  "version" "1.3.1"
+  dependencies:
+    "call-bind" "^1.0.2"
+    "define-properties" "^1.1.4"
+    "es-abstract" "^1.20.4"
+    "es-shim-unscopables" "^1.0.0"
+
 "array.prototype.reduce@^1.0.4":
   "integrity" "sha512-WnM+AjG/DvLRLo4DDl+r+SvCzYtD2Jd9oeBYMcEaI7t3fFrHY9M53/wdLcTvmZNQ70IU6Htj0emFkZ5TS+lrdw=="
   "resolved" "https://registry.npmjs.org/array.prototype.reduce/-/array.prototype.reduce-1.0.4.tgz"
@@ -5029,6 +5039,13 @@ globals@^13.15.0:
   dependencies:
     "type-fest" "^0.20.2"
 
+"globals@^13.19.0":
+  "integrity" "sha512-dkQ957uSRWHw7CFXLUtUHQI3g3aWApYhfNR2O6jn/907riyTYKVBmxYVROkBcY614FSSeSJh7Xm7SrUWCxvJMQ=="
+  "resolved" "https://registry.npmjs.org/globals/-/globals-13.19.0.tgz"
+  "version" "13.19.0"
+  dependencies:
+    "type-fest" "^0.20.2"
+
 "globalyzer@0.1.0":
   "integrity" "sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q=="
   "resolved" "https://registry.npmjs.org/globalyzer/-/globalyzer-0.1.0.tgz"
@@ -6772,6 +6789,15 @@ object.entries@^1.1.5:
     "define-properties" "^1.1.4"
     "es-abstract" "^1.20.4"
 
+"object.entries@^1.1.6":
+  "integrity" "sha512-leTPzo4Zvg3pmbQ3rDK69Rl8GQvIqMWubrkxONG9/ojtFE2rD9fjMKfSI5BxW3osRH1m6VdzmqK8oAY9aT4x5w=="
+  "resolved" "https://registry.npmjs.org/object.entries/-/object.entries-1.1.6.tgz"
+  "version" "1.1.6"
+  dependencies:
+    "call-bind" "^1.0.2"
+    "define-properties" "^1.1.4"
+    "es-abstract" "^1.20.4"
+
 "object.fromentries@^2.0.5":
   "integrity" "sha512-CAyG5mWQRRiBU57Re4FKoTBjXfDoNwdFVH2Y1tS9PqCsfUTymAohOkEMSG3aRNKmv4lV3O7p1et7c187q6bynw=="
   "resolved" "https://registry.npmjs.org/object.fromentries/-/object.fromentries-2.0.5.tgz"
@@ -6816,6 +6842,14 @@ object.hasown@^1.1.1:
   dependencies:
     define-properties "^1.1.4"
     es-abstract "^1.19.5"
+
+"object.hasown@^1.1.2":
+  "integrity" "sha512-B5UIT3J1W+WuWIU55h0mjlwaqxiE5vYENJXIXZ4VFe05pNYrkKuK0U/6aFcb0pKywYJh7IhfoqUfKVmrJJHZHw=="
+  "resolved" "https://registry.npmjs.org/object.hasown/-/object.hasown-1.1.2.tgz"
+  "version" "1.1.2"
+  dependencies:
+    "define-properties" "^1.1.4"
+    "es-abstract" "^1.20.4"
 
 "object.hasown@^1.1.2":
   "integrity" "sha512-B5UIT3J1W+WuWIU55h0mjlwaqxiE5vYENJXIXZ4VFe05pNYrkKuK0U/6aFcb0pKywYJh7IhfoqUfKVmrJJHZHw=="
@@ -8689,6 +8723,20 @@ string.prototype.trimstart@^1.0.5:
     call-bind "^1.0.2"
     define-properties "^1.1.4"
     es-abstract "^1.19.5"
+
+"string.prototype.matchall@^4.0.8":
+  "integrity" "sha512-6zOCOcJ+RJAQshcTvXPHoxoQGONa3e/Lqx90wUA+wEzX78sg5Bo+1tQo4N0pohS0erG9qtCqJDjNCQBjeWVxyg=="
+  "resolved" "https://registry.npmjs.org/string.prototype.matchall/-/string.prototype.matchall-4.0.8.tgz"
+  "version" "4.0.8"
+  dependencies:
+    "call-bind" "^1.0.2"
+    "define-properties" "^1.1.4"
+    "es-abstract" "^1.20.4"
+    "get-intrinsic" "^1.1.3"
+    "has-symbols" "^1.0.3"
+    "internal-slot" "^1.0.3"
+    "regexp.prototype.flags" "^1.4.3"
+    "side-channel" "^1.0.4"
 
 "string.prototype.matchall@^4.0.8":
   "integrity" "sha512-6zOCOcJ+RJAQshcTvXPHoxoQGONa3e/Lqx90wUA+wEzX78sg5Bo+1tQo4N0pohS0erG9qtCqJDjNCQBjeWVxyg=="
