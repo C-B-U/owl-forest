@@ -15,26 +15,26 @@ const MainWrap = styled.div`
 
 const ListWrap = styled.div`
   /* position: absolute; */
-  margin-top: 5rem;
+  margin-top: 4rem;
   background-color: ${palette('PsCocoa', 0)};
   width: 100%;
 `;
 
 const WrapSearchbar = styled.div`
   float: right;
-  margin-left: auto;
+  margin-left: 5rem;
 `;
 
 const WrapBtn = styled.div`
-    width: 5rem;
-    height: 2.5rem;
-    border-radius: 10px;
-    margin-left: 1rem;
-    justify-content: center;
-    color: ${palette('PsCocoa', 0)};
-    background-color:  ${palette('PsLightBrown', 0)};
-    font-weight:bold;
-    cursor: pointer;
+  width: 5rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  margin-left: 1rem;
+  justify-content: center;
+  color: ${palette('PsCocoa', 0)};
+  background-color: ${palette('PsLightBrown', 0)};
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 const Wrap = styled.div`
@@ -58,6 +58,13 @@ const Wrap = styled.div`
     background: ${palette('PsGreen')};
     border-radius: 10px;
   }
+`;
+const BorrowButtons = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+  margin-right: 2rem;
 `;
 const WrapContent = styled.div`
   display: flex;
@@ -92,36 +99,36 @@ function BR_BorrowList() {
           <ListWrap>
             <WrapSearchbar>
               <Search />
-              <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='채팅이동'
-                  />
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='전체북리뷰'
-                  />
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='내북리스트'
-                  />
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='도서등록'
-                  />
-          
-
+              <BorrowButtons>
+                <BorrowButton
+                  color={palette('PsYellow')}
+                  background={palette('PsBtn')}
+                  width='6.5rem'
+                  height='2.5rem'
+                  name='채팅 이동'
+                />
+                <BorrowButton
+                  color={palette('PsYellow')}
+                  background={palette('PsBtn')}
+                  width='6.5rem'
+                  height='2.5rem'
+                  name='전체 북리뷰'
+                />
+                <BorrowButton
+                  color={palette('PsYellow')}
+                  background={palette('PsBtn')}
+                  width='6.5rem'
+                  height='2.5rem'
+                  name='내 북리스트'
+                />
+                <BorrowButton
+                  color={palette('PsYellow')}
+                  background={palette('PsBtn')}
+                  width='6.5rem'
+                  height='2.5rem'
+                  name='도서 등록'
+                />
+              </BorrowButtons>
             </WrapSearchbar>
             <Wrap>
               <WrapContent>

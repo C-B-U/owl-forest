@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
-import theme from '../Components/Color';
+import theme from './Color';
 import SearchIcon from '../Image/SearchIcon.png';
 
 const Form = styled.form`
