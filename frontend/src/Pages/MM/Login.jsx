@@ -92,7 +92,7 @@ const SocialImg = styled.img`
   border-radius: 3rem;
 `;
 
-function MM_Login() {
+function Login() {
   // 선언
   return (
     <div>
@@ -152,4 +152,4 @@ function MM_Login() {
     </div>
   );
 }
-export default MM_Login;
+export default Login;

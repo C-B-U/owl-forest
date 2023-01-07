@@ -134,7 +134,7 @@ const BtnWrap2 = styled.div`
   right: 0%;
 `;
 
-function MM_Profile() {
+function Profile() {
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -189,4 +189,4 @@ function MM_Profile() {
   );
 }
 
-export default MM_Profile;
+export default Profile;

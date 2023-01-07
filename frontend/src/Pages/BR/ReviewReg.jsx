@@ -77,7 +77,7 @@ const WrapRegButton = styled.div`
   /* margin-right: auto; */
 `;
 
-function BR_ReviewReg() {
+function ReviewReg() {
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -118,4 +118,4 @@ function BR_ReviewReg() {
   );
 }
 
-export default BR_ReviewReg;
+export default ReviewReg;

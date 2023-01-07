@@ -8,18 +8,18 @@ import Btn from '../../Components/Btn';
 import imgfile from '../../Image/CbuIcon.png';
 
 const All = styled.div`
-  position: absolute; //absolute 추가(세로 중앙정렬)
+  position: absolute; // absolute 추가(세로 중앙정렬)
   width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
   display: flex;
   text-align: center;
-  margin: 0 auto; //세로 중앙정렬을 위한 margin 값
+  margin: 0 auto; // 세로 중앙정렬을 위한 margin 값
 `;
 
 const Squbox = styled.div`
-  //Squarebox 줄여서 Squbox
+  // Squarebox 줄여서 Squbox
   width: 30rem;
   height: 30rem;
   border-radius: 2rem;
@@ -50,7 +50,7 @@ const CbuImg = styled.img`
 `;
 
 const Msg = styled.div`
-  //Message 줄여서 Msg
+  // Message 줄여서 Msg
   display: flex;
   font-size: 12pt;
   font-family: 'Noto Sans KR', sans-serif;
@@ -61,11 +61,11 @@ const Msg = styled.div`
   text-align: center;
 `;
 const FindWrap = styled.div`
-  //div로 버튼 감싸서 버튼 위치 조정 (div로 감싸주지 않으면 btn 내부에서만 속성이 바뀌기 때문에 div로 감싸줘야 함)
+  // div로 버튼 감싸서 버튼 위치 조정 (div로 감싸주지 않으면 btn 내부에서만 속성이 바뀌기 때문에 div로 감싸줘야 함)
   margin-top: 2.5rem;
 `;
 
-function MM_ChangePw() {
+function ChangePw() {
   return (
     <ThemeProvider theme={theme}>
       <All>
@@ -97,4 +97,4 @@ function MM_ChangePw() {
   );
 }
 
-export default MM_ChangePw;
+export default ChangePw;

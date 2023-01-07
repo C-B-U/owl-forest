@@ -62,17 +62,17 @@ const Msg = styled.div`
   text-align: center;
 `;
 
-function MM_FindId() {
+function FindPw() {
   return (
     <ThemeProvider theme={theme}>
       <All>
         <Squbox>
           <Msg>
             <CbuImg src={imgfile} />
-            아이디가 기억이 안나시나요?
+            비밀번호가 기억이 안나시나요?
             <CbuImg src={imgfile} />
           </Msg>
-          <FindKey width='22rem' height='2rem' placeholder='이름' />
+          <FindKey width='22rem' height='2rem' placeholder='아이디' />
           <FindKey width='22rem' height='2rem' placeholder='학번' />
           <FindKey width='22rem' height='2rem' placeholder='이메일' />
           <FindWrap>
@@ -90,4 +90,4 @@ function MM_FindId() {
   );
 }
 
-export default MM_FindId;
+export default FindPw;

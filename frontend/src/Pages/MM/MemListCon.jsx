@@ -3,7 +3,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
-import MLProfile from '../../Components/MMList/MLProfile';
+import MLProfileCon from '../../Components/MMList/MLProfileCon';
 import profileimg from '../../Image/cbu_circle.png';
 
 // 가로 정렬
@@ -41,20 +41,6 @@ const Memlist = styled.li`
   display: flex;
   margin-top: 1.2rem;
   margin-left: 1.2 rem;
-`;
-
-const InfoButton = styled.button`
-  width: 15rem;
-  height: 2.8rem;
-  background-color: ${palette('PsGreen')};
-  border-radius: 3rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  border: none;
-  font-size: 12pt;
-  margin-top: 2rem;
-  margin-left: 1.7rem;
-  font-weight: bolder;
-  margin-right: 43.2rem;
 `;
 
 const SearchBox = styled.input`
@@ -117,6 +103,7 @@ const SelcBox = styled.div`
   margin-top: 3rem;
   font-weight: bolder;
   margin-right: 0.4rem;
+  margin-left: 60rem;
 `;
 
 const SortOption = styled.div`
@@ -135,16 +122,15 @@ const Photo = styled.div`
   background-repeat: no-repeat;
 `;
 
-function MM_MemList() {
+function MemListCon() {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <MainWrap>
-          <MLProfile />
+          <MLProfileCon />
 
           <SecondWrap>
             <SearchWrap>
-              <InfoButton>마이페이지</InfoButton>
               <SelcBox>&nbsp;▼</SelcBox>
               <SearchBox />
             </SearchWrap>
@@ -262,5 +248,4 @@ function MM_MemList() {
     </div>
   );
 }
-
-export default MM_MemList;
+export default MemListCon;

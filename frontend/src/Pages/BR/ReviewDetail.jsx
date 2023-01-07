@@ -145,7 +145,7 @@ const OtherComment = styled.div`
   margin-top: 5rem;
 `;
 
-function BR_ReviewDetail() {
+function ReviewDetail() {
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -286,4 +286,4 @@ function BR_ReviewDetail() {
   );
 }
 
-export default BR_ReviewDetail;
+export default ReviewDetail;

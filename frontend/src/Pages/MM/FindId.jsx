@@ -8,18 +8,18 @@ import Btn from '../../Components/Btn';
 import imgfile from '../../Image/CbuIcon.png';
 
 const All = styled.div`
-  position: absolute; //absolute 추가(세로 중앙정렬)
+  position: absolute; // absolute 추가(세로 중앙정렬)
   width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
   display: flex;
   text-align: center;
-  margin: 0 auto; //세로 중앙정렬을 위한 margin 값
+  margin: 0 auto; // 세로 중앙정렬을 위한 margin 값
 `;
 
 const Squbox = styled.div`
-  //Squarebox 줄여서 Squbox
+  // Squarebox 줄여서 Squbox
   width: 35rem;
   height: 25rem;
   border-radius: 2rem;
@@ -38,7 +38,7 @@ const FindKey = styled(InputStyle)`
   margin-bottom: 0.45rem;
 `;
 const FindWrap = styled.div`
-  //div로 버튼 감싸서 버튼 위치 조정 (div로 감싸주지 않으면 btn 내부에서만 속성이 바뀌기 때문에 div로 감싸줘야 함)
+  // div로 버튼 감싸서 버튼 위치 조정 (div로 감싸주지 않으면 btn 내부에서만 속성이 바뀌기 때문에 div로 감싸줘야 함)
   margin-top: 1.5rem;
 `;
 
@@ -52,7 +52,7 @@ const CbuImg = styled.img`
 `;
 
 const Msg = styled.div`
-  //Message 줄여서 Msg
+  // Message 줄여서 Msg
   display: flex;
   font-size: 12pt;
   font-family: 'Noto Sans KR', sans-serif;
@@ -62,17 +62,17 @@ const Msg = styled.div`
   text-align: center;
 `;
 
-function MM_FindPw() {
+function FindId() {
   return (
     <ThemeProvider theme={theme}>
       <All>
         <Squbox>
           <Msg>
             <CbuImg src={imgfile} />
-            비밀번호가 기억이 안나시나요?
+            아이디가 기억이 안나시나요?
             <CbuImg src={imgfile} />
           </Msg>
-          <FindKey width='22rem' height='2rem' placeholder='아이디' />
+          <FindKey width='22rem' height='2rem' placeholder='이름' />
           <FindKey width='22rem' height='2rem' placeholder='학번' />
           <FindKey width='22rem' height='2rem' placeholder='이메일' />
           <FindWrap>
@@ -90,4 +90,4 @@ function MM_FindPw() {
   );
 }
 
-export default MM_FindPw;
+export default FindId;
