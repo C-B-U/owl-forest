@@ -5,15 +5,14 @@ import com.cbu.backend.authaccount.repository.AuthAccountRepository;
 import com.cbu.backend.config.security.oauth2.OAuth2Request;
 import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.member.service.MemberService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
-import javax.transaction.Transactional;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.UUID;
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
