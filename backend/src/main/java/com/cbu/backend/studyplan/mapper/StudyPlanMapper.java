@@ -7,10 +7,9 @@ import com.cbu.backend.studyplan.dto.response.StudyPlanResponse;
 import com.cbu.backend.studyplan.dto.response.WeekPlanResponse;
 import com.cbu.backend.studyplan.entity.StudyPlan;
 import com.cbu.backend.studyplan.entity.WeekPlan;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
 
 /**
  * 스터디 계획서 엔티티와 DTO 간의 변환을 수행하는 Mapper
@@ -21,7 +20,8 @@ import java.util.stream.Collectors;
 public class StudyPlanMapper {
 
   public StudyPlan toEntity(StudyPlanRequest dto, StudyGroup studyGroup) {
-    StudyPlan studyPlan = StudyPlan.builder()
+    StudyPlan studyPlan =
+        StudyPlan.builder()
             .title(dto.getTitle())
             .generation(dto.getGeneration())
             .rule(dto.getRule())
@@ -33,21 +33,20 @@ public class StudyPlanMapper {
   }
 
   private void registerWeekPlan(StudyPlanRequest dto, StudyPlan studyPlan) {
-    toWeekPlanList(dto.getWeekPlans()).stream().forEach(weekPlan -> weekPlan.registerWeekPlan(studyPlan));
+    toWeekPlanList(dto.getWeekPlans()).stream()
+        .forEach(weekPlan -> weekPlan.registerWeekPlan(studyPlan));
   }
 
   private List<WeekPlan> toWeekPlanList(List<WeekPlanRequest> dtoList) {
-    return dtoList.stream()
-            .map(this::toWeekPlan)
-            .collect(Collectors.toList());
+    return dtoList.stream().map(this::toWeekPlan).collect(Collectors.toList());
   }
 
   private WeekPlan toWeekPlan(WeekPlanRequest dto) {
     return WeekPlan.builder()
-            .studyDate(dto.getStudyDate())
-            .week(dto.getWeek())
-            .contents(dto.getContents())
-            .build();
+        .studyDate(dto.getStudyDate())
+        .week(dto.getWeek())
+        .contents(dto.getContents())
+        .build();
   }
 
   public StudyPlanResponse toResponse(StudyPlan entity) {
@@ -63,16 +62,14 @@ public class StudyPlanMapper {
 
   private WeekPlanResponse toWeekPlanResponse(WeekPlan entity) {
     return WeekPlanResponse.builder()
-            .id(entity.getId())
-            .week(entity.getWeek())
-            .studyDate(entity.getStudyDate())
-            .contents(entity.getContents())
-            .build();
+        .id(entity.getId())
+        .week(entity.getWeek())
+        .studyDate(entity.getStudyDate())
+        .contents(entity.getContents())
+        .build();
   }
 
   private List<WeekPlanResponse> toWeekPlanResponseList(List<WeekPlan> entityList) {
-    return entityList.stream()
-            .map(this::toWeekPlanResponse)
-            .collect(Collectors.toList());
+    return entityList.stream().map(this::toWeekPlanResponse).collect(Collectors.toList());
   }
 }

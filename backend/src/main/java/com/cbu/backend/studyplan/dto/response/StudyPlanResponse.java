@@ -1,12 +1,10 @@
 package com.cbu.backend.studyplan.dto.response;
 
-import com.cbu.backend.studyplan.dto.request.WeekPlanRequest;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 스터디 계획서 응답 DTO

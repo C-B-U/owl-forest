@@ -1,10 +1,9 @@
 package com.cbu.backend.studyplan.dto.request;
 
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 
 /**
  * 스터디 계획서 주별 계획 요청 DTO
@@ -15,7 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WeekPlanRequest {
-    private Integer week;
-    private LocalDate studyDate;
-    private String contents;
+  private Integer week;
+  private LocalDate studyDate;
+  private String contents;
 }

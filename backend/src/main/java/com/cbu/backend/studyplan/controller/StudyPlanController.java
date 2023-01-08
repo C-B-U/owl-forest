@@ -35,10 +35,11 @@ public class StudyPlanController {
 
   // 스터디 계획 조회
   @GetMapping("/{studyGroupId}/plan")
-  public ResponseEntity<ResponseFormat<StudyPlanResponse>> findAll(@PathVariable Long studyGroupId) {
+  public ResponseEntity<ResponseFormat<StudyPlanResponse>> findAll(
+      @PathVariable Long studyGroupId) {
     StudyPlanResponse studyPlan = studyPlanService.findStudyPlan(studyGroupId);
     ResponseFormat<StudyPlanResponse> responseFormat =
-            new ResponseFormat<>(ResponseStatus.GET_STUDYPLAN_SUCCESS, studyPlan);
+        new ResponseFormat<>(ResponseStatus.GET_STUDYPLAN_SUCCESS, studyPlan);
 
     return ResponseEntity.ok(responseFormat);
   }

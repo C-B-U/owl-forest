@@ -45,7 +45,9 @@ public class StudyPlanService {
 
   // 스터디 계획서 조회
   public StudyPlanResponse findStudyPlan(Long studyGroupId) {
-    StudyPlan studyPlan = studyPlanRepository.findByStudyGroup(studyGroupId)
+    StudyPlan studyPlan =
+        studyPlanRepository
+            .findByStudyGroup(studyGroupId)
             .orElseThrow(EntityNotFoundException::new);
 
     return studyPlanMapper.toResponse(studyPlan);

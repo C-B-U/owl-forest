@@ -1,10 +1,9 @@
 package com.cbu.backend.studyplan.dto.response;
 
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-
-import java.time.LocalDate;
 
 /**
  * 스터디 계획서 주별 계획 응답 DTO
@@ -15,8 +14,8 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 public class WeekPlanResponse {
-    private Long id;
-    private Integer week;
-    private LocalDate studyDate;
-    private String contents;
+  private Long id;
+  private Integer week;
+  private LocalDate studyDate;
+  private String contents;
 }
