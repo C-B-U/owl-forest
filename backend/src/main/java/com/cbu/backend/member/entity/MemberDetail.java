@@ -1,10 +1,11 @@
 package com.cbu.backend.member.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,6 +23,9 @@ public class MemberDetail {
 
   @Enumerated(EnumType.STRING)
   private Major major;
+
+  @Enumerated(EnumType.STRING)
+  private Major subMajor;
 
   private String email;
 
