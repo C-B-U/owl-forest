@@ -2,33 +2,35 @@ package com.cbu.backend.board.entity;
 
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.entity.Member;
-import javax.persistence.*;
+
 import lombok.*;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board {
 
-  @Id @GeneratedValue private Long id;
+    @Id @GeneratedValue private Long id;
 
-  @Column(nullable = false)
-  @Setter
-  private String name;
+    @Column(nullable = false)
+    @Setter
+    private String name;
 
-  @Setter private String description;
+    @Setter private String description;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "member_id", nullable = false)
-  @Setter
-  private Member manager;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    @Setter
+    private Member manager;
 
-  @Embedded private BaseTime baseTime;
+    @Embedded private BaseTime baseTime;
 
-  @Builder
-  public Board(String name, String description, Member manager) {
-    this.name = name;
-    this.description = description;
-    this.manager = manager;
-  }
+    @Builder
+    public Board(String name, String description, Member manager) {
+        this.name = name;
+        this.description = description;
+        this.manager = manager;
+    }
 }

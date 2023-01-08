@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateArticleCommentRequest {
-  private String content;
+    private String content;
 }

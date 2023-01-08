@@ -11,7 +11,7 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberPrivacy {
-  private String studentId;
+    private String studentId;
 
-  private String phoneNumber;
+    private String phoneNumber;
 }

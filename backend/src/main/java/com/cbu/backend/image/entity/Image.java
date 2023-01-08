@@ -6,5 +6,5 @@ import javax.persistence.Id;
 
 @Entity
 public class Image {
-  @Id @GeneratedValue private Long id;
+    @Id @GeneratedValue private Long id;
 }
