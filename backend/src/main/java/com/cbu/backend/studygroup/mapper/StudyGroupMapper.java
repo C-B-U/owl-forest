@@ -44,6 +44,9 @@ public class StudyGroupMapper {
 
   private List<StudyGroupMemberResponse> toMemberListResponse(
       List<StudyGroupMember> studyGroupMembers) {
-    return studyGroupMembers.stream().map(StudyGroupMember::getTeamMember).map(this::toMemberResponse).collect(Collectors.toList());
+    return studyGroupMembers.stream()
+        .map(StudyGroupMember::getTeamMember)
+        .map(this::toMemberResponse)
+        .collect(Collectors.toList());
   }
 }
