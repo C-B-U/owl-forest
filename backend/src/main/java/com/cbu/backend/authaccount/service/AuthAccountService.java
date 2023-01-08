@@ -3,21 +3,26 @@ package com.cbu.backend.authaccount.service;
 import com.cbu.backend.authaccount.entity.AuthAccount;
 import com.cbu.backend.authaccount.repository.AuthAccountRepository;
 import com.cbu.backend.config.security.oauth2.OAuth2Request;
+import com.cbu.backend.member.dto.request.CreateMemberRequest;
 import com.cbu.backend.member.entity.Member;
+import com.cbu.backend.member.entity.MemberDetail;
+import com.cbu.backend.member.mapper.MemberMapper;
 import com.cbu.backend.member.service.MemberService;
-import java.security.Principal;
-import java.util.Collection;
-import java.util.UUID;
-import javax.persistence.EntityNotFoundException;
-import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
+import java.security.Principal;
+import java.util.Collection;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class AuthAccountService {
   private final AuthAccountRepository authAccountRepository;
+  private final MemberMapper memberMapper;
   private final MemberService memberService;
 
   public AuthAccount findByAccountId(String accountId) {
@@ -70,12 +75,19 @@ public class AuthAccountService {
               memberBuilder.name(n);
               memberBuilder.nickname(n);
             });
-    oAuth2Request.getEmail().ifPresent(memberBuilder::email);
+    MemberDetail.MemberDetailBuilder memberDetailBuilder = MemberDetail.builder();
+    oAuth2Request.getEmail().ifPresent(memberDetailBuilder::email);
 
-    return memberBuilder.build();
+    return memberBuilder.memberDetail(memberDetailBuilder.build()).build();
   }
 
   private AuthAccount getEntity(UUID id) {
     return authAccountRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+  }
+
+  public void registerMember(Principal principal, CreateMemberRequest dto) {
+    AuthAccount authAccount = getEntity(UUID.fromString(principal.getName()));
+    Member member = memberMapper.toEntity(dto);
+    authAccount.register(member);
   }
 }

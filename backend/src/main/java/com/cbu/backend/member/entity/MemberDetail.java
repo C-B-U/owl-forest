@@ -1,14 +1,17 @@
 package com.cbu.backend.member.entity;
 
+import lombok.*;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 @Embeddable
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberDetail {
   private String blogUrl;
 
@@ -30,3 +33,5 @@ public class MemberDetail {
 
   @Lob private String introduction;
 }
+
+

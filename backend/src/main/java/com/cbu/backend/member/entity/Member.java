@@ -1,11 +1,12 @@
 package com.cbu.backend.member.entity;
 
 import com.cbu.backend.image.entity.Image;
-import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -28,9 +29,11 @@ public class Member {
   @OneToOne private Image profileImage;
 
   @Builder
-  public Member(String name, String nickname, String email) {
+  public Member(String name, String nickname, MemberDetail memberDetail, MemberPrivacy memberPrivacy, Image profileImage) {
     this.name = name;
     this.nickname = nickname;
-    memberDetail.setEmail(email);
+    this.memberDetail = memberDetail;
+    this.memberPrivacy = memberPrivacy;
+    this.profileImage = profileImage;
   }
 }
