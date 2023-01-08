@@ -37,7 +37,7 @@ public class StudyGroupService {
         studyGroupRequest.getStudyGroupMembers().stream()
             .map(memberService::getEntity)
             .collect(Collectors.toList());
-    StudyGroup studyGroup = studyGroupMapper.mapToEntity(studyGroupRequest);
+    StudyGroup studyGroup = studyGroupMapper.toEntity(studyGroupRequest);
     studyGroup.organizeMembers(leader, members);
     studyGroupRepository.save(studyGroup);
 
@@ -109,10 +109,11 @@ public class StudyGroupService {
   public StudyGroupResponse deleteStudyGroup(Long id) { // 스터디 삭제
     StudyGroup studyGroup = getEntity(id);
     studyGroup.getBaseTime().delete();
+
     return studyGroupMapper.toResponse(studyGroup);
   }
 
-  private StudyGroup getEntity(Long id) {
+  public StudyGroup getEntity(Long id) {
     return studyGroupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
   }
 }

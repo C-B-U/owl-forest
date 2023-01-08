@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudyGroupMapper {
 
-  public StudyGroup mapToEntity(StudyGroupRequest studyGroupRequest) {
+  public StudyGroup toEntity(StudyGroupRequest studyGroupRequest) {
     return StudyGroup.builder()
         .name(studyGroupRequest.getName())
         .season(studyGroupRequest.getSeason())

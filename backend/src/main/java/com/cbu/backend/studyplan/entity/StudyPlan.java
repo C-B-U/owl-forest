@@ -2,55 +2,56 @@ package com.cbu.backend.studyplan.entity;
 
 import com.cbu.backend.global.BaseTime;
 import javax.persistence.*;
+
+import com.cbu.backend.studygroup.entity.StudyGroup;
+import com.cbu.backend.studyplan.dto.request.StudyPlanRequest;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 스터디 계획서 엔티티
+ *
+ * @author ohksj77(김승진)
+ */
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyPlan {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue
   private Long id;
 
-  @Column(nullable = false)
   private String title;
 
-  @Column(nullable = false)
-  private String generationNum;
+  private Integer generation;
 
-  @Column(nullable = false)
   private String rule;
-
-  @Column(nullable = false)
-  private String teamMember;
-
-  @Column(nullable = false)
-  private String book;
-
-  @Column(nullable = false)
-  private String studyGroupId;
 
   @Embedded private BaseTime baseTime;
 
-  //    @OneToOne
-  //    @JoinColumn(name = "studyGroupId")
-  //    private
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "study_group_id")
+  private StudyGroup studyGroup;
+
+  @OneToMany(mappedBy = "studyPlan",fetch = FetchType.LAZY)
+  private List<WeekPlan> weekPlans = new ArrayList<>();
 
   @Builder
-  public StudyPlan(
-      String title,
-      String generationNum,
-      String rule,
-      String teamMember,
-      String book,
-      String studyGroupId) {
+  public StudyPlan(String title, Integer generation, String rule, BaseTime baseTime, StudyGroup studyGroup, List<WeekPlan> weekPlans) {
     this.title = title;
-    this.generationNum = generationNum;
+    this.generation = generation;
     this.rule = rule;
-    this.teamMember = teamMember;
-    this.book = book;
-    this.studyGroupId = studyGroupId;
+    this.baseTime = baseTime;
+    this.studyGroup = studyGroup;
+    this.weekPlans = weekPlans;
+  }
+
+  public void update(StudyPlanRequest dto) {
+    this.title = dto.getTitle();
+    this.generation = dto.getGeneration();
+    this.rule = dto.getRule();
   }
 }
