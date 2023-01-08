@@ -1,12 +1,11 @@
 package com.cbu.backend.member.entity;
 
 import com.cbu.backend.image.entity.Image;
+import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Entity
 @Getter
