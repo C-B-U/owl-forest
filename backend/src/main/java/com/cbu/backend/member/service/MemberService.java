@@ -4,9 +4,7 @@ import com.cbu.backend.member.dto.response.MemberResponse;
 import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.member.mapper.MemberMapper;
 import com.cbu.backend.member.repository.MemberRepository;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +30,4 @@ public class MemberService {
         return memberMapper.toDto(
                 memberRepository.findById(id).orElseThrow((EntityNotFoundException::new)));
     }
-
-    public void updateMember(Member member) {}
 }
