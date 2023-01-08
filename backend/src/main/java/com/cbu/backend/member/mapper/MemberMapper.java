@@ -1,15 +1,18 @@
 package com.cbu.backend.member.mapper;
 
-import com.cbu.backend.member.dto.request.MemberSignupRequest;
+import com.cbu.backend.member.dto.request.CreateMemberRequest;
 import com.cbu.backend.member.dto.response.MemberResponse;
 import com.cbu.backend.member.dto.response.MemberView;
 import com.cbu.backend.member.entity.Member;
+import com.cbu.backend.member.entity.MemberDetail;
+import com.cbu.backend.member.entity.MemberPrivacy;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -25,8 +28,28 @@ public class MemberMapper {
     return MemberResponse.builder().build();
   }
 
-  public Member toEntity(MemberSignupRequest dto) {
-    return Member.builder().build();
+  public Member toEntity(CreateMemberRequest dto) {
+    return Member.builder()
+            .name(dto.getName())
+            .memberDetail(toMemberDetail(dto))
+            .memberPrivacy(toMemberPrivacy(dto))
+            .nickname(dto.getNickname())
+            .build();
+  }
+  private MemberDetail toMemberDetail(CreateMemberRequest dto) {
+    return MemberDetail.builder()
+            .major(dto.getMajor())
+            .subMajor(dto.getSubMajor())
+            .blogUrl(dto.getBlogUrl())
+            .academicStatus(dto.getAcademicStatus())
+            .githubId(dto.getGithubId())
+            .email(dto.getEmail())
+            .introduction(dto.getIntroduction())
+            .build();
+  }
+
+  private MemberPrivacy toMemberPrivacy(CreateMemberRequest dto) {
+    return MemberPrivacy.builder().phoneNumber(dto.getPhoneNumber()).studentId(dto.getStudentId()).build();
   }
 
   public List<MemberResponse> toDtoList(List<Member> list) {
