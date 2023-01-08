@@ -1,5 +1,6 @@
 package com.cbu.backend.studygroup.mapper;
 
+import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.response.StudyGroupMemberResponse;
 import com.cbu.backend.studygroup.dto.response.StudyGroupResponse;
@@ -23,7 +24,7 @@ public class StudyGroupMapper {
   public StudyGroupResponse toResponse(StudyGroup studyGroup) {
     return StudyGroupResponse.builder()
         .id(studyGroup.getId())
-        .studyGroupLeader(toMemberResponse(studyGroup.getStudyGroupLeader()))
+        .studyGroupLeader(toMemberResponse(studyGroup.getStudyGroupLeader().getTeamMember()))
         .studyGroupMembers(toMemberListResponse(studyGroup.getStudyGroupMembers()))
         .summary(studyGroup.getSummary())
         .season(studyGroup.getSeason())
@@ -33,15 +34,16 @@ public class StudyGroupMapper {
         .build();
   }
 
-  private StudyGroupMemberResponse toMemberResponse(StudyGroupMember studyGroupMember) {
+  private StudyGroupMemberResponse toMemberResponse(Member member) {
     return StudyGroupMemberResponse.builder()
-        .memberId(studyGroupMember.getTeamMember().getId())
-        .name(studyGroupMember.getTeamMember().getName())
+        .memberId(member.getId())
+        .name(member.getName())
+        .nickname(member.getNickname())
         .build();
   }
 
   private List<StudyGroupMemberResponse> toMemberListResponse(
       List<StudyGroupMember> studyGroupMembers) {
-    return studyGroupMembers.stream().map(this::toMemberResponse).collect(Collectors.toList());
+    return studyGroupMembers.stream().map(StudyGroupMember::getTeamMember).map(this::toMemberResponse).collect(Collectors.toList());
   }
 }
