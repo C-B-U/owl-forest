@@ -6,6 +6,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
 /**
  * StudyGroup 과 Member의 M대N 관계를 풀어내는 중간 엔티티
  *
@@ -16,7 +18,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyGroupMember {
 
-    @Id @GeneratedValue private Long id;
+    @Id @GeneratedValue
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

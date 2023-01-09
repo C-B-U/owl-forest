@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 스터디 그룹에 대한 Request DTO
  *

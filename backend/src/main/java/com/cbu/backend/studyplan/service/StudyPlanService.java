@@ -7,6 +7,8 @@ import com.cbu.backend.studyplan.dto.response.StudyPlanResponse;
 import com.cbu.backend.studyplan.entity.StudyPlan;
 import com.cbu.backend.studyplan.mapper.StudyPlanMapper;
 import com.cbu.backend.studyplan.repository.StudyPlanRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
