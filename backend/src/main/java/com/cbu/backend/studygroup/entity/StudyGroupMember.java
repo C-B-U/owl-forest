@@ -18,16 +18,16 @@ public class StudyGroupMember {
 
     @Id @GeneratedValue private Long id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "member_id")
-  private Member teamMember;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member teamMember;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "study_group_id")
-  private StudyGroup studyGroup;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "study_group_id")
+    private StudyGroup studyGroup;
 
-  public StudyGroupMember(Member member, StudyGroup studyGroup) {
-    this.teamMember = member;
-    this.studyGroup = studyGroup;
-  }
+    public StudyGroupMember(Member member, StudyGroup studyGroup) {
+        this.teamMember = member;
+        this.studyGroup = studyGroup;
+    }
 }

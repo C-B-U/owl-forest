@@ -1,10 +1,11 @@
 package com.cbu.backend.studyplan.dto.response;
 
-import java.util.ArrayList;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 스터디 계획서 응답 DTO
@@ -15,11 +16,11 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 public class StudyPlanResponse {
-  private Long id;
-  private String title;
-  private Integer generation;
-  private String rule;
-  private String book;
-  private Long studyGroupId;
-  private List<WeekPlanResponse> weekPlans = new ArrayList<>();
+    private Long id;
+    private String title;
+    private Integer generation;
+    private String rule;
+    private String book;
+    private Long studyGroupId;
+    private List<WeekPlanResponse> weekPlans = new ArrayList<>();
 }

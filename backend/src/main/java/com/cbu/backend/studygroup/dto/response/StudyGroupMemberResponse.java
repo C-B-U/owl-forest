@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudyGroupMemberResponse {
-  private Long memberId;
-  private String name;
-  private String nickname;
+    private Long memberId;
+    private String name;
+    private String nickname;
 }

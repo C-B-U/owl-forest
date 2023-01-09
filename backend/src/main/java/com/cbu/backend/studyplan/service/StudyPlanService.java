@@ -7,6 +7,7 @@ import com.cbu.backend.studyplan.dto.response.StudyPlanResponse;
 import com.cbu.backend.studyplan.entity.StudyPlan;
 import com.cbu.backend.studyplan.mapper.StudyPlanMapper;
 import com.cbu.backend.studyplan.repository.StudyPlanRepository;
+
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
@@ -19,48 +20,48 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class StudyPlanService {
 
-  private final StudyPlanRepository studyPlanRepository;
-  private final StudyPlanMapper studyPlanMapper;
-  private final StudyGroupService studyGroupService;
+    private final StudyPlanRepository studyPlanRepository;
+    private final StudyPlanMapper studyPlanMapper;
+    private final StudyGroupService studyGroupService;
 
-  // 스터디 계획서 생성
-  public StudyPlanResponse create(StudyPlanRequest requestDto, Long studyGroupId) {
-    StudyGroup studyGroup = studyGroupService.getEntity(studyGroupId);
-    StudyPlan studyPlan = studyPlanMapper.toEntity(requestDto, studyGroup);
-    studyPlanRepository.save(studyPlan);
+    // 스터디 계획서 생성
+    public StudyPlanResponse create(StudyPlanRequest requestDto, Long studyGroupId) {
+        StudyGroup studyGroup = studyGroupService.getEntity(studyGroupId);
+        StudyPlan studyPlan = studyPlanMapper.toEntity(requestDto, studyGroup);
+        studyPlanRepository.save(studyPlan);
 
-    return studyPlanMapper.toResponse(studyPlan);
-  }
+        return studyPlanMapper.toResponse(studyPlan);
+    }
 
-  // 스터디 계획서 수정
-  @Transactional
-  public StudyPlanResponse update(StudyPlanRequest dto, Long studyGroupId) {
-    StudyPlan studyPlan = getEntity(studyGroupId);
-    studyPlan.update(dto);
+    // 스터디 계획서 수정
+    @Transactional
+    public StudyPlanResponse update(StudyPlanRequest dto, Long studyGroupId) {
+        StudyPlan studyPlan = getEntity(studyGroupId);
+        studyPlan.update(dto);
 
-    return studyPlanMapper.toResponse(studyPlan);
-  }
+        return studyPlanMapper.toResponse(studyPlan);
+    }
 
-  // 스터디 계획서 조회
-  public StudyPlanResponse findStudyPlan(Long studyGroupId) {
-    StudyPlan studyPlan =
-        studyPlanRepository
-            .findByStudyGroup(studyGroupId)
-            .orElseThrow(EntityNotFoundException::new);
+    // 스터디 계획서 조회
+    public StudyPlanResponse findStudyPlan(Long studyGroupId) {
+        StudyPlan studyPlan =
+                studyPlanRepository
+                        .findByStudyGroup(studyGroupId)
+                        .orElseThrow(EntityNotFoundException::new);
 
-    return studyPlanMapper.toResponse(studyPlan);
-  }
+        return studyPlanMapper.toResponse(studyPlan);
+    }
 
-  // 스터디 계획서 삭제
-  @Transactional
-  public StudyPlanResponse delete(Long studyGroupId) {
-    StudyPlan studyPlan = getEntity(studyGroupId);
-    studyPlan.getBaseTime().delete();
+    // 스터디 계획서 삭제
+    @Transactional
+    public StudyPlanResponse delete(Long studyGroupId) {
+        StudyPlan studyPlan = getEntity(studyGroupId);
+        studyPlan.getBaseTime().delete();
 
-    return studyPlanMapper.toResponse(studyPlan);
-  }
+        return studyPlanMapper.toResponse(studyPlan);
+    }
 
-  private StudyPlan getEntity(Long studyPlanId) {
-    return studyPlanRepository.findById(studyPlanId).orElseThrow(EntityNotFoundException::new);
-  }
+    private StudyPlan getEntity(Long studyPlanId) {
+        return studyPlanRepository.findById(studyPlanId).orElseThrow(EntityNotFoundException::new);
+    }
 }
