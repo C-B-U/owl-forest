@@ -88,8 +88,6 @@ const NaverSocialImg = styled.img`
   margin-top: 17.7rem;
 `;
 function Login() {
-  const navigate = useNavigate();
-
   useEffect(() => {
     axios({
       url: '/api/auth/login/google',
@@ -107,9 +105,9 @@ function Login() {
           <Mainlogo src={imgfile} />
           <SocialWrap>
             <GoogleSocialImg style={{ margin: '1rem' }} src={googlebtn} />
-            <Link to='/api/auth/login/google'>
+            <a href='http://localhost:8080/api/auth/login/google'>
               <DoubleSocialImg style={{ margin: '1rem' }} src={google} />
-            </Link>
+            </a>
             <SocialImg style={{ margin: '1rem' }} src={githubbtn} />
             <KakaoSocialImg style={{}} src={kakaobtn} />
             <a href={KAKAO_AUTH_URL}>
