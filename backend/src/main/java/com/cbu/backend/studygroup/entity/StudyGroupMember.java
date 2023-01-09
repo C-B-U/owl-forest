@@ -18,8 +18,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyGroupMember {
 
-    @Id @GeneratedValue
-    private Long id;
+    @Id @GeneratedValue private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
