@@ -8,18 +8,15 @@ import com.cbu.backend.studygroup.dto.response.StudyGroupResponse;
 import com.cbu.backend.studygroup.entity.StudyGroup;
 import com.cbu.backend.studygroup.mapper.StudyGroupMapper;
 import com.cbu.backend.studygroup.repository.StudyGroupRepository;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import javax.persistence.EntityNotFoundException;
 
 /**
  * 스터디 그룹 API의 서비스 로직을 담당하는 클래스
@@ -87,7 +84,7 @@ public class StudyGroupService {
         return studyGroupRepository.findAll().stream()
                 .sorted(
                         Comparator.comparing(function, sortDirection)
-                                .thenComparing(StudyGroup::getSeason, Comparator.reverseOrder()))
+                                .thenComparing(StudyGroup::getId, Comparator.reverseOrder()))
                 .map(studyGroupMapper::toResponse)
                 .toList();
     }

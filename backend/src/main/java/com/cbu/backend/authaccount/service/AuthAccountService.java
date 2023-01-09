@@ -9,18 +9,15 @@ import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.member.entity.MemberDetail;
 import com.cbu.backend.member.mapper.MemberMapper;
 import com.cbu.backend.member.service.MemberService;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.UUID;
-
-import javax.persistence.EntityNotFoundException;
-import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor

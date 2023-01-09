@@ -19,7 +19,7 @@ public class StudyGroupMapper {
         return StudyGroup.builder()
                 .name(studyGroupRequest.getName())
                 .season(studyGroupRequest.getSeason())
-                .summary(studyGroupRequest.getSummary())
+                .description(studyGroupRequest.getDescription())
                 .build();
     }
 
@@ -29,8 +29,7 @@ public class StudyGroupMapper {
                 .studyGroupLeader(
                         toMemberResponse(studyGroup.getStudyGroupLeader().getTeamMember()))
                 .studyGroupMembers(toMemberListResponse(studyGroup.getStudyGroupMembers()))
-                .summary(studyGroup.getSummary())
-                .season(studyGroup.getSeason())
+                .description(studyGroup.getDescription())
                 .likeCount(studyGroup.getLikeCount())
                 .isActive(studyGroup.getIsActive())
                 .name(studyGroup.getName())

@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Welcome from './Pages/Welcome';
 import StudyActivityLog from './Pages/SAL/StudyActivityLog';
@@ -22,6 +23,8 @@ import BorrowList from './Pages/BR/BorrowList';
 import ReviewDetail from './Pages/BR/ReviewDetail';
 import ReviewList from './Pages/BR/ReviewList';
 import ReviewReg from './Pages/BR/ReviewReg';
+
+axios.defaults.baseURL = "http://localhost:8080"
 
 function App() {
   return (

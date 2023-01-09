@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 public class StudyGroupRequest {
     private String name;
-    private String summary;
+    private String description;
     private Long studyGroupLeader;
     private List<Long> studyGroupMembers = new ArrayList<>();
     private Integer season;

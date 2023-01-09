@@ -25,7 +25,6 @@ public class StudyPlanMapper {
         StudyPlan studyPlan =
                 StudyPlan.builder()
                         .title(dto.getTitle())
-                        .generation(dto.getGeneration())
                         .rule(dto.getRule())
                         .studyGroup(studyGroup)
                         .build();
@@ -55,7 +54,6 @@ public class StudyPlanMapper {
         return StudyPlanResponse.builder()
                 .id(entity.getId())
                 .title(entity.getTitle())
-                .generation(entity.getGeneration())
                 .rule(entity.getRule())
                 .studyGroupId(entity.getStudyGroup().getId())
                 .weekPlans(toWeekPlanResponseList(entity.getWeekPlans()))

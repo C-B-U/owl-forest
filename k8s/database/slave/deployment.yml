@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: owlforest-mysql
+  name: owlforest-mysql-slave
 spec:
   selector:
     matchLabels:
-      app: owlforest-mysql
-      component: owlforest-mysql
+      app: owlforest-mysql-slave
+      component: owlforest-mysql-slave
       tier: back
   replicas: 1
   template:
     metadata:
       labels:
-        app: owlforest-mysql
-        component: owlforest-mysql
+        app: owlforest-mysql-slave
+        component: owlforest-mysql-slave
         tier: back
     spec:
       containers:
-        - name: owlforest-mysql
+        - name: owlforest-mysql-slave
           image: mysql:latest
           ports:
             - containerPort: 3306
@@ -38,4 +38,4 @@ spec:
       volumes:
         - name: mysql-volume
           hostPath:
-            path: /volume/data/pettion
+            path: /volume/data/owlforest

@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: owlforest-backend
+  name: owl-forest-backend
 spec:
   selector:
     matchLabels:
-      app: owlforest-backend
-      component: owlforest-backend
+      app: owl-forest-backend
+      component: owl-forest-backend
       tier: back
   replicas: 1
   template:
     metadata:
       labels:
-        app: owlforest-backend
-        component: owlforest-backend
+        app: owl-forest-backend
+        component: owl-forest-backend
         tier: back
     spec:
       containers:
-        - name: owlforest-backend
+        - name: owl-forest-backend
           image: phjppo0918/owlforest-backend:latest
           imagePullPolicy: Always
           ports:
@@ -48,10 +48,3 @@ spec:
                 secretKeyRef:
                   name: database-secret
                   key: database.password
-          resources:
-            requests:
-              cpu: "250m"
-              memory: "4Gi"
-            limits:
-              cpu: "500m"
-              memory: "8Gi"

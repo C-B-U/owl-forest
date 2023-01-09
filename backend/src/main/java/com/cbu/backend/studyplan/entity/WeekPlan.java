@@ -1,10 +1,12 @@
 package com.cbu.backend.studyplan.entity;
 
-import lombok.*;
-
-import java.time.LocalDate;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 /**
  * 스터디 계획서 주별 계획 엔티티
@@ -18,10 +20,13 @@ public class WeekPlan {
 
     @Id @GeneratedValue private Long id;
 
+    @Column(nullable = true)
     private Integer week;
 
+    @Column(nullable = true)
     private LocalDate studyDate;
 
+    @Lob
     private String contents;
 
     @ManyToOne(fetch = FetchType.LAZY)
