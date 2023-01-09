@@ -3,14 +3,16 @@ package com.cbu.backend.studyplan.entity;
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.studygroup.entity.StudyGroup;
 import com.cbu.backend.studyplan.dto.request.StudyPlanRequest;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.*;
 
 /**
  * 스터디 계획서 엔티티
@@ -27,9 +29,8 @@ public class StudyPlan {
     @Column(nullable = false)
     private String title;
 
-    //스터디 규칙
-    @Lob
-    private String rule;
+    // 스터디 규칙
+    @Lob private String rule;
 
     @Embedded private BaseTime baseTime;
 
