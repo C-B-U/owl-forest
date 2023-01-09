@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.*;
  * @author ohksj77(김승진)
  */
 @RestController
-@RequestMapping("/api/study-group")
+@RequestMapping("/api/study-group/{studyGroupId}/plan")
 @RequiredArgsConstructor
 public class StudyPlanController {
 
     private final StudyPlanService studyPlanService;
 
     // 스터디 계획서 생성
-    @PostMapping("/{studyGroupId}/plan")
+    @PostMapping
     public ResponseEntity<ResponseFormat<StudyPlanResponse>> create(
             StudyPlanRequest dto, @PathVariable Long studyGroupId) {
         StudyPlanResponse studyPlan = studyPlanService.create(dto, studyGroupId);
@@ -36,7 +36,7 @@ public class StudyPlanController {
     }
 
     // 스터디 계획 조회
-    @GetMapping("/{studyGroupId}/plan")
+    @GetMapping
     public ResponseEntity<ResponseFormat<StudyPlanResponse>> findAll(
             @PathVariable Long studyGroupId) {
         StudyPlanResponse studyPlan = studyPlanService.findStudyPlan(studyGroupId);
@@ -47,7 +47,7 @@ public class StudyPlanController {
     }
 
     // 스터디 계획서 수정
-    @PatchMapping("/{studyGroupId}/plan")
+    @PatchMapping
     public ResponseEntity<ResponseFormat<StudyPlanResponse>> updateStudyPlan(
             StudyPlanRequest dto, @PathVariable Long studyGroupId) {
         StudyPlanResponse updateStudyPlan = studyPlanService.update(dto, studyGroupId);
@@ -58,7 +58,7 @@ public class StudyPlanController {
     }
 
     // 스터디 계획서 삭제
-    @DeleteMapping("/{studyGroupId}/plan")
+    @DeleteMapping
     public ResponseEntity<ResponseFormat<StudyPlanResponse>> deleteStudyPlan(
             @PathVariable Long studyGroupId) {
         StudyPlanResponse deleteStudyPlan = studyPlanService.delete(studyGroupId);
