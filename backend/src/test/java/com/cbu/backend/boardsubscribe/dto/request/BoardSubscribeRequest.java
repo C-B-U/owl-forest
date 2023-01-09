@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardSubscribeRequest {
-  private Long boardId;
-  private Long memberId;
+    private Long boardId;
+    private Long memberId;
 }

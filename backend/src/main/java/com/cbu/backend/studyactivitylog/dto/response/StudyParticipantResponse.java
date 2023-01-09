@@ -8,9 +8,9 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 public class StudyParticipantResponse {
-  private Long id;
-  private String name;
-  private String major;
-  private Integer grade;
-  private String profileUrl;
+    private Long id;
+    private String name;
+    private String major;
+    private Integer grade;
+    private String profileUrl;
 }

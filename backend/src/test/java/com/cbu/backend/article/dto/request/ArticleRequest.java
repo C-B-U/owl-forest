@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArticleRequest {
 
-  private String title;
-  private String content;
-  private Long authorId;
-  private Boolean isPublic;
+    private String title;
+    private String content;
+    private Long authorId;
+    private Boolean isPublic;
 }

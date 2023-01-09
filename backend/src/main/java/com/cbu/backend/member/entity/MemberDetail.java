@@ -1,29 +1,36 @@
 package com.cbu.backend.member.entity;
 
+import lombok.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 @Embeddable
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberDetail {
-  private String blogUrl;
+    private String blogUrl;
 
-  private String githubId;
+    private String githubId;
 
-  @OneToMany(mappedBy = "member")
-  private List<InterestTag> tags = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private List<InterestTag> tags = new ArrayList<>();
 
-  @Enumerated(EnumType.STRING)
-  private AcademicStatus academicStatus;
+    @Enumerated(EnumType.STRING)
+    private AcademicStatus academicStatus;
 
-  @Enumerated(EnumType.STRING)
-  private Major major;
+    @Enumerated(EnumType.STRING)
+    private Major major;
 
-  private String email;
+    @Enumerated(EnumType.STRING)
+    private Major subMajor;
 
-  @Lob private String introduction;
+    private String email;
+
+    @Lob private String introduction;
 }
