@@ -5,7 +5,7 @@
 import React, { useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import imgfile from '../../Image/Loginlogo.png';
@@ -88,15 +88,16 @@ const NaverSocialImg = styled.img`
   margin-top: 17.7rem;
 `;
 function Login() {
-  useEffect(() => {
-    axios({
-      url: '/api/auth/login/google',
-      method: 'post',
-    }).then((response) => {
-      setText(response.data);
+  const GoogleLogin = () => {
+    useEffect(() => {
+      axios({
+        url: '/api/auth/login/google',
+        method: 'post',
+      }).then((response) => {
+        setText(response.data);
+      });
     });
-  }, []);
-
+  };
   // 선언
   return (
     <div>
@@ -105,9 +106,13 @@ function Login() {
           <Mainlogo src={imgfile} />
           <SocialWrap>
             <GoogleSocialImg style={{ margin: '1rem' }} src={googlebtn} />
-            <a href='http://localhost:8080/api/auth/login/google'>
-              <DoubleSocialImg style={{ margin: '1rem' }} src={google} />
-            </a>
+            <DoubleSocialImg
+              onclick={axios.post(
+                'http://localhost:8080/api/auth/login/google'
+              )}
+              style={{ margin: '1rem' }}
+              src={google}
+            />
             <SocialImg style={{ margin: '1rem' }} src={githubbtn} />
             <KakaoSocialImg style={{}} src={kakaobtn} />
             <a href={KAKAO_AUTH_URL}>
