@@ -1,58 +1,59 @@
 package com.cbu.backend.studyplan.entity;
 
 import com.cbu.backend.global.BaseTime;
-
+import com.cbu.backend.studygroup.entity.StudyGroup;
+import com.cbu.backend.studyplan.dto.request.StudyPlanRequest;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
-
+/**
+ * 스터디 계획서 엔티티
+ *
+ * @author ohksj77(김승진)
+ */
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyPlan {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id @GeneratedValue private Long id;
 
-    @Column(nullable = false)
-    private String title;
+  private String title;
 
-    @Column(nullable = false)
-    private String generationNum;
+  private Integer generation;
 
-    @Column(nullable = false)
-    private String rule;
+  private String rule;
 
-    @Column(nullable = false)
-    private String teamMember;
+  @Embedded private BaseTime baseTime;
 
-    @Column(nullable = false)
-    private String book;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "study_group_id")
+  private StudyGroup studyGroup;
 
-    @Column(nullable = false)
-    private String studyGroupId;
+  @OneToMany(mappedBy = "studyPlan", fetch = FetchType.LAZY)
+  private List<WeekPlan> weekPlans = new ArrayList<>();
 
-    @Embedded private BaseTime baseTime;
+  @Builder
+  public StudyPlan(
+      String title,
+      Integer generation,
+      String rule,
+      BaseTime baseTime,
+      StudyGroup studyGroup,
+      List<WeekPlan> weekPlans) {
+    this.title = title;
+    this.generation = generation;
+    this.rule = rule;
+    this.baseTime = baseTime;
+    this.studyGroup = studyGroup;
+    this.weekPlans = weekPlans;
+  }
 
-    //    @OneToOne
-    //    @JoinColumn(name = "studyGroupId")
-    //    private
-
-    @Builder
-    public StudyPlan(
-            String title,
-            String generationNum,
-            String rule,
-            String teamMember,
-            String book,
-            String studyGroupId) {
-        this.title = title;
-        this.generationNum = generationNum;
-        this.rule = rule;
-        this.teamMember = teamMember;
-        this.book = book;
-        this.studyGroupId = studyGroupId;
-    }
+  public void update(StudyPlanRequest dto) {
+    this.title = dto.getTitle();
+    this.generation = dto.getGeneration();
+    this.rule = dto.getRule();
+  }
 }
