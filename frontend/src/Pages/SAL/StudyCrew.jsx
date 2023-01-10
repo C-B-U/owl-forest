@@ -2,28 +2,13 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
-import StudyBtn from '../../Components/Btn';
 import Header from '../../Components/ActivityLog/Header';
-import Profile from '../../Components/ActivityLog/Profile';
-import Input from '../../Components/Input';
+import StudyProfile from '../../Components/ActivityLog/StudyProfile';
 
 const MainWrap = styled.div`
   display: flex;
   height: calc(100vh - 64px);
   background-color: ${palette('PsCocoa', 0)};
-`;
-
-const ContextWrap = styled.div`
-  background-color: ${palette('PsLightBrown')};
-  border-radius: 10px;
-  padding: 3rem 2rem;
-
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-
-  align-items: flex-end;
 `;
 
 const HeaderTitle = styled.header`
@@ -38,54 +23,26 @@ const HeaderTitle = styled.header`
 `;
 
 const RightMainWrap = styled.div`
-  margin: 3rem 0px;
+  margin: 5rem 0px;
   width: 100%;
-
   margin-right: 5rem;
 `;
 
-const BtnWrap = styled.div`
-  width: calc(100% - 7rem);
-  margin-top: 0.5rem;
-  margin-left: auto;
-`;
-const InputTitle = styled.div`
-  font-size: 20px;
-  font-weight: 500;
+const StudyList = styled.div`
+  width: 71rem;
+  height: 8rem;
+  border-radius: 1rem;
   margin-top: 0.8rem;
-  margin-right: 1rem;
-
-  width: 6rem;
-  text-align: end;
-`;
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-
-  margin: 0.8rem 0;
-`;
-const Center = styled.div`
-  margin: 0 auto;
+  padding: 1.5rem;
+  display: inline-block;
+  background-color: ${palette('PsLightBrown')};
 `;
 
-const InputMemberWrapper = styled.div`
-  width: 636.8px;
-
-  display: flex;
-
-  & > div:nth-child(1) {
-    margin-right: 0.4rem;
-  }
-`;
-
-const ScorllWrapper = styled.div`
+const Scroll = styled.div`
   width: 100%;
-  height: 270px;
-
+  height: 43.5rem;
   margin-right: -7px;
   overflow-y: auto;
-
   &::-webkit-scrollbar {
     background: white;
     width: 7px;
@@ -98,99 +55,23 @@ const ScorllWrapper = styled.div`
     margin-top: 0px;
   }
 `;
-const InputIcon = styled.div`
-  font-size: 36px;
-  font-weight: bold;
 
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-
-  padding-bottom: 0.5rem;
-
-  color: ${(props) => (props.color ? props.color : '#000000')};
-`;
 function StudyCrew() {
   return (
     <ThemeProvider theme={theme}>
       <Header />
       <MainWrap>
-        <Profile />
+        <StudyProfile />
         <RightMainWrap>
-          <HeaderTitle>스터디 생성</HeaderTitle>
-          <ContextWrap>
-            <Center>
-              <InputWrapper>
-                <InputTitle>스터디 이름</InputTitle>
-                <Input width='600px' height='50px' placeholder='스터디 이름' />
-              </InputWrapper>
-              <InputWrapper>
-                <InputTitle>스터디 개요</InputTitle>
-                <Input width='600px' height='200px' placeholder='스터디 개요' />
-              </InputWrapper>
-
-              <ScorllWrapper>
-                <InputWrapper>
-                  <InputTitle>팀장</InputTitle>
-                  <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder='이름' />
-                    <Input width='360px' height='50px' placeholder='학번' />
-                  </InputMemberWrapper>
-                </InputWrapper>
-                <InputWrapper>
-                  <InputTitle>팀원</InputTitle>
-                  <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder='이름' />
-                    <Input width='360px' height='50px' placeholder='학번' />
-                    <InputIcon>+</InputIcon>
-                  </InputMemberWrapper>
-                </InputWrapper>
-                <InputWrapper>
-                  <InputTitle>팀원</InputTitle>
-                  <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder='이름' />
-                    <Input width='360px' height='50px' placeholder='학번' />
-                    <InputIcon color='red'>-</InputIcon>
-                  </InputMemberWrapper>
-                </InputWrapper>
-                <InputWrapper>
-                  <InputTitle>팀원</InputTitle>
-                  <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder='이름' />
-                    <Input width='360px' height='50px' placeholder='학번' />
-                    <InputIcon color='red'>-</InputIcon>
-                  </InputMemberWrapper>
-                </InputWrapper>
-                <InputWrapper>
-                  <InputTitle>팀원</InputTitle>
-                  <InputMemberWrapper>
-                    <Input width='130px' height='50px' />
-                    <Input width='360px' height='50px' />
-                    <InputIcon color='red'>-</InputIcon>
-                  </InputMemberWrapper>
-                </InputWrapper>
-                <InputWrapper>
-                  <InputTitle>팀원</InputTitle>
-                  <InputMemberWrapper>
-                    <Input width='130px' height='50px' />
-                    <Input width='360px' height='50px' />
-                    <InputIcon color='red'>-</InputIcon>
-                  </InputMemberWrapper>
-                </InputWrapper>
-              </ScorllWrapper>
-
-              <BtnWrap>
-                <StudyBtn
-                  background={palette('PsBtn')}
-                  color={palette('PsYellow')}
-                  width='100%'
-                  height='3.5rem'
-                  name='생성하기'
-                />
-              </BtnWrap>
-            </Center>
-          </ContextWrap>
+          <HeaderTitle>활동 일지</HeaderTitle>
+          <Scroll>
+            <StudyList />
+            <StudyList />
+            <StudyList />
+            <StudyList />
+            <StudyList />
+            <StudyList />
+          </Scroll>
         </RightMainWrap>
       </MainWrap>
     </ThemeProvider>
