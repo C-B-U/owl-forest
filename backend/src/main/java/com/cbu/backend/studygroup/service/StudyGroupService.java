@@ -87,7 +87,7 @@ public class StudyGroupService {
         return studyGroupRepository.findAll().stream()
                 .sorted(
                         Comparator.comparing(function, sortDirection)
-                                .thenComparing(StudyGroup::getSeason, Comparator.reverseOrder()))
+                                .thenComparing(StudyGroup::getId, Comparator.reverseOrder()))
                 .map(studyGroupMapper::toResponse)
                 .toList();
     }

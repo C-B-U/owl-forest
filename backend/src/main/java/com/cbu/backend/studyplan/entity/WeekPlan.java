@@ -1,6 +1,9 @@
 package com.cbu.backend.studyplan.entity;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -18,11 +21,13 @@ public class WeekPlan {
 
     @Id @GeneratedValue private Long id;
 
+    @Column(nullable = true)
     private Integer week;
 
+    @Column(nullable = true)
     private LocalDate studyDate;
 
-    private String contents;
+    @Lob private String contents;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_plan_id")

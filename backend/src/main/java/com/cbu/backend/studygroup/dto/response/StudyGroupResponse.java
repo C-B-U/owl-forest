@@ -20,7 +20,7 @@ import java.util.List;
 public class StudyGroupResponse {
     private Long id;
     private String name;
-    private String summary;
+    private String description;
     private StudyGroupMemberResponse studyGroupLeader;
     private List<StudyGroupMemberResponse> studyGroupMembers = new ArrayList<>();
     private Boolean isActive;

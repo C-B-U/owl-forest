@@ -98,6 +98,14 @@ function Login() {
       });
     });
   };
+
+  const googleClick = () => {
+    console.log(5); 
+      axios.post(
+      'http://localhost:8080/api/auth/login/google'
+    );
+  }
+
   // 선언
   return (
     <div>
@@ -107,12 +115,13 @@ function Login() {
           <SocialWrap>
             <GoogleSocialImg style={{ margin: '1rem' }} src={googlebtn} />
             <DoubleSocialImg
-              onclick={axios.post(
-                'http://localhost:8080/api/auth/login/google'
-              )}
+             
               style={{ margin: '1rem' }}
               src={google}
             />
+            <button type='button' onClick={googleClick}>
+                안녕안녕
+            </button>
             <SocialImg style={{ margin: '1rem' }} src={githubbtn} />
             <KakaoSocialImg style={{}} src={kakaobtn} />
             <a href={KAKAO_AUTH_URL}>

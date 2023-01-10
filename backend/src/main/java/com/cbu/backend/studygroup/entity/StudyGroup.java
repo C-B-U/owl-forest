@@ -22,16 +22,17 @@ public class StudyGroup {
 
     @Id @GeneratedValue private Long id;
 
+    // 그룹명
+    @Column(nullable = false)
     private String name;
 
-    private String summary;
+    // 스터디 설명
+    @Lob private String description;
 
     @OneToMany(mappedBy = "studyGroup")
     private List<StudyActivityLog> studyActivityLogs = new ArrayList<>();
 
     private Integer likeCount = 0;
-
-    private Integer season;
 
     private Boolean isActive = true;
 
@@ -46,22 +47,22 @@ public class StudyGroup {
     @Builder
     public StudyGroup(
             String name,
-            String summary,
+            String description,
             List<StudyActivityLog> studyActivityLogs,
             Integer season,
             StudyGroupMember studyGroupLeader,
             List<StudyGroupMember> studyGroupMembers) {
         this.name = name;
-        this.summary = summary;
+        this.description = description;
         this.studyActivityLogs = studyActivityLogs;
-        this.season = season;
         this.studyGroupLeader = studyGroupLeader;
         this.studyGroupMembers = studyGroupMembers;
+        baseTime = new BaseTime();
     }
 
     public StudyGroup update(StudyGroupRequest studyGroup) { // 매개변수 request DTO로 수정 필요
         this.name = studyGroup.getName();
-        this.summary = studyGroup.getSummary();
+        this.description = studyGroup.getDescription();
 
         return this;
     }

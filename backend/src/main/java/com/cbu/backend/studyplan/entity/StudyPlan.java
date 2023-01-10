@@ -4,7 +4,10 @@ import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.studygroup.entity.StudyGroup;
 import com.cbu.backend.studyplan.dto.request.StudyPlanRequest;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +26,11 @@ public class StudyPlan {
 
     @Id @GeneratedValue private Long id;
 
+    @Column(nullable = false)
     private String title;
 
-    private Integer generation;
-
-    private String rule;
+    // 스터디 규칙
+    @Lob private String rule;
 
     @Embedded private BaseTime baseTime;
 
@@ -41,22 +44,20 @@ public class StudyPlan {
     @Builder
     public StudyPlan(
             String title,
-            Integer generation,
             String rule,
             BaseTime baseTime,
             StudyGroup studyGroup,
             List<WeekPlan> weekPlans) {
         this.title = title;
-        this.generation = generation;
         this.rule = rule;
         this.baseTime = baseTime;
         this.studyGroup = studyGroup;
         this.weekPlans = weekPlans;
+        baseTime = new BaseTime();
     }
 
     public void update(StudyPlanRequest dto) {
         this.title = dto.getTitle();
-        this.generation = dto.getGeneration();
         this.rule = dto.getRule();
     }
 }
