@@ -1,7 +1,9 @@
 package com.cbu.backend.config.security;
 
 import com.cbu.backend.config.security.jwt.JwtAuthenticationFilter;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -58,7 +60,8 @@ public class SecurityConfig {
                         jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .csrf()
                 .disable()
-                .cors().configurationSource(corsConfigurationSource())
+                .cors()
+                .configurationSource(corsConfigurationSource())
                 .and()
                 .build();
     }
