@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from "axios";
+import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Welcome from './Pages/Welcome';
 import StudyActivityLog from './Pages/SAL/StudyActivityLog';
@@ -18,13 +18,14 @@ import MemListCon from './Pages/MM/MemListCon';
 import Reg from './Pages/MM/Reg';
 import Profile from './Pages/MM/Profile';
 import ChangePw from './Pages/MM/ChangePw';
+import AddInfo from './Pages/MM/AddInfo';
 import BookReg from './Pages/BR/BookReg';
 import BorrowList from './Pages/BR/BorrowList';
 import ReviewDetail from './Pages/BR/ReviewDetail';
 import ReviewList from './Pages/BR/ReviewList';
 import ReviewReg from './Pages/BR/ReviewReg';
 
-axios.defaults.baseURL = "http://localhost:8080"
+axios.defaults.baseURL = 'http://localhost:8080';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path='/Reg' element={<Reg />} />
           <Route path='/Profile' element={<Profile />} />
           <Route path='/ChangePw' element={<ChangePw />} />
+          <Route path='/AddInfo' element={<AddInfo />} />
           {/* ---- 북리뷰 ---- */}
           <Route path='/BorrowList' element={<BorrowList />} />
           <Route path='/BookRegister' element={<BookReg />} />
