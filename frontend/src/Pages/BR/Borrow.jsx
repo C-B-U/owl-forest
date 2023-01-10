@@ -21,23 +21,43 @@ const Wrap = styled.div`
   box-sizing: content-box;
   background-color: ${palette('PsLightBrown')};
 `;
-const BookImage = styled.div`
-  width: 20rem;
-  height: 28rem;
-  background-color: #ffffff;
-`;
+
 const WrapInfo = styled.div`
   /* float: center; */
   margin-left: 6.5rem;
   width: 18rem;
 `;
+const BookImage = styled.div`
+  width: 20rem;
+  height: 28rem;
+  background-color: #ffffff;
+`; // 책 이미지
+
+const BookName = styled.h1`
+  font-size: 20pt;
+`; // 책 이름
+
+const BookInfos = styled.h1`
+  font-size: 15pt;
+  margin-bottom: 2rem;
+`; // 책정보 저자 | 출판사
+
+const Publisher = styled.h1`
+  font-size: 15pt;
+`; // 책 게시자
+const ReturnDate = styled.h1`
+  font-size: 15pt;
+`; // 반납일
+const Location = styled.h1`
+  font-size: 15pt;
+`; // 위치
 const WrapContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 const WrapButton = styled.div`
-  margin-top: 13rem;
+  margin-top: 9rem;
 `;
 function Borrow() {
   return (
@@ -49,15 +69,16 @@ function Borrow() {
             <WrapContent>
               <BookImage />
               <WrapInfo>
-                <h2>책 정보</h2>
-                <h3>빌려주는 사람:</h3>
-                <h3>반납 일:</h3>
-                <h3>위치: </h3>
+                <BookName>책 제목</BookName>
+                <BookInfos>저자 | 출판사</BookInfos>
+                <Publisher>게시자:</Publisher>
+                <ReturnDate>반납일:</ReturnDate>
+                <Location>위치: </Location>
                 <WrapButton>
                   <AskButton
                     color={palette('PsYellow')}
                     background={palette('PsBtn')}
-                    width='10rem'
+                    width='9rem'
                     height='3rem'
                     name='문의 하기'
                   />
