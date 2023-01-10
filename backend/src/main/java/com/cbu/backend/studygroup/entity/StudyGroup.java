@@ -4,14 +4,16 @@ import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studyactivitylog.entity.StudyActivityLog;
 import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -20,19 +22,17 @@ public class StudyGroup {
 
     @Id @GeneratedValue private Long id;
 
-    //그룹명
+    // 그룹명
     @Column(nullable = false)
     private String name;
 
-    //스터디 설명
-    @Lob
-    private String description;
+    // 스터디 설명
+    @Lob private String description;
 
     @OneToMany(mappedBy = "studyGroup")
     private List<StudyActivityLog> studyActivityLogs = new ArrayList<>();
 
     private Integer likeCount = 0;
-
 
     private Boolean isActive = true;
 

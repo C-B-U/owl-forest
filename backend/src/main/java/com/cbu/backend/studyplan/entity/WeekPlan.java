@@ -5,8 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDate;
+
+import javax.persistence.*;
 
 /**
  * 스터디 계획서 주별 계획 엔티티
@@ -26,8 +27,7 @@ public class WeekPlan {
     @Column(nullable = true)
     private LocalDate studyDate;
 
-    @Lob
-    private String contents;
+    @Lob private String contents;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_plan_id")
