@@ -10,13 +10,19 @@ export const InputStyle = styled.input`
   border-radius: 0.3rem;
   padding: 0rem 1.5rem 0rem 0.5rem;
   font-family: 'Noto Sans KR', sans-serif;
-
+  font-size: ${(props) => props.fontSize};
   &:focus {
     outline: none;
   }
 `;
 
-export default function Input({ width, height, margin, placeholder }) {
+export default function Input({
+  width,
+  height,
+  margin,
+  placeholder,
+  fontSize,
+}) {
   return (
     <div>
       <InputStyle
@@ -24,6 +30,7 @@ export default function Input({ width, height, margin, placeholder }) {
         height={height}
         margin={margin}
         placeholder={placeholder}
+        fontSize={fontSize}
       />
     </div>
   );
