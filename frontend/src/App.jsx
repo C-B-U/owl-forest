@@ -22,6 +22,7 @@ import AddInfo from './Pages/MM/AddInfo';
 import BookReg from './Pages/BR/BookReg';
 import Borrow from './Pages/BR/Borrow';
 import BorrowList from './Pages/BR/BorrowList';
+import MyBookList from './Pages/BR/MyBookList';
 import ReviewDetail from './Pages/BR/ReviewDetail';
 import ReviewList from './Pages/BR/ReviewList';
 import ReviewReg from './Pages/BR/ReviewReg';
@@ -58,6 +59,7 @@ function App() {
           <Route path='/Borrow' element={<Borrow />} />
           <Route path='/BorrowList' element={<BorrowList />} />
           <Route path='/BookRegister' element={<BookReg />} />
+          <Route path='/MyBookList' element={<MyBookList />} />
           <Route path='/ReviewDetail' element={<ReviewDetail />} />
           <Route path='/ReviewList' element={<ReviewList />} />
           <Route path='/ReviewRegister' element={<ReviewReg />} />
