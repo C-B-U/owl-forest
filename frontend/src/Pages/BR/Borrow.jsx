@@ -4,7 +4,6 @@ import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import AskButton from '../../Components/Btn.jsx';
-import Input from '../../Components/Input.jsx';
 
 const MainWrap = styled.div`
   position: absolute;
@@ -27,6 +26,7 @@ const WrapInfo = styled.div`
   margin-left: 6.5rem;
   width: 18rem;
 `;
+
 const BookImage = styled.div`
   width: 20rem;
   height: 28rem;
@@ -45,20 +45,25 @@ const BookInfos = styled.h1`
 const Publisher = styled.h1`
   font-size: 15pt;
 `; // 책 게시자
+
 const ReturnDate = styled.h1`
   font-size: 15pt;
 `; // 반납일
+
 const Location = styled.h1`
   font-size: 15pt;
 `; // 위치
+
 const WrapContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
 const WrapButton = styled.div`
   margin-top: 9rem;
 `;
+
 function Borrow() {
   return (
     <div>
