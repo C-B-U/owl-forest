@@ -3,7 +3,7 @@ package com.cbu.backend.boardsubscribe.mapper;
 import com.cbu.backend.board.entity.Board;
 import com.cbu.backend.boardsubscribe.dto.response.BoardSubscribeResponse;
 import com.cbu.backend.boardsubscribe.entity.BoardSubscribe;
-import com.cbu.backend.member.entity.Member;
+import com.cbu.backend.domain.member.entity.Member;
 
 import org.springframework.stereotype.Component;
 

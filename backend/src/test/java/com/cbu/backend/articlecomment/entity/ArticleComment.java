@@ -2,7 +2,7 @@ package com.cbu.backend.articlecomment.entity;
 
 import com.cbu.backend.article.entity.Article;
 import com.cbu.backend.global.BaseTime;
-import com.cbu.backend.member.entity.Member;
+import com.cbu.backend.domain.member.entity.Member;
 
 import lombok.*;
 

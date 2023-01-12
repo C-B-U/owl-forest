@@ -93,6 +93,7 @@ function Login() {
       axios({
         url: '/api/auth/login/google',
         method: 'post',
+        withCredentials: true,
       }).then((response) => {
         setText(response.data);
       });
@@ -102,6 +103,12 @@ function Login() {
   const googleClick = () => {
     console.log(5);
     axios.post('http://localhost:8080/api/auth/login/google');
+  };
+
+  const googleClic2 = () => {
+    axios
+      .get('api/hello', {}, { withCredentials: true })
+      .then((r) => console.log(r.data));
   };
 
   // 선언

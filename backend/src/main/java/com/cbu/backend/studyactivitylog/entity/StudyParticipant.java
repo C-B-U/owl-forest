@@ -1,6 +1,6 @@
 package com.cbu.backend.studyactivitylog.entity;
 
-import com.cbu.backend.member.entity.Member;
+import com.cbu.backend.domain.member.entity.Member;
 
 import lombok.AccessLevel;
 import lombok.Getter;

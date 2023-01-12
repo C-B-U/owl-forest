@@ -4,8 +4,8 @@ import com.cbu.backend.article.entity.Article;
 import com.cbu.backend.articlecomment.dto.request.ArticleCommentRequest;
 import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponse;
 import com.cbu.backend.articlecomment.entity.ArticleComment;
-import com.cbu.backend.member.entity.Member;
-import com.cbu.backend.member.mapper.MemberMapper;
+import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.domain.member.mapper.MemberMapper;
 
 import lombok.RequiredArgsConstructor;
 

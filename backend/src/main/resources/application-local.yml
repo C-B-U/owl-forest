@@ -39,8 +39,8 @@ spring:
       client:
         registration:
           google:
-            client-id: aaaaaaaa
-            client-secret: aaaaaaa
+            client-id: 403267681219-ukl42klhu84djqkjbummr7hg5blrkitk.apps.googleusercontent.com
+            client-secret: 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
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             scope: email, profile
           kakao:
@@ -74,3 +74,6 @@ jwt:
   access-header: Authorization
   refresh-header: Refresh
   secret: asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
+
+client:
+  url: http://localhost:3000

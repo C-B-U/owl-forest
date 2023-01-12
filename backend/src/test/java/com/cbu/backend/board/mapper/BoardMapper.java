@@ -3,8 +3,8 @@ package com.cbu.backend.board.mapper;
 import com.cbu.backend.board.dto.request.BoardRequest;
 import com.cbu.backend.board.dto.response.BoardResponse;
 import com.cbu.backend.board.entity.Board;
-import com.cbu.backend.member.entity.Member;
-import com.cbu.backend.member.mapper.MemberMapper;
+import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.domain.member.mapper.MemberMapper;
 
 import lombok.RequiredArgsConstructor;
 

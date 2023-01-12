@@ -8,8 +8,8 @@ import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponse;
 import com.cbu.backend.articlecomment.entity.ArticleComment;
 import com.cbu.backend.articlecomment.mapper.ArticleCommentMapper;
 import com.cbu.backend.articlecomment.repository.ArticleCommentRepository;
-import com.cbu.backend.member.entity.Member;
-import com.cbu.backend.member.service.MemberService;
+import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.domain.member.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 

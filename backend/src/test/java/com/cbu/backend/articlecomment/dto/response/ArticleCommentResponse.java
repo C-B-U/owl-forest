@@ -1,6 +1,6 @@
 package com.cbu.backend.articlecomment.dto.response;
 
-import com.cbu.backend.member.dto.response.MemberResponse;
+import com.cbu.backend.domain.member.dto.response.MemberResponse;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -7,8 +7,8 @@ import com.cbu.backend.article.mapper.ArticleMapper;
 import com.cbu.backend.article.repository.ArticleRepository;
 import com.cbu.backend.board.entity.Board;
 import com.cbu.backend.board.service.BoardService;
-import com.cbu.backend.member.entity.Member;
-import com.cbu.backend.member.service.MemberService;
+import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.domain.member.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 

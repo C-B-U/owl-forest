@@ -4,7 +4,7 @@ import com.cbu.backend.board.service.BoardService;
 import com.cbu.backend.boardsubscribe.dto.request.BoardSubscribeRequest;
 import com.cbu.backend.boardsubscribe.dto.response.BoardSubscribeResponse;
 import com.cbu.backend.boardsubscribe.repository.BoardSubscribeRepository;
-import com.cbu.backend.member.service.MemberService;
+import com.cbu.backend.domain.member.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 

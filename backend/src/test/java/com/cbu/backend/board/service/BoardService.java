@@ -6,8 +6,8 @@ import com.cbu.backend.board.dto.response.BoardResponse;
 import com.cbu.backend.board.entity.Board;
 import com.cbu.backend.board.mapper.BoardMapper;
 import com.cbu.backend.board.repository.BoardRepository;
-import com.cbu.backend.member.entity.Member;
-import com.cbu.backend.member.service.MemberService;
+import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.domain.member.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 

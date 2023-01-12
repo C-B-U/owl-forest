@@ -2,7 +2,7 @@ package com.cbu.backend.article.dto.response;
 
 import com.cbu.backend.articlecomment.dto.response.ArticleCommentResponse;
 import com.cbu.backend.board.dto.response.BoardResponse;
-import com.cbu.backend.member.dto.response.MemberResponse;
+import com.cbu.backend.domain.member.dto.response.MemberResponse;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -6,8 +6,8 @@ import com.cbu.backend.article.entity.Article;
 import com.cbu.backend.articlecomment.mapper.ArticleCommentMapper;
 import com.cbu.backend.board.entity.Board;
 import com.cbu.backend.board.mapper.BoardMapper;
-import com.cbu.backend.member.entity.Member;
-import com.cbu.backend.member.mapper.MemberMapper;
+import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.domain.member.mapper.MemberMapper;
 
 import lombok.RequiredArgsConstructor;
 

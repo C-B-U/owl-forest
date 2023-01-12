@@ -1,7 +1,7 @@
 package com.cbu.backend.studygroup.service;
 
-import com.cbu.backend.member.entity.Member;
-import com.cbu.backend.member.service.MemberService;
+import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.domain.member.service.MemberService;
 import com.cbu.backend.studyactivitylog.service.StudyActivityLogService;
 import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.response.StudyGroupResponse;
