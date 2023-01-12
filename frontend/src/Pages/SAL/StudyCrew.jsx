@@ -2,263 +2,109 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
-import Logo10 from '../../Image/Logo10.png';
-import Input from '../../Components/Input';
-import Btn from '../../Components/Btn';
-import Plus from '../../Image/PlusButton.png';
-import Minus from '../../Image/MinusButton.png';
-
-const HeaderWrapper = styled.div`
-  height: 4rem;
-  display: flex;
-  background-color: ${palette('PsGreen', 0)};
-  padding: 0 5rem;
-`;
-
-const Logo = styled.div`
-  width: 4rem;
-  height: 4rem;
-  border-radius: 100%;
-  display: flex;
-  margin-right: 1rem;
-  background-image: url(${Logo10});
-  background-size: 4.4rem;
-  background-repeat: no-repeat;
-  background-position: center;
-`;
-
-const Title = styled.h1`
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20pt;
-  display: flex;
-`;
+import Header from '../../Components/ActivityLog/Header';
+import StudyProfile from '../../Components/ActivityLog/StudyProfile';
 
 const MainWrap = styled.div`
-  display: inline-block;
+  display: flex;
+  height: calc(100vh - 64px);
   background-color: ${palette('PsCocoa', 0)};
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  text-align: center;
 `;
 
-const StudyWrap = styled.div`
-  display: inline-block;
-  text-align: center;
-`;
-
-const OutLine = styled.div`
-  width: 100rem;
-  height: 40rem;
-  border-radius: 1rem;
-  /* margin: auto; */
-  padding: 4rem;
-  background-color: ${palette('PsLightBrown')};
-  display: inline-block;
-  text-align: center;
-`;
-
-/** 블럭 간격 조절 */
-const StudyIndex = styled.div`
-  display: flex;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-`;
-
-/** 스크롤 */
-const ScrollBar = styled.div`
-  margin-bottom: 1rem;
-  overflow-y: auto;
-  height: 25rem;
-  &::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 1rem;
-    border-radius: 0.4rem;
-  }
-  &::-webkit-scrollbar-thumb {
-    height: 20rem;
-    background: ${palette('PsBtn')};
-    border-radius: 0.4rem;
-  }
-  &::-webkit-scrollbar-track {
-    background: #efebe9;
-    border-radius: 0.4rem;
-  }
-`;
-
-const BtnWrap = styled.div`
-  display: flex;
-  margin-left: 1rem;
-`;
-
-const Team = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const WordWrap = styled.div`
-  display: inline-block;
-`;
-
-const BlockWrap = styled.div`
-  display: inline-block;
-`;
-
-const StudyHeader = styled.header`
-  width: 60rem;
+const HeaderTitle = styled.header`
   height: 4rem;
-  margin-top: 4rem;
-  margin-left: 1rem;
+  padding-left: 1rem;
   font-size: 20pt;
   font-weight: bold;
+  color: #fafad2;
   align-items: center;
   justify-content: left;
   display: flex;
 `;
 
-/** 스터디 개요 */
-const StudySummary = styled.header`
-  width: 10rem;
-  height: 4rem;
-  margin-top: 0.3rem;
-  margin-bottom: 5.8rem;
-  margin-right: 1rem;
-  font-size: 20pt;
-  font-weight: bold;
-  align-items: center;
-  justify-content: right;
-  display: flex;
+const RightMainWrap = styled.div`
+  margin: 5rem 0px;
+  width: 100%;
+  margin-right: 5rem;
 `;
 
-/** 팀장 */
-const StudyLeader = styled.header`
-  width: 10rem;
-  height: 4rem;
-  margin-right: 1rem;
-  font-size: 20pt;
-  font-weight: bold;
-  align-items: center;
-  justify-content: right;
+const StudyList = styled.div`
+  width: 71rem;
+  height: 8rem;
+  border-radius: 1rem;
+  margin-top: 0.8rem;
+  padding: 1.5rem;
   display: flex;
-`;
-
-/** 팀원 */
-const StudyMember = styled.header`
-  width: 10rem;
-  height: 4rem;
-  margin-top: 0.1rem;
-  margin-right: 1rem;
-  font-size: 20pt;
-  font-weight: bold;
-  align-items: center;
-  justify-content: right;
-  display: flex;
-`;
-
-const PlusBtn = styled.button`
-  background-image: url(${Plus});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 2rem;
   background-color: ${palette('PsLightBrown')};
-  border: 0em;
-  width: 3rem;
-  height: 3rem;
-  margin-left: 0.5rem;
 `;
 
-const MinusBtn = styled.button`
-  background-image: url(${Minus});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 2rem;
-  background-color: ${palette('PsLightBrown')};
-  border: 0em;
-  width: 3rem;
-  height: 3rem;
-  margin-left: 0.5rem;
+const StudyName = styled.div`
+  font-size: 15pt;
+  font-weight: bold;
+  align-items: center;
+  justify-content: left;
+  display: flex;
+  padding: 1rem;
+  margin: 1rem;
+`;
+
+const StudyInput = styled.div`
+  font-size: 10pt;
+  font-weight: bold;
+  display: flex;
+`;
+
+const Scroll = styled.div`
+  width: 100%;
+  height: 43.5rem;
+  margin-right: -7px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    background: white;
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${palette('PsCocoa', 0)};
+  }
+  & > div:nth-child(1) {
+    margin-top: 0px;
+  }
 `;
 
 function StudyCrew() {
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <HeaderWrapper>
-          <Logo />
-          <Title>활동일지 서비스</Title>
-        </HeaderWrapper>
-        <MainWrap>
-          <StudyWrap>
-            <StudyHeader>스터디 수정</StudyHeader>
-            <OutLine>
-              <Team>
-                {/* 글씨 블럭 */}
-                <WordWrap>
-                  <StudySummary>스터디 개요</StudySummary>
-                  <StudyLeader>팀장</StudyLeader>
-                  <StudyMember>팀원</StudyMember>
-                </WordWrap>
-                <BlockWrap>
-                  <StudyIndex>
-                    {/* 스터디 개요 작성 */}
-                    <Input width='45rem' height='8rem' />
-                  </StudyIndex>
-                  {/* 스크롤 */}
-                  <ScrollBar>
-                    <StudyIndex>
-                      {/* 팀장 작성 */}
-                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
-                      <Input width='30rem' height='3rem' />
-                    </StudyIndex>
-                    <StudyIndex>
-                      {/* 팀원작성 */}
-                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
-                      <Input width='30rem' height='3rem' />
-                      <PlusBtn />
-                    </StudyIndex>
-                    <StudyIndex>
-                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
-                      <Input width='30rem' height='3rem' />
-                      <MinusBtn />
-                    </StudyIndex>
-                    <StudyIndex>
-                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
-                      <Input width='30rem' height='3rem' />
-                      <MinusBtn />
-                    </StudyIndex>
-                    <StudyIndex>
-                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
-                      <Input width='30rem' height='3rem' />
-                      <MinusBtn />
-                    </StudyIndex>
-                    <StudyIndex>
-                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
-                      <Input width='30rem' height='3rem' />
-                      <MinusBtn />
-                    </StudyIndex>
-                    <StudyIndex>
-                      <Input width='7rem' height='3rem' margin='0 1rem 0 0' />
-                      <Input width='30rem' height='3rem' />
-                      <MinusBtn />
-                    </StudyIndex>
-                  </ScrollBar>
-                  <BtnWrap>
-                    <Btn
-                      background={palette('PsBtn')}
-                      color={palette('PsYellow')}
-                      width='45.5rem'
-                      height='3.5rem'
-                      name='수정하기'
-                    />
-                  </BtnWrap>
-                </BlockWrap>
-              </Team>
-            </OutLine>
-          </StudyWrap>
-        </MainWrap>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Header />
+      <MainWrap>
+        <StudyProfile />
+        <RightMainWrap>
+          <HeaderTitle>활동 일지</HeaderTitle>
+          <Scroll>
+            <StudyList>
+              <StudyName>1차</StudyName>
+              <StudyInput>
+                날짜 : 2022-9-27
+                <br />
+                <br />
+                시간 : 00:00 ~ 12:00
+                <br />
+                <br />
+                활동 장소 : 비대면 zoom
+                <br />
+                <br />
+                참여 인원 : 가나, 나다, 다라, 마바
+              </StudyInput>
+            </StudyList>
+            <StudyList />
+            <StudyList />
+            <StudyList />
+            <StudyList />
+            <StudyList />
+          </Scroll>
+        </RightMainWrap>
+      </MainWrap>
+    </ThemeProvider>
   );
 }
 
