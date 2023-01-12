@@ -34,8 +34,24 @@ const StudyList = styled.div`
   border-radius: 1rem;
   margin-top: 0.8rem;
   padding: 1.5rem;
-  display: inline-block;
+  display: flex;
   background-color: ${palette('PsLightBrown')};
+`;
+
+const StudyName = styled.div`
+  font-size: 15pt;
+  font-weight: bold;
+  align-items: center;
+  justify-content: left;
+  display: flex;
+  padding: 1rem;
+  margin: 1rem;
+`;
+
+const StudyInput = styled.div`
+  font-size: 10pt;
+  font-weight: bold;
+  display: flex;
 `;
 
 const Scroll = styled.div`
@@ -65,7 +81,21 @@ function StudyCrew() {
         <RightMainWrap>
           <HeaderTitle>활동 일지</HeaderTitle>
           <Scroll>
-            <StudyList />
+            <StudyList>
+              <StudyName>1차</StudyName>
+              <StudyInput>
+                날짜 : 2022-9-27
+                <br />
+                <br />
+                시간 : 00:00 ~ 12:00
+                <br />
+                <br />
+                활동 장소 : 비대면 zoom
+                <br />
+                <br />
+                참여 인원 : 가나, 나다, 다라, 마바
+              </StudyInput>
+            </StudyList>
             <StudyList />
             <StudyList />
             <StudyList />
