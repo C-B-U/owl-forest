@@ -6,11 +6,10 @@ import Header from '../../Components/ActivityLog/Header';
 import Button from '../../Components/Btn';
 
 const MainWrap = styled.div`
-  display: inline-block;
-  width: 100%;
-  height: fit-content;
+  position: absolute;
   background-color: ${palette('PsCocoa', 0)};
-  position: fixed;
+  width: 100%;
+  height: 100vh;
 `;
 
 const WrapList = styled.div`
@@ -28,93 +27,138 @@ const ListTitle = styled.div`
   margin-bottom: 1rem;
 `;
 
-const BookList = styled.div`
-  width: 49rem;
+const Guide = styled.div`
+  width: 46rem;
   height: fit-content;
-  padding: 0.5rem;
-  margin: 1.5rem auto 0.5rem auto;
   background-color: white;
-  display: flex;
   border-radius: 2rem;
+  box-sizing: content-box;
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem auto 0.5rem auto;
+  padding: 0.5rem 2rem;
+`;
+
+const BookList = styled.div`
+  width: 46rem;
+  height: fit-content;
+  align-items: center;
+  background-color: ${palette('PsLightBrown', 1)};
+  border-radius: 2rem;
+  box-sizing: content-box;
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem auto 0.5rem auto;
+  padding: 0.5rem 2rem;
 `;
 
 const BookTitle = styled.div`
-  margin-right: 2rem;
+  width: 11rem;
+  text-align: center;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  //border: 1px solid grey;
 `;
 
 const PostUser = styled.div`
-  margin: 0rem 2rem;
+  width: 9rem;
+  text-align: center;
+  word-break: break-all;
+  //border: 1px solid grey;
 `;
 
 const State = styled.div`
-  margin: 0rem 2rem;
+  width: 5rem;
+  text-align: center;
+  //border: 1px solid grey;
 `;
-const WrapState = styled.div`
-  border: 1px solid grey;
-  float: right;
+
+const WrapStateButton = styled.div`
+  width: 6rem;
+  text-align: center;
+  pointer-events: none;
+  //border: 1px solid grey;
 `;
 
 const PostDate = styled.div`
-  margin: 0rem 2rem;
+  width: 7rem;
+  text-align: center;
+  //border: 1px solid grey;
 `;
+
 const BorrowUser = styled.div`
-  margin: 0rem 2rem;
+  width: 9rem;
+  //border: 1px solid grey;
+  text-align: center;
 `;
+
 const ReturnDate = styled.div`
-  margin: 0rem 2rem;
+  width: 7rem;
+  text-align: center;
+  //border: 1px solid grey;
 `;
+
 function MyBookList() {
   return (
     <ThemeProvider theme={theme}>
       <MainWrap>
         <Header />
+
         <WrapList>
           <ListTitle>빌린 도서 리스트</ListTitle>
-          <BookList>
-            <BookTitle>알고리즘</BookTitle>
+
+          <Guide>
+            <BookTitle>도서 제목</BookTitle>
             <PostUser>빌려주는 사람</PostUser>
+            <State>반납 상태</State>
+            <WrapStateButton>남은 날짜</WrapStateButton>
+          </Guide>
+
+          <BookList>
+            <BookTitle>컴퓨터활용능력 1급 실기</BookTitle>
+            <PostUser>2019156014 김혜진</PostUser>
             <State>반납 완료</State>
-            <WrapState>
-              <Button width='5rem' height='1.5rem' name='리뷰쓰기' />
-            </WrapState>
+            <WrapStateButton>
+              <Button width='6rem' height='1.5rem' name='리뷰쓰기' />
+            </WrapStateButton>
           </BookList>
+
           <BookList>
-            <BookTitle>인공지능</BookTitle>
-            <PostUser>빌려주는 사람</PostUser>
+            <BookTitle>
+              코틀린을 활용한 안드로이드 프로그래밍 우재남, 유혜림
+            </BookTitle>
+            <PostUser>2019150012 김혜진</PostUser>
             <State>대여중</State>
-            <WrapState>
-              <Button width='5rem' height='1.5rem' name='D-5' />
-            </WrapState>
-          </BookList>
-          <BookList>
-            <BookTitle>인공지능</BookTitle>
-            <PostUser>빌려주는 사람</PostUser>
-            <State>대여중</State>
-            <WrapState>
-              <Button width='5rem' height='1.5rem' name='D-5' />
-            </WrapState>
+            <WrapStateButton>
+              <Button width='6rem' height='1.5rem' name='D-100' />
+            </WrapStateButton>
           </BookList>
         </WrapList>
+
         <WrapList>
           <ListTitle>빌려준 도서 리스트</ListTitle>
-          <BookList>
-            <BookTitle>알고리즘</BookTitle>
+
+          <Guide>
+            <BookTitle>도서 제목</BookTitle>
             <PostDate>올린 날짜</PostDate>
             <BorrowUser>빌린 사람</BorrowUser>
-            <State>대여중</State>
+            <State>대여 상태</State>
             <ReturnDate>반납 날짜</ReturnDate>
-          </BookList>
+          </Guide>
+
           <BookList>
-            <BookTitle>웹프로그래밍</BookTitle>
+            <BookTitle>밑바닥부터 시작하는 딥러닝</BookTitle>
             <PostDate>2022/12/01</PostDate>
-            <BorrowUser>빌린 사람</BorrowUser>
+            <BorrowUser>2019146013 김혜진</BorrowUser>
             <State>반납 완료</State>
             <ReturnDate>2022/01/01</ReturnDate>
           </BookList>
+
           <BookList>
-            <BookTitle>데이터 베이스</BookTitle>
+            <BookTitle>명품 JAVA Programming</BookTitle>
             <PostDate>2023/01/01</PostDate>
-            <BorrowUser>빌린 사람</BorrowUser>
+            <BorrowUser>2019157010 김혜진</BorrowUser>
             <State>대여중</State>
             <ReturnDate>2023/02/28</ReturnDate>
           </BookList>
