@@ -35,7 +35,7 @@ const BookList = styled.div`
   margin: 1.5rem auto 0.5rem auto;
   background-color: white;
   display: flex;
-  border-radius: 0.2rem;
+  border-radius: 2rem;
 `;
 
 const BookTitle = styled.div`
