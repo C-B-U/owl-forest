@@ -8,6 +8,7 @@ const Pf = styled.div`
   border-radius: 1rem;
   margin: 3rem;
   margin-left: 5rem;
+  padding-top: 4.5rem;
   display: inline-block;
   background-color: ${palette('PsLightBrown')};
 `;
