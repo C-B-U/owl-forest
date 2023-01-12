@@ -17,7 +17,6 @@ import theme from '../../Components/Color';
 import kakao from '../../Image/Kakao.png';
 import google from '../../Image/Google.png';
 import naver from '../../Image/Naver.png';
-import { KAKAO_AUTH_URL } from '../../Components/MMList/kakaoAuth';
 // 1rem = 대략 16px
 
 const Mainlogo = styled.img`
@@ -77,7 +76,7 @@ const KakaoSocialImg = styled.img`
   height: 3.5rem;
   border-radius: 3rem;
   position: absolute;
-  margin-top: 12rem;
+  margin-top: 6.7rem;
 `;
 
 const NaverSocialImg = styled.img`
@@ -85,24 +84,13 @@ const NaverSocialImg = styled.img`
   height: 3.5rem;
   border-radius: 3rem;
   position: absolute;
-  margin-top: 17.7rem;
+  margin-top: 12.5rem;
 `;
 function Login() {
-  const GoogleLogin = () => {
-    useEffect(() => {
-      axios({
-        url: '/api/auth/login/google',
-        method: 'post',
-      }).then((response) => {
-        setText(response.data);
-      });
-    });
-  };
-
-  const googleClick = () => {
-    console.log(5);
-    axios.post('http://localhost:8080/api/auth/login/google');
-  };
+  const base_url = 'http://localhost:8080';
+  const KAKAO_AUTH_URL = `${base_url}/api/auth/login/kakao`;
+  const GOOGLE_AUTH_URL = `${base_url}/api/auth/login/google`;
+  const NAVER_AUTH_URL = `${base_url}/api/auth/login/naver`;
 
   // 선언
   return (
@@ -112,14 +100,19 @@ function Login() {
           <Mainlogo src={imgfile} />
           <SocialWrap>
             <GoogleSocialImg style={{ margin: '1rem' }} src={googlebtn} />
-            <DoubleSocialImg style={{ margin: '1rem' }} src={google} />
-            <SocialImg style={{ margin: '1rem' }} src={githubbtn} />
+            <a href={GOOGLE_AUTH_URL}>
+              <DoubleSocialImg style={{ margin: '1rem' }} src={google} />
+            </a>
+
             <KakaoSocialImg style={{}} src={kakaobtn} />
             <a href={KAKAO_AUTH_URL}>
               <DoubleSocialImg style={{ margin: '1rem' }} src={kakao} />
             </a>
+
             <NaverSocialImg style={{}} src={naverbtn} />
-            <DoubleSocialImg style={{ margin: '1rem' }} src={naver} />
+            <a href={NAVER_AUTH_URL}>
+              <DoubleSocialImg style={{ margin: '1rem' }} src={naver} />
+            </a>
           </SocialWrap>
         </LoginWrap>
       </ThemeProvider>
