@@ -2,8 +2,8 @@ package com.cbu.backend.article.entity;
 
 import com.cbu.backend.articlecomment.entity.ArticleComment;
 import com.cbu.backend.board.entity.Board;
-import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.global.BaseTime;
 
 import lombok.*;
 

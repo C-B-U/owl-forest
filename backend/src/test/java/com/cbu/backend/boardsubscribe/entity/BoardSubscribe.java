@@ -1,8 +1,8 @@
 package com.cbu.backend.boardsubscribe.entity;
 
 import com.cbu.backend.board.entity.Board;
-import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.global.BaseTime;
 
 import lombok.Builder;
 

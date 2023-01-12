@@ -1,8 +1,8 @@
 package com.cbu.backend.domain.authaccount.service;
 
+import com.cbu.backend.config.security.oauth2.OAuth2Request;
 import com.cbu.backend.domain.authaccount.entity.AuthAccount;
 import com.cbu.backend.domain.authaccount.repository.AuthAccountRepository;
-import com.cbu.backend.config.security.oauth2.OAuth2Request;
 import com.cbu.backend.domain.member.dto.request.CreateMemberRequest;
 import com.cbu.backend.domain.member.dto.request.UpdateMemberRequest;
 import com.cbu.backend.domain.member.entity.Member;
