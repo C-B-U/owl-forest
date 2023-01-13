@@ -9,9 +9,16 @@ const MainWrap = styled.div`
   position: absolute;
   background-color: ${palette('PsCocoa', 0)};
   width: 100%;
-  height: 100vh;
+  height: 100%;
 `;
 
+const WrapContent = styled.div`
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 2rem;
+  background-color: ${palette('PsCocoa', 0)};
+  border: 2px solid black;
+`;
 const WrapList = styled.div`
   width: 50rem;
   height: fit-content;
@@ -71,98 +78,99 @@ const PostUser = styled.div`
 const State = styled.div`
   width: 5rem;
   text-align: center;
-  //border: 1px solid grey;
 `;
 
 const WrapStateButton = styled.div`
   width: 6rem;
   text-align: center;
   pointer-events: none;
-  //border: 1px solid grey;
 `;
 
 const PostDate = styled.div`
   width: 7rem;
   text-align: center;
-  //border: 1px solid grey;
 `;
 
 const BorrowUser = styled.div`
   width: 9rem;
   //border: 1px solid grey;
-  text-align: center;
 `;
 
 const ReturnDate = styled.div`
   width: 7rem;
   text-align: center;
-  //border: 1px solid grey;
 `;
 
 function MyBookList() {
+  // const navigate = useNavigate();
+  // const navigateToReview = () => {
+  //   navigate('/ReviewRegister');
+  // };
+
   return (
     <ThemeProvider theme={theme}>
       <MainWrap>
         <Header />
+        <WrapContent>
+          <WrapList>
+            <ListTitle>빌린 도서 리스트</ListTitle>
 
-        <WrapList>
-          <ListTitle>빌린 도서 리스트</ListTitle>
+            <Guide>
+              <BookTitle>도서 제목</BookTitle>
+              <PostUser>빌려주는 사람</PostUser>
+              <State>반납 상태</State>
+              <WrapStateButton>남은 날짜</WrapStateButton>
+            </Guide>
 
-          <Guide>
-            <BookTitle>도서 제목</BookTitle>
-            <PostUser>빌려주는 사람</PostUser>
-            <State>반납 상태</State>
-            <WrapStateButton>남은 날짜</WrapStateButton>
-          </Guide>
+            <BookList>
+              <BookTitle>컴퓨터활용능력 1급 실기</BookTitle>
+              <PostUser>2019156014 김혜진</PostUser>
+              <State>반납 완료</State>
+              <WrapStateButton>
+                <Button width='6rem' height='1.5rem' name='리뷰쓰기' />
+              </WrapStateButton>
+            </BookList>
 
-          <BookList>
-            <BookTitle>컴퓨터활용능력 1급 실기</BookTitle>
-            <PostUser>2019156014 김혜진</PostUser>
-            <State>반납 완료</State>
-            <WrapStateButton>
-              <Button width='6rem' height='1.5rem' name='리뷰쓰기' />
-            </WrapStateButton>
-          </BookList>
+            <BookList>
+              <BookTitle>
+                코틀린을 활용한 안드로이드 프로그래밍 우재남, 유혜림
+              </BookTitle>
+              <PostUser>2019150012 김혜진</PostUser>
+              <State>대여중</State>
+              <WrapStateButton>
+                <Button width='6rem' height='1.5rem' name='D-100' />
+              </WrapStateButton>
+            </BookList>
+          </WrapList>
 
-          <BookList>
-            <BookTitle>
-              코틀린을 활용한 안드로이드 프로그래밍 우재남, 유혜림
-            </BookTitle>
-            <PostUser>2019150012 김혜진</PostUser>
-            <State>대여중</State>
-            <WrapStateButton>
-              <Button width='6rem' height='1.5rem' name='D-100' />
-            </WrapStateButton>
-          </BookList>
-        </WrapList>
+          <WrapList>
+            <ListTitle>빌려준 도서 리스트</ListTitle>
 
-        <WrapList>
-          <ListTitle>빌려준 도서 리스트</ListTitle>
+            <Guide>
+              <BookTitle>도서 제목</BookTitle>
+              <PostDate>올린 날짜</PostDate>
+              <BorrowUser>빌린 사람</BorrowUser>
+              <State>대여 상태</State>
+              <ReturnDate>반납 날짜</ReturnDate>
+            </Guide>
 
-          <Guide>
-            <BookTitle>도서 제목</BookTitle>
-            <PostDate>올린 날짜</PostDate>
-            <BorrowUser>빌린 사람</BorrowUser>
-            <State>대여 상태</State>
-            <ReturnDate>반납 날짜</ReturnDate>
-          </Guide>
+            <BookList>
+              <BookTitle>밑바닥부터 시작하는 딥러닝</BookTitle>
+              <PostDate>2022/12/01</PostDate>
+              <BorrowUser>2019146013 김혜진</BorrowUser>
+              <State>반납 완료</State>
+              <ReturnDate>2022/01/01</ReturnDate>
+            </BookList>
 
-          <BookList>
-            <BookTitle>밑바닥부터 시작하는 딥러닝</BookTitle>
-            <PostDate>2022/12/01</PostDate>
-            <BorrowUser>2019146013 김혜진</BorrowUser>
-            <State>반납 완료</State>
-            <ReturnDate>2022/01/01</ReturnDate>
-          </BookList>
-
-          <BookList>
-            <BookTitle>명품 JAVA Programming</BookTitle>
-            <PostDate>2023/01/01</PostDate>
-            <BorrowUser>2019157010 김혜진</BorrowUser>
-            <State>대여중</State>
-            <ReturnDate>2023/02/28</ReturnDate>
-          </BookList>
-        </WrapList>
+            <BookList>
+              <BookTitle>명품 JAVA Programming</BookTitle>
+              <PostDate>2023/01/01</PostDate>
+              <BorrowUser>2019157010 김혜진</BorrowUser>
+              <State>대여중</State>
+              <ReturnDate>2023/02/28</ReturnDate>
+            </BookList>
+          </WrapList>
+        </WrapContent>
       </MainWrap>
     </ThemeProvider>
   );
