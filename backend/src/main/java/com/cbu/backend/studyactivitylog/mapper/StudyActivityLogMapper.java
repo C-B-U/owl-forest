@@ -1,6 +1,6 @@
 package com.cbu.backend.studyactivitylog.mapper;
 
-import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studyactivitylog.dto.request.StudyActivityLogRequest;
 import com.cbu.backend.studyactivitylog.dto.response.StudyActivityLogResponse;
 import com.cbu.backend.studyactivitylog.dto.response.StudyParticipantResponse;

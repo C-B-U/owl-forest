@@ -1,6 +1,6 @@
 package com.cbu.backend.config.security.oauth2;
 
-import com.cbu.backend.domain.authaccount.entity.AuthProvider;
+import com.cbu.backend.authaccount.entity.AuthProvider;
 
 import lombok.Getter;
 

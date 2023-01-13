@@ -1,6 +1,6 @@
 package com.cbu.backend.studygroup.mapper;
 
-import com.cbu.backend.domain.member.entity.Member;
+import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.response.StudyGroupMemberResponse;
 import com.cbu.backend.studygroup.dto.response.StudyGroupResponse;

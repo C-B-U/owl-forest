@@ -1,6 +1,6 @@
 package com.cbu.backend.config.security.jwt;
 
-import com.cbu.backend.domain.authaccount.service.AuthAccountService;
+import com.cbu.backend.authaccount.service.AuthAccountService;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
