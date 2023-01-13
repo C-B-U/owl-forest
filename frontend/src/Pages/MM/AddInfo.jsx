@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect, setState, useState} from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, Navigate } from 'react-router-dom';
+import axios from 'axios';
 import imgfile from '../../Image/Loginlogo.png';
 import theme from '../../Components/Color';
 
@@ -63,6 +63,9 @@ const LoginButton = styled.button`
   font-family: 'Noto Sans KR', sans-serif;
   border: none;
   font-size: 12pt;
+  &:hover{
+    border: 1rem;
+  };
 `;
 
 const SelectBox = styled.select`
@@ -85,6 +88,39 @@ const SelectBox = styled.select`
 `;
 
 function AddInfo() {
+  const [id, setId] = useState("")
+  const [value, setValue] = useState("")
+  const [name, setName] = useState("")
+
+  const handleId=(e)=>{
+    setId(e.target.value)
+  }
+  const handleName=(e)=>{
+    setName(e.target.value)
+  }
+  const handleValue=(e)=>{
+    setValue(e.target.value)
+  }
+
+  const AddLogin = () => {
+      axios.post("/api/member", null, {
+        params: {
+          "generation": value,
+          "name": name,
+          "id": id,
+        }
+            
+      .then((res)=> {
+        if(res.data.id===null){
+          alert('마 입력해라')
+        }
+      })
+
+    })
+  }
+
+ 
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -92,23 +128,40 @@ function AddInfo() {
           <Mainlogo src={imgfile} />
           <InputWrap>
             다음 정보를 입력해주세요.
-            <SelectBox style={{ marginTop: '1rem' }} name='Generation'>
+            <SelectBox 
+              value={value}
+              name='generation'
+              onChange={handleValue}
+              style={{ marginTop: '1rem' }} >
               <option value='none'> * 클릭해서 기수 선택 * </option>
               <option value='1기'>1</option>
               <option value='2기'>2</option>
               <option value='3기'>3</option>
               <option value='4기'>4</option>
             </SelectBox>
-            <InputBox placeholder='Name' />
-            <InputBox placeholder='Student-id' />
+            <InputBox 
+              value={name}
+              name='name'
+              onChange={handleName}
+              placeholder='Name' />
+            <InputBox 
+              value={id}
+              name='id'
+              onChange={handleId}
+              placeholder='Student-id' />
           </InputWrap>
           <LogBtnWrap>
-            <LoginButton>완료</LoginButton>
+            
+              <LoginButton
+                type='button'
+                onClick={AddLogin}
+                >완료</LoginButton>
+            
           </LogBtnWrap>
         </LoginWrap>
       </ThemeProvider>
     </div>
   );
 }
-
+          
 export default AddInfo;
