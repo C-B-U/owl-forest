@@ -4,10 +4,11 @@ import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
 @EqualsAndHashCode
 @Embeddable

@@ -11,9 +11,7 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Book {
-    @Getter
-    @EmbeddedId
-    private BookNo id;
+    @Getter @EmbeddedId private BookNo id;
 
     @Builder
     public Book(BookNo id) {

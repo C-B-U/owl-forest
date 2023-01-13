@@ -1,7 +1,7 @@
 package com.cbu.backend.studygroup.entity;
 
-import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.member.entity.Member;
 import com.cbu.backend.studyactivitylog.entity.StudyActivityLog;
 import com.cbu.backend.studygroup.dto.request.StudyGroupRequest;
 
