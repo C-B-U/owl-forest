@@ -1,12 +1,10 @@
 package com.cbu.backend.config.security.jwt;
 
-import com.cbu.backend.authaccount.service.AuthAccountService;
-
+import com.cbu.backend.authaccount.query.service.AuthAccountQueryService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,7 +25,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class JwtValidator {
     private final Key key;
-    private final AuthAccountService authAccountService;
+    private final AuthAccountQueryService authAccountQueryService;
+    private final ObjectMapper objectMapper;
 
     public Authentication getAuthentication(String accessToken) {
         Claims claims = getTokenBodyClaims(accessToken);
@@ -45,11 +44,12 @@ public class JwtValidator {
      * @author Hyeonjun Park
      */
     private Collection<? extends GrantedAuthority> extractAuthority(Claims claims) {
-        return authAccountService.getAuthority(parseLong(claims));
+
+        return authAccountQueryService.getAuthority(extracUuid(claims));
     }
 
-    private UUID parseLong(Claims claims) {
-        return UUID.fromString(String.valueOf(claims.get("id")));
+    private UUID extracUuid(Claims claims) {
+        return UUID.fromString(claims.get("id", String.class));
     }
 
     private Claims getTokenBodyClaims(String accessToken) {

@@ -1,10 +1,8 @@
 package com.cbu.backend.config.security.oauth2;
 
+import com.cbu.backend.authaccount.command.domain.AccountNo;
 import io.jsonwebtoken.Claims;
-
 import lombok.Getter;
-
-import java.util.UUID;
 
 /**
  * login 유저정보에 대한 dto
@@ -13,16 +11,13 @@ import java.util.UUID;
  */
 @Getter
 public class LoginUser {
-    private UUID id;
-    private String nickname;
+    private AccountNo accountId;
 
     public LoginUser(Claims claims) {
-        this.id = UUID.fromString(claims.get("id").toString());
-        this.nickname = claims.get("nickname").toString();
+        this.accountId = claims.get("id", AccountNo.class);
     }
 
-    public LoginUser(UUID id, String nickname) {
-        this.id = id;
-        this.nickname = nickname;
+    public LoginUser(AccountNo accountId) {
+        this.accountId = accountId;
     }
 }
