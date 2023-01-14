@@ -1,6 +1,7 @@
 package com.cbu.backend.externalbookfinder.query.dto.naver;
 
 import com.cbu.backend.externalbookfinder.query.dto.ExternalBookResponse;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +19,6 @@ public class NaverApiResponse {
     private List<NaverBookItem> items;
 
     public List<ExternalBookResponse> mapToExternalBookResponseList() {
-        return items.stream()
-                .map(NaverBookItem::mapTOExternalBookResponse)
-                .toList();
+        return items.stream().map(NaverBookItem::mapTOExternalBookResponse).toList();
     }
 }

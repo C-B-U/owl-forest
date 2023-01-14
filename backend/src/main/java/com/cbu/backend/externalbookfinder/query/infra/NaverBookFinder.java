@@ -4,6 +4,7 @@ import com.cbu.backend.externalbookfinder.query.dto.BookFinderRequest;
 import com.cbu.backend.externalbookfinder.query.dto.ExternalBookResponse;
 import com.cbu.backend.externalbookfinder.query.dto.naver.NaverApiResponse;
 import com.cbu.backend.externalbookfinder.query.service.BookSearchable;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -16,12 +17,15 @@ import java.util.Optional;
 
 @Component
 public class NaverBookFinder implements BookSearchable {
-    private static final String NAVER_CLIENT_ID_ENV_LOCATION = "${spring.security.oauth2.client.registration.naver.client-id}";
-    private static final String NAVER_SECRET_KEY_ENV_LOCATION = "${spring.security.oauth2.client.registration.naver.client-secret}";
+    private static final String NAVER_CLIENT_ID_ENV_LOCATION =
+            "${spring.security.oauth2.client.registration.naver.client-id}";
+    private static final String NAVER_SECRET_KEY_ENV_LOCATION =
+            "${spring.security.oauth2.client.registration.naver.client-secret}";
     private final WebClient naverBookFinderClient;
 
-    public NaverBookFinder(@Value(NAVER_CLIENT_ID_ENV_LOCATION) String clientId,
-                           @Value(NAVER_SECRET_KEY_ENV_LOCATION) String secretKey) {
+    public NaverBookFinder(
+            @Value(NAVER_CLIENT_ID_ENV_LOCATION) String clientId,
+            @Value(NAVER_SECRET_KEY_ENV_LOCATION) String secretKey) {
         naverBookFinderClient = generateWebClient(clientId, secretKey);
     }
 
@@ -36,28 +40,30 @@ public class NaverBookFinder implements BookSearchable {
 
     @Override
     public List<ExternalBookResponse> findAllBy(BookFinderRequest req) {
-        NaverApiResponse apiResponse = requestToNaverClient(req)
-                .orElseThrow(SearchResultNotExistException::new);
+        NaverApiResponse apiResponse =
+                requestToNaverClient(req).orElseThrow(SearchResultNotExistException::new);
 
         return apiResponse.mapToExternalBookResponseList();
     }
 
     private Optional<NaverApiResponse> requestToNaverClient(BookFinderRequest req) {
 
-        NaverApiResponse apiResponse = naverBookFinderClient
-                .get()
-                .uri(uriBuilder -> uriBuilder
-                        .queryParam("query", req.getKeyword())
-                        .queryParam("start", req.getPage())
-                        .queryParam("display", req.getPageSize())
-                        .build())
-                .accept(MediaType.APPLICATION_JSON)
-                .acceptCharset(StandardCharsets.UTF_8)
-                .retrieve()
-                .bodyToMono(NaverApiResponse.class)
-                .block();
+        NaverApiResponse apiResponse =
+                naverBookFinderClient
+                        .get()
+                        .uri(
+                                uriBuilder ->
+                                        uriBuilder
+                                                .queryParam("query", req.getKeyword())
+                                                .queryParam("start", req.getPage())
+                                                .queryParam("display", req.getPageSize())
+                                                .build())
+                        .accept(MediaType.APPLICATION_JSON)
+                        .acceptCharset(StandardCharsets.UTF_8)
+                        .retrieve()
+                        .bodyToMono(NaverApiResponse.class)
+                        .block();
 
         return Optional.ofNullable(apiResponse);
     }
-
 }
