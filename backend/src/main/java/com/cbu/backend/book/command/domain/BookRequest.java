@@ -1,6 +1,6 @@
 package com.cbu.backend.book.command.domain;
 
-import com.cbu.backend.authaccount.entity.MemberNo;
+import com.cbu.backend.authaccount.command.domain.AccountNo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +18,5 @@ public class BookRequest {
     private String imageUrl;
     private Integer price;
     private LocalDate publishAt;
-    private MemberNo registrant;
+    private AccountNo registrant;
 }

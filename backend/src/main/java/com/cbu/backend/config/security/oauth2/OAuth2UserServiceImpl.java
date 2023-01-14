@@ -1,9 +1,9 @@
 package com.cbu.backend.config.security.oauth2;
 
-import com.cbu.backend.authaccount.entity.AuthAccount;
-import com.cbu.backend.authaccount.entity.AuthProvider;
+import com.cbu.backend.authaccount.command.domain.AuthAccount;
+import com.cbu.backend.authaccount.command.domain.AuthProvider;
 import com.cbu.backend.authaccount.mapper.AuthAccountMapper;
-import com.cbu.backend.authaccount.service.AuthAccountService;
+import com.cbu.backend.authaccount.command.service.AuthAccountService;
 import com.cbu.backend.config.security.oauth2.attributemapper.AttributeMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -37,8 +37,8 @@ public class OAuth2UserServiceImpl extends DefaultOAuth2UserService {
         OAuth2User oAuth2User = super.loadUser(userRequest);
         OAuth2Request oAuth2Request =
                 attributeMapper.mapToUser(authProvider, oAuth2User.getAttributes());
-        authAccountService.createIfFirst(oAuth2Request);
-        AuthAccount user = authAccountService.findByAccountId(oAuth2Request.getAccountId());
+
+        AuthAccount user = authAccountService.saveIfNone(oAuth2Request);
         Map<String, Object> userAttributes = authAccountMapper.mapToAttributeMap(user);
 
         return new DefaultOAuth2User(user.getRole(), userAttributes, "id");

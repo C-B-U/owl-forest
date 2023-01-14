@@ -1,12 +1,13 @@
 package com.cbu.backend.book.command.domain;
 
-import com.cbu.backend.authaccount.entity.MemberNo;
+import com.cbu.backend.authaccount.command.domain.AccountNo;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import java.time.LocalDate;
@@ -24,10 +25,11 @@ public class Book {
     private Integer price;
     private LocalDate  publishAt;
     @Column(nullable = false)
-    private MemberNo registrant;
+    @Embedded
+    private AccountNo registrant;
 
     @Builder
-    public Book(BookNo id, String title, String author, String publisher, String imageUrl, Integer price, LocalDate publishAt, MemberNo registrant) {
+    public Book(BookNo id, String title, String author, String publisher, String imageUrl, Integer price, LocalDate publishAt, AccountNo registrant) {
         this.id = id;
         this.title = title;
         this.author = author;
