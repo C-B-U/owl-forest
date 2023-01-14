@@ -1,4 +1,4 @@
-package com.cbu.backend.member.entity;
+package com.cbu.backend.authaccount.command.domain;
 
 public enum Major {
     COMPUTER("컴퓨터공학전공"),

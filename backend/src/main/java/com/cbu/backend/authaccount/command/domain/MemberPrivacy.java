@@ -1,4 +1,4 @@
-package com.cbu.backend.member.entity;
+package com.cbu.backend.authaccount.command.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

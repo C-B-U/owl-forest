@@ -1,32 +1,21 @@
-package com.cbu.backend.authaccount.entity;
-
-import com.cbu.backend.member.entity.Member;
+package com.cbu.backend.authaccount.command.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-import javax.persistence.*;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AuthAccount {
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)")
-    private UUID id;
-
-    private String accountId;
+    @EmbeddedId
+    private AccountNo id;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
@@ -35,7 +24,7 @@ public class AuthAccount {
     @Enumerated(EnumType.STRING)
     private AuthProvider authProvider = AuthProvider.NONE;
 
-    @OneToOne private Member member;
+    @Embedded private Member member;
 
     private boolean isRegister = false;
 
@@ -49,8 +38,8 @@ public class AuthAccount {
     }
 
     @Builder
-    public AuthAccount(String accountId, AuthProvider authProvider, Member member) {
-        this.accountId = accountId;
+    public AuthAccount(AccountNo accountNo, AuthProvider authProvider, Member member) {
+        this.id = accountNo;
         this.authProvider = authProvider;
         register(member);
     }

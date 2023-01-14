@@ -1,21 +1,18 @@
-package com.cbu.backend.member.entity;
-
-import com.cbu.backend.image.entity.Image;
+package com.cbu.backend.authaccount.command.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 
-@Entity
+@Embeddable
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -23,23 +20,20 @@ public class Member {
     @Column(nullable = false)
     private String nickname;
 
-    @Embedded MemberDetail memberDetail = new MemberDetail();
+    @Embedded
+    MemberPublicInfo memberPublicInfo = new MemberPublicInfo();
 
     @Embedded MemberPrivacy memberPrivacy = new MemberPrivacy();
-
-    @OneToOne private Image profileImage;
 
     @Builder
     public Member(
             String name,
             String nickname,
-            MemberDetail memberDetail,
-            MemberPrivacy memberPrivacy,
-            Image profileImage) {
+            MemberPublicInfo memberPublicInfo,
+            MemberPrivacy memberPrivacy) {
         this.name = name;
         this.nickname = nickname;
-        this.memberDetail = memberDetail;
+        this.memberPublicInfo = memberPublicInfo;
         this.memberPrivacy = memberPrivacy;
-        this.profileImage = profileImage;
     }
 }

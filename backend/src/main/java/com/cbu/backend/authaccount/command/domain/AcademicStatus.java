@@ -1,4 +1,4 @@
-package com.cbu.backend.member.entity;
+package com.cbu.backend.authaccount.command.domain;
 
 public enum AcademicStatus {
     ATTEND("재학"),

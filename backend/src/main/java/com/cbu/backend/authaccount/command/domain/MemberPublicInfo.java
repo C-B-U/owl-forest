@@ -1,11 +1,11 @@
-package com.cbu.backend.member.entity;
+package com.cbu.backend.authaccount.command.domain;
 
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Lob;
 
 @Getter
 @Setter
@@ -13,13 +13,10 @@ import javax.persistence.*;
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberDetail {
+public class MemberPublicInfo {
     private String blogUrl;
 
     private String githubId;
-
-    @OneToMany(mappedBy = "member")
-    private List<InterestTag> tags = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private AcademicStatus academicStatus;

@@ -1,4 +1,4 @@
-package com.cbu.backend.authaccount.entity;
+package com.cbu.backend.authaccount.command.domain;
 
 public enum Role {
     ROLE_ADMIN,
