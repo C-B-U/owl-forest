@@ -1,7 +1,7 @@
 package com.cbu.backend.book.command.service;
 
 import com.cbu.backend.TestConfig;
-import com.cbu.backend.authaccount.entity.MemberNo;
+import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.book.command.domain.BookRequest;
 import com.cbu.backend.book.command.infra.BookRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -37,9 +37,9 @@ class BookServiceTest {
     void checkSaveIfNotExists() throws Exception {
         //given
         BookRequest req1 = new BookRequest("12345678", "홍길동전", "허균", "조선",
-                "www.naver.com", 5000, LocalDate.now(), new MemberNo(6L));
+                "www.naver.com", 5000, LocalDate.now(), new AccountNo(""));
         BookRequest req2 = new BookRequest("98765432", "심청전", "작가미상", "조선",
-                "www.naver.com", 5000, LocalDate.now(), new MemberNo(6L));
+                "www.naver.com", 5000, LocalDate.now(), new AccountNo(""));
         //when
         bookService.saveIfNotExists(req1);
         bookService.saveIfNotExists(req2);
