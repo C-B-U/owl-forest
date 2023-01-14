@@ -36,12 +36,28 @@ class BookServiceTest {
     @Test
     @DisplayName("만약 신규 데이터면 저장하고, 기존에 있는 데이터면 아이디를 그대로 반환하는가")
     void checkSaveIfNotExists() throws Exception {
-        //given
-        BookRequest req1 = new BookRequest("12345678", "홍길동전", "허균", "조선",
-                "www.naver.com", 5000, LocalDate.now(), new AccountNo(""));
-        BookRequest req2 = new BookRequest("98765432", "심청전", "작가미상", "조선",
-                "www.naver.com", 5000, LocalDate.now(), new AccountNo(""));
-        //when
+        // given
+        BookRequest req1 =
+                new BookRequest(
+                        "12345678",
+                        "홍길동전",
+                        "허균",
+                        "조선",
+                        "www.naver.com",
+                        5000,
+                        LocalDate.now(),
+                        new AccountNo(""));
+        BookRequest req2 =
+                new BookRequest(
+                        "98765432",
+                        "심청전",
+                        "작가미상",
+                        "조선",
+                        "www.naver.com",
+                        5000,
+                        LocalDate.now(),
+                        new AccountNo(""));
+        // when
         bookService.saveIfNotExists(req1);
         bookService.saveIfNotExists(req2);
         // then

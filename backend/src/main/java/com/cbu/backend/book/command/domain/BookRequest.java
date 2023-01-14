@@ -1,6 +1,7 @@
 package com.cbu.backend.book.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

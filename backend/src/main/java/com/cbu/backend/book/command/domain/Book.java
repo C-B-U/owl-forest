@@ -1,6 +1,7 @@
 package com.cbu.backend.book.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,7 +33,15 @@ public class Book {
     private AccountNo registrant;
 
     @Builder
-    public Book(BookNo id, String title, String author, String publisher, String imageUrl, Integer price, LocalDate publishAt, AccountNo registrant) {
+    public Book(
+            BookNo id,
+            String title,
+            String author,
+            String publisher,
+            String imageUrl,
+            Integer price,
+            LocalDate publishAt,
+            AccountNo registrant) {
         this.id = id;
         this.title = title;
         this.author = author;

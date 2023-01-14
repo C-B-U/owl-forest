@@ -35,10 +35,7 @@ public class MemberRequest {
     }
 
     private MemberPrivacy toPrivacy() {
-        return MemberPrivacy.builder()
-                .studentId(studentId)
-                .phoneNumber(phoneNumber)
-                .build();
+        return MemberPrivacy.builder().studentId(studentId).phoneNumber(phoneNumber).build();
     }
 
     private MemberPublicInfo toPublicInfo() {

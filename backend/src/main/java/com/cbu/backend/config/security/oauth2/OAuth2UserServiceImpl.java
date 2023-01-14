@@ -2,8 +2,8 @@ package com.cbu.backend.config.security.oauth2;
 
 import com.cbu.backend.authaccount.command.domain.AuthAccount;
 import com.cbu.backend.authaccount.command.domain.AuthProvider;
-import com.cbu.backend.authaccount.mapper.AuthAccountMapper;
 import com.cbu.backend.authaccount.command.service.AuthAccountService;
+import com.cbu.backend.authaccount.mapper.AuthAccountMapper;
 import com.cbu.backend.config.security.oauth2.attributemapper.AttributeMapper;
 
 import lombok.RequiredArgsConstructor;

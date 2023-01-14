@@ -20,8 +20,7 @@ public class Member {
     @Column(nullable = false)
     private String nickname;
 
-    @Embedded
-    MemberPublicInfo memberPublicInfo = new MemberPublicInfo();
+    @Embedded MemberPublicInfo memberPublicInfo = new MemberPublicInfo();
 
     @Embedded MemberPrivacy memberPrivacy = new MemberPrivacy();
 
