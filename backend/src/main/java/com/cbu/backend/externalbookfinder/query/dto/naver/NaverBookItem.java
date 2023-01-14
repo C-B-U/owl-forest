@@ -1,6 +1,7 @@
 package com.cbu.backend.externalbookfinder.query.dto.naver;
 
 import com.cbu.backend.externalbookfinder.query.dto.ExternalBookResponse;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

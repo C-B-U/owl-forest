@@ -1,9 +1,12 @@
 package com.cbu.backend.book.command.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.cbu.backend.TestConfig;
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.book.command.domain.BookRequest;
 import com.cbu.backend.book.command.infra.BookRepository;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
 import java.time.LocalDate;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @ContextConfiguration
@@ -43,13 +44,12 @@ class BookServiceTest {
         //when
         bookService.saveIfNotExists(req1);
         bookService.saveIfNotExists(req2);
-        //then
+        // then
         assertThat(bookRepository.findAll()).hasSize(2);
 
-        //when
+        // when
         bookService.saveIfNotExists(req1);
-        //then
+        // then
         assertThat(bookRepository.findAll()).hasSize(2);
     }
-
 }

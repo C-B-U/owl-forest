@@ -6,11 +6,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,11 +20,13 @@ public class Book {
 
     @Column(nullable = false)
     private String title;
+
     private String author;
     private String publisher;
     private String imageUrl;
     private Integer price;
-    private LocalDate  publishAt;
+    private LocalDate publishAt;
+
     @Column(nullable = false)
     @Embedded
     private AccountNo registrant;
