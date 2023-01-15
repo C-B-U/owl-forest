@@ -10,112 +10,6 @@ import SearchIcon from '../../Image/SearchIcon.png';
 import Button from '../../Components/Btn';
 import Input from '../../Components/Input';
 
-// ---------------- 팝업창 작업----------------
-
-const WrapPopupBackground = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100%;
-  /* background-color: rgba(0, 0, 0, 0.5); */
-  background-color: rgba(255, 255, 255, 0.2);
-`;
-
-const WrapPopup = styled.div`
-  position: absolute;
-  width: 60rem;
-  height: 35rem;
-  background-color: ${palette('PsCocoa', 1)};
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 1rem;
-`;
-
-const WrapCloseButton = styled.div`
-  margin-top: 1.5rem;
-  margin-left: 2.5rem;
-`;
-
-const ISBNSearch = styled.div`
-  font-size: 3rem;
-  margin-top: 4rem;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-`;
-
-const WrapSearchbar = styled.div`
-  /* border: 1px solid black; */
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99;
-`;
-
-const WrapSearchIcon = styled.div`
-  height: 3rem;
-  width: 3rem;
-  background-size: 3rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(${SearchIcon});
-`;
-
-const WrapList = styled.div`
-  /* border: 1px solid black; */
-  height: fit-content;
-  width: fit-content;
-  margin: 2rem auto;
-`;
-
-const ListPopup = styled.div`
-  width: 40rem;
-  height: fit-content;
-  background-color: white;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: content-box;
-  padding: 0.7rem;
-  justify-items: center;
-  border-radius: 0.2rem;
-`;
-
-const TitlePopup = styled.div`
-  width: 15rem;
-  white-space: normal;
-  text-align: center;
-  /* border: 1px solid green; */
-  /* word-break: break-all; */
-`;
-const WriterPopup = styled.div`
-  width: 12rem;
-  white-space: normal;
-  /* word-break: break-all; */
-  /* border: 1px solid green; */
-  margin-left: 1rem;
-  text-align: center;
-`;
-const PublisherPopup = styled.div`
-  width: 10rem;
-  white-space: normal;
-  word-break: break-all;
-  /* border: 1px solid green; */
-  margin-left: 1rem;
-  text-align: center;
-`;
-const ReleaseDate = styled.div`
-  width: 8rem;
-  white-space: normal;
-  word-break: break-all;
-  /* border: 1px solid green; */
-  margin-left: 1rem;
-  text-align: center;
-`;
-
 // ------------- 책등록 페이지 -------------
 
 const MainWrap = styled.div`
@@ -168,7 +62,7 @@ const WrapBookDetail = styled.div`
 
 const WrapBookReturn = styled.div`
   width: fit-content;
-  height: 13.3rem;
+  height: 18rem;
   padding: 1rem;
   background-color: ${palette('PsLightBrown', 0)};
   border-radius: 0.2rem;
@@ -213,6 +107,127 @@ const Test = styled.div`
   background-color: black;
 `;
 
+// ---------------- 팝업창 작업----------------
+
+const WrapPopupBackground = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  background-color: rgba(255, 255, 255, 0.2);
+`;
+
+const WrapPopup = styled.div`
+  position: absolute;
+  width: 60rem;
+  height: 35rem;
+  background-color: ${palette('PsCocoa', 1)};
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+`;
+
+const WrapCloseButton = styled.div`
+  margin-top: 1.5rem;
+  margin-left: 2.5rem;
+`;
+
+const TitleSearch = styled.div`
+  font-size: 3rem;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+`;
+
+const WrapSearchbar = styled.div`
+  /* border: 1px solid black; */
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+`;
+
+const WrapSearchIcon = styled.div`
+  height: 3rem;
+  width: 3rem;
+  background-size: 3rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(${SearchIcon});
+`;
+
+const WrapList = styled.div`
+  /* border: 1px solid black; */
+  height: 15rem;
+  width: fit-content;
+  margin: 2rem auto;
+  overflow: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #eeeeee;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${palette('PsGreen')};
+    border-radius: 10px;
+  }
+`;
+
+const ListPopup = styled.div`
+  width: 40rem;
+  height: fit-content;
+  background-color: white;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: content-box;
+  padding: 0.7rem;
+  justify-items: center;
+  border-radius: 0.2rem;
+`;
+
+const TitlePopup = styled.div`
+  width: 15rem;
+  white-space: normal;
+  text-align: center;
+  /* border: 1px solid green; */
+  /* word-break: break-all; */
+`;
+const WriterPopup = styled.div`
+  width: 12rem;
+  white-space: normal;
+  /* word-break: break-all; */
+  /* border: 1px solid green; */
+  margin-left: 1rem;
+  text-align: center;
+`;
+const PublisherPopup = styled.div`
+  width: 10rem;
+  white-space: normal;
+  word-break: break-all;
+  /* border: 1px solid green; */
+  margin-left: 1rem;
+  text-align: center;
+`;
+const ReleaseDate = styled.div`
+  width: 8rem;
+  white-space: normal;
+  word-break: break-all;
+  /* border: 1px solid green; */
+  margin-left: 1rem;
+  text-align: center;
+`;
+
 function BookReg() {
   // 팝업창 x 버튼 기능 구현
   const [isShown, setIsShown] = useState(false);
@@ -251,7 +266,7 @@ function BookReg() {
                   onClick={closePopup}
                 />
               </WrapCloseButton>
-              <ISBNSearch>도서 검색</ISBNSearch>
+              <TitleSearch>도서 검색</TitleSearch>
               <WrapSearchbar>
                 {/* <SearchForm></SearchForm> */}
                 <Input
@@ -270,6 +285,27 @@ function BookReg() {
                   </TitlePopup>
                   <WriterPopup>천인국, 공용해, 하상호</WriterPopup>
                   <PublisherPopup>생능출판사</PublisherPopup>
+                  <ReleaseDate>2022.02.22</ReleaseDate>
+                </ListPopup>
+
+                <ListPopup>
+                  <TitlePopup>유닉스 이론과 실습</TitlePopup>
+                  <WriterPopup>윤소정, 이종원</WriterPopup>
+                  <PublisherPopup>한빛아카데미</PublisherPopup>
+                  <ReleaseDate>2022.02.22</ReleaseDate>
+                </ListPopup>
+
+                <ListPopup>
+                  <TitlePopup>유닉스 이론과 실습</TitlePopup>
+                  <WriterPopup>윤소정, 이종원</WriterPopup>
+                  <PublisherPopup>한빛아카데미</PublisherPopup>
+                  <ReleaseDate>2022.02.22</ReleaseDate>
+                </ListPopup>
+
+                <ListPopup>
+                  <TitlePopup>유닉스 이론과 실습</TitlePopup>
+                  <WriterPopup>윤소정, 이종원</WriterPopup>
+                  <PublisherPopup>한빛아카데미</PublisherPopup>
                   <ReleaseDate>2022.02.22</ReleaseDate>
                 </ListPopup>
 
@@ -302,9 +338,9 @@ function BookReg() {
               </WrapBookSearch>
 
               <WrapRegister>
-                <WrapBookTitle>도서 제목</WrapBookTitle>
-                <WrapBookDetail>작가 | 출판사 | 출판일</WrapBookDetail>
                 <WrapBookReturn>
+                  <WrapBookTitle>도서 제목</WrapBookTitle>
+                  <WrapBookDetail>작가 | 출판사 | 출판일</WrapBookDetail>
                   <WrapReturnAlert>
                     <ReturnAlert>반납 마감일</ReturnAlert>
 
