@@ -127,7 +127,12 @@ function MyBookList() {
               <PostUser>2019156014 김혜진</PostUser>
               <State>반납 완료</State>
               <WrapStateButton>
-                <Button width='6rem' height='1.5rem' name='리뷰쓰기' />
+                <Button
+                  width='6rem'
+                  height='1.5rem'
+                  name='리뷰쓰기'
+                  background={palette('PsYellow')}
+                />
               </WrapStateButton>
             </BookList>
 
