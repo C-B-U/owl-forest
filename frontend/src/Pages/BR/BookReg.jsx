@@ -186,6 +186,7 @@ const ListPopup = styled.div`
   height: fit-content;
   background-color: white;
   margin-bottom: 1rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -194,6 +195,7 @@ const ListPopup = styled.div`
   padding: 0.7rem;
   justify-items: center;
   border-radius: 0.2rem;
+  /* border: 1px solid red; */
 `;
 
 const TitlePopup = styled.div`
