@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
@@ -18,7 +17,7 @@ const WrapContent = styled.div`
   height: fit-content;
   margin-bottom: 2rem;
   background-color: ${palette('PsCocoa', 0)};
-  border: 0.1px solid ${palette('PsCocoa', 0)};
+  border: 0.01px solid ${palette('PsCocoa', 0)};
 `;
 const WrapList = styled.div`
   width: 50rem;
@@ -84,7 +83,7 @@ const State = styled.div`
 const WrapStateButton = styled.div`
   width: 6rem;
   text-align: center;
-  /* pointer-events: none; */
+  pointer-events: none;
 `;
 
 const PostDate = styled.div`
@@ -94,7 +93,6 @@ const PostDate = styled.div`
 
 const BorrowUser = styled.div`
   width: 9rem;
-  text-align: center;
   //border: 1px solid grey;
 `;
 
@@ -104,10 +102,10 @@ const ReturnDate = styled.div`
 `;
 
 function MyBookList() {
-  const navigate = useNavigate();
-  const navigateToReview = () => {
-    navigate('/ReviewRegister');
-  };
+  // const navigate = useNavigate();
+  // const navigateToReview = () => {
+  //   navigate('/ReviewRegister');
+  // };
 
   return (
     <ThemeProvider theme={theme}>
@@ -129,17 +127,14 @@ function MyBookList() {
               <PostUser>2019156014 김혜진</PostUser>
               <State>반납 완료</State>
               <WrapStateButton>
-                <Button
-                  width='6rem'
-                  height='1.5rem'
-                  name='리뷰쓰기'
-                  onClick={navigateToReview}
-                />
+                <Button width='6rem' height='1.5rem' name='리뷰쓰기' />
               </WrapStateButton>
             </BookList>
 
             <BookList>
-              <BookTitle>코틀린을 활용한 안드로이드 프로그래밍</BookTitle>
+              <BookTitle>
+                코틀린을 활용한 안드로이드 프로그래밍 우재남, 유혜림
+              </BookTitle>
               <PostUser>2019150012 김혜진</PostUser>
               <State>대여중</State>
               <WrapStateButton>
