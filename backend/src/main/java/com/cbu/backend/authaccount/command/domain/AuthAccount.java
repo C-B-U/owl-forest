@@ -4,13 +4,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.*;
 
 @Entity
 @Getter
@@ -25,13 +23,13 @@ public class AuthAccount {
     @Enumerated(EnumType.STRING)
     private AuthProvider authProvider = AuthProvider.NONE;
 
-    @Embedded private Member member;
+    @Embedded private Member memberInfo;
 
-    private boolean isRegister = false;
+    private boolean isUpdate = false;
 
-    public void register(Member member) {
-        this.member = member;
-        isRegister = true;
+    public void updateMemberInfo(Member memberInfo) {
+        this.memberInfo = memberInfo;
+        isUpdate = true;
     }
 
     public List<SimpleGrantedAuthority> getRole() {
@@ -39,9 +37,9 @@ public class AuthAccount {
     }
 
     @Builder
-    public AuthAccount(AccountNo accountNo, AuthProvider authProvider, Member member) {
+    public AuthAccount(AccountNo accountNo, AuthProvider authProvider, Member memberInfo) {
         this.id = accountNo;
         this.authProvider = authProvider;
-        register(member);
+        updateMemberInfo(memberInfo);
     }
 }
