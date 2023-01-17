@@ -11,6 +11,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Optional;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+
+
 @DataJpaTest
 class BookRepositoryTest {
 
@@ -21,7 +24,7 @@ class BookRepositoryTest {
     void checkGenerateBookId() throws Exception {
         // given
         BookNo bookNo = new BookNo("12345678");
-        Book book = Book.builder().id(bookNo).title("홍길동전").registrant(new AccountNo(5L)).build();
+        Book book = Book.builder().id(bookNo).title("홍길동전").registrant(new AccountNo("12334567")).build();
         // when
         Book result = bookRepository.save(book);
         Optional<Book> findBook = bookRepository.findById(bookNo);
@@ -38,7 +41,7 @@ class BookRepositoryTest {
         // given
         String isbn = "12345678";
         BookNo bookNo = new BookNo(isbn);
-        Book book = Book.builder().id(bookNo).title("홍길동전").registrant(new AccountNo(5L)).build();
+        Book book = Book.builder().id(bookNo).title("홍길동전").registrant(new AccountNo("1234458")).build();
         Book result = bookRepository.save(book);
         // when
         Optional<Book> findBook = bookRepository.findById_Isbn(isbn);
