@@ -1,8 +1,8 @@
 package com.cbu.backend.studycrew.command.service;
 
 import com.cbu.backend.studycrew.command.domain.StudyCrew;
+import com.cbu.backend.studycrew.command.domain.StudyCrewNo;
 import com.cbu.backend.studycrew.command.dto.StudyCrewRequest;
-import com.cbu.backend.studycrew.command.dto.StudyCrewResponse;
 import com.cbu.backend.studycrew.command.infra.StudyCrewRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class StudyCrewService {
 
-    private StudyCrewRepository studyCrewRepository;
+    private final StudyCrewRepository studyCrewRepository;
 
-    public StudyCrewResponse save(StudyCrewRequest studyCrewRequest) {
+    public StudyCrewNo save(StudyCrewRequest studyCrewRequest) {
         StudyCrew studyCrew =
                 StudyCrew.builder()
                         .name(studyCrewRequest.getName())
@@ -24,6 +24,6 @@ public class StudyCrewService {
                         .studyCrewParticipantIds(studyCrewRequest.getStudyCrewParticipantIds())
                         .build();
 
-        return new StudyCrewResponse(studyCrewRepository.save(studyCrew));
+        return studyCrewRepository.save(studyCrew).getId();
     }
 }

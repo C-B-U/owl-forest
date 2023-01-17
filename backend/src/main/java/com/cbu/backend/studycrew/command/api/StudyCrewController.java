@@ -1,7 +1,7 @@
 package com.cbu.backend.studycrew.command.api;
 
+import com.cbu.backend.studycrew.command.domain.StudyCrewNo;
 import com.cbu.backend.studycrew.command.dto.StudyCrewRequest;
-import com.cbu.backend.studycrew.command.dto.StudyCrewResponse;
 import com.cbu.backend.studycrew.command.service.StudyCrewService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class StudyCrewController {
     private final StudyCrewService studyCrewService;
 
     @PostMapping
-    public ResponseEntity<StudyCrewResponse> save(@RequestBody StudyCrewRequest studyCrewRequest) {
+    public ResponseEntity<StudyCrewNo> save(@RequestBody StudyCrewRequest studyCrewRequest) {
         return ResponseEntity.ok(studyCrewService.save(studyCrewRequest));
     }
 }

@@ -9,7 +9,7 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LikeCount {
 
-    Integer count = 0;
+    private Integer count = 0;
 
     public void addLike() {
         count++;
