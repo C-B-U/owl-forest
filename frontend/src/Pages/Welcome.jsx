@@ -47,12 +47,7 @@ function Welcome() {
             fontSize='20pt'
             onClick={goReg}
             name='회원가입'
-          >
-            <Link
-              to={{ pathname: '/Reg' }}
-              style={{ color: 'inherit', textDecoration: 'inherit' }}
-            />
-          </Btn>
+          />
           <WelcomeImage />
           <Btn
             background={palette('PsBtn')}
