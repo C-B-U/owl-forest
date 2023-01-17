@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../Components/Color';
@@ -27,12 +27,15 @@ const WelcomeImage = styled.div`
 
 function Welcome() {
   const navigate = useNavigate();
+
   const goReg = () => {
     navigate('/Reg');
   };
+
   const goLogin = () => {
     navigate('/Login');
   };
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -46,6 +49,8 @@ function Welcome() {
             borderStyle='none'
             fontSize='20pt'
             onClick={goReg}
+            transform='scale(1.5)'
+            transition='0.5s'
             name='회원가입'
           />
           <WelcomeImage />
@@ -58,6 +63,8 @@ function Welcome() {
             borderStyle='none'
             fontSize='20pt'
             onClick={goLogin}
+            transform='scale(1.5)'
+            transition='0.5s'
             name='로그인'
           />
         </MainWrap>
