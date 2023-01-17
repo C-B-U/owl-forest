@@ -13,6 +13,7 @@ export const BtnStyle = styled.button`
   height: ${(props) => props.height};
   font-size: ${(props) => props.fontSize};
   &:hover {
+    background-color: ${(props) => props.hoverBackgroundColor};
     transform: ${(props) => props.transform};
     transition: ${(props) => props.transition};
   }
@@ -30,6 +31,7 @@ export default function Btn({
   onClick,
   transform,
   transition,
+  hoverBackgroundColor,
 }) {
   return (
     <BtnStyle
@@ -43,6 +45,7 @@ export default function Btn({
       onClick={onClick}
       transform={transform}
       transition={transition}
+      hoverBackgroundColor={hoverBackgroundColor}
     >
       {name}
     </BtnStyle>
