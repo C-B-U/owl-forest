@@ -4,19 +4,18 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.*;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AuthAccount {
-    @EmbeddedId private AccountNo id;
+    @EmbeddedId
+    private AccountNo id;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
@@ -25,7 +24,11 @@ public class AuthAccount {
     @Enumerated(EnumType.STRING)
     private AuthProvider authProvider = AuthProvider.NONE;
 
-    @Embedded private Member memberInfo;
+    @Embedded
+    private Member memberInfo;
+
+    @Column(nullable = false, unique = true)
+    private String socialId;
 
     private boolean isUpdate = false;
 
@@ -39,9 +42,10 @@ public class AuthAccount {
     }
 
     @Builder
-    public AuthAccount(AccountNo accountNo, AuthProvider authProvider, Member memberInfo) {
+    public AuthAccount(AccountNo accountNo, AuthProvider authProvider, String socialId, Member memberInfo) {
         this.id = accountNo;
         this.authProvider = authProvider;
+        this.socialId = socialId;
         updateMemberInfo(memberInfo);
     }
 }

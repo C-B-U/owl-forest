@@ -3,16 +3,13 @@ package com.cbu.backend.authaccount.command.service;
 import com.cbu.backend.authaccount.command.domain.*;
 import com.cbu.backend.authaccount.command.infra.AuthAccountRepository;
 import com.cbu.backend.config.security.oauth2.OAuth2Request;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
-
-import java.security.Principal;
-import java.util.UUID;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import java.security.Principal;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +20,7 @@ public class AuthAccountService {
     public AuthAccount saveIfNone(OAuth2Request oAuth2Request) {
         String socialId = oAuth2Request.getAccountId();
         return authAccountRepository
-                .findById_SocialId(socialId)
+                .findBySocialId(socialId)
                 .orElseGet(
                         () ->
                                 authAccountRepository.save(
@@ -33,7 +30,8 @@ public class AuthAccountService {
 
     private AuthAccount setUpAuthAccount(OAuth2Request oAuth2Request, Member member) {
         return AuthAccount.builder()
-                .accountNo(new AccountNo(oAuth2Request.getAccountId()))
+                .accountNo(new AccountNo())
+                .socialId(oAuth2Request.getAccountId())
                 .authProvider(oAuth2Request.getProvider())
                 .memberInfo(member)
                 .build();

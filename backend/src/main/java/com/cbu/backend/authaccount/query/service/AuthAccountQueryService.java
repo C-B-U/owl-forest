@@ -2,17 +2,14 @@ package com.cbu.backend.authaccount.query.service;
 
 import com.cbu.backend.authaccount.command.domain.AuthAccount;
 import com.cbu.backend.authaccount.query.infra.AuthAccountDao;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.UUID;
-
-import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor

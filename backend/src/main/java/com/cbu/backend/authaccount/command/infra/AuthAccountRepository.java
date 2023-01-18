@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Repository
 public interface AuthAccountRepository extends JpaRepository<AuthAccount, AccountNo> {
-    Optional<AuthAccount> findById_SocialId(String socialId);
+    Optional<AuthAccount> findBySocialId(String socialId);
 
     Optional<AuthAccount> findById_Id(UUID uuid);
 }
