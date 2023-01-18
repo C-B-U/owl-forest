@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { ko } from 'date-fns/esm/locale';
@@ -205,12 +206,6 @@ const PickDate = styled(DatePicker)`
 const WrapRegButton = styled.div`
   margin-top: 4.5rem;
   float: right;
-`;
-
-const Test = styled.div`
-  width: 100vw;
-  height: 200vh;
-  background-color: black;
 `;
 
 function BookReg() {

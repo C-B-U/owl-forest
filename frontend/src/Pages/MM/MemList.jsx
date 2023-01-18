@@ -29,20 +29,6 @@ const SearchWrap = styled.div`
   white-space: wrap;
 `;
 
-const Memlist = styled.li`
-  width: 20rem;
-  height: 3rem;
-  border-radius: 1.5rem;
-  list-style: none;
-  list-style-position: inside;
-  background-color: rgba(179, 146, 131, 1);
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  margin-top: 1.2rem;
-  margin-left: 1.2 rem;
-`;
-
 const InfoButton = styled.button`
   width: 15rem;
   height: 2.8rem;
@@ -103,9 +89,7 @@ const MemNav = styled.div`
 const Scroll = styled.div`
   overflow: auto;
 `;
-const Wrap1 = styled.div`
-  overflow-y: auto;
-`;
+
 const SelcBox = styled.div`
   width: 5rem;
   height: 2rem;

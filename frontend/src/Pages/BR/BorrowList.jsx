@@ -28,18 +28,6 @@ const WrapSearchbar = styled.div`
   margin-bottom: 10px;
 `;
 
-const WrapBtn = styled.div`
-  width: 5rem;
-  height: 2.5rem;
-  border-radius: 10px;
-  margin-left: 1rem;
-  justify-content: center;
-  color: ${palette('PsCocoa', 0)};
-  background-color: ${palette('PsLightBrown', 0)};
-  font-weight: bold;
-  cursor: pointer;
-`;
-
 const Wrap = styled.div`
   margin-top: 60px;
   display: grid;

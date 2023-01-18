@@ -29,7 +29,7 @@ const Squbox = styled.div`
   display: inline-block;
   text-align: center;
 `;
-const PwKey = styled(InputStyle).attrs((props) => ({
+const PwKey = styled(InputStyle).attrs(() => ({
   type: 'password',
 }))`
   border: 0.15rem solid ${palette('PsLightBrown', 0)};

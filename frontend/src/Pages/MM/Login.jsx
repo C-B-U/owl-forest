@@ -1,15 +1,8 @@
-/* eslint-disable no-template-curly-in-string */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable no-undef */
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 import imgfile from '../../Image/Loginlogo.png';
-import githubbtn from '../../Image/githubbtn.png';
 import googlebtn from '../../Image/googlebtn.png';
 import kakaobtn from '../../Image/kakaobtn.png';
 import naverbtn from '../../Image/naverbtn.png';
@@ -17,7 +10,6 @@ import theme from '../../Components/Color';
 import kakao from '../../Image/Kakao.png';
 import google from '../../Image/Google.png';
 import naver from '../../Image/Naver.png';
-// 1rem = 대략 16px
 
 const Mainlogo = styled.img`
   width: 10rem;
@@ -45,14 +37,6 @@ const SocialWrap = styled.div`
   align-items: center;
 `;
 
-const SocialImg = styled.img`
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 3rem;
-  &:hover {
-    background-color: blue;
-  }
-`;
 const GoogleSocialImg = styled.img`
   width: 3.5rem;
   height: 3.5rem;
@@ -91,11 +75,6 @@ function Login() {
   const KAKAO_AUTH_URL = `${base_url}/api/auth/login/kakao`;
   const GOOGLE_AUTH_URL = `${base_url}/api/auth/login/google`;
   const NAVER_AUTH_URL = `${base_url}/api/auth/login/naver`;
-
-  const googleClick = () => {
-    console.log(5);
-    axios.post('http://localhost:8080/api/auth/login/google');
-  };
 
   // 선언
   return (
