@@ -296,27 +296,6 @@ function BookReg() {
                   <PublisherPopup>한빛아카데미</PublisherPopup>
                   <ReleaseDate>2022.02.22</ReleaseDate>
                 </ListPopup>
-
-                <ListPopup>
-                  <TitlePopup>유닉스 이론과 실습</TitlePopup>
-                  <WriterPopup>윤소정, 이종원</WriterPopup>
-                  <PublisherPopup>한빛아카데미</PublisherPopup>
-                  <ReleaseDate>2022.02.22</ReleaseDate>
-                </ListPopup>
-
-                <ListPopup>
-                  <TitlePopup>유닉스 이론과 실습</TitlePopup>
-                  <WriterPopup>윤소정, 이종원</WriterPopup>
-                  <PublisherPopup>한빛아카데미</PublisherPopup>
-                  <ReleaseDate>2022.02.22</ReleaseDate>
-                </ListPopup>
-
-                <ListPopup>
-                  <TitlePopup>유닉스 이론과 실습</TitlePopup>
-                  <WriterPopup>윤소정, 이종원</WriterPopup>
-                  <PublisherPopup>한빛아카데미</PublisherPopup>
-                  <ReleaseDate>2022.02.22</ReleaseDate>
-                </ListPopup>
               </WrapList>
             </WrapPopup>
           </WrapPopupBackground>
