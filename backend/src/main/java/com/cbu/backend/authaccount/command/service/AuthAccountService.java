@@ -3,13 +3,16 @@ package com.cbu.backend.authaccount.command.service;
 import com.cbu.backend.authaccount.command.domain.*;
 import com.cbu.backend.authaccount.command.infra.AuthAccountRepository;
 import com.cbu.backend.config.security.oauth2.OAuth2Request;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
+import java.util.UUID;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-import java.security.Principal;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

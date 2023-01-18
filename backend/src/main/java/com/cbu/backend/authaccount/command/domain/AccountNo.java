@@ -3,10 +3,11 @@ package com.cbu.backend.authaccount.command.domain;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
 @EqualsAndHashCode
 @Getter
