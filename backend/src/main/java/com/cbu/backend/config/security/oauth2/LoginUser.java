@@ -1,9 +1,6 @@
 package com.cbu.backend.config.security.oauth2;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
-
-import io.jsonwebtoken.Claims;
-
 import lombok.Getter;
 
 /**
@@ -14,10 +11,6 @@ import lombok.Getter;
 @Getter
 public class LoginUser {
     private AccountNo accountId;
-
-    public LoginUser(Claims claims) {
-        this.accountId = claims.get("id", AccountNo.class);
-    }
 
     public LoginUser(AccountNo accountId) {
         this.accountId = accountId;
