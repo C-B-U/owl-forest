@@ -9,7 +9,7 @@ on:
 defaults:
    run:
       shell: bash
-      working-directory: ./back
+      working-directory: ./backend
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
