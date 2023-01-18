@@ -1,18 +1,13 @@
 package com.cbu.backend.book.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
-
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -28,20 +23,15 @@ public class Book {
     private Integer price;
     private LocalDate publishAt;
 
-    @Column(nullable = false)
+    @Column(unique = true)
+    private String isbn;
+
+    @AttributeOverride(name = "id", column = @Column(name = "registrant_id", nullable = false))
     @Embedded
-    private AccountNo registrant;
+    private AccountNo registrantId;
 
     @Builder
-    public Book(
-            BookNo id,
-            String title,
-            String author,
-            String publisher,
-            String imageUrl,
-            Integer price,
-            LocalDate publishAt,
-            AccountNo registrant) {
+    public Book(BookNo id, String title, String author, String publisher, String imageUrl, Integer price, LocalDate publishAt, String isbn, AccountNo registrantId) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -49,6 +39,7 @@ public class Book {
         this.imageUrl = imageUrl;
         this.price = price;
         this.publishAt = publishAt;
-        this.registrant = registrant;
+        this.isbn = isbn;
+        this.registrantId = registrantId;
     }
 }

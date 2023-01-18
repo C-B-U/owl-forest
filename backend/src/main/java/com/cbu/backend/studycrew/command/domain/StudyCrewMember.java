@@ -1,15 +1,13 @@
 package com.cbu.backend.studycrew.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.persistence.*;
 
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

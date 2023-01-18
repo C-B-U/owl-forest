@@ -19,17 +19,16 @@ public class BookService {
     }
 
     private Book saveBook(BookRequest req) {
-        BookNo bookId = new BookNo(req.getIsbn());
         return bookRepository.save(
                 Book.builder()
-                        .id(bookId)
+                        .id(new BookNo())
                         .title(req.getTitle())
                         .author(req.getAuthor())
                         .imageUrl(req.getImageUrl())
                         .price(req.getPrice())
                         .publishAt(req.getPublishAt())
                         .publisher(req.getPublisher())
-                        .registrant(req.getRegistrant())
+                        .registrantId(req.getRegistrant())
                         .build());
     }
 }
