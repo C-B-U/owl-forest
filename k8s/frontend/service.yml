@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: owlforest-frontend
+  name: owl-forest-frontend
 spec:
   type: NodePort
   selector:
-    app: owlforest-frontend
+    app: owl-forest-frontend
     tier: front
   ports:
     - port: 80

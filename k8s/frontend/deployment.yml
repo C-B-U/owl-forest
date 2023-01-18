@@ -18,7 +18,7 @@ spec:
         tier: front
     spec:
       containers:
-        - name: owl-forest-frontend
+        - name: owlforest-frontend
           image: phjppo0918/owlforest-frontend:latest
           imagePullPolicy: Always
           env:
