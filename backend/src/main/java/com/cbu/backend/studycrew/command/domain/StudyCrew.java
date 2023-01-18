@@ -2,15 +2,13 @@ package com.cbu.backend.studycrew.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.global.BaseTime;
-
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,6 +22,7 @@ public class StudyCrew {
 
     @Lob private String description;
 
+    @Column(nullable = false)
     @Embedded private LikeCount likeCount;
 
     @Enumerated(EnumType.STRING)
@@ -37,14 +36,14 @@ public class StudyCrew {
     public StudyCrew(
             String name,
             String description,
-            AccountNo studyCrewLeaderId,
-            List<AccountNo> studyCrewParticipantIds) {
+            AccountNo leaderId,
+            List<AccountNo> participantIds) {
         this.id = new StudyCrewNo();
         this.name = name;
         this.description = description;
         this.likeCount = new LikeCount();
         this.studyCrewStatus = StudyCrewStatus.ACTIVE;
-        this.studyCrewMember = new StudyCrewMember(studyCrewLeaderId, studyCrewParticipantIds);
+        this.studyCrewMember = new StudyCrewMember(leaderId, participantIds);
         this.baseTime = new BaseTime();
     }
 }

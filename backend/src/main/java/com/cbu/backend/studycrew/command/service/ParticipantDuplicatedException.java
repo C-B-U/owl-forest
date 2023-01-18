@@ -1,0 +1,9 @@
+package com.cbu.backend.studycrew.command.service;
+
+public class ParticipantDuplicatedException extends RuntimeException {
+    private static final String MESSAGE = "스터디 구성원 중 중복 멤버가 있습니다.";
+
+    public ParticipantDuplicatedException() {
+        super(MESSAGE);
+    }
+}

@@ -4,10 +4,7 @@ import com.cbu.backend.authaccount.command.domain.AccountNo;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,17 +13,19 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyCrewMember {
 
-    private AccountNo studyCrewLeaderId;
+    @Embedded
+    @AttributeOverride(name = "id",
+            column = @Column(name = "leader_id"))
+    private AccountNo leaderId;
 
     @ElementCollection
     @CollectionTable(
-            name = "study_crew_participants",
+            name = "study_crew_participant",
             joinColumns = @JoinColumn(name = "study_crew_id"))
-    private Set<AccountNo> studyCrewParticipantIds = new HashSet<>();
+    private Set<AccountNo> participantIds = new HashSet<>();
 
-    public StudyCrewMember(AccountNo studyCrewLeaderId, List<AccountNo> studyCrewParticipantIds) {
-        checkParticipantNotDuplicated(studyCrewParticipantIds);
-        this.studyCrewLeaderId = studyCrewLeaderId;
-        this.studyCrewParticipantIds.addAll(studyCrewParticipantIds);
+    public StudyCrewMember(AccountNo leaderId, List<AccountNo> participantIds) {
+        this.leaderId = leaderId;
+        this.participantIds.addAll(participantIds);
     }
 }
