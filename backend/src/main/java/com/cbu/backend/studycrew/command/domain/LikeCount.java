@@ -22,7 +22,7 @@ public class LikeCount {
     }
 
     public LikeCount cancelLike() {
-        if(count <= 0) {
+        if (count <= 0) {
             throw new LikeCountMinusException();
         }
         return new LikeCount(count - 1);
