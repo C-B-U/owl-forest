@@ -2,10 +2,11 @@ package com.cbu.backend.book.command.domain;
 
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
 @EqualsAndHashCode
 @Embeddable

@@ -1,13 +1,15 @@
 package com.cbu.backend.book.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDate;
+
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -31,7 +33,16 @@ public class Book {
     private AccountNo registrantId;
 
     @Builder
-    public Book(BookNo id, String title, String author, String publisher, String imageUrl, Integer price, LocalDate publishAt, String isbn, AccountNo registrantId) {
+    public Book(
+            BookNo id,
+            String title,
+            String author,
+            String publisher,
+            String imageUrl,
+            Integer price,
+            LocalDate publishAt,
+            String isbn,
+            AccountNo registrantId) {
         this.id = id;
         this.title = title;
         this.author = author;
