@@ -41,7 +41,7 @@ public class StudyCrew {
         this.id = new StudyCrewNo();
         this.name = name;
         this.description = description;
-        this.likeCount = new LikeCount();
+        this.likeCount = new LikeCount(0);
         this.studyCrewStatus = StudyCrewStatus.ACTIVE;
         this.studyCrewMember = new StudyCrewMember(leaderId, participantIds);
         this.baseTime = new BaseTime();
