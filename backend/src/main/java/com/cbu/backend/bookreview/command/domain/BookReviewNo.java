@@ -8,10 +8,10 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class BookReviewNo implements Serializable {
-    @Column(name = "study_crew_id", columnDefinition = "BINARY(16)")
+    @Column(name = "book_review_id", columnDefinition = "BINARY(16)")
     private UUID id;
 
-    protected BookReviewNo() {
+    public BookReviewNo() {
         id = UUID.randomUUID();
     }
 }
