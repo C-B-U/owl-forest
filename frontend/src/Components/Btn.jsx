@@ -12,6 +12,11 @@ export const BtnStyle = styled.button`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   font-size: ${(props) => props.fontSize};
+  &:hover {
+    background-color: ${(props) => props.hoverBackgroundColor};
+    transform: ${(props) => props.transform};
+    transition: ${(props) => props.transition};
+  }
 `;
 
 export default function Btn({
@@ -23,6 +28,9 @@ export default function Btn({
   borderStyle,
   fontSize,
   onClick,
+  transform,
+  transition,
+  hoverBackgroundColor,
 }) {
   return (
     <BtnStyle
@@ -33,6 +41,9 @@ export default function Btn({
       borderStyle={borderStyle}
       fontSize={fontSize}
       onClick={onClick}
+      transform={transform}
+      transition={transition}
+      hoverBackgroundColor={hoverBackgroundColor}
     >
       {name}
     </BtnStyle>

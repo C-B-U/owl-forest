@@ -5,6 +5,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import imgfile from '../../Image/Loginlogo.png';
 import theme from '../../Components/Color';
+import Btn from '../../Components/Btn';
 
 const LoginWrap = styled.div`
   position: absolute;
@@ -54,19 +55,16 @@ const LogBtnWrap = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
 `;
 
-const LoginButton = styled.button`
-  width: 15rem;
-  height: 2.8rem;
-  background-color: ${palette('PsGreen')};
-  border-radius: 3rem;
-  padding: 0rem 1.5rem 0rem 0.5rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  border: none;
-  font-size: 12pt;
-  &:hover{
-    border: 1rem;
-  };
-`;
+// const LoginButton = styled.button`
+//   width: 15rem;
+//   height: 2.8rem;
+//   background-color: ${palette('PsGreen')};
+//   border-radius: 3rem;
+//   padding: 0rem 1.5rem 0rem 0.5rem;
+//   font-family: 'Noto Sans KR', sans-serif;
+//   border: none;
+//   font-size: 12pt;
+// `;
 
 const SelectBox = styled.select`
   -webkit-appearance: none;
@@ -110,16 +108,16 @@ function AddInfo() {
           "id": id,
         }
             
-      .then((res)=> {
-        if(res.data.id===null){
-          alert('마 입력해라')
-        }
-      })
+      // .then((res)=> {
+      //   if(res.data.id===null){
+      //     alert('마 입력해라')
+      //   }
+      // })
 
     })
   }
 
- 
+
 
   return (
     <div>
@@ -137,7 +135,7 @@ function AddInfo() {
               <option value='1기'>1</option>
               <option value='2기'>2</option>
               <option value='3기'>3</option>
-              <option value='4기'>4</option>
+              <option value='4기'>4</option>                                      
             </SelectBox>
             <InputBox 
               value={name}
@@ -152,10 +150,17 @@ function AddInfo() {
           </InputWrap>
           <LogBtnWrap>
             
-              <LoginButton
-                type='button'
-                onClick={AddLogin}
-                >완료</LoginButton>
+            <Btn
+              width='15rem'
+              height='2.8rem'
+              background={palette('PsGreen')}
+              borderStyle='none'
+              padding='0rem 1.5rem 0rem 0.5rem'
+              onClick={()=>alert("click test")}
+              hoverBackgroundColor='#7ebe57'
+              transition='0.3s'
+              name='완료'
+              />
             
           </LogBtnWrap>
         </LoginWrap>
