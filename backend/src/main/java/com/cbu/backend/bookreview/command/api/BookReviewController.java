@@ -4,7 +4,9 @@ import com.cbu.backend.bookreview.command.domain.BookReviewNo;
 import com.cbu.backend.bookreview.command.domain.BookReviewRequest;
 import com.cbu.backend.bookreview.command.service.BookReviewService;
 import com.cbu.backend.config.security.oauth2.LoginUser;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,7 +22,8 @@ public class BookReviewController {
     private final BookReviewService bookReviewService;
 
     @PostMapping
-    public ResponseEntity<BookReviewNo> saveBookReview(@AuthenticationPrincipal LoginUser loginUser, @RequestBody BookReviewRequest dto) {
+    public ResponseEntity<BookReviewNo> saveBookReview(
+            @AuthenticationPrincipal LoginUser loginUser, @RequestBody BookReviewRequest dto) {
         dto.setWriter(loginUser.getAccountId());
         BookReviewNo bookReviewId = bookReviewService.saveBookReview(dto);
 

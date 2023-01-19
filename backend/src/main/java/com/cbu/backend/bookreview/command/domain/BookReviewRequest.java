@@ -13,8 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BookReviewRequest {
     private BookRequest book;
-    @Setter
-    private AccountNo writer;
+    @Setter private AccountNo writer;
     private String title;
     private String content;
     private Integer score;

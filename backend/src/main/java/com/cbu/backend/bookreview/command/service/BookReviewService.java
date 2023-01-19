@@ -19,15 +19,17 @@ public class BookReviewService {
 
     public BookReviewNo saveBookReview(BookReviewRequest req) {
         BookNo bookID = bookService.saveIfNotExists(req.getBook());
-        return bookReviewRepository.save(
-                BookReview.builder()
-                        .id(new BookReviewNo())
-                        .writer(req.getWriter())
-                        .title(req.getTitle())
-                        .content(req.getContent())
-                        .bookId(bookID)
-                        .score(req.getScore())
-                        .content(req.getContent())
-                        .build()).getId();
+        return bookReviewRepository
+                .save(
+                        BookReview.builder()
+                                .id(new BookReviewNo())
+                                .writer(req.getWriter())
+                                .title(req.getTitle())
+                                .content(req.getContent())
+                                .bookId(bookID)
+                                .score(req.getScore())
+                                .content(req.getContent())
+                                .build())
+                .getId();
     }
 }
