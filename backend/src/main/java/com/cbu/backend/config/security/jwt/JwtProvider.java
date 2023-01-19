@@ -41,7 +41,7 @@ public class JwtProvider {
 
     private Claims getClaims(LoginUser loginUser) {
         Claims claims = Jwts.claims();
-        claims.put("id", loginUser.getAccountId().getId());
+        claims.put("id", loginUser.getName());
         return claims;
     }
 
@@ -49,7 +49,7 @@ public class JwtProvider {
         long now = new Date().getTime();
 
         return Jwts.builder()
-                .setSubject(loginUser.getAccountId().getId().toString())
+                .setSubject(loginUser.getName())
                 .setClaims(claims)
                 .signWith(key, SignatureAlgorithm.HS512)
                 .setExpiration(new Date(now + validationSecond))

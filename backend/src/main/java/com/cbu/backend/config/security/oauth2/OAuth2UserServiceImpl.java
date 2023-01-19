@@ -5,17 +5,12 @@ import com.cbu.backend.authaccount.command.domain.AuthProvider;
 import com.cbu.backend.authaccount.command.service.AuthAccountService;
 import com.cbu.backend.authaccount.mapper.AuthAccountMapper;
 import com.cbu.backend.config.security.oauth2.attributemapper.AttributeMapper;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 /**
  * User 인증 후 계정이 있으면 그대로 불러오고, 없으면 신규 생성하여 유저를 불러옴
@@ -39,8 +34,6 @@ public class OAuth2UserServiceImpl extends DefaultOAuth2UserService {
                 attributeMapper.mapToUser(authProvider, oAuth2User.getAttributes());
 
         AuthAccount user = authAccountService.saveIfNone(oAuth2Request);
-        Map<String, Object> userAttributes = authAccountMapper.mapToAttributeMap(user);
-
-        return new DefaultOAuth2User(user.getRole(), userAttributes, "id");
+        return authAccountMapper.mapToLoginUser(user);
     }
 }
