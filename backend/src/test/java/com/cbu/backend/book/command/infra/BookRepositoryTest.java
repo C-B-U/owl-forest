@@ -1,17 +1,16 @@
 package com.cbu.backend.book.command.infra;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.book.command.domain.Book;
 import com.cbu.backend.book.command.domain.BookNo;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Optional;
+
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @DataJpaTest
 class BookRepositoryTest {
@@ -22,12 +21,13 @@ class BookRepositoryTest {
     @DisplayName("book 저장시 id가 자동생성 되면서 저장 되는가")
     void checkGenerateBookId() throws Exception {
         // given
-        BookNo bookNo = new BookNo("12345678");
+        BookNo bookNo = new BookNo();
         Book book =
                 Book.builder()
                         .id(bookNo)
                         .title("홍길동전")
-                        .registrant(new AccountNo("12334567"))
+                        .isbn("12345")
+                        .registrantId(new AccountNo())
                         .build();
         // when
         Book result = bookRepository.save(book);
@@ -44,16 +44,17 @@ class BookRepositoryTest {
     void checkFindByIsbn() throws Exception {
         // given
         String isbn = "12345678";
-        BookNo bookNo = new BookNo(isbn);
+        BookNo bookNo = new BookNo();
         Book book =
                 Book.builder()
                         .id(bookNo)
                         .title("홍길동전")
-                        .registrant(new AccountNo("1234458"))
+                        .isbn(isbn)
+                        .registrantId(new AccountNo())
                         .build();
         Book result = bookRepository.save(book);
         // when
-        Optional<Book> findBook = bookRepository.findById_Isbn(isbn);
+        Optional<Book> findBook = bookRepository.findByIsbn(isbn);
         // then
         assertThat(findBook).isPresent();
         assertThat(findBook.get().getId()).isEqualTo(bookNo);
