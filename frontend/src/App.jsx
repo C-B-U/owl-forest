@@ -27,7 +27,7 @@ import ReviewDetail from './Pages/BR/ReviewDetail';
 import ReviewList from './Pages/BR/ReviewList';
 import ReviewReg from './Pages/BR/ReviewReg';
 
-axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = process.env.BASE_URL;
 
 function App() {
   return (

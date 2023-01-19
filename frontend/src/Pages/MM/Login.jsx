@@ -71,7 +71,7 @@ const NaverSocialImg = styled.img`
   margin-top: 12.5rem;
 `;
 function Login() {
-  const base_url = 'http://localhost:8080';
+  const base_url = process.env.BASE_URL;
   const KAKAO_AUTH_URL = `${base_url}/api/auth/login/kakao`;
   const GOOGLE_AUTH_URL = `${base_url}/api/auth/login/google`;
   const NAVER_AUTH_URL = `${base_url}/api/auth/login/naver`;
