@@ -1,8 +1,10 @@
 package com.cbu.backend.config.security.oauth2;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;

@@ -4,7 +4,9 @@ import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.authaccount.command.domain.AuthAccount;
 import com.cbu.backend.authaccount.query.service.AuthAccountQueryService;
 import com.cbu.backend.config.security.oauth2.LoginUser;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

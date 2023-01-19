@@ -1,8 +1,8 @@
 package com.cbu.backend.authaccount.mapper;
 
 import com.cbu.backend.authaccount.command.domain.AuthAccount;
-
 import com.cbu.backend.config.security.oauth2.LoginUser;
+
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
