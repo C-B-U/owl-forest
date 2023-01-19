@@ -42,7 +42,7 @@ public class JwtValidator {
      * @param claims
      * @return Collection<? extends GrantedAuthority>
      * @author Hyeonjun Park
-     * @deprecated 
+     * @deprecated
      */
     private Collection<? extends GrantedAuthority> extractAuthority(Claims claims) {
 
