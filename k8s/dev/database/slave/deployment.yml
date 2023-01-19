@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: owlforest-mysql-slave-dev
+spec:
+  selector:
+    matchLabels:
+      app: owlforest-mysql-slave-dev
+      component: owlforest-mysql-slave-dev
+      tier: back
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: owlforest-mysql-slave-dev
+        component: owlforest-mysql-slave-dev
+        tier: back
+    spec:
+      containers:
+        - name: owlforest-mysql-slave-dev
+          image: mysql:latest
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-volume-slave-dev
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: owl-forest-database-secret
+                  key: database.slave.password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: owl-forest-database-secret
+                  key: database.slave.schema
+      volumes:
+        - name:  mysql-volume-slave-dev
+          hostPath:
+            path: /volume/data/dev/owlforest/slave
