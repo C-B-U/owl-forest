@@ -1,41 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: owlforest-mysql-master
+  name: owlforest-redis
 spec:
   selector:
     matchLabels:
-      app: owlforest-mysql-master
-      component: owlforest-mysql-master
+      app: owlforest-redis
+      component: owlforest-redis
       tier: back
   replicas: 1
   template:
     metadata:
       labels:
-        app: owlforest-mysql-master
-        component: owlforest-mysql-master
+        app: owlforest-redis
+        component: owlforest-redis
         tier: back
     spec:
       containers:
-        - name: owlforest-mysql-master
-          image: mysql:latest
+        - name: owlforest-redis
+          image: redis:latest
           ports:
-            - containerPort: 3306
-          volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: mysql-volume
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: database-secret
-                  key: database.password
-            - name: MYSQL_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: database-secret
-                  key: database.schema
-      volumes:
-        - name: mysql-volume
-          hostPath:
-            path: /volume/data/owlforest
+            - containerPort: 6379
