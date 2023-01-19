@@ -15,7 +15,7 @@ public class BookService {
     private final BookRepository bookRepository;
 
     public BookNo saveIfNotExists(BookRequest req) {
-        return bookRepository.findById_Isbn(req.getIsbn()).orElseGet(() -> saveBook(req)).getId();
+        return bookRepository.findByIsbn(req.getIsbn()).orElseGet(() -> saveBook(req)).getId();
     }
 
     private Book saveBook(BookRequest req) {
