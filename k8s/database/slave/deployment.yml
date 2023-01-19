@@ -23,19 +23,19 @@ spec:
             - containerPort: 3306
           volumeMounts:
             - mountPath: /var/lib/mysql
-              name: mysql-volume
+              name: mysql-volume-slave
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: database-secret
-                  key: database.password
+                  name: owl-forest-database-secret
+                  key: database.slave.password
             - name: MYSQL_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: database-secret
-                  key: database.schema
+                  name: owl-forest-database-secret
+                  key: database.slave.schema
       volumes:
-        - name: mysql-volume
+        - name:  mysql-volume-slave
           hostPath:
-            path: /volume/data/owlforest
+            path: /volume/data/owlforest/slave
