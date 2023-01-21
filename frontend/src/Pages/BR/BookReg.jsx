@@ -16,9 +16,9 @@ const MainWrap = styled.div`
   position: absolute;
   background-color: ${palette('PsCocoa', 0)};
   width: 100%;
-  /* height: calc(100% - 4rem); */
-  height: 100%;
-  padding: 3rem 0rem;
+  height: calc(100% - 4rem);
+  /* height: 100%; */
+  padding-top: 3rem;
 `;
 
 const Wrap = styled.div`
@@ -60,13 +60,14 @@ const WrapBookTitle = styled.div`
 const WrapBookDetail = styled.div`
   font-size: 1.3rem;
   margin-top: 1rem;
+  margin-bottom: 4rem;
 `;
 
 const WrapBookReturn = styled.div`
   width: fit-content;
   height: fit-content;
   /* height: 18rem; */
-  padding: 1.5rem;
+  padding: 2rem;
   background-color: ${palette('PsLightBrown', 0)};
   border-radius: 0.2rem;
   /* margin-top: 1rem; */
@@ -74,7 +75,7 @@ const WrapBookReturn = styled.div`
 
 const WrapReturnAlert = styled.div`
   display: flex;
-  margin-top: 2rem;
+  margin-top: 1rem;
   vertical-align: middle;
 `;
 
@@ -92,27 +93,28 @@ const KakaoURL = styled.div`
 `;
 
 const PickDate = styled(DatePicker)`
-  width: 11rem;
-  height: 1.2rem;
+  width: 12rem;
+  height: 2.5rem;
   box-sizing: border-box;
   text-align: center;
   margin-top: -0.5rem;
   padding: 0.8rem 2rem;
   border-radius: 0.4rem;
-  border: 1px solid grey;
+  border: 0.15rem solid rgba(128, 109, 70);
   font-size: 0.9rem;
   z-index: -1;
 `;
 const Location = styled.div`
   width: 6rem;
   margin-right: 1rem;
-  border: 1px solid grey;
-  text-align: center;
+  /* border: 1px solid grey; */
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 const WrapRegButton = styled.div`
-  margin-top: 4.5rem;
+  margin-top: 3rem;
+  margin-right: -1.5rem;
   float: right;
 `;
 
@@ -128,18 +130,20 @@ const WrapPopupBackground = styled.div`
   position: absolute;
   width: 100vw;
   height: 100%;
+  /* height: calc(100% - 4rem); */
   /* background-color: rgba(0, 0, 0, 0.5); */
-  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: -3rem;
+  background-color: rgba(255, 255, 255, 0.4);
 `;
 
 const WrapPopup = styled.div`
   position: absolute;
   width: 60rem;
   height: 35rem;
-  background-color: ${palette('PsCocoa', 1)};
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: ${palette('PsCocoa', 1)};
   border-radius: 1rem;
 `;
 
@@ -338,7 +342,7 @@ function BookReg() {
                   <WrapBookTitle>도서 제목</WrapBookTitle>
                   <WrapBookDetail>작가 | 출판사 | 출판일</WrapBookDetail>
                   <WrapReturnAlert>
-                    <ReturnAlert>반납 마감일</ReturnAlert>
+                    <Location>반납 마감일</Location>
                     <div>
                       <PickDate
                         locale={ko}
@@ -351,23 +355,23 @@ function BookReg() {
                   <WrapReturnAlert>
                     <Location>위치</Location>
                     <Input
-                      width='20rem'
-                      height='2.8rem'
+                      width='23rem'
+                      height='2.5rem'
                       placeholder='만날 위치를 적어주세요'
                     />
                   </WrapReturnAlert>
-                  <KakaoURL>
+                  <WrapReturnAlert>
                     <Location>오픈 채팅 주소</Location>
                     <Input
-                      width='25rem'
-                      height='2.8rem'
+                      width='23rem'
+                      height='2.5rem'
                       placeholder='카카오 오픈 채팅 주소'
                     />
-                  </KakaoURL>
+                  </WrapReturnAlert>
                   <WrapRegButton>
                     <Button
-                      color={palette('PsYellow')}
-                      background={palette('PsBtn')}
+                      color='black'
+                      background={palette('PsYellow')}
                       width='5.5rem'
                       height='2.5rem'
                       name='게시하기'
