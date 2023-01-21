@@ -11,24 +11,140 @@ import SearchIcon from '../../Image/SearchIcon.png';
 import Button from '../../Components/Btn';
 import Input from '../../Components/Input';
 
+// ------------- 책등록 페이지 -------------
+
+const MainWrap = styled.div`
+  position: absolute;
+  background-color: ${palette('PsCocoa', 0)};
+  width: 100%;
+  height: calc(100% - 4rem);
+  /* height: 100%; */
+  padding-top: 3rem;
+`;
+
+const Wrap = styled.div`
+  margin: 0rem auto 0rem auto;
+  width: fit-content;
+  height: fit-content;
+  background-color: ${palette('PsCocoa', 1)};
+  padding: 3rem;
+  box-sizing: content-box;
+`;
+
+const Title = styled.h1`
+  color: ${palette('PsYellow')};
+`;
+
+const WrapContent = styled.div`
+  display: flex;
+`;
+
+const WrapBookImage = styled.div`
+  width: 15rem;
+  height: 19rem;
+  background-color: #ffffff;
+`;
+
+const WrapBookSearch = styled.div`
+  margin-top: 20rem;
+  margin-left: -15rem;
+`;
+
+const WrapRegister = styled.div`
+  margin-left: 3rem;
+`;
+const WrapBookTitle = styled.div`
+  font-weight: bold;
+  font-size: 1.5rem;
+`;
+
+const WrapBookDetail = styled.div`
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+`;
+
+const WrapBookReturn = styled.div`
+  width: fit-content;
+  height: fit-content;
+  /* height: 18rem; */
+  padding: 2rem;
+  background-color: ${palette('PsLightBrown', 0)};
+  border-radius: 0.2rem;
+  /* margin-top: 1rem; */
+`;
+
+const WrapReturnAlert = styled.div`
+  display: flex;
+  margin-top: 1rem;
+  vertical-align: middle;
+`;
+
+const ReturnAlert = styled.div`
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  width: 6rem;
+`;
+
+const KakaoURL = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
+
+const PickDate = styled(DatePicker)`
+  width: 12rem;
+  height: 2.5rem;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: -0.5rem;
+  padding: 0.8rem 2rem;
+  border-radius: 0.4rem;
+  border: 0.15rem solid rgba(128, 109, 70);
+  font-size: 0.9rem;
+  z-index: -1;
+`;
+const Location = styled.div`
+  width: 6rem;
+  margin-right: 1rem;
+  /* border: 1px solid grey; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const WrapRegButton = styled.div`
+  margin-top: 3rem;
+  margin-right: -1.5rem;
+  float: right;
+`;
+
+const Test = styled.div`
+  width: 100vw;
+  height: 200vh;
+  background-color: black;
+`;
+
 // ---------------- 팝업창 작업----------------
 
 const WrapPopupBackground = styled.div`
   position: absolute;
   width: 100vw;
   height: 100%;
+  /* height: calc(100% - 4rem); */
   /* background-color: rgba(0, 0, 0, 0.5); */
-  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: -3rem;
+  background-color: rgba(255, 255, 255, 0.4);
 `;
 
 const WrapPopup = styled.div`
   position: absolute;
   width: 60rem;
   height: 35rem;
-  background-color: ${palette('PsCocoa', 1)};
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: ${palette('PsCocoa', 1)};
   border-radius: 1rem;
 `;
 
@@ -37,9 +153,9 @@ const WrapCloseButton = styled.div`
   margin-left: 2.5rem;
 `;
 
-const ISBNSearch = styled.div`
+const TitleSearch = styled.div`
   font-size: 3rem;
-  margin-top: 4rem;
+  margin-top: 1rem;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -65,9 +181,24 @@ const WrapSearchIcon = styled.div`
 
 const WrapList = styled.div`
   /* border: 1px solid black; */
-  height: fit-content;
+  height: 15rem;
   width: fit-content;
   margin: 2rem auto;
+  overflow: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #eeeeee;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${palette('PsGreen')};
+    border-radius: 10px;
+  }
 `;
 
 const ListPopup = styled.div`
@@ -75,6 +206,7 @@ const ListPopup = styled.div`
   height: fit-content;
   background-color: white;
   margin-bottom: 1rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -83,6 +215,7 @@ const ListPopup = styled.div`
   padding: 0.7rem;
   justify-items: center;
   border-radius: 0.2rem;
+  /* border: 1px solid red; */
 `;
 
 const TitlePopup = styled.div`
@@ -246,7 +379,7 @@ function BookReg() {
                   onClick={closePopup}
                 />
               </WrapCloseButton>
-              <ISBNSearch>도서 검색</ISBNSearch>
+              <TitleSearch>도서 검색</TitleSearch>
               <WrapSearchbar>
                 {/* <SearchForm></SearchForm> */}
                 <Input
@@ -297,12 +430,11 @@ function BookReg() {
               </WrapBookSearch>
 
               <WrapRegister>
-                <WrapBookTitle>도서 제목</WrapBookTitle>
-                <WrapBookDetail>작가 | 출판사 | 출판일</WrapBookDetail>
                 <WrapBookReturn>
+                  <WrapBookTitle>도서 제목</WrapBookTitle>
+                  <WrapBookDetail>작가 | 출판사 | 출판일</WrapBookDetail>
                   <WrapReturnAlert>
-                    <ReturnAlert>반납 마감일</ReturnAlert>
-
+                    <Location>반납 마감일</Location>
                     <div>
                       <PickDate
                         locale={ko}
@@ -312,17 +444,26 @@ function BookReg() {
                       />
                     </div>
                   </WrapReturnAlert>
-                  <DetailDate>
+                  <WrapReturnAlert>
+                    <Location>위치</Location>
                     <Input
-                      width='25rem'
-                      height='2.8rem'
+                      width='23rem'
+                      height='2.5rem'
+                      placeholder='만날 위치를 적어주세요'
+                    />
+                  </WrapReturnAlert>
+                  <WrapReturnAlert>
+                    <Location>오픈 채팅 주소</Location>
+                    <Input
+                      width='23rem'
+                      height='2.5rem'
                       placeholder='카카오 오픈 채팅 주소'
                     />
-                  </DetailDate>
+                  </WrapReturnAlert>
                   <WrapRegButton>
                     <Button
-                      color={palette('PsYellow')}
-                      background={palette('PsBtn')}
+                      color='black'
+                      background={palette('PsYellow')}
                       width='5.5rem'
                       height='2.5rem'
                       name='게시하기'
