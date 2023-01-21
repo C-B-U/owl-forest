@@ -16,11 +16,13 @@ const MainWrap = styled.div`
   position: absolute;
   background-color: ${palette('PsCocoa', 0)};
   width: 100%;
-  height: calc(100% - 4rem);
+  /* height: calc(100% - 4rem); */
+  height: 100%;
+  padding: 3rem 0rem;
 `;
 
 const Wrap = styled.div`
-  margin: 4rem auto 0rem auto;
+  margin: 0rem auto 0rem auto;
   width: fit-content;
   height: fit-content;
   background-color: ${palette('PsCocoa', 1)};
@@ -62,15 +64,18 @@ const WrapBookDetail = styled.div`
 
 const WrapBookReturn = styled.div`
   width: fit-content;
-  height: 18rem;
-  padding: 1rem;
+  height: fit-content;
+  /* height: 18rem; */
+  padding: 1.5rem;
   background-color: ${palette('PsLightBrown', 0)};
   border-radius: 0.2rem;
-  margin-top: 2rem;
+  /* margin-top: 1rem; */
 `;
 
 const WrapReturnAlert = styled.div`
   display: flex;
+  margin-top: 2rem;
+  vertical-align: middle;
 `;
 
 const ReturnAlert = styled.div`
@@ -79,7 +84,10 @@ const ReturnAlert = styled.div`
   width: 6rem;
 `;
 
-const DetailDate = styled.div`
+const KakaoURL = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 `;
 
@@ -95,7 +103,14 @@ const PickDate = styled(DatePicker)`
   font-size: 0.9rem;
   z-index: -1;
 `;
-
+const Location = styled.div`
+  width: 6rem;
+  margin-right: 1rem;
+  border: 1px solid grey;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+`;
 const WrapRegButton = styled.div`
   margin-top: 4.5rem;
   float: right;
@@ -324,7 +339,6 @@ function BookReg() {
                   <WrapBookDetail>작가 | 출판사 | 출판일</WrapBookDetail>
                   <WrapReturnAlert>
                     <ReturnAlert>반납 마감일</ReturnAlert>
-
                     <div>
                       <PickDate
                         locale={ko}
@@ -334,13 +348,22 @@ function BookReg() {
                       />
                     </div>
                   </WrapReturnAlert>
-                  <DetailDate>
+                  <WrapReturnAlert>
+                    <Location>위치</Location>
+                    <Input
+                      width='20rem'
+                      height='2.8rem'
+                      placeholder='만날 위치를 적어주세요'
+                    />
+                  </WrapReturnAlert>
+                  <KakaoURL>
+                    <Location>오픈 채팅 주소</Location>
                     <Input
                       width='25rem'
                       height='2.8rem'
                       placeholder='카카오 오픈 채팅 주소'
                     />
-                  </DetailDate>
+                  </KakaoURL>
                   <WrapRegButton>
                     <Button
                       color={palette('PsYellow')}
