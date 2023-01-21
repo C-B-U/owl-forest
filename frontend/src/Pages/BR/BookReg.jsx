@@ -115,7 +115,7 @@ const Location = styled.div`
 `;
 const WrapRegButton = styled.div`
   margin-top: 3rem;
-  margin-right: -1.5rem;
+  margin-right: -2rem;
   float: right;
 `;
 
@@ -250,97 +250,6 @@ const ReleaseDate = styled.div`
   text-align: center;
 `;
 
-// ------------- 책등록 페이지 -------------
-
-const MainWrap = styled.div`
-  position: absolute;
-  background-color: ${palette('PsCocoa', 0)};
-  width: 100%;
-  height: calc(100% - 4rem);
-`;
-
-const Wrap = styled.div`
-  margin: 4rem auto 0rem auto;
-  width: fit-content;
-  height: fit-content;
-  background-color: ${palette('PsCocoa', 1)};
-  padding: 3rem;
-  box-sizing: content-box;
-`;
-
-const Title = styled.h1`
-  color: ${palette('PsYellow')};
-`;
-
-const WrapContent = styled.div`
-  display: flex;
-`;
-
-const WrapBookImage = styled.div`
-  width: 15rem;
-  height: 19rem;
-  background-color: #ffffff;
-`;
-
-const WrapBookSearch = styled.div`
-  margin-top: 20rem;
-  margin-left: -15rem;
-`;
-
-const WrapRegister = styled.div`
-  margin-left: 3rem;
-`;
-const WrapBookTitle = styled.div`
-  font-weight: bold;
-  font-size: 1.5rem;
-`;
-
-const WrapBookDetail = styled.div`
-  font-size: 1.3rem;
-  margin-top: 1rem;
-`;
-
-const WrapBookReturn = styled.div`
-  width: fit-content;
-  height: 13.3rem;
-  padding: 1rem;
-  background-color: ${palette('PsLightBrown', 0)};
-  border-radius: 0.2rem;
-  margin-top: 2rem;
-`;
-
-const WrapReturnAlert = styled.div`
-  display: flex;
-`;
-
-const ReturnAlert = styled.div`
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  width: 6rem;
-`;
-
-const DetailDate = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const PickDate = styled(DatePicker)`
-  width: 11rem;
-  height: 1.2rem;
-  box-sizing: border-box;
-  text-align: center;
-  margin-top: -0.5rem;
-  padding: 0.8rem 2rem;
-  border-radius: 0.4rem;
-  border: 1px solid grey;
-  font-size: 0.9rem;
-  z-index: -1;
-`;
-
-const WrapRegButton = styled.div`
-  margin-top: 4.5rem;
-  float: right;
-`;
-
 function BookReg() {
   // 팝업창 x 버튼 기능 구현
   const [isShown, setIsShown] = useState(false);
@@ -421,11 +330,12 @@ function BookReg() {
               <WrapBookSearch>
                 <Button
                   onClick={openPopup}
-                  color={palette('PsBtn')}
+                  color='black'
                   background={palette('PsGreen')}
                   width='15rem'
                   height='2.5rem'
                   name='도서 검색'
+                  borderRadius='1rem'
                 />
               </WrapBookSearch>
 
@@ -467,6 +377,7 @@ function BookReg() {
                       width='5.5rem'
                       height='2.5rem'
                       name='게시하기'
+                      borderRadius='1rem'
                     />
                   </WrapRegButton>
                 </WrapBookReturn>
