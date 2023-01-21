@@ -3,6 +3,7 @@ package com.cbu.backend.studycrew.command.domain;
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.global.BaseTime;
 
+import com.cbu.backend.studycrew.command.dto.StudyCrewRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -45,5 +46,28 @@ public class StudyCrew {
         this.studyCrewStatus = StudyCrewStatus.ACTIVE;
         this.studyCrewMember = new StudyCrewMember(leaderId, participantIds);
         this.baseTime = new BaseTime();
+    }
+
+    public StudyCrew updateStudyCrew(StudyCrewRequest studyCrewRequest) {
+        this.name = studyCrewRequest.getName();
+        this.description = studyCrewRequest.getDescription();
+        this.studyCrewMember = new StudyCrewMember(studyCrewRequest.getLeader(), studyCrewRequest.getParticipants());
+        return this;
+    }
+
+    public void addLike() {
+        likeCount = likeCount.addCount();
+    }
+
+    public void cancelLike() {
+        likeCount = likeCount.cancelLike();
+    }
+
+    public void finishStudyCrew() {
+        studyCrewStatus = StudyCrewStatus.FINISHED;
+    }
+
+    public void deleteStudyCrew() {
+        baseTime.delete();
     }
 }

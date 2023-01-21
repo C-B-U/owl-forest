@@ -1,4 +1,4 @@
-package com.cbu.backend.studycrew.command.dto;
+package com.cbu.backend.studycrew.query.dto;
 
 import com.cbu.backend.studycrew.command.domain.*;
 import lombok.AllArgsConstructor;
