@@ -1,10 +1,10 @@
 package com.cbu.backend.support.docs;
 
-import org.springframework.restdocs.operation.preprocess.OperationRequestPreprocessor;
-import org.springframework.restdocs.operation.preprocess.OperationResponsePreprocessor;
-
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
+
+import org.springframework.restdocs.operation.preprocess.OperationRequestPreprocessor;
+import org.springframework.restdocs.operation.preprocess.OperationResponsePreprocessor;
 
 public interface ApiDocumentUtils {
 

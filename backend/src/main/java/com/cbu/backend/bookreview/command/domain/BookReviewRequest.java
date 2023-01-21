@@ -2,6 +2,7 @@ package com.cbu.backend.bookreview.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.book.command.domain.BookRequest;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,8 @@ public class BookReviewRequest {
     private Integer score;
     private Integer difficulty;
 
-    public BookReviewRequest(BookRequest book, String title, String content, Integer score, Integer difficulty) {
+    public BookReviewRequest(
+            BookRequest book, String title, String content, Integer score, Integer difficulty) {
         this.book = book;
         this.title = title;
         this.content = content;
