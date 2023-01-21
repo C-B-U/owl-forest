@@ -6,7 +6,6 @@ import com.cbu.backend.studycrew.command.domain.SortDirection;
 import com.cbu.backend.studycrew.command.domain.StudyCrew;
 import com.cbu.backend.studycrew.command.domain.StudyCrewNo;
 import com.querydsl.core.types.OrderSpecifier;
-import com.querydsl.core.types.dsl.ComparableExpressionBase;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import org.springframework.data.domain.Pageable;
@@ -32,18 +31,13 @@ public class StudyCrewQueryRepository {
     public List<StudyCrew> getStudyCrewSortByCreatedAt(
             SortDirection sortDirection, Pageable pageable) {
         return getAllStudyCrew(
-                getOrderSpecifier(studyCrew.baseTime.createdAt, sortDirection), pageable);
+                sortDirection.getSortClassifier().apply(studyCrew.baseTime.createdAt), pageable);
     }
 
     public List<StudyCrew> getStudyCrewSortByLikeCount(
             SortDirection sortDirection, Pageable pageable) {
         return getAllStudyCrew(
-                getOrderSpecifier(studyCrew.likeCount.count, sortDirection), pageable);
-    }
-
-    private OrderSpecifier getOrderSpecifier(
-            ComparableExpressionBase field, SortDirection sortDirection) {
-        return sortDirection == SortDirection.ASC ? field.asc() : field.desc();
+                sortDirection.getSortClassifier().apply(studyCrew.likeCount.count), pageable);
     }
 
     private List<StudyCrew> getAllStudyCrew(OrderSpecifier orderSpecifier, Pageable pageable) {
