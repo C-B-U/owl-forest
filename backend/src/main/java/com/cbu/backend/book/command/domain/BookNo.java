@@ -1,14 +1,13 @@
 package com.cbu.backend.book.command.domain;
 
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
-import java.util.UUID;
+import lombok.Getter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
+import java.util.UUID;
 
-@EqualsAndHashCode
+@Getter
 @Embeddable
 public class BookNo implements Serializable {
     @Column(name = "book_id", columnDefinition = "BINARY(16)")

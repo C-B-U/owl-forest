@@ -24,8 +24,7 @@ public class BookReviewController {
     @PostMapping
     public ResponseEntity<BookReviewNo> saveBookReview(
             @AuthenticationPrincipal LoginUser loginUser, @RequestBody BookReviewRequest dto) {
-        dto.setWriter(loginUser.getAccountId());
-        BookReviewNo bookReviewId = bookReviewService.saveBookReview(dto);
+        BookReviewNo bookReviewId = bookReviewService.saveBookReview(dto.toBookReviewRequest(loginUser.getAccountId()));
 
         return ResponseEntity.status(HttpStatus.CREATED).body(bookReviewId);
     }
