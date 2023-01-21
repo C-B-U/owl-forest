@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: owlforest-mysql-master
+  name: owlforest-mysql
 spec:
   ports:
-    - name: owlforest-mysql-master
+    - name: owlforest-mysql
       port: 3306
       targetPort: 3306
       protocol: TCP
   selector:
-    app: owlforest-mysql-master
-    component: owlforest-mysql-master
+    app: owlforest-mysql
+    component: owlforest-mysql
   clusterIP: None

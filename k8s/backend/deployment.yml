@@ -25,47 +25,27 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: prod
-            - name: DATABASE_MASTER_USERNAME
+            - name: DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: owl-forest-database-secret
-                  key: database.master.username
-            - name: DATABASE_MASTER_PASSWORD
+                  key: database.username
+            - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: owl-forest-database-secret
-                  key: database.master.password
-            - name: DATABASE_MASTER_URL
+                  key: database.password
+            - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
                   name: owl-forest-database-secret
-                  key: database.master.url
-            - name: DATABASE_MASTER_SCHEMA
+                  key: database.url
+            - name: DATABASE_SCHEMA
               valueFrom:
                 secretKeyRef:
                   name: owl-forest-database-secret
-                  key: database.master.schema
-            - name: DATABASE_SLAVE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: owl-forest-database-secret
-                  key: database.slave.username
-            - name: DATABASE_SLAVE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: owl-forest-database-secret
-                  key: database.slave.password
-            - name: DATABASE_SLAVE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: owl-forest-database-secret
-                  key: database.slave.url
-            - name: DATABASE_SLAVE_SCHEMA
-              valueFrom:
-                secretKeyRef:
-                  name: owl-forest-database-secret
-                  key: database.slave.schema
-
+                  key: database.schema
+        
             - name: REDIS_HOST
               valueFrom:
                 secretKeyRef:

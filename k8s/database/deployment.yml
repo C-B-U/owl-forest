@@ -1,41 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: owlforest-mysql-master-dev
+  name: owlforest-mysql
 spec:
   selector:
     matchLabels:
-      app: owlforest-mysql-master-dev
-      component: owlforest-mysql-master-dev
+      app: owlforest-mysql
+      component: owlforest-mysql
       tier: back
   replicas: 1
   template:
     metadata:
       labels:
-        app: owlforest-mysql-master-dev
-        component: owlforest-mysql-master-dev
+        app: owlforest-mysql
+        component: owlforest-mysql
         tier: back
     spec:
       containers:
-        - name: owlforest-mysql-master-dev
+        - name: owlforest-mysql
           image: mysql:latest
           ports:
             - containerPort: 3306
-          volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: mysql-volume-master-dev
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: owl-forest-database-secret
-                  key: database.master.password
+                  key: database.password
             - name: MYSQL_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: owl-forest-database-secret
-                  key: database.master.schema
-      volumes:
-        - name: mysql-volume-master-dev
-          hostPath:
-            path: /volume/data/dev/owlforest/master
+                  key: database.schema

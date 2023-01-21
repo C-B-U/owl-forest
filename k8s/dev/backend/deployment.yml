@@ -25,41 +25,23 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: dev
-            - name: DATABASE_MASTER_USERNAME
+            - name: DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: owl-forest-database-secret
-                  key: database.master.username
-            - name: DATABASE_MASTER_PASSWORD
+                  key: database.username
+            - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: owl-forest-database-secret
-                  key: database.master.password
-            - name: DATABASE_MASTER_URL
-              value: owlforest-mysql-master-dev:3306
-            - name: DATABASE_MASTER_SCHEMA
+                  key: database.password
+            - name: DATABASE_URL
+              value: owlforest-mysql-dev:3306
+            - name: DATABASE_SCHEMA
               valueFrom:
                 secretKeyRef:
                   name: owl-forest-database-secret
-                  key: database.master.schema
-            - name: DATABASE_SLAVE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: owl-forest-database-secret
-                  key: database.slave.username
-            - name: DATABASE_SLAVE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: owl-forest-database-secret
-                  key: database.slave.password
-            - name: DATABASE_SLAVE_URL
-              value: owlforest-mysql-slave-dev:3307
-            - name: DATABASE_SLAVE_SCHEMA
-              valueFrom:
-                secretKeyRef:
-                  name: owl-forest-database-secret
-                  key: database.slave.schema
-
+                  key: database.schema
             - name: REDIS_HOST
               valueFrom:
                 secretKeyRef:

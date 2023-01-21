@@ -1,23 +1,14 @@
 spring:
   datasource:
-    hikari:
-      master:
-        username: ${DATABASE_MASTER_USERNAME}
-        password: ${DATABASE_MASTER_PASSWORD}
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://${DATABASE_MASTER_URL}/${DATABASE_MASTER_SCHEMA}?serverTimezone=Asia/Seoul
-      slave:
-        username: ${DATABASE_SLAVE_USERNAME}
-        password: ${DATABASE_SLAVE_PASSWORD}
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://${DATABASE_SLAVE_URL}/${DATABASE_SLAVE_SCHEMA}?serverTimezone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DATABASE_URL}/${DATABASE_SCHEMA}?serverTimezone=Asia/Seoul
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
 
   flyway:
     enabled: true
