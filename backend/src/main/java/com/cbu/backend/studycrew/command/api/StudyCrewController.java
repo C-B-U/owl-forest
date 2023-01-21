@@ -19,12 +19,14 @@ public class StudyCrewController {
     private final StudyCrewService studyCrewService;
 
     @PostMapping
-    public ResponseEntity<StudyCrewNo> saveStudyCrew(@RequestBody StudyCrewRequest studyCrewRequest) {
+    public ResponseEntity<StudyCrewNo> saveStudyCrew(
+            @RequestBody StudyCrewRequest studyCrewRequest) {
         return ResponseEntity.ok(studyCrewService.save(studyCrewRequest));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudyCrewResponse> putStudyCrew(@PathVariable StudyCrewNo id, @RequestBody StudyCrewRequest studyCrewRequest) {
+    public ResponseEntity<StudyCrewResponse> putStudyCrew(
+            @PathVariable StudyCrewNo id, @RequestBody StudyCrewRequest studyCrewRequest) {
         return ResponseEntity.ok(studyCrewService.updateStudyCrew(id, studyCrewRequest));
     }
 

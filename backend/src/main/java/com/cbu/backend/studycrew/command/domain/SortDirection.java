@@ -6,5 +6,6 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum SortDirection {
-    ASC, DESC
+    ASC,
+    DESC
 }
