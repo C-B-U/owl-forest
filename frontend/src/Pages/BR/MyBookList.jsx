@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
@@ -84,7 +85,7 @@ const State = styled.div`
 const WrapStateButton = styled.div`
   width: 6rem;
   text-align: center;
-  pointer-events: none;
+  /* pointer-events: none; */
 `;
 
 const PostDate = styled.div`
@@ -94,6 +95,7 @@ const PostDate = styled.div`
 
 const BorrowUser = styled.div`
   width: 9rem;
+  text-align: center;
   //border: 1px solid grey;
 `;
 
@@ -103,10 +105,10 @@ const ReturnDate = styled.div`
 `;
 
 function MyBookList() {
-  // const navigate = useNavigate();
-  // const navigateToReview = () => {
-  //   navigate('/ReviewRegister');
-  // };
+  const navigate = useNavigate();
+  const navigateToReview = () => {
+    navigate('/ReviewRegister');
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -133,6 +135,7 @@ function MyBookList() {
                   height='1.5rem'
                   name='리뷰쓰기'
                   background={palette('PsYellow')}
+                  onClick={navigateToReview}
                 />
               </WrapStateButton>
             </BookList>
