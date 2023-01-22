@@ -30,6 +30,7 @@ const WrapList = styled.div`
 
 const ListTitle = styled.div`
   font-size: 1.5rem;
+  font-weight: bold;
   color: ${palette('PsYellow')};
   margin-bottom: 1rem;
 `;
