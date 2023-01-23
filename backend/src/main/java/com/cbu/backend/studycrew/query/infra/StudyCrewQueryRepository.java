@@ -1,6 +1,6 @@
 package com.cbu.backend.studycrew.query.infra;
 
-import static com.cbu.backend.studycrew.domain.QStudyCrew.*;
+import static com.cbu.backend.studycrew.command.domain.QStudyCrew.studyCrew;
 
 import com.cbu.backend.studycrew.command.domain.SortDirection;
 import com.cbu.backend.studycrew.command.domain.StudyCrew;
