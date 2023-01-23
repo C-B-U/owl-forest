@@ -32,21 +32,21 @@ public class StudyCrewController {
     }
 
     @PostMapping("/{id}/like-count/add")
-    public ResponseEntity<Void> patchAddLikeCount(
+    public ResponseEntity<Void> addLikeCount(
             @PathVariable StudyCrewNo id, @AuthenticationPrincipal LoginUser loginUser) {
         studyCrewService.addLike(id, loginUser.getAccountId());
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/{id}/like-count/cancel")
-    public ResponseEntity<Void> patchCancelLikeCount(
+    public ResponseEntity<Void> cancelLikeCount(
             @PathVariable StudyCrewNo id, @AuthenticationPrincipal LoginUser loginUser) {
         studyCrewService.cancelLike(id, loginUser.getAccountId());
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/{id}/finish")
-    public ResponseEntity<Void> patchFinishStudyCrew(@PathVariable StudyCrewNo id) {
+    public ResponseEntity<Void> finishStudyCrew(@PathVariable StudyCrewNo id) {
         studyCrewService.finishStudyCrew(id);
         return ResponseEntity.ok().build();
     }
