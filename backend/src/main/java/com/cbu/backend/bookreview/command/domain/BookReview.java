@@ -21,8 +21,8 @@ public class BookReview {
 
     @Column(nullable = false)
     private String title;
-    @Lob
-    private String content;
+
+    @Lob private String content;
 
     @Column(nullable = false)
     @Embedded

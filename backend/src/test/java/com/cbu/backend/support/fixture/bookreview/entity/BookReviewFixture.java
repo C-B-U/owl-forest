@@ -8,8 +8,26 @@ import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.support.fixture.book.entity.BookFixture;
 
 public enum BookReviewFixture {
-    SAMPLE1(new BookReviewNo(), new AccountNo(), "제목 1", "내용 1", BookFixture.SAMPLE1.getId(), 10, 4, 2, new BaseTime()),
-    SAMPLE2(new BookReviewNo(), new AccountNo(), "제목 2", "내용 2", BookFixture.SAMPLE1.getId(), 10, 4, 2, new BaseTime());
+    SAMPLE1(
+            new BookReviewNo(),
+            new AccountNo(),
+            "제목 1",
+            "내용 1",
+            BookFixture.SAMPLE1.getId(),
+            10,
+            4,
+            2,
+            new BaseTime()),
+    SAMPLE2(
+            new BookReviewNo(),
+            new AccountNo(),
+            "제목 2",
+            "내용 2",
+            BookFixture.SAMPLE1.getId(),
+            10,
+            4,
+            2,
+            new BaseTime());
     private final BookReviewNo id;
     private final AccountNo writer;
     private final String title;
@@ -20,7 +38,16 @@ public enum BookReviewFixture {
     private final Integer difficulty;
     private final BaseTime baseTime;
 
-    BookReviewFixture(BookReviewNo id, AccountNo writer, String title, String content, BookNo bookId, Integer likeCount, Integer score, Integer difficulty, BaseTime baseTime) {
+    BookReviewFixture(
+            BookReviewNo id,
+            AccountNo writer,
+            String title,
+            String content,
+            BookNo bookId,
+            Integer likeCount,
+            Integer score,
+            Integer difficulty,
+            BaseTime baseTime) {
         this.id = id;
         this.writer = writer;
         this.title = title;

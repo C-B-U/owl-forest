@@ -9,5 +9,6 @@ import java.util.Optional;
 
 public interface BookReviewQueryDslDao {
     List<BookReviewSummaryResponse> findSummaryAll();
+
     Optional<BookReviewResponse> findResponseById(BookReviewNo id);
 }

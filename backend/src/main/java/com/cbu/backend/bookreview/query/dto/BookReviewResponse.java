@@ -3,6 +3,7 @@ package com.cbu.backend.bookreview.query.dto;
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.bookreview.command.domain.BookReviewNo;
 import com.querydsl.core.annotations.QueryProjection;
+
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -20,7 +21,16 @@ public class BookReviewResponse {
     private LocalDateTime createdAt;
 
     @QueryProjection
-    public BookReviewResponse(BookReviewNo id, AccountNo writer, String title, String content, BookDetail book, Integer likeCount, Integer score, Integer difficulty, LocalDateTime createdAt) {
+    public BookReviewResponse(
+            BookReviewNo id,
+            AccountNo writer,
+            String title,
+            String content,
+            BookDetail book,
+            Integer likeCount,
+            Integer score,
+            Integer difficulty,
+            LocalDateTime createdAt) {
         this.id = id;
         this.writer = writer;
         this.title = title;
