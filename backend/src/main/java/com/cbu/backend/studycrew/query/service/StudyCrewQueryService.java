@@ -32,8 +32,7 @@ public class StudyCrewQueryService {
 
     public List<StudyCrewResponse> getStudyCrewSortByLikeCount(
             SortDirection sortDirection, Pageable pageable) {
-        return getStudyCrewList(
-                studyCrewDao::getStudyCrewSortByLikeCount, sortDirection, pageable);
+        return getStudyCrewList(studyCrewDao::getStudyCrewSortByLikeCount, sortDirection, pageable);
     }
 
     private List<StudyCrewResponse> getStudyCrewList(

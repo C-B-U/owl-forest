@@ -30,8 +30,10 @@ public class StudyCrewService {
     public void updateStudyCrew(StudyCrewNo id, StudyCrewRequest studyCrewRequest) {
         StudyCrew studyCrew = getEntity(id);
         checkParticipantDuplicated(studyCrewRequest.getParticipants());
-        studyCrew.updateStudyCrew(studyCrewRequest.getName(),
-                studyCrewRequest.getDescription(), studyCrewRequest.getLeader(),
+        studyCrew.updateStudyCrew(
+                studyCrewRequest.getName(),
+                studyCrewRequest.getDescription(),
+                studyCrewRequest.getLeader(),
                 studyCrewRequest.getParticipants());
     }
 

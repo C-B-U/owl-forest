@@ -47,7 +47,8 @@ public class StudyCrew {
         this.baseTime = new BaseTime();
     }
 
-    public void updateStudyCrew(String name, String description, AccountNo leaderId, List<AccountNo> participantIds) {
+    public void updateStudyCrew(
+            String name, String description, AccountNo leaderId, List<AccountNo> participantIds) {
         this.name = name;
         this.description = description;
         this.studyCrewMember = new StudyCrewMember(leaderId, participantIds);
