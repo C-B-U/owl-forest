@@ -1,12 +1,12 @@
 package com.cbu.backend.studycrew.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @Getter
 @Embeddable
