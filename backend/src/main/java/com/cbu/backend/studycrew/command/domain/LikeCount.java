@@ -6,10 +6,11 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Embeddable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.Embeddable;
 
 @Getter
 @Embeddable
@@ -18,10 +19,12 @@ public class LikeCount {
 
     private Integer count;
 
-    @ElementCollection
-    private List<MemberLikeCount> memberLikeCounts;
+    @ElementCollection private List<MemberLikeCount> memberLikeCounts;
 
-    private LikeCount(Integer count, MemberLikeCount memberLikeCount, List<MemberLikeCount> memberLikeCounts) {
+    private LikeCount(
+            Integer count,
+            MemberLikeCount memberLikeCount,
+            List<MemberLikeCount> memberLikeCounts) {
         this.count = count;
         this.memberLikeCounts = memberLikeCounts;
         this.memberLikeCounts.add(memberLikeCount);
