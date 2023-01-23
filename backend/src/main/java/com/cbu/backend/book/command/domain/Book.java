@@ -1,20 +1,19 @@
 package com.cbu.backend.book.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
-
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-import javax.persistence.*;
-
+@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Book {
-    @Getter @EmbeddedId private BookNo id;
+    @EmbeddedId private BookNo id;
 
     @Column(nullable = false)
     private String title;

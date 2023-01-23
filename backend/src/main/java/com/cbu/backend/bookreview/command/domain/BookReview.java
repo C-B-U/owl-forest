@@ -9,10 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Getter
 @Entity
@@ -24,7 +21,7 @@ public class BookReview {
 
     @Column(nullable = false)
     private String title;
-
+    @Lob
     private String content;
 
     @Column(nullable = false)
