@@ -34,7 +34,7 @@ public class StudyCrewDao {
                 sortDirection.getSortClassifier().apply(studyCrew.baseTime.createdAt), pageable);
     }
 
-    public List<StudyCrew> getStudyCrewSortByLikeCount(
+    public List<StudyCrew> findStudyCrewSortByLikeCount(
             SortDirection sortDirection, Pageable pageable) {
         return findAllStudyCrew(
                 sortDirection.getSortClassifier().apply(studyCrew.likeCount.count), pageable);
