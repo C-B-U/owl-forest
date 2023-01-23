@@ -35,13 +35,13 @@ public class StudyCrewService {
     }
 
     @Transactional
-    public void addLike(StudyCrewNo id) {
-        getEntity(id).addLike();
+    public void addLike(StudyCrewNo id, AccountNo accountId) {
+        getEntity(id).addLike(accountId);
     }
 
     @Transactional
-    public void cancelLike(StudyCrewNo id) {
-        getEntity(id).cancelLike();
+    public void cancelLike(StudyCrewNo id, AccountNo accountId) {
+        getEntity(id).cancelLike(accountId);
     }
 
     @Transactional

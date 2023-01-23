@@ -1,10 +1,12 @@
 package com.cbu.backend.studycrew.command.domain;
 
+import com.cbu.backend.authaccount.command.domain.AccountNo;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Getter
 @Embeddable
@@ -13,18 +15,30 @@ public class LikeCount {
 
     private Integer count;
 
+    private MemberLikeCount memberLikeCount;
+
+    private LikeCount(Integer count, AccountNo memberId, Boolean isLikeStudyCrew) {
+        this.count = count;
+        this.memberLikeCount = new MemberLikeCount(memberId, isLikeStudyCrew);
+    }
+
     public LikeCount(Integer count) {
         this.count = count;
     }
 
-    public LikeCount addCount() {
-        return new LikeCount(count + 1);
+    public LikeCount addCount(AccountNo memberId) {
+        if (memberLikeCount.getIsLikeStudyCrew()) {
+            throw new LikeCountDuplicateException();
+        }
+        return new LikeCount(count + 1, memberId, true);
     }
 
-    public LikeCount cancelLike() {
+    public LikeCount cancelLike(AccountNo memberId) {
         if (count <= 0) {
             throw new LikeCountMinusException();
+        } else if (!memberLikeCount.getIsLikeStudyCrew()) {
+            throw new LikeCountDuplicateException();
         }
-        return new LikeCount(count - 1);
+        return new LikeCount(count - 1, memberId, false);
     }
 }

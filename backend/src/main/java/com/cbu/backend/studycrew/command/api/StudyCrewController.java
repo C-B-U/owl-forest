@@ -1,5 +1,6 @@
 package com.cbu.backend.studycrew.command.api;
 
+import com.cbu.backend.config.security.oauth2.LoginUser;
 import com.cbu.backend.studycrew.command.domain.StudyCrewNo;
 import com.cbu.backend.studycrew.command.dto.StudyCrewRequest;
 import com.cbu.backend.studycrew.command.dto.StudyCrewResponse;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,14 +33,16 @@ public class StudyCrewController {
     }
 
     @PatchMapping("/{id}/like-count/add")
-    public ResponseEntity<Void> patchAddLikeCount(@PathVariable StudyCrewNo id) {
-        studyCrewService.addLike(id);
+    public ResponseEntity<Void> patchAddLikeCount(
+            @PathVariable StudyCrewNo id, @AuthenticationPrincipal LoginUser loginUser) {
+        studyCrewService.addLike(id, loginUser.getAccountId());
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @PatchMapping("/{id}/like-count/cancel")
-    public ResponseEntity<Void> patchCancelLikeCount(@PathVariable StudyCrewNo id) {
-        studyCrewService.cancelLike(id);
+    public ResponseEntity<Void> patchCancelLikeCount(
+            @PathVariable StudyCrewNo id, @AuthenticationPrincipal LoginUser loginUser) {
+        studyCrewService.cancelLike(id, loginUser.getAccountId());
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 

@@ -1,7 +1,7 @@
 package com.cbu.backend.config.converter;
 
-import com.cbu.backend.studycrew.converter.SortDirectionConverter;
-import com.cbu.backend.studycrew.converter.StudyCrewNoConverter;
+import com.cbu.backend.studycrew.command.converter.SortDirectionConverter;
+import com.cbu.backend.studycrew.command.converter.StudyCrewNoConverter;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;

@@ -57,19 +57,19 @@ public class StudyCrew {
         return this;
     }
 
-    public void addLike() {
-        likeCount = likeCount.addCount();
-    }
-
-    public void cancelLike() {
-        likeCount = likeCount.cancelLike();
-    }
-
     public void finishStudyCrew() {
         studyCrewStatus = StudyCrewStatus.FINISHED;
     }
 
     public void deleteStudyCrew() {
         baseTime.delete();
+    }
+
+    public void cancelLike(AccountNo memberId) {
+        likeCount = likeCount.cancelLike(memberId);
+    }
+
+    public void addLike(AccountNo memberId) {
+        likeCount = likeCount.addCount(memberId);
     }
 }

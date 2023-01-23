@@ -1,4 +1,4 @@
-package com.cbu.backend.studycrew.converter;
+package com.cbu.backend.studycrew.command.converter;
 
 import com.cbu.backend.studycrew.command.domain.SortDirection;
 
