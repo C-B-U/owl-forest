@@ -3,12 +3,10 @@ package com.cbu.backend.studycrew.command.api;
 import com.cbu.backend.config.security.oauth2.LoginUser;
 import com.cbu.backend.studycrew.command.domain.StudyCrewNo;
 import com.cbu.backend.studycrew.command.dto.StudyCrewRequest;
-import com.cbu.backend.studycrew.command.dto.StudyCrewResponse;
 import com.cbu.backend.studycrew.command.service.StudyCrewService;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -27,34 +25,35 @@ public class StudyCrewController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudyCrewResponse> putStudyCrew(
+    public ResponseEntity<Void> putStudyCrew(
             @PathVariable StudyCrewNo id, @RequestBody StudyCrewRequest studyCrewRequest) {
-        return ResponseEntity.ok(studyCrewService.updateStudyCrew(id, studyCrewRequest));
+        studyCrewService.updateStudyCrew(id, studyCrewRequest);
+        return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/{id}/like-count/add")
+    @PostMapping("/{id}/like-count/add")
     public ResponseEntity<Void> patchAddLikeCount(
             @PathVariable StudyCrewNo id, @AuthenticationPrincipal LoginUser loginUser) {
         studyCrewService.addLike(id, loginUser.getAccountId());
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/{id}/like-count/cancel")
+    @PostMapping("/{id}/like-count/cancel")
     public ResponseEntity<Void> patchCancelLikeCount(
             @PathVariable StudyCrewNo id, @AuthenticationPrincipal LoginUser loginUser) {
         studyCrewService.cancelLike(id, loginUser.getAccountId());
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/{id}/finish")
+    @PostMapping("/{id}/finish")
     public ResponseEntity<Void> patchFinishStudyCrew(@PathVariable StudyCrewNo id) {
         studyCrewService.finishStudyCrew(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudyCrew(@PathVariable StudyCrewNo id) {
         studyCrewService.deleteStudyCrew(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.ok().build();
     }
 }

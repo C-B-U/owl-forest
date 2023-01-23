@@ -2,7 +2,6 @@ package com.cbu.backend.studycrew.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.global.BaseTime;
-import com.cbu.backend.studycrew.command.dto.StudyCrewRequest;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -48,13 +47,10 @@ public class StudyCrew {
         this.baseTime = new BaseTime();
     }
 
-    public StudyCrew updateStudyCrew(StudyCrewRequest studyCrewRequest) {
-        this.name = studyCrewRequest.getName();
-        this.description = studyCrewRequest.getDescription();
-        this.studyCrewMember =
-                new StudyCrewMember(
-                        studyCrewRequest.getLeader(), studyCrewRequest.getParticipants());
-        return this;
+    public void updateStudyCrew(String name, String description, AccountNo leaderId, List<AccountNo> participantIds) {
+        this.name = name;
+        this.description = description;
+        this.studyCrewMember = new StudyCrewMember(leaderId, participantIds);
     }
 
     public void finishStudyCrew() {

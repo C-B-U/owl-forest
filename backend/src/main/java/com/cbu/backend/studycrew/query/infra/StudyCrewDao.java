@@ -16,31 +16,31 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 @Repository
-public class StudyCrewQueryRepository {
+public class StudyCrewDao {
 
     private final JPAQueryFactory queryFactory;
 
-    public StudyCrewQueryRepository(EntityManager em) {
+    public StudyCrewDao(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
     }
 
-    public StudyCrew getStudyCrew(StudyCrewNo id) {
+    public StudyCrew findStudyCrew(StudyCrewNo id) {
         return queryFactory.selectFrom(studyCrew).where(studyCrew.id.eq(id)).fetchOne();
     }
 
-    public List<StudyCrew> getStudyCrewSortByCreatedAt(
+    public List<StudyCrew> findStudyCrewSortByCreatedAt(
             SortDirection sortDirection, Pageable pageable) {
-        return getAllStudyCrew(
+        return findAllStudyCrew(
                 sortDirection.getSortClassifier().apply(studyCrew.baseTime.createdAt), pageable);
     }
 
     public List<StudyCrew> getStudyCrewSortByLikeCount(
             SortDirection sortDirection, Pageable pageable) {
-        return getAllStudyCrew(
+        return findAllStudyCrew(
                 sortDirection.getSortClassifier().apply(studyCrew.likeCount.count), pageable);
     }
 
-    private List<StudyCrew> getAllStudyCrew(OrderSpecifier orderSpecifier, Pageable pageable) {
+    private List<StudyCrew> findAllStudyCrew(OrderSpecifier orderSpecifier, Pageable pageable) {
         return queryFactory
                 .selectFrom(studyCrew)
                 .orderBy(orderSpecifier)

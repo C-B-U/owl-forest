@@ -4,7 +4,6 @@ import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.studycrew.command.domain.StudyCrew;
 import com.cbu.backend.studycrew.command.domain.StudyCrewNo;
 import com.cbu.backend.studycrew.command.dto.StudyCrewRequest;
-import com.cbu.backend.studycrew.command.dto.StudyCrewResponse;
 import com.cbu.backend.studycrew.command.infra.StudyCrewRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -28,10 +27,12 @@ public class StudyCrewService {
     }
 
     @Transactional
-    public StudyCrewResponse updateStudyCrew(StudyCrewNo id, StudyCrewRequest studyCrewRequest) {
+    public void updateStudyCrew(StudyCrewNo id, StudyCrewRequest studyCrewRequest) {
         StudyCrew studyCrew = getEntity(id);
         checkParticipantDuplicated(studyCrewRequest.getParticipants());
-        return new StudyCrewResponse(studyCrew.updateStudyCrew(studyCrewRequest));
+        studyCrew.updateStudyCrew(studyCrewRequest.getName(),
+                studyCrewRequest.getDescription(), studyCrewRequest.getLeader(),
+                studyCrewRequest.getParticipants());
     }
 
     @Transactional

@@ -4,7 +4,7 @@ import com.cbu.backend.studycrew.command.domain.SortDirection;
 import com.cbu.backend.studycrew.command.domain.StudyCrew;
 import com.cbu.backend.studycrew.command.domain.StudyCrewNo;
 import com.cbu.backend.studycrew.query.dto.StudyCrewResponse;
-import com.cbu.backend.studycrew.query.infra.StudyCrewQueryRepository;
+import com.cbu.backend.studycrew.query.infra.StudyCrewDao;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,22 +18,22 @@ import java.util.function.BiFunction;
 @RequiredArgsConstructor
 public class StudyCrewQueryService {
 
-    private final StudyCrewQueryRepository studyCrewQueryRepository;
+    private final StudyCrewDao studyCrewDao;
 
     public StudyCrewResponse getStudyCrew(StudyCrewNo id) {
-        return new StudyCrewResponse(studyCrewQueryRepository.getStudyCrew(id));
+        return new StudyCrewResponse(studyCrewDao.findStudyCrew(id));
     }
 
     public List<StudyCrewResponse> getStudyCrewSortByCreatedAt(
             SortDirection sortDirection, Pageable pageable) {
         return getStudyCrewList(
-                studyCrewQueryRepository::getStudyCrewSortByCreatedAt, sortDirection, pageable);
+                studyCrewDao::findStudyCrewSortByCreatedAt, sortDirection, pageable);
     }
 
     public List<StudyCrewResponse> getStudyCrewSortByLikeCount(
             SortDirection sortDirection, Pageable pageable) {
         return getStudyCrewList(
-                studyCrewQueryRepository::getStudyCrewSortByLikeCount, sortDirection, pageable);
+                studyCrewDao::getStudyCrewSortByLikeCount, sortDirection, pageable);
     }
 
     private List<StudyCrewResponse> getStudyCrewList(
