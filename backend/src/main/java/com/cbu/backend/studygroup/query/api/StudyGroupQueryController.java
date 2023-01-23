@@ -28,12 +28,14 @@ public class StudyGroupQueryController {
     @GetMapping(params = "sortby=createdat")
     public ResponseEntity<List<StudyGroupResponse>> getStudyGroupSortByCreatedAt(
             @RequestParam(name = "sort") SortDirection sort, Pageable pageable) {
-        return ResponseEntity.ok(studyGroupQueryService.getStudyGroupSortByCreatedAt(sort, pageable));
+        return ResponseEntity.ok(
+                studyGroupQueryService.getStudyGroupSortByCreatedAt(sort, pageable));
     }
 
     @GetMapping(params = "sortby=likecount")
     public ResponseEntity<List<StudyGroupResponse>> getStudyGroupSortByLikeCount(
             @RequestParam(name = "sort") SortDirection sort, Pageable pageable) {
-        return ResponseEntity.ok(studyGroupQueryService.getStudyGroupSortByLikeCount(sort, pageable));
+        return ResponseEntity.ok(
+                studyGroupQueryService.getStudyGroupSortByLikeCount(sort, pageable));
     }
 }

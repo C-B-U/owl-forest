@@ -37,7 +37,8 @@ public class StudyGroupDao {
     public List<StudyGroup> findStudyGroupSortByLikeCount(
             SortDirection sortDirection, Pageable pageable) {
         return findAllStudyGroup(
-                sortDirection.getSortClassifier().apply(studyGroup.likeCount.memberIds.size()), pageable);
+                sortDirection.getSortClassifier().apply(studyGroup.likeCount.memberIds.size()),
+                pageable);
     }
 
     private List<StudyGroup> findAllStudyGroup(OrderSpecifier orderSpecifier, Pageable pageable) {
