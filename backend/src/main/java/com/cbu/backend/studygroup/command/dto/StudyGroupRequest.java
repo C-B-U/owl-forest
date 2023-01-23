@@ -1,7 +1,7 @@
-package com.cbu.backend.studycrew.command.dto;
+package com.cbu.backend.studygroup.command.dto;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
-import com.cbu.backend.studycrew.command.domain.StudyCrew;
+import com.cbu.backend.studygroup.command.domain.StudyGroup;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,15 +15,15 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudyCrewRequest {
+public class StudyGroupRequest {
     @NotEmpty private String name;
     private String description;
     @NotEmpty private AccountNo leader;
 
     @NotEmpty private List<AccountNo> participants = new ArrayList<>();
 
-    public StudyCrew toEntity() {
-        return StudyCrew.builder()
+    public StudyGroup toEntity() {
+        return StudyGroup.builder()
                 .name(name)
                 .description(description)
                 .leaderId(leader)

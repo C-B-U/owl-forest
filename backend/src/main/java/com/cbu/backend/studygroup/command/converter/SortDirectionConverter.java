@@ -1,6 +1,6 @@
-package com.cbu.backend.studycrew.command.converter;
+package com.cbu.backend.studygroup.command.converter;
 
-import com.cbu.backend.studycrew.command.domain.SortDirection;
+import com.cbu.backend.studygroup.command.domain.SortDirection;
 
 import org.springframework.core.convert.converter.Converter;
 

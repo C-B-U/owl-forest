@@ -1,7 +1,7 @@
 package com.cbu.backend.config.converter;
 
-import com.cbu.backend.studycrew.command.converter.SortDirectionConverter;
-import com.cbu.backend.studycrew.command.converter.StudyCrewNoConverter;
+import com.cbu.backend.studygroup.command.converter.SortDirectionConverter;
+import com.cbu.backend.studygroup.command.converter.StudyGroupNoConverter;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class ConverterConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new StudyCrewNoConverter());
+        registry.addConverter(new StudyGroupNoConverter());
         registry.addConverter(new SortDirectionConverter());
     }
 }

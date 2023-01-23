@@ -1,4 +1,4 @@
-package com.cbu.backend.studycrew.command.domain;
+package com.cbu.backend.studygroup.command.domain;
 
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.ComparableExpressionBase;

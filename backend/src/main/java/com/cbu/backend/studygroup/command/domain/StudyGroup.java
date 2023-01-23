@@ -1,4 +1,4 @@
-package com.cbu.backend.studycrew.command.domain;
+package com.cbu.backend.studygroup.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.global.BaseTime;
@@ -15,9 +15,9 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StudyCrew {
+public class StudyGroup {
 
-    @EmbeddedId private StudyCrewNo id;
+    @EmbeddedId private StudyGroupNo id;
 
     @Column(nullable = false)
     private String name;
@@ -29,44 +29,44 @@ public class StudyCrew {
     private LikeCount likeCount;
 
     @Enumerated(EnumType.STRING)
-    private StudyCrewStatus studyCrewStatus;
+    private StudyGroupStatus studyGroupStatus;
 
-    @Embedded private StudyCrewMember studyCrewMember;
+    @Embedded private StudyGroupMember studyGroupMember;
 
     @Embedded private BaseTime baseTime;
 
     @Builder
-    public StudyCrew(
+    public StudyGroup(
             String name, String description, AccountNo leaderId, List<AccountNo> participantIds) {
-        this.id = new StudyCrewNo();
+        this.id = new StudyGroupNo();
         this.name = name;
         this.description = description;
-        this.likeCount = new LikeCount(0);
-        this.studyCrewStatus = StudyCrewStatus.ACTIVE;
-        this.studyCrewMember = new StudyCrewMember(leaderId, participantIds);
+        this.likeCount = new LikeCount();
+        this.studyGroupStatus = StudyGroupStatus.ACTIVE;
+        this.studyGroupMember = new StudyGroupMember(leaderId, participantIds);
         this.baseTime = new BaseTime();
     }
 
-    public void updateStudyCrew(
+    public void updateStudyGroup(
             String name, String description, AccountNo leaderId, List<AccountNo> participantIds) {
         this.name = name;
         this.description = description;
-        this.studyCrewMember = new StudyCrewMember(leaderId, participantIds);
+        this.studyGroupMember = new StudyGroupMember(leaderId, participantIds);
     }
 
-    public void finishStudyCrew() {
-        studyCrewStatus = StudyCrewStatus.FINISHED;
+    public void finishStudy() {
+        studyGroupStatus = StudyGroupStatus.FINISHED;
     }
 
-    public void deleteStudyCrew() {
+    public void deleteStudyGroup() {
         baseTime.delete();
     }
 
     public void cancelLike(AccountNo memberId) {
-        likeCount = likeCount.cancelLike(memberId);
+        likeCount.cancelLike(memberId);
     }
 
     public void addLike(AccountNo memberId) {
-        likeCount = likeCount.addCount(memberId);
+        likeCount.addCount(memberId);
     }
 }
