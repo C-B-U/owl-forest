@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 
 @Getter
 @Embeddable
@@ -15,7 +16,7 @@ public class LikeCount {
 
     private Integer count;
 
-    private MemberLikeCount memberLikeCount;
+    @Embedded private MemberLikeCount memberLikeCount;
 
     private LikeCount(Integer count, AccountNo memberId, Boolean isLikeStudyCrew) {
         this.count = count;
