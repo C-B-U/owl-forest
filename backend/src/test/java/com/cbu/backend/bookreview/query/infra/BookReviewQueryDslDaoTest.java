@@ -1,5 +1,7 @@
 package com.cbu.backend.bookreview.query.infra;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import com.cbu.backend.book.command.domain.Book;
 import com.cbu.backend.book.command.domain.QBook;
 import com.cbu.backend.bookreview.command.domain.BookReview;
@@ -10,6 +12,7 @@ import com.cbu.backend.bookreview.query.dto.QBookReviewResponse;
 import com.cbu.backend.support.fixture.book.entity.BookFixture;
 import com.cbu.backend.support.fixture.bookreview.entity.BookReviewFixture;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +21,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
-@SpringBootTest //TODO DataJpaTest로 변환해야
+@SpringBootTest // TODO DataJpaTest로 변환해야
 @Transactional
 class BookReviewQueryDslDaoTest {
-    @Autowired
-    EntityManager em;
+    @Autowired EntityManager em;
 
-    @Autowired
-    JPAQueryFactory jpaQueryFactory;
+    @Autowired JPAQueryFactory jpaQueryFactory;
 
     @Test
     @DisplayName("저장 및 조회가 잘 되는가")

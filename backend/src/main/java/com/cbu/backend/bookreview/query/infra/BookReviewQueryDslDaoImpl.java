@@ -7,12 +7,13 @@ import com.cbu.backend.bookreview.query.dto.BookReviewResponse;
 import com.cbu.backend.bookreview.query.dto.BookReviewSummaryResponse;
 import com.cbu.backend.bookreview.query.dto.QBookReviewResponse;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
 
 @Repository
 @RequiredArgsConstructor
@@ -30,11 +31,13 @@ public class BookReviewQueryDslDaoImpl implements BookReviewQueryDslDao {
 
     @Override
     public Optional<BookReviewResponse> findResponseById(BookReviewNo id) {
-        BookReviewResponse bookReviewResponse = jpaQueryFactory.select(qBookReviewResponse)
-                .from(qBookReview, qBook)
-                .leftJoin(qBookReview)
-                .on(qBook.id.eq(qBookReview.bookId))
-                .fetchFirst();
+        BookReviewResponse bookReviewResponse =
+                jpaQueryFactory
+                        .select(qBookReviewResponse)
+                        .from(qBookReview, qBook)
+                        .leftJoin(qBookReview)
+                        .on(qBook.id.eq(qBookReview.bookId))
+                        .fetchFirst();
 
         return Optional.ofNullable(bookReviewResponse);
     }
