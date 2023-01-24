@@ -4,9 +4,7 @@ import com.cbu.backend.book.command.domain.Book;
 import com.cbu.backend.book.command.domain.BookNo;
 import com.cbu.backend.book.command.domain.BookRequest;
 import com.cbu.backend.book.command.infra.BookRepository;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,6 +21,7 @@ public class BookService {
                 Book.builder()
                         .id(new BookNo())
                         .title(req.getTitle())
+                        .isbn(req.getIsbn())
                         .author(req.getAuthor())
                         .imageUrl(req.getImageUrl())
                         .price(req.getPrice())
