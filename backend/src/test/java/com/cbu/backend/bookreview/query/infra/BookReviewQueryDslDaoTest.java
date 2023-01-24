@@ -1,5 +1,7 @@
 package com.cbu.backend.bookreview.query.infra;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import com.cbu.backend.book.command.domain.Book;
 import com.cbu.backend.book.command.domain.QBook;
 import com.cbu.backend.bookreview.command.domain.BookReview;
@@ -10,6 +12,7 @@ import com.cbu.backend.bookreview.query.dto.QBookReviewResponse;
 import com.cbu.backend.support.fixture.book.entity.BookFixture;
 import com.cbu.backend.support.fixture.bookreview.entity.BookReviewFixture;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -18,13 +21,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 @DataJpaTest
 @Transactional
 class BookReviewQueryDslDaoTest {
-    @PersistenceContext
-    EntityManager em;
+    @PersistenceContext EntityManager em;
     JPAQueryFactory jpaQueryFactory;
 
     @Test
