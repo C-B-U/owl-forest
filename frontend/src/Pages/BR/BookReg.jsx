@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import axios from 'axios';
 import { ko } from 'date-fns/esm/locale';
 import { palette } from 'styled-tools';
 import DatePicker from 'react-datepicker';
@@ -256,6 +257,12 @@ function BookReg() {
 
   // 달력 보이기
   const [startDate, setStartDate] = useState(new Date());
+
+  // 도서 검색 input 값 받기
+  const [bookTitle, setBookTitle] = useState();
+
+  // api 값 저장
+  const [getBook, setGetBook] = useState([]);
 
   // 팝업 열기
   const openPopup = () => {
