@@ -1,4 +1,4 @@
-import React, {useEffect, setState, useState} from 'react';
+import React, { useEffect, setState, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import { useNavigate, Navigate } from 'react-router-dom';
@@ -75,38 +75,29 @@ const SelectBox = styled.select`
 `;
 
 function AddInfo() {
-  const [id, setId] = useState("")
-  const [value, setValue] = useState("")
-  const [name, setName] = useState("")
+  const [id, setId] = useState('');
+  const [value, setValue] = useState('');
+  const [name, setName] = useState('');
 
-  const handleId=(e)=>{
-    setId(e.target.value)
-  }
-  const handleName=(e)=>{
-    setName(e.target.value)
-  }
-  const handleValue=(e)=>{
-    setValue(e.target.value)
-  }
+  const handleId = (e) => {
+    setId(e.target.value);
+  };
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+  const handleValue = (e) => {
+    setValue(e.target.value);
+  };
 
   const AddLogin = () => {
-      axios.post("/api/member", null, {
-        params: {
-          "generation": value,
-          "name": name,
-          "id": id,
-        }
-            
-      // .then((res)=> {
-      //   if(res.data.id===null){
-      //     alert('마 입력해라')
-      //   }
-      // })
-
-    })
-  }
-
-
+    axios.put('/api/users', {
+      params: {
+        generation: value,
+        name,
+        id,
+      },
+    });
+  };
 
   return (
     <div>
@@ -115,30 +106,32 @@ function AddInfo() {
           <Mainlogo src={imgfile} />
           <InputWrap>
             다음 정보를 입력해주세요.
-            <SelectBox 
+            <SelectBox
               value={value}
               name='generation'
               onChange={handleValue}
-              style={{ marginTop: '1rem' }} >
+              style={{ marginTop: '1rem' }}
+            >
               <option value='none'> * 클릭해서 기수 선택 * </option>
               <option value='1기'>1</option>
               <option value='2기'>2</option>
               <option value='3기'>3</option>
-              <option value='4기'>4</option>                                  
+              <option value='4기'>4</option>
             </SelectBox>
-            <InputBox 
+            <InputBox
               value={name}
               name='name'
               onChange={handleName}
-              placeholder='Name' />
-            <InputBox 
+              placeholder='Name'
+            />
+            <InputBox
               value={id}
               name='id'
               onChange={handleId}
-              placeholder='Student-id' />
+              placeholder='Student-id'
+            />
           </InputWrap>
           <LogBtnWrap>
-            
             <Btn
               width='15rem'
               height='2.8rem'
@@ -146,17 +139,16 @@ function AddInfo() {
               borderStyle='none'
               borderRadius='3rem'
               padding='0rem 1.5rem 0rem 0.5rem'
-              onClick={()=>alert("click test")}
+              onClick={() => AddLogin}
               hoverBackgroundColor='#7ebe57'
               transition='0.3s'
               name='완료'
-              />
-            
+            />
           </LogBtnWrap>
         </LoginWrap>
       </ThemeProvider>
     </div>
   );
 }
-          
+
 export default AddInfo;
