@@ -5,6 +5,7 @@ import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import MLProfile from '../../Components/MMList/MLProfile';
 import profileimg from '../../Image/cbu_circle.png';
+import Btn from '../../Components/Btn';
 
 // 가로 정렬
 const MainWrap = styled.div`
@@ -27,20 +28,6 @@ const LineUp = styled.div`
 const SearchWrap = styled.div`
   display: flex;
   white-space: wrap;
-`;
-
-const InfoButton = styled.button`
-  width: 15rem;
-  height: 2.8rem;
-  background-color: ${palette('PsGreen')};
-  border-radius: 3rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  border: none;
-  font-size: 12pt;
-  margin-top: 2rem;
-  margin-left: 1.7rem;
-  font-weight: bolder;
-  margin-right: 43.2rem;
 `;
 
 const SearchBox = styled.input`
@@ -90,23 +77,10 @@ const Scroll = styled.div`
   overflow: auto;
 `;
 
-const SelcBox = styled.div`
-  width: 5rem;
-  height: 2rem;
-  background-color: ${palette('PsGreen')};
-  border-radius: 2rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  border: 0.5rem;
-  font-size: 12pt;
-  margin-top: 3rem;
-  font-weight: bolder;
-  margin-right: 0.4rem;
-`;
-
 const SortOption = styled.div`
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
-  margin-left: 71rem;
+  margin-left: 67rem;
 `;
 const Photo = styled.div`
   width: 3rem;
@@ -119,6 +93,24 @@ const Photo = styled.div`
   background-repeat: no-repeat;
 `;
 
+const SelectBox = styled.select`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 5rem;
+  height: 2rem;
+  background-color: ${palette('PsGreen')};
+  border-radius: 3rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  &:focus {
+    outline: none;
+  }
+  border: none;
+  padding-left: 1.7rem;
+  margin-top: 3rem;
+  margin-left: 43.2rem;
+`;
+
 function MemList() {
   return (
     <div>
@@ -128,34 +120,51 @@ function MemList() {
 
           <SecondWrap>
             <SearchWrap>
-              <InfoButton>마이페이지</InfoButton>
-              <SelcBox>&nbsp;▼</SelcBox>
+              <Btn
+                width='15rem'
+                height='2.8rem'
+                background={palette('PsGreen')}
+                borderStyle='none'
+                borderRadius='3rem'
+                fontSize='12pt'
+                fontWeight='bolder'
+                marginTop='2rem'
+                marginLeft='1.7rem'
+                hoverBackgroundColor='#7ebe57'
+                transition='0.3s'
+                name='마이 페이지'
+              />
+              <SelectBox name='generation'>
+                <option value='none'> 이름 </option>
+                <option value='1기'>학과</option>
+              </SelectBox>
               <SearchBox />
             </SearchWrap>
             <MemNav>
               <MemListInput style={{ fontSize: '1.8rem' }}>
                 프사 &nbsp; 이름&emsp; 학과&emsp;&emsp;&emsp; 학년&emsp;
-                기수&emsp; 관심분야
+                관심분야
               </MemListInput>
             </MemNav>
-            <SortOption>이름순 ↑↓</SortOption>
-
+            <SortOption>
+              <b>이름순&nbsp;</b> 학과순&nbsp; 학년순
+            </SortOption>
             <LineUp>
               <Scroll>
                 <List>
                   <MemListInput>
                     <Photo />
                     &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp; 자바,
+                    코틀린 등
                   </MemListInput>
                 </List>
                 <List>
                   <MemListInput>
                     <Photo />
                     &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
+                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp; 자바,
+                    코틀린 등
                   </MemListInput>
                 </List>
                 <List>

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const BtnStyle = styled.button`
   //export 추가해서 다른 페이지에서 작업할 때 덮어쓰기 할 수 있게 추가됨.
   font-size: 1rem;
+  font-family: 'Noto Sans KR', sans-serif;
   text-align: center;
   border-radius: ${(props) => props.borderRadius};
   border-style: ${(props) => props.borderStyle};
@@ -12,6 +13,11 @@ export const BtnStyle = styled.button`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   font-size: ${(props) => props.fontSize};
+  font-weight: ${(props) => props.fontWeight};
+  margin-top: ${(props) => props.marginTop};
+  margin-right: ${(props) => props.marginRight};
+  margin-left: ${(props) => props.marginLeft};
+  margin-bottom: ${(props) => props.marginBottom};
   &:hover {
     background-color: ${(props) => props.hoverBackgroundColor};
     transform: ${(props) => props.transform};
@@ -28,6 +34,11 @@ export default function Btn({
   borderRadius,
   borderStyle,
   fontSize,
+  fontWeight,
+  marginTop,
+  marginBottom,
+  marginLeft,
+  marginRight,
   onClick,
   transform,
   transition,
@@ -42,6 +53,11 @@ export default function Btn({
       borderRadius={borderRadius}
       borderStyle={borderStyle}
       fontSize={fontSize}
+      fontWeight={fontWeight}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
       onClick={onClick}
       transform={transform}
       transition={transition}

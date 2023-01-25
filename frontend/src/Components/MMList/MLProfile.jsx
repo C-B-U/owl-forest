@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-tools';
 import profileimg from '../../Image/cbu_circle.png';
+import Btn from '../Btn';
 
 const Pf = styled.div`
   width: 25rem;
@@ -92,7 +93,20 @@ function MLProfile() {
           <Info>컴퓨터공학과 2학년</Info>
           <Info>스터디</Info>
           <Info style={{ height: '14rem' }}>한줄 소개</Info>
-          <InfoButton>상세 보기</InfoButton>
+          <Btn
+            width='15rem'
+            height='2.8rem'
+            background={palette('PsGreen')}
+            borderStyle='none'
+            borderRadius='3rem'
+            fontSize='12pt'
+            fontWeight='bolder'
+            marginTop='3rem'
+            marginRight='3rem'
+            hoverBackgroundColor='#7ebe57'
+            transition='0.3s'
+            name='상세 보기'
+          />
         </ProfileList>
       </Pf>
     </div>
