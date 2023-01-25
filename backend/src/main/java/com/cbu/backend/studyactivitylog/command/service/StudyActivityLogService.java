@@ -4,7 +4,9 @@ import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.studyactivitylog.command.domain.StudyActivityLogNo;
 import com.cbu.backend.studyactivitylog.command.dto.StudyActivityLogRequest;
 import com.cbu.backend.studyactivitylog.command.infra.StudyActivityLogRepository;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +17,8 @@ public class StudyActivityLogService {
 
     private final StudyActivityLogRepository studyActivityLogRepository;
 
-    public StudyActivityLogNo saveStudyActivityLog(StudyActivityLogRequest studyActivityLogRequest) {
+    public StudyActivityLogNo saveStudyActivityLog(
+            StudyActivityLogRequest studyActivityLogRequest) {
         checkStudyTime(studyActivityLogRequest);
         checkParticipantDuplicated(studyActivityLogRequest.getStudyParticipants());
         return studyActivityLogRepository.save(studyActivityLogRequest.toEntity()).getId();

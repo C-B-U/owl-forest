@@ -3,8 +3,9 @@ package com.cbu.backend.studyactivitylog.command.domain;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
 import java.time.LocalDateTime;
+
+import javax.persistence.Embeddable;
 
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
