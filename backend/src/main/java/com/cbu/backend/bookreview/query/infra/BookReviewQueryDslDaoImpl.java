@@ -13,6 +13,7 @@ import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
@@ -32,8 +33,10 @@ public class BookReviewQueryDslDaoImpl implements BookReviewQueryDslDao {
     private final QAuthAccount qAuthAccount;
 
     @Override
-    public List<BookReviewSummaryResponse> findSummaryAll(Pageable pageable, BookReviewQueryOption queryOption) {
-        return jpaQueryFactory.select(qBookReviewSummaryResponse)
+    public List<BookReviewSummaryResponse> findSummaryAll(
+            Pageable pageable, BookReviewQueryOption queryOption) {
+        return jpaQueryFactory
+                .select(qBookReviewSummaryResponse)
                 .from(qBookReview, qBook, qAuthAccount)
                 .leftJoin(qBookReview)
                 .on(qBook.id.eq(qBookReview.bookId))
@@ -42,21 +45,23 @@ public class BookReviewQueryDslDaoImpl implements BookReviewQueryDslDao {
                 .where(generateWhereQuery(queryOption))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
-                .orderBy(OrderConverter.convert(pageable.getSort(),
-                        QBookReview.class, "bookReview"))
+                .orderBy(
+                        OrderConverter.convert(pageable.getSort(), QBookReview.class, "bookReview"))
                 .fetch();
     }
 
     @Override
     public Optional<BookReviewResponse> findResponseById(BookReviewNo id) {
-        BookReviewResponse bookReviewResponse = jpaQueryFactory.select(qBookReviewResponse)
-                .from(qBookReview, qBook, qAuthAccount)
-                .leftJoin(qBookReview)
-                .on(qBook.id.eq(qBookReview.bookId))
-                .leftJoin(qAuthAccount)
-                .on(qAuthAccount.id.eq(qBookReview.writer))
-                .where(qBookReview.id.eq(id))
-                .fetchFirst();
+        BookReviewResponse bookReviewResponse =
+                jpaQueryFactory
+                        .select(qBookReviewResponse)
+                        .from(qBookReview, qBook, qAuthAccount)
+                        .leftJoin(qBookReview)
+                        .on(qBook.id.eq(qBookReview.bookId))
+                        .leftJoin(qAuthAccount)
+                        .on(qAuthAccount.id.eq(qBookReview.writer))
+                        .where(qBookReview.id.eq(id))
+                        .fetchFirst();
 
         return Optional.ofNullable(bookReviewResponse);
     }

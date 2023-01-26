@@ -4,6 +4,7 @@ import com.cbu.backend.authaccount.command.domain.QAuthAccount;
 import com.cbu.backend.book.command.domain.QBook;
 import com.cbu.backend.bookreview.command.domain.QBookReview;
 import com.cbu.backend.bookreview.query.dto.*;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,13 +26,15 @@ public class BookReviewQTypeBeanConfig {
     public QBookSummary qBookSummary(QBook qBook) {
         return new QBookSummary(qBook.id, qBook.title, qBook.imageUrl);
     }
+
     @Bean
     public QWriter qWriter(QAuthAccount qAuthAccount) {
         return new QWriter(qAuthAccount.id, qAuthAccount.memberInfo.nickname);
     }
 
     @Bean
-    public QBookReviewSummaryResponse qBookReviewSummaryResponse(QBookReview qBookReview, QWriter qWriter, QBookSummary qBookSummary) {
+    public QBookReviewSummaryResponse qBookReviewSummaryResponse(
+            QBookReview qBookReview, QWriter qWriter, QBookSummary qBookSummary) {
         return new QBookReviewSummaryResponse(
                 qBookReview.id,
                 qWriter,
@@ -44,7 +47,8 @@ public class BookReviewQTypeBeanConfig {
     }
 
     @Bean
-    public QBookReviewResponse qBookReviewResponse(QBookReview qBookReview, QWriter qWriter, QBookDetail qBookDetail) {
+    public QBookReviewResponse qBookReviewResponse(
+            QBookReview qBookReview, QWriter qWriter, QBookDetail qBookDetail) {
         return new QBookReviewResponse(
                 qBookReview.id,
                 qWriter,

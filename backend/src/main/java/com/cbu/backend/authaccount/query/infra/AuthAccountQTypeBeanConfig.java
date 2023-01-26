@@ -1,6 +1,7 @@
 package com.cbu.backend.authaccount.query.infra;
 
 import com.cbu.backend.authaccount.command.domain.QAuthAccount;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

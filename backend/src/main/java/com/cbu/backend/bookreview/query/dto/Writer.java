@@ -2,6 +2,7 @@ package com.cbu.backend.bookreview.query.dto;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.querydsl.core.annotations.QueryProjection;
+
 import lombok.Getter;
 
 @Getter

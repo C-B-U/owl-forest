@@ -44,10 +44,7 @@ class BookReviewQueryDslDaoTest {
         QBook qBook = QBook.book;
         QBookReview qBookReview = QBookReview.bookReview;
         QAuthAccount qAuthAccount = QAuthAccount.authAccount;
-        QWriter qWriter = new QWriter(
-                qAuthAccount.id,
-                qAuthAccount.memberInfo.nickname
-        );
+        QWriter qWriter = new QWriter(qAuthAccount.id, qAuthAccount.memberInfo.nickname);
         QBookDetail qBookDetail =
                 new QBookDetail(
                         qBook.id, qBook.title, qBook.author, qBook.publisher, qBook.imageUrl);
