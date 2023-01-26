@@ -26,25 +26,26 @@ const Buttons = styled.div`
   /* margin: 0.5rem; */
 `;
 
-export default function Popup({ color, width, height, title, message }) {
+export default function Popup() {
   return (
     <Wrap>
       <Title>{title}</Title>
       <Message>{message}</Message>
       <Buttons>
-        <Btn
-          color={'white'}
-          background={'blue'}
-          width={'5rem'}
-          height={'3rem'}
-          name={'확인'}
+        <Btn 
+          color='white'
+          background='blue'
+          width='5rem'
+          height='3rem'
+          name='확인'
+          
         />
         <Btn
-          color={'white'}
-          background={'red'}
-          width={'5rem'}
-          height={'3rem'}
-          name={'취소'}
+          color='white'
+          background='red'
+          width='5rem'
+          height='3rem'
+          name='취소'
         />
       </Buttons>
     </Wrap>
