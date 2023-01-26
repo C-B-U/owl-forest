@@ -4,18 +4,14 @@ import com.cbu.backend.bookreview.command.domain.BookReviewNo;
 import com.cbu.backend.bookreview.query.dto.BookReviewResponse;
 import com.cbu.backend.bookreview.query.dto.BookReviewSummaryResponse;
 import com.cbu.backend.bookreview.query.infra.BookReviewDao;
-
+import com.cbu.backend.bookreview.query.infra.BookReviewQueryOption;
 import lombok.RequiredArgsConstructor;
-
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,8 +20,8 @@ public class BookReviewQueryController {
     private final BookReviewDao bookReviewDao;
 
     @GetMapping
-    public ResponseEntity<List<BookReviewSummaryResponse>> getAll() {
-        return ResponseEntity.ok(bookReviewDao.findSummaryAll());
+    public ResponseEntity<List<BookReviewSummaryResponse>> getAll(Pageable pageable, @RequestParam BookReviewQueryOption param) {
+        return ResponseEntity.ok(bookReviewDao.findSummaryAll(pageable, param));
     }
 
     @GetMapping("{id}")

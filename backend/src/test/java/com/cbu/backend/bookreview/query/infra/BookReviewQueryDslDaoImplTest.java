@@ -41,17 +41,19 @@ class BookReviewQueryDslDaoImplTest {
             BookReview bookReview = BookReviewFixture.SAMPLE1.toEntity();
             em.persist(book);
             em.persist(bookReview);
-            // when
-            Optional<BookReviewResponse> result =
-                    bookReviewQueryDslDao.findResponseById(bookReview.getId());
+            //when
+            Optional<BookReviewResponse> result = bookReviewQueryDslDao.findResponseById(bookReview.getId());
+            BookReviewResponse bookReviewResponse = result.get();
 
-            // then
-            assertThat(result.isPresent()).isTrue();
-            assertThat(result.get().getTitle()).isEqualTo(bookReview.getTitle());
-            assertThat(result.get().getContent()).isEqualTo(bookReview.getContent());
-            assertThat(result.get().getBook().getId()).isEqualTo(bookReview.getBookId());
-            assertThat(result.get().getBook().getId()).isEqualTo(book.getId());
-            assertThat(result.get().getBook().getImageUrl()).isEqualTo(book.getImageUrl());
+            //then
+            assertThat(result).isPresent();
+            assertThat(bookReviewResponse.getTitle()).isEqualTo(bookReview.getTitle());
+            assertThat(bookReviewResponse.getContent()).isEqualTo(bookReview.getContent());
+            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(bookReview.getBookId());
+            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(book.getId());
+            assertThat(bookReviewResponse.getBook().getImageUrl()).isEqualTo(book.getImageUrl());
+
+
         }
     }
 }
