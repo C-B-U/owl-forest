@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
@@ -23,7 +24,8 @@ const Title = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 50pt;
+  font-size: 70pt;
+  font-family: 'Jua', serif;
 `;
 
 const WelcomeWrap = styled.div`
