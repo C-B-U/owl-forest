@@ -23,7 +23,7 @@ const Mainlogo = styled.img`
   width: 10rem;
   height: 10rem;
   display: flex;
-  padding: 1.2rem;
+  padding: 0.8rem;
 `;
 
 const InputWrap = styled.div`
@@ -105,19 +105,8 @@ function AddInfo() {
         <LoginWrap>
           <Mainlogo src={imgfile} />
           <InputWrap>
-            다음 정보를 입력해주세요.
-            <SelectBox
-              value={value}
-              name='generation'
-              onChange={handleValue}
-              style={{ marginTop: '1rem' }}
-            >
-              <option value='none'> * 클릭해서 기수 선택 * </option>
-              <option value='1기'>1</option>
-              <option value='2기'>2</option>
-              <option value='3기'>3</option>
-              <option value='4기'>4</option>
-            </SelectBox>
+            <p>다음 정보를 입력해주세요.</p>
+            
             <InputBox
               value={name}
               name='name'
