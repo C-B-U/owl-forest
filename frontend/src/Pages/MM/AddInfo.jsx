@@ -139,11 +139,12 @@ function AddInfo() {
               borderStyle='none'
               borderRadius='3rem'
               padding='0rem 1.5rem 0rem 0.5rem'
-              onClick={() => AddLogin}
+              onClick={AddLogin()}
               hoverBackgroundColor='#7ebe57'
               transition='0.3s'
               name='완료'
             />
+            
           </LogBtnWrap>
         </LoginWrap>
       </ThemeProvider>

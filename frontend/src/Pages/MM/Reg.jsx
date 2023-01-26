@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { InputStyle } from '../../Components/Input';
 import imgfile from '../../Image/Home.png';
@@ -81,6 +82,12 @@ const Overlap = styled.button`
 `;
 
 function Reg() {
+  const navigate = useNavigate();
+
+  const goHome = () =>{
+    navigate('/');
+  };
+
   return (
     <All>
       <Msg>회원가입 페이지</Msg>
@@ -101,6 +108,7 @@ function Reg() {
             background='rgba(179, 146, 131)'
             width='4rem'
             height='2rem'
+            onClick={goHome}
           >
             <Imghome src={imgfile} />
           </Btn>
