@@ -1,4 +1,4 @@
-package com.cbu.backend.studycrew.command.domain;
+package com.cbu.backend.studygroup.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 
@@ -13,7 +13,7 @@ import javax.persistence.*;
 
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StudyCrewMember {
+public class StudyGroupMember {
 
     @Embedded
     @AttributeOverride(name = "id", column = @Column(name = "leader_id"))
@@ -21,11 +21,11 @@ public class StudyCrewMember {
 
     @ElementCollection
     @CollectionTable(
-            name = "study_crew_participant",
-            joinColumns = @JoinColumn(name = "study_crew_id"))
+            name = "study_group_participant",
+            joinColumns = @JoinColumn(name = "study_group_id"))
     private Set<AccountNo> participantIds = new HashSet<>();
 
-    public StudyCrewMember(AccountNo leaderId, List<AccountNo> participantIds) {
+    public StudyGroupMember(AccountNo leaderId, List<AccountNo> participantIds) {
         this.leaderId = leaderId;
         this.participantIds.addAll(participantIds);
     }

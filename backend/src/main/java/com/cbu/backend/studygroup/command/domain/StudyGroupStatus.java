@@ -1,12 +1,12 @@
-package com.cbu.backend.studycrew.command.domain;
+package com.cbu.backend.studygroup.command.domain;
 
-public enum StudyCrewStatus {
+public enum StudyGroupStatus {
     ACTIVE("활동중"),
     FINISHED("활동종료");
 
     private final String korean;
 
-    StudyCrewStatus(String korean) {
+    StudyGroupStatus(String korean) {
         this.korean = korean;
     }
 }
