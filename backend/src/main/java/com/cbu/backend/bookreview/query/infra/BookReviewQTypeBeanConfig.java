@@ -1,11 +1,9 @@
 package com.cbu.backend.bookreview.query.infra;
 
+import com.cbu.backend.authaccount.command.domain.QAuthAccount;
 import com.cbu.backend.book.command.domain.QBook;
 import com.cbu.backend.bookreview.command.domain.QBookReview;
-import com.cbu.backend.bookreview.query.dto.QBookDetail;
-import com.cbu.backend.bookreview.query.dto.QBookReviewResponse;
-import com.cbu.backend.bookreview.query.dto.QBookReviewSummaryResponse;
-import com.cbu.backend.bookreview.query.dto.QBookSummary;
+import com.cbu.backend.bookreview.query.dto.*;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,11 +28,16 @@ public class BookReviewQTypeBeanConfig {
     }
 
     @Bean
+    public QWriter qWriter(QAuthAccount qAuthAccount) {
+        return new QWriter(qAuthAccount.id, qAuthAccount.memberInfo.nickname);
+    }
+
+    @Bean
     public QBookReviewSummaryResponse qBookReviewSummaryResponse(
-            QBookReview qBookReview, QBookSummary qBookSummary) {
+            QBookReview qBookReview, QWriter qWriter, QBookSummary qBookSummary) {
         return new QBookReviewSummaryResponse(
                 qBookReview.id,
-                qBookReview.writer,
+                qWriter,
                 qBookReview.title,
                 qBookSummary,
                 qBookReview.likeCount,
@@ -45,10 +48,10 @@ public class BookReviewQTypeBeanConfig {
 
     @Bean
     public QBookReviewResponse qBookReviewResponse(
-            QBookReview qBookReview, QBookDetail qBookDetail) {
+            QBookReview qBookReview, QWriter qWriter, QBookDetail qBookDetail) {
         return new QBookReviewResponse(
                 qBookReview.id,
-                qBookReview.writer,
+                qWriter,
                 qBookReview.title,
                 qBookReview.content,
                 qBookDetail,

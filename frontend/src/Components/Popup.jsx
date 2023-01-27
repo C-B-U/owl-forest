@@ -26,7 +26,7 @@ const Buttons = styled.div`
   /* margin: 0.5rem; */
 `;
 
-export default function Popup({ color, width, height, title, message }) {
+export default function Popup() {
   return (
     <Wrap>
       <Title>{title}</Title>

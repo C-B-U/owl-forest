@@ -19,6 +19,10 @@ public class BookReviewNo implements Serializable {
     @Column(name = "book_review_id", columnDefinition = "BINARY(16)")
     private UUID id;
 
+    public BookReviewNo(String id) {
+        this.id = UUID.fromString(id);
+    }
+
     public BookReviewNo() {
         id = UUID.randomUUID();
     }

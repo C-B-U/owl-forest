@@ -8,3 +8,4 @@
 = OWL-FOREST API
 
 include::book-review.adoc[]
+include::auth-account.adoc[]

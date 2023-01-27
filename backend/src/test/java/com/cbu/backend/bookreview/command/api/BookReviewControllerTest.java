@@ -43,7 +43,7 @@ class BookReviewControllerTest extends RestDocumentTest {
                                 .content(
                                         toRequestBody(
                                                 BookReviewRequestFixture.SAMPLE1
-                                                        .getBokReviewRequest())));
+                                                        .getBookReviewRequest())));
         // then
         perform.andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").value(expected.getId().toString()));

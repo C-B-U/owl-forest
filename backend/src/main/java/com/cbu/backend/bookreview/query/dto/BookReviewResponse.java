@@ -1,6 +1,5 @@
 package com.cbu.backend.bookreview.query.dto;
 
-import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.bookreview.command.domain.BookReviewNo;
 import com.querydsl.core.annotations.QueryProjection;
 
@@ -11,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 public class BookReviewResponse {
     private BookReviewNo id;
-    private AccountNo writer;
+    private Writer writer;
     private String title;
     private String content;
     private BookDetail book;
@@ -23,7 +22,7 @@ public class BookReviewResponse {
     @QueryProjection
     public BookReviewResponse(
             BookReviewNo id,
-            AccountNo writer,
+            Writer writer,
             String title,
             String content,
             BookDetail book,

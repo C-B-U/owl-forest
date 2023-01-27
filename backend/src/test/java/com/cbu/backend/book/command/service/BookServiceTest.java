@@ -2,30 +2,20 @@ package com.cbu.backend.book.command.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.cbu.backend.TestConfig;
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.book.command.domain.BookRequest;
 import com.cbu.backend.book.command.infra.BookRepository;
+import com.cbu.backend.support.database.EnableDataBaseQueryTest;
 
 import lombok.extern.slf4j.Slf4j;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 
 import java.time.LocalDate;
 
-import javax.transaction.Transactional;
-
-@DataJpaTest
-@ContextConfiguration
-@ActiveProfiles("test")
-@Import(TestConfig.class)
-@Transactional
+@EnableDataBaseQueryTest
 @Slf4j
 class BookServiceTest {
 
