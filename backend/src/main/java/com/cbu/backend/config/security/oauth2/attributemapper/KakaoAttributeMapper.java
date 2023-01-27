@@ -2,7 +2,6 @@ package com.cbu.backend.config.security.oauth2.attributemapper;
 
 import com.cbu.backend.authaccount.command.domain.AuthProvider;
 import com.cbu.backend.config.security.oauth2.OAuth2Request;
-
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -14,7 +13,7 @@ import java.util.Map;
 public class KakaoAttributeMapper implements AttributeMappable {
     @Override
     public OAuth2Request mapToDTO(Map<String, Object> attributes) {
-        String accountId = ((Long) attributes.get("id")).toString();
+        String accountId = (attributes.get("id")).toString();
         String email = (String) attributes.get("email");
         String name = "sample";
         return new OAuth2Request(accountId, name, email, AuthProvider.KAKAO);
