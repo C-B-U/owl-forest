@@ -8,3 +8,12 @@
 == Book Review
 === 북리뷰 생성
 operation::create book review[snippets='request-fields,http-request,response-fields,http-response']
+
+=== 북리뷰 조회 (옵션 없음)
+operation::search book review list[snippets='http-request,http-response']
+
+=== 북리뷰 조회 (페이징 옵션)
+operation::search book review list Paging Option[snippets='http-request,http-response']
+
+=== 북리뷰 조회 (검색 옵션 - 페이징 옵션과 결합 가능)
+operation::search book review list Search Option[snippets='http-request,http-response']

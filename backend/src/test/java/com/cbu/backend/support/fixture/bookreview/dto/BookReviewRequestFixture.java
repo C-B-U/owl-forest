@@ -42,7 +42,7 @@ public enum BookReviewRequestFixture {
         this.difficulty = difficulty;
     }
 
-    public BookReviewRequest getBokReviewRequest() {
+    public BookReviewRequest getBookReviewRequest() {
         BookReviewRequest result = new BookReviewRequest(book, title, content, score, difficulty);
         return result.toBookReviewRequest(writer);
     }
