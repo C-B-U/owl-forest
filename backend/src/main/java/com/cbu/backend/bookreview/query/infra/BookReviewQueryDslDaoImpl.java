@@ -10,7 +10,9 @@ import com.cbu.backend.bookreview.query.dto.QBookReviewResponse;
 import com.cbu.backend.bookreview.query.dto.QBookReviewSummaryResponse;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 

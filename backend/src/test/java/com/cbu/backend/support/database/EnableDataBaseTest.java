@@ -14,5 +14,4 @@ import java.lang.annotation.Target;
 @Transactional
 @DataJpaTest
 @Import(DatabaseTestConfig.class)
-public @interface EnableDataBaseTest {
-}
+public @interface EnableDataBaseTest {}

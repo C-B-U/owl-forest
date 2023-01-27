@@ -4,19 +4,9 @@ import com.cbu.backend.book.command.domain.BookNo;
 import com.cbu.backend.bookreview.query.dto.BookDetail;
 
 public enum BookDetailFixture {
-    HERRY_POTTER(
-            new BookNo(),
-            "해리포터",
-            "조엔 롤링",
-            "국정원",
-            "aaa.bb.com"),
+    HERRY_POTTER(new BookNo(), "해리포터", "조엔 롤링", "국정원", "aaa.bb.com"),
 
-    HONGGILDONG(
-            new BookNo(),
-            "홍길동전",
-            "조엔 롤링",
-            "국정원",
-            "aaa.bb.com");
+    HONGGILDONG(new BookNo(), "홍길동전", "조엔 롤링", "국정원", "aaa.bb.com");
     private final BookNo id;
     private final String title;
     private final String author;

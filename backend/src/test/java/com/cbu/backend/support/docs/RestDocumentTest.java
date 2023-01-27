@@ -1,11 +1,16 @@
 package com.cbu.backend.support.docs;
 
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.config.security.jwt.JwtAuthenticationFilter;
 import com.cbu.backend.config.security.oauth2.LoginUser;
 import com.cbu.backend.support.filter.MockSecurityFilter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +29,6 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 import java.security.Principal;
-
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 @Import(RestDocsConfiguration.class)

@@ -4,6 +4,7 @@ import com.cbu.backend.bookreview.command.domain.QBookReview;
 import com.cbu.backend.util.OrderConverter;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.ComparableExpressionBase;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
@@ -26,14 +27,16 @@ public class BookReviewOrderConverter implements OrderConverter {
         keywordMap.put("likeCount", qBookReview.likeCount);
     }
 
-
     public OrderSpecifier<?>[] convert(Sort sort) {
-        return sort.stream().map(s -> {
-            ComparableExpressionBase<?> path = keywordMap.get(s.getProperty());
-            if(s.isAscending()) {
-                return path.asc();
-            }
-            return path.desc();
-        }).toArray(OrderSpecifier[]::new);
+        return sort.stream()
+                .map(
+                        s -> {
+                            ComparableExpressionBase<?> path = keywordMap.get(s.getProperty());
+                            if (s.isAscending()) {
+                                return path.asc();
+                            }
+                            return path.desc();
+                        })
+                .toArray(OrderSpecifier[]::new);
     }
 }

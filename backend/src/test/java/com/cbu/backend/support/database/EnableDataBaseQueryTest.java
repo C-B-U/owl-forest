@@ -14,5 +14,4 @@ import java.lang.annotation.Target;
 @Transactional
 @SpringBootTest
 @ActiveProfiles("test")
-public @interface EnableDataBaseQueryTest {
-}
+public @interface EnableDataBaseQueryTest {}

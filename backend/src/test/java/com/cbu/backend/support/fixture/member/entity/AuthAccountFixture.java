@@ -6,9 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum AuthAccountFixture {
-    SAMPLE1(new AccountNo(), new Member("홍길동", "가나다라", new MemberPublicInfo(), new MemberPrivacy()), "12345"),
-    SAMPLE2(new AccountNo(), new Member("심청", "나나나", new MemberPublicInfo(), new MemberPrivacy()), "12345"),
-    SAMPLE3(new AccountNo(), new Member("하하", "바사바사", new MemberPublicInfo(), new MemberPrivacy()), "12345");
+    SAMPLE1(
+            new AccountNo(),
+            new Member("홍길동", "가나다라", new MemberPublicInfo(), new MemberPrivacy()),
+            "12345"),
+    SAMPLE2(
+            new AccountNo(),
+            new Member("심청", "나나나", new MemberPublicInfo(), new MemberPrivacy()),
+            "12345"),
+    SAMPLE3(
+            new AccountNo(),
+            new Member("하하", "바사바사", new MemberPublicInfo(), new MemberPrivacy()),
+            "12345");
     private final AccountNo id;
 
     private List<Role> role = new ArrayList<>(List.of(Role.ROLE_USER));
@@ -17,7 +26,6 @@ public enum AuthAccountFixture {
 
     private final Member memberInfo;
     private final String socialId;
-
 
     private boolean isUpdate = false;
 

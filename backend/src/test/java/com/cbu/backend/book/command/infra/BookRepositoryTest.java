@@ -1,16 +1,17 @@
 package com.cbu.backend.book.command.infra;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.book.command.domain.Book;
 import com.cbu.backend.book.command.domain.BookNo;
 import com.cbu.backend.support.database.EnableDataBaseQueryTest;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
-
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @EnableDataBaseQueryTest
 class BookRepositoryTest {
