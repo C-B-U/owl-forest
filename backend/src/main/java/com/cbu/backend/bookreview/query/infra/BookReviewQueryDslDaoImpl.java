@@ -8,12 +8,9 @@ import com.cbu.backend.bookreview.query.dto.BookReviewResponse;
 import com.cbu.backend.bookreview.query.dto.BookReviewSummaryResponse;
 import com.cbu.backend.bookreview.query.dto.QBookReviewResponse;
 import com.cbu.backend.bookreview.query.dto.QBookReviewSummaryResponse;
-import com.cbu.backend.util.OrderConverter;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +22,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BookReviewQueryDslDaoImpl implements BookReviewQueryDslDao {
     private final JPAQueryFactory jpaQueryFactory;
-
+    private final BookReviewOrderConverter bookReviewOrderConverter;
     private final QBookReviewResponse qBookReviewResponse;
     private final QBookReviewSummaryResponse qBookReviewSummaryResponse;
     private final QBookReview qBookReview;
@@ -45,8 +42,7 @@ public class BookReviewQueryDslDaoImpl implements BookReviewQueryDslDao {
                 .where(generateWhereQuery(queryOption))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
-                .orderBy(
-                        OrderConverter.convert(pageable.getSort(), QBookReview.class, "bookReview"))
+                .orderBy(bookReviewOrderConverter.convert(pageable.getSort()))
                 .fetch();
     }
 
