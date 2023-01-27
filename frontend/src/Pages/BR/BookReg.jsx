@@ -266,7 +266,7 @@ function BookReg() {
 
   useEffect(() => {
     axios
-      .get(`http://223.255.205.62:30505/api/externalbooks`)
+      .get(`${process.env.REACT_APP_BASE_URL}/api/externalbooks`)
       .then((response) => {
         setGetBook(response.book);
       });
