@@ -1,6 +1,5 @@
 package com.cbu.backend.support.fixture.book.dto;
 
-import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.book.command.domain.BookRequest;
 
 import java.time.LocalDate;
@@ -13,8 +12,7 @@ public enum BookRequestFixture {
             "국정원",
             "aaa.bb.com",
             5000,
-            LocalDate.now(),
-            new AccountNo()),
+            LocalDate.now()),
     HONGGILDONG(
             "홍길동전",
             "8801037087550",
@@ -22,8 +20,7 @@ public enum BookRequestFixture {
             "국정원",
             "aaa.bb.com",
             500,
-            LocalDate.now(),
-            new AccountNo()),
+            LocalDate.now()),
     SIMCHUNG(
             "심청전",
             "8801037087550",
@@ -31,8 +28,7 @@ public enum BookRequestFixture {
             "국정원",
             "aaa.bb.com",
             5000,
-            LocalDate.now(),
-            new AccountNo()),
+            LocalDate.now()),
     SPL(
             "스플",
             "8801037087550",
@@ -40,8 +36,7 @@ public enum BookRequestFixture {
             "국정원",
             "aaa.bb.com",
             5000,
-            LocalDate.now(),
-            new AccountNo());
+            LocalDate.now());
 
     private final String title;
     private final String isbn;
@@ -50,7 +45,6 @@ public enum BookRequestFixture {
     private final String imageUrl;
     private final Integer price;
     private final LocalDate publishAt;
-    private final AccountNo registrant;
 
     BookRequestFixture(
             String title,
@@ -59,8 +53,7 @@ public enum BookRequestFixture {
             String publisher,
             String imageUrl,
             Integer price,
-            LocalDate publishAt,
-            AccountNo registrant) {
+            LocalDate publishAt) {
         this.title = title;
         this.isbn = isbn;
         this.author = author;
@@ -68,11 +61,10 @@ public enum BookRequestFixture {
         this.imageUrl = imageUrl;
         this.price = price;
         this.publishAt = publishAt;
-        this.registrant = registrant;
     }
 
     public BookRequest getBookRequest() {
         return new BookRequest(
-                isbn, title, author, publisher, imageUrl, price, publishAt, registrant);
+                title, isbn, author, publisher, imageUrl, price, publishAt);
     }
 }

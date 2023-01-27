@@ -1,19 +1,17 @@
 package com.cbu.backend.book.command.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.book.command.domain.BookRequest;
 import com.cbu.backend.book.command.infra.BookRepository;
 import com.cbu.backend.support.database.EnableDataBaseQueryTest;
-
 import lombok.extern.slf4j.Slf4j;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @EnableDataBaseQueryTest
 @Slf4j
@@ -41,8 +39,7 @@ class BookServiceTest {
                         "조선",
                         "www.naver.com",
                         5000,
-                        LocalDate.now(),
-                        new AccountNo());
+                        LocalDate.now()).toBookRequest(new AccountNo());
         BookRequest req2 =
                 new BookRequest(
                         "0060930315",
@@ -51,8 +48,7 @@ class BookServiceTest {
                         "조선",
                         "www.naver.com",
                         5000,
-                        LocalDate.now(),
-                        new AccountNo());
+                        LocalDate.now()).toBookRequest(new AccountNo());
         // when
         bookService.saveIfNotExists(req1);
         bookService.saveIfNotExists(req2);
