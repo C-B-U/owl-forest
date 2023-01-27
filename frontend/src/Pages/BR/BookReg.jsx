@@ -264,6 +264,14 @@ function BookReg() {
   // api 값 저장
   const [getBook, setGetBook] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get(`http://223.255.205.62:30505/api/externalbooks`)
+      .then((response) => {
+        setGetBook(response.book);
+      });
+  });
+  console.log(getBook);
   // 팝업 열기
   const openPopup = () => {
     console.log('open');
@@ -274,6 +282,27 @@ function BookReg() {
   const closePopup = () => {
     console.log('close');
     setIsShown(false);
+  };
+
+  const SearchBook = () => {
+    console.log('클릭', bookTitle);
+    if (bookTitle === undefined) {
+      alert('제목을 입력해 주세요.');
+    } else {
+      const title = { title: bookTitle };
+      // axios
+      //   .post(`http://223.255.205.62:30505/api/externalbooks`, title)
+      //   .then((response) => {
+      //     console.log(response);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+    }
+  };
+
+  const onChange = (e) => {
+    setBookTitle(e.target.value);
   };
 
   return (
@@ -303,8 +332,9 @@ function BookReg() {
                   height='3.2rem'
                   placeholder='도서 제목을 적어주세요.'
                   fontSize='1.2rem'
+                  onChange={onChange}
                 />
-                <WrapSearchIcon />
+                <WrapSearchIcon onClick={SearchBook} />
               </WrapSearchbar>
 
               <WrapList>
