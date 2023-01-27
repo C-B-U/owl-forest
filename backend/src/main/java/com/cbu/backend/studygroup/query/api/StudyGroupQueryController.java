@@ -1,6 +1,5 @@
 package com.cbu.backend.studygroup.query.api;
 
-import com.cbu.backend.studygroup.command.domain.SortDirection;
 import com.cbu.backend.studygroup.command.domain.StudyGroupNo;
 import com.cbu.backend.studygroup.query.dto.StudyGroupResponse;
 import com.cbu.backend.studygroup.query.service.StudyGroupQueryService;
@@ -8,6 +7,8 @@ import com.cbu.backend.studygroup.query.service.StudyGroupQueryService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,17 +26,9 @@ public class StudyGroupQueryController {
         return ResponseEntity.ok(studyGroupQueryService.getStudyGroup(id));
     }
 
-    @GetMapping(params = "sortby=createdat")
-    public ResponseEntity<List<StudyGroupResponse>> getStudyGroupSortByCreatedAt(
-            @RequestParam(name = "sort") SortDirection sort, Pageable pageable) {
-        return ResponseEntity.ok(
-                studyGroupQueryService.getStudyGroupSortByCreatedAt(sort, pageable));
-    }
-
-    @GetMapping(params = "sortby=likecount")
-    public ResponseEntity<List<StudyGroupResponse>> getStudyGroupSortByLikeCount(
-            @RequestParam(name = "sort") SortDirection sort, Pageable pageable) {
-        return ResponseEntity.ok(
-                studyGroupQueryService.getStudyGroupSortByLikeCount(sort, pageable));
+    @GetMapping
+    public ResponseEntity<List<StudyGroupResponse>> getAll(
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
+        return ResponseEntity.ok(studyGroupQueryService.getAllStudyGroup(pageable));
     }
 }
