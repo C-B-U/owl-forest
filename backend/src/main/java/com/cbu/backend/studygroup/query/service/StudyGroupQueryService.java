@@ -9,8 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +20,8 @@ public class StudyGroupQueryService {
     private final StudyGroupDao studyGroupDao;
 
     public StudyGroupResponse getStudyGroup(StudyGroupNo id) {
-        return new StudyGroupResponse(studyGroupDao.findById(id).orElseThrow(EntityNotFoundException::new));
+        return new StudyGroupResponse(
+                studyGroupDao.findById(id).orElseThrow(EntityNotFoundException::new));
     }
 
     public List<StudyGroupResponse> getAllStudyGroup(Pageable pageable) {

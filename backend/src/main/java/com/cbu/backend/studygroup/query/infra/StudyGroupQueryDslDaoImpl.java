@@ -6,6 +6,7 @@ import com.cbu.backend.studygroup.command.domain.StudyGroup;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 

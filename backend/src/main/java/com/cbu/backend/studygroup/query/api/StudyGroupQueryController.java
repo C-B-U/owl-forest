@@ -28,7 +28,8 @@ public class StudyGroupQueryController {
 
     @GetMapping
     public ResponseEntity<List<StudyGroupResponse>> getAll(
-            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC)
+                    Pageable pageable) {
         return ResponseEntity.ok(studyGroupQueryService.getAllStudyGroup(pageable));
     }
 }
