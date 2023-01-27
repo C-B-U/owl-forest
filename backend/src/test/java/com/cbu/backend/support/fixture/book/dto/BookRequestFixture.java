@@ -5,38 +5,10 @@ import com.cbu.backend.book.command.domain.BookRequest;
 import java.time.LocalDate;
 
 public enum BookRequestFixture {
-    HERRY_POTTER(
-            "해리포터",
-            "8801037087550",
-            "조엔 롤링",
-            "국정원",
-            "aaa.bb.com",
-            5000,
-            LocalDate.now()),
-    HONGGILDONG(
-            "홍길동전",
-            "8801037087550",
-            "조엔 롤링",
-            "국정원",
-            "aaa.bb.com",
-            500,
-            LocalDate.now()),
-    SIMCHUNG(
-            "심청전",
-            "8801037087550",
-            "조엔 롤링",
-            "국정원",
-            "aaa.bb.com",
-            5000,
-            LocalDate.now()),
-    SPL(
-            "스플",
-            "8801037087550",
-            "조엔 롤링",
-            "국정원",
-            "aaa.bb.com",
-            5000,
-            LocalDate.now());
+    HERRY_POTTER("해리포터", "8801037087550", "조엔 롤링", "국정원", "aaa.bb.com", 5000, LocalDate.now()),
+    HONGGILDONG("홍길동전", "8801037087550", "조엔 롤링", "국정원", "aaa.bb.com", 500, LocalDate.now()),
+    SIMCHUNG("심청전", "8801037087550", "조엔 롤링", "국정원", "aaa.bb.com", 5000, LocalDate.now()),
+    SPL("스플", "8801037087550", "조엔 롤링", "국정원", "aaa.bb.com", 5000, LocalDate.now());
 
     private final String title;
     private final String isbn;
@@ -64,7 +36,6 @@ public enum BookRequestFixture {
     }
 
     public BookRequest getBookRequest() {
-        return new BookRequest(
-                title, isbn, author, publisher, imageUrl, price, publishAt);
+        return new BookRequest(title, isbn, author, publisher, imageUrl, price, publishAt);
     }
 }

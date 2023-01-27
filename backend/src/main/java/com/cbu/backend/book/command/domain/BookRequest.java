@@ -1,15 +1,18 @@
 package com.cbu.backend.book.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import org.hibernate.validator.constraints.ISBN;
 import org.hibernate.validator.constraints.URL;
 
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -24,7 +27,14 @@ public class BookRequest {
     private LocalDate publishAt;
     private AccountNo registrant;
 
-    public BookRequest(String isbn, String title, String author, String publisher, String imageUrl, Integer price, LocalDate publishAt) {
+    public BookRequest(
+            String isbn,
+            String title,
+            String author,
+            String publisher,
+            String imageUrl,
+            Integer price,
+            LocalDate publishAt) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -35,6 +45,7 @@ public class BookRequest {
     }
 
     public BookRequest toBookRequest(AccountNo registrant) {
-        return new BookRequest(isbn, title, author, publisher, imageUrl, price, publishAt, registrant);
+        return new BookRequest(
+                isbn, title, author, publisher, imageUrl, price, publishAt, registrant);
     }
 }
