@@ -1,7 +1,6 @@
 package com.cbu.backend.studygroup.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
-import com.cbu.backend.studygroup.command.domain.StudyGroup;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
