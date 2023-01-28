@@ -2,7 +2,8 @@ package com.cbu.backend.studygroup.query.infra;
 
 import static com.cbu.backend.studygroup.command.domain.QStudyGroup.studyGroup;
 
-import com.cbu.backend.studygroup.command.domain.StudyGroup;
+import com.cbu.backend.studygroup.command.domain.StudyGroupNo;
+import com.cbu.backend.studygroup.query.dto.StudyGroupResponse;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
@@ -18,13 +19,24 @@ public class StudyGroupQueryDslDaoImpl implements StudyGroupQueryDslDao {
 
     private final JPAQueryFactory queryFactory;
     private final StudyGroupOrderConverter studyGroupOrderConverter;
+    private final StudyGroupQDtoFactory qDtoFactory;
 
-    public List<StudyGroup> findAllStudyGroup(Pageable pageable) {
+    public List<StudyGroupResponse> findAllStudyGroup(Pageable pageable) {
         return queryFactory
-                .selectFrom(studyGroup)
+                .select(qDtoFactory.qStudyGroupResponse())
+                .from(studyGroup)
                 .orderBy(studyGroupOrderConverter.convert(pageable.getSort()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+    }
+
+    @Override
+    public StudyGroupResponse findResponseById(StudyGroupNo id) {
+        return queryFactory
+                .select(qDtoFactory.qStudyGroupResponse())
+                .from(studyGroup)
+                .where(studyGroup.id.eq(id))
+                .fetchFirst();
     }
 }

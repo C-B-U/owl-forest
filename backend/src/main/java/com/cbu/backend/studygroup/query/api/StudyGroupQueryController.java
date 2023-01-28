@@ -2,7 +2,7 @@ package com.cbu.backend.studygroup.query.api;
 
 import com.cbu.backend.studygroup.command.domain.StudyGroupNo;
 import com.cbu.backend.studygroup.query.dto.StudyGroupResponse;
-import com.cbu.backend.studygroup.query.service.StudyGroupQueryService;
+import com.cbu.backend.studygroup.query.infra.StudyGroupDao;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,17 +19,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudyGroupQueryController {
 
-    private final StudyGroupQueryService studyGroupQueryService;
+    private final StudyGroupDao studyGroupDao;
 
     @GetMapping("/{id}")
     public ResponseEntity<StudyGroupResponse> getStudyGroup(@PathVariable StudyGroupNo id) {
-        return ResponseEntity.ok(studyGroupQueryService.getStudyGroup(id));
+        return ResponseEntity.ok(studyGroupDao.findResponseById(id));
     }
 
     @GetMapping
     public ResponseEntity<List<StudyGroupResponse>> getAll(
             @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC)
                     Pageable pageable) {
-        return ResponseEntity.ok(studyGroupQueryService.getAllStudyGroup(pageable));
+        return ResponseEntity.ok(studyGroupDao.findAllStudyGroup(pageable));
     }
 }

@@ -18,6 +18,10 @@ public class StudyGroupOrderConverter implements OrderConverter {
     private final QStudyGroup qStudyGroup = QStudyGroup.studyGroup;
 
     public StudyGroupOrderConverter() {
+        initializeMap();
+    }
+
+    private void initializeMap() {
         keywordMap.put("createdAt", qStudyGroup.baseTime.createdAt);
         keywordMap.put("likeCount", qStudyGroup.likeCount.memberIds.size());
     }

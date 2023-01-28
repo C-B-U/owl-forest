@@ -2,27 +2,25 @@ package com.cbu.backend.studygroup.query.dto;
 
 import com.cbu.backend.studygroup.command.domain.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.querydsl.core.annotations.QueryProjection;
+import lombok.Getter;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
 public class StudyGroupResponse {
     private StudyGroupNo id;
     private String name;
     private String description;
-    private LikeCount likeCount;
-    private StudyGroupStatus studyGroupStatus;
-    private StudyGroupMember studyGroupMember;
+    private Integer likeCount;
+    private String studyGroupStatus;
+    private StudyMember studyMember;
 
-    public StudyGroupResponse(StudyGroup studyGroup) {
-        this.id = studyGroup.getId();
-        this.name = studyGroup.getName();
-        this.description = studyGroup.getDescription();
-        this.likeCount = studyGroup.getLikeCount();
-        this.studyGroupStatus = studyGroup.getStudyGroupStatus();
-        this.studyGroupMember = studyGroup.getStudyGroupMember();
+    @QueryProjection
+    public StudyGroupResponse(StudyGroupNo id, String name, String description, Integer likeCount, String studyGroupStatus, StudyMember studyMember) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.likeCount = likeCount;
+        this.studyGroupStatus = studyGroupStatus;
+        this.studyMember = studyMember;
     }
 }
