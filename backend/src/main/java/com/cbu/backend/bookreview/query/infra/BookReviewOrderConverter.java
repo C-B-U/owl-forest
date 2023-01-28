@@ -1,15 +1,16 @@
 package com.cbu.backend.bookreview.query.infra;
 
+import static com.cbu.backend.bookreview.command.domain.QBookReview.bookReview;
+
 import com.cbu.backend.util.OrderConverter;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.ComparableExpressionBase;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.cbu.backend.bookreview.command.domain.QBookReview.bookReview;
 
 @Component
 public class BookReviewOrderConverter implements OrderConverter {
