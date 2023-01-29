@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
+import { Redirect, Route } from 'react-router-dom';
 
 import imgfile from '../../Image/Loginlogo.png';
 import googlebtn from '../../Image/googlebtn.png';
@@ -71,7 +72,7 @@ const NaverSocialImg = styled.img`
   margin-top: 12.5rem;
 `;
 function Login() {
-  const base_url = process.env.BASE_URL;
+  const base_url = process.env.REACT_APP_BASE_URL;
   const KAKAO_AUTH_URL = `${base_url}/api/auth/login/kakao`;
   const GOOGLE_AUTH_URL = `${base_url}/api/auth/login/google`;
   const NAVER_AUTH_URL = `${base_url}/api/auth/login/naver`;
