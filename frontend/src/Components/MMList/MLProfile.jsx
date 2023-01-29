@@ -69,19 +69,6 @@ const Info = styled.li`
   margin-top: 1.2rem;
 `;
 
-const InfoButton = styled.button`
-  width: 15rem;
-  height: 2.8rem;
-  background-color: ${palette('PsGreen')};
-  border-radius: 3rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  border: none;
-  font-size: 12pt;
-  margin-top: 3rem;
-  margin-right: 3rem;
-  font-weight: bolder;
-`;
-
 function MLProfile() {
   return (
     <div>

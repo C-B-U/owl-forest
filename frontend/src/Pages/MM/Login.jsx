@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
-import { Redirect, Route } from 'react-router-dom';
 
 import imgfile from '../../Image/Loginlogo.png';
 import googlebtn from '../../Image/googlebtn.png';

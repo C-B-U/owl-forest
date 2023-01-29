@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import axios from 'axios';
 import { ko } from 'date-fns/esm/locale';
 import { palette } from 'styled-tools';
 import DatePicker from 'react-datepicker';
@@ -81,18 +80,18 @@ const WrapReturnAlert = styled.div`
   vertical-align: middle;
 `;
 
-const ReturnAlert = styled.div`
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  width: 6rem;
-`;
+// const ReturnAlert = styled.div`
+//   margin-right: 1rem;
+//   margin-bottom: 1rem;
+//   width: 6rem;
+// `;
 
-const KakaoURL = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-`;
+// const KakaoURL = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   margin-top: 1rem;
+//   margin-bottom: 1rem;
+// `;
 
 const PickDate = styled(DatePicker)`
   width: 12rem;
@@ -120,11 +119,11 @@ const WrapRegButton = styled.div`
   float: right;
 `;
 
-const Test = styled.div`
-  width: 100vw;
-  height: 200vh;
-  background-color: black;
-`;
+// const Test = styled.div`
+//   width: 100vw;
+//   height: 200vh;
+//   background-color: black;
+// `;
 
 // ---------------- 팝업창 작업----------------
 
