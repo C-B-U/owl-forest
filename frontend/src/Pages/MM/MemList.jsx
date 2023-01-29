@@ -6,6 +6,7 @@ import theme from '../../Components/Color';
 import MLProfile from '../../Components/MMList/MLProfile';
 import profileimg from '../../Image/cbu_circle.png';
 import Btn from '../../Components/Btn';
+import MLList from '../../Components/MMList/MLList';
 
 // 가로 정렬
 const MainWrap = styled.div`
@@ -151,6 +152,7 @@ function MemList() {
             </SortOption>
             <LineUp>
               <Scroll>
+                <MLList />
                 <List>
                   <MemListInput>
                     <Photo />
