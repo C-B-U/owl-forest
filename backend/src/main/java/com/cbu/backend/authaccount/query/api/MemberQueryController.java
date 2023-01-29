@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("api/users/login")
+@RequestMapping("users/login")
 @RequiredArgsConstructor
 public class MemberQueryController {
     private final AuthAccountQueryService authAccountQueryService;

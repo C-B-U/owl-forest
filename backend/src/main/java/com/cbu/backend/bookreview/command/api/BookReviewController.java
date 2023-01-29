@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/book-reviews")
+@RequestMapping("book-reviews")
 @RequiredArgsConstructor
 public class BookReviewController {
     private final BookReviewService bookReviewService;

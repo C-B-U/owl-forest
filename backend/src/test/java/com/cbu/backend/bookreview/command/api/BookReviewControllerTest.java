@@ -1,8 +1,18 @@
 package com.cbu.backend.bookreview.command.api;
 
+import com.cbu.backend.bookreview.command.domain.BookReviewNo;
+import com.cbu.backend.bookreview.command.service.BookReviewService;
+import com.cbu.backend.support.docs.RestDocumentTest;
+import com.cbu.backend.support.fixture.bookreview.dto.BookReviewRequestFixture;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.ResultActions;
+
 import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentRequest;
 import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentResponse;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -10,18 +20,6 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import com.cbu.backend.bookreview.command.domain.BookReviewNo;
-import com.cbu.backend.bookreview.command.service.BookReviewService;
-import com.cbu.backend.support.docs.RestDocumentTest;
-import com.cbu.backend.support.fixture.bookreview.dto.BookReviewRequestFixture;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.ResultActions;
 
 @WebMvcTest(BookReviewController.class)
 class BookReviewControllerTest extends RestDocumentTest {
@@ -37,7 +35,7 @@ class BookReviewControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        post("/api/book-reviews")
+                        post("/book-reviews")
                                 .principal(loginUser)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(

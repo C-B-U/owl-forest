@@ -53,9 +53,9 @@ public class SecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(
                         requests ->
-                                requests.antMatchers("/api/auth/login/**")
+                                requests.antMatchers("/auth/login/**")
                                         .permitAll()
-                                        .antMatchers("api/test/**")
+                                        .antMatchers("/test/**")
                                         .authenticated())
                 // .formLogin().disable()
                 .oauth2Login(setOAuth2Config())
@@ -86,7 +86,7 @@ public class SecurityConfig {
      */
     private Customizer<OAuth2LoginConfigurer<HttpSecurity>> setOAuth2Config() {
         return o ->
-                o.authorizationEndpoint(auth -> auth.baseUri("/api/auth/login"))
+                o.authorizationEndpoint(auth -> auth.baseUri("/auth/login"))
                         .userInfoEndpoint(e -> e.userService(oAuthUserService))
                         .successHandler(successHandler);
     }
