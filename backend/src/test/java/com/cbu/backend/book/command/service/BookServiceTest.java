@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.book.command.domain.BookRequest;
 import com.cbu.backend.book.command.infra.BookRepository;
-import com.cbu.backend.support.database.EnableDataBaseQueryTest;
+import com.cbu.backend.support.database.EnableDataBaseTest;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 
-@EnableDataBaseQueryTest
+@EnableDataBaseTest
 @Slf4j
 class BookServiceTest {
 
