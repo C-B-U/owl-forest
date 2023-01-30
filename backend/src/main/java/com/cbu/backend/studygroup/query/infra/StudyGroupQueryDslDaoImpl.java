@@ -21,6 +21,7 @@ public class StudyGroupQueryDslDaoImpl implements StudyGroupQueryDslDao {
     private final StudyGroupOrderConverter studyGroupOrderConverter;
     private final StudyGroupQDtoFactory qDtoFactory;
 
+    @Override
     public List<StudyGroupResponse> findAllStudyGroup(Pageable pageable) {
         return queryFactory
                 .select(qDtoFactory.qStudyGroupResponse())

@@ -61,7 +61,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     void putStudyGroup() throws Exception {
         // given
         StudyGroupNo expected = new StudyGroupNo();
-        given(studyGroupService.save(any())).willReturn(expected).willCallRealMethod();
+        given(studyGroupService.save(any())).willReturn(expected);
 
         // when
         ResultActions perform =
@@ -86,7 +86,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     void addLikeCount() throws Exception {
         // given
         StudyGroupNo expected = new StudyGroupNo();
-        given(studyGroupService.save(any())).willReturn(expected).willCallRealMethod();
+        given(studyGroupService.save(any())).willReturn(expected);
 
         // when
         ResultActions perform =
@@ -112,7 +112,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     void cancelLikeCount() throws Exception {
         // given
         StudyGroupNo expected = new StudyGroupNo();
-        given(studyGroupService.save(any())).willReturn(expected).willCallRealMethod();
+        given(studyGroupService.save(any())).willReturn(expected);
 
         // when
         ResultActions perform =
@@ -140,7 +140,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     void finishStudy() throws Exception {
         // given
         StudyGroupNo expected = new StudyGroupNo();
-        given(studyGroupService.save(any())).willReturn(expected).willCallRealMethod();
+        given(studyGroupService.save(any())).willReturn(expected);
 
         // when
         ResultActions perform =
@@ -165,7 +165,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     void deleteStudyGroup() throws Exception {
         // given
         StudyGroupNo expected = new StudyGroupNo();
-        given(studyGroupService.save(any())).willReturn(expected).willCallRealMethod();
+        given(studyGroupService.save(any())).willReturn(expected);
 
         // when
         ResultActions perform =
