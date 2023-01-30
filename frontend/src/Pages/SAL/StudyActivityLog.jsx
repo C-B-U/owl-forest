@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import StudyBtn from '../../Components/Btn';
+import Input from '../../Components/Input';
 import Header from '../../Components/ActivityLog/Header';
 import Profile from '../../Components/ActivityLog/Profile';
 import EmptyHeart from '../../Image/EmptyHeart.png';
@@ -145,7 +146,14 @@ function ActivityLog() {
                 </LastStudy>
               </StudyInput>
             </StudyList>
-            <StudyList />
+            <StudyList>
+              <Input
+                width='65rem'
+                height='8rem'
+                placeholder='input test'
+                fontSize='12pt'
+              />
+            </StudyList>
             <StudyList />
             <BtnWrap>
               <StudyBtn
