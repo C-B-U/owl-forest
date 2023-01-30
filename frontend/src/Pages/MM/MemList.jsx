@@ -17,6 +17,7 @@ const MainWrap = styled.div`
 const SecondWrap = styled.div`
   display: inline-block;
   overflow-x: hidden;
+  border: 1px black solid;
 `;
 
 const LineUp = styled.div`
@@ -72,6 +73,7 @@ const MemNav = styled.div`
   background-color: ${palette('PsLightBrown')};
   margin-left: 1.5rem;
   align-items: center;
+  margin-bottom: 3rem;
 `;
 
 const Scroll = styled.div`
@@ -79,9 +81,10 @@ const Scroll = styled.div`
 `;
 
 const SortOption = styled.div`
-  margin-top: 0.7rem;
-  margin-bottom: 0.7rem;
+  margin-top: -2.2rem;
+  margin-bottom: 0rem;
   margin-left: 67rem;
+  position: absolute;
 `;
 const Photo = styled.div`
   width: 3rem;
@@ -153,6 +156,7 @@ function MemList() {
             <LineUp>
               <Scroll>
                 <MLList />
+
                 <List>
                   <MemListInput>
                     <Photo />
