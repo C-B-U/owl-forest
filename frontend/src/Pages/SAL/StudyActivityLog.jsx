@@ -41,7 +41,7 @@ const ListHeader = styled.header`
   width: 74rem;
   height: 4rem;
   margin-top: 3rem;
-  padding-left: 1rem;
+  padding-left: 3.2rem;
   font-size: 20pt;
   font-weight: bold;
   color: #fafad2;
@@ -159,6 +159,8 @@ function StudyActivityLog() {
               <StudyBtn
                 background={palette('PsBtn')}
                 color={palette('PsYellow')}
+                borderRadius='5rem'
+                borderStyle='none'
                 width='74rem'
                 height='3.5rem'
                 name='스터디 생성'
