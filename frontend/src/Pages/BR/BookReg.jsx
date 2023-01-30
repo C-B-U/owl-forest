@@ -265,10 +265,11 @@ function BookReg() {
   const [getBook, setGetBook] = useState([]);
 
   useEffect(() => {
+    console.log("cors policy 그만 뜨면 좋겠다.")
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/api/externalbooks`)
       .then((response) => {
-        setGetBook(response.book);
+        setGetBook(response.data);
       });
   }, []);
   console.log(getBook);
