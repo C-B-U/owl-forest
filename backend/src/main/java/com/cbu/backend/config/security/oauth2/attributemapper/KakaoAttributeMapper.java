@@ -14,7 +14,7 @@ import java.util.Map;
 public class KakaoAttributeMapper implements AttributeMappable {
     @Override
     public OAuth2Request mapToDTO(Map<String, Object> attributes) {
-        String accountId = ((Integer) attributes.get("id")).toString();
+        String accountId = (attributes.get("id")).toString();
         String email = (String) attributes.get("email");
         String name = "sample";
         return new OAuth2Request(accountId, name, email, AuthProvider.KAKAO);

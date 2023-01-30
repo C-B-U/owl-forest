@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/study-groups")
+@RequestMapping("study-groups")
 @RequiredArgsConstructor
 public class StudyGroupQueryController {
 

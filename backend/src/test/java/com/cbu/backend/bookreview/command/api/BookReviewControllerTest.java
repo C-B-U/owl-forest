@@ -37,7 +37,7 @@ class BookReviewControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        post("/api/book-reviews")
+                        post("/book-reviews")
                                 .principal(loginUser)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(

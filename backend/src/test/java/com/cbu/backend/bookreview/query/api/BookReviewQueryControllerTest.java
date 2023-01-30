@@ -48,7 +48,7 @@ class BookReviewQueryControllerTest extends RestDocumentTest {
                             BookReviewSummaryResponseFixture.SAMPLE3.toBookReviewSummaryResponse());
             given(bookReviewDao.findSummaryAll(any(), any())).willReturn(expected);
             // when
-            ResultActions perform = mockMvc.perform(get("/api/book-reviews"));
+            ResultActions perform = mockMvc.perform(get("/book-reviews"));
             // then
             perform.andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
 
@@ -74,7 +74,7 @@ class BookReviewQueryControllerTest extends RestDocumentTest {
             // when
             ResultActions perform =
                     mockMvc.perform(
-                            get("/api/book-reviews")
+                            get("/book-reviews")
                                     .param("page", "0")
                                     .param("size", "12")
                                     .param("sort", "createdAt,desc"));
@@ -104,7 +104,7 @@ class BookReviewQueryControllerTest extends RestDocumentTest {
             // when
             ResultActions perform =
                     mockMvc.perform(
-                            get("/api/book-reviews")
+                            get("/book-reviews")
                                     .param("title", "tititle")
                                     .param("content", "conconcon")
                                     .param("bookname", "herry")
@@ -130,7 +130,7 @@ class BookReviewQueryControllerTest extends RestDocumentTest {
             given(bookReviewDao.findResponseById(any())).willReturn(Optional.of(expected));
             // when
             ResultActions perform =
-                    mockMvc.perform(get("/api/book-reviews/{id}", expected.getId().getId()));
+                    mockMvc.perform(get("/book-reviews/{id}", expected.getId().getId()));
             // then
             perform.andExpect(status().isOk())
                     .andExpect(jsonPath("$.id.id").value(expected.getId().getId().toString()))

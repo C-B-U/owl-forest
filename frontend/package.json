@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://223.255.205.62:30505",
+  "proxy": "http://223.255.205.62:30505/api/v1",
   "dependencies": {
     "@mui/material": "^5.11.4",
     "@mui/styled-engine-sc": "^5.11.0",

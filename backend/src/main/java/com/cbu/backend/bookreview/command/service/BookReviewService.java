@@ -1,6 +1,7 @@
 package com.cbu.backend.bookreview.command.service;
 
 import com.cbu.backend.book.command.domain.BookNo;
+import com.cbu.backend.book.command.domain.BookRequest;
 import com.cbu.backend.book.command.service.BookService;
 import com.cbu.backend.bookreview.command.domain.BookReview;
 import com.cbu.backend.bookreview.command.domain.BookReviewNo;
@@ -18,7 +19,8 @@ public class BookReviewService {
     private final BookService bookService;
 
     public BookReviewNo saveBookReview(BookReviewRequest req) {
-        BookNo bookID = bookService.saveIfNotExists(req.getBook());
+        BookRequest bookRequest = req.getBook().toBookRequest(req.getWriter());
+        BookNo bookID = bookService.saveIfNotExists(bookRequest);
         return bookReviewRepository
                 .save(
                         BookReview.builder()
