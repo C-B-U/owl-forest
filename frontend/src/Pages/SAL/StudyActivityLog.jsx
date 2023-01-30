@@ -112,7 +112,7 @@ const BtnWrap = styled.div`
   margin-top: 1.5rem;
 `;
 
-function ActivityLog() {
+function StudyActivityLog() {
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -171,4 +171,4 @@ function ActivityLog() {
   );
 }
 
-export default ActivityLog;
+export default StudyActivityLog;
