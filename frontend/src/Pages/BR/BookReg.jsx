@@ -270,8 +270,9 @@ function BookReg() {
       .then((response) => {
         setGetBook(response.book);
       });
-  });
+  }, []);
   console.log(getBook);
+
   // 팝업 열기
   const openPopup = () => {
     console.log('open');
