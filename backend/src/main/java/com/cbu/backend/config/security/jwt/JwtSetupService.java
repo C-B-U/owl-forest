@@ -48,10 +48,6 @@ public class JwtSetupService {
     }
 
     private ResponseCookie setCookie(String key, String value) {
-        return ResponseCookie.from(key, value)
-                .path("/")
-                .httpOnly(true)
-                .domain(clientHost)
-                .build();
+        return ResponseCookie.from(key, value).path("/").httpOnly(true).domain(clientHost).build();
     }
 }
