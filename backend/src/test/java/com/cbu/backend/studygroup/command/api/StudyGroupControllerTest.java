@@ -117,9 +117,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        post("/study-groups/"
-                                        + expected.getId().toString()
-                                        + "/like-count/cancel")
+                        post("/study-groups/" + expected.getId().toString() + "/like-count/cancel")
                                 .principal(loginUser)
                                 .contentType(MediaType.APPLICATION_JSON));
 

@@ -5,6 +5,7 @@ import static com.cbu.backend.studygroup.command.domain.QStudyGroup.studyGroup;
 
 import com.cbu.backend.studygroup.query.dto.QStudyGroupInfo;
 import com.cbu.backend.studygroup.query.dto.QStudyMemberInfo;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 

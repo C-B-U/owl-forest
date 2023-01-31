@@ -12,8 +12,8 @@ import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
-
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
@@ -32,23 +32,20 @@ public class StudyGroupQueryDslDaoImpl implements StudyGroupQueryDslDao {
     // 리스트 조회
     @Override
     public List<StudyGroupResponse> findAllStudyGroup(Pageable pageable) {
-        List<Tuple> query = getQuery()
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .orderBy(studyGroupOrderConverter.convert(pageable.getSort()))
-                .fetch();
+        List<Tuple> query =
+                getQuery()
+                        .offset(pageable.getOffset())
+                        .limit(pageable.getPageSize())
+                        .orderBy(studyGroupOrderConverter.convert(pageable.getSort()))
+                        .fetch();
 
-        return query.stream()
-                .map(this::getStudyGroupResponse)
-                .collect(Collectors.toList());
+        return query.stream().map(this::getStudyGroupResponse).collect(Collectors.toList());
     }
 
     // 단일 조회
     @Override
     public StudyGroupResponse findResponseById(StudyGroupNo id) {
-        Tuple query = getQuery()
-                .where(studyGroup.id.eq(id))
-                .fetchFirst();
+        Tuple query = getQuery().where(studyGroup.id.eq(id)).fetchFirst();
 
         return getStudyGroupResponse(query);
     }
