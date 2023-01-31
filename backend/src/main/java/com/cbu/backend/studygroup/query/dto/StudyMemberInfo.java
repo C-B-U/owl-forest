@@ -6,12 +6,12 @@ import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
 
 @Getter
-public class StudyMember {
+public class StudyMemberInfo {
     private AccountNo id;
     private String name;
 
     @QueryProjection
-    public StudyMember(AccountNo id, String name) {
+    public StudyMemberInfo(AccountNo id, String name) {
         this.id = id;
         this.name = name;
     }

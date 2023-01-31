@@ -40,7 +40,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        post("/api/study-groups")
+                        post("/study-groups")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
                                         toRequestBody(
@@ -66,7 +66,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        put("/api/study-groups/" + expected.getId().toString())
+                        put("/study-groups/" + expected.getId().toString())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
                                         toRequestBody(
@@ -91,7 +91,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        post("/api/study-groups/" + expected.getId().toString() + "/like-count/add")
+                        post("/study-groups/" + expected.getId().toString() + "/like-count/add")
                                 .principal(loginUser)
                                 .contentType(MediaType.APPLICATION_JSON));
 
@@ -117,7 +117,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        post("/api/study-groups/"
+                        post("/study-groups/"
                                         + expected.getId().toString()
                                         + "/like-count/cancel")
                                 .principal(loginUser)
@@ -145,7 +145,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        post("/api/study-groups/" + expected.getId().toString() + "/finish")
+                        post("/study-groups/" + expected.getId().toString() + "/finish")
                                 .contentType(MediaType.APPLICATION_JSON));
 
         // then
@@ -170,7 +170,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        delete("/api/study-groups/" + expected.getId().toString())
+                        delete("/study-groups/" + expected.getId().toString())
                                 .contentType(MediaType.APPLICATION_JSON));
 
         // then
