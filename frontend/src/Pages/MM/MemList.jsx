@@ -155,96 +155,18 @@ function MemList() {
             </SortOption>
             <LineUp>
               <Scroll>
+                <MLList style={{ marginTop: '0rem' }} />
                 <MLList />
-
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp; 자바,
-                    코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp; 자바,
-                    코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
+                <MLList />
+                <MLList />
+                <MLList />
+                <MLList />
+                <MLList />
+                <MLList />
+                <MLList />
+                <MLList />
+                <MLList />
+                <MLList />
                 <List>
                   <MemListInput>
                     <Photo />

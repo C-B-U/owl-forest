@@ -7,7 +7,7 @@ const List = styled.div`
   width: 75rem;
   height: 3.5rem;
   border-radius: 3rem;
-  margin-top: rem;
+  margin-top: 0.7rem;
   padding-left: 1.5rem;
   display: flex;
   background-color: ${palette('PsLightBrown')};

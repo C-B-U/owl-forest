@@ -18,7 +18,6 @@ const MainWrap = styled.div`
   background-color: ${palette('PsCocoa', 0)};
   width: 100%;
   height: calc(100% - 4rem);
-  /* height: 100%; */
   padding-top: 3rem;
 `;
 
@@ -67,11 +66,9 @@ const WrapBookDetail = styled.div`
 const WrapBookReturn = styled.div`
   width: fit-content;
   height: fit-content;
-  /* height: 18rem; */
   padding: 2rem;
   background-color: ${palette('PsLightBrown', 0)};
   border-radius: 0.2rem;
-  /* margin-top: 1rem; */
 `;
 
 const WrapReturnAlert = styled.div`
@@ -79,19 +76,6 @@ const WrapReturnAlert = styled.div`
   margin-top: 1rem;
   vertical-align: middle;
 `;
-
-// const ReturnAlert = styled.div`
-//   margin-right: 1rem;
-//   margin-bottom: 1rem;
-//   width: 6rem;
-// `;
-
-// const KakaoURL = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 1rem;
-//   margin-bottom: 1rem;
-// `;
 
 const PickDate = styled(DatePicker)`
   width: 12rem;
@@ -119,20 +103,12 @@ const WrapRegButton = styled.div`
   float: right;
 `;
 
-// const Test = styled.div`
-//   width: 100vw;
-//   height: 200vh;
-//   background-color: black;
-// `;
-
 // ---------------- 팝업창 작업----------------
 
 const WrapPopupBackground = styled.div`
   position: absolute;
   width: 100vw;
   height: 100%;
-  /* height: calc(100% - 4rem); */
-  /* background-color: rgba(0, 0, 0, 0.5); */
   margin-top: -3rem;
   background-color: rgba(255, 255, 255, 0.4);
 `;
@@ -180,7 +156,6 @@ const WrapSearchIcon = styled.div`
 `;
 
 const WrapList = styled.div`
-  /* border: 1px solid black; */
   height: 15rem;
   width: fit-content;
   margin: 2rem auto;
@@ -222,14 +197,10 @@ const TitlePopup = styled.div`
   width: 15rem;
   white-space: normal;
   text-align: center;
-  /* border: 1px solid green; */
-  /* word-break: break-all; */
 `;
 const WriterPopup = styled.div`
   width: 12rem;
   white-space: normal;
-  /* word-break: break-all; */
-  /* border: 1px solid green; */
   margin-left: 1rem;
   text-align: center;
 `;
@@ -237,7 +208,6 @@ const PublisherPopup = styled.div`
   width: 10rem;
   white-space: normal;
   word-break: break-all;
-  /* border: 1px solid green; */
   margin-left: 1rem;
   text-align: center;
 `;
@@ -245,7 +215,6 @@ const ReleaseDate = styled.div`
   width: 8rem;
   white-space: normal;
   word-break: break-all;
-  /* border: 1px solid green; */
   margin-left: 1rem;
   text-align: center;
 `;
