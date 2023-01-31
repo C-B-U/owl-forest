@@ -45,7 +45,7 @@ spec:
                 secretKeyRef:
                   name: owl-forest-database-secret
                   key: database.schema
-        
+
             - name: REDIS_HOST
               valueFrom:
                 secretKeyRef:
@@ -92,3 +92,8 @@ spec:
                 secretKeyRef:
                   name: owl-forest-server-secret
                   key: client.url
+            - name: CLIENT_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: owl-forest-server-secret
+                  key: client.host

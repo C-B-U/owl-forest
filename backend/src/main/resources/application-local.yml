@@ -70,7 +70,8 @@ jwt:
   secret: asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
 
 client:
-  url: http://localhost:8080
+  url: http://localhost:3000
+  host: localhost
 
 national-library:
   key: f8073fe106514559df549dbadbecab35f4f01a7dbb60fd87665d37187d841fdd
