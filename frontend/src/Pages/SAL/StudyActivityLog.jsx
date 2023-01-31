@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
@@ -113,6 +114,14 @@ const BtnWrap = styled.div`
 `;
 
 function StudyActivityLog() {
+  const [profile, setProfile] = useState();
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}`).then((response) => {
+      setProfile(response.data);
+    });
+  }, []);
+
   return (
     <div>
       <ThemeProvider theme={theme}>
