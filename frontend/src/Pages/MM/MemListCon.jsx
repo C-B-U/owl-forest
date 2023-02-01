@@ -4,7 +4,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import MLProfileCon from '../../Components/MMList/MLProfileCon';
-import profileimg from '../../Image/cbu_circle.png';
 import Btn from '../../Components/Btn';
 import MLList from '../../Components/MMList/MLList';
 
@@ -47,16 +46,6 @@ const SearchBox = styled.input`
   margin-right: 1rem;
 `;
 
-const MemList = styled.div`
-  width: 75rem;
-  height: 3.5rem;
-  border-radius: 3rem;
-  margin-top: 0.8rem;
-  padding-left: 1.5rem;
-  display: flex;
-  background-color: ${palette('PsLightBrown')};
-  margin-left: 1.5rem;
-`;
 const MemListInput = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
@@ -77,20 +66,6 @@ const MemNav = styled.div`
 
 const Scroll = styled.div`
   overflow: auto;
-`;
-
-const SelcBox = styled.div`
-  width: 5rem;
-  height: 2rem;
-  background-color: ${palette('PsGreen')};
-  border-radius: 2rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  border: 0.5rem;
-  font-size: 12pt;
-  margin-top: 3rem;
-  font-weight: bolder;
-  margin-right: 0.4rem;
-  margin-left: 60rem;
 `;
 
 const SortOption = styled.div`
