@@ -17,7 +17,6 @@ const MainWrap = styled.div`
 const SecondWrap = styled.div`
   display: inline-block;
   overflow-x: hidden;
-  border: 1px black solid;
 `;
 
 const LineUp = styled.div`
@@ -61,7 +60,6 @@ const MemListInput = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
   display: flex;
-  align-items: center;
 `;
 const MemNav = styled.div`
   width: 75rem;
@@ -115,6 +113,24 @@ const SelectBox = styled.select`
   margin-left: 43.2rem;
 `;
 
+const PhotoInfo = styled.div``;
+
+const NameInfo = styled.div`
+  margin-left: 1.5rem;
+`;
+
+const MajorInfo = styled.div`
+  margin-left: 6rem;
+  text-align: left;
+`;
+
+const GradeInfo = styled.div`
+  margin-left: 9rem;
+`;
+const InterstinInfo = styled.div`
+  margin-left: 3rem;
+`;
+
 function MemList() {
   return (
     <div>
@@ -146,8 +162,11 @@ function MemList() {
             </SearchWrap>
             <MemNav>
               <MemListInput style={{ fontSize: '1.8rem' }}>
-                프사 &nbsp; 이름&emsp; 학과&emsp;&emsp;&emsp; 학년&emsp;
-                관심분야
+                <PhotoInfo>프사</PhotoInfo>
+                <NameInfo>이름</NameInfo>
+                <MajorInfo>학과</MajorInfo>
+                <GradeInfo>학년</GradeInfo>
+                <InterstinInfo>관심분야</InterstinInfo>
               </MemListInput>
             </MemNav>
             <SortOption>
@@ -156,25 +175,6 @@ function MemList() {
             <LineUp>
               <Scroll>
                 <MLList style={{ marginTop: '0rem' }} />
-                <MLList />
-                <MLList />
-                <MLList />
-                <MLList />
-                <MLList />
-                <MLList />
-                <MLList />
-                <MLList />
-                <MLList />
-                <MLList />
-                <MLList />
-                <List>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </List>
               </Scroll>
             </LineUp>
           </SecondWrap>

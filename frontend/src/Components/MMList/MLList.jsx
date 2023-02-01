@@ -30,22 +30,44 @@ const Photo = styled.div`
   background-size: 3.5rem;
   background-repeat: no-repeat;
 `;
-const name = ['부엉1', '부엉2', '부엉3'];
-const major = ['컴공', '소공', '경영'];
-const grade = ['1학년', '2학년', '3학년'];
 
+const NameInfo = styled.div`
+  margin-left: 2.5rem;
+`;
+
+const MajorInfo = styled.div`
+  margin-left: 3rem;
+  width: 11rem;
+  text-align: left;
+`;
+
+const GradeInfo = styled.div`
+  margin-left: 5rem;
+`;
 function MLList() {
-  return (
+  const users = [
+    { name: '부엉1', major: '컴퓨터공학과', grade: '1학년' },
+    { name: '부엉2', major: '메카트로닉스공학과', grade: '3학년' },
+    { name: '부엉3', major: '경영학과', grade: '4학년' },
+    { name: '부엉4', major: '디자인학부', grade: '5학년' },
+    { name: '부엉5', major: '컴퓨터공학과', grade: '2학년' },
+    { name: '부엉6', major: '전자공학과', grade: '3학년' },
+    { name: '부엉7', major: '기계공학과', grade: '1학년' },
+  ];
+
+  const list = users.map((v) => (
     <div>
       <List>
         <MemListInput>
           <Photo />
-          &emsp;&nbsp;&nbsp;
-          {name[0]}&emsp; {major[0]} &emsp;&nbsp;&nbsp;
-          {grade[0]} &emsp;&emsp; 자바, 코틀린 등
+          <NameInfo>{v.name}</NameInfo>
+          <MajorInfo>{v.major}</MajorInfo>
+          <GradeInfo>{v.grade}</GradeInfo>
         </MemListInput>
       </List>
     </div>
-  );
+  ));
+
+  return <div>{list}</div>;
 }
 export default MLList;
