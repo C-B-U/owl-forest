@@ -4,7 +4,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import MLProfileCon from '../../Components/MMList/MLProfileCon';
-import Btn from '../../Components/Btn';
 import MLList from '../../Components/MMList/MLList';
 
 // 가로 정렬
@@ -29,6 +28,7 @@ const LineUp = styled.div`
 const SearchWrap = styled.div`
   display: flex;
   white-space: wrap;
+  margin-left: 16rem;
 `;
 
 const SearchBox = styled.input`
@@ -120,20 +120,6 @@ function MemListCon() {
 
           <SecondWrap>
             <SearchWrap>
-              <Btn
-                width='15rem'
-                height='2.8rem'
-                background={palette('PsGreen')}
-                borderStyle='none'
-                borderRadius='3rem'
-                fontSize='12pt'
-                fontWeight='bolder'
-                marginTop='2rem'
-                marginLeft='1.7rem'
-                hoverBackgroundColor='#7ebe57'
-                transition='0.3s'
-                name='마이 페이지'
-              />
               <SelectBox name='generation'>
                 <option value='none'> 이름 </option>
                 <option value='1기'>학과</option>
