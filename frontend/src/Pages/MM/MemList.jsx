@@ -4,7 +4,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import MLProfile from '../../Components/MMList/MLProfile';
-import profileimg from '../../Image/cbu_circle.png';
 import Btn from '../../Components/Btn';
 import MLList from '../../Components/MMList/MLList';
 
@@ -23,6 +22,7 @@ const LineUp = styled.div`
   width: 100vw;
   height: 75.5vh;
   overflow: auto;
+  margin-top: -0.5rem;
 `;
 
 // 마이페이지, 검색의 가로 정렬을 위해 사용
@@ -46,16 +46,6 @@ const SearchBox = styled.input`
   margin-right: 1rem;
 `;
 
-const List = styled.div`
-  width: 75rem;
-  height: 3.5rem;
-  border-radius: 3rem;
-  margin-top: 0.8rem;
-  padding-left: 1.5rem;
-  display: flex;
-  background-color: ${palette('PsLightBrown')};
-  margin-left: 1.5rem;
-`;
 const MemListInput = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
@@ -83,16 +73,6 @@ const SortOption = styled.div`
   margin-bottom: 0rem;
   margin-left: 67rem;
   position: absolute;
-`;
-const Photo = styled.div`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 100%;
-  background-color: rgba(217, 217, 217, 1);
-  background-image: url(${profileimg});
-  background-position: center;
-  background-size: 3.5rem;
-  background-repeat: no-repeat;
 `;
 
 const SelectBox = styled.select`
@@ -174,7 +154,7 @@ function MemList() {
             </SortOption>
             <LineUp>
               <Scroll>
-                <MLList style={{ marginTop: '0rem' }} />
+                <MLList />
               </Scroll>
             </LineUp>
           </SecondWrap>
