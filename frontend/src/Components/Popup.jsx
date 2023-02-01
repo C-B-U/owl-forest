@@ -32,13 +32,12 @@ export default function Popup() {
       <Title>{title}</Title>
       <Message>{message}</Message>
       <Buttons>
-        <Btn 
+        <Btn
           color='white'
           background='blue'
           width='5rem'
           height='3rem'
           name='확인'
-          
         />
         <Btn
           color='white'

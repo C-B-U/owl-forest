@@ -22,6 +22,7 @@ export default function Input({
   margin,
   placeholder,
   fontSize,
+  onChange,
 }) {
   return (
     <div>
@@ -31,6 +32,7 @@ export default function Input({
         margin={margin}
         placeholder={placeholder}
         fontSize={fontSize}
+        onChange={onChange}
       />
     </div>
   );
