@@ -1,14 +1,14 @@
 package com.cbu.backend.authaccount.command.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Lob;
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
-@Setter
 @Builder
 @Embeddable
 @NoArgsConstructor
@@ -29,5 +29,13 @@ public class MemberPublicInfo {
 
     private String email;
 
-    @Lob private String introduction;
+    private Integer grade;
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "member_interest",
+            joinColumns = @JoinColumn(name = "member_id"))
+    private List<MemberInterest> interests;
+
+    @Lob
+    private String introduction;
 }
