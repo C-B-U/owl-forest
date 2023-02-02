@@ -22,7 +22,7 @@ public class BookReviewCommentService {
                 BookReviewComment.builder()
                         .id(new BookReviewCommentNo())
                         .writer(req.getWriter())
-                        .bookReviewId(new BookReviewNo(req.getBookReviewId()))
+                        .bookReview(new BookReviewNo(req.getBookReviewId()))
                         .content(req.getContent());
         Optional.ofNullable(req.getParentId())
                 .ifPresent(pi -> commentBuilder.parent(new BookReviewCommentNo(req.getParentId())));

@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class BookReview {
     @EmbeddedId private BookReviewNo id;
 
-    @Column(nullable = false)
+    @Column(name="writer_id", nullable = false)
     private AccountNo writer;
 
     @Column(nullable = false)

@@ -3,16 +3,12 @@ package com.cbu.backend.bookreviewcomment.command.domain;
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.bookreview.command.domain.BookReviewNo;
 import com.cbu.backend.global.BaseTime;
-
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
+import javax.persistence.*;
 
 @Getter
 @Entity
@@ -23,10 +19,11 @@ public class BookReviewComment {
     @Column(nullable = false)
     private AccountNo writer;
 
+    @AttributeOverride(name = "id", column = @Column(name = "parent_id", nullable = false))
     private BookReviewCommentNo parent;
 
     @Column(nullable = false)
-    private BookReviewNo bookReviewId;
+    private BookReviewNo bookReview;
 
     @Lob
     @Column(nullable = false)
@@ -40,12 +37,12 @@ public class BookReviewComment {
             BookReviewCommentNo id,
             AccountNo writer,
             BookReviewCommentNo parent,
-            BookReviewNo bookReviewId,
+            BookReviewNo bookReview,
             String content) {
         this.id = id;
         this.writer = writer;
         this.parent = parent;
-        this.bookReviewId = bookReviewId;
+        this.bookReview = bookReview;
         this.content = content;
         this.baseTime = new BaseTime();
     }
