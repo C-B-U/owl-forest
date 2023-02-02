@@ -1,6 +1,7 @@
 package com.cbu.backend.bookreview.query.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
+
 import lombok.Getter;
 
 import java.util.UUID;

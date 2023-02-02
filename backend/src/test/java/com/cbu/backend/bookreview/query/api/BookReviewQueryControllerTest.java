@@ -1,11 +1,23 @@
 package com.cbu.backend.bookreview.query.api;
 
+import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentRequest;
+import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentResponse;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.cbu.backend.bookreview.query.dto.BookReviewResponse;
 import com.cbu.backend.bookreview.query.dto.BookReviewSummaryResponse;
 import com.cbu.backend.bookreview.query.infra.BookReviewDao;
 import com.cbu.backend.support.docs.RestDocumentTest;
 import com.cbu.backend.support.fixture.bookreview.dto.BookReviewResponseFixture;
 import com.cbu.backend.support.fixture.bookreview.dto.BookReviewSummaryResponseFixture;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -15,16 +27,6 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
 import java.util.Optional;
-
-import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentRequest;
-import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentResponse;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BookReviewQueryController.class)
 @DisplayName("BookReviewQueryContreller 에서")
@@ -127,21 +129,17 @@ class BookReviewQueryControllerTest extends RestDocumentTest {
             BookReviewResponse expected = BookReviewResponseFixture.SAMPLE1.getBookReviewResponse();
             given(bookReviewDao.findResponseById(any())).willReturn(Optional.of(expected));
             // when
-            ResultActions perform =
-                    mockMvc.perform(get("/book-reviews/{id}", expected.getId()));
+            ResultActions perform = mockMvc.perform(get("/book-reviews/{id}", expected.getId()));
             // then
             perform.andExpect(status().isOk())
                     .andExpect(jsonPath("$.id").value(expected.getId().toString()))
                     .andExpect(
-                            jsonPath("$.writer.id")
-                                    .value(expected.getWriter().getId().toString()))
+                            jsonPath("$.writer.id").value(expected.getWriter().getId().toString()))
                     .andExpect(
                             jsonPath("$.writer.nickname").value(expected.getWriter().getNickname()))
                     .andExpect(jsonPath("$.title").value(expected.getTitle()))
                     .andExpect(jsonPath("$.content").value(expected.getContent()))
-                    .andExpect(
-                            jsonPath("$.book.id")
-                                    .value(expected.getBook().getId().toString()))
+                    .andExpect(jsonPath("$.book.id").value(expected.getBook().getId().toString()))
                     .andExpect(jsonPath("$.book.title").value(expected.getBook().getTitle()))
                     .andExpect(jsonPath("$.book.author").value(expected.getBook().getAuthor()))
                     .andExpect(

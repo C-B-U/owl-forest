@@ -5,10 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
 @EqualsAndHashCode
 @Getter
@@ -25,5 +26,4 @@ public class BookReviewCommentNo implements Serializable {
     public BookReviewCommentNo() {
         id = UUID.randomUUID();
     }
-
 }

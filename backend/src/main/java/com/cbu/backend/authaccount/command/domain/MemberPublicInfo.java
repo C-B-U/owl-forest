@@ -5,8 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.*;
 
 @Getter
 @Builder
@@ -32,10 +33,8 @@ public class MemberPublicInfo {
     private Integer grade;
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "member_interest",
-            joinColumns = @JoinColumn(name = "member_id"))
+    @CollectionTable(name = "member_interest", joinColumns = @JoinColumn(name = "member_id"))
     private List<MemberInterest> interests;
 
-    @Lob
-    private String introduction;
+    @Lob private String introduction;
 }

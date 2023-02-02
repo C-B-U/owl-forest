@@ -12,6 +12,5 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberInterest {
-    @Column
-    private String value;
+    @Column private String value;
 }
