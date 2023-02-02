@@ -114,10 +114,14 @@ const BtnWrap = styled.div`
 `;
 
 function StudyActivityLog() {
-  const [profile, setProfile] = useState();
+  const baseurl = process.env.REACT_APP_BASE_URL;
+  const [profile, setProfile] = useState(); /** 프로필 */
+  const [boxInput, setBoxInput] = useState([]); /** 스터디 요약 */
+  const [like, setLike] = useState(); /** 좋아요 */
+  const [sort, setSort] = useState([]); /** 항목별 정렬 */
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}`).then((response) => {
+    axios.get(`${baseurl}`).then((response) => {
       setProfile(response.data);
     });
   }, []);
