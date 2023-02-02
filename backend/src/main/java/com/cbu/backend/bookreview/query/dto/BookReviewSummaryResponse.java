@@ -1,15 +1,14 @@
 package com.cbu.backend.bookreview.query.dto;
 
-import com.cbu.backend.bookreview.command.domain.BookReviewNo;
 import com.querydsl.core.annotations.QueryProjection;
-
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 public class BookReviewSummaryResponse {
-    private BookReviewNo id;
+    private UUID id;
     private Writer writer;
     private String title;
     private BookSummary book;
@@ -20,7 +19,7 @@ public class BookReviewSummaryResponse {
 
     @QueryProjection
     public BookReviewSummaryResponse(
-            BookReviewNo id,
+            UUID id,
             Writer writer,
             String title,
             BookSummary book,

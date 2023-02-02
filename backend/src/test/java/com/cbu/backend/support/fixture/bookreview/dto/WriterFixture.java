@@ -15,6 +15,6 @@ public enum WriterFixture {
     }
 
     public Writer toWriter() {
-        return new Writer(this.id, this.nickname);
+        return new Writer(this.id.getId(), this.nickname);
     }
 }

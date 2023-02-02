@@ -56,3 +56,4 @@ jwt:
 
 client:
   url: http://localhost:3000
+  host: localhost

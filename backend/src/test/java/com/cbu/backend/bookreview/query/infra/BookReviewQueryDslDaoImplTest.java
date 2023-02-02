@@ -1,7 +1,5 @@
 package com.cbu.backend.bookreview.query.infra;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 import com.cbu.backend.authaccount.command.domain.AuthAccount;
 import com.cbu.backend.book.command.domain.Book;
 import com.cbu.backend.bookreview.command.domain.BookReview;
@@ -12,7 +10,6 @@ import com.cbu.backend.support.database.EnableDataBaseTest;
 import com.cbu.backend.support.fixture.book.entity.BookFixture;
 import com.cbu.backend.support.fixture.member.entity.AuthAccountFixture;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -20,10 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @EnableDataBaseTest
 @DisplayName("BookReviewQueryDslDaoImpl 클래스의")
@@ -63,8 +61,8 @@ class BookReviewQueryDslDaoImplTest {
             assertThat(result).isPresent();
             assertThat(bookReviewResponse.getTitle()).isEqualTo(bookReview.getTitle());
             assertThat(bookReviewResponse.getContent()).isEqualTo(bookReview.getContent());
-            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(bookReview.getBookId());
-            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(book.getId());
+            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(bookReview.getBookId().getId());
+            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(book.getId().getId());
             assertThat(bookReviewResponse.getBook().getImageUrl()).isEqualTo(book.getImageUrl());
         }
     }
