@@ -22,6 +22,8 @@ const ListWrap = styled.div`
 `;
 const WrapButton = styled.div`
   float: right;
+  /* border: 1px solid black; */
+  /* margin-bottom: 1rem; */
 `;
 const WrapSearchbar = styled.div`
   margin-left: 300px;
@@ -29,12 +31,18 @@ const WrapSearchbar = styled.div`
 `;
 
 const Wrap = styled.div`
-  margin-top: 60px;
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
   display: grid;
+  width: 100%;
+  /* margin-top: 100px; */
+  padding: 1rem;
+  /* border: 1px solid black; */
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  width: 100%;
-  max-height: 80vh;
+  max-height: 75vh;
+  /* min-height: 60vh; */
   overflow: auto;
   &::-webkit-scrollbar {
     width: 8px;
@@ -59,6 +67,7 @@ const BorrowButtons = styled.div`
 `;
 const WrapContent = styled.div`
   box-sizing: border-box;
+  margin-bottom: 1rem;
   /* padding: 1rem; */
   display: flex;
   justify-content: center;
@@ -67,8 +76,7 @@ const WrapContent = styled.div`
 `;
 const WrapInfo = styled.div`
   /* float: left; */
-  float: left;
-  /* border: 1px solid black; */
+  text-align: left;
   margin-left: 1rem;
   width: 9rem;
 `;
@@ -80,21 +88,15 @@ const BookImage = styled.div`
 
 const BookName = styled.div`
   width: 100%;
-  text-align: left;
   font-size: 1rem;
-  /* border: 1px solid black; */
 `; // 책 이름
 
 const BookInfos = styled.div`
-  text-align: left;
-  /* border: 1px solid black; */
   margin-top: 0.5rem;
 `; // 책정보 저자 | 출판사
 
 const WrapStarScore = styled.div`
   width: 100%;
-  /* float: left; */
-  /* border: 1px solid black; */
   padding: 0.5rem 0rem;
   display: flex;
   flex-direction: column;
@@ -102,23 +104,14 @@ const WrapStarScore = styled.div`
 
 const StarScore = styled.div`
   width: 3rem;
-  text-align: left;
-  /* border: 1px solid black; */
-  /* margin-right: 1rem; */
   margin-top: 0.5rem;
-
-  /* margin-bottom: 1rem; */
 `;
 
 const Deadline = styled.div`
   margin: 0.5rem 0rem;
-  text-align: left;
-  /* border: 1px solid black; */
 `; // 마감일
 
 const BorrowDate = styled.div`
-  text-align: left;
-  /* border: 1px solid black; */
   margin-bottom: 1rem;
 `; // 대여일
 
