@@ -115,7 +115,7 @@ const BtnWrap = styled.div`
 
 function StudyActivityLog() {
   const baseurl = process.env.REACT_APP_BASE_URL;
-  const [profile, setProfile] = useState(); /** 프로필 */
+  const [profile, setProfile] = useState();
   const [boxInput, setBoxInput] = useState([]);
   const [like, setLike] = useState();
   const [sort, setSort] = useState([]);
