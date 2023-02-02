@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { palette } from 'styled-tools';
 import profileimg from '../../Image/cbu_circle.png';
 
@@ -44,16 +45,14 @@ const MajorInfo = styled.div`
 const GradeInfo = styled.div`
   margin-left: 5rem;
 `;
+
 function MLList() {
-  const users = [
-    { name: '부엉1', major: '컴퓨터공학과', grade: '1학년' },
-    { name: '부엉2', major: '메카트로닉스공학과', grade: '3학년' },
-    { name: '부엉3', major: '경영학과', grade: '4학년' },
-    { name: '부엉4', major: '디자인학부', grade: '5학년' },
-    { name: '부엉5', major: '컴퓨터공학과', grade: '2학년' },
-    { name: '부엉6', major: '전자공학과', grade: '3학년' },
-    { name: '부엉7', major: '기계공학과', grade: '1학년' },
-  ];
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    axios.get('/api/users').then((response) => {
+      setUsers(response.data);
+    });
+  }, []);
 
   const list = users.map((v) => (
     <div>
