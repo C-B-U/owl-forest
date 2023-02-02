@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
@@ -112,6 +113,28 @@ const InputIcon = styled.div`
   color: ${(props) => (props.color ? props.color : '#000000')};
 `;
 function StudyCreation() {
+  const baseurl = process.env.REACT_APP_BASE_URL;
+  const [name, setName] = useState();
+  const [activity, setActivity] = useState();
+  const [leader, setLeader] = useState();
+  const [member, setMember] = useState([]);
+
+  useEffect(() => {
+    axios
+      .post(`${baseurl}`, {
+        name,
+        activity,
+        leader,
+        member,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <Header />

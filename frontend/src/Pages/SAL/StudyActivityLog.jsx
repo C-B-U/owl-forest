@@ -116,9 +116,9 @@ const BtnWrap = styled.div`
 function StudyActivityLog() {
   const baseurl = process.env.REACT_APP_BASE_URL;
   const [profile, setProfile] = useState(); /** 프로필 */
-  const [boxInput, setBoxInput] = useState([]); /** 스터디 요약 */
-  const [like, setLike] = useState(); /** 좋아요 */
-  const [sort, setSort] = useState([]); /** 항목별 정렬 */
+  const [boxInput, setBoxInput] = useState([]);
+  const [like, setLike] = useState();
+  const [sort, setSort] = useState([]);
 
   useEffect(() => {
     axios.get(`${baseurl}`).then((response) => {
