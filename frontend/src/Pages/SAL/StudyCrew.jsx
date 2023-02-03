@@ -64,7 +64,6 @@ const Scroll = styled.div`
     background: white;
     width: 7px;
   }
-
   &::-webkit-scrollbar-thumb {
     background: ${palette('PsCocoa', 0)};
   }

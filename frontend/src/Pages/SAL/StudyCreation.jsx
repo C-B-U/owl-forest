@@ -18,12 +18,9 @@ const ContextWrap = styled.div`
   background-color: ${palette('PsLightBrown')};
   border-radius: 10px;
   padding: 3rem 2rem;
-
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
-
   align-items: flex-end;
 `;
 
@@ -41,7 +38,6 @@ const HeaderTitle = styled.header`
 const RightMainWrap = styled.div`
   margin: 3rem 0px;
   width: 100%;
-
   margin-right: 5rem;
 `;
 
@@ -50,31 +46,30 @@ const BtnWrap = styled.div`
   margin-top: 0.5rem;
   margin-left: auto;
 `;
+
 const InputTitle = styled.div`
   font-size: 20px;
   font-weight: 500;
   margin-top: 0.8rem;
   margin-right: 1rem;
-
   width: 6rem;
   text-align: end;
 `;
+
 const InputWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
-
   margin: 0.8rem 0;
 `;
+
 const Center = styled.div`
   margin: 0 auto;
 `;
 
 const InputMemberWrapper = styled.div`
   width: 636.8px;
-
   display: flex;
-
   & > div:nth-child(1) {
     margin-right: 0.4rem;
   }
@@ -83,15 +78,12 @@ const InputMemberWrapper = styled.div`
 const ScorllWrapper = styled.div`
   width: 100%;
   height: 270px;
-
   margin-right: -7px;
   overflow-y: auto;
-
   &::-webkit-scrollbar {
     background: white;
     width: 7px;
   }
-
   &::-webkit-scrollbar-thumb {
     background: ${palette('PsCocoa', 0)};
   }
@@ -99,22 +91,21 @@ const ScorllWrapper = styled.div`
     margin-top: 0px;
   }
 `;
+
 const InputIcon = styled.div`
   font-size: 36px;
   font-weight: bold;
-
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
-
   padding-bottom: 0.5rem;
-
   color: ${(props) => (props.color ? props.color : '#000000')};
 `;
+
 function StudyCreation() {
   const baseurl = process.env.REACT_APP_BASE_URL;
-  const [name, setName] = useState();
+  const [title, setTitle] = useState();
   const [activity, setActivity] = useState();
   const [leader, setLeader] = useState();
   const [member, setMember] = useState([]);
@@ -122,7 +113,7 @@ function StudyCreation() {
   useEffect(() => {
     axios
       .post(`${baseurl}`, {
-        name,
+        title,
         activity,
         leader,
         member,
