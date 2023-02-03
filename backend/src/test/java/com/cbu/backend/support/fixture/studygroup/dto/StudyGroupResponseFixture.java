@@ -41,7 +41,10 @@ public enum StudyGroupResponseFixture {
     private StudyMemberInfo studyLeader;
     private List<StudyMemberInfo> participants;
 
-    StudyGroupResponseFixture(StudyGroupInfo studyGroupInfo, StudyMemberInfo studyLeader, List<StudyMemberInfo> participants) {
+    StudyGroupResponseFixture(
+            StudyGroupInfo studyGroupInfo,
+            StudyMemberInfo studyLeader,
+            List<StudyMemberInfo> participants) {
         this.studyGroupInfo = studyGroupInfo;
         this.studyLeader = studyLeader;
         this.participants = participants;

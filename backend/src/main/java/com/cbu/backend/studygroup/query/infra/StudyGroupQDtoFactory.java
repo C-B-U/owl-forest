@@ -19,7 +19,8 @@ public class StudyGroupQDtoFactory {
 
     @Bean
     public QStudyMemberInfo qStudyLeaderInfo() {
-        return new QStudyMemberInfo(studyGroup.studyGroupMember.leaderId.id, authAccount.memberInfo.name);
+        return new QStudyMemberInfo(
+                studyGroup.studyGroupMember.leaderId.id, authAccount.memberInfo.name);
     }
 
     @Bean

@@ -24,7 +24,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
-import java.util.Optional;
 
 @WebMvcTest(StudyGroupQueryController.class)
 class StudyGroupQueryControllerTest extends RestDocumentTest {

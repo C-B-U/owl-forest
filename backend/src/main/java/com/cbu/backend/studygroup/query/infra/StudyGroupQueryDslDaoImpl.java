@@ -37,49 +37,70 @@ public class StudyGroupQueryDslDaoImpl implements StudyGroupQueryDslDao {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .orderBy(studyGroupOrderConverter.convert(pageable.getSort()))
-                .transform(groupBy(studyGroup)
-                        .list(Projections.constructor(
-                                StudyGroupResponse.class,
-                                qDtoFactory.qStudyGroupInfo(),
-                                qDtoFactory.qStudyLeaderInfo(),
-                                list(qDtoFactory.qStudyMemberInfo()))));
+                .transform(
+                        groupBy(studyGroup)
+                                .list(
+                                        Projections.constructor(
+                                                StudyGroupResponse.class,
+                                                qDtoFactory.qStudyGroupInfo(),
+                                                qDtoFactory.qStudyLeaderInfo(),
+                                                list(qDtoFactory.qStudyMemberInfo()))));
     }
 
     @Override
     public StudyGroupResponse findResponseById(StudyGroupNo id) {
-        StudyGroupInfo studyResult = jpaQueryFactory
-                .select(qDtoFactory.qStudyGroupInfo())
-                .from(studyGroup)
-                .where(studyGroup.id.eq(id))
-                .fetchFirst();
+        StudyGroupInfo studyResult =
+                jpaQueryFactory
+                        .select(qDtoFactory.qStudyGroupInfo())
+                        .from(studyGroup)
+                        .where(studyGroup.id.eq(id))
+                        .fetchFirst();
 
-        StudyMemberInfo leader = jpaQueryFactory
-                .select(qDtoFactory.qStudyLeaderInfo())
-                .from(studyGroup, authAccount)
-                .leftJoin(authAccount)
-                .on(authAccount.id.eq(studyGroup.studyGroupMember.leaderId))
-                .where(studyGroup.id.eq(id))
-                .fetchFirst();
+        StudyMemberInfo leader =
+                jpaQueryFactory
+                        .select(qDtoFactory.qStudyLeaderInfo())
+                        .from(studyGroup, authAccount)
+                        .leftJoin(authAccount)
+                        .on(authAccount.id.eq(studyGroup.studyGroupMember.leaderId))
+                        .where(studyGroup.id.eq(id))
+                        .fetchFirst();
 
-        StudyMemberInfo leader1 = jpaQueryFactory
-                .select(qDtoFactory.qStudyLeaderInfo())
-                .from(studyGroup, authAccount)
-                .where(studyGroup.id.eq(id).and(authAccount.id.eq(studyGroup.studyGroupMember.leaderId)))
-                .fetchFirst();
+        StudyMemberInfo leader1 =
+                jpaQueryFactory
+                        .select(qDtoFactory.qStudyLeaderInfo())
+                        .from(studyGroup, authAccount)
+                        .where(
+                                studyGroup
+                                        .id
+                                        .eq(id)
+                                        .and(
+                                                authAccount.id.eq(
+                                                        studyGroup.studyGroupMember.leaderId)))
+                        .fetchFirst();
 
-        List<StudyMemberInfo> memberResult = jpaQueryFactory
-                .select(qDtoFactory.qStudyMemberInfo())
-                .from(studyGroup, authAccount)
-                .where(studyGroup.id.eq(id).and(authAccount.id.in(studyGroup.studyGroupMember.participantIds)))
-                .fetch();
+        List<StudyMemberInfo> memberResult =
+                jpaQueryFactory
+                        .select(qDtoFactory.qStudyMemberInfo())
+                        .from(studyGroup, authAccount)
+                        .where(
+                                studyGroup
+                                        .id
+                                        .eq(id)
+                                        .and(
+                                                authAccount.id.in(
+                                                        studyGroup
+                                                                .studyGroupMember
+                                                                .participantIds)))
+                        .fetch();
 
-        List<StudyMemberInfo> memberResult1 = jpaQueryFactory
-                .select(qDtoFactory.qStudyMemberInfo())
-                .from(studyGroup, authAccount)
-                .leftJoin(authAccount)
-                .on(authAccount.id.in(studyGroup.studyGroupMember.participantIds))
-                .where(studyGroup.id.eq(id))
-                .fetch();
+        List<StudyMemberInfo> memberResult1 =
+                jpaQueryFactory
+                        .select(qDtoFactory.qStudyMemberInfo())
+                        .from(studyGroup, authAccount)
+                        .leftJoin(authAccount)
+                        .on(authAccount.id.in(studyGroup.studyGroupMember.participantIds))
+                        .where(studyGroup.id.eq(id))
+                        .fetch();
 
         return new StudyGroupResponse(studyResult, leader, memberResult);
     }
