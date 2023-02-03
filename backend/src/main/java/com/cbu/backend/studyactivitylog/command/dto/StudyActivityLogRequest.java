@@ -31,6 +31,7 @@ public class StudyActivityLogRequest {
         return StudyActivityLog.builder()
                 .title(title)
                 .description(description)
+                .assignment(assignment)
                 .week(week)
                 .place(place)
                 .studyParticipants(studyParticipants)

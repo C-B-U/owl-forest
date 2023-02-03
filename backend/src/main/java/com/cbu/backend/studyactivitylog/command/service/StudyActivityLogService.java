@@ -22,12 +22,12 @@ public class StudyActivityLogService {
 
     public StudyActivityLogNo saveStudyActivityLog(
             StudyActivityLogRequest studyActivityLogRequest) {
-        isValidRequest(studyActivityLogRequest);
+        checkValidRequest(studyActivityLogRequest);
         return studyActivityLogRepository.save(studyActivityLogRequest.toEntity()).getId();
     }
 
     public void updateStudyActivityLog(StudyActivityLogNo id, StudyActivityLogRequest request) {
-        isValidRequest(request);
+        checkValidRequest(request);
         getEntity(id)
                 .update(
                         request.getTitle(),
@@ -43,7 +43,7 @@ public class StudyActivityLogService {
         getEntity(id).delete();
     }
 
-    private void isValidRequest(StudyActivityLogRequest request) {
+    private void checkValidRequest(StudyActivityLogRequest request) {
         checkStudyTime(request);
         checkParticipantDuplicated(request.getStudyParticipants());
     }
