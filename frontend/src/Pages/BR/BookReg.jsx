@@ -25,7 +25,7 @@ const MainWrap = styled.div`
 const Wrap = styled.div`
   width: fit-content;
   height: fit-content;
-  margin: 5rem auto;
+  margin: 3rem auto;
   background-color: ${palette('PsCocoa', 1)};
   padding: 3rem;
   text-align: left;
@@ -250,16 +250,6 @@ function BookReg() {
   // api 값 저장
   const [getBook, setGetBook] = useState([]);
 
-  useEffect(() => {
-    console.log('cors policy 그만 뜨면 좋겠다.');
-    axios
-      .get(`${process.env.REACT_APP_BASE_URL}/book-reviews`)
-      .then((response) => {
-        setGetBook(response);
-      });
-  }, []);
-  console.log('가져온거 : ', getBook);
-
   // 팝업 열기
   const openPopup = () => {
     console.log('open');
@@ -274,12 +264,27 @@ function BookReg() {
 
   const SearchBook = () => {
     console.log('클릭', bookTitle);
-    if (bookTitle === undefined) {
+    if (!bookTitle) {
       alert('제목을 입력해 주세요.');
     } else {
-      const title = { title: bookTitle };
+      // const data = {
+      //   keyword: bookTitle,
+      //   page: 1,
+      //   pageSize: 10,
+      // };
+      // console.log('data : ', data);
       axios
-        .post(`http://223.255.205.62:30505/api/externalbooks`, title)
+        .get(
+          `${process.env.REACT_APP_BASE_URL}/externalbooks`,
+          {
+            params: {
+              keyword: bookTitle,
+              page: 1,
+              pageSize: 10,
+            },
+          },
+          { withCredentials: true }
+        )
         .then((response) => {
           console.log(response);
         })
@@ -301,7 +306,7 @@ function BookReg() {
           {/* 
               ---------------- 팝업창 작업----------------
           */}
-          {/* <BlindDatePicker style={{ display: isShown ? 'block' : 'none' }} /> */}
+
           <WrapPopupBackground style={{ display: isShown ? 'block' : 'none' }}>
             <WrapPopup>
               <WrapCloseButton>
@@ -318,7 +323,7 @@ function BookReg() {
                 <Input
                   width='36rem'
                   height='3.2rem'
-                  placeholder='도서 제목을 적어주세요.'
+                  placeholder='키워드를 적어주세요.'
                   fontSize='1.2rem'
                   onChange={onChange}
                 />
