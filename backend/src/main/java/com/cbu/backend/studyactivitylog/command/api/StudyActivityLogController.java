@@ -32,8 +32,7 @@ public class StudyActivityLogController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStudyActivityLog(
-            @PathVariable StudyActivityLogNo id) {
+    public ResponseEntity<Void> deleteStudyActivityLog(@PathVariable StudyActivityLogNo id) {
         studyActivityLogService.deleteStudyActivityLog(id);
         return ResponseEntity.ok().build();
     }

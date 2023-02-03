@@ -61,10 +61,14 @@ public class StudyActivityLog {
         this.baseTime = new BaseTime();
     }
 
-    public void update(String title, String description,
-                       String assignment, Integer week,
-                       String place, List<AccountNo> studyParticipants,
-                       StudyTime studyTime) {
+    public void update(
+            String title,
+            String description,
+            String assignment,
+            Integer week,
+            String place,
+            List<AccountNo> studyParticipants,
+            StudyTime studyTime) {
         this.title = title;
         this.description = description;
         this.assignment = assignment;

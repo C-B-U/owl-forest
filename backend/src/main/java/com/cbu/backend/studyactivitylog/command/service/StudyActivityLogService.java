@@ -10,8 +10,9 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -27,9 +28,15 @@ public class StudyActivityLogService {
 
     public void updateStudyActivityLog(StudyActivityLogNo id, StudyActivityLogRequest request) {
         isValidRequest(request);
-        getEntity(id).update(request.getTitle(), request.getDescription(),
-                request.getAssignment(), request.getWeek(), request.getPlace(),
-                request.getStudyParticipants(), request.getStudyTime());
+        getEntity(id)
+                .update(
+                        request.getTitle(),
+                        request.getDescription(),
+                        request.getAssignment(),
+                        request.getWeek(),
+                        request.getPlace(),
+                        request.getStudyParticipants(),
+                        request.getStudyTime());
     }
 
     public void deleteStudyActivityLog(StudyActivityLogNo id) {
@@ -56,7 +63,6 @@ public class StudyActivityLogService {
     }
 
     private StudyActivityLog getEntity(StudyActivityLogNo id) {
-        return studyActivityLogRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+        return studyActivityLogRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }
