@@ -13,11 +13,11 @@ public enum AuthAccountFixture {
     SAMPLE2(
             new AccountNo(),
             new Member("심청", "나나나", new MemberPublicInfo(), new MemberPrivacy()),
-            "12345"),
+            "123456"),
     SAMPLE3(
             new AccountNo(),
             new Member("하하", "바사바사", new MemberPublicInfo(), new MemberPrivacy()),
-            "12345");
+            "1234567");
     private final AccountNo id;
 
     private List<Role> role = new ArrayList<>(List.of(Role.ROLE_USER));

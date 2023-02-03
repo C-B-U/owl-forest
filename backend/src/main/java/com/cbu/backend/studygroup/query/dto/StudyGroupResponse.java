@@ -1,28 +1,21 @@
 package com.cbu.backend.studygroup.query.dto;
 
-import com.cbu.backend.studygroup.command.domain.*;
+import lombok.Getter;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import java.util.List;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
 public class StudyGroupResponse {
-    private StudyGroupNo id;
-    private String name;
-    private String description;
-    private LikeCount likeCount;
-    private StudyGroupStatus studyGroupStatus;
-    private StudyGroupMember studyGroupMember;
+    private StudyGroupInfo studyGroupInfo;
+    private StudyMemberInfo studyLeader;
+    private List<StudyMemberInfo> participants;
 
-    public StudyGroupResponse(StudyGroup studyGroup) {
-        this.id = studyGroup.getId();
-        this.name = studyGroup.getName();
-        this.description = studyGroup.getDescription();
-        this.likeCount = studyGroup.getLikeCount();
-        this.studyGroupStatus = studyGroup.getStudyGroupStatus();
-        this.studyGroupMember = studyGroup.getStudyGroupMember();
+    public StudyGroupResponse(
+            StudyGroupInfo studyGroupInfo,
+            StudyMemberInfo studyLeader,
+            List<StudyMemberInfo> participants) {
+        this.studyGroupInfo = studyGroupInfo;
+        this.studyLeader = studyLeader;
+        this.participants = participants;
     }
 }
