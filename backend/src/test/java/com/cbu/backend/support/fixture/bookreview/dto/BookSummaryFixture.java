@@ -19,6 +19,6 @@ public enum BookSummaryFixture {
     }
 
     public BookSummary toBookSummary() {
-        return new BookSummary(id, title, imageUrl);
+        return new BookSummary(id.getId(), title, imageUrl);
     }
 }

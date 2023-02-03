@@ -1,6 +1,7 @@
 package com.cbu.backend.bookreview.query.infra;
 
-import com.cbu.backend.bookreview.command.domain.QBookReview;
+import static com.cbu.backend.bookreview.command.domain.QBookReview.bookReview;
+
 import com.cbu.backend.util.OrderConverter;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.ComparableExpressionBase;
@@ -14,17 +15,15 @@ import java.util.Map;
 @Component
 public class BookReviewOrderConverter implements OrderConverter {
     private final Map<String, ComparableExpressionBase<?>> keywordMap = new HashMap<>();
-    private final QBookReview qBookReview;
 
-    public BookReviewOrderConverter(QBookReview qBookReview) {
-        this.qBookReview = qBookReview;
+    public BookReviewOrderConverter() {
         initializeMap();
     }
 
     private void initializeMap() {
-        keywordMap.put("createdAt", qBookReview.baseTime.createdAt);
-        keywordMap.put("score", qBookReview.score);
-        keywordMap.put("likeCount", qBookReview.likeCount);
+        keywordMap.put("createdAt", bookReview.baseTime.createdAt);
+        keywordMap.put("score", bookReview.score);
+        keywordMap.put("likeCount", bookReview.likeCount);
     }
 
     public OrderSpecifier<?>[] convert(Sort sort) {

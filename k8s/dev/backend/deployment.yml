@@ -88,3 +88,8 @@ spec:
                 secretKeyRef:
                   name: owl-forest-server-secret-dev
                   key: client.url
+            - name: CLIENT_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: owl-forest-server-secret-dev
+                  key: client.host

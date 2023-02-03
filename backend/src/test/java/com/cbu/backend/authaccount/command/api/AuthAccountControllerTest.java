@@ -32,7 +32,7 @@ class AuthAccountControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        put("/api/users")
+                        put("/users")
                                 .principal(loginUser)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(

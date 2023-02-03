@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { palette } from 'styled-tools';
 import profileimg from '../../Image/cbu_circle.png';
+import Btn from '../Btn';
 
 const Pf = styled.div`
   width: 25rem;
@@ -68,19 +69,6 @@ const Info = styled.li`
   margin-top: 1.2rem;
 `;
 
-const InfoButton = styled.button`
-  width: 9rem;
-  height: 2.8rem;
-  background-color: ${palette('PsGreen')};
-  border-radius: 3rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  border: none;
-  font-size: 12pt;
-  margin-top: 3rem;
-  margin-right: 2rem;
-  font-weight: bolder;
-`;
-
 function MLProfileCon() {
   return (
     <div>
@@ -92,8 +80,34 @@ function MLProfileCon() {
           <Info>컴퓨터공학과 2학년</Info>
           <Info>스터디</Info>
           <Info style={{ height: '14rem' }}>한줄 소개</Info>
-          <InfoButton>수정</InfoButton>
-          <InfoButton>탈퇴</InfoButton>
+          <Btn
+            width='9rem'
+            height='2.8rem'
+            background={palette('PsGreen')}
+            borderStyle='none'
+            borderRadius='3rem'
+            fontSize='12pt'
+            fontWeight='bolder'
+            marginTop='3rem'
+            marginRight='2rem'
+            hoverBackgroundColor='#7ebe57'
+            transition='0.3s'
+            name='수정'
+          />
+          <Btn
+            width='9rem'
+            height='2.8rem'
+            background={palette('PsGreen')}
+            borderStyle='none'
+            borderRadius='3rem'
+            fontSize='12pt'
+            fontWeight='bolder'
+            marginTop='3rem'
+            marginRight='2rem'
+            hoverBackgroundColor='#7ebe57'
+            transition='0.3s'
+            name='탈퇴'
+          />
         </ProfileList>
       </Pf>
     </div>

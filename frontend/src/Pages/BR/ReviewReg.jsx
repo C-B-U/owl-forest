@@ -33,13 +33,25 @@ const WrapContent = styled.div`
 `;
 
 const BookImage = styled.div`
-  width: 15rem;
-  height: 19rem;
+  width: 18rem;
+  height: 24rem;
+  /* margin-top: 1rem; */
   background-color: #ffffff;
 `;
 
 const WrapReview = styled.div`
   margin-left: 3rem;
+`;
+
+const BookTitle = styled.h1`
+  margin-top: 0rem;
+  /* border: 1px solid black; */
+  font-weight: bold;
+`;
+const BookDetail = styled.div`
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  /* border: 1px solid black; */
 `;
 const OneLineReview = styled.div`
   /* width: fit-content;
@@ -50,7 +62,7 @@ const OneLineReview = styled.div`
 
 const WrapDetailReview = styled.div`
   width: fit-content;
-  height: 13.3rem;
+  height: 12rem;
   padding: 1rem;
   background-color: ${palette('PsLightBrown', 0)};
   /* background-color: white; */
@@ -68,8 +80,21 @@ const StarScore = styled.div`
   margin-bottom: 1rem;
 `;
 
-const DetailReview = styled.div`
+const DetailReview = styled.textarea`
+  box-sizing: border-box;
+  width: 40rem;
+  height: 6rem;
+  display: block;
   margin-bottom: 1rem;
+  padding: 1rem;
+  border: 0.15rem solid rgba(128, 109, 70);
+  border-radius: 0.3rem;
+  font-size: 1.1rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  resize: none;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const WrapRegButton = styled.div`
@@ -88,24 +113,25 @@ function ReviewReg() {
             <WrapContent>
               <BookImage />
               <WrapReview>
+                <BookTitle>도서 제목</BookTitle>
+                <BookDetail>작가 | 출판사 | 출판일</BookDetail>
                 <OneLineReview>
-                  <Input width='40rem' height='2.3rem' placeholder='한줄평' />
+                  <Input width='39.7rem' height='2.3rem' placeholder='한줄평' />
                 </OneLineReview>
                 <WrapDetailReview>
                   <WrapStarScore>
                     <StarScore>난이도</StarScore>
                     <StarScore>평점</StarScore>
                   </WrapStarScore>
-                  <DetailReview>
-                    <Input width='38rem' height='7rem' placeholder='상세평' />
-                  </DetailReview>
+                  <DetailReview />
                   <WrapRegButton>
                     <RegButton
                       color={palette('PsYellow')}
                       background={palette('PsBtn')}
-                      width='5.5rem'
+                      width='6rem'
                       height='2.5rem'
-                      name='등 록'
+                      name='등록하기'
+                      borderRadius='0.3rem'
                     />
                   </WrapRegButton>
                 </WrapDetailReview>

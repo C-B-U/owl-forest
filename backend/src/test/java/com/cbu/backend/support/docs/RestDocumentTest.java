@@ -1,5 +1,6 @@
 package com.cbu.backend.support.docs;
 
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -55,10 +56,16 @@ public abstract class RestDocumentTest {
             RestDocumentationContextProvider restDocumentationContextProvider) {
         mockMvc =
                 MockMvcBuilders.webAppContextSetup(ctx)
-                        .apply(documentationConfiguration(restDocumentationContextProvider))
+                        .apply(
+                                documentationConfiguration(restDocumentationContextProvider)
+                                        .uris()
+                                        .withScheme("http")
+                                        .withHost("223.255.205.62")
+                                        .withPort(30505))
                         .apply(springSecurity(new MockSecurityFilter()))
                         .addFilter(new CharacterEncodingFilter("UTF-8", true))
                         .alwaysDo(print())
+                        .alwaysDo(document("api/v1/"))
                         .build();
     }
 }

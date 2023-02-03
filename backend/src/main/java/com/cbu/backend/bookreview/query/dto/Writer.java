@@ -1,17 +1,18 @@
 package com.cbu.backend.bookreview.query.dto;
 
-import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.querydsl.core.annotations.QueryProjection;
 
 import lombok.Getter;
 
+import java.util.UUID;
+
 @Getter
 public class Writer {
-    private AccountNo id;
+    private UUID id;
     private String nickname;
 
     @QueryProjection
-    public Writer(AccountNo id, String nickname) {
+    public Writer(UUID id, String nickname) {
         this.id = id;
         this.nickname = nickname;
     }

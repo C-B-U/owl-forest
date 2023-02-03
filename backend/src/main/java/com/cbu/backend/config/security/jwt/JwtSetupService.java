@@ -2,12 +2,10 @@ package com.cbu.backend.config.security.jwt;
 
 import com.cbu.backend.config.security.oauth2.LoginUser;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -15,21 +13,21 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hyeonjun Park
  */
-@Slf4j
 @Service
 public class JwtSetupService {
     private final JwtProvider jwtProvider;
 
-    private final String accessTokenHeaderTag;
-    private final String refreshTokenHeaderTag;
+    @Value("${client.host}")
+    private String clientHost;
 
-    public JwtSetupService(
-            JwtProvider jwtProvider,
-            @Value("${jwt.access-header}") String accessTokenHeaderTag,
-            @Value("${jwt.refresh-header}") String refreshTokenHeaderTag) {
+    @Value("${jwt.access-header}")
+    private String accessTokenHeaderTag;
+
+    @Value("${jwt.refresh-header}")
+    private String refreshTokenHeaderTag;
+
+    public JwtSetupService(JwtProvider jwtProvider) {
         this.jwtProvider = jwtProvider;
-        this.accessTokenHeaderTag = accessTokenHeaderTag;
-        this.refreshTokenHeaderTag = refreshTokenHeaderTag;
     }
 
     /**
@@ -41,17 +39,15 @@ public class JwtSetupService {
      */
     public void addJwtTokensInCookie(HttpServletResponse response, LoginUser loginUser) {
         JwtToken jwtToken = jwtProvider.createJWTTokens(loginUser);
-        Cookie accessTokenCookie = setCookie(accessTokenHeaderTag, jwtToken.getAccessToken());
-        response.addCookie(accessTokenCookie);
-
-        Cookie refreshTokenCookie = setCookie(refreshTokenHeaderTag, jwtToken.getRefreshToken());
-        response.addCookie(refreshTokenCookie);
+        ResponseCookie accessTokenCookie =
+                setCookie(accessTokenHeaderTag, jwtToken.getAccessToken());
+        response.addHeader("Set-Cookie", accessTokenCookie.toString());
+        ResponseCookie refreshTokenCookie =
+                setCookie(refreshTokenHeaderTag, jwtToken.getRefreshToken());
+        response.addHeader("Set-Cookie", refreshTokenCookie.toString());
     }
 
-    private Cookie setCookie(String key, String value) {
-        Cookie cookie = new Cookie(key, value);
-        cookie.setPath("/");
-        cookie.setHttpOnly(true);
-        return cookie;
+    private ResponseCookie setCookie(String key, String value) {
+        return ResponseCookie.from(key, value).path("/").httpOnly(true).domain(clientHost).build();
     }
 }

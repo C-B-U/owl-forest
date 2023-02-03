@@ -1,8 +1,8 @@
-import React, { useEffect, setState, useState } from 'react';
+import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
-import { useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
+
 import imgfile from '../../Image/Loginlogo.png';
 import theme from '../../Components/Color';
 import Btn from '../../Components/Btn';
@@ -55,28 +55,8 @@ const LogBtnWrap = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
 `;
 
-const SelectBox = styled.select`
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 12rem;
-  height: 2.8rem;
-  background-color: ${palette('PsLightBrown')};
-  border-radius: 3rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  &:focus {
-    outline: none;
-  }
-  border: none;
-  line-height: 1rem;
-  margin-bottom: 1rem;
-  max-height: 3rem;
-  padding-left: 1.7rem;
-`;
-
 function AddInfo() {
   const [id, setId] = useState('');
-  const [value, setValue] = useState('');
   const [name, setName] = useState('');
 
   const handleId = (e) => {
@@ -85,14 +65,10 @@ function AddInfo() {
   const handleName = (e) => {
     setName(e.target.value);
   };
-  const handleValue = (e) => {
-    setValue(e.target.value);
-  };
 
   const AddLogin = () => {
     axios.put('/api/users', {
       params: {
-        generation: value,
         name,
         id,
       },
@@ -106,7 +82,7 @@ function AddInfo() {
           <Mainlogo src={imgfile} />
           <InputWrap>
             <p>다음 정보를 입력해주세요.</p>
-            
+
             <InputBox
               value={name}
               name='name'
@@ -133,7 +109,6 @@ function AddInfo() {
               transition='0.3s'
               name='완료'
             />
-            
           </LogBtnWrap>
         </LoginWrap>
       </ThemeProvider>

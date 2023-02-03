@@ -22,6 +22,6 @@ public enum BookDetailFixture {
     }
 
     public BookDetail toBookDetail() {
-        return new BookDetail(id, title, author, publisher, imageUrl);
+        return new BookDetail(id.getId(), title, author, publisher, imageUrl);
     }
 }

@@ -43,7 +43,6 @@ public enum BookReviewRequestFixture {
     }
 
     public BookReviewRequest getBookReviewRequest() {
-        BookReviewRequest result = new BookReviewRequest(book, title, content, score, difficulty);
-        return result.toBookReviewRequest(writer);
+        return new BookReviewRequest(book, title, content, score, difficulty);
     }
 }

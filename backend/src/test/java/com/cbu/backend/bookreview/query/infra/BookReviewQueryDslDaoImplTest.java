@@ -8,7 +8,7 @@ import com.cbu.backend.bookreview.command.domain.BookReview;
 import com.cbu.backend.bookreview.command.domain.BookReviewNo;
 import com.cbu.backend.bookreview.query.dto.BookReviewResponse;
 import com.cbu.backend.bookreview.query.dto.BookReviewSummaryResponse;
-import com.cbu.backend.support.database.EnableDataBaseQueryTest;
+import com.cbu.backend.support.database.EnableDataBaseTest;
 import com.cbu.backend.support.fixture.book.entity.BookFixture;
 import com.cbu.backend.support.fixture.member.entity.AuthAccountFixture;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -25,7 +25,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
-@EnableDataBaseQueryTest
+@EnableDataBaseTest
 @DisplayName("BookReviewQueryDslDaoImpl 클래스의")
 class BookReviewQueryDslDaoImplTest {
 
@@ -63,8 +63,9 @@ class BookReviewQueryDslDaoImplTest {
             assertThat(result).isPresent();
             assertThat(bookReviewResponse.getTitle()).isEqualTo(bookReview.getTitle());
             assertThat(bookReviewResponse.getContent()).isEqualTo(bookReview.getContent());
-            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(bookReview.getBookId());
-            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(book.getId());
+            assertThat(bookReviewResponse.getBook().getId())
+                    .isEqualTo(bookReview.getBookId().getId());
+            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(book.getId().getId());
             assertThat(bookReviewResponse.getBook().getImageUrl()).isEqualTo(book.getImageUrl());
         }
     }

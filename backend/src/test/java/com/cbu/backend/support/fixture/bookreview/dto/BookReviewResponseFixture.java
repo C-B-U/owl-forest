@@ -71,6 +71,6 @@ public enum BookReviewResponseFixture {
 
     public BookReviewResponse getBookReviewResponse() {
         return new BookReviewResponse(
-                id, writer, title, content, book, likeCount, score, difficulty, createdAt);
+                id.getId(), writer, title, content, book, likeCount, score, difficulty, createdAt);
     }
 }

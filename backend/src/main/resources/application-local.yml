@@ -1,3 +1,6 @@
+server:
+  servlet:
+    context-path: /api/v1
 spring:
   datasource:
     username: root
@@ -5,13 +8,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/owl_forest?serverTimezone=Asia/Seoul
 
+
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        format_sql: true
+      ddl-auto: update
 
   flyway:
     enabled: true
@@ -34,19 +35,19 @@ spring:
         registration:
           google:
             client-id: 403267681219-ukl42klhu84djqkjbummr7hg5blrkitk.apps.googleusercontent.com
-            client-secret: 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
+            client-secret: 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
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             scope: email, profile
           kakao:
-            client-id: zzzzzz
+            client-id: ac7df6eeea0e61afa544b2c497ea01bc
             client-name: Kakao
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             client-authentication-method: POST
             authorization-grant-type: authorization_code
             scope: profile_nickname, profile_image, account_email
           naver:
-            client-id: aaaaaa
-            client-secret: aaaaaa
+            client-id: 1tGmODjwSOYWsbXRXP4a
+            client-secret: P7JVX9cRkI
             client-name: Naver
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             authorization-grant-type: authorization_code
@@ -71,3 +72,7 @@ jwt:
 
 client:
   url: http://localhost:3000
+  host: localhost
+
+national-library:
+  key: f8073fe106514559df549dbadbecab35f4f01a7dbb60fd87665d37187d841fdd

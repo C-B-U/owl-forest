@@ -20,7 +20,7 @@ import javax.persistence.EntityNotFoundException;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/book-reviews")
+@RequestMapping("book-reviews")
 public class BookReviewQueryController {
     private final BookReviewDao bookReviewDao;
 
