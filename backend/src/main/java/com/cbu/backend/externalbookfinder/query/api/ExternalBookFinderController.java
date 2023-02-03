@@ -4,6 +4,7 @@ import com.cbu.backend.externalbookfinder.query.dto.BookFinderRequest;
 import com.cbu.backend.externalbookfinder.query.dto.ExternalBookResponse;
 import com.cbu.backend.externalbookfinder.query.service.BookSearchable;
 import com.cbu.backend.global.RequestObjectParam;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -12,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
-import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
