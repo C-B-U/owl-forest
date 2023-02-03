@@ -14,17 +14,21 @@ public class StudyGroupQDtoFactory {
 
     @Bean
     public QStudyMemberInfo qStudyMemberInfo() {
-        return new QStudyMemberInfo(authAccount.id, authAccount.memberInfo.name);
+        return new QStudyMemberInfo(authAccount.id.id, authAccount.memberInfo.name);
+    }
+
+    @Bean
+    public QStudyMemberInfo qStudyLeaderInfo() {
+        return new QStudyMemberInfo(studyGroup.studyGroupMember.leaderId.id, authAccount.memberInfo.name);
     }
 
     @Bean
     public QStudyGroupInfo qStudyGroupInfo() {
         return new QStudyGroupInfo(
-                studyGroup.id,
+                studyGroup.id.id,
                 studyGroup.name,
                 studyGroup.description,
                 studyGroup.likeCount.memberIds.size(),
-                studyGroup.studyGroupStatus.stringValue(),
-                new QStudyMemberInfo(authAccount.id, authAccount.memberInfo.name));
+                studyGroup.studyGroupStatus.stringValue());
     }
 }

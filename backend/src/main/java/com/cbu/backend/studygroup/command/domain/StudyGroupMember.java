@@ -3,6 +3,7 @@ package com.cbu.backend.studygroup.command.domain;
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+@Getter
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyGroupMember {

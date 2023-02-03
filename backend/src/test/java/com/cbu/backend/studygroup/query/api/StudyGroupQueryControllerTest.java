@@ -24,6 +24,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
+import java.util.Optional;
 
 @WebMvcTest(StudyGroupQueryController.class)
 class StudyGroupQueryControllerTest extends RestDocumentTest {
@@ -36,14 +37,14 @@ class StudyGroupQueryControllerTest extends RestDocumentTest {
         // given
         StudyGroupResponse expected = StudyGroupResponseFixture.SAMPLE1.toStudyGroupResponse();
         given(studyGroupDao.findResponseById(any())).willReturn(expected);
-        String id = expected.getStudyGroupInfo().getId().getId().toString();
+        String id = expected.getStudyGroupInfo().getId().toString();
 
         // when
         ResultActions perform =
                 mockMvc.perform(get("/study-groups/" + id).contentType(MediaType.APPLICATION_JSON));
 
         // then
-        perform.andExpect(status().isOk()).andExpect(jsonPath("$.studyGroupInfo.id.id").value(id));
+        perform.andExpect(status().isOk()).andExpect(jsonPath("$.studyGroupInfo.id").value(id));
 
         // docs
         perform.andDo(print())
