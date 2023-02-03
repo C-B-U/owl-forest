@@ -61,7 +61,7 @@ public class StudyActivityLog {
         this.baseTime = new BaseTime();
     }
 
-    public void update(
+    public void updateStudyActivityLog(
             String title,
             String description,
             String assignment,
@@ -79,7 +79,7 @@ public class StudyActivityLog {
         this.studyTime = studyTime;
     }
 
-    public void delete() {
+    public void deleteStudyActivityLog() {
         this.baseTime.delete();
     }
 

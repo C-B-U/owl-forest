@@ -29,7 +29,7 @@ public class StudyActivityLogService {
     public void updateStudyActivityLog(StudyActivityLogNo id, StudyActivityLogRequest request) {
         checkValidRequest(request);
         getEntity(id)
-                .update(
+                .updateStudyActivityLog(
                         request.getTitle(),
                         request.getDescription(),
                         request.getAssignment(),
@@ -40,7 +40,7 @@ public class StudyActivityLogService {
     }
 
     public void deleteStudyActivityLog(StudyActivityLogNo id) {
-        getEntity(id).delete();
+        getEntity(id).deleteStudyActivityLog();
     }
 
     private void checkValidRequest(StudyActivityLogRequest request) {
