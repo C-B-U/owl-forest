@@ -7,10 +7,7 @@ import com.cbu.backend.studyactivitylog.command.service.StudyActivityLogService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("study-activity-logs")
@@ -24,5 +21,20 @@ public class StudyActivityLogController {
             @RequestBody StudyActivityLogRequest studyActivityLogRequest) {
         return ResponseEntity.ok(
                 studyActivityLogService.saveStudyActivityLog(studyActivityLogRequest));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> putStudyActivityLog(
+            @PathVariable StudyActivityLogNo id,
+            @RequestBody StudyActivityLogRequest studyActivityLogRequest) {
+        studyActivityLogService.updateStudyActivityLog(id, studyActivityLogRequest);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStudyActivityLog(
+            @PathVariable StudyActivityLogNo id) {
+        studyActivityLogService.deleteStudyActivityLog(id);
+        return ResponseEntity.ok().build();
     }
 }
