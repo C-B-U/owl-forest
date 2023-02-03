@@ -38,8 +38,4 @@ public class OAuth2AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
         jwtSetupService.addJwtTokensInCookie(response, loginUser);
         response.sendRedirect(redirectUrl);
     }
-
-    //    private LoginUser getOAuthUser(OAuth2User oAuth2User) {
-    //        return new LoginUser((AccountNo) oAuth2User.getAttribute("id"));
-    //    }
 }

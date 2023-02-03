@@ -3,10 +3,11 @@ server:
     context-path: /api/v1
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/owl_forest?serverTimezone=Asia/Seoul
     username: root
     password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/owl_forest?serverTimezone=Asia/Seoul
+
 
   jpa:
     show-sql: true
@@ -70,7 +71,8 @@ jwt:
   secret: asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
 
 client:
-  url: http://localhost:8080
+  url: http://localhost:3000
+  host: localhost
 
 national-library:
   key: f8073fe106514559df549dbadbecab35f4f01a7dbb60fd87665d37187d841fdd

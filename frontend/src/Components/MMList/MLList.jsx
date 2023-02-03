@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { palette } from 'styled-tools';
 import profileimg from '../../Image/cbu_circle.png';
 
@@ -30,22 +31,42 @@ const Photo = styled.div`
   background-size: 3.5rem;
   background-repeat: no-repeat;
 `;
-const name = ['부엉1', '부엉2', '부엉3'];
-const major = ['컴공', '소공', '경영'];
-const grade = ['1학년', '2학년', '3학년'];
+
+const NameInfo = styled.div`
+  margin-left: 2.5rem;
+`;
+
+const MajorInfo = styled.div`
+  margin-left: 3rem;
+  width: 11rem;
+  text-align: left;
+`;
+
+const GradeInfo = styled.div`
+  margin-left: 5rem;
+`;
 
 function MLList() {
-  return (
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    axios.get('/api/users').then((response) => {
+      setUsers(response.data);
+    });
+  }, []);
+
+  const list = users.map((v) => (
     <div>
       <List>
         <MemListInput>
           <Photo />
-          &emsp;&nbsp;&nbsp;
-          {name[0]}&emsp; {major[0]} &emsp;&nbsp;&nbsp;
-          {grade[0]} &emsp;&emsp; 자바, 코틀린 등
+          <NameInfo>{v.name}</NameInfo>
+          <MajorInfo>{v.major}</MajorInfo>
+          <GradeInfo>{v.grade}</GradeInfo>
         </MemListInput>
       </List>
     </div>
-  );
+  ));
+
+  return <div>{list}</div>;
 }
 export default MLList;

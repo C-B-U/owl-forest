@@ -12,11 +12,9 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.util.Collection;
 import java.util.UUID;
 
 /**
@@ -37,19 +35,6 @@ public class JwtValidator {
         LoginUser loginUser = authAccountMapper.mapToLoginUser(authAccount);
 
         return new UsernamePasswordAuthenticationToken(loginUser, "", loginUser.getAuthorities());
-    }
-
-    /**
-     * 토큰 내의 Claim에서 사용자 권한 List 추출
-     *
-     * @param claims
-     * @return Collection<? extends GrantedAuthority>
-     * @author Hyeonjun Park
-     * @deprecated
-     */
-    private Collection<? extends GrantedAuthority> extractAuthority(Claims claims) {
-
-        return authAccountQueryService.getAuthority(extractUUID(claims));
     }
 
     private UUID extractUUID(Claims claims) {

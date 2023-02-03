@@ -19,6 +19,10 @@ public class LikeCount {
 
     @ElementCollection private Set<AccountNo> memberIds = new HashSet<>();
 
+    public LikeCount(Set<AccountNo> memberIds) {
+        this.memberIds = memberIds;
+    }
+
     public void addCount(AccountNo memberId) {
         memberIds.add(memberId);
     }

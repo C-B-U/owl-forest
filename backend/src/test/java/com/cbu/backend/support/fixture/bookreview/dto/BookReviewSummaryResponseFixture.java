@@ -66,6 +66,6 @@ public enum BookReviewSummaryResponseFixture {
 
     public BookReviewSummaryResponse toBookReviewSummaryResponse() {
         return new BookReviewSummaryResponse(
-                id, writer, title, book, likeCount, score, difficulty, createdAt);
+                id.getId(), writer, title, book, likeCount, score, difficulty, createdAt);
     }
 }

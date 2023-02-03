@@ -3,7 +3,7 @@ package com.cbu.backend.studygroup.command.service;
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.studygroup.command.domain.StudyGroup;
 import com.cbu.backend.studygroup.command.domain.StudyGroupNo;
-import com.cbu.backend.studygroup.command.dto.StudyGroupRequest;
+import com.cbu.backend.studygroup.command.domain.StudyGroupRequest;
 import com.cbu.backend.studygroup.command.infra.StudyGroupRepository;
 
 import lombok.RequiredArgsConstructor;

@@ -63,8 +63,9 @@ class BookReviewQueryDslDaoImplTest {
             assertThat(result).isPresent();
             assertThat(bookReviewResponse.getTitle()).isEqualTo(bookReview.getTitle());
             assertThat(bookReviewResponse.getContent()).isEqualTo(bookReview.getContent());
-            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(bookReview.getBookId());
-            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(book.getId());
+            assertThat(bookReviewResponse.getBook().getId())
+                    .isEqualTo(bookReview.getBookId().getId());
+            assertThat(bookReviewResponse.getBook().getId()).isEqualTo(book.getId().getId());
             assertThat(bookReviewResponse.getBook().getImageUrl()).isEqualTo(book.getImageUrl());
         }
     }

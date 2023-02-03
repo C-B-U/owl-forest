@@ -2,7 +2,7 @@ package com.cbu.backend.studygroup.command.api;
 
 import com.cbu.backend.config.security.oauth2.LoginUser;
 import com.cbu.backend.studygroup.command.domain.StudyGroupNo;
-import com.cbu.backend.studygroup.command.dto.StudyGroupRequest;
+import com.cbu.backend.studygroup.command.domain.StudyGroupRequest;
 import com.cbu.backend.studygroup.command.service.StudyGroupService;
 
 import lombok.RequiredArgsConstructor;

@@ -23,19 +23,6 @@ const Profilepic = styled.div`
   background-size: 14.5rem;
 `;
 
-const Gisu = styled.div`
-  width: 5rem;
-  height: 2rem;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Noto Sans KR', sans-serif;
-  display: flex;
-  font-size: 17pt;
-  margin: auto;
-  margin-top: 2rem;
-`;
-
 const Name = styled.div`
   width: 10rem;
   height: 2rem;
@@ -74,7 +61,6 @@ function MLProfile() {
     <div>
       <Pf>
         <Profilepic />
-        <Gisu>1241기</Gisu>
         <Name>부엉이</Name>
         <ProfileList>
           <Info>컴퓨터공학과 2학년</Info>

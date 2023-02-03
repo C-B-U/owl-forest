@@ -129,21 +129,17 @@ class BookReviewQueryControllerTest extends RestDocumentTest {
             BookReviewResponse expected = BookReviewResponseFixture.SAMPLE1.getBookReviewResponse();
             given(bookReviewDao.findResponseById(any())).willReturn(Optional.of(expected));
             // when
-            ResultActions perform =
-                    mockMvc.perform(get("/book-reviews/{id}", expected.getId().getId()));
+            ResultActions perform = mockMvc.perform(get("/book-reviews/{id}", expected.getId()));
             // then
             perform.andExpect(status().isOk())
-                    .andExpect(jsonPath("$.id.id").value(expected.getId().getId().toString()))
+                    .andExpect(jsonPath("$.id").value(expected.getId().toString()))
                     .andExpect(
-                            jsonPath("$.writer.id.id")
-                                    .value(expected.getWriter().getId().getId().toString()))
+                            jsonPath("$.writer.id").value(expected.getWriter().getId().toString()))
                     .andExpect(
                             jsonPath("$.writer.nickname").value(expected.getWriter().getNickname()))
                     .andExpect(jsonPath("$.title").value(expected.getTitle()))
                     .andExpect(jsonPath("$.content").value(expected.getContent()))
-                    .andExpect(
-                            jsonPath("$.book.id.id")
-                                    .value(expected.getBook().getId().getId().toString()))
+                    .andExpect(jsonPath("$.book.id").value(expected.getBook().getId().toString()))
                     .andExpect(jsonPath("$.book.title").value(expected.getBook().getTitle()))
                     .andExpect(jsonPath("$.book.author").value(expected.getBook().getAuthor()))
                     .andExpect(

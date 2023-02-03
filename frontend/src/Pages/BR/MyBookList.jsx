@@ -136,6 +136,7 @@ function MyBookList() {
                   name='리뷰쓰기'
                   background={palette('PsYellow')}
                   onClick={navigateToReview}
+                  borderRadius='10rem'
                 />
               </WrapStateButton>
             </BookList>
@@ -147,7 +148,12 @@ function MyBookList() {
               <PostUser>2019150012 김혜진</PostUser>
               <State>대여중</State>
               <WrapStateButton>
-                <Button width='6rem' height='1.5rem' name='D-100' />
+                <Button
+                  width='6rem'
+                  height='1.5rem'
+                  name='D-100'
+                  borderRadius='10rem'
+                />
               </WrapStateButton>
             </BookList>
           </WrapList>

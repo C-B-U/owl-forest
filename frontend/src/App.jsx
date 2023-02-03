@@ -28,7 +28,7 @@ import ReviewList from './Pages/BR/ReviewList';
 import ReviewReg from './Pages/BR/ReviewReg';
 
 axios.defaults.baseURL = process.env.BASE_URL;
-
+axios.defaults.withCredentials = true;
 function App() {
   return (
     <div className='App'>

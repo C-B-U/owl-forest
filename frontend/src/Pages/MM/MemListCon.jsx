@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import MLProfileCon from '../../Components/MMList/MLProfileCon';
-import profileimg from '../../Image/cbu_circle.png';
+import MLList from '../../Components/MMList/MLList';
 
 // 가로 정렬
 const MainWrap = styled.div`
@@ -21,12 +21,14 @@ const LineUp = styled.div`
   width: 100vw;
   height: 75.5vh;
   overflow: auto;
+  margin-top: 2.5rem;
 `;
 
 // 마이페이지, 검색의 가로 정렬을 위해 사용
 const SearchWrap = styled.div`
   display: flex;
   white-space: wrap;
+  margin-left: 16rem;
 `;
 
 const SearchBox = styled.input`
@@ -44,16 +46,6 @@ const SearchBox = styled.input`
   margin-right: 1rem;
 `;
 
-const MemList = styled.div`
-  width: 75rem;
-  height: 3.5rem;
-  border-radius: 3rem;
-  margin-top: 0.8rem;
-  padding-left: 1.5rem;
-  display: flex;
-  background-color: ${palette('PsLightBrown')};
-  margin-left: 1.5rem;
-`;
 const MemListInput = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
@@ -76,34 +68,47 @@ const Scroll = styled.div`
   overflow: auto;
 `;
 
-const SelcBox = styled.div`
+const SortOption = styled.div`
+  margin-top: 0.8rem;
+  margin-bottom: 0rem;
+  margin-left: 67rem;
+  position: absolute;
+`;
+
+const SelectBox = styled.select`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 5rem;
   height: 2rem;
   background-color: ${palette('PsGreen')};
-  border-radius: 2rem;
+  border-radius: 3rem;
   font-family: 'Noto Sans KR', sans-serif;
-  border: 0.5rem;
-  font-size: 12pt;
+  &:focus {
+    outline: none;
+  }
+  border: none;
+  padding-left: 1.7rem;
   margin-top: 3rem;
-  font-weight: bolder;
-  margin-right: 0.4rem;
-  margin-left: 60rem;
+  margin-left: 43.2rem;
 `;
 
-const SortOption = styled.div`
-  margin-top: 0.7rem;
-  margin-bottom: 0.7rem;
-  margin-left: 71rem;
+const PhotoInfo = styled.div``;
+
+const NameInfo = styled.div`
+  margin-left: 1.5rem;
 `;
-const Photo = styled.div`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 100%;
-  background-color: rgba(217, 217, 217, 1);
-  background-image: url(${profileimg});
-  background-position: center;
-  background-size: 3.5rem;
-  background-repeat: no-repeat;
+
+const MajorInfo = styled.div`
+  margin-left: 6rem;
+  text-align: left;
+`;
+
+const GradeInfo = styled.div`
+  margin-left: 9rem;
+`;
+const InterstinInfo = styled.div`
+  margin-left: 3rem;
 `;
 
 function MemListCon() {
@@ -115,115 +120,27 @@ function MemListCon() {
 
           <SecondWrap>
             <SearchWrap>
-              <SelcBox>&nbsp;▼</SelcBox>
+              <SelectBox name='generation'>
+                <option value='none'> 이름 </option>
+                <option value='1기'>학과</option>
+              </SelectBox>
               <SearchBox />
             </SearchWrap>
             <MemNav>
               <MemListInput style={{ fontSize: '1.8rem' }}>
-                프사 &nbsp; 이름&emsp; 학과&emsp;&emsp;&emsp; 학년&emsp;
-                기수&emsp; 관심분야
+                <PhotoInfo>프사</PhotoInfo>
+                <NameInfo>이름</NameInfo>
+                <MajorInfo>학과</MajorInfo>
+                <GradeInfo>학년</GradeInfo>
+                <InterstinInfo>관심분야</InterstinInfo>
               </MemListInput>
             </MemNav>
-            <SortOption>이름순 ↑↓</SortOption>
-
+            <SortOption>
+              <b>이름순&nbsp;</b> 학과순&nbsp; 학년순
+            </SortOption>
             <LineUp>
               <Scroll>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
-                <MemList>
-                  <MemListInput>
-                    <Photo />
-                    &emsp;&nbsp;&nbsp; 씨부엉이&emsp;
-                    컴퓨터공학과&emsp;&nbsp;&nbsp; 2학년&emsp;&emsp;
-                    14기&emsp;&emsp;&nbsp;&nbsp; 자바, 코틀린 등
-                  </MemListInput>
-                </MemList>
+                <MLList />
               </Scroll>
             </LineUp>
           </SecondWrap>

@@ -12,15 +12,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class BookReviewQDtoFactory {
     private final QBookDetail qBookDetail =
-            new QBookDetail(book.id, book.title, book.author, book.publisher, book.imageUrl);
-    private final QBookSummary qBookSummary = new QBookSummary(book.id, book.title, book.imageUrl);
+            new QBookDetail(book.id.id, book.title, book.author, book.publisher, book.imageUrl);
+    private final QBookSummary qBookSummary =
+            new QBookSummary(book.id.id, book.title, book.imageUrl);
 
-    private final QWriter qWriter = new QWriter(authAccount.id, authAccount.memberInfo.nickname);
+    private final QWriter qWriter = new QWriter(authAccount.id.id, authAccount.memberInfo.nickname);
 
     @Bean
     public QBookReviewSummaryResponse qBookReviewSummaryResponse() {
         return new QBookReviewSummaryResponse(
-                bookReview.id,
+                bookReview.id.id,
                 qWriter,
                 bookReview.title,
                 qBookSummary,
@@ -33,7 +34,7 @@ public class BookReviewQDtoFactory {
     @Bean
     public QBookReviewResponse qBookReviewResponse() {
         return new QBookReviewResponse(
-                bookReview.id,
+                bookReview.id.id,
                 qWriter,
                 bookReview.title,
                 bookReview.content,
