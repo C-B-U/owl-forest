@@ -1,15 +1,16 @@
 package com.cbu.backend.studygroup.query.infra;
 
+import static com.cbu.backend.studygroup.command.domain.QStudyGroup.studyGroup;
+
 import com.cbu.backend.util.OrderConverter;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.ComparableExpressionBase;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.cbu.backend.studygroup.command.domain.QStudyGroup.studyGroup;
 
 @Component
 public class StudyGroupOrderConverter implements OrderConverter {

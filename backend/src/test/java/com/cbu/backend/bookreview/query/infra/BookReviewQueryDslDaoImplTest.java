@@ -1,5 +1,7 @@
 package com.cbu.backend.bookreview.query.infra;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import com.cbu.backend.authaccount.command.domain.AuthAccount;
 import com.cbu.backend.book.command.domain.Book;
 import com.cbu.backend.bookreview.command.domain.BookReview;
@@ -10,7 +12,9 @@ import com.cbu.backend.support.database.EnableDataBaseTest;
 import com.cbu.backend.support.fixture.book.entity.BookFixture;
 import com.cbu.backend.support.fixture.member.entity.AuthAccountFixture;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+
 import lombok.extern.slf4j.Slf4j;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -18,11 +22,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import javax.persistence.EntityManager;
 
 @EnableDataBaseTest
 @Slf4j
@@ -162,12 +165,17 @@ class BookReviewQueryDslDaoImplTest {
                     };
             // when
 
-
             List<BookReviewSummaryResponse> result =
                     bookReviewQueryDslDao.findSummaryAll(pageable, new BookReviewQueryOption());
-            result.forEach( r -> {
-                log.info("{}, {}, {}, {}",r.getId(), r.getBook().getId(), r.getWriter().getId(), r.getTitle());
-            });
+            result.forEach(
+                    r -> {
+                        log.info(
+                                "{}, {}, {}, {}",
+                                r.getId(),
+                                r.getBook().getId(),
+                                r.getWriter().getId(),
+                                r.getTitle());
+                    });
             // then
             assertThat(result.size()).isEqualTo(3);
         }

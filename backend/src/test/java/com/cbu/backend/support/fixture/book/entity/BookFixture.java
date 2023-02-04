@@ -23,13 +23,13 @@ public enum BookFixture {
     SAMPLE2(
             new BookNo(),
             "로허",
-                    "조롤링",
-                    "국원",
-                    "aabb.com",
-                    5000,
-                    LocalDate.now(),
-                    "8801097087550",
-                    new AccountNo());
+            "조롤링",
+            "국원",
+            "aabb.com",
+            5000,
+            LocalDate.now(),
+            "8801097087550",
+            new AccountNo());
     private final BookNo id;
     private final String title;
     private final String author;

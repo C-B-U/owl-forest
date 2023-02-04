@@ -23,7 +23,7 @@ public class StudyGroupQueryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<StudyGroupResponse> getStudyGroup(@PathVariable StudyGroupNo id) {
-        //return ResponseEntity.ok(studyGroupDao.findResponseById(id));
+        // return ResponseEntity.ok(studyGroupDao.findResponseById(id));
         return null;
     }
 

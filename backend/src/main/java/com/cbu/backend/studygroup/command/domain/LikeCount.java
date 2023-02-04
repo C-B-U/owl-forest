@@ -1,13 +1,15 @@
 package com.cbu.backend.studygroup.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.*;
 
 @Getter
 @Embeddable
@@ -15,8 +17,7 @@ import java.util.Set;
 public class LikeCount {
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "study_group_like",
-            joinColumns = @JoinColumn(name = "study_group_id"))
+    @CollectionTable(name = "study_group_like", joinColumns = @JoinColumn(name = "study_group_id"))
     private Set<AccountNo> memberIds = new HashSet<>();
 
     public LikeCount(Set<AccountNo> memberIds) {
