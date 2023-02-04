@@ -10,6 +10,11 @@ public enum StudyGroupFixture {
             "k8s 스터디",
             "도커는 배우고 오세요",
             new AccountNo(),
+            List.of(new AccountNo(), new AccountNo(), new AccountNo(), new AccountNo())),
+    SAMPLE2(
+            "java 스터디",
+            "자바칩은 배우고 오세요",
+            new AccountNo(),
             List.of(new AccountNo(), new AccountNo(), new AccountNo(), new AccountNo()));
 
     private String name;

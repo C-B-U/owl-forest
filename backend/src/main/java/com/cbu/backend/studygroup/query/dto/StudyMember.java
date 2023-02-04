@@ -7,12 +7,12 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
-public class StudyMemberInfo {
+public class StudyMember {
     private UUID id;
     private String name;
 
     @QueryProjection
-    public StudyMemberInfo(UUID id, String name) {
+    public StudyMember(UUID id, String name) {
         this.id = id;
         this.name = name;
     }

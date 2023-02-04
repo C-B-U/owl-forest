@@ -1,23 +1,21 @@
 package com.cbu.backend.bookreview.query.infra;
 
-import static com.cbu.backend.authaccount.command.domain.QAuthAccount.authAccount;
-import static com.cbu.backend.book.command.domain.QBook.book;
-import static com.cbu.backend.bookreview.command.domain.QBookReview.bookReview;
-
 import com.cbu.backend.bookreview.command.domain.BookReviewNo;
 import com.cbu.backend.bookreview.query.dto.BookReviewResponse;
 import com.cbu.backend.bookreview.query.dto.BookReviewSummaryResponse;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static com.cbu.backend.authaccount.command.domain.QAuthAccount.authAccount;
+import static com.cbu.backend.book.command.domain.QBook.book;
+import static com.cbu.backend.bookreview.command.domain.QBookReview.bookReview;
 
 @Repository
 @RequiredArgsConstructor
@@ -31,8 +29,8 @@ public class BookReviewQueryDslDaoImpl implements BookReviewQueryDslDao {
             Pageable pageable, BookReviewQueryOption queryOption) {
         return jpaQueryFactory
                 .select(qDtoFactory.qBookReviewSummaryResponse())
-                .from(bookReview, book, authAccount)
-                .leftJoin(bookReview)
+                .from(bookReview)
+                .leftJoin(book)
                 .on(book.id.eq(bookReview.bookId))
                 .leftJoin(authAccount)
                 .on(authAccount.id.eq(bookReview.writer))
