@@ -1,5 +1,10 @@
 package com.cbu.backend.studygroup.query.infra;
 
+import static com.cbu.backend.authaccount.command.domain.QAuthAccount.authAccount;
+import static com.cbu.backend.studygroup.command.domain.QStudyGroup.studyGroup;
+import static com.querydsl.core.group.GroupBy.groupBy;
+import static com.querydsl.core.group.GroupBy.set;
+
 import com.cbu.backend.authaccount.command.domain.AuthAccount;
 import com.cbu.backend.studygroup.command.domain.StudyGroupNo;
 import com.cbu.backend.studygroup.query.dto.QStudyMember;
@@ -17,11 +22,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import static com.cbu.backend.authaccount.command.domain.QAuthAccount.authAccount;
-import static com.cbu.backend.studygroup.command.domain.QStudyGroup.studyGroup;
-import static com.querydsl.core.group.GroupBy.groupBy;
-import static com.querydsl.core.group.GroupBy.set;
-
 @Repository
 @RequiredArgsConstructor
 public class StudyGroupQueryDslDaoImpl implements StudyGroupQueryDslDao {
@@ -32,15 +32,15 @@ public class StudyGroupQueryDslDaoImpl implements StudyGroupQueryDslDao {
     @Override
     public List<StudyGroupResponse> findAllStudyGroup(Pageable pageable) {
         return jpaQueryFactory
-                        .select(qDtoFactory.qStudyGroupResponse())
-                        .from(studyGroup)
-                        .leftJoin(authAccount)
-                        .on(authAccount.id.eq(studyGroup.studyGroupMember.leaderId))
-                        .offset(pageable.getOffset())
-                        .limit(pageable.getPageSize())
-                        .orderBy(studyGroupOrderConverter.convert(pageable.getSort()))
-                        .fetch();
-       /* Map<StudyGroupResponse, Set<AuthAccount>> transform =
+                .select(qDtoFactory.qStudyGroupResponse())
+                .from(studyGroup)
+                .leftJoin(authAccount)
+                .on(authAccount.id.eq(studyGroup.studyGroupMember.leaderId))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .orderBy(studyGroupOrderConverter.convert(pageable.getSort()))
+                .fetch();
+        /* Map<StudyGroupResponse, Set<AuthAccount>> transform =
                 jpaQueryFactory.select(qDtoFactory.qStudyGroupResponse())
                 .from(studyGroup)
                 .leftJoin(authAccount).on(authAccount.id.eq(studyGroup.studyGroupMember.leaderId))
@@ -68,20 +68,24 @@ public class StudyGroupQueryDslDaoImpl implements StudyGroupQueryDslDao {
                 .fetch();
     }
 
-    public  List<StudyGroupResponse> findAll2(Pageable pageable) {
-        Map<StudyGroupResponse, Set<AuthAccount>> transform = jpaQueryFactory.select(qDtoFactory.qStudyGroupResponse())
-                .from(studyGroup)
-                .leftJoin(authAccount)
-                .on(authAccount.id.eq(studyGroup.studyGroupMember.leaderId))
-                .leftJoin(studyGroup.studyGroupMember.participantIds, authAccount.id)
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .transform(groupBy(qDtoFactory.qStudyGroupResponse()).as(set(authAccount)));
+    public List<StudyGroupResponse> findAll2(Pageable pageable) {
+        Map<StudyGroupResponse, Set<AuthAccount>> transform =
+                jpaQueryFactory
+                        .select(qDtoFactory.qStudyGroupResponse())
+                        .from(studyGroup)
+                        .leftJoin(authAccount)
+                        .on(authAccount.id.eq(studyGroup.studyGroupMember.leaderId))
+                        .leftJoin(studyGroup.studyGroupMember.participantIds, authAccount.id)
+                        .offset(pageable.getOffset())
+                        .limit(pageable.getPageSize())
+                        .transform(groupBy(qDtoFactory.qStudyGroupResponse()).as(set(authAccount)));
 
-        return transform.entrySet().stream().map(entry ->
-                new StudyGroupResponse(entry.getKey(),
-                        entry.getValue().stream().map(StudyMember::new).toList())).toList();
+        return transform.entrySet().stream()
+                .map(
+                        entry ->
+                                new StudyGroupResponse(
+                                        entry.getKey(),
+                                        entry.getValue().stream().map(StudyMember::new).toList()))
+                .toList();
     }
 }
-
-

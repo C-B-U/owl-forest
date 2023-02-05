@@ -1,6 +1,7 @@
 package com.cbu.backend.studygroup.query.dto;
 
 import com.cbu.backend.studygroup.command.domain.StudyGroupStatus;
+
 import lombok.Getter;
 
 import java.util.List;

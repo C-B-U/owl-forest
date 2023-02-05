@@ -167,9 +167,15 @@ class BookReviewQueryDslDaoImplTest {
 
             List<BookReviewSummaryResponse> result =
                     bookReviewQueryDslDao.findSummaryAll(pageable, new BookReviewQueryOption());
-            result.forEach( r -> {
-                log.info("{}, {}, {}, {}",r.getId(), r.getBook().getId(), r.getWriter().getNickname(), r.getTitle());
-            });
+            result.forEach(
+                    r -> {
+                        log.info(
+                                "{}, {}, {}, {}",
+                                r.getId(),
+                                r.getBook().getId(),
+                                r.getWriter().getNickname(),
+                                r.getTitle());
+                    });
             // then
             assertThat(result.size()).isEqualTo(3);
         }
