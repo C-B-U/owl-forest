@@ -1,4 +1,4 @@
-package com.cbu.backend.studyactivitylog.command.domain;
+package com.cbu.backend.studyactivity.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.global.BaseTime;
@@ -17,15 +17,16 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StudyActivityLog {
+public class StudyActivity {
 
-    @EmbeddedId private StudyActivityLogNo id;
+    @EmbeddedId private StudyActivityNo id;
 
     @Column(nullable = false)
     private String title;
 
     @Lob private String description;
 
+    private String assignment;
     private Integer week;
 
     private String place;
@@ -33,7 +34,7 @@ public class StudyActivityLog {
     @ElementCollection
     @CollectionTable(
             name = "study_participants",
-            joinColumns = @JoinColumn(name = "study_activity_log_id"))
+            joinColumns = @JoinColumn(name = "study_activity_id"))
     private Set<AccountNo> studyParticipants = new HashSet<>();
 
     @Embedded private StudyTime studyTime;
@@ -41,20 +42,48 @@ public class StudyActivityLog {
     @Embedded private BaseTime baseTime;
 
     @Builder
-    public StudyActivityLog(
+    public StudyActivity(
             String title,
             String description,
+            String assignment,
             Integer week,
             String place,
             List<AccountNo> studyParticipants,
             StudyTime studyTime) {
-        this.id = new StudyActivityLogNo();
+        this.id = new StudyActivityNo();
         this.title = title;
         this.description = description;
+        this.assignment = assignment;
         this.week = week;
         this.place = place;
         this.studyParticipants.addAll(studyParticipants);
         this.studyTime = studyTime;
         this.baseTime = new BaseTime();
+    }
+
+    public void updateStudyActivity(
+            String title,
+            String description,
+            String assignment,
+            Integer week,
+            String place,
+            List<AccountNo> studyParticipants,
+            StudyTime studyTime) {
+        this.title = title;
+        this.description = description;
+        this.assignment = assignment;
+        this.week = week;
+        this.place = place;
+        clearParticipants();
+        this.studyParticipants.addAll(studyParticipants);
+        this.studyTime = studyTime;
+    }
+
+    public void deleteStudyActivity() {
+        this.baseTime.delete();
+    }
+
+    private void clearParticipants() {
+        this.studyParticipants.clear();
     }
 }

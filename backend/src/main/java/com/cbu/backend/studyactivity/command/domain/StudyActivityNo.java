@@ -1,4 +1,4 @@
-package com.cbu.backend.studyactivitylog.command.domain;
+package com.cbu.backend.studyactivity.command.domain;
 
 import lombok.EqualsAndHashCode;
 
@@ -10,12 +10,12 @@ import javax.persistence.Embeddable;
 
 @EqualsAndHashCode
 @Embeddable
-public class StudyActivityLogNo implements Serializable {
+public class StudyActivityNo implements Serializable {
 
-    @Column(name = "study_activity_log_id", columnDefinition = "BINARY(16)")
+    @Column(name = "study_activity_id", columnDefinition = "BINARY(16)")
     private UUID id;
 
-    protected StudyActivityLogNo() {
+    public StudyActivityNo() {
         this.id = UUID.randomUUID();
     }
 }

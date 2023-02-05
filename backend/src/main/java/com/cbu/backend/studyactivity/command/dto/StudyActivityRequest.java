@@ -1,8 +1,8 @@
-package com.cbu.backend.studyactivitylog.command.dto;
+package com.cbu.backend.studyactivity.command.dto;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
-import com.cbu.backend.studyactivitylog.command.domain.StudyActivityLog;
-import com.cbu.backend.studyactivitylog.command.domain.StudyTime;
+import com.cbu.backend.studyactivity.command.domain.StudyActivity;
+import com.cbu.backend.studyactivity.command.domain.StudyTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +17,7 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudyActivityLogRequest {
+public class StudyActivityRequest {
     @NotBlank private String title;
     @NotBlank private String description;
     private String assignment;
@@ -27,10 +27,11 @@ public class StudyActivityLogRequest {
     @NotEmpty private List<AccountNo> studyParticipants = new ArrayList<>();
     private StudyTime studyTime;
 
-    public StudyActivityLog toEntity() {
-        return StudyActivityLog.builder()
+    public StudyActivity toEntity() {
+        return StudyActivity.builder()
                 .title(title)
                 .description(description)
+                .assignment(assignment)
                 .week(week)
                 .place(place)
                 .studyParticipants(studyParticipants)
