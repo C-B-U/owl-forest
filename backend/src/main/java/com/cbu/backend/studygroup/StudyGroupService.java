@@ -19,7 +19,7 @@ import javax.persistence.EntityNotFoundException;
 public class StudyGroupService {
 
     private final StudyGroupRepository studyGroupRepository;
-//    private final MemberService memberService;
+    //    private final MemberService memberService;
 
     public Long saveStudyGroup(StudyGroupRequest studyGroupRequest) {
         checkParticipantDuplicated(studyGroupRequest.getMembers());
@@ -30,11 +30,11 @@ public class StudyGroupService {
     public void updateStudyGroup(Long id, StudyGroupRequest studyGroupRequest) {
         StudyGroup studyGroup = getEntity(id);
         checkParticipantDuplicated(studyGroupRequest.getMembers());
-//        studyGroup.updateStudyGroup(
-//                studyGroupRequest.getName(),
-//                studyGroupRequest.getDescription(),
-//                memberService.findById(studyGroupRequest.getLeader()),
-//                memberService.findAllById(studyGroupRequest.getMembers()));
+        //        studyGroup.updateStudyGroup(
+        //                studyGroupRequest.getName(),
+        //                studyGroupRequest.getDescription(),
+        //                memberService.findById(studyGroupRequest.getLeader()),
+        //                memberService.findAllById(studyGroupRequest.getMembers()));
     }
 
     @Transactional
@@ -46,8 +46,10 @@ public class StudyGroupService {
 
     @Transactional
     public void cancelLike(Long id, Member member) {
-        LikeCount likeCount = studyGroupRepository.findLikeCountByStudyGroupIdAndMember(id, member)
-                .orElseThrow(EntityNotFoundException::new);
+        LikeCount likeCount =
+                studyGroupRepository
+                        .findLikeCountByStudyGroupIdAndMember(id, member)
+                        .orElseThrow(EntityNotFoundException::new);
         likeCount.getStudyGroup().cancelLike(likeCount);
     }
 

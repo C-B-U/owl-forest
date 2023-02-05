@@ -19,14 +19,12 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyGroup {
 
-    @Id @GeneratedValue
-    private Long id;
+    @Id @GeneratedValue private Long id;
 
     @Column(nullable = false)
     private String name;
 
-    @Lob
-    private String description;
+    @Lob private String description;
 
     @Enumerated(EnumType.STRING)
     private StudyGroupStatus studyGroupStatus;
@@ -40,11 +38,11 @@ public class StudyGroup {
     @OneToMany(mappedBy = "studyGroup")
     private Set<StudyMember> studyMembers = new HashSet<>();
 
-    @Embedded
-    private BaseTime baseTime;
+    @Embedded private BaseTime baseTime;
 
     @Builder
-    public StudyGroup(String name, String description, Member leader, Set<StudyMember> studyMembers) {
+    public StudyGroup(
+            String name, String description, Member leader, Set<StudyMember> studyMembers) {
         this.name = name;
         this.description = description;
         this.studyGroupStatus = StudyGroupStatus.ACTIVE;
@@ -61,7 +59,8 @@ public class StudyGroup {
         this.baseTime.delete();
     }
 
-    public void updateStudyGroup(String name, String description, Member leader, List<StudyMember> studyMembers) {
+    public void updateStudyGroup(
+            String name, String description, Member leader, List<StudyMember> studyMembers) {
         this.name = name;
         this.description = description;
         organizeStudyMembers(leader, studyMembers);

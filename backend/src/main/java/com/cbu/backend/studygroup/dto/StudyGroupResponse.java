@@ -1,6 +1,7 @@
 package com.cbu.backend.studygroup.dto;
 
 import com.cbu.backend.studygroup.StudyGroupStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

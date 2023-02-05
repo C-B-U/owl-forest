@@ -2,6 +2,7 @@ package com.cbu.backend.studygroup;
 
 import com.cbu.backend.authaccount.command.domain.Member;
 import com.cbu.backend.studygroup.dto.StudyGroupProjection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

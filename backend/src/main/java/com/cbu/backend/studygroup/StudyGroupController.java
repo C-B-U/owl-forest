@@ -23,8 +23,7 @@ public class StudyGroupController {
     private final StudyGroupService studyGroupService;
 
     @PostMapping
-    public ResponseEntity<Long> saveStudyGroup(
-            @RequestBody StudyGroupRequest studyGroupRequest) {
+    public ResponseEntity<Long> saveStudyGroup(@RequestBody StudyGroupRequest studyGroupRequest) {
         return ResponseEntity.ok(studyGroupService.saveStudyGroup(studyGroupRequest));
     }
 
@@ -38,14 +37,14 @@ public class StudyGroupController {
     @PostMapping("/{id}/like-count/add")
     public ResponseEntity<Void> addLikeCount(
             @PathVariable Long id, @AuthenticationPrincipal LoginUser loginUser) {
-//        studyGroupService.addLike(id, loginUser.getAccountId());
+        //        studyGroupService.addLike(id, loginUser.getAccountId());
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/{id}/like-count/cancel")
     public ResponseEntity<Void> cancelLikeCount(
             @PathVariable Long id, @AuthenticationPrincipal LoginUser loginUser) {
-//        studyGroupService.cancelLike(id, loginUser.getAccountId());
+        //        studyGroupService.cancelLike(id, loginUser.getAccountId());
         return ResponseEntity.ok().build();
     }
 
@@ -69,7 +68,7 @@ public class StudyGroupController {
     @GetMapping
     public ResponseEntity<List<StudyGroupProjection>> getAll(
             @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC)
-            Pageable pageable) {
+                    Pageable pageable) {
         return ResponseEntity.ok(studyGroupService.findAllStudyGroup(pageable));
     }
 }

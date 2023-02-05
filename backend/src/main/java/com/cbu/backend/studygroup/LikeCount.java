@@ -1,8 +1,8 @@
 package com.cbu.backend.studygroup;
 
-
 import com.cbu.backend.authaccount.command.domain.Member;
 import com.cbu.backend.global.BaseTime;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,8 +14,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LikeCount {
-    @Id @GeneratedValue
-    private Long id;
+    @Id @GeneratedValue private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
@@ -24,8 +23,7 @@ public class LikeCount {
     @JoinColumn(name = "study_group_id")
     private StudyGroup studyGroup;
 
-    @Embedded
-    private BaseTime baseTime;
+    @Embedded private BaseTime baseTime;
 
     @Builder
     public LikeCount(Member member, StudyGroup studyGroup) {
