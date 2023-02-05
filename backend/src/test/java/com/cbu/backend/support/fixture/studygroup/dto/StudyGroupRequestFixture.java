@@ -1,7 +1,7 @@
 package com.cbu.backend.support.fixture.studygroup.dto;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
-import com.cbu.backend.studygroup.command.domain.StudyGroupRequest;
+import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 
 import java.util.List;
 

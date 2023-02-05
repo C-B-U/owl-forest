@@ -1,7 +1,6 @@
-package com.cbu.backend.studygroup.command.domain;
+package com.cbu.backend.studygroup.dto;
 
-import com.cbu.backend.authaccount.command.domain.AccountNo;
-
+import com.cbu.backend.studygroup.StudyGroup;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,15 +16,13 @@ import javax.validation.constraints.NotEmpty;
 public class StudyGroupRequest {
     @NotEmpty private String name;
     private String description;
-    @NotEmpty private AccountNo leader;
-    @NotEmpty private List<AccountNo> participants = new ArrayList<>();
+    @NotEmpty private Long leader;
+    @NotEmpty private List<Long> members = new ArrayList<>();
 
     public StudyGroup toEntity() {
         return StudyGroup.builder()
                 .name(name)
                 .description(description)
-                .leaderId(leader)
-                .participantIds(participants)
                 .build();
     }
 }
