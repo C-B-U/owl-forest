@@ -106,17 +106,7 @@ class StudyGroupQueryDslDaoImplTest {
             List<StudyGroupResponse> result =
                     studyGroupQueryDslDao.findAllStudyGroup(getPageable());
 
-            result.forEach(
-                    r -> {
-                        log.info(
-                                "{}, {}, {}, {}, {}, {}",
-                                r.getId(),
-                                r.getName(),
-                                r.getStudyGroupStatus(),
-                                r.getLikeCount(),
-                                r.getDescription(),
-                                r.getStudyLeader().getId());
-                    });
+            result.forEach( r -> log.info("{}, {}, {}, {}, {}, {}",r.getId(), r.getName(), r.getStudyGroupStatus(), r.getLikeCount(), r.getDescription(), r.getStudyLeader().getId()));
 
             // then
             assertThat(result.size()).isEqualTo(2);
