@@ -19,8 +19,7 @@ public class StudyActivityController {
     @PostMapping
     public ResponseEntity<StudyActivityNo> saveStudyActivity(
             @RequestBody StudyActivityRequest studyActivityRequest) {
-        return ResponseEntity.ok(
-                studyActivityService.saveStudyActivity(studyActivityRequest));
+        return ResponseEntity.ok(studyActivityService.saveStudyActivity(studyActivityRequest));
     }
 
     @PutMapping("/{id}")

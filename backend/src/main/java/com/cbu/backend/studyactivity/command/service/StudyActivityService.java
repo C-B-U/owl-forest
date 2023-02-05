@@ -20,8 +20,7 @@ public class StudyActivityService {
 
     private final StudyActivityRepository studyActivityRepository;
 
-    public StudyActivityNo saveStudyActivity(
-            StudyActivityRequest studyActivityRequest) {
+    public StudyActivityNo saveStudyActivity(StudyActivityRequest studyActivityRequest) {
         checkValidRequest(studyActivityRequest);
         return studyActivityRepository.save(studyActivityRequest.toEntity()).getId();
     }
