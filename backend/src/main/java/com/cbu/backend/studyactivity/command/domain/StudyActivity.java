@@ -1,4 +1,4 @@
-package com.cbu.backend.studyactivitylog.command.domain;
+package com.cbu.backend.studyactivity.command.domain;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.global.BaseTime;
@@ -17,9 +17,9 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StudyActivityLog {
+public class StudyActivity {
 
-    @EmbeddedId private StudyActivityLogNo id;
+    @EmbeddedId private StudyActivityNo id;
 
     @Column(nullable = false)
     private String title;
@@ -34,7 +34,7 @@ public class StudyActivityLog {
     @ElementCollection
     @CollectionTable(
             name = "study_participants",
-            joinColumns = @JoinColumn(name = "study_activity_log_id"))
+            joinColumns = @JoinColumn(name = "study_activity_id"))
     private Set<AccountNo> studyParticipants = new HashSet<>();
 
     @Embedded private StudyTime studyTime;
@@ -42,7 +42,7 @@ public class StudyActivityLog {
     @Embedded private BaseTime baseTime;
 
     @Builder
-    public StudyActivityLog(
+    public StudyActivity(
             String title,
             String description,
             String assignment,
@@ -50,7 +50,7 @@ public class StudyActivityLog {
             String place,
             List<AccountNo> studyParticipants,
             StudyTime studyTime) {
-        this.id = new StudyActivityLogNo();
+        this.id = new StudyActivityNo();
         this.title = title;
         this.description = description;
         this.assignment = assignment;
@@ -61,7 +61,7 @@ public class StudyActivityLog {
         this.baseTime = new BaseTime();
     }
 
-    public void updateStudyActivityLog(
+    public void updateStudyActivity(
             String title,
             String description,
             String assignment,
@@ -79,7 +79,7 @@ public class StudyActivityLog {
         this.studyTime = studyTime;
     }
 
-    public void deleteStudyActivityLog() {
+    public void deleteStudyActivity() {
         this.baseTime.delete();
     }
 
