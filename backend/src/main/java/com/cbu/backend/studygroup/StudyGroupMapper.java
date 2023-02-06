@@ -4,6 +4,7 @@ import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 import com.cbu.backend.studygroup.dto.StudyMemberResponse;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;
