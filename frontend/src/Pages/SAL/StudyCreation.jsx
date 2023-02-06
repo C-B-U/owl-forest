@@ -107,16 +107,24 @@ function StudyCreation() {
   const baseurl = process.env.REACT_APP_BASE_URL;
   const [title, setTitle] = useState();
   const [activity, setActivity] = useState();
-  const [leader, setLeader] = useState();
-  const [member, setMember] = useState([]);
+  const [leaderName, setLeaderName] = useState();
+  const [leaderNumber, setLeaderNumber] = useState();
+  const [memberName, setMemberName] = useState([]);
+  const [memberNumber, setMemberNumber] = useState([]);
 
-  useEffect(() => {
+  const studyData = {
+    title: `${title}`,
+    activity: `${activity}`,
+    leaderName: `${leaderName}`,
+    leaderNumber: `${leaderNumber}`,
+    memberName: `${memberName}`,
+    memberNumber: `${memberNumber}`,
+  };
+
+  const handleSubmit = useEffect(() => {
     axios
       .post(`${baseurl}`, {
-        title,
-        activity,
-        leader,
-        member,
+        studyData,
       })
       .then((response) => {
         console.log(response);
@@ -137,26 +145,68 @@ function StudyCreation() {
             <Center>
               <InputWrapper>
                 <InputTitle>스터디 이름</InputTitle>
-                <Input width='600px' height='50px' placeholder='스터디 이름' />
+                <Input
+                  width='600px'
+                  height='50px'
+                  placeholder='스터디 이름'
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                />
               </InputWrapper>
               <InputWrapper>
                 <InputTitle>스터디 개요</InputTitle>
-                <Input width='600px' height='200px' placeholder='스터디 개요' />
+                <Input
+                  width='600px'
+                  height='200px'
+                  placeholder='스터디 개요'
+                  onChange={(e) => {
+                    setActivity(e.target.value);
+                  }}
+                />
               </InputWrapper>
 
               <ScorllWrapper>
                 <InputWrapper>
                   <InputTitle>팀장</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder='이름' />
-                    <Input width='360px' height='50px' placeholder='학번' />
+                    <Input
+                      width='130px'
+                      height='50px'
+                      placeholder='이름'
+                      onChange={(e) => {
+                        setLeaderName(e.target.value);
+                      }}
+                    />
+                    <Input
+                      width='360px'
+                      height='50px'
+                      placeholder='학번'
+                      onChange={(e) => {
+                        setLeaderNumber(e.target.value);
+                      }}
+                    />
                   </InputMemberWrapper>
                 </InputWrapper>
                 <InputWrapper>
                   <InputTitle>팀원</InputTitle>
                   <InputMemberWrapper>
-                    <Input width='130px' height='50px' placeholder='이름' />
-                    <Input width='360px' height='50px' placeholder='학번' />
+                    <Input
+                      width='130px'
+                      height='50px'
+                      placeholder='이름'
+                      onChange={(e) => {
+                        setMemberName(e.target.value);
+                      }}
+                    />
+                    <Input
+                      width='360px'
+                      height='50px'
+                      placeholder='학번'
+                      onChange={(e) => {
+                        setMemberNumber(e.target.value);
+                      }}
+                    />
                     <InputIcon>+</InputIcon>
                   </InputMemberWrapper>
                 </InputWrapper>
@@ -201,6 +251,9 @@ function StudyCreation() {
                   width='100%'
                   height='3.5rem'
                   name='생성하기'
+                  onClick={() => {
+                    handleSubmit();
+                  }}
                 />
               </BtnWrap>
             </Center>
