@@ -1,11 +1,10 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import Search from '../../Components/Search';
-import Button from '../../Components/Btn';
 import EmptyHeart from '../../Image/EmptyHeart.png';
 import FullHeart from '../../Image/FullHeart.png';
 
@@ -20,6 +19,7 @@ const PageTitle = styled.h1`
   width: fit-content;
   margin-left: 2rem;
   margin-top: 2.5rem;
+  /* margin-bottom: 2rem; */
   color: ${palette('PsYellow')};
   text-align: left;
 `;
@@ -36,8 +36,8 @@ const WrapSerach = styled.div`
 const WrapList = styled.div`
   position: fixed;
   width: 100%;
-  height: calc(100% - 10rem);
-  padding: 2rem;
+  height: calc(100% - 11rem);
+  padding: 0rem 2rem 2rem 2rem;
   bottom: 0;
   box-sizing: border-box;
 
@@ -153,6 +153,19 @@ const LikeButton = styled.button`
 `;
 
 function ReviewList() {
+  // const [like, setLike] = useState(false);
+  const [background, setBackground] = useState({ EmptyHeart });
+  const Like = () => {
+    console.log(background);
+    if (background === { EmptyHeart }) {
+      // setLike(false);
+      console.log('빨간 하트');
+      setBackground({ FullHeart });
+    } else {
+      // setLike(true);
+      setBackground({ EmptyHeart });
+    }
+  };
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -175,7 +188,7 @@ function ReviewList() {
                   <Review>
                     우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
                   </Review>
-                  <LikeButton />
+                  <LikeButton onClick={Like} />
                 </WrapTop>
                 <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
                 <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
