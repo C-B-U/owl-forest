@@ -1,6 +1,7 @@
 package com.cbu.backend.book;
 
 import com.cbu.backend.member.domain.Member;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

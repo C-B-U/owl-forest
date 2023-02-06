@@ -2,9 +2,11 @@ package com.cbu.backend.member.dto;
 
 import com.cbu.backend.member.domain.AcademicStatus;
 import com.cbu.backend.member.domain.Major;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.Email;
@@ -14,25 +16,22 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateMemberRequest {
-    @NotBlank
-    private String name;
-    @URL
-    private String blogUrl;
+    @NotBlank private String name;
+    @URL private String blogUrl;
     private String githubId;
-    @NotBlank
-    private AcademicStatus academicStatus;
-    @NotBlank
-    private Major major;
+    @NotBlank private AcademicStatus academicStatus;
+    @NotBlank private Major major;
     private Major subMajor;
-    @Email
-    @NotBlank
-    private String email;
+    @Email @NotBlank private String email;
     private Integer grade;
+
     @NotBlank
-    //format 설정 TODO
+    // format 설정 TODO
     private String studentId;
+
     @NotBlank
-    //format 설정 TODO
+    // format 설정 TODO
     private String phoneNumber;
+
     private String introduction;
 }

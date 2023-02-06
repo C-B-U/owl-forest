@@ -2,8 +2,8 @@ package com.cbu.backend.config.security.jwt;
 
 import com.cbu.backend.config.security.oauth2.LoginUser;
 import com.cbu.backend.config.security.oauth2.LoginUserMapper;
-import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.member.domain.Member;
+import com.cbu.backend.member.service.MemberService;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

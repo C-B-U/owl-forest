@@ -1,4 +1,4 @@
 package com.cbu.backend.bookreviewcomment;
 
-//@Mapper
+// @Mapper
 public interface BookReviewCommentMapper {}

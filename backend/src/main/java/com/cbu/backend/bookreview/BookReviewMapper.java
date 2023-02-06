@@ -3,6 +3,7 @@ package com.cbu.backend.bookreview;
 import com.cbu.backend.book.Book;
 import com.cbu.backend.bookreview.dto.*;
 import com.cbu.backend.member.domain.Member;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

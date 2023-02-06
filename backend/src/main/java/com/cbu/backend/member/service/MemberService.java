@@ -6,12 +6,15 @@ import com.cbu.backend.member.MemberRepository;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.domain.OAuth2Info;
 import com.cbu.backend.member.dto.UpdateMemberRequest;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.UUID;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor
