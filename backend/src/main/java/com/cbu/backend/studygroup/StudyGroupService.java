@@ -44,11 +44,11 @@ public class StudyGroupService {
 
     @Transactional
     public void cancelLike(Long id, Member member) {
-//        LikeCount likeCount =
-//                studyGroupRepository
-//                        .findLikeCountByIdAndMember(id, member)
-//                        .orElseThrow(EntityNotFoundException::new);
-//        likeCount.getStudyGroup().cancelLike(likeCount);
+        //        LikeCount likeCount =
+        //                studyGroupRepository
+        //                        .findLikeCountByIdAndMember(id, member)
+        //                        .orElseThrow(EntityNotFoundException::new);
+        //        likeCount.getStudyGroup().cancelLike(likeCount);
     }
 
     @Transactional
