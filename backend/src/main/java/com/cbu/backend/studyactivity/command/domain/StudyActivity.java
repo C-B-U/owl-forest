@@ -1,6 +1,5 @@
 package com.cbu.backend.studyactivity.command.domain;
 
-import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.global.BaseTime;
 
 import lombok.AccessLevel;
@@ -35,7 +34,7 @@ public class StudyActivity {
     @CollectionTable(
             name = "study_participants",
             joinColumns = @JoinColumn(name = "study_activity_id"))
-    private Set<AccountNo> studyParticipants = new HashSet<>();
+    private Set<Long> studyParticipants = new HashSet<>();
 
     @Embedded private StudyTime studyTime;
 
@@ -48,7 +47,7 @@ public class StudyActivity {
             String assignment,
             Integer week,
             String place,
-            List<AccountNo> studyParticipants,
+            List<Long> studyParticipants,
             StudyTime studyTime) {
         this.id = new StudyActivityNo();
         this.title = title;
@@ -67,7 +66,7 @@ public class StudyActivity {
             String assignment,
             Integer week,
             String place,
-            List<AccountNo> studyParticipants,
+            List<Long> studyParticipants,
             StudyTime studyTime) {
         this.title = title;
         this.description = description;

@@ -1,6 +1,5 @@
 package com.cbu.backend.studyactivity.command.service;
 
-import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.studyactivity.command.domain.StudyActivity;
 import com.cbu.backend.studyactivity.command.domain.StudyActivityNo;
 import com.cbu.backend.studyactivity.command.dto.StudyActivityRequest;
@@ -51,13 +50,13 @@ public class StudyActivityService {
         studyActivityRequest.getStudyTime().isValidStudyTime();
     }
 
-    private void checkParticipantDuplicated(List<AccountNo> studyParticipants) {
+    private void checkParticipantDuplicated(List<Long> studyParticipants) {
         if (studyParticipants.size() != getRequestCount(studyParticipants)) {
             throw new ParticipantDuplicatedException();
         }
     }
 
-    private long getRequestCount(List<AccountNo> studyGroupParticipants) {
+    private long getRequestCount(List<Long> studyGroupParticipants) {
         return studyGroupParticipants.stream().distinct().count();
     }
 
