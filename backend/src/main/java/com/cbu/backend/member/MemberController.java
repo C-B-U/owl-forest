@@ -1,6 +1,7 @@
 package com.cbu.backend.member;
 
 import com.cbu.backend.member.dto.UpdateMemberRequest;
+import com.cbu.backend.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;

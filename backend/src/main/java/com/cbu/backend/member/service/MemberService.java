@@ -1,10 +1,11 @@
-package com.cbu.backend.member;
+package com.cbu.backend.member.service;
 
 import com.cbu.backend.config.security.oauth2.OAuth2Request;
+import com.cbu.backend.member.MemberMapper;
+import com.cbu.backend.member.MemberRepository;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.domain.OAuth2Info;
 import com.cbu.backend.member.dto.UpdateMemberRequest;
-import com.cbu.backend.util.AuthUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,7 @@ import java.util.UUID;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final MemberMapper memberMapper;
+    private final AuthService authService;
 
     @Transactional
     public Member saveIfNone(OAuth2Request oAuth2Request) {
@@ -39,7 +41,7 @@ public class MemberService {
     }
 
     public void update(UpdateMemberRequest req) {
-        Member loginUser = AuthUtils.getLoginUser();
+        Member loginUser = authService.getLoginUser();
         memberMapper.updateFromDto(req, loginUser);
     }
 }

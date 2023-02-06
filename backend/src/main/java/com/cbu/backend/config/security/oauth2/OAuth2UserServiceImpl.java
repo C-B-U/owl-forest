@@ -1,7 +1,7 @@
 package com.cbu.backend.config.security.oauth2;
 
 import com.cbu.backend.config.security.oauth2.attributemapper.AttributeMapper;
-import com.cbu.backend.member.MemberService;
+import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.member.domain.AuthProvider;
 import com.cbu.backend.member.domain.Member;
 

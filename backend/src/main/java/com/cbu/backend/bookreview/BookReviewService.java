@@ -8,26 +8,24 @@ import com.cbu.backend.bookreview.dto.BookReviewSummaryResponse;
 import com.cbu.backend.bookreview.repository.BookReviewQueryOption;
 import com.cbu.backend.bookreview.repository.BookReviewRepository;
 import com.cbu.backend.member.domain.Member;
-import com.cbu.backend.util.AuthUtils;
-
+import com.cbu.backend.member.service.AuthService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class BookReviewService {
     private final BookReviewRepository bookReviewRepository;
     private final BookService bookService;
+    private final AuthService authService;
     private final BookReviewMapper bookReviewMapper;
 
     public Long saveBookReview(BookReviewRequest req) {
-        Member loginUser = AuthUtils.getLoginUser();
+        Member loginUser = authService.getLoginUser();
         Book book = bookService.saveIfNotExists(req.getBook());
         return bookReviewRepository.save(bookReviewMapper.toEntity(req, book, loginUser)).getId();
     }
