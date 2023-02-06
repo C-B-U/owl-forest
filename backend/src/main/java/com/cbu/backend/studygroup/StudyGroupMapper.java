@@ -1,12 +1,14 @@
 package com.cbu.backend.studygroup;
 
-import com.cbu.backend.authaccount.command.domain.Member;
+import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 import com.cbu.backend.studygroup.dto.StudyMemberResponse;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class StudyGroupMapper {
 
     public StudyGroup toEntity(StudyGroupRequest studyGroupRequest) {

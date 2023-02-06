@@ -1,6 +1,6 @@
 package com.cbu.backend.studygroup;
 
-import com.cbu.backend.authaccount.command.domain.Member;
+import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.global.BaseTime;
 
 import lombok.AccessLevel;

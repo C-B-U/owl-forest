@@ -1,6 +1,6 @@
 package com.cbu.backend.studygroup;
 
-import com.cbu.backend.authaccount.command.domain.Member;
+import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 
@@ -44,11 +44,11 @@ public class StudyGroupService {
 
     @Transactional
     public void cancelLike(Long id, Member member) {
-        LikeCount likeCount =
-                studyGroupRepository
-                        .findLikeCountByStudyGroupIdAndMember(id, member)
-                        .orElseThrow(EntityNotFoundException::new);
-        likeCount.getStudyGroup().cancelLike(likeCount);
+//        LikeCount likeCount =
+//                studyGroupRepository
+//                        .findLikeCountByIdAndMember(id, member)
+//                        .orElseThrow(EntityNotFoundException::new);
+//        likeCount.getStudyGroup().cancelLike(likeCount);
     }
 
     @Transactional
