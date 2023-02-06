@@ -1,7 +1,5 @@
 package com.cbu.backend.studygroup.dto;
 
-import com.cbu.backend.studygroup.StudyGroup;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +17,4 @@ public class StudyGroupRequest {
     private String description;
     @NotEmpty private Long leader;
     @NotEmpty private List<Long> members = new ArrayList<>();
-
-    public StudyGroup toEntity() {
-        return StudyGroup.builder().name(name).description(description).build();
-    }
 }

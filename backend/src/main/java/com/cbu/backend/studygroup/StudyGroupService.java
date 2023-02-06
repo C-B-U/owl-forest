@@ -1,9 +1,9 @@
 package com.cbu.backend.studygroup;
 
 import com.cbu.backend.authaccount.command.domain.Member;
-import com.cbu.backend.studygroup.dto.StudyGroupProjection;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 
+import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -19,22 +20,20 @@ import javax.persistence.EntityNotFoundException;
 public class StudyGroupService {
 
     private final StudyGroupRepository studyGroupRepository;
-    //    private final MemberService memberService;
+    private final StudyGroupMapper studyGroupMapper;
 
     public Long saveStudyGroup(StudyGroupRequest studyGroupRequest) {
         checkParticipantDuplicated(studyGroupRequest.getMembers());
-        return studyGroupRepository.save(studyGroupRequest.toEntity()).getId();
+        return studyGroupRepository.save(studyGroupMapper.toEntity(studyGroupRequest)).getId();
     }
 
     @Transactional
     public void updateStudyGroup(Long id, StudyGroupRequest studyGroupRequest) {
         StudyGroup studyGroup = getEntity(id);
         checkParticipantDuplicated(studyGroupRequest.getMembers());
-        //        studyGroup.updateStudyGroup(
-        //                studyGroupRequest.getName(),
-        //                studyGroupRequest.getDescription(),
-        //                memberService.findById(studyGroupRequest.getLeader()),
-        //                memberService.findAllById(studyGroupRequest.getMembers()));
+                studyGroup.updateStudyGroup(
+                        studyGroupRequest.getName(),
+                        studyGroupRequest.getDescription());
     }
 
     @Transactional
@@ -63,6 +62,16 @@ public class StudyGroupService {
         getEntity(id).deleteStudy();
     }
 
+    public StudyGroupResponse findResponseById(Long id) {
+        return studyGroupMapper.toResponse(getEntity(id));
+    }
+
+    public List<StudyGroupResponse> findAllStudyGroup(Pageable pageable) {
+        return studyGroupRepository.findAll(pageable).stream()
+                .map(studyGroupMapper::toResponse)
+                .collect(Collectors.toList());
+    }
+
     private void checkParticipantDuplicated(List<Long> studyGroupParticipants) {
         if (studyGroupParticipants.size() != getRequestCount(studyGroupParticipants)) {
             throw new ParticipantDuplicatedException();
@@ -75,13 +84,5 @@ public class StudyGroupService {
 
     private StudyGroup getEntity(Long id) {
         return studyGroupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-    }
-
-    public List<StudyGroupProjection> findAllStudyGroup(Pageable pageable) {
-        return null;
-    }
-
-    public StudyGroupProjection findResponseById(Long id) {
-        return null;
     }
 }

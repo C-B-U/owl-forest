@@ -1,9 +1,9 @@
 package com.cbu.backend.studygroup;
 
 import com.cbu.backend.config.security.oauth2.LoginUser;
-import com.cbu.backend.studygroup.dto.StudyGroupProjection;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 
+import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
@@ -36,15 +36,15 @@ public class StudyGroupController {
 
     @PostMapping("/{id}/like-count/add")
     public ResponseEntity<Void> addLikeCount(
-            @PathVariable Long id, @AuthenticationPrincipal LoginUser loginUser) {
-        //        studyGroupService.addLike(id, loginUser.getAccountId());
+            @PathVariable Long id) {
+        //        studyGroupService.addLike(id, );
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/{id}/like-count/cancel")
     public ResponseEntity<Void> cancelLikeCount(
-            @PathVariable Long id, @AuthenticationPrincipal LoginUser loginUser) {
-        //        studyGroupService.cancelLike(id, loginUser.getAccountId());
+            @PathVariable Long id) {
+        //        studyGroupService.cancelLike(id, );
         return ResponseEntity.ok().build();
     }
 
@@ -61,12 +61,12 @@ public class StudyGroupController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudyGroupProjection> getStudyGroup(@PathVariable Long id) {
+    public ResponseEntity<StudyGroupResponse> getStudyGroup(@PathVariable Long id) {
         return ResponseEntity.ok(studyGroupService.findResponseById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<StudyGroupProjection>> getAll(
+    public ResponseEntity<List<StudyGroupResponse>> getAll(
             @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC)
                     Pageable pageable) {
         return ResponseEntity.ok(studyGroupService.findAllStudyGroup(pageable));

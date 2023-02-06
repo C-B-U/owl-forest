@@ -60,10 +60,9 @@ public class StudyGroup {
     }
 
     public void updateStudyGroup(
-            String name, String description, Member leader, List<StudyMember> studyMembers) {
+            String name, String description) { // TODO Member, Leader 추가
         this.name = name;
         this.description = description;
-        organizeStudyMembers(leader, studyMembers);
     }
 
     public void cancelLike(LikeCount likeCount) {

@@ -3,12 +3,14 @@ package com.cbu.backend.studygroup.dto;
 import com.cbu.backend.studygroup.StudyGroupStatus;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudyGroupResponse {
@@ -16,6 +18,6 @@ public class StudyGroupResponse {
     private String description;
     private Integer likeCount;
     private StudyGroupStatus studyGroupStatus;
-    private StudyGroupResponse leader;
-    private List<StudyGroupResponse> members;
+    private StudyMemberResponse leader;
+    private List<StudyMemberResponse> members;
 }

@@ -4,7 +4,7 @@ import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 
 import java.util.List;
-
+/*
 public enum StudyGroupRequestFixture {
     SAMPLE1(
             "봄나물",
@@ -35,3 +35,4 @@ public enum StudyGroupRequestFixture {
         return new StudyGroupRequest(name, description, leader, participants);
     }
 }
+*/

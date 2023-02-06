@@ -3,10 +3,12 @@ package com.cbu.backend.studygroup;
 import com.cbu.backend.authaccount.command.domain.Member;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyMember {
