@@ -267,14 +267,15 @@ function BookReg() {
     if (!bookTitle) {
       alert('제목을 입력해 주세요.');
     } else {
-      const data = {
-        keyword: bookTitle,
-        page: 1,
-        pageSize: 10,
-      };
       // console.log('data : ', data);
       axios
-        .get(`${process.env.REACT_APP_BASE_URL}/api/externalbooks`, data)
+        .get(`${process.env.REACT_APP_BASE_URL}/externalbooks`, {
+          params: {
+            keyword: bookTitle,
+            page: 1,
+            pageSize: 10,
+          },
+        })
         .then((response) => {
           console.log(response);
         })
