@@ -2,8 +2,8 @@ package com.cbu.backend.studygroup;
 
 import com.cbu.backend.authaccount.command.domain.Member;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
-
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
@@ -31,9 +31,8 @@ public class StudyGroupService {
     public void updateStudyGroup(Long id, StudyGroupRequest studyGroupRequest) {
         StudyGroup studyGroup = getEntity(id);
         checkParticipantDuplicated(studyGroupRequest.getMembers());
-                studyGroup.updateStudyGroup(
-                        studyGroupRequest.getName(),
-                        studyGroupRequest.getDescription());
+        studyGroup.updateStudyGroup(
+                studyGroupRequest.getName(), studyGroupRequest.getDescription());
     }
 
     @Transactional

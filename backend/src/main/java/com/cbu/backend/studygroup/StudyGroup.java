@@ -59,8 +59,7 @@ public class StudyGroup {
         this.baseTime.delete();
     }
 
-    public void updateStudyGroup(
-            String name, String description) { // TODO Member, Leader 추가
+    public void updateStudyGroup(String name, String description) { // TODO Member, Leader 추가
         this.name = name;
         this.description = description;
     }

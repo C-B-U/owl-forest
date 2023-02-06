@@ -1,16 +1,14 @@
 package com.cbu.backend.studygroup;
 
-import com.cbu.backend.config.security.oauth2.LoginUser;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
-
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,15 +33,13 @@ public class StudyGroupController {
     }
 
     @PostMapping("/{id}/like-count/add")
-    public ResponseEntity<Void> addLikeCount(
-            @PathVariable Long id) {
+    public ResponseEntity<Void> addLikeCount(@PathVariable Long id) {
         //        studyGroupService.addLike(id, );
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/{id}/like-count/cancel")
-    public ResponseEntity<Void> cancelLikeCount(
-            @PathVariable Long id) {
+    public ResponseEntity<Void> cancelLikeCount(@PathVariable Long id) {
         //        studyGroupService.cancelLike(id, );
         return ResponseEntity.ok().build();
     }

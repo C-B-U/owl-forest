@@ -32,7 +32,6 @@ public class StudyGroupMapper {
     }
 
     public StudyMemberResponse toMemberResponse(Member member) {
-        return StudyMemberResponse.builder()
-                .build();
+        return StudyMemberResponse.builder().build();
     }
 }
