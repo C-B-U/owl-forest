@@ -1,7 +1,7 @@
 package com.cbu.backend.studygroup;
 
-import com.cbu.backend.member.domain.Member;
 
+import com.cbu.backend.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
