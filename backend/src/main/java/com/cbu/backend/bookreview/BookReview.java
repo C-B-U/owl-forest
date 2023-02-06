@@ -1,8 +1,9 @@
 package com.cbu.backend.bookreview;
 
-import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.book.Book;
 import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.member.domain.Member;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,7 +43,14 @@ public class BookReview {
     private BaseTime baseTime;
 
     @Builder
-    public BookReview(Member writer, String title, String content, Book book, Integer likeCount, Integer score, Integer difficulty) {
+    public BookReview(
+            Member writer,
+            String title,
+            String content,
+            Book book,
+            Integer likeCount,
+            Integer score,
+            Integer difficulty) {
         this.writer = writer;
         this.title = title;
         this.content = content;

@@ -1,6 +1,7 @@
 package com.cbu.backend.bookreview.dto;
 
 import com.cbu.backend.book.BookRequest;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

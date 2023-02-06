@@ -9,5 +9,4 @@ public class BookSummary {
     private Long id;
     private String title;
     private String imageUrl;
-
 }

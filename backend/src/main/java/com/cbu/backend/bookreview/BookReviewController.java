@@ -1,7 +1,9 @@
 package com.cbu.backend.bookreview;
 
 import com.cbu.backend.bookreview.dto.BookReviewRequest;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,19 +23,20 @@ public class BookReviewController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(bookReviewId);
     }
-//    @GetMapping
-//    public ResponseEntity<List<BookReviewSummaryResponse>> getAll(
-//            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
-//            @RequestParam(required = false) BookReviewQueryOption param) {
-//        return ResponseEntity.ok(bookReviewDao.findSummaryAll(pageable, param));
-//    }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<BookReviewResponse> getById(@PathVariable String id) {
-//        BookReviewResponse result =
-//                bookReviewService
-//                        .findResponseById(new BookReviewNo(id))
-//                        .orElseThrow(EntityNotFoundException::new);
-//        return ResponseEntity.ok(result);
-//    }
+    //    @GetMapping
+    //    public ResponseEntity<List<BookReviewSummaryResponse>> getAll(
+    //            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable
+    // pageable,
+    //            @RequestParam(required = false) BookReviewQueryOption param) {
+    //        return ResponseEntity.ok(bookReviewDao.findSummaryAll(pageable, param));
+    //    }
+    //
+    //    @GetMapping("/{id}")
+    //    public ResponseEntity<BookReviewResponse> getById(@PathVariable String id) {
+    //        BookReviewResponse result =
+    //                bookReviewService
+    //                        .findResponseById(new BookReviewNo(id))
+    //                        .orElseThrow(EntityNotFoundException::new);
+    //        return ResponseEntity.ok(result);
+    //    }
 }

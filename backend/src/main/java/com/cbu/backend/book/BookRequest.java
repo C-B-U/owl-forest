@@ -4,12 +4,14 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import org.hibernate.validator.constraints.ISBN;
 import org.hibernate.validator.constraints.URL;
 
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.UUID;
+
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

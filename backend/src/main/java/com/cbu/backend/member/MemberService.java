@@ -1,14 +1,17 @@
 package com.cbu.backend.member;
 
+import com.cbu.backend.config.security.oauth2.OAuth2Request;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.domain.OAuth2Info;
-import com.cbu.backend.config.security.oauth2.OAuth2Request;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.UUID;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -18,13 +21,13 @@ public class MemberService {
     @Transactional
     public Member saveIfNone(OAuth2Request oAuth2Request) {
         String socialId = oAuth2Request.getAccountId();
-        return memberRepository.findByoAuth2InfoSocialId(socialId)
+        return memberRepository
+                .findByoAuth2InfoSocialId(socialId)
                 .orElseGet(() -> memberRepository.save(setUpMember(oAuth2Request)));
     }
 
     public Member findById(UUID id) {
-        return memberRepository.findById(id)
-              .orElseThrow(EntityNotFoundException::new);
+        return memberRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     private Member setUpMember(OAuth2Request req) {

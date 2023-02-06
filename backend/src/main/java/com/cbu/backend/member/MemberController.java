@@ -1,4 +1,3 @@
 package com.cbu.backend.member;
 
-public class MemberController {
-}
+public class MemberController {}

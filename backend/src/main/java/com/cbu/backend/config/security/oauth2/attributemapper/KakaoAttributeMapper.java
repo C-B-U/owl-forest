@@ -1,7 +1,7 @@
 package com.cbu.backend.config.security.oauth2.attributemapper;
 
-import com.cbu.backend.member.domain.AuthProvider;
 import com.cbu.backend.config.security.oauth2.OAuth2Request;
+import com.cbu.backend.member.domain.AuthProvider;
 
 import org.springframework.stereotype.Component;
 

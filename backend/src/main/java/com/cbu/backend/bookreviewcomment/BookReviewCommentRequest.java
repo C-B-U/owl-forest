@@ -15,8 +15,8 @@ public class BookReviewCommentRequest {
     private String parentId;
     @NotBlank private String content;
 
-//    public BookReviewCommentRequest toBookReviewRequest(AccountNo writer) {
-//        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        return new BookReviewCommentRequest(writer, bookReviewId, parentId, content);
-//    }
+    //    public BookReviewCommentRequest toBookReviewRequest(AccountNo writer) {
+    //        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    //        return new BookReviewCommentRequest(writer, bookReviewId, parentId, content);
+    //    }
 }

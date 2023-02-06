@@ -4,13 +4,15 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -46,13 +48,11 @@ public class Member {
 
     @Lob private String introduction;
 
-
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private List<Role> role = new ArrayList<>(List.of(Role.ROLE_USER));
 
-    @Embedded
-    private OAuth2Info oAuth2Info;
+    @Embedded private OAuth2Info oAuth2Info;
 
     public List<SimpleGrantedAuthority> getRole() {
         return role.stream().map(Role::name).map(SimpleGrantedAuthority::new).toList();

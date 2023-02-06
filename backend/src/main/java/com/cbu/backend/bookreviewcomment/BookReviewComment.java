@@ -3,6 +3,7 @@ package com.cbu.backend.bookreviewcomment;
 import com.cbu.backend.bookreview.BookReview;
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.domain.Member;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,7 +36,8 @@ public class BookReviewComment {
     private BaseTime baseTime;
 
     @Builder
-    public BookReviewComment(Member writer, BookReviewComment parent, BookReview bookReview, String content) {
+    public BookReviewComment(
+            Member writer, BookReviewComment parent, BookReview bookReview, String content) {
         this.writer = writer;
         this.parent = parent;
         this.bookReview = bookReview;

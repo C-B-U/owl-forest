@@ -1,6 +1,7 @@
 package com.cbu.backend.config.security.oauth2;
 
 import com.cbu.backend.member.domain.Member;
+
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

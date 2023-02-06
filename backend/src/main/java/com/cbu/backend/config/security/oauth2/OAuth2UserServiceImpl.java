@@ -1,10 +1,12 @@
 package com.cbu.backend.config.security.oauth2;
 
+import com.cbu.backend.config.security.oauth2.attributemapper.AttributeMapper;
 import com.cbu.backend.member.MemberService;
 import com.cbu.backend.member.domain.AuthProvider;
 import com.cbu.backend.member.domain.Member;
-import com.cbu.backend.config.security.oauth2.attributemapper.AttributeMapper;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
