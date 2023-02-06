@@ -3,20 +3,20 @@ package com.cbu.backend.member;
 import com.cbu.backend.config.security.oauth2.OAuth2Request;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.domain.OAuth2Info;
-
+import com.cbu.backend.member.dto.UpdateMemberRequest;
+import com.cbu.backend.util.AuthUtils;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
-
 import javax.persistence.EntityNotFoundException;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
+    private final MemberMapper memberMapper;
 
     @Transactional
     public Member saveIfNone(OAuth2Request oAuth2Request) {
@@ -36,5 +36,10 @@ public class MemberService {
         req.getName().ifPresent(memberBuilder::name);
         req.getEmail().ifPresent(memberBuilder::email);
         return memberBuilder.build();
+    }
+
+    public void update(UpdateMemberRequest req) {
+        Member loginUser = AuthUtils.getLoginUser();
+        memberMapper.updateFromDto(req, loginUser);
     }
 }

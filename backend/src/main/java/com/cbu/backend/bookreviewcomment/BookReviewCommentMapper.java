@@ -1,6 +1,4 @@
 package com.cbu.backend.bookreviewcomment;
 
-import org.mapstruct.Mapper;
-
-@Mapper
+//@Mapper
 public interface BookReviewCommentMapper {}
