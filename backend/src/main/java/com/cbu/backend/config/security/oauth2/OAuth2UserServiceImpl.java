@@ -1,13 +1,10 @@
 package com.cbu.backend.config.security.oauth2;
 
-import com.cbu.backend.authaccount.command.domain.AuthAccount;
-import com.cbu.backend.authaccount.command.domain.AuthProvider;
-import com.cbu.backend.authaccount.command.service.AuthAccountService;
-import com.cbu.backend.authaccount.mapper.AuthAccountMapper;
+import com.cbu.backend.member.MemberService;
+import com.cbu.backend.member.domain.AuthProvider;
+import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.config.security.oauth2.attributemapper.AttributeMapper;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -23,8 +20,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class OAuth2UserServiceImpl extends DefaultOAuth2UserService {
     private final AttributeMapper attributeMapper;
-    private final AuthAccountService authAccountService;
-    private final AuthAccountMapper authAccountMapper;
+    private final MemberService memberService;
+    private final LoginUserMapper loginUserMapper;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -35,7 +32,7 @@ public class OAuth2UserServiceImpl extends DefaultOAuth2UserService {
         OAuth2Request oAuth2Request =
                 attributeMapper.mapToUser(authProvider, oAuth2User.getAttributes());
 
-        AuthAccount user = authAccountService.saveIfNone(oAuth2Request);
-        return authAccountMapper.mapToLoginUser(user);
+        Member user = memberService.saveIfNone(oAuth2Request);
+        return loginUserMapper.mapToLoginUser(user);
     }
 }

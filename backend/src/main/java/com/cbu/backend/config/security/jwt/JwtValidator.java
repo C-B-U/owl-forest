@@ -1,15 +1,12 @@
 package com.cbu.backend.config.security.jwt;
 
-import com.cbu.backend.authaccount.command.domain.AuthAccount;
-import com.cbu.backend.authaccount.mapper.AuthAccountMapper;
-import com.cbu.backend.authaccount.query.service.AuthAccountQueryService;
+import com.cbu.backend.member.MemberService;
+import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.config.security.oauth2.LoginUser;
-
+import com.cbu.backend.config.security.oauth2.LoginUserMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -26,13 +23,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class JwtValidator {
     private final Key key;
-    private final AuthAccountQueryService authAccountQueryService;
-    private final AuthAccountMapper authAccountMapper;
+    private final MemberService memberService;
+    private final LoginUserMapper loginUserMapper;
 
     public Authentication getAuthentication(String accessToken) {
         Claims claims = getTokenBodyClaims(accessToken);
-        AuthAccount authAccount = authAccountQueryService.findByUUID(extractUUID(claims));
-        LoginUser loginUser = authAccountMapper.mapToLoginUser(authAccount);
+        Member member = memberService.findById(extractUUID(claims));
+        LoginUser loginUser = loginUserMapper.mapToLoginUser(member);
 
         return new UsernamePasswordAuthenticationToken(loginUser, "", loginUser.getAuthorities());
     }

@@ -1,7 +1,7 @@
 package com.cbu.backend;
 
-import com.cbu.backend.book.command.infra.BookRepository;
-import com.cbu.backend.book.command.service.BookService;
+import com.cbu.backend.book.BookRepository;
+import com.cbu.backend.book.BookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
