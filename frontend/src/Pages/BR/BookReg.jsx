@@ -16,18 +16,17 @@ import Input from '../../Components/Input';
 
 const MainWrap = styled.div`
   position: absolute;
-  background-color: ${palette('PsCocoa', 0)};
   width: 100%;
-  height: calc(100% - 4rem);
-  padding-top: 3rem;
+  height: 100%;
+  background-color: ${palette('PsCocoa', 0)};
 `;
 
 const Wrap = styled.div`
   width: fit-content;
   height: fit-content;
-  margin: 3rem auto;
-  background-color: ${palette('PsCocoa', 1)};
+  margin: 5rem auto 0rem auto;
   padding: 3rem;
+  background-color: ${palette('PsCocoa', 1)};
   text-align: left;
   box-sizing: content-box;
 `;
@@ -111,8 +110,8 @@ const WrapRegButton = styled.div`
 const WrapPopupBackground = styled.div`
   position: absolute;
   width: 100vw;
-  height: 100%;
-  margin-top: -3rem;
+  height: 100vh;
+  margin-top: -4rem;
   background-color: rgba(255, 255, 255, 0.4);
 `;
 
@@ -129,12 +128,12 @@ const WrapPopup = styled.div`
 `;
 
 const WrapCloseButton = styled.div`
+  /* border: 1px solid black; */
   width: fit-content;
   height: fit-content;
-  /* border: 1px solid black; */
-  text-align: left;
   margin-top: 1.5rem;
   margin-left: 2.5rem;
+  text-align: left;
 `;
 
 const TitleSearch = styled.div`
@@ -228,15 +227,6 @@ const ReleaseDate = styled.div`
   text-align: center;
 `;
 
-const BlindDatePicker = styled.div`
-  position: absolute;
-  width: 20rem;
-  height: 10rem;
-  background-color: rebeccapurple;
-  margin-top: 20rem;
-  margin-left: 25rem;
-`;
-
 function BookReg() {
   // 팝업창 x 버튼 기능 구현
   const [isShown, setIsShown] = useState(false);
@@ -265,7 +255,7 @@ function BookReg() {
   const SearchBook = () => {
     console.log('클릭', bookTitle);
     if (!bookTitle) {
-      alert('제목을 입력해 주세요.');
+      alert('키워드를 입력해 주세요.');
     } else {
       // console.log('data : ', data);
       axios
@@ -277,12 +267,14 @@ function BookReg() {
           },
         })
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
+          setGetBook(...response.data);
         })
         .catch((error) => {
           console.log(error);
         });
     }
+    console.log(getBook);
   };
 
   const onChange = (e) => {
@@ -292,8 +284,8 @@ function BookReg() {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Header />
         <MainWrap>
+          <Header />
           {/* 
               ---------------- 팝업창 작업----------------
           */}
