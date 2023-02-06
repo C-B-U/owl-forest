@@ -1,15 +1,19 @@
 package com.cbu.backend.bookreview;
 
 import com.cbu.backend.bookreview.dto.BookReviewRequest;
-
+import com.cbu.backend.bookreview.dto.BookReviewResponse;
+import com.cbu.backend.bookreview.dto.BookReviewSummaryResponse;
+import com.cbu.backend.bookreview.repository.BookReviewQueryOption;
+import com.cbu.backend.global.RequestObjectParam;
 import lombok.RequiredArgsConstructor;
-
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("book-reviews")
@@ -23,20 +27,18 @@ public class BookReviewController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(bookReviewId);
     }
-    //    @GetMapping
-    //    public ResponseEntity<List<BookReviewSummaryResponse>> getAll(
-    //            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable
-    // pageable,
-    //            @RequestParam(required = false) BookReviewQueryOption param) {
-    //        return ResponseEntity.ok(bookReviewDao.findSummaryAll(pageable, param));
-    //    }
-    //
-    //    @GetMapping("/{id}")
-    //    public ResponseEntity<BookReviewResponse> getById(@PathVariable String id) {
-    //        BookReviewResponse result =
-    //                bookReviewService
-    //                        .findResponseById(new BookReviewNo(id))
-    //                        .orElseThrow(EntityNotFoundException::new);
-    //        return ResponseEntity.ok(result);
-    //    }
+
+        @GetMapping
+        public ResponseEntity<List<BookReviewSummaryResponse>> getAll(
+                @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
+                @RequestObjectParam BookReviewQueryOption param) {
+            return ResponseEntity.ok(bookReviewService.findAll(pageable, param));
+        }
+
+        @GetMapping("/{id}")
+        public ResponseEntity<BookReviewResponse> getById(@PathVariable Long id) {
+            BookReviewResponse result =
+                    bookReviewService.findById(id);
+            return ResponseEntity.ok(result);
+        }
 }

@@ -4,10 +4,7 @@ import com.cbu.backend.bookreview.BookReview;
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.domain.Member;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 

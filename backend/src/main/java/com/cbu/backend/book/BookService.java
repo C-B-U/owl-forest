@@ -2,6 +2,8 @@ package com.cbu.backend.book;
 
 import com.cbu.backend.member.MemberService;
 
+import com.cbu.backend.member.domain.Member;
+import com.cbu.backend.util.AuthUtils;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -11,22 +13,14 @@ import org.springframework.stereotype.Service;
 public class BookService {
     private final BookRepository bookRepository;
     private final MemberService memberService;
+    private final BookMapper bookMapper;
 
     public Book saveIfNotExists(BookRequest req) {
         return bookRepository.findByIsbn(req.getIsbn()).orElseGet(() -> saveBook(req));
     }
 
     private Book saveBook(BookRequest req) {
-        return bookRepository.save(
-                Book.builder()
-                        .title(req.getTitle())
-                        .isbn(req.getIsbn())
-                        .author(req.getAuthor())
-                        .imageUrl(req.getImageUrl())
-                        .price(req.getPrice())
-                        .publishAt(req.getPublishAt())
-                        .publisher(req.getPublisher())
-                        .register(memberService.findById(req.getRegistrant()))
-                        .build());
+        Member register = AuthUtils.getLoginUser();
+        return bookMapper.toEntity(req, register);
     }
 }

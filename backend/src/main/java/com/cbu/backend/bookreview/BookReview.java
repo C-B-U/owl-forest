@@ -48,14 +48,12 @@ public class BookReview {
             String title,
             String content,
             Book book,
-            Integer likeCount,
             Integer score,
             Integer difficulty) {
         this.writer = writer;
         this.title = title;
         this.content = content;
         this.book = book;
-        this.likeCount = likeCount;
         this.score = score;
         this.difficulty = difficulty;
     }
