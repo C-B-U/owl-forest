@@ -16,18 +16,17 @@ import Input from '../../Components/Input';
 
 const MainWrap = styled.div`
   position: absolute;
-  background-color: ${palette('PsCocoa', 0)};
   width: 100%;
-  height: calc(100% - 4rem);
-  padding-top: 3rem;
+  height: 100%;
+  background-color: ${palette('PsCocoa', 0)};
 `;
 
 const Wrap = styled.div`
   width: fit-content;
   height: fit-content;
-  margin: 5rem auto;
-  background-color: ${palette('PsCocoa', 1)};
+  margin: 5rem auto 0rem auto;
   padding: 3rem;
+  background-color: ${palette('PsCocoa', 1)};
   text-align: left;
   box-sizing: content-box;
 `;
@@ -111,8 +110,8 @@ const WrapRegButton = styled.div`
 const WrapPopupBackground = styled.div`
   position: absolute;
   width: 100vw;
-  height: 100%;
-  margin-top: -3rem;
+  height: 100vh;
+  margin-top: -4rem;
   background-color: rgba(255, 255, 255, 0.4);
 `;
 
@@ -129,12 +128,12 @@ const WrapPopup = styled.div`
 `;
 
 const WrapCloseButton = styled.div`
+  /* border: 1px solid black; */
   width: fit-content;
   height: fit-content;
-  /* border: 1px solid black; */
-  text-align: left;
   margin-top: 1.5rem;
   margin-left: 2.5rem;
+  text-align: left;
 `;
 
 const TitleSearch = styled.div`
@@ -228,15 +227,6 @@ const ReleaseDate = styled.div`
   text-align: center;
 `;
 
-const BlindDatePicker = styled.div`
-  position: absolute;
-  width: 20rem;
-  height: 10rem;
-  background-color: rebeccapurple;
-  margin-top: 20rem;
-  margin-left: 25rem;
-`;
-
 function BookReg() {
   // 팝업창 x 버튼 기능 구현
   const [isShown, setIsShown] = useState(false);
@@ -249,16 +239,6 @@ function BookReg() {
 
   // api 값 저장
   const [getBook, setGetBook] = useState([]);
-
-  useEffect(() => {
-    console.log('cors policy 그만 뜨면 좋겠다.');
-    axios
-      .get(`${process.env.REACT_APP_BASE_URL}/book-reviews`)
-      .then((response) => {
-        setGetBook(response);
-      });
-  }, []);
-  console.log('가져온거 : ', getBook);
 
   // 팝업 열기
   const openPopup = () => {
@@ -274,19 +254,27 @@ function BookReg() {
 
   const SearchBook = () => {
     console.log('클릭', bookTitle);
-    if (bookTitle === undefined) {
-      alert('제목을 입력해 주세요.');
+    if (!bookTitle) {
+      alert('키워드를 입력해 주세요.');
     } else {
-      const title = { title: bookTitle };
+      // console.log('data : ', data);
       axios
-        .post(`http://223.255.205.62:30505/api/externalbooks`, title)
+        .get(`${process.env.REACT_APP_BASE_URL}/externalbooks`, {
+          params: {
+            keyword: bookTitle,
+            page: 1,
+            pageSize: 10,
+          },
+        })
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
+          setGetBook(...response.data);
         })
         .catch((error) => {
           console.log(error);
         });
     }
+    console.log(getBook);
   };
 
   const onChange = (e) => {
@@ -296,12 +284,12 @@ function BookReg() {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Header />
         <MainWrap>
+          <Header />
           {/* 
               ---------------- 팝업창 작업----------------
           */}
-          {/* <BlindDatePicker style={{ display: isShown ? 'block' : 'none' }} /> */}
+
           <WrapPopupBackground style={{ display: isShown ? 'block' : 'none' }}>
             <WrapPopup>
               <WrapCloseButton>
@@ -318,7 +306,7 @@ function BookReg() {
                 <Input
                   width='36rem'
                   height='3.2rem'
-                  placeholder='도서 제목을 적어주세요.'
+                  placeholder='키워드를 적어주세요.'
                   fontSize='1.2rem'
                   onChange={onChange}
                 />
