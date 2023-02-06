@@ -22,26 +22,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(MemberController.class)
 @DisplayName("MemberController에서")
 class MemberControllerTest extends RestDocumentTest {
-    @MockBean private MemberService memberService;
+    @MockBean
+    private MemberService memberService;
 
     @Test
     @DisplayName("로그인한 유저 정보를 수정하는가")
     void successPutUser() throws Exception {
         // given
         UpdateMemberRequest request = new UpdateMemberRequest(
-                 "test_76ca4ff20751",
-                 "test_0053924831c5",
-                 "test_ad40e3ba2f88",
-                 AcademicStatus.ATTEND,
-                 Major.COMPUTER,
-                 Major.MEDIA_DESIGN,
-                 "test_66614058107f",
-                 1,
-                 "test_413294765eab",
-                 "test_edabe30dee71",
-                 "test_f958a7f1746b");
+                "test_76ca4ff20751",
+                "test_0053924831c5",
+                "test_ad40e3ba2f88",
+                AcademicStatus.ATTEND,
+                Major.COMPUTER,
+                Major.MEDIA_DESIGN,
+                "test_66614058107f",
+                1,
+                "test_413294765eab",
+                "test_edabe30dee71",
+                "test_f958a7f1746b");
 
-    // when
+        // when
         ResultActions perform =
                 mockMvc.perform(
                         put("/members")

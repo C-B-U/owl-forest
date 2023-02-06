@@ -5,6 +5,7 @@ import com.cbu.backend.member.domain.Major;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotBlank;
 public class UpdateMemberRequest {
     @NotBlank
     private String name;
+    @URL
     private String blogUrl;
     private String githubId;
     @NotBlank

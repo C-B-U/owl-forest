@@ -40,6 +40,7 @@ public class MemberService {
         return memberBuilder.build();
     }
 
+    @Transactional
     public void update(UpdateMemberRequest req) {
         Member loginUser = authService.getLoginUser();
         memberMapper.updateFromDto(req, loginUser);
