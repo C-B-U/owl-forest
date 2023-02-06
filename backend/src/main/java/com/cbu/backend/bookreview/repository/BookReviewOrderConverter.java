@@ -1,15 +1,16 @@
 package com.cbu.backend.bookreview.repository;
 
+import static com.cbu.backend.bookreview.QBookReview.bookReview;
+
 import com.cbu.backend.util.OrderConverter;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.ComparableExpressionBase;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.cbu.backend.bookreview.QBookReview.bookReview;
 
 @Component
 public class BookReviewOrderConverter implements OrderConverter {
@@ -37,5 +38,4 @@ public class BookReviewOrderConverter implements OrderConverter {
                         })
                 .toArray(OrderSpecifier[]::new);
     }
-
 }

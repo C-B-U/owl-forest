@@ -1,19 +1,21 @@
 package com.cbu.backend.bookreview.repository;
 
+import static com.cbu.backend.book.QBook.book;
+import static com.cbu.backend.bookreview.QBookReview.bookReview;
+
 import com.cbu.backend.bookreview.BookReview;
 import com.cbu.backend.member.domain.QMember;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static com.cbu.backend.book.QBook.book;
-import static com.cbu.backend.bookreview.QBookReview.bookReview;
 
 @Repository
 @RequiredArgsConstructor
@@ -22,8 +24,7 @@ public class BookReviewQueryDslRepositoryImpl implements BookReviewQueryDslRepos
     private final BookReviewOrderConverter orderConverter;
 
     @Override
-    public List<BookReview> findAllBy(
-            Pageable pageable, BookReviewQueryOption queryOption) {
+    public List<BookReview> findAllBy(Pageable pageable, BookReviewQueryOption queryOption) {
         return jpaQueryFactory
                 .select(bookReview)
                 .from(bookReview)

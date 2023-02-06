@@ -2,6 +2,7 @@ package com.cbu.backend.studygroup;
 
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.domain.Member;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

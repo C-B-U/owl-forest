@@ -1,6 +1,5 @@
 package com.cbu.backend.studygroup;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
