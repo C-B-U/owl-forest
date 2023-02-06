@@ -1,4 +1,4 @@
-package com.cbu.backend.studygroup.command.domain;
+package com.cbu.backend.studygroup;
 
 public enum StudyGroupStatus {
     ACTIVE("활동중"),

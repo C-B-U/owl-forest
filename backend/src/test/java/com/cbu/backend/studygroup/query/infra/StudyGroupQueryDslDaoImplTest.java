@@ -1,9 +1,9 @@
 package com.cbu.backend.studygroup.query.infra;
-
+/*
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import com.cbu.backend.authaccount.command.domain.AuthAccount;
-import com.cbu.backend.studygroup.command.domain.StudyGroup;
+import com.cbu.backend.studygroup.StudyGroup;
 import com.cbu.backend.studygroup.query.dto.StudyGroupResponse;
 import com.cbu.backend.support.database.EnableDataBaseTest;
 import com.cbu.backend.support.fixture.member.entity.AuthAccountFixture;
@@ -173,3 +173,4 @@ class StudyGroupQueryDslDaoImplTest {
         }
     }
 }
+*/

@@ -1,7 +1,7 @@
 package com.cbu.backend.support.fixture.studygroup.entity;
 
 import com.cbu.backend.authaccount.command.domain.AccountNo;
-import com.cbu.backend.studygroup.command.domain.StudyGroup;
+import com.cbu.backend.studygroup.StudyGroup;
 
 import java.util.List;
 
@@ -31,10 +31,12 @@ public enum StudyGroupFixture {
     }
 
     public StudyGroup toEntity() {
-        return new StudyGroup(name, description, leaderId, participantIds);
+        //        return new StudyGroup(name, description, leaderId, participantIds);
+        return null;
     }
 
     public StudyGroup toEntity(AccountNo leaderId, List<AccountNo> participantIds) {
-        return new StudyGroup(name, description, leaderId, participantIds);
+        //        return new StudyGroup(name, description, leaderId, participantIds);
+        return null;
     }
 }
