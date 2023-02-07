@@ -19,10 +19,6 @@ public class BookReviewComment {
     private Member writer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id")
-    private BookReviewComment parent;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     private BookReview bookReview;
 
     @Lob
@@ -34,9 +30,8 @@ public class BookReviewComment {
 
     @Builder
     public BookReviewComment(
-            Member writer, BookReviewComment parent, BookReview bookReview, String content) {
+            Member writer, BookReview bookReview, String content) {
         this.writer = writer;
-        this.parent = parent;
         this.bookReview = bookReview;
         this.content = content;
     }

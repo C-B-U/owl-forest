@@ -1,12 +1,15 @@
 package com.cbu.backend.member;
 
 import com.cbu.backend.member.domain.Member;
-import com.cbu.backend.member.dto.UpdateMemberRequest;
-
+import com.cbu.backend.member.dto.MemberPrivacyResponse;
+import com.cbu.backend.member.dto.MemberResponse;
+import com.cbu.backend.member.dto.MemberSummaryResponse;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface MemberMapper {
-    void updateFromDto(UpdateMemberRequest dto, @MappingTarget Member member);
+
+    MemberPrivacyResponse toPrivacyDto(Member member);
+    MemberResponse toDto(Member member);
+    MemberSummaryResponse toSummaryDto(Member member);
 }

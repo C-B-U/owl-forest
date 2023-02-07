@@ -24,10 +24,10 @@ public class BookReviewController {
     private final BookReviewService bookReviewService;
 
     @PostMapping
-    public ResponseEntity<Long> saveBookReview(@RequestBody BookReviewRequest dto) {
+    public ResponseEntity<Void> saveBookReview(@RequestBody BookReviewRequest dto) {
         Long bookReviewId = bookReviewService.saveBookReview(dto);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(bookReviewId);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping

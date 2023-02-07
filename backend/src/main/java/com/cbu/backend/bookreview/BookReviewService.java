@@ -9,17 +9,14 @@ import com.cbu.backend.bookreview.repository.BookReviewQueryOption;
 import com.cbu.backend.bookreview.repository.BookReviewRepository;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.service.AuthService;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -44,9 +41,12 @@ public class BookReviewService {
         return bookReviews.stream().map(bookReviewMapper::toSummaryDto).toList();
     }
 
+    public BookReview getEntity(Long id) {
+        return bookReviewRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
     public BookReviewResponse findById(Long id) {
-        BookReview bookReview =
-                bookReviewRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        BookReview bookReview = getEntity(id);
         return bookReviewMapper.toDto(bookReview);
     }
 }
