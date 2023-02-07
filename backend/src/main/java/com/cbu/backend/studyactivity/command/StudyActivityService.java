@@ -1,9 +1,6 @@
-package com.cbu.backend.studyactivity.command.service;
+package com.cbu.backend.studyactivity.command;
 
-import com.cbu.backend.studyactivity.command.domain.StudyActivity;
-import com.cbu.backend.studyactivity.command.domain.StudyActivityNo;
 import com.cbu.backend.studyactivity.command.dto.StudyActivityRequest;
-import com.cbu.backend.studyactivity.command.infra.StudyActivityRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,12 +16,12 @@ public class StudyActivityService {
 
     private final StudyActivityRepository studyActivityRepository;
 
-    public StudyActivityNo saveStudyActivity(StudyActivityRequest studyActivityRequest) {
+    public Long saveStudyActivity(StudyActivityRequest studyActivityRequest) {
         checkValidRequest(studyActivityRequest);
         return studyActivityRepository.save(studyActivityRequest.toEntity()).getId();
     }
 
-    public void updateStudyActivity(StudyActivityNo id, StudyActivityRequest request) {
+    public void updateStudyActivity(Long id, StudyActivityRequest request) {
         checkValidRequest(request);
         getEntity(id)
                 .updateStudyActivity(
@@ -37,7 +34,7 @@ public class StudyActivityService {
                         request.getStudyTime());
     }
 
-    public void deleteStudyActivity(StudyActivityNo id) {
+    public void deleteStudyActivity(Long id) {
         getEntity(id).deleteStudyActivity();
     }
 
@@ -60,7 +57,7 @@ public class StudyActivityService {
         return studyGroupParticipants.stream().distinct().count();
     }
 
-    private StudyActivity getEntity(StudyActivityNo id) {
+    private StudyActivity getEntity(Long id) {
         return studyActivityRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }

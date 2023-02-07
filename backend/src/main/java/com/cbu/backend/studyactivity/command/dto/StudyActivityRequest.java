@@ -1,7 +1,7 @@
 package com.cbu.backend.studyactivity.command.dto;
 
-import com.cbu.backend.studyactivity.command.domain.StudyActivity;
-import com.cbu.backend.studyactivity.command.domain.StudyTime;
+import com.cbu.backend.studyactivity.command.StudyActivity;
+import com.cbu.backend.studyactivity.command.StudyTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

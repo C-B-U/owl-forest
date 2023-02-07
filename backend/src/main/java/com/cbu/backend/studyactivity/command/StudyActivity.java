@@ -1,4 +1,4 @@
-package com.cbu.backend.studyactivity.command.domain;
+package com.cbu.backend.studyactivity.command;
 
 import com.cbu.backend.global.BaseTime;
 
@@ -17,19 +17,13 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyActivity {
-
-    @EmbeddedId private StudyActivityNo id;
-
+    @Id @GeneratedValue private Long id;
     @Column(nullable = false)
     private String title;
-
     @Lob private String description;
-
     private String assignment;
     private Integer week;
-
     private String place;
-
     @ElementCollection
     @CollectionTable(
             name = "study_participants",
@@ -49,7 +43,6 @@ public class StudyActivity {
             String place,
             List<Long> studyParticipants,
             StudyTime studyTime) {
-        this.id = new StudyActivityNo();
         this.title = title;
         this.description = description;
         this.assignment = assignment;
