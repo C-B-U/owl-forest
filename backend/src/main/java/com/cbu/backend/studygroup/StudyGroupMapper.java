@@ -13,7 +13,9 @@ import java.util.List;
 public interface StudyGroupMapper {
     @Mapping(target = "name", source = "studyGroupRequest.name")
     @Mapping(target = "leader", source = "leader")
-    StudyGroup toEntity(StudyGroupRequest studyGroupRequest, Member leader, List<Member> studyMembers);
+    StudyGroup toEntity(
+            StudyGroupRequest studyGroupRequest, Member leader, List<Member> studyMembers);
+
     @Mapping(target = "likeCount", expression = "java(studyGroup.getLikeCount().size())")
     StudyGroupResponse toResponse(StudyGroup studyGroup);
 }

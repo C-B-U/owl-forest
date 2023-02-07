@@ -2,15 +2,17 @@ package com.cbu.backend.studygroup;
 
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.domain.Member;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import javax.persistence.*;
 
 @Getter
 @Entity
@@ -39,8 +41,7 @@ public class StudyGroup {
     @Embedded private BaseTime baseTime;
 
     @Builder
-    public StudyGroup(
-            String name, String description, Member leader, List<Member> studyMembers) {
+    public StudyGroup(String name, String description, Member leader, List<Member> studyMembers) {
         this.name = name;
         this.description = description;
         this.studyGroupStatus = StudyGroupStatus.ACTIVE;
@@ -56,7 +57,8 @@ public class StudyGroup {
         this.baseTime.delete();
     }
 
-    public void updateStudyGroup(String name, String description, Member leader, List<Member> studyMembers) {
+    public void updateStudyGroup(
+            String name, String description, Member leader, List<Member> studyMembers) {
         this.name = name;
         this.description = description;
         clearStudyMembers();
@@ -72,7 +74,9 @@ public class StudyGroup {
 
     public void organizeStudyMembers(Member leader, List<Member> studyMembers) {
         this.leader = leader;
-        studyMembers.stream().map(member -> new StudyMember(this, member)).forEach(this.studyMembers::add);
+        studyMembers.stream()
+                .map(member -> new StudyMember(this, member))
+                .forEach(this.studyMembers::add);
     }
 
     private void clearStudyMembers() {

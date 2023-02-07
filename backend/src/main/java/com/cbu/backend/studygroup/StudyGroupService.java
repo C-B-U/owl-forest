@@ -26,10 +26,16 @@ public class StudyGroupService {
 
     public Long saveStudyGroup(StudyGroupRequest studyGroupRequest) {
         checkParticipantDuplicated(studyGroupRequest.getMembers());
-        List<Member> studyMembers = studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
+        List<Member> studyMembers =
+                studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
 
-        return studyGroupRepository.save(studyGroupMapper.toEntity(studyGroupRequest,
-                        memberService.findById(studyGroupRequest.getLeader()), studyMembers)).getId();
+        return studyGroupRepository
+                .save(
+                        studyGroupMapper.toEntity(
+                                studyGroupRequest,
+                                memberService.findById(studyGroupRequest.getLeader()),
+                                studyMembers))
+                .getId();
     }
 
     @Transactional
@@ -37,11 +43,13 @@ public class StudyGroupService {
         checkParticipantDuplicated(studyGroupRequest.getMembers());
         StudyGroup studyGroup = getEntity(id);
         Member leader = memberService.findById(studyGroupRequest.getLeader());
-        List<Member> studyMembers = studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
+        List<Member> studyMembers =
+                studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
         studyGroup.updateStudyGroup(
                 studyGroupRequest.getName(),
                 studyGroupRequest.getDescription(),
-                leader, studyMembers);
+                leader,
+                studyMembers);
     }
 
     @Transactional
