@@ -1,8 +1,6 @@
-package com.cbu.backend.studyactivity.command.api;
+package com.cbu.backend.studyactivity.command;
 
-import com.cbu.backend.studyactivity.command.domain.StudyActivityNo;
 import com.cbu.backend.studyactivity.command.dto.StudyActivityRequest;
-import com.cbu.backend.studyactivity.command.service.StudyActivityService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,21 +15,21 @@ public class StudyActivityController {
     private final StudyActivityService studyActivityService;
 
     @PostMapping
-    public ResponseEntity<StudyActivityNo> saveStudyActivity(
+    public ResponseEntity<Long> saveStudyActivity(
             @RequestBody StudyActivityRequest studyActivityRequest) {
         return ResponseEntity.ok(studyActivityService.saveStudyActivity(studyActivityRequest));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> putStudyActivity(
-            @PathVariable StudyActivityNo id,
+            @PathVariable Long id,
             @RequestBody StudyActivityRequest studyActivityRequest) {
         studyActivityService.updateStudyActivity(id, studyActivityRequest);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStudyActivity(@PathVariable StudyActivityNo id) {
+    public ResponseEntity<Void> deleteStudyActivity(@PathVariable Long id) {
         studyActivityService.deleteStudyActivity(id);
         return ResponseEntity.ok().build();
     }
