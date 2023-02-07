@@ -18,12 +18,15 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyActivity {
     @Id @GeneratedValue private Long id;
+
     @Column(nullable = false)
     private String title;
+
     @Lob private String description;
     private String assignment;
     private Integer week;
     private String place;
+
     @ElementCollection
     @CollectionTable(
             name = "study_participants",

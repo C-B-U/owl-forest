@@ -22,8 +22,7 @@ public class StudyActivityController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> putStudyActivity(
-            @PathVariable Long id,
-            @RequestBody StudyActivityRequest studyActivityRequest) {
+            @PathVariable Long id, @RequestBody StudyActivityRequest studyActivityRequest) {
         studyActivityService.updateStudyActivity(id, studyActivityRequest);
         return ResponseEntity.ok().build();
     }
