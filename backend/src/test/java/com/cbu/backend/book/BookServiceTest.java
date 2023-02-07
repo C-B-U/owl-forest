@@ -1,11 +1,16 @@
 package com.cbu.backend.book;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.service.AuthService;
 import com.cbu.backend.support.database.EnableDataBaseTest;
 import com.cbu.backend.support.fixture.book.BookRequestFixture;
 import com.cbu.backend.support.fixture.member.MemberFixture;
+
 import lombok.extern.slf4j.Slf4j;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -13,9 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import javax.persistence.EntityManager;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @EnableDataBaseTest
 @DisplayName("BookService에서")

@@ -5,7 +5,14 @@ import com.cbu.backend.book.BookRequest;
 import java.time.LocalDate;
 
 public enum BookRequestFixture {
-    HATE("798789789978", "미움 받을 용기", "독도독도", "test_b64e856b1458", "aaa.bb.com", 62, LocalDate.now()),
+    HATE(
+            "798789789978",
+            "미움 받을 용기",
+            "독도독도",
+            "test_b64e856b1458",
+            "aaa.bb.com",
+            62,
+            LocalDate.now()),
     SPRING("67896789", "스프링 퀵 스타트", "체규태", "위키북스", "aaa.bb.com", 62, LocalDate.now());
 
     private final String isbn;
@@ -16,8 +23,14 @@ public enum BookRequestFixture {
     private final Integer price;
     private final LocalDate publishAt;
 
-
-    BookRequestFixture(String isbn, String title, String author, String publisher, String imageUrl, Integer price, LocalDate publishAt) {
+    BookRequestFixture(
+            String isbn,
+            String title,
+            String author,
+            String publisher,
+            String imageUrl,
+            Integer price,
+            LocalDate publishAt) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;

@@ -15,7 +15,8 @@ public enum BookReviewRequestFixture {
     private final Integer score;
     private final Integer difficulty;
 
-    BookReviewRequestFixture(BookRequest book, String title, String content, Integer score, Integer difficulty) {
+    BookReviewRequestFixture(
+            BookRequest book, String title, String content, Integer score, Integer difficulty) {
         this.book = book;
         this.title = title;
         this.content = content;

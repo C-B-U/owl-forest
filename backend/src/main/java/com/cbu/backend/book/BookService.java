@@ -2,7 +2,9 @@ package com.cbu.backend.book;
 
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.service.AuthService;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +17,9 @@ public class BookService {
 
     @Transactional
     public Book saveIfNotExists(BookRequest req) {
-        return bookRepository.findByIsbn(req.getIsbn()).orElseGet(() -> bookRepository.save(saveBook(req)));
+        return bookRepository
+                .findByIsbn(req.getIsbn())
+                .orElseGet(() -> bookRepository.save(saveBook(req)));
     }
 
     private Book saveBook(BookRequest req) {

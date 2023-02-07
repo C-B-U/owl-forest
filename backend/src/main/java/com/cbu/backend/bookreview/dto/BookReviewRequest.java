@@ -15,11 +15,8 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class BookReviewRequest {
     private BookRequest book;
-    @NotBlank
-    private String title;
+    @NotBlank private String title;
     private String content;
-    @NotNull
-    private Integer score;
-    @NotNull
-    private Integer difficulty;
+    @NotNull private Integer score;
+    @NotNull private Integer difficulty;
 }
