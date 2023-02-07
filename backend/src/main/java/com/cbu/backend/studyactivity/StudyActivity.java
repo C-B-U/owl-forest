@@ -1,8 +1,8 @@
 package com.cbu.backend.studyactivity;
 
 import com.cbu.backend.global.BaseTime;
-
 import com.cbu.backend.member.domain.Member;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,14 +19,15 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyActivity {
     @Id @GeneratedValue private Long id;
+
     @Column(nullable = false)
     private String title;
+
     @Lob private String description;
     private String assignment;
     private Integer week;
     private String place;
-    @OneToMany
-    private Set<Member> studyParticipants = new HashSet<>();
+    @OneToMany private Set<Member> studyParticipants = new HashSet<>();
     private Long studyGroupId;
     @Embedded private StudyTime studyTime;
     @Embedded private BaseTime baseTime;

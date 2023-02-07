@@ -1,8 +1,8 @@
 package com.cbu.backend.studyactivity;
 
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
-
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -42,7 +42,8 @@ public class StudyActivityController {
     }
 
     @GetMapping
-    public ResponseEntity<List<StudyActivityResponse>> getStudyActivityList(@RequestParam Long studyGroup) {
+    public ResponseEntity<List<StudyActivityResponse>> getStudyActivityList(
+            @RequestParam Long studyGroup) {
         return ResponseEntity.ok(studyActivityService.getStudyActivityListByStudyGroup(studyGroup));
     }
 }

@@ -3,6 +3,7 @@ package com.cbu.backend.studyactivity;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -14,5 +15,6 @@ public interface StudyActivityMapper {
     @Mapping(target = "description", source = "studyActivityRequest.description")
     StudyActivity toEntity(
             StudyActivityRequest studyActivityRequest, List<Member> studyParticipants);
+
     StudyActivityResponse toResponse(StudyActivity studyActivity);
 }
