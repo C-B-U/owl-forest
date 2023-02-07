@@ -1,6 +1,5 @@
 package com.cbu.backend.studyactivity.dto;
 
-import com.cbu.backend.studyactivity.StudyActivity;
 import com.cbu.backend.studyactivity.StudyTime;
 
 import lombok.AllArgsConstructor;
@@ -23,11 +22,7 @@ public class StudyActivityRequest {
     private String assignment;
     private Integer week;
     private String place;
-
     @NotEmpty private List<UUID> studyParticipants = new ArrayList<>();
+    private Long studyGroupId;
     private StudyTime studyTime;
-
-    public StudyActivity toEntity() {
-        return null;
-    }
 }

@@ -3,7 +3,6 @@ package com.cbu.backend.studyactivity;
 import com.cbu.backend.global.BaseTime;
 
 import com.cbu.backend.member.domain.Member;
-import com.cbu.backend.studygroup.StudyGroup;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,10 +27,7 @@ public class StudyActivity {
     private String place;
     @OneToMany
     private Set<Member> studyParticipants = new HashSet<>();
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "study_group_id")
-    private StudyGroup studyGroup;
+    private Long studyGroupId;
     @Embedded private StudyTime studyTime;
     @Embedded private BaseTime baseTime;
 
@@ -43,6 +39,7 @@ public class StudyActivity {
             Integer week,
             String place,
             List<Member> studyParticipants,
+            Long studyGroupId,
             StudyTime studyTime) {
         this.title = title;
         this.description = description;
@@ -50,6 +47,7 @@ public class StudyActivity {
         this.week = week;
         this.place = place;
         organizeParticipants(studyParticipants);
+        this.studyGroupId = studyGroupId;
         this.studyTime = studyTime;
         this.baseTime = new BaseTime();
     }

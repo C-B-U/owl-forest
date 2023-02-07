@@ -11,8 +11,8 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface StudyActivityMapper {
     @Mapping(target = "studyParticipants", source = "studyParticipants")
+    @Mapping(target = "description", source = "studyActivityRequest.description")
     StudyActivity toEntity(
             StudyActivityRequest studyActivityRequest, List<Member> studyParticipants);
-
     StudyActivityResponse toResponse(StudyActivity studyActivity);
 }

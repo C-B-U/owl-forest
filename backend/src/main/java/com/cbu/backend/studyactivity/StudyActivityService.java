@@ -5,6 +5,7 @@ import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
+import com.cbu.backend.studygroup.StudyGroupService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -24,7 +25,8 @@ public class StudyActivityService {
 
     public Long saveStudyActivity(StudyActivityRequest studyActivityRequest) {
         checkValidRequest(studyActivityRequest);
-        return studyActivityRepository.save(studyActivityRequest.toEntity()).getId();
+        List<Member> members = studyActivityRequest.getStudyParticipants().stream().map(memberService::getEntity).toList();
+        return studyActivityRepository.save(studyActivityMapper.toEntity(studyActivityRequest, members)).getId();
     }
 
     public void updateStudyActivity(Long id, StudyActivityRequest request) {

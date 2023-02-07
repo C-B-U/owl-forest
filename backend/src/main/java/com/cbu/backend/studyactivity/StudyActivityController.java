@@ -41,8 +41,8 @@ public class StudyActivityController {
         return ResponseEntity.ok(studyActivityService.getStudyActivity(id));
     }
 
-    @GetMapping("/study-groups/{id}")
-    public ResponseEntity<List<StudyActivityResponse>> getStudyActivityList(@PathVariable Long id) {
-        return ResponseEntity.ok(studyActivityService.getStudyActivityListByStudyGroup(id));
+    @GetMapping
+    public ResponseEntity<List<StudyActivityResponse>> getStudyActivityList(@RequestParam Long studyGroup) {
+        return ResponseEntity.ok(studyActivityService.getStudyActivityListByStudyGroup(studyGroup));
     }
 }
