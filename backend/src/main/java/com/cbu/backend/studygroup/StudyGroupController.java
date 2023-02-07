@@ -2,7 +2,6 @@ package com.cbu.backend.studygroup;
 
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
-import com.cbu.backend.util.AuthUtils;
 
 import lombok.RequiredArgsConstructor;
 

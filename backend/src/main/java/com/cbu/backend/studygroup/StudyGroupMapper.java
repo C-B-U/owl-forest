@@ -3,8 +3,8 @@ package com.cbu.backend.studygroup;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
-
 import com.cbu.backend.studygroup.dto.StudyMemberResponse;
+
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -25,6 +25,7 @@ public interface StudyGroupMapper {
 
     @IterableMapping(elementTargetType = StudyMemberResponse.class)
     Set<StudyMemberResponse> map(Set<StudyMember> studyMembers);
+
     @Mapping(target = "id", source = "studyMember.member.id")
     @Mapping(target = "name", source = "studyMember.member.name")
     StudyMemberResponse map(StudyMember studyMember);
