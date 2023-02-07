@@ -5,6 +5,7 @@ import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 
+import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -57,7 +58,7 @@ public class StudyActivityService {
         return studyActivityMapper.toResponse(getEntity(id));
     }
 
-    public List<StudyActivityResponse> getStudyActivityListByStudyGroup(Long studyGroupId) {
+    public List<StudyActivityResponse> getStudyActivityListByStudyGroupId(Long studyGroupId) {
         return studyActivityRepository.findAllByStudyGroupId(studyGroupId).stream()
                 .map(studyActivityMapper::toResponse)
                 .toList();
