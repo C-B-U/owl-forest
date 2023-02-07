@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface StudyGroupRepository extends JpaRepository<StudyGroup, Long> {
     @Query(
             "SELECT l FROM StudyGroup sg, LikeCount l WHERE l.studyGroup.id = :id and l.member ="
-                + " :member")
+                    + " :member")
     Optional<LikeCount> findLikeCountByIdAndMember(Long id, Member member);
 }
