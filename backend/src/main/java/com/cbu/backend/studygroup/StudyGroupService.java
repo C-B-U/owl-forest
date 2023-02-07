@@ -1,10 +1,10 @@
 package com.cbu.backend.studygroup;
 
-import com.cbu.backend.member.MemberService;
 import com.cbu.backend.member.domain.Member;
+import com.cbu.backend.member.service.AuthService;
+import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
-import com.cbu.backend.util.AuthUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,12 +24,13 @@ public class StudyGroupService {
     private final StudyGroupRepository studyGroupRepository;
     private final StudyGroupMapper studyGroupMapper;
     private final MemberService memberService;
+    private final AuthService authService;
 
     public Long saveStudyGroup(StudyGroupRequest studyGroupRequest) {
         checkParticipantDuplicated(studyGroupRequest.getMembers());
         List<Member> studyMembers =
-                studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
-        Member leader = memberService.findById(studyGroupRequest.getLeader());
+                studyGroupRequest.getMembers().stream().map(memberService::getEntity).toList();
+        Member leader = memberService.getEntity(studyGroupRequest.getLeader());
 
         return studyGroupRepository
                 .save(studyGroupMapper.toEntity(studyGroupRequest, leader, studyMembers))
@@ -41,8 +42,8 @@ public class StudyGroupService {
         checkParticipantDuplicated(studyGroupRequest.getMembers());
         StudyGroup studyGroup = getEntity(id);
         List<Member> studyMembers =
-                studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
-        Member leader = memberService.findById(studyGroupRequest.getLeader());
+                studyGroupRequest.getMembers().stream().map(memberService::getEntity).toList();
+        Member leader = memberService.getEntity(studyGroupRequest.getLeader());
 
         studyGroup.updateStudyGroup(
                 studyGroupRequest.getName(),
@@ -54,7 +55,7 @@ public class StudyGroupService {
     @Transactional
     public void addLike(Long id) {
         StudyGroup studyGroup = getEntity(id);
-        LikeMember likeMember = new LikeMember(AuthUtils.getLoginUser(), studyGroup);
+        LikeMember likeMember = new LikeMember(authService.getLoginUser(), studyGroup);
         likeMember.addLike();
     }
 
@@ -62,7 +63,7 @@ public class StudyGroupService {
     public void cancelLike(Long id) {
         LikeMember likeMember =
                 studyGroupRepository
-                        .findLikeCountByIdAndMember(id, AuthUtils.getLoginUser())
+                        .findLikeCountByIdAndMember(id, authService.getLoginUser())
                         .orElseThrow(EntityNotFoundException::new);
         likeMember.cancelLike();
     }
