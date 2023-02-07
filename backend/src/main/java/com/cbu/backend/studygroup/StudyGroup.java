@@ -30,7 +30,7 @@ public class StudyGroup {
     private StudyGroupStatus studyGroupStatus;
 
     @OneToMany(mappedBy = "studyGroup")
-    private Set<LikeCount> likeCount = new HashSet<>();
+    private Set<LikeMember> likeMember = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member leader;

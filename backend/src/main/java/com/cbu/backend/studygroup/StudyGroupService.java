@@ -5,6 +5,7 @@ import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 
+import com.cbu.backend.util.AuthUtils;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
@@ -51,19 +52,19 @@ public class StudyGroupService {
     }
 
     @Transactional
-    public void addLike(Long id, Member member) {
+    public void addLike(Long id) {
         StudyGroup studyGroup = getEntity(id);
-        LikeCount likeCount = new LikeCount(member, studyGroup);
-        likeCount.addLike();
+        LikeMember likeMember = new LikeMember(AuthUtils.getLoginUser(), studyGroup);
+        likeMember.addLike();
     }
 
     @Transactional
-    public void cancelLike(Long id, Member member) {
-        LikeCount likeCount =
+    public void cancelLike(Long id) {
+        LikeMember likeMember =
                 studyGroupRepository
-                        .findLikeCountByIdAndMember(id, member)
+                        .findLikeCountByIdAndMember(id, AuthUtils.getLoginUser())
                         .orElseThrow(EntityNotFoundException::new);
-        likeCount.cancelLike();
+        likeMember.cancelLike();
     }
 
     @Transactional

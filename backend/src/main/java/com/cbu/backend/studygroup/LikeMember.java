@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class LikeCount {
+public class LikeMember {
     @Id @GeneratedValue private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -26,7 +26,7 @@ public class LikeCount {
     @Embedded private BaseTime baseTime;
 
     @Builder
-    public LikeCount(Member member, StudyGroup studyGroup) {
+    public LikeMember(Member member, StudyGroup studyGroup) {
         this.member = member;
         this.studyGroup = studyGroup;
         addLike();
@@ -34,13 +34,13 @@ public class LikeCount {
     }
 
     public void addLike() {
-        studyGroup.getLikeCount().add(this);
+        studyGroup.getLikeMember().add(this);
     }
 
     public void cancelLike() {
-        if (studyGroup.getLikeCount().isEmpty()) {
+        if (studyGroup.getLikeMember().isEmpty()) {
             throw new LikeCountMinusException();
         }
-        studyGroup.getLikeCount().remove(this);
+        studyGroup.getLikeMember().remove(this);
     }
 }

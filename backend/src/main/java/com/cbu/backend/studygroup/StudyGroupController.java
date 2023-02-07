@@ -35,13 +35,13 @@ public class StudyGroupController {
 
     @PostMapping("/{id}/like-count/add")
     public ResponseEntity<Void> addLikeCount(@PathVariable Long id) {
-        studyGroupService.addLike(id, AuthUtils.getLoginUser());
+        studyGroupService.addLike(id);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/{id}/like-count/cancel")
     public ResponseEntity<Void> cancelLikeCount(@PathVariable Long id) {
-        studyGroupService.cancelLike(id, AuthUtils.getLoginUser());
+        studyGroupService.cancelLike(id);
         return ResponseEntity.ok().build();
     }
 
