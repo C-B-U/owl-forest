@@ -31,11 +31,7 @@ public class StudyGroupService {
         Member leader = memberService.findById(studyGroupRequest.getLeader());
 
         return studyGroupRepository
-                .save(
-                        studyGroupMapper.toEntity(
-                                studyGroupRequest,
-                                leader,
-                                studyMembers))
+                .save(studyGroupMapper.toEntity(studyGroupRequest, leader, studyMembers))
                 .getId();
     }
 
