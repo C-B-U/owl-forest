@@ -1,12 +1,16 @@
-package com.cbu.backend.studyactivity.command;
+package com.cbu.backend.studyactivity;
 
-import com.cbu.backend.studyactivity.command.dto.StudyActivityRequest;
+import com.cbu.backend.member.domain.Member;
+import com.cbu.backend.member.service.MemberService;
+import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 
+import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -15,6 +19,8 @@ import javax.persistence.EntityNotFoundException;
 public class StudyActivityService {
 
     private final StudyActivityRepository studyActivityRepository;
+    private final MemberService memberService;
+    private final StudyActivityMapper studyActivityMapper;
 
     public Long saveStudyActivity(StudyActivityRequest studyActivityRequest) {
         checkValidRequest(studyActivityRequest);
@@ -23,6 +29,8 @@ public class StudyActivityService {
 
     public void updateStudyActivity(Long id, StudyActivityRequest request) {
         checkValidRequest(request);
+        List<Member> members = request.getStudyParticipants().stream().map(memberService::getEntity).toList();
+
         getEntity(id)
                 .updateStudyActivity(
                         request.getTitle(),
@@ -30,12 +38,21 @@ public class StudyActivityService {
                         request.getAssignment(),
                         request.getWeek(),
                         request.getPlace(),
-                        request.getStudyParticipants(),
+                        members,
                         request.getStudyTime());
     }
 
     public void deleteStudyActivity(Long id) {
         getEntity(id).deleteStudyActivity();
+    }
+
+    public StudyActivityResponse getStudyActivity(Long id) {
+        return studyActivityMapper.toResponse(getEntity(id));
+    }
+
+    public List<StudyActivityResponse> getStudyActivityListByStudyGroup(Long studyGroupId) {
+        return studyActivityRepository.findAllByStudyGroupId(studyGroupId).stream()
+                .map(studyActivityMapper::toResponse).toList();
     }
 
     private void checkValidRequest(StudyActivityRequest request) {
@@ -47,13 +64,13 @@ public class StudyActivityService {
         studyActivityRequest.getStudyTime().isValidStudyTime();
     }
 
-    private void checkParticipantDuplicated(List<Long> studyParticipants) {
+    private void checkParticipantDuplicated(List<UUID> studyParticipants) {
         if (studyParticipants.size() != getRequestCount(studyParticipants)) {
             throw new ParticipantDuplicatedException();
         }
     }
 
-    private long getRequestCount(List<Long> studyGroupParticipants) {
+    private long getRequestCount(List<UUID> studyGroupParticipants) {
         return studyGroupParticipants.stream().distinct().count();
     }
 

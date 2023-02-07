@@ -1,11 +1,14 @@
-package com.cbu.backend.studyactivity.command;
+package com.cbu.backend.studyactivity;
 
-import com.cbu.backend.studyactivity.command.dto.StudyActivityRequest;
+import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 
+import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("study-activities")
@@ -31,5 +34,15 @@ public class StudyActivityController {
     public ResponseEntity<Void> deleteStudyActivity(@PathVariable Long id) {
         studyActivityService.deleteStudyActivity(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<StudyActivityResponse> getStudyActivity(@PathVariable Long id) {
+        return ResponseEntity.ok(studyActivityService.getStudyActivity(id));
+    }
+
+    @GetMapping("/study-groups/{id}")
+    public ResponseEntity<List<StudyActivityResponse>> getStudyActivityList(@PathVariable Long id) {
+        return ResponseEntity.ok(studyActivityService.getStudyActivityListByStudyGroup(id));
     }
 }

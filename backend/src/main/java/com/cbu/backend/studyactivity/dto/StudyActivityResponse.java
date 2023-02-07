@@ -1,4 +1,4 @@
-package com.cbu.backend.studyactivity.command.dto;
+package com.cbu.backend.studyactivity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.cbu.backend.studyactivity.command;
+package com.cbu.backend.studyactivity;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

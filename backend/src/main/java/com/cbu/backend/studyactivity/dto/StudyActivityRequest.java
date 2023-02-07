@@ -1,7 +1,7 @@
-package com.cbu.backend.studyactivity.command.dto;
+package com.cbu.backend.studyactivity.dto;
 
-import com.cbu.backend.studyactivity.command.StudyActivity;
-import com.cbu.backend.studyactivity.command.StudyTime;
+import com.cbu.backend.studyactivity.StudyActivity;
+import com.cbu.backend.studyactivity.StudyTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -23,7 +24,7 @@ public class StudyActivityRequest {
     private Integer week;
     private String place;
 
-    @NotEmpty private List<Long> studyParticipants = new ArrayList<>();
+    @NotEmpty private List<UUID> studyParticipants = new ArrayList<>();
     private StudyTime studyTime;
 
     public StudyActivity toEntity() {
