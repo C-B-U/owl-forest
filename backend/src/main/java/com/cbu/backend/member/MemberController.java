@@ -5,7 +5,9 @@ import com.cbu.backend.member.dto.MemberResponse;
 import com.cbu.backend.member.dto.MemberSummaryResponse;
 import com.cbu.backend.member.dto.UpdateMemberRequest;
 import com.cbu.backend.member.service.MemberService;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -28,7 +30,8 @@ public class MemberController {
     }
 
     @GetMapping
-    public ResponseEntity<List<MemberSummaryResponse>> getAll(@PageableDefault(direction = Sort.Direction.DESC) Pageable pageable) {
+    public ResponseEntity<List<MemberSummaryResponse>> getAll(
+            @PageableDefault(direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok().body(memberService.findAll(pageable));
     }
 
@@ -37,9 +40,8 @@ public class MemberController {
         return ResponseEntity.ok().body(memberService.findById(id));
     }
 
-    @GetMapping("{id}/privacy") //인가 설정 TODO
+    @GetMapping("{id}/privacy") // 인가 설정 TODO
     public ResponseEntity<MemberPrivacyResponse> getPrivacyById(@PathVariable UUID id) {
         return ResponseEntity.ok().body(memberService.findPrivacyById(id));
     }
-
 }

@@ -9,14 +9,17 @@ import com.cbu.backend.member.dto.MemberPrivacyResponse;
 import com.cbu.backend.member.dto.MemberResponse;
 import com.cbu.backend.member.dto.MemberSummaryResponse;
 import com.cbu.backend.member.dto.UpdateMemberRequest;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.UUID;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -48,11 +51,23 @@ public class MemberService {
     @Transactional
     public void update(UpdateMemberRequest req) {
         Member loginUser = authService.getLoginUser();
-        loginUser.update(req.getName(), req.getBlogUrl(), req.getEmail(), req.getAcademicStatus(), req.getMajor(), req.getEmail(), req.getGrade(), req.getStudentId(), req.getPhoneNumber(), req.getIntroduction());
+        loginUser.update(
+                req.getName(),
+                req.getBlogUrl(),
+                req.getEmail(),
+                req.getAcademicStatus(),
+                req.getMajor(),
+                req.getEmail(),
+                req.getGrade(),
+                req.getStudentId(),
+                req.getPhoneNumber(),
+                req.getIntroduction());
     }
 
     public List<MemberSummaryResponse> findAll(Pageable pageable) {
-        return memberRepository.findAll(pageable).getContent().stream().map(memberMapper::toSummaryDto).toList();
+        return memberRepository.findAll(pageable).getContent().stream()
+                .map(memberMapper::toSummaryDto)
+                .toList();
     }
 
     public MemberResponse findById(UUID id) {

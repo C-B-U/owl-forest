@@ -1,6 +1,7 @@
 package com.cbu.backend.member.dto;
 
 import com.cbu.backend.member.domain.Major;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,5 +16,5 @@ public class MemberSummaryResponse {
     private String name;
     private Integer grade;
     private Major major;
-    //관심분야 추가 TODO
+    // 관심분야 추가 TODO
 }

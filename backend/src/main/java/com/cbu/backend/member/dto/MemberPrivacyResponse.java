@@ -1,6 +1,7 @@
 package com.cbu.backend.member.dto;
 
 import com.cbu.backend.member.domain.Major;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,5 +20,4 @@ public class MemberPrivacyResponse {
     private String blogUrl;
     private String githubId;
     private String introduction;
-
 }

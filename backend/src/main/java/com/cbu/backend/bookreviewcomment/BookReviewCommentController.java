@@ -2,7 +2,9 @@ package com.cbu.backend.bookreviewcomment;
 
 import com.cbu.backend.bookreviewcomment.dto.BookReviewCommentRequest;
 import com.cbu.backend.bookreviewcomment.dto.BookReviewCommentResponse;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +24,8 @@ public class BookReviewCommentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<BookReviewCommentResponse>> getByBookReviewID(@RequestParam Long bookReviewId) {
+    public ResponseEntity<List<BookReviewCommentResponse>> getByBookReviewID(
+            @RequestParam Long bookReviewId) {
         return ResponseEntity.ok(bookReviewCommentService.findByBookReviewId(bookReviewId));
     }
 }

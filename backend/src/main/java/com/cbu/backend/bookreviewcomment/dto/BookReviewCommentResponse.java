@@ -14,5 +14,4 @@ public class BookReviewCommentResponse {
     private Writer writer;
     private String content;
     private LocalDateTime createdAt;
-
 }

@@ -4,13 +4,15 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -31,6 +33,7 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private Major major;
+
     private String email;
     private Integer grade;
     private String studentId;
@@ -54,7 +57,17 @@ public class Member {
         this.email = email;
     }
 
-    public void update(String name, String blogUrl, String githubId, AcademicStatus academicStatus, Major major, String email, Integer grade, String studentId, String phoneNumber, String introduction) {
+    public void update(
+            String name,
+            String blogUrl,
+            String githubId,
+            AcademicStatus academicStatus,
+            Major major,
+            String email,
+            Integer grade,
+            String studentId,
+            String phoneNumber,
+            String introduction) {
         this.name = name;
         this.blogUrl = blogUrl;
         this.githubId = githubId;

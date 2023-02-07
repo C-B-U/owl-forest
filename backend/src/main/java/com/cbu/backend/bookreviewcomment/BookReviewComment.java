@@ -29,8 +29,7 @@ public class BookReviewComment {
     private BaseTime baseTime;
 
     @Builder
-    public BookReviewComment(
-            Member writer, BookReview bookReview, String content) {
+    public BookReviewComment(Member writer, BookReview bookReview, String content) {
         this.writer = writer;
         this.bookReview = bookReview;
         this.content = content;

@@ -5,6 +5,7 @@ import com.cbu.backend.bookreviewcomment.dto.BookReviewCommentRequest;
 import com.cbu.backend.bookreviewcomment.dto.BookReviewCommentResponse;
 import com.cbu.backend.bookreviewcomment.dto.Writer;
 import com.cbu.backend.member.domain.Member;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
