@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StudyGroupMapper {
     @Mapping(target = "name", source = "studyGroupRequest.name")
     @Mapping(target = "leader", source = "leader")
