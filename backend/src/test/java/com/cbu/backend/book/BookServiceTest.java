@@ -1,31 +1,22 @@
 package com.cbu.backend.book;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
-
-import com.cbu.backend.member.domain.Member;
-import com.cbu.backend.member.service.AuthService;
+import com.cbu.backend.support.LoginTest;
 import com.cbu.backend.support.database.EnableDataBaseTest;
 import com.cbu.backend.support.fixture.book.BookRequestFixture;
-import com.cbu.backend.support.fixture.member.MemberFixture;
-
 import lombok.extern.slf4j.Slf4j;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
-import javax.persistence.EntityManager;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @EnableDataBaseTest
 @DisplayName("BookService에서")
 @Slf4j
-class BookServiceTest {
-    @MockBean AuthService authService;
+class BookServiceTest extends LoginTest {
     @Autowired BookService bookService;
-    @Autowired EntityManager em;
 
     @Nested
     @DisplayName("saveIfNotExists 호출시")
@@ -36,9 +27,6 @@ class BookServiceTest {
         void checkSave() {
             // given
             BookRequest bookRequest = BookRequestFixture.HATE.toDto();
-            Member member = MemberFixture.HERRY.toEntity();
-            em.persist(member);
-            when(authService.getLoginUser()).thenReturn(member);
             // when
             Book book = bookService.saveIfNotExists(bookRequest);
             // then
@@ -57,9 +45,6 @@ class BookServiceTest {
             // given
             BookRequest bookRequest = BookRequestFixture.HATE.toDto();
             Book book = bookService.saveIfNotExists(bookRequest);
-            Member member = MemberFixture.HERRY.toEntity();
-            em.persist(member);
-            when(authService.getLoginUser()).thenReturn(member);
             // when
             Book newBook = bookService.saveIfNotExists(bookRequest);
             // then
