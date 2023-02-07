@@ -29,11 +29,18 @@ public class LikeCount {
     public LikeCount(Member member, StudyGroup studyGroup) {
         this.member = member;
         this.studyGroup = studyGroup;
-        addLike(studyGroup);
+        addLike();
         this.baseTime = new BaseTime();
     }
 
-    public void addLike(StudyGroup studyGroup) {
+    public void addLike() {
         studyGroup.getLikeCount().add(this);
+    }
+
+    public void cancelLike() {
+        if (studyGroup.getLikeCount().isEmpty()) {
+            throw new LikeCountMinusException();
+        }
+        studyGroup.getLikeCount().remove(this);
     }
 }

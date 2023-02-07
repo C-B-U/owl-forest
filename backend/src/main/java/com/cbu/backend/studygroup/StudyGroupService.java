@@ -28,12 +28,13 @@ public class StudyGroupService {
         checkParticipantDuplicated(studyGroupRequest.getMembers());
         List<Member> studyMembers =
                 studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
+        Member leader = memberService.findById(studyGroupRequest.getLeader());
 
         return studyGroupRepository
                 .save(
                         studyGroupMapper.toEntity(
                                 studyGroupRequest,
-                                memberService.findById(studyGroupRequest.getLeader()),
+                                leader,
                                 studyMembers))
                 .getId();
     }
@@ -42,9 +43,10 @@ public class StudyGroupService {
     public void updateStudyGroup(Long id, StudyGroupRequest studyGroupRequest) {
         checkParticipantDuplicated(studyGroupRequest.getMembers());
         StudyGroup studyGroup = getEntity(id);
-        Member leader = memberService.findById(studyGroupRequest.getLeader());
         List<Member> studyMembers =
                 studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
+        Member leader = memberService.findById(studyGroupRequest.getLeader());
+
         studyGroup.updateStudyGroup(
                 studyGroupRequest.getName(),
                 studyGroupRequest.getDescription(),
@@ -56,7 +58,7 @@ public class StudyGroupService {
     public void addLike(Long id, Member member) {
         StudyGroup studyGroup = getEntity(id);
         LikeCount likeCount = new LikeCount(member, studyGroup);
-        likeCount.addLike(studyGroup);
+        likeCount.addLike();
     }
 
     @Transactional
@@ -65,7 +67,7 @@ public class StudyGroupService {
                 studyGroupRepository
                         .findLikeCountByIdAndMember(id, member)
                         .orElseThrow(EntityNotFoundException::new);
-        likeCount.getStudyGroup().cancelLike(likeCount);
+        likeCount.cancelLike();
     }
 
     @Transactional

@@ -65,13 +65,6 @@ public class StudyGroup {
         organizeStudyMembers(leader, studyMembers);
     }
 
-    public void cancelLike(LikeCount likeCount) {
-        if (this.likeCount.isEmpty()) {
-            throw new LikeCountMinusException();
-        }
-        this.likeCount.remove(likeCount);
-    }
-
     public void organizeStudyMembers(Member leader, List<Member> studyMembers) {
         this.leader = leader;
         studyMembers.stream()
