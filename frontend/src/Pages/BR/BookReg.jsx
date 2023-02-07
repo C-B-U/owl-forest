@@ -185,40 +185,58 @@ const WrapList = styled.div`
 `;
 
 const ListPopup = styled.div`
+  /* border: 1px solid red; */
   width: 40rem;
   height: fit-content;
   background-color: white;
   margin-bottom: 1rem;
   margin-top: 1rem;
+  padding: 0.7rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  justify-items: center;
   align-items: center;
   box-sizing: content-box;
-  padding: 0.7rem;
-  justify-items: center;
   border-radius: 0.2rem;
-  /* border: 1px solid red; */
 `;
 
 const TitlePopup = styled.div`
   width: 15rem;
   white-space: normal;
   text-align: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
+
 const WriterPopup = styled.div`
   width: 12rem;
-  white-space: normal;
   margin-left: 1rem;
   text-align: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
+
 const PublisherPopup = styled.div`
   width: 10rem;
-  white-space: normal;
-  word-break: break-all;
   margin-left: 1rem;
   text-align: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
+
 const ReleaseDate = styled.div`
   width: 8rem;
   white-space: normal;
@@ -316,7 +334,8 @@ function BookReg() {
               <WrapList>
                 <ListPopup>
                   <TitlePopup>
-                    프로그래밍 대회에서 배우는 알고리즘 문제 해결 전략1
+                    프로그래밍 대회에서 배우는 알고리즘 문제 해결 전략1 일까요
+                    2일까요 알아맞춰보세요오오오오오오오
                   </TitlePopup>
                   <WriterPopup>천인국, 공용해, 하상호</WriterPopup>
                   <PublisherPopup>생능출판사</PublisherPopup>
