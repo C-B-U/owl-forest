@@ -5,7 +5,6 @@ import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 
-import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;

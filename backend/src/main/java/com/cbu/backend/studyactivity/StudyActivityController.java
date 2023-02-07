@@ -42,7 +42,9 @@ public class StudyActivityController {
     }
 
     @GetMapping
-    public ResponseEntity<List<StudyActivityResponse>> getStudyActivityList(@RequestParam Long studyGroup) {
-        return ResponseEntity.ok(studyActivityService.getStudyActivityListByStudyGroupId(studyGroup));
+    public ResponseEntity<List<StudyActivityResponse>> getStudyActivityList(
+            @RequestParam Long studyGroup) {
+        return ResponseEntity.ok(
+                studyActivityService.getStudyActivityListByStudyGroupId(studyGroup));
     }
 }
