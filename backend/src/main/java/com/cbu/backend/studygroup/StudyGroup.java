@@ -40,12 +40,11 @@ public class StudyGroup {
 
     @Builder
     public StudyGroup(
-            String name, String description, Member leader, Set<StudyMember> studyMembers) {
+            String name, String description, Member leader, List<Member> studyMembers) {
         this.name = name;
         this.description = description;
         this.studyGroupStatus = StudyGroupStatus.ACTIVE;
-        this.leader = leader;
-        this.studyMembers = studyMembers;
+        organizeStudyMembers(leader, studyMembers);
         this.baseTime = new BaseTime();
     }
 
@@ -57,9 +56,11 @@ public class StudyGroup {
         this.baseTime.delete();
     }
 
-    public void updateStudyGroup(String name, String description) { // TODO Member, Leader 추가
+    public void updateStudyGroup(String name, String description, Member leader, List<Member> studyMembers) {
         this.name = name;
         this.description = description;
+        clearStudyMembers();
+        organizeStudyMembers(leader, studyMembers);
     }
 
     public void cancelLike(LikeCount likeCount) {
@@ -69,10 +70,9 @@ public class StudyGroup {
         this.likeCount.remove(likeCount);
     }
 
-    public void organizeStudyMembers(Member leader, List<StudyMember> studyMembers) {
+    public void organizeStudyMembers(Member leader, List<Member> studyMembers) {
         this.leader = leader;
-        clearStudyMembers();
-        this.studyMembers.addAll(studyMembers);
+        studyMembers.stream().map(member -> new StudyMember(this, member)).forEach(this.studyMembers::add);
     }
 
     private void clearStudyMembers() {

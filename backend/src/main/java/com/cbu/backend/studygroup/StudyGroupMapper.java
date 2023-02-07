@@ -3,38 +3,17 @@ package com.cbu.backend.studygroup;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
-import com.cbu.backend.studygroup.dto.StudyMemberResponse;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Component
-public class StudyGroupMapper {
-
-    public StudyGroup toEntity(StudyGroupRequest studyGroupRequest) {
-        return StudyGroup.builder()
-                .name(studyGroupRequest.getName())
-                .description(studyGroupRequest.getDescription())
-                .build();
-    }
-
-    public StudyGroupResponse toResponse(StudyGroup studyGroup) {
-        return StudyGroupResponse.builder()
-                .name(studyGroup.getName())
-                .description(studyGroup.getDescription())
-                .leader(toMemberResponse(studyGroup.getLeader()))
-                .members(toMemberResponseList(studyGroup))
-                .build();
-    }
-
-    private List<StudyMemberResponse> toMemberResponseList(StudyGroup studyGroup) {
-        return studyGroup.getStudyMembers().stream()
-                .map(member -> toMemberResponse(member.getMember()))
-                .toList();
-    }
-
-    public StudyMemberResponse toMemberResponse(Member member) {
-        return StudyMemberResponse.builder().build();
-    }
+@Mapper
+public interface StudyGroupMapper {
+    @Mapping(target = "name", source = "studyGroupRequest.name")
+    @Mapping(target = "leader", source = "leader")
+    StudyGroup toEntity(StudyGroupRequest studyGroupRequest, Member leader, List<Member> studyMembers);
+    @Mapping(target = "likeCount", expression = "java(studyGroup.getLikeCount().size())")
+    StudyGroupResponse toResponse(StudyGroup studyGroup);
 }

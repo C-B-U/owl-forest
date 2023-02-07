@@ -1,5 +1,6 @@
 package com.cbu.backend.studygroup;
 
+import com.cbu.backend.member.MemberService;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -21,18 +22,26 @@ public class StudyGroupService {
 
     private final StudyGroupRepository studyGroupRepository;
     private final StudyGroupMapper studyGroupMapper;
+    private final MemberService memberService;
 
     public Long saveStudyGroup(StudyGroupRequest studyGroupRequest) {
         checkParticipantDuplicated(studyGroupRequest.getMembers());
-        return studyGroupRepository.save(studyGroupMapper.toEntity(studyGroupRequest)).getId();
+        List<Member> studyMembers = studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
+
+        return studyGroupRepository.save(studyGroupMapper.toEntity(studyGroupRequest,
+                        memberService.findById(studyGroupRequest.getLeader()), studyMembers)).getId();
     }
 
     @Transactional
     public void updateStudyGroup(Long id, StudyGroupRequest studyGroupRequest) {
-        StudyGroup studyGroup = getEntity(id);
         checkParticipantDuplicated(studyGroupRequest.getMembers());
+        StudyGroup studyGroup = getEntity(id);
+        Member leader = memberService.findById(studyGroupRequest.getLeader());
+        List<Member> studyMembers = studyGroupRequest.getMembers().stream().map(memberService::findById).toList();
         studyGroup.updateStudyGroup(
-                studyGroupRequest.getName(), studyGroupRequest.getDescription());
+                studyGroupRequest.getName(),
+                studyGroupRequest.getDescription(),
+                leader, studyMembers);
     }
 
     @Transactional
@@ -44,11 +53,11 @@ public class StudyGroupService {
 
     @Transactional
     public void cancelLike(Long id, Member member) {
-        //        LikeCount likeCount =
-        //                studyGroupRepository
-        //                        .findLikeCountByIdAndMember(id, member)
-        //                        .orElseThrow(EntityNotFoundException::new);
-        //        likeCount.getStudyGroup().cancelLike(likeCount);
+        LikeCount likeCount =
+                studyGroupRepository
+                        .findLikeCountByIdAndMember(id, member)
+                        .orElseThrow(EntityNotFoundException::new);
+        likeCount.getStudyGroup().cancelLike(likeCount);
     }
 
     @Transactional
@@ -68,16 +77,16 @@ public class StudyGroupService {
     public List<StudyGroupResponse> findAllStudyGroup(Pageable pageable) {
         return studyGroupRepository.findAll(pageable).stream()
                 .map(studyGroupMapper::toResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    private void checkParticipantDuplicated(List<Long> studyGroupParticipants) {
+    private void checkParticipantDuplicated(List<UUID> studyGroupParticipants) {
         if (studyGroupParticipants.size() != getRequestCount(studyGroupParticipants)) {
             throw new ParticipantDuplicatedException();
         }
     }
 
-    private long getRequestCount(List<Long> studyGroupParticipants) {
+    private long getRequestCount(List<UUID> studyGroupParticipants) {
         return studyGroupParticipants.stream().distinct().count();
     }
 
