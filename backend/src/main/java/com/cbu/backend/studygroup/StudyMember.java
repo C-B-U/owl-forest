@@ -3,6 +3,7 @@ package com.cbu.backend.studygroup;
 import com.cbu.backend.member.domain.Member;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,4 +22,10 @@ public class StudyMember {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @Builder
+    public StudyMember(StudyGroup studyGroup, Member member) {
+        this.studyGroup = studyGroup;
+        this.member = member;
+    }
 }

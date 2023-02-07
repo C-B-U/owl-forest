@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Builder
@@ -19,5 +19,5 @@ public class StudyGroupResponse {
     private Integer likeCount;
     private StudyGroupStatus studyGroupStatus;
     private StudyMemberResponse leader;
-    private List<StudyMemberResponse> members;
+    private Set<StudyMemberResponse> members;
 }

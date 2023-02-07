@@ -30,7 +30,7 @@ public class StudyGroup {
     private StudyGroupStatus studyGroupStatus;
 
     @OneToMany(mappedBy = "studyGroup")
-    private Set<LikeCount> likeCount = new HashSet<>();
+    private Set<LikeMember> likeMember = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member leader;
@@ -41,13 +41,11 @@ public class StudyGroup {
     @Embedded private BaseTime baseTime;
 
     @Builder
-    public StudyGroup(
-            String name, String description, Member leader, Set<StudyMember> studyMembers) {
+    public StudyGroup(String name, String description, Member leader, List<Member> studyMembers) {
         this.name = name;
         this.description = description;
         this.studyGroupStatus = StudyGroupStatus.ACTIVE;
-        this.leader = leader;
-        this.studyMembers = studyMembers;
+        organizeStudyMembers(leader, studyMembers);
         this.baseTime = new BaseTime();
     }
 
@@ -59,22 +57,19 @@ public class StudyGroup {
         this.baseTime.delete();
     }
 
-    public void updateStudyGroup(String name, String description) { // TODO Member, Leader 추가
+    public void updateStudyGroup(
+            String name, String description, Member leader, List<Member> studyMembers) {
         this.name = name;
         this.description = description;
-    }
-
-    public void cancelLike(LikeCount likeCount) {
-        if (this.likeCount.isEmpty()) {
-            throw new LikeCountMinusException();
-        }
-        this.likeCount.remove(likeCount);
-    }
-
-    public void organizeStudyMembers(Member leader, List<StudyMember> studyMembers) {
-        this.leader = leader;
         clearStudyMembers();
-        this.studyMembers.addAll(studyMembers);
+        organizeStudyMembers(leader, studyMembers);
+    }
+
+    public void organizeStudyMembers(Member leader, List<Member> studyMembers) {
+        this.leader = leader;
+        studyMembers.stream()
+                .map(member -> new StudyMember(this, member))
+                .forEach(this.studyMembers::add);
     }
 
     private void clearStudyMembers() {
