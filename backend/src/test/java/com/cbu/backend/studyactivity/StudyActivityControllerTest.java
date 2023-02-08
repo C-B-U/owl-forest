@@ -16,8 +16,8 @@ import com.cbu.backend.studyactivity.dto.StudyActivityIdResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 import com.cbu.backend.support.docs.RestDocumentTest;
 import com.cbu.backend.support.fixture.studyactivity.dto.StudyActivityRequestFixture;
-
 import com.cbu.backend.support.fixture.studyactivity.dto.StudyActivityResponseFixture;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -54,7 +54,11 @@ class StudyActivityControllerTest extends RestDocumentTest {
 
         // docs
         perform.andDo(print())
-                .andDo(document("create study activity", getDocumentRequest(), getDocumentResponse()));
+                .andDo(
+                        document(
+                                "create study activity",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
     }
 
     @Test
@@ -78,7 +82,11 @@ class StudyActivityControllerTest extends RestDocumentTest {
 
         // docs
         perform.andDo(print())
-                .andDo(document("update study activity", getDocumentRequest(), getDocumentResponse()));
+                .andDo(
+                        document(
+                                "update study activity",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
     }
 
     @Test
@@ -91,29 +99,31 @@ class StudyActivityControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        delete("/study-activities/1")
-                                .contentType(MediaType.APPLICATION_JSON));
+                        delete("/study-activities/1").contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk());
 
         // docs
         perform.andDo(print())
-                .andDo(document("delete study activity", getDocumentRequest(), getDocumentResponse()));
+                .andDo(
+                        document(
+                                "delete study activity",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
     }
 
     @Test
     @DisplayName("스터디 일지 단일 조회")
     void getStudyActivity() throws Exception {
         // given
-        StudyActivityResponse expected = StudyActivityResponseFixture.SAMPLE1.toStudyActivityResponse();
+        StudyActivityResponse expected =
+                StudyActivityResponseFixture.SAMPLE1.toStudyActivityResponse();
         given(studyActivityService.findStudyActivity(any())).willReturn(expected);
 
         // when
         ResultActions perform =
-                mockMvc.perform(
-                        get("/study-activities/1")
-                                .contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(get("/study-activities/1").contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk())
@@ -121,16 +131,23 @@ class StudyActivityControllerTest extends RestDocumentTest {
 
         // docs
         perform.andDo(print())
-                .andDo(document("get study activity detail", getDocumentRequest(), getDocumentResponse()));
+                .andDo(
+                        document(
+                                "get study activity detail",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
     }
 
     @Test
     @DisplayName("스터디그룹 별 스터디 일지 리스트 조회")
     void getStudyActivityList() throws Exception {
         // given
-        StudyActivityResponse expected1 = StudyActivityResponseFixture.SAMPLE1.toStudyActivityResponse();
-        StudyActivityResponse expected2 = StudyActivityResponseFixture.SAMPLE2.toStudyActivityResponse();
-        given(studyActivityService.findStudyActivityListByStudyGroupId(any())).willReturn(List.of(expected1, expected2));
+        StudyActivityResponse expected1 =
+                StudyActivityResponseFixture.SAMPLE1.toStudyActivityResponse();
+        StudyActivityResponse expected2 =
+                StudyActivityResponseFixture.SAMPLE2.toStudyActivityResponse();
+        given(studyActivityService.findStudyActivityListByStudyGroupId(any()))
+                .willReturn(List.of(expected1, expected2));
 
         // when
         ResultActions perform =
@@ -139,11 +156,14 @@ class StudyActivityControllerTest extends RestDocumentTest {
                                 .contentType(MediaType.APPLICATION_JSON));
 
         // then
-        perform.andExpect(status().isOk())
-                .andExpect(jsonPath("$").isArray());
+        perform.andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
 
         // docs
         perform.andDo(print())
-                .andDo(document("get study activity list", getDocumentRequest(), getDocumentResponse()));
+                .andDo(
+                        document(
+                                "get study activity list",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
     }
 }

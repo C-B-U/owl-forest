@@ -13,17 +13,18 @@ public enum StudyActivityResponseFixture {
             "과제1",
             4,
             "종합관 2층 스터디룸",
-            Set.of(new ActivityMemberResponse(UUID.randomUUID(), "Kim"), new ActivityMemberResponse(UUID.randomUUID(), "Lee"))
-    ),
+            Set.of(
+                    new ActivityMemberResponse(UUID.randomUUID(), "Kim"),
+                    new ActivityMemberResponse(UUID.randomUUID(), "Lee"))),
     SAMPLE2(
             "리액트 스터디",
             "React.js",
             "타입스크립트 조사해오기",
             1,
             "E동2층",
-            Set.of(new ActivityMemberResponse(UUID.randomUUID(), "Park"), new ActivityMemberResponse(UUID.randomUUID(), "Hong"))
-
-    );
+            Set.of(
+                    new ActivityMemberResponse(UUID.randomUUID(), "Park"),
+                    new ActivityMemberResponse(UUID.randomUUID(), "Hong")));
 
     private String title;
     private String description;
@@ -32,7 +33,13 @@ public enum StudyActivityResponseFixture {
     private String place;
     private Set<ActivityMemberResponse> activityMembers;
 
-    StudyActivityResponseFixture(String title, String description, String assignment, Integer week, String place, Set<ActivityMemberResponse> activityMembers) {
+    StudyActivityResponseFixture(
+            String title,
+            String description,
+            String assignment,
+            Integer week,
+            String place,
+            Set<ActivityMemberResponse> activityMembers) {
         this.title = title;
         this.description = description;
         this.assignment = assignment;
@@ -42,6 +49,7 @@ public enum StudyActivityResponseFixture {
     }
 
     public StudyActivityResponse toStudyActivityResponse() {
-        return new StudyActivityResponse(title, description, assignment, week, place, activityMembers);
+        return new StudyActivityResponse(
+                title, description, assignment, week, place, activityMembers);
     }
 }

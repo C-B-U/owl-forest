@@ -16,8 +16,7 @@ public enum StudyActivityRequestFixture {
             "보보스 1호점",
             List.of(UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID()),
             1L,
-            new StudyTime(LocalDateTime.now().minusHours(2), LocalDateTime.now())
-    );
+            new StudyTime(LocalDateTime.now().minusHours(2), LocalDateTime.now()));
     private String title;
     private String description;
     private String assignment;
@@ -27,7 +26,15 @@ public enum StudyActivityRequestFixture {
     private Long studyGroupId;
     private StudyTime studyTime;
 
-    StudyActivityRequestFixture(String title, String description, String assignment, Integer week, String place, List<UUID> activityMembers, Long studyGroupId, StudyTime studyTime) {
+    StudyActivityRequestFixture(
+            String title,
+            String description,
+            String assignment,
+            Integer week,
+            String place,
+            List<UUID> activityMembers,
+            Long studyGroupId,
+            StudyTime studyTime) {
         this.title = title;
         this.description = description;
         this.assignment = assignment;
@@ -39,6 +46,14 @@ public enum StudyActivityRequestFixture {
     }
 
     public StudyActivityRequest tostudyActivityRequest() {
-        return new StudyActivityRequest(title, description, assignment, week, place, activityMembers, studyGroupId, studyTime);
+        return new StudyActivityRequest(
+                title,
+                description,
+                assignment,
+                week,
+                place,
+                activityMembers,
+                studyGroupId,
+                studyTime);
     }
 }
