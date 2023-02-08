@@ -1,6 +1,7 @@
-package com.cbu.backend.studyactivity.command.domain;
+package com.cbu.backend.studyactivity;
 
 import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.studygroup.StudyMember;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -8,7 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -17,27 +17,18 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyActivity {
-
-    @EmbeddedId private StudyActivityNo id;
+    @Id @GeneratedValue private Long id;
 
     @Column(nullable = false)
     private String title;
 
     @Lob private String description;
-
     private String assignment;
     private Integer week;
-
     private String place;
-
-    @ElementCollection
-    @CollectionTable(
-            name = "study_participants",
-            joinColumns = @JoinColumn(name = "study_activity_id"))
-    private Set<Long> studyParticipants = new HashSet<>();
-
+    @OneToMany private Set<StudyMember> activityMembers = new HashSet<>();
+    private Long studyGroupId;
     @Embedded private StudyTime studyTime;
-
     @Embedded private BaseTime baseTime;
 
     @Builder
@@ -47,42 +38,40 @@ public class StudyActivity {
             String assignment,
             Integer week,
             String place,
-            List<Long> studyParticipants,
+            Set<StudyMember> activityMembers,
+            Long studyGroupId,
             StudyTime studyTime) {
-        this.id = new StudyActivityNo();
         this.title = title;
         this.description = description;
         this.assignment = assignment;
         this.week = week;
         this.place = place;
-        this.studyParticipants.addAll(studyParticipants);
+        this.activityMembers = activityMembers;
+        this.studyGroupId = studyGroupId;
         this.studyTime = studyTime;
         this.baseTime = new BaseTime();
     }
 
-    public void updateStudyActivity(
+    public void update(
             String title,
             String description,
             String assignment,
             Integer week,
             String place,
-            List<Long> studyParticipants,
+            Set<StudyMember> activityMembers,
+            Long studyGroupId,
             StudyTime studyTime) {
         this.title = title;
         this.description = description;
         this.assignment = assignment;
         this.week = week;
         this.place = place;
-        clearParticipants();
-        this.studyParticipants.addAll(studyParticipants);
+        this.activityMembers = activityMembers;
+        this.studyGroupId = studyGroupId;
         this.studyTime = studyTime;
     }
 
-    public void deleteStudyActivity() {
+    public void delete() {
         this.baseTime.delete();
-    }
-
-    private void clearParticipants() {
-        this.studyParticipants.clear();
     }
 }

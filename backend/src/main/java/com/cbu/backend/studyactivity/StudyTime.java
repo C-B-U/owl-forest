@@ -1,4 +1,4 @@
-package com.cbu.backend.studyactivity.command.domain;
+package com.cbu.backend.studyactivity;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
