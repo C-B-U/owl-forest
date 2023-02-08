@@ -67,8 +67,9 @@ public class StudyGroup {
     }
 
     public void organizeStudyMembers(Set<Member> studyMembers) {
-        this.studyMembers = studyMembers.stream()
-                .map(member -> new StudyMember(this, member))
-                .collect(Collectors.toSet());
+        this.studyMembers =
+                studyMembers.stream()
+                        .map(member -> new StudyMember(this, member))
+                        .collect(Collectors.toSet());
     }
 }

@@ -6,6 +6,7 @@ import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 import com.cbu.backend.studygroup.StudyGroup;
 import com.cbu.backend.studygroup.StudyGroupService;
 import com.cbu.backend.studygroup.StudyMember;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -33,9 +34,7 @@ public class StudyActivityService {
                         .map(memberService::getEntity)
                         .map(member -> new StudyMember(studyGroup, member))
                         .collect(Collectors.toSet());
-        return studyActivityRepository
-                .save(studyActivityMapper.toEntity(request, members))
-                .getId();
+        return studyActivityRepository.save(studyActivityMapper.toEntity(request, members)).getId();
     }
 
     public void updateStudyActivity(Long id, StudyActivityRequest request) {

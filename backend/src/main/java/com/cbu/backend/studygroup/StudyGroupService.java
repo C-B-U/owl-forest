@@ -29,7 +29,9 @@ public class StudyGroupService {
 
     public Long saveStudyGroup(StudyGroupRequest studyGroupRequest) {
         Set<Member> studyMembers =
-                studyGroupRequest.getMembers().stream().map(memberService::getEntity).collect(Collectors.toSet());
+                studyGroupRequest.getMembers().stream()
+                        .map(memberService::getEntity)
+                        .collect(Collectors.toSet());
         Member leader = memberService.getEntity(studyGroupRequest.getLeader());
 
         return studyGroupRepository
@@ -41,7 +43,9 @@ public class StudyGroupService {
     public void updateStudyGroup(Long id, StudyGroupRequest studyGroupRequest) {
         StudyGroup studyGroup = getEntity(id);
         Set<Member> studyMembers =
-                studyGroupRequest.getMembers().stream().map(memberService::getEntity).collect(Collectors.toSet());
+                studyGroupRequest.getMembers().stream()
+                        .map(memberService::getEntity)
+                        .collect(Collectors.toSet());
         Member leader = memberService.getEntity(studyGroupRequest.getLeader());
 
         studyGroup.updateStudyGroup(
