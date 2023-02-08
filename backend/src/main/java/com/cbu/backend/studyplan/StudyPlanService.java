@@ -3,7 +3,9 @@ package com.cbu.backend.studyplan;
 import com.cbu.backend.studyplan.dto.StudyPlanIdResponse;
 import com.cbu.backend.studyplan.dto.StudyPlanRequest;
 import com.cbu.backend.studyplan.dto.StudyPlanResponse;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,9 +25,7 @@ public class StudyPlanService {
 
     @Transactional
     public void updateStudyPlan(Long id, StudyPlanRequest request) {
-        getEntity(id).update(request.getTitle(),
-                request.getStudyRule(),
-                request.getWeekPlan());
+        getEntity(id).update(request.getTitle(), request.getStudyRule(), request.getWeekPlan());
     }
 
     @Transactional

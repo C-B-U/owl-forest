@@ -1,6 +1,7 @@
 package com.cbu.backend.studyplan;
 
 import com.cbu.backend.global.BaseTime;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,16 +13,11 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyPlan {
-    @Id @GeneratedValue
-    private Long id;
+    @Id @GeneratedValue private Long id;
     private String title;
-    @Lob
-    private String studyRule;
-    @Lob
-    private String weekPlan;
-    @Embedded
-    private BaseTime baseTime;
-
+    @Lob private String studyRule;
+    @Lob private String weekPlan;
+    @Embedded private BaseTime baseTime;
 
     @Builder
     public StudyPlan(String title, String studyRule, String weekPlan) {
