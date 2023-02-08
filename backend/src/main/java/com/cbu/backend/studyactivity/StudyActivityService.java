@@ -1,6 +1,7 @@
 package com.cbu.backend.studyactivity;
 
 import com.cbu.backend.member.service.MemberService;
+import com.cbu.backend.studyactivity.dto.StudyActivityIdResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 import com.cbu.backend.studygroup.StudyGroup;
@@ -26,7 +27,7 @@ public class StudyActivityService {
     private final StudyActivityMapper studyActivityMapper;
     private final StudyGroupService studyGroupService;
 
-    public Long saveStudyActivity(StudyActivityRequest request) {
+    public StudyActivityIdResponse saveStudyActivity(StudyActivityRequest request) {
         checkStudyTime(request);
         StudyGroup studyGroup = studyGroupService.getEntity(request.getStudyGroupId());
         Set<StudyMember> members =
@@ -34,7 +35,12 @@ public class StudyActivityService {
                         .map(memberService::getEntity)
                         .map(member -> new StudyMember(studyGroup, member))
                         .collect(Collectors.toSet());
-        return studyActivityRepository.save(studyActivityMapper.toEntity(request, members)).getId();
+        Long id =
+                studyActivityRepository
+                        .save(studyActivityMapper.toEntity(request, members))
+                        .getId();
+
+        return new StudyActivityIdResponse(id);
     }
 
     public void updateStudyActivity(Long id, StudyActivityRequest request) {
