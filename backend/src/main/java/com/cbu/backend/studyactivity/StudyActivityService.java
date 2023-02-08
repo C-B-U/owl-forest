@@ -1,18 +1,20 @@
 package com.cbu.backend.studyactivity;
 
-import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 
 import com.cbu.backend.studygroup.StudyGroup;
 import com.cbu.backend.studygroup.StudyGroupService;
+import com.cbu.backend.studygroup.StudyMember;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -25,22 +27,27 @@ public class StudyActivityService {
     private final StudyActivityMapper studyActivityMapper;
     private final StudyGroupService studyGroupService;
 
-    public Long saveStudyActivity(StudyActivityRequest studyActivityRequest) {
-        checkValidRequest(studyActivityRequest);
-        List<Member> members =
-                studyActivityRequest.getActivityMembers().stream()
+    public Long saveStudyActivity(StudyActivityRequest request) {
+        checkStudyTime(request);
+        StudyGroup studyGroup = studyGroupService.getEntity(request.getStudyGroupId());
+        Set<StudyMember> members =
+                request.getActivityMembers().stream()
                         .map(memberService::getEntity)
-                        .toList();
+                        .map(member -> new StudyMember(studyGroup, member))
+                        .collect(Collectors.toSet());
         return studyActivityRepository
-                .save(studyActivityMapper.toEntity(studyActivityRequest, members))
+                .save(studyActivityMapper.toEntity(request, members))
                 .getId();
     }
 
     public void updateStudyActivity(Long id, StudyActivityRequest request) {
-        checkValidRequest(request);
-        List<Member> members =
-                request.getActivityMembers().stream().map(memberService::getEntity).toList();
+        checkStudyTime(request);
         StudyGroup studyGroup = studyGroupService.getEntity(request.getStudyGroupId());
+        Set<StudyMember> members =
+                request.getActivityMembers().stream()
+                        .map(memberService::getEntity)
+                        .map(member -> new StudyMember(studyGroup, member))
+                        .collect(Collectors.toSet());
 
         getEntity(id)
                 .update(
@@ -50,7 +57,7 @@ public class StudyActivityService {
                         request.getWeek(),
                         request.getPlace(),
                         members,
-                        studyGroup,
+                        request.getStudyGroupId(),
                         request.getStudyTime());
     }
 
@@ -68,23 +75,8 @@ public class StudyActivityService {
                 .toList();
     }
 
-    private void checkValidRequest(StudyActivityRequest request) {
-        checkStudyTime(request);
-        checkParticipantDuplicated(request.getActivityMembers());
-    }
-
     private void checkStudyTime(StudyActivityRequest studyActivityRequest) {
         studyActivityRequest.getStudyTime().isValidStudyTime();
-    }
-
-    private void checkParticipantDuplicated(List<UUID> activityMembers) {
-        if (activityMembers.size() != getRequestCount(activityMembers)) {
-            throw new ParticipantDuplicatedException();
-        }
-    }
-
-    private long getRequestCount(List<UUID> studyGroupParticipants) {
-        return studyGroupParticipants.stream().distinct().count();
     }
 
     private StudyActivity getEntity(Long id) {

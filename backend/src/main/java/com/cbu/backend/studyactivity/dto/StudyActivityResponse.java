@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Builder
@@ -17,5 +17,5 @@ public class StudyActivityResponse {
     private String assignment;
     private Integer week;
     private String place;
-    private List<ActivityMemberResponse> activityMembers;
+    private Set<ActivityMemberResponse> activityMembers;
 }

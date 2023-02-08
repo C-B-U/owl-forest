@@ -9,8 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.*;
 
@@ -41,11 +41,12 @@ public class StudyGroup {
     @Embedded private BaseTime baseTime;
 
     @Builder
-    public StudyGroup(String name, String description, Member leader, List<Member> studyMembers) {
+    public StudyGroup(String name, String description, Member leader, Set<Member> studyMembers) {
         this.name = name;
         this.description = description;
         this.studyGroupStatus = StudyGroupStatus.ACTIVE;
-        organizeStudyMembers(leader, studyMembers);
+        this.leader = leader;
+        organizeStudyMembers(studyMembers);
         this.baseTime = new BaseTime();
     }
 
@@ -58,21 +59,16 @@ public class StudyGroup {
     }
 
     public void updateStudyGroup(
-            String name, String description, Member leader, List<Member> studyMembers) {
+            String name, String description, Member leader, Set<Member> studyMembers) {
         this.name = name;
         this.description = description;
-        clearStudyMembers();
-        organizeStudyMembers(leader, studyMembers);
-    }
-
-    public void organizeStudyMembers(Member leader, List<Member> studyMembers) {
         this.leader = leader;
-        studyMembers.stream()
-                .map(member -> new StudyMember(this, member))
-                .forEach(this.studyMembers::add);
+        organizeStudyMembers(studyMembers);
     }
 
-    private void clearStudyMembers() {
-        this.studyMembers.clear();
+    public void organizeStudyMembers(Set<Member> studyMembers) {
+        this.studyMembers = studyMembers.stream()
+                .map(member -> new StudyMember(this, member))
+                .collect(Collectors.toSet());
     }
 }
