@@ -38,13 +38,13 @@ public class StudyActivityController {
 
     @GetMapping("/{id}")
     public ResponseEntity<StudyActivityResponse> getStudyActivity(@PathVariable Long id) {
-        return ResponseEntity.ok(studyActivityService.getStudyActivity(id));
+        return ResponseEntity.ok(studyActivityService.findStudyActivity(id));
     }
 
     @GetMapping
     public ResponseEntity<List<StudyActivityResponse>> getStudyActivityList(
             @RequestParam Long studyGroup) {
         return ResponseEntity.ok(
-                studyActivityService.getStudyActivityListByStudyGroupId(studyGroup));
+                studyActivityService.findStudyActivityListByStudyGroupId(studyGroup));
     }
 }

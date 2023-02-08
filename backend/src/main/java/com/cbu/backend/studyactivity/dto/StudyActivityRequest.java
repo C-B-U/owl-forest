@@ -22,7 +22,7 @@ public class StudyActivityRequest {
     private String assignment;
     private Integer week;
     private String place;
-    @NotEmpty private List<UUID> studyParticipants = new ArrayList<>();
+    @NotEmpty private List<UUID> activityMembers = new ArrayList<>();
     private Long studyGroupId;
     private StudyTime studyTime;
 }

@@ -3,6 +3,8 @@ package com.cbu.backend.studyactivity;
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.domain.Member;
 
+import com.cbu.backend.studygroup.StudyGroup;
+import com.cbu.backend.studygroup.StudyMember;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,7 +29,7 @@ public class StudyActivity {
     private String assignment;
     private Integer week;
     private String place;
-    @OneToMany private Set<Member> studyParticipants = new HashSet<>();
+    @OneToMany private Set<StudyMember> activityMembers = new HashSet<>();
     private Long studyGroupId;
     @Embedded private StudyTime studyTime;
     @Embedded private BaseTime baseTime;
@@ -39,27 +41,28 @@ public class StudyActivity {
             String assignment,
             Integer week,
             String place,
-            List<Member> studyParticipants,
-            Long studyGroupId,
+            List<Member> activityMembers,
+            StudyGroup studyGroup,
             StudyTime studyTime) {
         this.title = title;
         this.description = description;
         this.assignment = assignment;
         this.week = week;
         this.place = place;
-        organizeParticipants(studyParticipants);
-        this.studyGroupId = studyGroupId;
+        organizeParticipants(activityMembers, studyGroup);
+        this.studyGroupId = studyGroup.getId();
         this.studyTime = studyTime;
         this.baseTime = new BaseTime();
     }
 
-    public void updateStudyActivity(
+    public void update(
             String title,
             String description,
             String assignment,
             Integer week,
             String place,
-            List<Member> studyParticipants,
+            List<Member> activityMembers,
+            StudyGroup studyGroup,
             StudyTime studyTime) {
         this.title = title;
         this.description = description;
@@ -67,19 +70,22 @@ public class StudyActivity {
         this.week = week;
         this.place = place;
         clearParticipants();
-        organizeParticipants(studyParticipants);
+        organizeParticipants(activityMembers, studyGroup);
+        this.studyGroupId = studyGroup.getId();
         this.studyTime = studyTime;
     }
 
-    public void deleteStudyActivity() {
+    public void delete() {
         this.baseTime.delete();
     }
 
-    private void organizeParticipants(List<Member> studyParticipants) {
-        this.studyParticipants.addAll(studyParticipants);
+    private void organizeParticipants(List<Member> activityMembers, StudyGroup studyGroup) {
+        List<StudyMember> studyMembers = activityMembers.stream()
+                .map(participant -> new StudyMember(studyGroup, participant)).toList();
+        this.activityMembers.addAll(studyMembers);
     }
 
     private void clearParticipants() {
-        this.studyParticipants.clear();
+        this.activityMembers.clear();
     }
 }

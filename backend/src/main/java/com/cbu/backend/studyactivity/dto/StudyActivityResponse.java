@@ -17,5 +17,5 @@ public class StudyActivityResponse {
     private String assignment;
     private Integer week;
     private String place;
-    private List<StudyParticipantsResponse> studyParticipants;
+    private List<ActivityMemberResponse> activityMembers;
 }

@@ -88,6 +88,10 @@ public class StudyGroupService {
                 .toList();
     }
 
+    public StudyGroup getEntity(Long id) {
+        return studyGroupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
     private void checkParticipantDuplicated(List<UUID> studyGroupParticipants) {
         if (studyGroupParticipants.size() != getRequestCount(studyGroupParticipants)) {
             throw new ParticipantDuplicatedException();
@@ -96,9 +100,5 @@ public class StudyGroupService {
 
     private long getRequestCount(List<UUID> studyGroupParticipants) {
         return studyGroupParticipants.stream().distinct().count();
-    }
-
-    private StudyGroup getEntity(Long id) {
-        return studyGroupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }

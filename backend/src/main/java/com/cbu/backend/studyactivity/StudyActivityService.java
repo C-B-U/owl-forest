@@ -5,6 +5,8 @@ import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 
+import com.cbu.backend.studygroup.StudyGroup;
+import com.cbu.backend.studygroup.StudyGroupService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -21,11 +23,12 @@ public class StudyActivityService {
     private final StudyActivityRepository studyActivityRepository;
     private final MemberService memberService;
     private final StudyActivityMapper studyActivityMapper;
+    private final StudyGroupService studyGroupService;
 
     public Long saveStudyActivity(StudyActivityRequest studyActivityRequest) {
         checkValidRequest(studyActivityRequest);
         List<Member> members =
-                studyActivityRequest.getStudyParticipants().stream()
+                studyActivityRequest.getActivityMembers().stream()
                         .map(memberService::getEntity)
                         .toList();
         return studyActivityRepository
@@ -36,28 +39,30 @@ public class StudyActivityService {
     public void updateStudyActivity(Long id, StudyActivityRequest request) {
         checkValidRequest(request);
         List<Member> members =
-                request.getStudyParticipants().stream().map(memberService::getEntity).toList();
+                request.getActivityMembers().stream().map(memberService::getEntity).toList();
+        StudyGroup studyGroup = studyGroupService.getEntity(request.getStudyGroupId());
 
         getEntity(id)
-                .updateStudyActivity(
+                .update(
                         request.getTitle(),
                         request.getDescription(),
                         request.getAssignment(),
                         request.getWeek(),
                         request.getPlace(),
                         members,
+                        studyGroup,
                         request.getStudyTime());
     }
 
     public void deleteStudyActivity(Long id) {
-        getEntity(id).deleteStudyActivity();
+        getEntity(id).delete();
     }
 
-    public StudyActivityResponse getStudyActivity(Long id) {
+    public StudyActivityResponse findStudyActivity(Long id) {
         return studyActivityMapper.toResponse(getEntity(id));
     }
 
-    public List<StudyActivityResponse> getStudyActivityListByStudyGroupId(Long studyGroupId) {
+    public List<StudyActivityResponse> findStudyActivityListByStudyGroupId(Long studyGroupId) {
         return studyActivityRepository.findAllByStudyGroupId(studyGroupId).stream()
                 .map(studyActivityMapper::toResponse)
                 .toList();
@@ -65,15 +70,15 @@ public class StudyActivityService {
 
     private void checkValidRequest(StudyActivityRequest request) {
         checkStudyTime(request);
-        checkParticipantDuplicated(request.getStudyParticipants());
+        checkParticipantDuplicated(request.getActivityMembers());
     }
 
     private void checkStudyTime(StudyActivityRequest studyActivityRequest) {
         studyActivityRequest.getStudyTime().isValidStudyTime();
     }
 
-    private void checkParticipantDuplicated(List<UUID> studyParticipants) {
-        if (studyParticipants.size() != getRequestCount(studyParticipants)) {
+    private void checkParticipantDuplicated(List<UUID> activityMembers) {
+        if (activityMembers.size() != getRequestCount(activityMembers)) {
             throw new ParticipantDuplicatedException();
         }
     }
