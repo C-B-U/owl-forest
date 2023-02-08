@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { palette } from 'styled-tools';
 import profileimg from '../../Image/cbu_circle.png';
 import Btn from '../Btn';
+import MLList from './MLList';
 
 const Pf = styled.div`
   width: 25rem;
