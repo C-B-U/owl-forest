@@ -14,6 +14,5 @@ public class StudyPlanRequest {
     @NotBlank private String title;
     private String studyRule;
     private String weekPlan;
-    @NotNull
-    private Long studyGroupId;
+    @NotNull private Long studyGroupId;
 }
