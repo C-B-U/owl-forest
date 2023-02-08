@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @NoArgsConstructor
@@ -13,4 +14,6 @@ public class StudyPlanRequest {
     @NotBlank private String title;
     private String studyRule;
     private String weekPlan;
+    @NotNull
+    private Long studyGroupId;
 }

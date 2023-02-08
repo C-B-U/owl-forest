@@ -18,12 +18,14 @@ public class StudyPlan {
     @Lob private String studyRule;
     @Lob private String weekPlan;
     @Embedded private BaseTime baseTime;
+    private Long studyGroupId;
 
     @Builder
-    public StudyPlan(String title, String studyRule, String weekPlan) {
+    public StudyPlan(String title, String studyRule, String weekPlan, Long studyGroupId) {
         this.title = title;
         this.studyRule = studyRule;
         this.weekPlan = weekPlan;
+        this.studyGroupId = studyGroupId;
         this.baseTime = new BaseTime();
     }
 
