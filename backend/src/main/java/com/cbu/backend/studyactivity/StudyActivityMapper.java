@@ -3,8 +3,8 @@ package com.cbu.backend.studyactivity;
 import com.cbu.backend.studyactivity.dto.ActivityMemberResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
-
 import com.cbu.backend.studygroup.StudyMember;
+
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -3,6 +3,7 @@ package com.cbu.backend.studyactivity;
 import com.cbu.backend.global.BaseTime;
 
 import com.cbu.backend.studygroup.StudyMember;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

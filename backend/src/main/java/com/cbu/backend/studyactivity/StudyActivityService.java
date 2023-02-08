@@ -3,7 +3,6 @@ package com.cbu.backend.studyactivity;
 import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
-
 import com.cbu.backend.studygroup.StudyGroup;
 import com.cbu.backend.studygroup.StudyGroupService;
 import com.cbu.backend.studygroup.StudyMember;
