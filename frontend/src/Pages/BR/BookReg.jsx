@@ -254,32 +254,37 @@ function BookReg() {
 
   const SearchBook = () => {
     console.log('클릭', bookTitle);
+    const data = {
+      keyword: bookTitle,
+      page: 1,
+      pageSize: 20,
+    };
+    console.log(data);
     if (!bookTitle) {
       alert('키워드를 입력해 주세요.');
     } else {
-      // console.log('data : ', data);
       axios
         .get(`${process.env.REACT_APP_BASE_URL}/externalbooks`, {
-          params: {
-            keyword: bookTitle,
-            page: 1,
-            pageSize: 10,
-          },
+          params: data,
         })
         .then((response) => {
           console.log(response.data);
-          setGetBook(...response.data);
+          setGetBook(response.data);
+          // console.log('getBook : ', getBook);
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    console.log(getBook);
   };
 
   const onChange = (e) => {
     setBookTitle(e.target.value);
   };
+
+  // const onClickList = (e) = {
+
+  // };
 
   return (
     <div>
@@ -313,22 +318,17 @@ function BookReg() {
                 <WrapSearchIcon onClick={SearchBook} />
               </WrapSearchbar>
 
-              <WrapList>
-                <ListPopup>
-                  <TitlePopup>
-                    프로그래밍 대회에서 배우는 알고리즘 문제 해결 전략1
-                  </TitlePopup>
-                  <WriterPopup>천인국, 공용해, 하상호</WriterPopup>
-                  <PublisherPopup>생능출판사</PublisherPopup>
-                  <ReleaseDate>2022.02.22</ReleaseDate>
-                </ListPopup>
-
-                <ListPopup>
-                  <TitlePopup>유닉스 이론과 실습</TitlePopup>
-                  <WriterPopup>윤소정, 이종원</WriterPopup>
-                  <PublisherPopup>한빛아카데미</PublisherPopup>
-                  <ReleaseDate>2022.02.22</ReleaseDate>
-                </ListPopup>
+              <WrapList
+              // onClick={onClickList}
+              >
+                {getBook.map((book) => (
+                  <ListPopup>
+                    <TitlePopup>{book.title}</TitlePopup>
+                    <WriterPopup>{book.author}</WriterPopup>
+                    <PublisherPopup>{book.publisher}</PublisherPopup>
+                    <ReleaseDate>{book.publishAt}</ReleaseDate>
+                  </ListPopup>
+                ))}
               </WrapList>
             </WrapPopup>
           </WrapPopupBackground>
