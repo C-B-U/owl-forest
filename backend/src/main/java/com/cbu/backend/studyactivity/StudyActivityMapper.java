@@ -4,8 +4,8 @@ import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.studyactivity.dto.ActivityMemberResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
-
 import com.cbu.backend.studygroup.StudyMember;
+
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -17,8 +17,7 @@ import java.util.Set;
 public interface StudyActivityMapper {
     @Mapping(target = "activityMembers", source = "activityMembers")
     @Mapping(target = "description", source = "studyActivityRequest.description")
-    StudyActivity toEntity(
-            StudyActivityRequest studyActivityRequest, List<Member> activityMembers);
+    StudyActivity toEntity(StudyActivityRequest studyActivityRequest, List<Member> activityMembers);
 
     @Mapping(target = "activityMembers", source = "studyActivity.activityMembers")
     StudyActivityResponse toResponse(StudyActivity studyActivity);

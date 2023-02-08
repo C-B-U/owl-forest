@@ -2,9 +2,9 @@ package com.cbu.backend.studyactivity;
 
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.domain.Member;
-
 import com.cbu.backend.studygroup.StudyGroup;
 import com.cbu.backend.studygroup.StudyMember;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -80,8 +80,10 @@ public class StudyActivity {
     }
 
     private void organizeParticipants(List<Member> activityMembers, StudyGroup studyGroup) {
-        List<StudyMember> studyMembers = activityMembers.stream()
-                .map(participant -> new StudyMember(studyGroup, participant)).toList();
+        List<StudyMember> studyMembers =
+                activityMembers.stream()
+                        .map(participant -> new StudyMember(studyGroup, participant))
+                        .toList();
         this.activityMembers.addAll(studyMembers);
     }
 

@@ -4,9 +4,9 @@ import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.service.MemberService;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
-
 import com.cbu.backend.studygroup.StudyGroup;
 import com.cbu.backend.studygroup.StudyGroupService;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
