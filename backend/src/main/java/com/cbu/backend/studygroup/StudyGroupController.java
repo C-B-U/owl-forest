@@ -22,7 +22,8 @@ public class StudyGroupController {
     private final StudyGroupService studyGroupService;
 
     @PostMapping
-    public ResponseEntity<StudyGroupIdResponse> saveStudyGroup(@RequestBody StudyGroupRequest studyGroupRequest) {
+    public ResponseEntity<StudyGroupIdResponse> saveStudyGroup(
+            @RequestBody StudyGroupRequest studyGroupRequest) {
         return ResponseEntity.ok(studyGroupService.saveStudyGroup(studyGroupRequest));
     }
 

@@ -35,9 +35,10 @@ public class StudyGroupService {
                         .collect(Collectors.toSet());
         Member leader = memberService.getEntity(studyGroupRequest.getLeader());
 
-        Long id = studyGroupRepository
-                .save(studyGroupMapper.toEntity(studyGroupRequest, leader, studyMembers))
-                .getId();
+        Long id =
+                studyGroupRepository
+                        .save(studyGroupMapper.toEntity(studyGroupRequest, leader, studyMembers))
+                        .getId();
 
         return new StudyGroupIdResponse(id);
     }
