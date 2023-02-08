@@ -17,6 +17,7 @@ import com.cbu.backend.studyplan.dto.StudyPlanResponse;
 import com.cbu.backend.support.docs.RestDocumentTest;
 import com.cbu.backend.support.fixture.studyplan.dto.StudyPlanRequestFixture;
 import com.cbu.backend.support.fixture.studyplan.dto.StudyPlanResponseFixture;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -86,9 +87,7 @@ class StudyPlanControllerTest extends RestDocumentTest {
 
         // when
         ResultActions perform =
-                mockMvc.perform(
-                        delete("/study-plans/1")
-                                .contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(delete("/study-plans/1").contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk());
@@ -107,9 +106,7 @@ class StudyPlanControllerTest extends RestDocumentTest {
 
         // when
         ResultActions perform =
-                mockMvc.perform(
-                        get("/study-plans/1")
-                                .contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(get("/study-plans/1").contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk())
