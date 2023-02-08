@@ -1,6 +1,5 @@
 package com.cbu.backend.support.fixture.studygroup.dto;
 
-
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 
 import java.util.List;
@@ -36,4 +35,3 @@ public enum StudyGroupRequestFixture {
         return new StudyGroupRequest(name, description, leader, participants);
     }
 }
-

@@ -15,9 +15,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.cbu.backend.studygroup.dto.StudyGroupIdResponse;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 import com.cbu.backend.support.docs.RestDocumentTest;
-
 import com.cbu.backend.support.fixture.studygroup.dto.StudyGroupRequestFixture;
 import com.cbu.backend.support.fixture.studygroup.dto.StudyGroupResponseFixture;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -30,8 +30,7 @@ import java.util.List;
 @WebMvcTest(StudyGroupController.class)
 class StudyGroupControllerTest extends RestDocumentTest {
 
-    @MockBean
-    private StudyGroupService studyGroupService;
+    @MockBean private StudyGroupService studyGroupService;
 
     @Test
     @DisplayName("스터디 그룹 생성")
@@ -51,8 +50,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
                                                         .toStudyGroupRequest())));
 
         // then
-        perform.andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(expected.getId()));
+        perform.andExpect(status().isOk()).andExpect(jsonPath("$.id").value(expected.getId()));
 
         // docs
         perform.andDo(print())
@@ -62,7 +60,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     @Test
     @DisplayName("스터디 그룹 수정")
     void putStudyGroup() throws Exception {
-        //given
+        // given
         willDoNothing().given(studyGroupService).updateStudyGroup(any(), any());
 
         // when
@@ -100,7 +98,11 @@ class StudyGroupControllerTest extends RestDocumentTest {
 
         // docs
         perform.andDo(print())
-                .andDo(document("add study group like", getDocumentRequest(), getDocumentResponse()));
+                .andDo(
+                        document(
+                                "add study group like",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
     }
 
     @Test
@@ -120,7 +122,11 @@ class StudyGroupControllerTest extends RestDocumentTest {
 
         // docs
         perform.andDo(print())
-                .andDo(document("cancel study group like", getDocumentRequest(), getDocumentResponse()));
+                .andDo(
+                        document(
+                                "cancel study group like",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
     }
 
     @Test
@@ -132,8 +138,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
         // when
         ResultActions perform =
                 mockMvc.perform(
-                        post("/study-groups/1/finish")
-                                .contentType(MediaType.APPLICATION_JSON));
+                        post("/study-groups/1/finish").contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk());
@@ -151,9 +156,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
 
         // when
         ResultActions perform =
-                mockMvc.perform(
-                        delete("/study-groups/1")
-                                .contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(delete("/study-groups/1").contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk());
@@ -172,17 +175,18 @@ class StudyGroupControllerTest extends RestDocumentTest {
 
         // when
         ResultActions perform =
-                mockMvc.perform(
-                        get("/study-groups/1")
-                                .contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(get("/study-groups/1").contentType(MediaType.APPLICATION_JSON));
 
         // then
-        perform.andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("자바칩 스터디"));
+        perform.andExpect(status().isOk()).andExpect(jsonPath("$.name").value("자바칩 스터디"));
 
         // docs
         perform.andDo(print())
-                .andDo(document("get one study group", getDocumentRequest(), getDocumentResponse()));
+                .andDo(
+                        document(
+                                "get one study group",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
     }
 
     @Test
@@ -193,16 +197,17 @@ class StudyGroupControllerTest extends RestDocumentTest {
 
         // when
         ResultActions perform =
-                mockMvc.perform(
-                        get("/study-groups")
-                                .contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(get("/study-groups").contentType(MediaType.APPLICATION_JSON));
 
         // then
-        perform.andExpect(status().isOk())
-                .andExpect(jsonPath("$").isArray());
+        perform.andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
 
         // docs
         perform.andDo(print())
-                .andDo(document("get all study group", getDocumentRequest(), getDocumentResponse()));
+                .andDo(
+                        document(
+                                "get all study group",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
     }
 }
