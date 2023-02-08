@@ -35,7 +35,10 @@ public class StudyActivityService {
                         .map(memberService::getEntity)
                         .map(member -> new StudyMember(studyGroup, member))
                         .collect(Collectors.toSet());
-        Long id = studyActivityRepository.save(studyActivityMapper.toEntity(request, members)).getId();
+        Long id =
+                studyActivityRepository
+                        .save(studyActivityMapper.toEntity(request, members))
+                        .getId();
 
         return new StudyActivityIdResponse(id);
     }
