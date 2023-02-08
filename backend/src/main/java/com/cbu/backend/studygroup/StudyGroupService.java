@@ -3,6 +3,7 @@ package com.cbu.backend.studygroup;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.service.AuthService;
 import com.cbu.backend.member.service.MemberService;
+import com.cbu.backend.studygroup.dto.StudyGroupIdResponse;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 
@@ -27,16 +28,18 @@ public class StudyGroupService {
     private final MemberService memberService;
     private final AuthService authService;
 
-    public Long saveStudyGroup(StudyGroupRequest studyGroupRequest) {
+    public StudyGroupIdResponse saveStudyGroup(StudyGroupRequest studyGroupRequest) {
         Set<Member> studyMembers =
                 studyGroupRequest.getMembers().stream()
                         .map(memberService::getEntity)
                         .collect(Collectors.toSet());
         Member leader = memberService.getEntity(studyGroupRequest.getLeader());
 
-        return studyGroupRepository
+        Long id = studyGroupRepository
                 .save(studyGroupMapper.toEntity(studyGroupRequest, leader, studyMembers))
                 .getId();
+
+        return new StudyGroupIdResponse(id);
     }
 
     @Transactional
