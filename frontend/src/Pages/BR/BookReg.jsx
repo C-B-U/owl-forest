@@ -321,7 +321,7 @@ function BookReg() {
               <WrapList
               // onClick={onClickList}
               >
-                {getBook.map((book) => (
+                {getBook.map((book, idx) => (
                   <ListPopup>
                     <TitlePopup>{book.title}</TitlePopup>
                     <WriterPopup>{book.author}</WriterPopup>
