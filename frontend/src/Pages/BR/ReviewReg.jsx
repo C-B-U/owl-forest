@@ -20,6 +20,7 @@ const Wrap = styled.div`
   height: fit-content;
   background-color: ${palette('PsCocoa', 1)};
   padding: 3rem;
+  text-align: left;
   box-sizing: content-box;
 `;
 
