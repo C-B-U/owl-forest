@@ -23,6 +23,7 @@ export default function Input({
   placeholder,
   fontSize,
   onChange,
+  maxLength,
 }) {
   return (
     <div>
@@ -33,6 +34,7 @@ export default function Input({
         placeholder={placeholder}
         fontSize={fontSize}
         onChange={onChange}
+        maxLength={maxLength}
       />
     </div>
   );
