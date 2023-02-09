@@ -197,7 +197,9 @@ class StudyGroupControllerTest extends RestDocumentTest {
 
         // when
         ResultActions perform =
-                mockMvc.perform(get("/study-groups?page=0&size=20&sort=createdAt,DESC").contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(
+                        get("/study-groups?page=0&size=20&sort=createdAt,DESC")
+                                .contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
@@ -219,7 +221,9 @@ class StudyGroupControllerTest extends RestDocumentTest {
 
         // when
         ResultActions perform =
-                mockMvc.perform(get("/study-groups?page=0&size=20&sort=numOfLike,DESC").contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(
+                        get("/study-groups?page=0&size=20&sort=numOfLike,DESC")
+                                .contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
@@ -241,7 +245,9 @@ class StudyGroupControllerTest extends RestDocumentTest {
 
         // when
         ResultActions perform =
-                mockMvc.perform(get("/study-groups?page=0&size=20&sort=numOfStudyActivity,DESC").contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(
+                        get("/study-groups?page=0&size=20&sort=numOfStudyActivity,DESC")
+                                .contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
