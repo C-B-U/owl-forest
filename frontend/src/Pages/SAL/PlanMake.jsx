@@ -102,7 +102,7 @@ const Scroll = styled.div`
 
 const PlanBox = styled.div`
   width: 71rem;
-  height: 60rem;
+  height: 40rem;
   border-radius: 1rem;
   margin-top: 0.8rem;
   padding: 1.5rem;
@@ -182,10 +182,6 @@ function PlanMake() {
             <PlanBox>
               <PlanTitle>제목</PlanTitle>
               <PlanInput>ex - c언어 스터디</PlanInput>
-              <PlanTitle>기수(숫자만)</PlanTitle>
-              <PlanInput>ex - 14</PlanInput>
-              <PlanTitle>부원명</PlanTitle>
-              <PlanInput>ex - 홍길동, 전우치</PlanInput>
               <PlanTitle>규칙</PlanTitle>
               <PlanInput>ex - ~</PlanInput>
               <PlanTitle>주차별 계획</PlanTitle>
