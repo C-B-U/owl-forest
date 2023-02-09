@@ -190,14 +190,16 @@ class StudyGroupControllerTest extends RestDocumentTest {
     }
 
     @Test
-    @DisplayName("스터디 그룹 전체 조회")
-    void getAll() throws Exception {
+    @DisplayName("스터디 그룹 최신순 조회")
+    void getAllByCreatedAt() throws Exception {
         // given
         given(studyGroupService.findAllStudyGroup(any())).willReturn(List.of());
 
         // when
         ResultActions perform =
-                mockMvc.perform(get("/study-groups").contentType(MediaType.APPLICATION_JSON));
+                mockMvc.perform(
+                        get("/study-groups?page=0&size=20&sort=createdAt,DESC")
+                                .contentType(MediaType.APPLICATION_JSON));
 
         // then
         perform.andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
@@ -206,7 +208,55 @@ class StudyGroupControllerTest extends RestDocumentTest {
         perform.andDo(print())
                 .andDo(
                         document(
-                                "get all study group",
+                                "get all study group by createdAt",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
+    }
+
+    @Test
+    @DisplayName("스터디 그룹 좋아요순 조회")
+    void getAllByLike() throws Exception {
+        // given
+        given(studyGroupService.findAllStudyGroup(any())).willReturn(List.of());
+
+        // when
+        ResultActions perform =
+                mockMvc.perform(
+                        get("/study-groups?page=0&size=20&sort=numOfLike,DESC")
+                                .contentType(MediaType.APPLICATION_JSON));
+
+        // then
+        perform.andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
+
+        // docs
+        perform.andDo(print())
+                .andDo(
+                        document(
+                                "get all study group by like",
+                                getDocumentRequest(),
+                                getDocumentResponse()));
+    }
+
+    @Test
+    @DisplayName("스터디 그룹 일지 개수순 조회")
+    void getAllByStudyActivity() throws Exception {
+        // given
+        given(studyGroupService.findAllStudyGroup(any())).willReturn(List.of());
+
+        // when
+        ResultActions perform =
+                mockMvc.perform(
+                        get("/study-groups?page=0&size=20&sort=numOfStudyActivity,DESC")
+                                .contentType(MediaType.APPLICATION_JSON));
+
+        // then
+        perform.andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
+
+        // docs
+        perform.andDo(print())
+                .andDo(
+                        document(
+                                "get all study group by activity",
                                 getDocumentRequest(),
                                 getDocumentResponse()));
     }
