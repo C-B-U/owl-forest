@@ -331,23 +331,17 @@ function BookReg() {
                 <WrapSearchIcon onClick={SearchBook} />
               </WrapSearchbar>
 
-              <WrapList>
-                <ListPopup>
-                  <TitlePopup>
-                    프로그래밍 대회에서 배우는 알고리즘 문제 해결 전략1 일까요
-                    2일까요 알아맞춰보세요오오오오오오오
-                  </TitlePopup>
-                  <WriterPopup>천인국, 공용해, 하상호</WriterPopup>
-                  <PublisherPopup>생능출판사</PublisherPopup>
-                  <ReleaseDate>2022.02.22</ReleaseDate>
-                </ListPopup>
-
-                <ListPopup>
-                  <TitlePopup>유닉스 이론과 실습</TitlePopup>
-                  <WriterPopup>윤소정, 이종원</WriterPopup>
-                  <PublisherPopup>한빛아카데미</PublisherPopup>
-                  <ReleaseDate>2022.02.22</ReleaseDate>
-                </ListPopup>
+              <WrapList
+              // onClick={onClickList}
+              >
+                {getBook.map((book, idx) => (
+                  <ListPopup>
+                    <TitlePopup>{book.title}</TitlePopup>
+                    <WriterPopup>{book.author}</WriterPopup>
+                    <PublisherPopup>{book.publisher}</PublisherPopup>
+                    <ReleaseDate>{book.publishAt}</ReleaseDate>
+                  </ListPopup>
+                ))}
               </WrapList>
             </WrapPopup>
           </WrapPopupBackground>
