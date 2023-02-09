@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,6 +38,12 @@ public class StudyGroup {
 
     @OneToMany(mappedBy = "studyGroup")
     private Set<StudyMember> studyMembers = new HashSet<>();
+
+    @Formula("(SELECT count(*) FROM study_activity sa WHERE sa.study_group_id = id)")
+    private Integer numOfStudyActivity;
+
+    @Formula("(SELECT count(*) FROM like_member lm WHERE lm.study_group_id = id)")
+    private Integer numOfLike;
 
     @Embedded private BaseTime baseTime;
 
