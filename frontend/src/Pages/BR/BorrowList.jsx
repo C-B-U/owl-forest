@@ -8,7 +8,7 @@ import Search from '../../Components/Search';
 import BorrowButton from '../../Components/Btn.jsx';
 
 const MainWrap = styled.div`
-  display: inline-block;
+  /* display: inline-block; */
   width: 100%;
   height: 100%;
   background-color: ${palette('PsCocoa', 0)};
@@ -22,6 +22,8 @@ const ListWrap = styled.div`
 `;
 const WrapButton = styled.div`
   float: right;
+  /* border: 1px solid black; */
+  /* margin-bottom: 1rem; */
 `;
 const WrapSearchbar = styled.div`
   margin-left: 300px;
@@ -29,12 +31,18 @@ const WrapSearchbar = styled.div`
 `;
 
 const Wrap = styled.div`
-  margin-top: 60px;
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
   display: grid;
+  width: 100%;
+  /* margin-top: 100px; */
+  padding: 1rem;
+  /* border: 1px solid black; */
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  width: 100%;
-  max-height: 91.9vh;
+  max-height: 75vh;
+  /* min-height: 60vh; */
   overflow: auto;
   &::-webkit-scrollbar {
     width: 8px;
@@ -58,42 +66,54 @@ const BorrowButtons = styled.div`
   margin-right: 2rem;
 `;
 const WrapContent = styled.div`
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  /* padding: 1rem; */
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0.9rem;
 `;
 const WrapInfo = styled.div`
-  float: center;
+  /* float: left; */
+  text-align: left;
   margin-left: 1rem;
-  width: 7rem;
+  width: 9rem;
 `;
 const BookImage = styled.div`
-  width: 13rem;
-  height: 18rem;
+  width: 11rem;
+  height: 15rem;
   background-color: white;
 `; // 책 이미지
-const BookName = styled.div``; // 책 이름
+
+const BookName = styled.div`
+  width: 100%;
+  font-size: 1rem;
+`; // 책 이름
 
 const BookInfos = styled.div`
-  margin-bottom: 2rem;
+  margin-top: 0.5rem;
 `; // 책정보 저자 | 출판사
 
-const Deadline = styled.div`
-  margin-bottom: 1rem;
-`; // 마감일
-const BorrowDate = styled.div`
-  margin-bottom: 1rem;
-`; // 대여일
-
 const WrapStarScore = styled.div`
+  width: 100%;
+  padding: 0.5rem 0rem;
   display: flex;
   flex-direction: column;
 `;
 
 const StarScore = styled.div`
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  width: 3rem;
+  margin-top: 0.5rem;
 `;
+
+const Deadline = styled.div`
+  margin: 0.5rem 0rem;
+`; // 마감일
+
+const BorrowDate = styled.div`
+  margin-bottom: 1rem;
+`; // 대여일
 
 function BorrowList() {
   return (
@@ -113,6 +133,7 @@ function BorrowList() {
                   width='6.5rem'
                   height='2.5rem'
                   name='채팅 이동'
+                  borderRadius='0.5rem'
                 />
                 <BorrowButton
                   color={palette('PsYellow')}
@@ -120,6 +141,7 @@ function BorrowList() {
                   width='6.5rem'
                   height='2.5rem'
                   name='전체 북리뷰'
+                  borderRadius='0.5rem'
                 />
                 <BorrowButton
                   color={palette('PsYellow')}
@@ -127,6 +149,7 @@ function BorrowList() {
                   width='6.5rem'
                   height='2.5rem'
                   name='내 북리스트'
+                  borderRadius='0.5rem'
                 />
                 <BorrowButton
                   color={palette('PsYellow')}
@@ -134,6 +157,7 @@ function BorrowList() {
                   width='6.5rem'
                   height='2.5rem'
                   name='도서 등록'
+                  borderRadius='0.5rem'
                 />
               </BorrowButtons>
             </WrapButton>
@@ -141,8 +165,10 @@ function BorrowList() {
               <WrapContent>
                 <BookImage />
                 <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
+                  <BookName>도서 제목</BookName>
+                  <BookInfos>
+                    저자 <br /> 출판사
+                  </BookInfos>
                   <WrapStarScore>
                     <StarScore>난이도</StarScore>
                     <StarScore>평점</StarScore>
@@ -154,8 +180,10 @@ function BorrowList() {
                     color={palette('PsYellow')}
                     background={palette('PsBtn')}
                     width='5.5rem'
-                    height='2.5rem'
+                    height='2.2rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
+                    fontSize='0.9rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -177,6 +205,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -198,6 +227,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -219,6 +249,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -240,6 +271,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -261,6 +293,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -282,6 +315,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -303,6 +337,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -324,6 +359,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -345,6 +381,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>
@@ -366,6 +403,7 @@ function BorrowList() {
                     width='5.5rem'
                     height='2.5rem'
                     name='대여하기'
+                    borderRadius='0.5rem'
                   />
                 </WrapInfo>
               </WrapContent>

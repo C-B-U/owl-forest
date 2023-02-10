@@ -5,9 +5,9 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-import com.cbu.backend.authaccount.command.domain.AccountNo;
 import com.cbu.backend.config.security.jwt.JwtAuthenticationFilter;
 import com.cbu.backend.config.security.oauth2.LoginUser;
+import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.support.filter.MockSecurityFilter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,7 +42,7 @@ public abstract class RestDocumentTest {
 
     protected Principal loginUser =
             new UsernamePasswordAuthenticationToken(
-                    new LoginUser(new AccountNo(), null, null), null);
+                    new LoginUser(Member.builder().build(), null, null), null);
     @MockBean private JwtAuthenticationFilter jwtAuthenticationFilter;
     @MockBean private JpaMetamodelMappingContext jpaMetamodelMappingContext;
 

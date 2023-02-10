@@ -1,6 +1,6 @@
 package com.cbu.backend.config.security.oauth2;
 
-import com.cbu.backend.authaccount.command.domain.AccountNo;
+import com.cbu.backend.member.domain.Member;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,13 +20,13 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public class LoginUser implements UserDetails, OAuth2User {
-    private AccountNo accountId;
+    private Member member;
     private Map<String, Object> attribute;
     private Collection<? extends GrantedAuthority> authorities;
 
     @Override
     public String getName() {
-        return accountId.getId().toString();
+        return member.getId().toString();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class LoginUser implements UserDetails, OAuth2User {
 
     @Override
     public String getUsername() {
-        return accountId.getId().toString();
+        return member.getName();
     }
 
     @Override

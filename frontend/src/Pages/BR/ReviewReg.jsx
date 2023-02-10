@@ -10,6 +10,7 @@ const MainWrap = styled.div`
   position: absolute;
   background-color: ${palette('PsCocoa', 0)};
   width: 100%;
+  padding: auto;
   height: calc(100% - 4rem);
 `;
 
@@ -19,6 +20,7 @@ const Wrap = styled.div`
   height: fit-content;
   background-color: ${palette('PsCocoa', 1)};
   padding: 3rem;
+  text-align: left;
   box-sizing: content-box;
 `;
 
@@ -89,7 +91,6 @@ const DetailReview = styled.textarea`
   padding: 1rem;
   border: 0.15rem solid rgba(128, 109, 70);
   border-radius: 0.3rem;
-  font-size: 1.1rem;
   font-family: 'Noto Sans KR', sans-serif;
   resize: none;
   &:focus {
@@ -99,7 +100,6 @@ const DetailReview = styled.textarea`
 
 const WrapRegButton = styled.div`
   float: right;
-  /* margin-right: auto; */
 `;
 
 function ReviewReg() {
@@ -116,14 +116,19 @@ function ReviewReg() {
                 <BookTitle>도서 제목</BookTitle>
                 <BookDetail>작가 | 출판사 | 출판일</BookDetail>
                 <OneLineReview>
-                  <Input width='39.7rem' height='2.3rem' placeholder='한줄평' />
+                  <Input
+                    width='39.7rem'
+                    height='2.3rem'
+                    placeholder='50자 내의 한줄평을 작성해 주세요'
+                    maxLength='65'
+                  />
                 </OneLineReview>
                 <WrapDetailReview>
                   <WrapStarScore>
                     <StarScore>난이도</StarScore>
                     <StarScore>평점</StarScore>
                   </WrapStarScore>
-                  <DetailReview />
+                  <DetailReview placeholder='250자 내의 상세평을 작성해 주세요' />
                   <WrapRegButton>
                     <RegButton
                       color={palette('PsYellow')}

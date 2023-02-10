@@ -15,11 +15,8 @@ import javax.persistence.EntityListeners;
 @Embeddable
 @EntityListeners(AuditingEntityListener.class)
 public class BaseTime {
-
     @CreatedDate private LocalDateTime createdAt;
-
     @LastModifiedDate private LocalDateTime updatedAt;
-
     private LocalDateTime deleteAt;
 
     public void delete() {
