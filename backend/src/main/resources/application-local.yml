@@ -35,7 +35,7 @@ spring:
         registration:
           google:
             client-id: 403267681219-ukl42klhu84djqkjbummr7hg5blrkitk.apps.googleusercontent.com
-            client-secret: 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
+            client-secret: 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
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             scope: email, profile
           kakao:
@@ -47,7 +47,7 @@ spring:
             scope: profile_nickname, profile_image, account_email
           naver:
             client-id: 1tGmODjwSOYWsbXRXP4a
-            client-secret: P7JVX9cRkI
+            client-secret: Dh0j20Ls5S
             client-name: Naver
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             authorization-grant-type: authorization_code

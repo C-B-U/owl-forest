@@ -57,4 +57,12 @@ public class BookReview {
         this.score = score;
         this.difficulty = difficulty;
     }
+
+    public void update(String title, String content, Book book, Integer score, Integer difficulty) {
+        this.title = title;
+        this.content = content;
+        this.book = book;
+        this.score = score;
+        this.difficulty = difficulty;
+    }
 }

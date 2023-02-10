@@ -10,6 +10,7 @@ const MainWrap = styled.div`
   position: absolute;
   background-color: ${palette('PsCocoa', 0)};
   width: 100%;
+  text-align: left;
 `;
 const Wrap = styled.div`
   margin: 8rem auto 0rem auto;
@@ -29,32 +30,55 @@ const Title = styled.h1`
 
 const BookInfos = styled.div`
   height: fit-content;
-  font-size: 13pt;
+  font-size: 1.5rem;
   position: absolute;
   top: -1rem;
-`; // 책정보 책이름|저자
+`; // 책정보 책이름
 
 const BookPublisher = styled.div`
   height: fit-content;
-  font-size: 10pt;
+  font-size: 1rem;
   top: 0.5rem;
-  position: absolute;
-`; // 책 출판사
+  /* position: absolute; */
+`; // 저자 | 출판사
 
 const BookImage = styled.div`
-  width: 23rem;
+  width: 20rem;
   height: 26rem;
   background-color: #ffffff;
 `; // 책이미지
 
-const OneLineReview = styled.div`
+const WrapOneLineReview = styled.div`
   margin-top: 2rem;
 `; // 책한줄평
+
+const OneLineReview = styled.div`
+  box-sizing: border-box;
+  width: 40rem;
+  height: 3rem;
+  padding: 1rem 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+`;
+
+const WrapDetailReview = styled.div`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
+
+const DetailReview = styled.div`
+  box-sizing: border-box;
+  width: 40rem;
+  height: fit-content;
+  padding: 1rem 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+`;
 
 const WrapReview = styled.div`
   margin-left: 3rem;
   width: fit-content;
-  height: fit-cotent;
+  height: fit-content;
   padding: 1rem;
   background-color: ${palette('PsCocoa', 1)};
   border-radius: 0.2rem;
@@ -78,11 +102,6 @@ const StarScore = styled.div`
   margin-right: 1rem;
   margin-bottom: 1rem;
 `; // 별 평점 난이도
-
-const DetailReview = styled.div`
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-`;
 
 const ReviewName = styled.div`
   margin-bottom: 0.5rem;
@@ -132,6 +151,8 @@ const CommentContent = styled.div`
 
 const CommentName = styled.div`
   margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
 `; // 댓글, 이책의 다른리뷰 글자 마진주기위해서 commentname 컴포넌트추가
 
 const CommentInput = styled.div`
@@ -156,25 +177,22 @@ function ReviewDetail() {
             <WrapContent>
               <BookImage />
               <WrapReview>
-                <BookInfos>책이름 | 저자</BookInfos>
-                <BookPublisher>출판사</BookPublisher>
-                <OneLineReview>
+                <BookInfos>책이름</BookInfos>
+                <BookPublisher>저자 | 출판사</BookPublisher>
+                <WrapOneLineReview>
                   <ReviewName>한줄평</ReviewName>
-                  <Input
-                    width='40rem'
-                    height='2.3rem'
-                    placeholder='한줄평을 작성해 주세요'
-                  />
-                </OneLineReview>
+                  <OneLineReview>여긴 한줄평을 적는 곳입니다.</OneLineReview>
+                </WrapOneLineReview>
 
-                <DetailReview>
+                <WrapDetailReview>
                   <ReviewName>상세평</ReviewName>
-                  <Input
+                  <DetailReview>여긴 상세평을 적는 곳입니다.</DetailReview>
+                  {/* <Input
                     width='40rem'
                     height='7rem'
                     placeholder='상세평을 작성해 주세요'
-                  />
-                </DetailReview>
+                  /> */}
+                </WrapDetailReview>
                 <WrapStarScore>
                   <StarScore>평점</StarScore>
                   <StarScore>난이도</StarScore>
@@ -189,24 +207,6 @@ function ReviewDetail() {
                   <Commenter>작성자</Commenter>
                   <CommentContent>dsadadasdhakdsadjkh</CommentContent>
                 </CommentView>
-                <CommentView>
-                  <Commenter>작성자</Commenter>
-                  <CommentContent>dsadadasdhakdsadjkh</CommentContent>
-                </CommentView>
-                <CommentView>
-                  <Commenter>작성자</Commenter>
-                  <CommentContent>dsadadasdhakdsadjkhsddadadad</CommentContent>
-                </CommentView>
-                <CommentView>
-                  <Commenter>작성자</Commenter>
-                  <CommentContent>dsadadasdhakdsadjksdadh</CommentContent>
-                </CommentView>
-                <CommentView>
-                  <Commenter>작성자</Commenter>
-                  <CommentContent>
-                    dsadadasdhakdsadjkhwqejqwjkqwekwqjehqkwehqwkeqweqweydggsdgsadsuydgyugwqeyugwqeyugwygqeyuwqegquegwqeuywqeuygqewqgye
-                  </CommentContent>
-                </CommentView>
               </Scrollbar>
             </Comment>
             <CommentWrite>
@@ -218,6 +218,7 @@ function ReviewDetail() {
                 background={palette('PsBtn')}
                 width='5.5rem'
                 height='2.5rem'
+                borderRadius='1rem'
                 name='등 록'
               />
             </CommentWrite>
@@ -235,46 +236,6 @@ function ReviewDetail() {
                   <CommentContent>
                     {/* 코멘트 내용 */}
                     dsadadasddasdasddadasdasdadasdadadasdasdadasdasdadasdsadasdasddasdasdadasdadadsa
-                  </CommentContent>
-                </CommentView>
-                <CommentView>
-                  <Commenter>작성자</Commenter>
-                  <WrapotherStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapotherStarScore>
-                  <CommentContent>
-                    dsadadasddasdasddadasdasdadasdadadasdasdadasdasdadasdsadasdasddasdasdadasdadadsa
-                  </CommentContent>
-                </CommentView>
-                <CommentView>
-                  <Commenter>작성자</Commenter>
-                  <WrapotherStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapotherStarScore>
-                  <CommentContent>
-                    dsadadasddasdasddadasdasdadasdadadasdasdadasdasdadasdsadasdasddasdasdadasdadadsa
-                  </CommentContent>
-                </CommentView>
-                <CommentView>
-                  <Commenter>작성자</Commenter>
-                  <WrapotherStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapotherStarScore>
-                  <CommentContent>
-                    dsadadasddasdasddadasdasdadasdadadasdasdadasdasdadasdsadasdasddasdasdadasdadadsa
-                  </CommentContent>
-                </CommentView>
-                <CommentView>
-                  <Commenter>작성자</Commenter>
-                  <WrapotherStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapotherStarScore>
-                  <CommentContent>
-                    dsadadasddasdasddadadsdadadasdadadadasdasdadasdadadasdasdadasdasdadasdsadasdasddasdasdadasdadadsa
                   </CommentContent>
                 </CommentView>
               </Scrollbar>

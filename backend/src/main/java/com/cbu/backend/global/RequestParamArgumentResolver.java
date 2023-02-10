@@ -41,6 +41,9 @@ public class RequestParamArgumentResolver implements HandlerMethodArgumentResolv
     }
 
     private String qs2json(String a) throws UnsupportedEncodingException {
+        if (a == null) {
+            return "{}";
+        }
         String decodeStr = URLDecoder.decode(a, StandardCharsets.UTF_8);
         decodeStr = decodeStr.replace("=", "\":\"");
         decodeStr = decodeStr.replace("&", "\",\"");

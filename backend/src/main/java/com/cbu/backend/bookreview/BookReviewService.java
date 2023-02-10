@@ -31,12 +31,13 @@ public class BookReviewService {
     private final BookReviewMapper bookReviewMapper;
 
     @Transactional
-    public Long saveBookReview(BookReviewRequest req) {
+    public BookReviewResponse saveBookReview(BookReviewRequest req) {
         Member loginUser = authService.getLoginUser();
         Book book = bookService.saveIfNotExists(req.getBook());
         log.info("{} ", req.getBook().getIsbn());
         log.info("{}", book.getId());
-        return bookReviewRepository.save(bookReviewMapper.toEntity(req, book, loginUser)).getId();
+        return bookReviewMapper.toDto(
+                bookReviewRepository.save(bookReviewMapper.toEntity(req, book, loginUser)));
     }
 
     public List<BookReviewSummaryResponse> findAll(Pageable pageable, BookReviewQueryOption param) {
@@ -51,5 +52,17 @@ public class BookReviewService {
     public BookReviewResponse findById(Long id) {
         BookReview bookReview = getEntity(id);
         return bookReviewMapper.toDto(bookReview);
+    }
+
+    @Transactional
+    public void update(Long id, BookReviewRequest dto) {
+        Book book = bookService.saveIfNotExists(dto.getBook());
+        getEntity(id)
+                .update(
+                        dto.getTitle(),
+                        dto.getContent(),
+                        book,
+                        dto.getScore(),
+                        dto.getDifficulty());
     }
 }

@@ -1,0 +1,13 @@
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+
+
+== Book Review Comment
+=== 댓굴 생성
+operation::save book review comment[snippets='http-request,http-response']
+
+=== 북리뷰ID에 해당하는 댓글 조회
+operation::find all book review comment[snippets='http-request,http-response']

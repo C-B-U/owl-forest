@@ -3,6 +3,7 @@ package com.cbu.backend.studygroup;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.service.AuthService;
 import com.cbu.backend.member.service.MemberService;
+import com.cbu.backend.studygroup.dto.StudyGroupIdResponse;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 
@@ -13,7 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -26,23 +28,28 @@ public class StudyGroupService {
     private final MemberService memberService;
     private final AuthService authService;
 
-    public Long saveStudyGroup(StudyGroupRequest studyGroupRequest) {
-        checkParticipantDuplicated(studyGroupRequest.getMembers());
-        List<Member> studyMembers =
-                studyGroupRequest.getMembers().stream().map(memberService::getEntity).toList();
+    public StudyGroupIdResponse saveStudyGroup(StudyGroupRequest studyGroupRequest) {
+        Set<Member> studyMembers =
+                studyGroupRequest.getMembers().stream()
+                        .map(memberService::getEntity)
+                        .collect(Collectors.toSet());
         Member leader = memberService.getEntity(studyGroupRequest.getLeader());
 
-        return studyGroupRepository
-                .save(studyGroupMapper.toEntity(studyGroupRequest, leader, studyMembers))
-                .getId();
+        Long id =
+                studyGroupRepository
+                        .save(studyGroupMapper.toEntity(studyGroupRequest, leader, studyMembers))
+                        .getId();
+
+        return new StudyGroupIdResponse(id);
     }
 
     @Transactional
     public void updateStudyGroup(Long id, StudyGroupRequest studyGroupRequest) {
-        checkParticipantDuplicated(studyGroupRequest.getMembers());
         StudyGroup studyGroup = getEntity(id);
-        List<Member> studyMembers =
-                studyGroupRequest.getMembers().stream().map(memberService::getEntity).toList();
+        Set<Member> studyMembers =
+                studyGroupRequest.getMembers().stream()
+                        .map(memberService::getEntity)
+                        .collect(Collectors.toSet());
         Member leader = memberService.getEntity(studyGroupRequest.getLeader());
 
         studyGroup.updateStudyGroup(
@@ -88,17 +95,7 @@ public class StudyGroupService {
                 .toList();
     }
 
-    private void checkParticipantDuplicated(List<UUID> studyGroupParticipants) {
-        if (studyGroupParticipants.size() != getRequestCount(studyGroupParticipants)) {
-            throw new ParticipantDuplicatedException();
-        }
-    }
-
-    private long getRequestCount(List<UUID> studyGroupParticipants) {
-        return studyGroupParticipants.stream().distinct().count();
-    }
-
-    private StudyGroup getEntity(Long id) {
+    public StudyGroup getEntity(Long id) {
         return studyGroupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }

@@ -33,5 +33,7 @@ public class UpdateMemberRequest {
     // format 설정 TODO
     private String phoneNumber;
 
+    private String profileUrl;
+
     private String introduction;
 }

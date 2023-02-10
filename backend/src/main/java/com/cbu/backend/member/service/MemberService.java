@@ -60,6 +60,7 @@ public class MemberService {
                 req.getEmail(),
                 req.getGrade(),
                 req.getStudentId(),
+                req.getProfileUrl(),
                 req.getPhoneNumber(),
                 req.getIntroduction());
     }

@@ -19,7 +19,6 @@ public class MemberResponse {
     private String email;
     private String blogUrl;
     private String githubId;
+    private String profileUrl;
     private String introduction;
-    private String studentId;
-    private String phoneNumber;
 }

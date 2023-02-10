@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("book-reviews")
 @RequiredArgsConstructor
@@ -24,10 +26,10 @@ public class BookReviewController {
     private final BookReviewService bookReviewService;
 
     @PostMapping
-    public ResponseEntity<Void> saveBookReview(@RequestBody BookReviewRequest dto) {
-        Long bookReviewId = bookReviewService.saveBookReview(dto);
-
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<BookReviewResponse> saveBookReview(
+            @RequestBody @Valid BookReviewRequest dto) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(bookReviewService.saveBookReview(dto));
     }
 
     @GetMapping
@@ -41,5 +43,12 @@ public class BookReviewController {
     public ResponseEntity<BookReviewResponse> getById(@PathVariable Long id) {
         BookReviewResponse result = bookReviewService.findById(id);
         return ResponseEntity.ok(result);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> putById(
+            @PathVariable Long id, @RequestBody @Valid BookReviewRequest dto) {
+        bookReviewService.update(id, dto);
+        return ResponseEntity.noContent().build();
     }
 }
