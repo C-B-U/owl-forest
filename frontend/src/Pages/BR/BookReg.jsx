@@ -340,7 +340,8 @@ function BookReg() {
               // onClick={onClickList}
               >
                 {getBook.map((book, idx) => (
-                  <ListPopup>
+                  // eslint-disable-next-line react/no-array-index-key
+                  <ListPopup key={idx}>
                     <TitlePopup>{book.title}</TitlePopup>
                     <WriterPopup>{book.author}</WriterPopup>
                     <PublisherPopup>{book.publisher}</PublisherPopup>
