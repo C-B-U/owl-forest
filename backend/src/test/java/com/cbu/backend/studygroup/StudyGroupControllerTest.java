@@ -193,7 +193,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     @DisplayName("스터디 그룹 최신순 조회")
     void getAllByCreatedAt() throws Exception {
         // given
-        given(studyGroupService.findAllStudyGroup(any())).willReturn(List.of());
+        given(studyGroupService.findAllStudyGroup(any())).willReturn(List.of(StudyGroupResponseFixture.SAMPLE1.toStudyGroupResponse(), StudyGroupResponseFixture.SAMPLE2.toStudyGroupResponse()));
 
         // when
         ResultActions perform =
@@ -217,7 +217,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     @DisplayName("스터디 그룹 좋아요순 조회")
     void getAllByLike() throws Exception {
         // given
-        given(studyGroupService.findAllStudyGroup(any())).willReturn(List.of());
+        given(studyGroupService.findAllStudyGroup(any())).willReturn(List.of(StudyGroupResponseFixture.SAMPLE1.toStudyGroupResponse(), StudyGroupResponseFixture.SAMPLE2.toStudyGroupResponse()));
 
         // when
         ResultActions perform =
@@ -241,7 +241,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     @DisplayName("스터디 그룹 일지 개수순 조회")
     void getAllByStudyActivity() throws Exception {
         // given
-        given(studyGroupService.findAllStudyGroup(any())).willReturn(List.of());
+        given(studyGroupService.findAllStudyGroup(any())).willReturn(List.of(StudyGroupResponseFixture.SAMPLE1.toStudyGroupResponse(), StudyGroupResponseFixture.SAMPLE2.toStudyGroupResponse()));
 
         // when
         ResultActions perform =

@@ -1,0 +1,36 @@
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+
+== Study Group
+=== 스터디 그룹 생성
+operation::create study group[snippets='http-request,http-response']
+
+=== 스터디 그룹 수정
+operation::update study group[snippets='http-request,http-response']
+
+=== 스터디 그룹 좋아요 추가
+operation::add study group like[snippets='http-request,http-response']
+
+=== 스터디 그룹 좋아요 취소
+operation::cancel study group like[snippets='http-request,http-response']
+
+=== 스터디 종료
+operation::finish study group[snippets='http-request,http-response']
+
+=== 스터디 삭제
+operation::delete study group[snippets='http-request,http-response']
+
+=== 스터디 그룹 상세 조회
+operation::get one study group[snippets='http-request,http-response']
+
+=== 스터디 그룹 최신순 조회
+operation::get all study group by createdAt[snippets='http-request,http-response']
+
+=== 스터디 그룹 좋아요순 조회
+operation::get all study group by like[snippets='http-request,http-response']
+
+=== 스터디 그룹 일지개수순 조회
+operation::get all study group by activity[snippets='http-request,http-response']

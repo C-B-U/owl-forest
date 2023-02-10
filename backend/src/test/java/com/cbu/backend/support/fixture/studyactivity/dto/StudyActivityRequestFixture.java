@@ -16,7 +16,7 @@ public enum StudyActivityRequestFixture {
             "보보스 1호점",
             List.of(UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID()),
             1L,
-            new StudyTime(LocalDateTime.now().minusHours(2), LocalDateTime.now()));
+            new StudyTime(LocalDateTime.now().minusHours(2).withNano(0), LocalDateTime.now().withNano(0)));
     private String title;
     private String description;
     private String assignment;

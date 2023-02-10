@@ -1,8 +1,10 @@
 package com.cbu.backend.support.fixture.studyactivity.dto;
 
+import com.cbu.backend.studyactivity.StudyTime;
 import com.cbu.backend.studyactivity.dto.ActivityMemberResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
@@ -13,6 +15,7 @@ public enum StudyActivityResponseFixture {
             "과제1",
             4,
             "종합관 2층 스터디룸",
+            new StudyTime(LocalDateTime.now().withNano(0).minusHours(2), LocalDateTime.now().withNano(0)),
             Set.of(
                     new ActivityMemberResponse(UUID.randomUUID(), "Kim"),
                     new ActivityMemberResponse(UUID.randomUUID(), "Lee"))),
@@ -22,6 +25,7 @@ public enum StudyActivityResponseFixture {
             "타입스크립트 조사해오기",
             1,
             "E동2층",
+            new StudyTime(LocalDateTime.now().withNano(0).minusHours(2), LocalDateTime.now().withNano(0)),
             Set.of(
                     new ActivityMemberResponse(UUID.randomUUID(), "Park"),
                     new ActivityMemberResponse(UUID.randomUUID(), "Hong")));
@@ -31,6 +35,7 @@ public enum StudyActivityResponseFixture {
     private String assignment;
     private Integer week;
     private String place;
+    private StudyTime studyTime;
     private Set<ActivityMemberResponse> activityMembers;
 
     StudyActivityResponseFixture(
@@ -39,6 +44,7 @@ public enum StudyActivityResponseFixture {
             String assignment,
             Integer week,
             String place,
+            StudyTime studyTime,
             Set<ActivityMemberResponse> activityMembers) {
         this.title = title;
         this.description = description;
@@ -46,10 +52,11 @@ public enum StudyActivityResponseFixture {
         this.week = week;
         this.place = place;
         this.activityMembers = activityMembers;
+        this.studyTime = studyTime;
     }
 
     public StudyActivityResponse toStudyActivityResponse() {
         return new StudyActivityResponse(
-                title, description, assignment, week, place, activityMembers);
+                title, description, assignment, week, place, studyTime, activityMembers);
     }
 }

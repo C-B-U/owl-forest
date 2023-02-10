@@ -114,6 +114,6 @@ class StudyPlanControllerTest extends RestDocumentTest {
 
         // docs
         perform.andDo(print())
-                .andDo(document("delete study plan", getDocumentRequest(), getDocumentResponse()));
+                .andDo(document("get study plan", getDocumentRequest(), getDocumentResponse()));
     }
 }

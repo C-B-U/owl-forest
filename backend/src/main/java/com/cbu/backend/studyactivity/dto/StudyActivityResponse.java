@@ -1,5 +1,6 @@
 package com.cbu.backend.studyactivity.dto;
 
+import com.cbu.backend.studyactivity.StudyTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,5 +18,6 @@ public class StudyActivityResponse {
     private String assignment;
     private Integer week;
     private String place;
+    private StudyTime studyTime;
     private Set<ActivityMemberResponse> activityMembers;
 }
