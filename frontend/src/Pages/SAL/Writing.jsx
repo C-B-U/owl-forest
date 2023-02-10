@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
@@ -168,6 +169,15 @@ const WritingInput = styled.div`
 `;
 
 function Writing() {
+  const baseurl = process.env.REACT_APP_BASE_URL;
+  const [getWriting, setGetWriting] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${baseurl}`).then((response) => {
+      setGetWriting(response.data);
+    });
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Header />
