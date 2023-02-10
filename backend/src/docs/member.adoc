@@ -1,0 +1,21 @@
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+
+
+== Member
+=== 유저 정보 업데이트
+operation::update member[snippets='http-request,http-response']
+
+=== 유저 전체 목록 가져오기
+operation::find all member[snippets='http-request,http-response']
+
+=== 유저 단일 조회
+operation::find member[snippets='http-request,http-response']
+
+=== 유저 개인 정보 포함 조회
+operation::find member privacy[snippets='http-request,http-response']
+
+

@@ -2,11 +2,9 @@ package com.cbu.backend.member.dto;
 
 import com.cbu.backend.member.domain.AcademicStatus;
 import com.cbu.backend.member.domain.Major;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.Email;
@@ -32,6 +30,8 @@ public class UpdateMemberRequest {
     @NotBlank
     // format 설정 TODO
     private String phoneNumber;
+
+    private String profileUrl;
 
     private String introduction;
 }
