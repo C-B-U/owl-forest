@@ -15,7 +15,8 @@ public enum StudyActivityResponseFixture {
             "과제1",
             4,
             "종합관 2층 스터디룸",
-            new StudyTime(LocalDateTime.now().withNano(0).minusHours(2), LocalDateTime.now().withNano(0)),
+            new StudyTime(
+                    LocalDateTime.now().withNano(0).minusHours(2), LocalDateTime.now().withNano(0)),
             Set.of(
                     new ActivityMemberResponse(UUID.randomUUID(), "Kim"),
                     new ActivityMemberResponse(UUID.randomUUID(), "Lee"))),
@@ -25,7 +26,8 @@ public enum StudyActivityResponseFixture {
             "타입스크립트 조사해오기",
             1,
             "E동2층",
-            new StudyTime(LocalDateTime.now().withNano(0).minusHours(2), LocalDateTime.now().withNano(0)),
+            new StudyTime(
+                    LocalDateTime.now().withNano(0).minusHours(2), LocalDateTime.now().withNano(0)),
             Set.of(
                     new ActivityMemberResponse(UUID.randomUUID(), "Park"),
                     new ActivityMemberResponse(UUID.randomUUID(), "Hong")));
