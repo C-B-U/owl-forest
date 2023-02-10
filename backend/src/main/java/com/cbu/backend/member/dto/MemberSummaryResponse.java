@@ -17,5 +17,5 @@ public class MemberSummaryResponse {
     private Integer grade;
     private Major major;
     private String profileUrl;
-    //관심분야 추가 TODO
+    // 관심분야 추가 TODO
 }

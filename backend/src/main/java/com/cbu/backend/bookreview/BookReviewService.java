@@ -9,14 +9,17 @@ import com.cbu.backend.bookreview.repository.BookReviewQueryOption;
 import com.cbu.backend.bookreview.repository.BookReviewRepository;
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.service.AuthService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +36,8 @@ public class BookReviewService {
         Book book = bookService.saveIfNotExists(req.getBook());
         log.info("{} ", req.getBook().getIsbn());
         log.info("{}", book.getId());
-        return bookReviewMapper.toDto(bookReviewRepository.save(bookReviewMapper.toEntity(req, book, loginUser)));
+        return bookReviewMapper.toDto(
+                bookReviewRepository.save(bookReviewMapper.toEntity(req, book, loginUser)));
     }
 
     public List<BookReviewSummaryResponse> findAll(Pageable pageable, BookReviewQueryOption param) {
@@ -53,6 +57,12 @@ public class BookReviewService {
     @Transactional
     public void update(Long id, BookReviewRequest dto) {
         Book book = bookService.saveIfNotExists(dto.getBook());
-        getEntity(id).update(dto.getTitle(), dto.getContent(), book, dto.getScore(), dto.getDifficulty());
+        getEntity(id)
+                .update(
+                        dto.getTitle(),
+                        dto.getContent(),
+                        book,
+                        dto.getScore(),
+                        dto.getDifficulty());
     }
 }

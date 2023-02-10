@@ -58,7 +58,18 @@ public class Member {
         this.email = email;
     }
 
-    public void update(String name, String blogUrl, String githubId, AcademicStatus academicStatus, Major major, String email, Integer grade, String studentId, String phoneNumber,String profileUrl, String introduction) {
+    public void update(
+            String name,
+            String blogUrl,
+            String githubId,
+            AcademicStatus academicStatus,
+            Major major,
+            String email,
+            Integer grade,
+            String studentId,
+            String phoneNumber,
+            String profileUrl,
+            String introduction) {
         this.name = name;
         this.blogUrl = blogUrl;
         this.githubId = githubId;

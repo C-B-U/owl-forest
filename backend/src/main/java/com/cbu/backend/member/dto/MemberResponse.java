@@ -21,5 +21,4 @@ public class MemberResponse {
     private String githubId;
     private String profileUrl;
     private String introduction;
-
 }

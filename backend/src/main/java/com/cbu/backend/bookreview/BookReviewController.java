@@ -15,8 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("book-reviews")
@@ -25,7 +26,8 @@ public class BookReviewController {
     private final BookReviewService bookReviewService;
 
     @PostMapping
-    public ResponseEntity<BookReviewResponse> saveBookReview(@RequestBody @Valid BookReviewRequest dto) {
+    public ResponseEntity<BookReviewResponse> saveBookReview(
+            @RequestBody @Valid BookReviewRequest dto) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(bookReviewService.saveBookReview(dto));
     }
@@ -44,7 +46,8 @@ public class BookReviewController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> putById(@PathVariable Long id, @RequestBody @Valid BookReviewRequest dto) {
+    public ResponseEntity<Void> putById(
+            @PathVariable Long id, @RequestBody @Valid BookReviewRequest dto) {
         bookReviewService.update(id, dto);
         return ResponseEntity.noContent().build();
     }
