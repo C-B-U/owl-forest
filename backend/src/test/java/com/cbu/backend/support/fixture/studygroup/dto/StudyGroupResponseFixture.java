@@ -16,7 +16,16 @@ public enum StudyGroupResponseFixture {
             new StudyMemberResponse(UUID.randomUUID(), "리더"),
             Set.of(
                     new StudyMemberResponse(UUID.randomUUID(), "멤버1"),
-                    new StudyMemberResponse(UUID.randomUUID(), "멤버2")));
+                    new StudyMemberResponse(UUID.randomUUID(), "멤버2"))),
+    SAMPLE2(
+            "쿠버네티스 스터디",
+            "도커는 배우고 오세요",
+            50,
+            StudyGroupStatus.ACTIVE,
+            new StudyMemberResponse(UUID.randomUUID(), "leader"),
+            Set.of(
+                    new StudyMemberResponse(UUID.randomUUID(), "멤버11"),
+                    new StudyMemberResponse(UUID.randomUUID(), "멤버22")));
     private String name;
     private String description;
     private Integer likeCount;
