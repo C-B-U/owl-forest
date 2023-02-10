@@ -7,6 +7,7 @@ import { useHistory } from 'react-router';
 
 import theme from '../../Components/Color';
 import MLProfile from '../../Components/MMList/MLProfile';
+import MLList from '../../Components/MMList/MLList';
 import Btn from '../../Components/Btn';
 import profileimg from '../../Image/cbu_circle.png';
 
@@ -205,26 +206,27 @@ function MemList() {
 
 export default MemList;
 
-function MLList() {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    axios.get('/api/users').then((response) => {
-      setUsers(response.data);
-    });
-  }, []);
+// function MLList() {
+//   const [user, setUsers] = useState([]);
 
-  const list = users.map((v) => (
-    <div>
-      <List>
-        <MemListInput>
-          <Photo />
-          <NameInfo>{v.name}</NameInfo>
-          <MajorInfo>{v.major}</MajorInfo>
-          <GradeInfo>{v.grade}</GradeInfo>
-        </MemListInput>
-      </List>
-    </div>
-  ));
+//   useEffect(() => {
+//     axios.get('/api/users').then((response) => {
+//       setUsers(response.data);
+//     });
+//   }, []);
 
-  return <div>{list}</div>;
-}
+//   const list = users.map((v) => (
+//     <div>
+//       <List>
+//         <MemListInput>
+//           <Photo />
+//           <NameInfo>{v.name}</NameInfo>
+//           <MajorInfo>{v.major}</MajorInfo>
+//           <GradeInfo>{v.grade}</GradeInfo>
+//         </MemListInput>
+//       </List>
+//     </div>
+//   ));
+
+//   return <div>{list}</div>;
+// }

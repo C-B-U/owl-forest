@@ -33,21 +33,47 @@ const Photo = styled.div`
 `;
 
 const NameInfo = styled.div`
-  margin-left: 2.5rem;
+  width: 5rem;
+  margin-left: 1.3rem;
 `;
 
 const MajorInfo = styled.div`
-  margin-left: 3rem;
   width: 11rem;
   text-align: left;
+  margin-left: 3.8rem;
 `;
 
 const GradeInfo = styled.div`
-  margin-left: 5rem;
+  width: 5rem;
+  margin-left: 2.5rem;
 `;
 
 function MLList() {
-  const [users, setUsers] = useState([]);
+  const [user, setUsers] = useState([]);
+  const users = [
+    {
+      id: '923736cb-5cb6-4192-96c9-69228bfdb2f8',
+      name: '새이름',
+      grade: 2,
+      major: '메카트로닉스공학과',
+      email: 'email.ac.com',
+      blogUrl: 'http://blog.com',
+      githubId: 'phjppo0918',
+      profileUrl: '자기소개입니다',
+      introduction: 'profile',
+    },
+    {
+      id: '923736cb-5cb6-4192-96c9-69228bfdb2f8',
+      name: '성은',
+      grade: 2,
+      major: 'COMPUTER',
+      email: 'email.ac.com',
+      blogUrl: 'http://blog.com',
+      githubId: 'phjppo0918',
+      profileUrl: '자기소개입니다',
+      introduction: 'profile',
+    },
+  ];
   useEffect(() => {
     axios.get('/api/users').then((response) => {
       setUsers(response.data);
@@ -61,7 +87,7 @@ function MLList() {
           <Photo />
           <NameInfo>{v.name}</NameInfo>
           <MajorInfo>{v.major}</MajorInfo>
-          <GradeInfo>{v.grade}</GradeInfo>
+          <GradeInfo>{v.grade}학년</GradeInfo>
         </MemListInput>
       </List>
     </div>
