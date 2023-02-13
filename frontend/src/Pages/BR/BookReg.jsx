@@ -44,6 +44,10 @@ const WrapBookImage = styled.div`
   width: 15rem;
   height: 19rem;
   background-color: #ffffff;
+  background-image: url('https://shopping-phinf.pstatic.net/main_3246668/32466688816.20221228074827.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 `;
 
 const WrapBookSearch = styled.div`
@@ -301,9 +305,9 @@ function BookReg() {
   };
 
   // 게시하기 기능
-  // const onClickPost = (e) => {
-
-  // };
+  const onClickPost = (key) => {
+    console.log(key);
+  };
 
   return (
     <div>
@@ -338,9 +342,8 @@ function BookReg() {
               </WrapSearchbar>
 
               <WrapList>
-                {getBook.map((book, idx) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <ListPopup key={idx}>
+                {getBook.map((book) => (
+                  <ListPopup key={book.isbn} onClick={onClickPost}>
                     <TitlePopup>{book.title}</TitlePopup>
                     <WriterPopup>{book.author}</WriterPopup>
                     <PublisherPopup>{book.publisher}</PublisherPopup>
