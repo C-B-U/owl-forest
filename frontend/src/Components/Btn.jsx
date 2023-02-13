@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const BtnStyle = styled.button`
+// 데이터 서버로 보내기 위해 submit으로 타입 변경
+export const BtnStyle = styled.submit`
   //export 추가해서 다른 페이지에서 작업할 때 덮어쓰기 할 수 있게 추가됨.
   font-size: 1rem;
   font-family: 'Noto Sans KR', sans-serif;

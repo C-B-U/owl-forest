@@ -63,7 +63,7 @@ const InputWrapper = styled.div`
   margin: 0.8rem 0;
 `;
 
-const Center = styled.div`
+const Center = styled.form`
   margin: 0 auto;
 `;
 
@@ -123,8 +123,10 @@ function StudyCreation() {
 
   const handleSubmit = useEffect(() => {
     axios
-      .post(`${baseurl}`, {
-        studyData,
+      .post(`${baseurl}/study-groups`, studyData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
       .then((response) => {
         console.log(response);
@@ -142,7 +144,7 @@ function StudyCreation() {
         <RightMainWrap>
           <HeaderTitle>스터디 생성</HeaderTitle>
           <ContextWrap>
-            <Center>
+            <Center onSubmit={handleSubmit}>
               <InputWrapper>
                 <InputTitle>스터디 이름</InputTitle>
                 <Input
@@ -251,9 +253,6 @@ function StudyCreation() {
                   width='100%'
                   height='3.5rem'
                   name='생성하기'
-                  onClick={() => {
-                    handleSubmit();
-                  }}
                 />
               </BtnWrap>
             </Center>
