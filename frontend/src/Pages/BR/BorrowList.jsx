@@ -119,6 +119,7 @@ const BorrowDate = styled.div`
 `; // 대여일
 
 function BorrowList() {
+  // useEffect()
   return (
     <div>
       <ThemeProvider theme={theme}>

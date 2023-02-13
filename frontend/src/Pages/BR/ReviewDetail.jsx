@@ -28,29 +28,33 @@ const Title = styled.h1`
   color: ${palette('PsYellow')};
 `;
 
+// 책정보 책이름
 const BookInfos = styled.div`
   height: fit-content;
   font-size: 1.5rem;
   position: absolute;
   top: -1rem;
-`; // 책정보 책이름
+`;
 
+// 저자 | 출판사
 const BookPublisher = styled.div`
   height: fit-content;
   font-size: 1rem;
   top: 0.5rem;
   /* position: absolute; */
-`; // 저자 | 출판사
+`;
 
+// 책이미지
 const BookImage = styled.div`
   width: 20rem;
   height: 26rem;
   background-color: #ffffff;
-`; // 책이미지
+`;
 
+// 책한줄평
 const WrapOneLineReview = styled.div`
   margin-top: 2rem;
-`; // 책한줄평
+`;
 
 const OneLineReview = styled.div`
   box-sizing: border-box;
@@ -98,18 +102,22 @@ const WrapotherStarScore = styled.div`
   position: absolute;
 `;
 
+// 별 평점 난이도
 const StarScore = styled.div`
   margin-right: 1rem;
   margin-bottom: 1rem;
-`; // 별 평점 난이도
+`;
 
+// 한줄평, 상세평 글자
 const ReviewName = styled.div`
   margin-bottom: 0.5rem;
-`; // 한줄평, 상세평 글자
+`;
 
 const Scrollbar = styled.nav`
   overflow: auto;
   height: 13rem;
+
+  // 댓글 및 다른리뷰 스크롤 내리면서 볼수있게구현
   &::-webkit-scrollbar {
     width: 0.5rem;
     height: 1rem;
@@ -120,13 +128,15 @@ const Scrollbar = styled.nav`
     background: rgba(0, 0, 0, 0.3);
     border-radius: 0.4rem;
   }
-`; // 댓글 및 다른리뷰 스크롤 내리면서 볼수있게구현
+`;
 
+// 댓글
 const Comment = styled.div`
   margin-top: 2rem;
   margin-bottom: 1rem;
-`; // 댓글
+`;
 
+// 하나의 댓글 상자
 const CommentView = styled.div`
   position: relative;
   min-width: 30rem;
@@ -136,28 +146,32 @@ const CommentView = styled.div`
   border-radius: 0.2rem;
   border: 0.05rem solid #98f791;
   margin-bottom: 1rem;
-`; // 하나의 댓글 상자
+`;
 
+// 댓글작성자
 const Commenter = styled.div`
   margin-left: 1rem;
   margin-top: 1rem;
-`; // 댓글작성자
+`;
 
+// 댓글 내용
 const CommentContent = styled.div`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 0.5rem;
-`; // 댓글 내용
+`;
 
+// 댓글, 이책의 다른리뷰 글자 마진주기위해서 commentname 컴포넌트추가
 const CommentName = styled.div`
   margin-bottom: 1rem;
   font-size: 1.3rem;
   font-weight: bold;
-`; // 댓글, 이책의 다른리뷰 글자 마진주기위해서 commentname 컴포넌트추가
+`;
 
+// 댓글 입력창
 const CommentInput = styled.div`
   margin-right: 1rem;
-`; // 댓글 입력창
+`;
 
 const CommentWrite = styled.div`
   display: flex;
