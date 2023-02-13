@@ -1,0 +1,12 @@
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+
+== File
+=== 파일 업로드
+operation::upload file[snippets='http-request,http-response']
+
+=== 파일 다운로드
+operation::download file[snippets='http-request,http-response']
