@@ -1,11 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
+import { useHistory } from 'react-router';
+
 import theme from '../../Components/Color';
 import MLProfile from '../../Components/MMList/MLProfile';
-import Btn from '../../Components/Btn';
 import MLList from '../../Components/MMList/MLList';
+import Btn from '../../Components/Btn';
+import profileimg from '../../Image/cbu_circle.png';
+
+// import MLList from '../../Components/MMList/MLList';
 
 // 가로 정렬
 const MainWrap = styled.div`
@@ -111,7 +117,41 @@ const InterstinInfo = styled.div`
   margin-left: 3rem;
 `;
 
+const Photo = styled.div`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  background-color: rgba(217, 217, 217, 1);
+  background-image: url(${profileimg});
+  background-position: center;
+  background-size: 3.5rem;
+  background-repeat: no-repeat;
+`;
+
+const List = styled.div`
+  width: 75rem;
+  height: 3.5rem;
+  border-radius: 3rem;
+  margin-top: 0.7rem;
+  padding-left: 1.5rem;
+  display: flex;
+  background-color: ${palette('PsLightBrown')};
+  margin-left: 1.5rem;
+`;
+
 function MemList() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    axios.get('/api/users').then((response) => {
+      setUsers(response.data);
+    });
+  }, []);
+  // const history = useHistory();
+  // useEffect(() => {
+  //   history.push({
+  //     pathname: '',
+  //   });
+  // });
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -165,3 +205,28 @@ function MemList() {
 }
 
 export default MemList;
+
+// function MLList() {
+//   const [user, setUsers] = useState([]);
+
+//   useEffect(() => {
+//     axios.get('/api/users').then((response) => {
+//       setUsers(response.data);
+//     });
+//   }, []);
+
+//   const list = users.map((v) => (
+//     <div>
+//       <List>
+//         <MemListInput>
+//           <Photo />
+//           <NameInfo>{v.name}</NameInfo>
+//           <MajorInfo>{v.major}</MajorInfo>
+//           <GradeInfo>{v.grade}</GradeInfo>
+//         </MemListInput>
+//       </List>
+//     </div>
+//   ));
+
+//   return <div>{list}</div>;
+// }

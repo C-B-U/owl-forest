@@ -1,0 +1,18 @@
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+
+== Study Plan
+=== 스터디 계획서 생성
+operation::create study plan[snippets='http-request,http-response']
+
+=== 스터디 계획서 수정
+operation::update study plan[snippets='http-request,http-response']
+
+=== 스터디 계획서 삭제
+operation::delete study plan[snippets='http-request,http-response']
+
+=== 스터디 계획서 조회
+operation::get study plan[snippets='http-request,http-response']

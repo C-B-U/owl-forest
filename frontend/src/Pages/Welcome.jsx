@@ -16,6 +16,7 @@ const MainWrap = styled.div`
   align-items: center;
   background-image: url(${Forest});
   background-size: 100%;
+  background-repeat: none;
 `;
 
 const Title = styled.div`

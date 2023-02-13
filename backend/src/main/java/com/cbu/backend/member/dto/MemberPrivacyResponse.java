@@ -20,4 +20,7 @@ public class MemberPrivacyResponse {
     private String blogUrl;
     private String githubId;
     private String introduction;
+    private String profileUrl;
+    private String studentId;
+    private String phoneNumber;
 }

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
@@ -102,7 +103,7 @@ const Scroll = styled.div`
 
 const PlanBox = styled.div`
   width: 71rem;
-  height: 60rem;
+  height: 40rem;
   border-radius: 1rem;
   margin-top: 0.8rem;
   padding: 1.5rem;
@@ -145,6 +146,30 @@ const PlanTable = styled.div`
 `;
 
 function PlanMake() {
+  const baseurl = process.env.REACT_APP_BASE_URL;
+  const [title, setTitle] = useState();
+  const [rule, setRule] = useState([]);
+  const [plan, setPlan] = useState();
+
+  const planData = {
+    title: `${title}`,
+    rule: `${rule}`,
+    plan: `${plan}`,
+  };
+
+  const handleSubmit = useEffect(() => {
+    axios
+      .post(`${baseurl}`, {
+        planData,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <Header />
@@ -170,6 +195,9 @@ function PlanMake() {
                   width='7rem'
                   height='3rem'
                   name='저장'
+                  onClick={() => {
+                    handleSubmit();
+                  }}
                 />
               </BtnItems>
             </BtnWrap>
@@ -181,15 +209,27 @@ function PlanMake() {
             </PlanNote>
             <PlanBox>
               <PlanTitle>제목</PlanTitle>
-              <PlanInput>ex - c언어 스터디</PlanInput>
-              <PlanTitle>기수(숫자만)</PlanTitle>
-              <PlanInput>ex - 14</PlanInput>
-              <PlanTitle>부원명</PlanTitle>
-              <PlanInput>ex - 홍길동, 전우치</PlanInput>
+              <PlanInput
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+              >
+                ex - c언어 스터디
+              </PlanInput>
               <PlanTitle>규칙</PlanTitle>
-              <PlanInput>ex - ~</PlanInput>
+              <PlanInput
+                onChange={(e) => {
+                  setRule(e.target.value);
+                }}
+              >
+                ex - ~
+              </PlanInput>
               <PlanTitle>주차별 계획</PlanTitle>
-              <PlanTable />
+              <PlanTable
+                onChange={(e) => {
+                  setPlan(e.target.value);
+                }}
+              />
             </PlanBox>
           </Scroll>
         </RightMainWrap>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
@@ -63,7 +64,6 @@ const Scroll = styled.div`
     background: white;
     width: 7px;
   }
-
   &::-webkit-scrollbar-thumb {
     background: ${palette('PsCocoa', 0)};
   }
@@ -73,6 +73,16 @@ const Scroll = styled.div`
 `;
 
 function StudyCrew() {
+  const baseurl = process.env.REACT_APP_BASE_URL;
+  const [profile, setProfile] = useState();
+  const [boxInput, setBoxInput] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${baseurl}`).then((response) => {
+      setProfile(response.data);
+    });
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Header />

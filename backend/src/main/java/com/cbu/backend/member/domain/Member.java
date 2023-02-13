@@ -38,6 +38,7 @@ public class Member {
     private Integer grade;
     private String studentId;
     private String phoneNumber;
+    private String profileUrl;
     @Lob private String introduction;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -67,6 +68,7 @@ public class Member {
             Integer grade,
             String studentId,
             String phoneNumber,
+            String profileUrl,
             String introduction) {
         this.name = name;
         this.blogUrl = blogUrl;
@@ -76,6 +78,7 @@ public class Member {
         this.email = email;
         this.grade = grade;
         this.studentId = studentId;
+        this.profileUrl = profileUrl;
         this.phoneNumber = phoneNumber;
         this.introduction = introduction;
     }

@@ -464,10 +464,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_북리뷰_조회_페이징_옵션_http_response">HTTP response</a></li>
 </ul>
 </li>
-<li><a href="#_북리뷰_조회_검색_옵션_페이징_옵션과_결합_가능">북리뷰 조회 (검색 옵션 - 페이징 옵션과 결합 가능)</a>
+<li><a href="#_북리뷰_조회_검색_옵션">북리뷰 조회 (검색 옵션)</a>
 <ul class="sectlevel3">
-<li><a href="#_북리뷰_조회_검색_옵션_페이징_옵션과_결합_가능_http_request">HTTP request</a></li>
-<li><a href="#_북리뷰_조회_검색_옵션_페이징_옵션과_결합_가능_http_response">HTTP response</a></li>
+<li><a href="#_북리뷰_조회_검색_옵션_http_request">HTTP request</a></li>
+<li><a href="#_북리뷰_조회_검색_옵션_http_response">HTTP response</a></li>
+</ul>
+</li>
+<li><a href="#_북리뷰_조회_검색_옵션_페이징_옵션">북리뷰 조회 (검색 옵션 &amp; 페이징 옵션)</a>
+<ul class="sectlevel3">
+<li><a href="#_북리뷰_조회_검색_옵션_페이징_옵션_http_request">HTTP request</a></li>
+<li><a href="#_북리뷰_조회_검색_옵션_페이징_옵션_http_response">HTTP response</a></li>
 </ul>
 </li>
 <li><a href="#_북리뷰_단일_조회">북리뷰 단일 조회</a>
@@ -478,12 +484,46 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_auth_account">Auth Account</a>
+<li><a href="#_book_review_comment">Book Review Comment</a>
+<ul class="sectlevel2">
+<li><a href="#_댓굴_생성">댓굴 생성</a>
+<ul class="sectlevel3">
+<li><a href="#_댓굴_생성_http_request">HTTP request</a></li>
+<li><a href="#_댓굴_생성_http_response">HTTP response</a></li>
+</ul>
+</li>
+<li><a href="#_북리뷰id에_해당하는_댓글_조회">북리뷰ID에 해당하는 댓글 조회</a>
+<ul class="sectlevel3">
+<li><a href="#_북리뷰id에_해당하는_댓글_조회_http_request">HTTP request</a></li>
+<li><a href="#_북리뷰id에_해당하는_댓글_조회_http_response">HTTP response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_member">Member</a>
 <ul class="sectlevel2">
 <li><a href="#_유저_정보_업데이트">유저 정보 업데이트</a>
 <ul class="sectlevel3">
 <li><a href="#_유저_정보_업데이트_http_request">HTTP request</a></li>
 <li><a href="#_유저_정보_업데이트_http_response">HTTP response</a></li>
+</ul>
+</li>
+<li><a href="#_유저_전체_목록_가져오기">유저 전체 목록 가져오기</a>
+<ul class="sectlevel3">
+<li><a href="#_유저_전체_목록_가져오기_http_request">HTTP request</a></li>
+<li><a href="#_유저_전체_목록_가져오기_http_response">HTTP response</a></li>
+</ul>
+</li>
+<li><a href="#_유저_단일_조회">유저 단일 조회</a>
+<ul class="sectlevel3">
+<li><a href="#_유저_단일_조회_http_request">HTTP request</a></li>
+<li><a href="#_유저_단일_조회_http_response">HTTP response</a></li>
+</ul>
+</li>
+<li><a href="#_유저_개인_정보_포함_조회">유저 개인 정보 포함 조회</a>
+<ul class="sectlevel3">
+<li><a href="#_유저_개인_정보_포함_조회_http_request">HTTP request</a></li>
+<li><a href="#_유저_개인_정보_포함_조회_http_response">HTTP response</a></li>
 </ul>
 </li>
 </ul>
@@ -501,29 +541,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h4 id="_북리뷰_생성_http_request"><a class="link" href="#_북리뷰_생성_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /api/book-reviews HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /book-reviews HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 402
-Host: localhost:8080
+Content-Length: 320
+Host: 223.255.205.62:30505
 
 {
   "book" : {
-    "isbn" : "홍길동전",
-    "title" : "8801037087550",
-    "author" : "조엔 롤링",
-    "publisher" : "국정원",
+    "isbn" : "798789789978",
+    "title" : "미움 받을 용기",
+    "author" : "독도독도",
+    "publisher" : "test_b64e856b1458",
     "imageUrl" : "aaa.bb.com",
-    "price" : 500,
-    "publishAt" : "2023-01-27",
-    "registrant" : null
+    "price" : 62,
+    "publishAt" : "2023-02-08"
   },
-  "writer" : {
-    "id" : "243f66a3-60e5-41ed-bcce-01e5e0c7fc09"
-  },
-  "title" : "title",
-  "content" : "content",
-  "score" : 10,
-  "difficulty" : 10
+  "title" : "제목1",
+  "content" : "내용1",
+  "score" : 5,
+  "difficulty" : 5
 }</code></pre>
 </div>
 </div>
@@ -532,13 +568,7 @@ Host: localhost:8080
 <h4 id="_북리뷰_생성_http_response"><a class="link" href="#_북리뷰_생성_http_response">HTTP response</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created
-Content-Type: application/json;charset=UTF-8
-Content-Length: 51
-
-{
-  "id" : "eaa87461-21be-44d0-b687-0cb227a2e9c3"
-}</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created</code></pre>
 </div>
 </div>
 </div>
@@ -549,8 +579,8 @@ Content-Length: 51
 <h4 id="_북리뷰_조회_옵션_없음_http_request"><a class="link" href="#_북리뷰_조회_옵션_없음_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/book-reviews HTTP/1.1
-Host: localhost:8080</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /book-reviews HTTP/1.1
+Host: 223.255.205.62:30505</code></pre>
 </div>
 </div>
 </div>
@@ -560,74 +590,72 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1423
+Content-Length: 1302
 
 [ {
-  "id" : {
-    "id" : "ccbe4199-ec7d-4985-8d4d-bedebfb00b5f"
-  },
+  "id" : 1,
   "writer" : {
-    "id" : {
-      "id" : "745bc699-a002-4d31-964a-1257a3c83def"
-    },
-    "nickname" : "해리 포터"
+    "id" : "d6593d8e-3ecc-428d-bfdc-2740662ca9d1",
+    "name" : "작성자"
   },
-  "title" : "제목 1",
+  "title" : "제목",
   "book" : {
-    "bookNo" : {
-      "id" : "b52aba9b-ba4d-47e7-bf75-7aca7bc205bc"
-    },
-    "title" : "홍길동전",
-    "imageUrl" : "aaa.bb.com"
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
   },
   "likeCount" : 5,
   "score" : 5,
   "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132506"
+  "createdAt" : "2023-02-08T14:36:58.976582"
 }, {
-  "id" : {
-    "id" : "0b2b3d78-405b-4a85-85f8-ee31cfd124ca"
-  },
+  "id" : 2,
   "writer" : {
-    "id" : {
-      "id" : "7e837462-c7a5-4e2c-926a-47e4a78002b7"
-    },
-    "nickname" : "헤르미온느"
+    "id" : "b83e747c-c52a-499e-bfef-74a60625fe16",
+    "name" : "작성자"
   },
-  "title" : "제목 2",
+  "title" : "제목",
   "book" : {
-    "bookNo" : {
-      "id" : "b52aba9b-ba4d-47e7-bf75-7aca7bc205bc"
-    },
-    "title" : "홍길동전",
-    "imageUrl" : "aaa.bb.com"
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
   },
   "likeCount" : 5,
   "score" : 5,
   "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132556"
+  "createdAt" : "2023-02-08T14:36:58.976617"
 }, {
-  "id" : {
-    "id" : "69bc8d81-af77-46e5-a018-48d92febd092"
-  },
+  "id" : 3,
   "writer" : {
-    "id" : {
-      "id" : "745bc699-a002-4d31-964a-1257a3c83def"
-    },
-    "nickname" : "해리 포터"
+    "id" : "b4689854-613e-46b3-9dfa-b56f0c0dd6f0",
+    "name" : "작성자"
   },
-  "title" : "제목 3",
+  "title" : "제목",
   "book" : {
-    "bookNo" : {
-      "id" : "d2ab749f-33f8-434b-aaf2-460ec9355a74"
-    },
-    "title" : "해리포터",
-    "imageUrl" : "aaa.bb.com"
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
   },
   "likeCount" : 5,
   "score" : 5,
   "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132572"
+  "createdAt" : "2023-02-08T14:36:58.976623"
+}, {
+  "id" : 4,
+  "writer" : {
+    "id" : "9777d09b-5b0a-4bf4-86db-8660e80bc80f",
+    "name" : "작성자"
+  },
+  "title" : "제목",
+  "book" : {
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
+  },
+  "likeCount" : 5,
+  "score" : 5,
+  "difficulty" : 5,
+  "createdAt" : "2023-02-08T14:36:58.976643"
 } ]</code></pre>
 </div>
 </div>
@@ -639,8 +667,8 @@ Content-Length: 1423
 <h4 id="_북리뷰_조회_페이징_옵션_http_request"><a class="link" href="#_북리뷰_조회_페이징_옵션_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/book-reviews?page=0&amp;size=12&amp;sort=createdAt%2Cdesc HTTP/1.1
-Host: localhost:8080</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /book-reviews?page=0&amp;size=12&amp;sort=createdAt%2Cdesc HTTP/1.1
+Host: 223.255.205.62:30505</code></pre>
 </div>
 </div>
 </div>
@@ -650,164 +678,248 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1423
+Content-Length: 1301
 
 [ {
-  "id" : {
-    "id" : "ccbe4199-ec7d-4985-8d4d-bedebfb00b5f"
-  },
+  "id" : 1,
   "writer" : {
-    "id" : {
-      "id" : "745bc699-a002-4d31-964a-1257a3c83def"
-    },
-    "nickname" : "해리 포터"
+    "id" : "199cd293-b036-4989-a9a9-80a61c28ecf3",
+    "name" : "작성자"
   },
-  "title" : "제목 1",
+  "title" : "제목",
   "book" : {
-    "bookNo" : {
-      "id" : "b52aba9b-ba4d-47e7-bf75-7aca7bc205bc"
-    },
-    "title" : "홍길동전",
-    "imageUrl" : "aaa.bb.com"
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
   },
   "likeCount" : 5,
   "score" : 5,
   "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132506"
+  "createdAt" : "2023-02-08T14:36:58.95652"
 }, {
-  "id" : {
-    "id" : "0b2b3d78-405b-4a85-85f8-ee31cfd124ca"
-  },
+  "id" : 2,
   "writer" : {
-    "id" : {
-      "id" : "7e837462-c7a5-4e2c-926a-47e4a78002b7"
-    },
-    "nickname" : "헤르미온느"
+    "id" : "4cc1ff10-9466-45eb-8a66-992cd9173cd3",
+    "name" : "작성자"
   },
-  "title" : "제목 2",
+  "title" : "제목",
   "book" : {
-    "bookNo" : {
-      "id" : "b52aba9b-ba4d-47e7-bf75-7aca7bc205bc"
-    },
-    "title" : "홍길동전",
-    "imageUrl" : "aaa.bb.com"
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
   },
   "likeCount" : 5,
   "score" : 5,
   "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132556"
+  "createdAt" : "2023-02-08T14:36:58.956538"
 }, {
-  "id" : {
-    "id" : "69bc8d81-af77-46e5-a018-48d92febd092"
-  },
+  "id" : 3,
   "writer" : {
-    "id" : {
-      "id" : "745bc699-a002-4d31-964a-1257a3c83def"
-    },
-    "nickname" : "해리 포터"
+    "id" : "9f2bbba5-881a-4824-927d-a64aa87655c2",
+    "name" : "작성자"
   },
-  "title" : "제목 3",
+  "title" : "제목",
   "book" : {
-    "bookNo" : {
-      "id" : "d2ab749f-33f8-434b-aaf2-460ec9355a74"
-    },
-    "title" : "해리포터",
-    "imageUrl" : "aaa.bb.com"
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
   },
   "likeCount" : 5,
   "score" : 5,
   "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132572"
+  "createdAt" : "2023-02-08T14:36:58.956561"
+}, {
+  "id" : 4,
+  "writer" : {
+    "id" : "7e97fd6f-5ee2-447e-9754-3b5736b28e36",
+    "name" : "작성자"
+  },
+  "title" : "제목",
+  "book" : {
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
+  },
+  "likeCount" : 5,
+  "score" : 5,
+  "difficulty" : 5,
+  "createdAt" : "2023-02-08T14:36:58.956582"
 } ]</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_북리뷰_조회_검색_옵션_페이징_옵션과_결합_가능"><a class="link" href="#_북리뷰_조회_검색_옵션_페이징_옵션과_결합_가능">북리뷰 조회 (검색 옵션 - 페이징 옵션과 결합 가능)</a></h3>
+<h3 id="_북리뷰_조회_검색_옵션"><a class="link" href="#_북리뷰_조회_검색_옵션">북리뷰 조회 (검색 옵션)</a></h3>
 <div class="sect3">
-<h4 id="_북리뷰_조회_검색_옵션_페이징_옵션과_결합_가능_http_request"><a class="link" href="#_북리뷰_조회_검색_옵션_페이징_옵션과_결합_가능_http_request">HTTP request</a></h4>
+<h4 id="_북리뷰_조회_검색_옵션_http_request"><a class="link" href="#_북리뷰_조회_검색_옵션_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/book-reviews?title=tititle&amp;content=conconcon&amp;bookname=herry&amp;writer=popoter HTTP/1.1
-Host: localhost:8080</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /book-reviews?content=conconcon&amp;bookname=herry&amp;writer=popoter HTTP/1.1
+Host: 223.255.205.62:30505</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_북리뷰_조회_검색_옵션_페이징_옵션과_결합_가능_http_response"><a class="link" href="#_북리뷰_조회_검색_옵션_페이징_옵션과_결합_가능_http_response">HTTP response</a></h4>
+<h4 id="_북리뷰_조회_검색_옵션_http_response"><a class="link" href="#_북리뷰_조회_검색_옵션_http_response">HTTP response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1423
+Content-Length: 1301
 
 [ {
-  "id" : {
-    "id" : "ccbe4199-ec7d-4985-8d4d-bedebfb00b5f"
-  },
+  "id" : 1,
   "writer" : {
-    "id" : {
-      "id" : "745bc699-a002-4d31-964a-1257a3c83def"
-    },
-    "nickname" : "해리 포터"
+    "id" : "48072f8c-9f0c-45c4-8acb-2891d51de61d",
+    "name" : "작성자"
   },
-  "title" : "제목 1",
+  "title" : "제목",
   "book" : {
-    "bookNo" : {
-      "id" : "b52aba9b-ba4d-47e7-bf75-7aca7bc205bc"
-    },
-    "title" : "홍길동전",
-    "imageUrl" : "aaa.bb.com"
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
   },
   "likeCount" : 5,
   "score" : 5,
   "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132506"
+  "createdAt" : "2023-02-08T14:36:59.000014"
 }, {
-  "id" : {
-    "id" : "0b2b3d78-405b-4a85-85f8-ee31cfd124ca"
-  },
+  "id" : 2,
   "writer" : {
-    "id" : {
-      "id" : "7e837462-c7a5-4e2c-926a-47e4a78002b7"
-    },
-    "nickname" : "헤르미온느"
+    "id" : "cee07f18-13d3-4e10-a558-8c48cd8be776",
+    "name" : "작성자"
   },
-  "title" : "제목 2",
+  "title" : "제목",
   "book" : {
-    "bookNo" : {
-      "id" : "b52aba9b-ba4d-47e7-bf75-7aca7bc205bc"
-    },
-    "title" : "홍길동전",
-    "imageUrl" : "aaa.bb.com"
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
   },
   "likeCount" : 5,
   "score" : 5,
   "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132556"
+  "createdAt" : "2023-02-08T14:36:59.000043"
 }, {
-  "id" : {
-    "id" : "69bc8d81-af77-46e5-a018-48d92febd092"
-  },
+  "id" : 3,
   "writer" : {
-    "id" : {
-      "id" : "745bc699-a002-4d31-964a-1257a3c83def"
-    },
-    "nickname" : "해리 포터"
+    "id" : "0a13b312-5d86-4d1a-85ca-859d0f535cb1",
+    "name" : "작성자"
   },
-  "title" : "제목 3",
+  "title" : "제목",
   "book" : {
-    "bookNo" : {
-      "id" : "d2ab749f-33f8-434b-aaf2-460ec9355a74"
-    },
-    "title" : "해리포터",
-    "imageUrl" : "aaa.bb.com"
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
   },
   "likeCount" : 5,
   "score" : 5,
   "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132572"
+  "createdAt" : "2023-02-08T14:36:59.000062"
+}, {
+  "id" : 4,
+  "writer" : {
+    "id" : "9a911a7e-82f2-44d9-ae55-3bde6376f737",
+    "name" : "작성자"
+  },
+  "title" : "제목",
+  "book" : {
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
+  },
+  "likeCount" : 5,
+  "score" : 5,
+  "difficulty" : 5,
+  "createdAt" : "2023-02-08T14:36:59.00008"
+} ]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_북리뷰_조회_검색_옵션_페이징_옵션"><a class="link" href="#_북리뷰_조회_검색_옵션_페이징_옵션">북리뷰 조회 (검색 옵션 &amp; 페이징 옵션)</a></h3>
+<div class="sect3">
+<h4 id="_북리뷰_조회_검색_옵션_페이징_옵션_http_request"><a class="link" href="#_북리뷰_조회_검색_옵션_페이징_옵션_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /book-reviews?page=0&amp;size=12&amp;sort=createdAt%2Cdesc&amp;content=conconcon&amp;bookname=herry&amp;writer=popoter HTTP/1.1
+Host: 223.255.205.62:30505</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_북리뷰_조회_검색_옵션_페이징_옵션_http_response"><a class="link" href="#_북리뷰_조회_검색_옵션_페이징_옵션_http_response">HTTP response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 1301
+
+[ {
+  "id" : 1,
+  "writer" : {
+    "id" : "be44339a-0250-4336-80c2-2b8369d2b8d7",
+    "name" : "작성자"
+  },
+  "title" : "제목",
+  "book" : {
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
+  },
+  "likeCount" : 5,
+  "score" : 5,
+  "difficulty" : 5,
+  "createdAt" : "2023-02-08T14:36:58.988124"
+}, {
+  "id" : 2,
+  "writer" : {
+    "id" : "fd77a7a1-0924-4040-8831-293f49ce7799",
+    "name" : "작성자"
+  },
+  "title" : "제목",
+  "book" : {
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
+  },
+  "likeCount" : 5,
+  "score" : 5,
+  "difficulty" : 5,
+  "createdAt" : "2023-02-08T14:36:58.988165"
+}, {
+  "id" : 3,
+  "writer" : {
+    "id" : "f15c1e71-44c9-4981-816b-54750788ee42",
+    "name" : "작성자"
+  },
+  "title" : "제목",
+  "book" : {
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
+  },
+  "likeCount" : 5,
+  "score" : 5,
+  "difficulty" : 5,
+  "createdAt" : "2023-02-08T14:36:58.988185"
+}, {
+  "id" : 4,
+  "writer" : {
+    "id" : "a9757203-cf97-477c-a4ab-d35ff62b1df3",
+    "name" : "작성자"
+  },
+  "title" : "제목",
+  "book" : {
+    "id" : 5,
+    "title" : "책제목",
+    "imageUrl" : "책이미지"
+  },
+  "likeCount" : 5,
+  "score" : 5,
+  "difficulty" : 5,
+  "createdAt" : "2023-02-08T14:36:58.98819"
 } ]</code></pre>
 </div>
 </div>
@@ -819,8 +931,8 @@ Content-Length: 1423
 <h4 id="_북리뷰_단일_조회_http_request"><a class="link" href="#_북리뷰_단일_조회_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/book-reviews?title=tititle&amp;content=conconcon&amp;bookname=herry&amp;writer=popoter HTTP/1.1
-Host: localhost:8080</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /book-reviews/5 HTTP/1.1
+Host: 223.255.205.62:30505</code></pre>
 </div>
 </div>
 </div>
@@ -830,74 +942,116 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1423
+Content-Length: 403
+
+{
+  "id" : 1,
+  "writer" : {
+    "id" : "49583b08-243a-44ff-a128-14d67b96c400",
+    "name" : "작성자"
+  },
+  "title" : "제목",
+  "content" : "내용",
+  "book" : {
+    "id" : 5,
+    "title" : "책제목",
+    "author" : "작가",
+    "publisher" : "출판사",
+    "imageUrl" : "책이미지"
+  },
+  "likeCount" : 5,
+  "score" : 5,
+  "difficulty" : 5,
+  "createdAt" : "2023-02-08T14:36:58.852001"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_book_review_comment"><a class="link" href="#_book_review_comment">Book Review Comment</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_댓굴_생성"><a class="link" href="#_댓굴_생성">댓굴 생성</a></h3>
+<div class="sect3">
+<h4 id="_댓굴_생성_http_request"><a class="link" href="#_댓굴_생성_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /book-review-comments HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 75
+Host: 223.255.205.62:30505
+
+{
+  "bookReviewId" : 5,
+  "parentId" : null,
+  "content" : "댓글내용"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_댓굴_생성_http_response"><a class="link" href="#_댓굴_생성_http_response">HTTP response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_북리뷰id에_해당하는_댓글_조회"><a class="link" href="#_북리뷰id에_해당하는_댓글_조회">북리뷰ID에 해당하는 댓글 조회</a></h3>
+<div class="sect3">
+<h4 id="_북리뷰id에_해당하는_댓글_조회_http_request"><a class="link" href="#_북리뷰id에_해당하는_댓글_조회_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /book-review-comments?bookReviewId=5 HTTP/1.1
+Host: 223.255.205.62:30505</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_북리뷰id에_해당하는_댓글_조회_http_response"><a class="link" href="#_북리뷰id에_해당하는_댓글_조회_http_response">HTTP response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 793
 
 [ {
-  "id" : {
-    "id" : "ccbe4199-ec7d-4985-8d4d-bedebfb00b5f"
-  },
+  "id" : 5,
   "writer" : {
-    "id" : {
-      "id" : "745bc699-a002-4d31-964a-1257a3c83def"
-    },
-    "nickname" : "해리 포터"
+    "uuid" : "a6b66dd7-8469-4551-bd3b-978bae57181e",
+    "name" : "작성자 이름"
   },
-  "title" : "제목 1",
-  "book" : {
-    "bookNo" : {
-      "id" : "b52aba9b-ba4d-47e7-bf75-7aca7bc205bc"
-    },
-    "title" : "홍길동전",
-    "imageUrl" : "aaa.bb.com"
-  },
-  "likeCount" : 5,
-  "score" : 5,
-  "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132506"
+  "content" : "댓글 내용",
+  "createdAt" : "2023-02-08T14:27:39.56777"
 }, {
-  "id" : {
-    "id" : "0b2b3d78-405b-4a85-85f8-ee31cfd124ca"
-  },
+  "id" : 6,
   "writer" : {
-    "id" : {
-      "id" : "7e837462-c7a5-4e2c-926a-47e4a78002b7"
-    },
-    "nickname" : "헤르미온느"
+    "uuid" : "3ec45aec-f6da-4835-9319-cb0d84f6c9ab",
+    "name" : "작성자 이름"
   },
-  "title" : "제목 2",
-  "book" : {
-    "bookNo" : {
-      "id" : "b52aba9b-ba4d-47e7-bf75-7aca7bc205bc"
-    },
-    "title" : "홍길동전",
-    "imageUrl" : "aaa.bb.com"
-  },
-  "likeCount" : 5,
-  "score" : 5,
-  "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132556"
+  "content" : "댓글 내용",
+  "createdAt" : "2023-02-08T14:27:39.567803"
 }, {
-  "id" : {
-    "id" : "69bc8d81-af77-46e5-a018-48d92febd092"
-  },
+  "id" : 7,
   "writer" : {
-    "id" : {
-      "id" : "745bc699-a002-4d31-964a-1257a3c83def"
-    },
-    "nickname" : "해리 포터"
+    "uuid" : "8ec72791-bae8-4a22-9e32-398e9172d045",
+    "name" : "작성자 이름"
   },
-  "title" : "제목 3",
-  "book" : {
-    "bookNo" : {
-      "id" : "d2ab749f-33f8-434b-aaf2-460ec9355a74"
-    },
-    "title" : "해리포터",
-    "imageUrl" : "aaa.bb.com"
+  "content" : "댓글 내용",
+  "createdAt" : "2023-02-08T14:27:39.567817"
+}, {
+  "id" : 8,
+  "writer" : {
+    "uuid" : "5796ac40-8feb-4941-84fa-fc2dc5f490be",
+    "name" : "작성자 이름"
   },
-  "likeCount" : 5,
-  "score" : 5,
-  "difficulty" : 5,
-  "createdAt" : "2023-01-27T21:08:19.132572"
+  "content" : "댓글 내용",
+  "createdAt" : "2023-02-08T14:27:39.567831"
 } ]</code></pre>
 </div>
 </div>
@@ -906,7 +1060,7 @@ Content-Length: 1423
 </div>
 </div>
 <div class="sect1">
-<h2 id="_auth_account"><a class="link" href="#_auth_account">Auth Account</a></h2>
+<h2 id="_member"><a class="link" href="#_member">Member</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_유저_정보_업데이트"><a class="link" href="#_유저_정보_업데이트">유저 정보 업데이트</a></h3>
@@ -914,23 +1068,24 @@ Content-Length: 1423
 <h4 id="_유저_정보_업데이트_http_request"><a class="link" href="#_유저_정보_업데이트_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">PUT /api/users HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">PUT /members HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 344
-Host: localhost:8080
+Content-Length: 393
+Host: 223.255.205.62:30505
 
 {
-  "name" : "박현준",
-  "nickname" : "PADO",
-  "blogUrl" : "www.example.com",
-  "githubId" : "phjppo0918",
+  "name" : "test_76ca4ff20751",
+  "blogUrl" : "test_0053924831c5",
+  "githubId" : "test_ad40e3ba2f88",
   "academicStatus" : "ATTEND",
-  "major" : "BUSINESS_ADMINISTRATION",
-  "subMajor" : "COMPUTER",
-  "email" : "phjppo0918@gmail.com",
-  "introduction" : "hihihihihihi",
-  "studentId" : "2018314014",
-  "phoneNumber" : "010-1111-2222"
+  "major" : "COMPUTER",
+  "subMajor" : "MEDIA_DESIGN",
+  "email" : "test_66614058107f",
+  "grade" : 1,
+  "studentId" : "test_413294765eab",
+  "phoneNumber" : "test_413294765eab",
+  "profileUrl" : "test_edabe30dee71",
+  "introduction" : "test_f958a7f1746b"
 }</code></pre>
 </div>
 </div>
@@ -944,12 +1099,136 @@ Host: localhost:8080
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_유저_전체_목록_가져오기"><a class="link" href="#_유저_전체_목록_가져오기">유저 전체 목록 가져오기</a></h3>
+<div class="sect3">
+<h4 id="_유저_전체_목록_가져오기_http_request"><a class="link" href="#_유저_전체_목록_가져오기_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /members HTTP/1.1
+Host: 223.255.205.62:30505</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_유저_전체_목록_가져오기_http_response"><a class="link" href="#_유저_전체_목록_가져오기_http_response">HTTP response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 707
+
+[ {
+  "id" : "62a3e19b-b280-4690-aa98-51f7e7cfc002",
+  "name" : "이름",
+  "grade" : 2,
+  "major" : "COMPUTER",
+  "profileUrl" : "profile"
+}, {
+  "id" : "73753080-3520-4e60-83ca-73d81e89b502",
+  "name" : "이름",
+  "grade" : 2,
+  "major" : "COMPUTER",
+  "profileUrl" : "profile"
+}, {
+  "id" : "3fdcce18-87e2-418c-bb03-cf1c849d6591",
+  "name" : "이름",
+  "grade" : 2,
+  "major" : "COMPUTER",
+  "profileUrl" : "profile"
+}, {
+  "id" : "9c04d461-1b8d-4e7d-98d8-653c62027814",
+  "name" : "이름",
+  "grade" : 2,
+  "major" : "COMPUTER",
+  "profileUrl" : "profile"
+}, {
+  "id" : "7af5b0dd-9d6f-46bf-ae02-a61e123e41a2",
+  "name" : "이름",
+  "grade" : 2,
+  "major" : "COMPUTER",
+  "profileUrl" : "profile"
+} ]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_유저_단일_조회"><a class="link" href="#_유저_단일_조회">유저 단일 조회</a></h3>
+<div class="sect3">
+<h4 id="_유저_단일_조회_http_request"><a class="link" href="#_유저_단일_조회_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /members/09bb280c-069a-4078-a75b-3265427e020b HTTP/1.1
+Host: 223.255.205.62:30505</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_유저_단일_조회_http_response"><a class="link" href="#_유저_단일_조회_http_response">HTTP response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 273
+
+{
+  "id" : "923736cb-5cb6-4192-96c9-69228bfdb2f8",
+  "name" : "이름",
+  "grade" : 2,
+  "major" : "COMPUTER",
+  "email" : "email.ac.com",
+  "blogUrl" : "http://blog.com",
+  "githubId" : "phjppo0918",
+  "profileUrl" : "자기소개입니다",
+  "introduction" : "profile"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_유저_개인_정보_포함_조회"><a class="link" href="#_유저_개인_정보_포함_조회">유저 개인 정보 포함 조회</a></h3>
+<div class="sect3">
+<h4 id="_유저_개인_정보_포함_조회_http_request"><a class="link" href="#_유저_개인_정보_포함_조회_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /members/cc515f63-fc39-44e1-bb02-eb19733a646a/privacy HTTP/1.1
+Host: 223.255.205.62:30505</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_유저_개인_정보_포함_조회_http_response"><a class="link" href="#_유저_개인_정보_포함_조회_http_response">HTTP response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 338
+
+{
+  "id" : "d2b5abd7-102b-49a1-8b86-69f270f7ddac",
+  "name" : "이름",
+  "grade" : 2,
+  "major" : "COMPUTER",
+  "email" : "email.ac.com",
+  "blogUrl" : "http://blog.com",
+  "githubId" : "phjppo0918",
+  "introduction" : "자기소개입니다",
+  "profileUrl" : "profile",
+  "studentId" : "2018314014",
+  "phoneNumber" : "010-0000-1234"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-27 20:04:21 +0900
+Last updated 2023-02-08 14:41:48 +0900
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

@@ -31,6 +31,7 @@ public class NaverBookItem {
                 .publishAt(LocalDate.parse(pubdate, DateTimeFormatter.BASIC_ISO_DATE))
                 .price(Integer.parseInt(discount))
                 .imageUrl(image)
+                .isbn(isbn)
                 .build();
     }
 }

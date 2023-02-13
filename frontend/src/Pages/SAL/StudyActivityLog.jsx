@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import StudyBtn from '../../Components/Btn';
+import Input from '../../Components/Input';
 import Header from '../../Components/ActivityLog/Header';
 import Profile from '../../Components/ActivityLog/Profile';
 import EmptyHeart from '../../Image/EmptyHeart.png';
@@ -40,7 +42,7 @@ const ListHeader = styled.header`
   width: 74rem;
   height: 4rem;
   margin-top: 3rem;
-  padding-left: 1rem;
+  padding-left: 3.2rem;
   font-size: 20pt;
   font-weight: bold;
   color: #fafad2;
@@ -111,7 +113,19 @@ const BtnWrap = styled.div`
   margin-top: 1.5rem;
 `;
 
-function ActivityLog() {
+function StudyActivityLog() {
+  const baseurl = process.env.REACT_APP_BASE_URL;
+  const [profile, setProfile] = useState();
+  const [boxInput, setBoxInput] = useState([]);
+  const [like, setLike] = useState();
+  const [sort, setSort] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${baseurl}`).then((response) => {
+      setProfile(response.data);
+    });
+  }, []);
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -145,12 +159,21 @@ function ActivityLog() {
                 </LastStudy>
               </StudyInput>
             </StudyList>
-            <StudyList />
+            <StudyList>
+              <Input
+                width='65rem'
+                height='8rem'
+                placeholder='input test'
+                fontSize='12pt'
+              />
+            </StudyList>
             <StudyList />
             <BtnWrap>
               <StudyBtn
                 background={palette('PsBtn')}
                 color={palette('PsYellow')}
+                borderRadius='5rem'
+                borderStyle='none'
                 width='74rem'
                 height='3.5rem'
                 name='스터디 생성'
@@ -163,4 +186,4 @@ function ActivityLog() {
   );
 }
 
-export default ActivityLog;
+export default StudyActivityLog;

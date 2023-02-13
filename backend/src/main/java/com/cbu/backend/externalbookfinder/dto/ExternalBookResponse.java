@@ -16,4 +16,5 @@ public class ExternalBookResponse {
     private final String imageUrl;
     private final Integer price;
     private final LocalDate publishAt;
+    private final String isbn;
 }
