@@ -44,7 +44,7 @@ const WrapBookImage = styled.div`
   width: 15rem;
   height: 19rem;
   background-color: #ffffff;
-  background-image: url('https://shopping-phinf.pstatic.net/main_3246668/32466688816.20221228074827.jpg');
+  background-image: url('https://shopping-phinf.pstatic.net/main_3248484/32484844663.20230131164114.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -59,14 +59,13 @@ const WrapRegister = styled.div`
   margin-left: 3rem;
 `;
 const WrapBookTitle = styled.div`
+  margin-bottom: 1rem;
   font-weight: bold;
   font-size: 1.5rem;
 `;
 
 const WrapBookDetail = styled.div`
-  font-size: 1.3rem;
-  margin-top: 1rem;
-  margin-bottom: 4rem;
+  margin-top: 0.5rem;
 `;
 
 const WrapBookReturn = styled.div`
@@ -77,9 +76,15 @@ const WrapBookReturn = styled.div`
   border-radius: 0.2rem;
 `;
 
+const WrapWriteForm = styled.div`
+  width: fit-content;
+  height: fit-content;
+  margin-top: 2rem;
+`;
+
 const WrapReturnAlert = styled.div`
   display: flex;
-  margin-top: 1rem;
+  margin-top: 2rem;
   vertical-align: middle;
 `;
 
@@ -96,11 +101,12 @@ const PickDate = styled(DatePicker)`
   z-index: -1;
 `;
 const Location = styled.div`
-  width: 6rem;
-  margin-right: 1rem;
   /* border: 1px solid grey; */
+  width: 6rem;
+  margin-right: 0rem;
+
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 `;
 const WrapRegButton = styled.div`
@@ -262,6 +268,8 @@ function BookReg() {
   // api 값 저장
   const [getBook, setGetBook] = useState([]);
 
+  const [location, setLocation] = useState();
+
   // 팝업 열기
   const openPopup = () => {
     console.log('open');
@@ -304,10 +312,33 @@ function BookReg() {
     setBookTitle(e.target.value);
   };
 
-  // 게시하기 기능
-  const onClickPost = (key) => {
-    console.log(key);
+  const onChangeLocation = (e) => {
+    setLocation(e.target.value);
   };
+
+  // 게시하기 기능
+  const onClickPost = () => {
+    const data = {
+      id: 61,
+      book: {
+        id: 88,
+        title: 'test_6388eac6ecce',
+        author: 'test_d88b6fd8b436',
+        publisher: 'test_cf39e4156afb',
+        imageUrl: 'test_f5f474eb74f7',
+      },
+      writer: {
+        id: '3fe36e5e-7090-4653-b086-039a67ae9fa0',
+        name: 'test_d32aef135bfd',
+      },
+      location,
+      endDate: '2025-03-22',
+    };
+    console.log(data);
+    // axios.post();
+  };
+
+  console.log(startDate);
 
   return (
     <div>
@@ -376,34 +407,38 @@ function BookReg() {
               <WrapRegister>
                 <WrapBookReturn>
                   <WrapBookTitle>도서 제목</WrapBookTitle>
-                  <WrapBookDetail>작가 | 출판사 | 출판일</WrapBookDetail>
-                  <WrapReturnAlert>
-                    <Location>반납 마감일</Location>
-                    <div>
-                      <PickDate
-                        locale={ko}
-                        dateFormat='yyyy일 MM월 dd일'
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
+                  <WrapBookDetail>작가</WrapBookDetail>
+                  <WrapBookDetail>출판사</WrapBookDetail>
+                  <WrapWriteForm>
+                    <WrapReturnAlert>
+                      <Location>반납 마감일</Location>
+                      <div>
+                        <PickDate
+                          locale={ko}
+                          dateFormat='yyyy일 MM월 dd일'
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                        />
+                      </div>
+                    </WrapReturnAlert>
+                    <WrapReturnAlert>
+                      <Location>만날 위치</Location>
+                      <Input
+                        width='23rem'
+                        height='2.5rem'
+                        placeholder='만날 위치를 적어주세요'
+                        onChange={onChangeLocation}
                       />
-                    </div>
-                  </WrapReturnAlert>
-                  <WrapReturnAlert>
-                    <Location>위치</Location>
-                    <Input
-                      width='23rem'
-                      height='2.5rem'
-                      placeholder='만날 위치를 적어주세요'
-                    />
-                  </WrapReturnAlert>
-                  <WrapReturnAlert>
+                    </WrapReturnAlert>
+                  </WrapWriteForm>
+                  {/* <WrapReturnAlert>
                     <Location>오픈 채팅 주소</Location>
                     <Input
                       width='23rem'
                       height='2.5rem'
                       placeholder='카카오 오픈 채팅 주소'
                     />
-                  </WrapReturnAlert>
+                  </WrapReturnAlert> */}
                   <WrapRegButton>
                     <Button
                       color='black'
@@ -412,7 +447,7 @@ function BookReg() {
                       height='2.5rem'
                       name='게시하기'
                       borderRadius='1rem'
-                      // onClick={onClickPost}
+                      onClick={onClickPost}
                     />
                   </WrapRegButton>
                 </WrapBookReturn>
