@@ -51,7 +51,7 @@ const ListHeader = styled.header`
   display: flex;
 `;
 
-const StudyList = styled.div`
+const StudyList = styled.ul`
   width: 71rem;
   height: 8rem;
   border-radius: 1rem;
@@ -61,7 +61,7 @@ const StudyList = styled.div`
   background-color: ${palette('PsLightBrown')};
 `;
 
-const StudyName = styled.div`
+const StudyName = styled.li`
   font-size: 15pt;
   font-weight: bold;
   align-items: center;
@@ -69,7 +69,7 @@ const StudyName = styled.div`
   display: flex;
 `;
 
-const StudyInput = styled.div`
+const StudyInput = styled.li`
   font-size: 10pt;
   font-weight: bold;
   display: flex;
@@ -121,8 +121,8 @@ function StudyActivityLog() {
   const [sort, setSort] = useState([]);
 
   useEffect(() => {
-    axios.get(`${baseurl}`).then((response) => {
-      setProfile(response.data);
+    axios.get(`${baseurl}/study-activities?studyGroup=1`).then((response) => {
+      setBoxInput(response.data);
     });
   }, []);
 
@@ -142,32 +142,19 @@ function StudyActivityLog() {
               </Nav>
             </ListHeader>
             <StudyList>
-              <StudyName>
-                스터디 이름
-                <Heart />
-              </StudyName>
-              <StudyInput>
-                스터디 개요~~~~
-                <br />
-                <br />
-                <br />
-                팀장 : 씨부엉
-                <br />
-                팀원 : 부엉일, 부엉이, 부엉삼, 부엉사
-                <LastStudy>
-                  최근 일지 : 2022년 10월 08일<StudyCnt>활동일지 2개</StudyCnt>
-                </LastStudy>
-              </StudyInput>
+              {boxInput.map((study) => (
+                <StudyName>{study.title}</StudyName>
+              ))}
+              {boxInput.map((study) => (
+                <StudyInput>
+                  {study.week}
+                  {study.place}
+                  {study.studyTime.startTime}
+                  {study.studyTime.endTime}
+                  {study.activityMembers}
+                </StudyInput>
+              ))}
             </StudyList>
-            <StudyList>
-              <Input
-                width='65rem'
-                height='8rem'
-                placeholder='input test'
-                fontSize='12pt'
-              />
-            </StudyList>
-            <StudyList />
             <BtnWrap>
               <StudyBtn
                 background={palette('PsBtn')}
