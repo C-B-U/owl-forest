@@ -2,7 +2,9 @@ package com.cbu.backend.bookborrow;
 
 import com.cbu.backend.bookborrow.dto.BookBorrowRequest;
 import com.cbu.backend.bookborrow.dto.BookBorrowResponse;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,11 +24,14 @@ public class BookBorrowService {
     }
 
     public List<BookBorrowResponse> findAll(Pageable pageable) {
-        return bookBorrowRepository.findAll(pageable).stream().map(bookBorrowMapper::toResponse).toList();
+        return bookBorrowRepository.findAll(pageable).stream()
+                .map(bookBorrowMapper::toResponse)
+                .toList();
     }
 
     public List<BookBorrowResponse> findAllByBookName(String bookName) {
-        return bookBorrowRepository.findAllByBookTitleContaining(bookName)
-                .stream().map(bookBorrowMapper::toResponse).toList();
+        return bookBorrowRepository.findAllByBookTitleContaining(bookName).stream()
+                .map(bookBorrowMapper::toResponse)
+                .toList();
     }
 }
