@@ -300,7 +300,8 @@ function BookReg() {
     setBookTitle(e.target.value);
   };
 
-  // const onClickList = (e) = {
+  // 게시하기 기능
+  // const onClickPost = (e) => {
 
   // };
 
@@ -336,9 +337,7 @@ function BookReg() {
                 <WrapSearchIcon onClick={SearchBook} />
               </WrapSearchbar>
 
-              <WrapList
-              // onClick={onClickList}
-              >
+              <WrapList>
                 {getBook.map((book, idx) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <ListPopup key={idx}>
@@ -410,6 +409,7 @@ function BookReg() {
                       height='2.5rem'
                       name='게시하기'
                       borderRadius='1rem'
+                      // onClick={onClickPost}
                     />
                   </WrapRegButton>
                 </WrapBookReturn>

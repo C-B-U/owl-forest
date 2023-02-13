@@ -41,7 +41,7 @@ const Wrap = styled.div`
   /* border: 1px solid black; */
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  max-height: 75vh;
+  min-height: 75vh;
   /* min-height: 60vh; */
   overflow: auto;
   &::-webkit-scrollbar {
@@ -66,6 +66,9 @@ const BorrowButtons = styled.div`
   margin-right: 2rem;
 `;
 const WrapContent = styled.div`
+  height: fit-content;
+  width: fit-content;
+  /* border: 1px solid black; */
   box-sizing: border-box;
   margin-bottom: 1rem;
   /* padding: 1rem; */
@@ -173,7 +176,31 @@ function BorrowList() {
                     <StarScore>난이도</StarScore>
                     <StarScore>평점</StarScore>
                   </WrapStarScore>
+                  <Deadline>마감일 : 2022-02-22</Deadline>
+                  <BorrowDate>대여일:</BorrowDate>
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.2rem'
+                    name='대여하기'
+                    borderRadius='0.5rem'
+                    fontSize='0.9rem'
+                  />
+                </WrapInfo>
+              </WrapContent>
 
+              <WrapContent>
+                <BookImage />
+                <WrapInfo>
+                  <BookName>도서 제목</BookName>
+                  <BookInfos>
+                    저자 <br /> 출판사
+                  </BookInfos>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <StarScore>평점</StarScore>
+                  </WrapStarScore>
                   <Deadline>마감일:</Deadline>
                   <BorrowDate>대여일:</BorrowDate>
                   <BorrowButton
@@ -187,223 +214,103 @@ function BorrowList() {
                   />
                 </WrapInfo>
               </WrapContent>
+
               <WrapContent>
                 <BookImage />
                 <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
+                  <BookName>도서 제목</BookName>
+                  <BookInfos>
+                    저자 <br /> 출판사
+                  </BookInfos>
                   <WrapStarScore>
                     <StarScore>난이도</StarScore>
                     <StarScore>평점</StarScore>
                   </WrapStarScore>
-
                   <Deadline>마감일:</Deadline>
                   <BorrowDate>대여일:</BorrowDate>
                   <BorrowButton
                     color={palette('PsYellow')}
                     background={palette('PsBtn')}
                     width='5.5rem'
-                    height='2.5rem'
+                    height='2.2rem'
                     name='대여하기'
                     borderRadius='0.5rem'
+                    fontSize='0.9rem'
                   />
                 </WrapInfo>
               </WrapContent>
+
               <WrapContent>
                 <BookImage />
                 <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
+                  <BookName>도서 제목</BookName>
+                  <BookInfos>
+                    저자 <br /> 출판사
+                  </BookInfos>
                   <WrapStarScore>
                     <StarScore>난이도</StarScore>
                     <StarScore>평점</StarScore>
                   </WrapStarScore>
-
                   <Deadline>마감일:</Deadline>
                   <BorrowDate>대여일:</BorrowDate>
                   <BorrowButton
                     color={palette('PsYellow')}
                     background={palette('PsBtn')}
                     width='5.5rem'
-                    height='2.5rem'
+                    height='2.2rem'
                     name='대여하기'
                     borderRadius='0.5rem'
+                    fontSize='0.9rem'
                   />
                 </WrapInfo>
               </WrapContent>
+
               <WrapContent>
                 <BookImage />
                 <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
+                  <BookName>도서 제목</BookName>
+                  <BookInfos>
+                    저자 <br /> 출판사
+                  </BookInfos>
                   <WrapStarScore>
                     <StarScore>난이도</StarScore>
                     <StarScore>평점</StarScore>
                   </WrapStarScore>
-
                   <Deadline>마감일:</Deadline>
                   <BorrowDate>대여일:</BorrowDate>
                   <BorrowButton
                     color={palette('PsYellow')}
                     background={palette('PsBtn')}
                     width='5.5rem'
-                    height='2.5rem'
+                    height='2.2rem'
                     name='대여하기'
                     borderRadius='0.5rem'
+                    fontSize='0.9rem'
                   />
                 </WrapInfo>
               </WrapContent>
+
               <WrapContent>
                 <BookImage />
                 <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
+                  <BookName>도서 제목</BookName>
+                  <BookInfos>
+                    저자 <br /> 출판사
+                  </BookInfos>
                   <WrapStarScore>
                     <StarScore>난이도</StarScore>
                     <StarScore>평점</StarScore>
                   </WrapStarScore>
-
                   <Deadline>마감일:</Deadline>
                   <BorrowDate>대여일:</BorrowDate>
                   <BorrowButton
                     color={palette('PsYellow')}
                     background={palette('PsBtn')}
                     width='5.5rem'
-                    height='2.5rem'
+                    height='2.2rem'
                     name='대여하기'
                     borderRadius='0.5rem'
-                  />
-                </WrapInfo>
-              </WrapContent>
-              <WrapContent>
-                <BookImage />
-                <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
-                  <WrapStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapStarScore>
-
-                  <Deadline>마감일:</Deadline>
-                  <BorrowDate>대여일:</BorrowDate>
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='대여하기'
-                    borderRadius='0.5rem'
-                  />
-                </WrapInfo>
-              </WrapContent>
-              <WrapContent>
-                <BookImage />
-                <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
-                  <WrapStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapStarScore>
-
-                  <Deadline>마감일:</Deadline>
-                  <BorrowDate>대여일:</BorrowDate>
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='대여하기'
-                    borderRadius='0.5rem'
-                  />
-                </WrapInfo>
-              </WrapContent>
-              <WrapContent>
-                <BookImage />
-                <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
-                  <WrapStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapStarScore>
-
-                  <Deadline>마감일:</Deadline>
-                  <BorrowDate>대여일:</BorrowDate>
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='대여하기'
-                    borderRadius='0.5rem'
-                  />
-                </WrapInfo>
-              </WrapContent>
-              <WrapContent>
-                <BookImage />
-                <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
-                  <WrapStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapStarScore>
-
-                  <Deadline>마감일:</Deadline>
-                  <BorrowDate>대여일:</BorrowDate>
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='대여하기'
-                    borderRadius='0.5rem'
-                  />
-                </WrapInfo>
-              </WrapContent>
-              <WrapContent>
-                <BookImage />
-                <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
-                  <WrapStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapStarScore>
-
-                  <Deadline>마감일:</Deadline>
-                  <BorrowDate>대여일:</BorrowDate>
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='대여하기'
-                    borderRadius='0.5rem'
-                  />
-                </WrapInfo>
-              </WrapContent>
-              <WrapContent>
-                <BookImage />
-                <WrapInfo>
-                  <BookName>책이름</BookName>
-                  <BookInfos>저자 | 출판사</BookInfos>
-                  <WrapStarScore>
-                    <StarScore>난이도</StarScore>
-                    <StarScore>평점</StarScore>
-                  </WrapStarScore>
-
-                  <Deadline>마감일:</Deadline>
-                  <BorrowDate>대여일:</BorrowDate>
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.5rem'
-                    name='대여하기'
-                    borderRadius='0.5rem'
+                    fontSize='0.9rem'
                   />
                 </WrapInfo>
               </WrapContent>

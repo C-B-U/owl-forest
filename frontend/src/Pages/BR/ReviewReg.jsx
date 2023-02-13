@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
+import axios from 'axios';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import RegButton from '../../Components/Btn.jsx';
@@ -103,6 +104,24 @@ const WrapRegButton = styled.div`
 `;
 
 function ReviewReg() {
+  const PostReview = () => {
+    axios.post(`${process.env.REACT_APP_BASE_URL}/book-reviews`, {
+      book: {
+        isbn: '798789789978',
+        title: '미움 받을 용기',
+        author: '독도독도',
+        publisher: 'test_b64e856b1458',
+        imageUrl: 'aaa.bb.com',
+        price: 62,
+        publishAt: '2023-02-08',
+      },
+      title: '미움 받을 용기 한줄평',
+      content: '미움 받을 용기 상세평',
+      score: 5,
+      difficulty: 5,
+    });
+  };
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -137,6 +156,7 @@ function ReviewReg() {
                       height='2.5rem'
                       name='등록하기'
                       borderRadius='0.3rem'
+                      onClick={PostReview}
                     />
                   </WrapRegButton>
                 </WrapDetailReview>
