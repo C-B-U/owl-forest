@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("study-plans")
 public class StudyPlanController {
     private final StudyPlanService studyPlanService;
+
     @PostMapping
     public ResponseEntity<StudyPlanIdResponse> saveStudyPlan(
             @RequestBody StudyPlanRequest studyPlanRequest) {

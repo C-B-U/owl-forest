@@ -2,6 +2,7 @@ package com.cbu.backend.file;
 
 import com.cbu.backend.config.storage.LocalStorageProperties;
 import com.cbu.backend.file.dto.UploadFileResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ByteArrayResource;
@@ -22,12 +23,12 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class FileLocalServiceImpl implements FileService {
     private final Path fileStorageLocation;
+
     @Autowired
     public FileLocalServiceImpl(LocalStorageProperties localStorageProperties) {
 
-        fileStorageLocation = Paths.get(localStorageProperties.getLocation())
-                .toAbsolutePath()
-                .normalize();
+        fileStorageLocation =
+                Paths.get(localStorageProperties.getLocation()).toAbsolutePath().normalize();
         try {
             Files.createDirectories(fileStorageLocation);
         } catch (Exception ex) {
@@ -38,14 +39,17 @@ public class FileLocalServiceImpl implements FileService {
     @Override
     public UploadFileResponse upload(MultipartFile file) {
         UploadFileResponse uploadFileResponse = null;
-        String fileName =  storeFile(file);
+        String fileName = storeFile(file);
         try {
-            if(!fileName.isBlank()) {
-                String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("/files")
-                        .queryParam("filename", fileName)
-                        .toUriString();
-                uploadFileResponse = new UploadFileResponse(fileName,fileDownloadUri,file.getContentType(),file.getSize());
+            if (!fileName.isBlank()) {
+                String fileDownloadUri =
+                        ServletUriComponentsBuilder.fromCurrentContextPath()
+                                .path("/files")
+                                .queryParam("filename", fileName)
+                                .toUriString();
+                uploadFileResponse =
+                        new UploadFileResponse(
+                                fileName, fileDownloadUri, file.getContentType(), file.getSize());
             }
         } catch (Exception ex) {
             throw new FileStorageException();
@@ -57,9 +61,10 @@ public class FileLocalServiceImpl implements FileService {
     public Resource download(String filename) {
         byte[] data;
         try {
-            Path path = Paths.get(this.fileStorageLocation.resolve(filename).normalize().toString());
+            Path path =
+                    Paths.get(this.fileStorageLocation.resolve(filename).normalize().toString());
             data = Files.readAllBytes(path);
-        }catch (IOException ex) {
+        } catch (IOException ex) {
             throw new FileStorageException();
         }
         return new ByteArrayResource(data);
@@ -69,7 +74,7 @@ public class FileLocalServiceImpl implements FileService {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         try {
 
-            if(fileName.contains("..")) {
+            if (fileName.contains("..")) {
                 throw new FileStorageException();
             }
 

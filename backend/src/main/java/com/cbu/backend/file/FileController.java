@@ -1,7 +1,9 @@
 package com.cbu.backend.file;
 
 import com.cbu.backend.file.dto.UploadFileResponse;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.core.io.Resource;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
@@ -28,10 +30,12 @@ public class FileController {
         Resource file = fileService.download(filename);
         return ResponseEntity.ok()
                 .contentType(MediaType.MULTIPART_FORM_DATA)
-                .header(HttpHeaders.CONTENT_DISPOSITION, ContentDisposition.attachment()
-                        .filename(filename, StandardCharsets.UTF_8)
-                        .build()
-                        .toString())
+                .header(
+                        HttpHeaders.CONTENT_DISPOSITION,
+                        ContentDisposition.attachment()
+                                .filename(filename, StandardCharsets.UTF_8)
+                                .build()
+                                .toString())
                 .body(file);
     }
 }
