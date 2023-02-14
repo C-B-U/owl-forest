@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import DatePicker from 'react-datepicker';
@@ -165,6 +166,38 @@ const SelectDate = styled(DatePicker)`
 function StudyLog() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const baseurl = process.env.REACT_APP_BASE_URL;
+  const [title, setTitle] = useState();
+  const [week, setWeek] = useState();
+  const [place, setPlace] = useState();
+  const [description, setDescription] = useState();
+  const [assignment, setAssignment] = useState();
+  const [members, setMembers] = useState([]);
+  const [studyTime, setStudyTime] = useState();
+
+  const studyData = {
+    title: `${title}`,
+    week: `${week}`,
+    place: `${place}`,
+    description: `${description}`,
+    assignment: `${assignment}`,
+    members: `${members}`,
+    studyTime: `${studyTime}`,
+  };
+
+  const handleSubmit = useEffect(() => {
+    axios
+      .post(`${baseurl}/study-activities/1`, {
+        studyData,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <Header />
@@ -181,6 +214,9 @@ function StudyLog() {
                   width='7rem'
                   height='3rem'
                   name='저장'
+                  onClick={() => {
+                    handleSubmit();
+                  }}
                 />
               </BtnItems>
             </BtnWrap>
@@ -197,7 +233,6 @@ function StudyLog() {
               <LogTitle>
                 활동 일시
                 <DateWrap>
-                  {' '}
                   <SelectDate
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
@@ -210,11 +245,22 @@ function StudyLog() {
                 </DateWrap>
               </LogTitle>
               <LogTitle>
-                활동 장소<LogInput>비대면 zoom</LogInput>
+                활동 장소
+                <LogInput
+                  onChange={(e) => {
+                    setPlace(e.target.value);
+                  }}
+                >
+                  비대면 zoom
+                </LogInput>
               </LogTitle>
               <LogTitle>
                 참여 인원
-                <PlusSection>
+                <PlusSection
+                  onChange={(e) => {
+                    setMembers(e.target.value);
+                  }}
+                >
                   <Btn
                     background={palette('PsBtn')}
                     color={palette('PsYellow')}
@@ -225,7 +271,13 @@ function StudyLog() {
                   />
                 </PlusSection>
               </LogTitle>
-              <LogTitle>활동 내용</LogTitle>
+              <LogTitle
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+              >
+                활동 내용
+              </LogTitle>
               <Log />
               <LogTitle>
                 활동 사진
