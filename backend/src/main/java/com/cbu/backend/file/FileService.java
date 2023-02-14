@@ -1,12 +1,11 @@
 package com.cbu.backend.file;
 
-import com.cbu.backend.file.dto.UploadFileResponse;
+import com.cbu.backend.file.dto.FileDownloadResponse;
+import com.cbu.backend.file.dto.FileUploadResponse;
 
-import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface FileService {
-    UploadFileResponse upload(MultipartFile file);
-
-    Resource download(String filename);
+    FileUploadResponse upload(MultipartFile file);
+    FileDownloadResponse download(Long id);
 }

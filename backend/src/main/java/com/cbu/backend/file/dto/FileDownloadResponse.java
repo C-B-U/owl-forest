@@ -1,17 +1,14 @@
 package com.cbu.backend.file.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.core.io.Resource;
 
 @Getter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UploadFileResponse {
+public class FileDownloadResponse {
+    private Resource file;
     private String filename;
-    private String downloadUri;
-    private String contentType;
-    private Long fileSize;
 }
