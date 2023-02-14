@@ -1,8 +1,12 @@
 package com.cbu.backend.bookborrow;
 
+import com.cbu.backend.book.Book;
+import com.cbu.backend.book.BookService;
 import com.cbu.backend.bookborrow.dto.BookBorrowRequest;
 import com.cbu.backend.bookborrow.dto.BookBorrowResponse;
 
+import com.cbu.backend.member.domain.Member;
+import com.cbu.backend.member.service.AuthService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
@@ -15,11 +19,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookBorrowService {
     private final BookBorrowRepository bookBorrowRepository;
+    private final BookService bookService;
+    private final AuthService authService;
     private final BookBorrowMapper bookBorrowMapper;
 
     @Transactional
     public BookBorrowResponse create(BookBorrowRequest dto) {
-        BookBorrow bookBorrow = bookBorrowRepository.save(bookBorrowMapper.toEntity(dto));
+        Member loginUser = authService.getLoginUser();
+        Book book = bookService.saveIfNotExists(dto.getBook());
+        BookBorrow bookBorrow = bookBorrowRepository.save(bookBorrowMapper.toEntity(dto, book, loginUser));
         return bookBorrowMapper.toResponse(bookBorrow);
     }
 
