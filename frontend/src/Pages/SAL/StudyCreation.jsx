@@ -63,7 +63,7 @@ const InputWrapper = styled.div`
   margin: 0.8rem 0;
 `;
 
-const Center = styled.form`
+const Center = styled.div`
   margin: 0 auto;
 `;
 
@@ -144,7 +144,8 @@ function StudyCreation() {
         <RightMainWrap>
           <HeaderTitle>스터디 생성</HeaderTitle>
           <ContextWrap>
-            <Center onSubmit={handleSubmit}>
+            {/* <Center onSubmit={handleSubmit}> */}
+            <Center>
               <InputWrapper>
                 <InputTitle>스터디 이름</InputTitle>
                 <Input
@@ -253,6 +254,7 @@ function StudyCreation() {
                   width='100%'
                   height='3.5rem'
                   name='생성하기'
+                  onClick={handleSubmit}
                 />
               </BtnWrap>
             </Center>
