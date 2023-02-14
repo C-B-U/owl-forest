@@ -2,12 +2,14 @@ package com.cbu.backend.bookborrow;
 
 import com.cbu.backend.book.Book;
 import com.cbu.backend.member.domain.Member;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDate;
+
+import javax.persistence.*;
 
 @Getter
 @Entity

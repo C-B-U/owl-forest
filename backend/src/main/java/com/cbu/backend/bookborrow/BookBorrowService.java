@@ -4,9 +4,9 @@ import com.cbu.backend.book.Book;
 import com.cbu.backend.book.BookService;
 import com.cbu.backend.bookborrow.dto.BookBorrowRequest;
 import com.cbu.backend.bookborrow.dto.BookBorrowResponse;
-
 import com.cbu.backend.member.domain.Member;
 import com.cbu.backend.member.service.AuthService;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Pageable;
@@ -27,7 +27,8 @@ public class BookBorrowService {
     public BookBorrowResponse create(BookBorrowRequest dto) {
         Member loginUser = authService.getLoginUser();
         Book book = bookService.saveIfNotExists(dto.getBook());
-        BookBorrow bookBorrow = bookBorrowRepository.save(bookBorrowMapper.toEntity(dto, book, loginUser));
+        BookBorrow bookBorrow =
+                bookBorrowRepository.save(bookBorrowMapper.toEntity(dto, book, loginUser));
         return bookBorrowMapper.toResponse(bookBorrow);
     }
 

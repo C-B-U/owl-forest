@@ -4,6 +4,7 @@ import com.cbu.backend.book.Book;
 import com.cbu.backend.bookborrow.dto.BookBorrowRequest;
 import com.cbu.backend.bookborrow.dto.BookBorrowResponse;
 import com.cbu.backend.member.domain.Member;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
