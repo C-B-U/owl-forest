@@ -35,7 +35,8 @@ public class FileController {
                 .header(
                         HttpHeaders.CONTENT_DISPOSITION,
                         ContentDisposition.attachment()
-                                .filename(fileDownloadResponse.getFilename(), StandardCharsets.UTF_8)
+                                .filename(
+                                        fileDownloadResponse.getFilename(), StandardCharsets.UTF_8)
                                 .build()
                                 .toString())
                 .body(fileDownloadResponse.getFile());

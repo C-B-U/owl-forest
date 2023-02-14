@@ -6,5 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum StorageType {
-    LOCAL, S3
+    LOCAL,
+    S3
 }

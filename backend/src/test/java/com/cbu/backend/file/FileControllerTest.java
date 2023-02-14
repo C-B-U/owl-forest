@@ -34,11 +34,7 @@ class FileControllerTest extends RestDocumentTest {
         // given
         FileUploadResponse expected =
                 new FileUploadResponse(
-                        1L,
-                        "plan.docx",
-                        "http://localhost:8080/api/v1/files/1",
-                        "docx",
-                        100L);
+                        1L, "plan.docx", "http://localhost:8080/api/v1/files/1", "docx", 100L);
         given(fileService.upload(any())).willReturn(expected);
 
         // when
@@ -61,14 +57,13 @@ class FileControllerTest extends RestDocumentTest {
     @DisplayName("파일 다운")
     void downloadFile() throws Exception {
         // given
-        FileDownloadResponse expected = new FileDownloadResponse(new ByteArrayResource(new byte[1]), "file.docx");
+        FileDownloadResponse expected =
+                new FileDownloadResponse(new ByteArrayResource(new byte[1]), "file.docx");
         given(fileService.download(any())).willReturn(expected);
 
         // when
         ResultActions perform =
-                mockMvc.perform(
-                        get("/files/1")
-                                .contentType(MediaType.MULTIPART_FORM_DATA));
+                mockMvc.perform(get("/files/1").contentType(MediaType.MULTIPART_FORM_DATA));
 
         // then
         perform.andExpect(status().isOk());

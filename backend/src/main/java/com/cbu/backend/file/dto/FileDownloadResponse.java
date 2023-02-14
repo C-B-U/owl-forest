@@ -3,6 +3,7 @@ package com.cbu.backend.file.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import org.springframework.core.io.Resource;
 
 @Getter

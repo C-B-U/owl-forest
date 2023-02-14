@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -21,6 +20,8 @@ import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 import java.util.UUID;
 
+import javax.persistence.EntityNotFoundException;
+
 @Service
 public class FileLocalServiceImpl implements FileService {
     private final Path fileStorageLocation;
@@ -28,7 +29,10 @@ public class FileLocalServiceImpl implements FileService {
     private final FileMapper fileMapper;
 
     @Autowired
-    public FileLocalServiceImpl(LocalStorageProperties localStorageProperties, FileRepository fileRepository, FileMapper fileMapper) {
+    public FileLocalServiceImpl(
+            LocalStorageProperties localStorageProperties,
+            FileRepository fileRepository,
+            FileMapper fileMapper) {
         this.fileMapper = fileMapper;
         this.fileRepository = fileRepository;
         this.fileStorageLocation =
@@ -52,11 +56,12 @@ public class FileLocalServiceImpl implements FileService {
 
             File saveFile =
                     fileRepository.save(
-                    new File(fileName,
-                            fileDownloadUri,
-                            file.getContentType(),
-                            file.getSize(),
-                            StorageType.LOCAL));
+                            new File(
+                                    fileName,
+                                    fileDownloadUri,
+                                    file.getContentType(),
+                                    file.getSize(),
+                                    StorageType.LOCAL));
             saveFile.updateUri();
 
             return fileMapper.toFileUploadResponse(saveFile);
@@ -71,7 +76,11 @@ public class FileLocalServiceImpl implements FileService {
         File file = fileRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         try {
             Path path =
-                    Paths.get(this.fileStorageLocation.resolve(file.getFilename()).normalize().toString());
+                    Paths.get(
+                            this.fileStorageLocation
+                                    .resolve(file.getFilename())
+                                    .normalize()
+                                    .toString());
             data = Files.readAllBytes(path);
         } catch (IOException ex) {
             throw new FileStorageException();
