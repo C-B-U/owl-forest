@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import StudyBtn from '../../Components/Btn';
-import Input from '../../Components/Input';
 import Header from '../../Components/ActivityLog/Header';
 import Profile from '../../Components/ActivityLog/Profile';
 import EmptyHeart from '../../Image/EmptyHeart.png';
@@ -114,16 +114,50 @@ const BtnWrap = styled.div`
 `;
 
 function StudyActivityLog() {
+  const navigate = useNavigate();
+
+  const goStudyCreation = () => {
+    navigate('/StudyCreation');
+  };
+
   const baseurl = process.env.REACT_APP_BASE_URL;
   const [profile, setProfile] = useState();
   const [boxInput, setBoxInput] = useState([]);
   const [like, setLike] = useState();
-  const [sort, setSort] = useState([]);
+  const [latestSort, setLatestSort] = useState([]);
+  const [likeSort, setLikeSort] = useState([]);
+  const [activitiesSort, setActivitiesSort] = useState([]);
 
   useEffect(() => {
-    axios.get(`${baseurl}/study-activities?studyGroup=1`).then((response) => {
+    axios.get(`${baseurl}/study-groups/1`).then((response) => {
       setBoxInput(response.data);
     });
+  }, []);
+
+  const LatestSort = useEffect(() => {
+    axios
+      .get(`${baseurl}/study-groups?page=0&size=20&sort=createdAt,DESC`)
+      .then((response) => {
+        setLatestSort(response.data);
+      });
+  }, []);
+
+  const LikeSort = useEffect(() => {
+    axios
+      .get(`${baseurl}/study-groups?page=0&size=20&sort=numOfLike,DESC`)
+      .then((response) => {
+        setLikeSort(response.data);
+      });
+  }, []);
+
+  const ActivitiesSort = useEffect(() => {
+    axios
+      .get(
+        `${baseurl}/study-groups?page=0&size=20&sort=numOfStudyActivity,DESC`
+      )
+      .then((response) => {
+        setActivitiesSort(response.data);
+      });
   }, []);
 
   return (
@@ -136,22 +170,22 @@ function StudyActivityLog() {
             <ListHeader>
               스터디 목록
               <Nav>
-                <NavItems>최신순</NavItems>
-                <NavItems>활동일지순</NavItems>
-                <NavItems>인기순</NavItems>
+                <NavItems onClick={() => LatestSort}>최신순</NavItems>
+                <NavItems onClick={() => LikeSort}>활동일지순</NavItems>
+                <NavItems onClick={() => ActivitiesSort}>인기순</NavItems>
               </Nav>
             </ListHeader>
             <StudyList>
               {boxInput.map((study) => (
-                <StudyName>{study.title}</StudyName>
+                <StudyName>{study.name}</StudyName>
               ))}
               {boxInput.map((study) => (
                 <StudyInput>
-                  {study.week}
-                  {study.place}
-                  {study.studyTime.startTime}
-                  {study.studyTime.endTime}
-                  {study.activityMembers}
+                  {study.description}
+                  {study.likeCount}
+                  {study.studyGroupoStatus}
+                  {study.leader}
+                  {study.members}
                 </StudyInput>
               ))}
             </StudyList>
@@ -164,6 +198,7 @@ function StudyActivityLog() {
                 width='74rem'
                 height='3.5rem'
                 name='스터디 생성'
+                onClick={goStudyCreation}
               />
             </BtnWrap>
           </ListWrap>
