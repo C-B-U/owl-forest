@@ -1,6 +1,7 @@
 package com.cbu.backend.file;
 
-import com.cbu.backend.file.dto.UploadFileResponse;
+import com.cbu.backend.file.dto.FileDownloadResponse;
+import com.cbu.backend.file.dto.FileUploadResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,21 +22,23 @@ public class FileController {
     private final FileService fileService;
 
     @PostMapping
-    public ResponseEntity<UploadFileResponse> uploadFile(MultipartFile file) {
+    public ResponseEntity<FileUploadResponse> uploadFile(MultipartFile file) {
         return ResponseEntity.ok(fileService.upload(file));
     }
 
-    @GetMapping
-    public ResponseEntity<Resource> downloadFile(@RequestParam String filename) {
-        Resource file = fileService.download(filename);
+    @GetMapping("/{id}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable Long id) {
+        FileDownloadResponse fileDownloadResponse = fileService.download(id);
+
         return ResponseEntity.ok()
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .header(
                         HttpHeaders.CONTENT_DISPOSITION,
                         ContentDisposition.attachment()
-                                .filename(filename, StandardCharsets.UTF_8)
+                                .filename(
+                                        fileDownloadResponse.getFilename(), StandardCharsets.UTF_8)
                                 .build()
                                 .toString())
-                .body(file);
+                .body(fileDownloadResponse.getFile());
     }
 }

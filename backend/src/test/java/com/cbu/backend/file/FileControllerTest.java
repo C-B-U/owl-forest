@@ -12,7 +12,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.cbu.backend.file.dto.UploadFileResponse;
+import com.cbu.backend.file.dto.FileDownloadResponse;
+import com.cbu.backend.file.dto.FileUploadResponse;
 import com.cbu.backend.support.docs.RestDocumentTest;
 
 import org.junit.jupiter.api.DisplayName;
@@ -20,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -32,12 +32,9 @@ class FileControllerTest extends RestDocumentTest {
     @DisplayName("파일 업로드")
     void uploadFile() throws Exception {
         // given
-        UploadFileResponse expected =
-                new UploadFileResponse(
-                        "plan.docx",
-                        "http://localhost:8080/api/v1/files?filename=plan.docx",
-                        "docx",
-                        100L);
+        FileUploadResponse expected =
+                new FileUploadResponse(
+                        1L, "plan.docx", "http://localhost:8080/api/v1/files/1", "docx", 100L);
         given(fileService.upload(any())).willReturn(expected);
 
         // when
@@ -60,14 +57,13 @@ class FileControllerTest extends RestDocumentTest {
     @DisplayName("파일 다운")
     void downloadFile() throws Exception {
         // given
-        Resource expected = new ByteArrayResource(new byte[1]);
+        FileDownloadResponse expected =
+                new FileDownloadResponse(new ByteArrayResource(new byte[1]), "file.docx");
         given(fileService.download(any())).willReturn(expected);
 
         // when
         ResultActions perform =
-                mockMvc.perform(
-                        get("/files?filename=plan.docx")
-                                .contentType(MediaType.MULTIPART_FORM_DATA));
+                mockMvc.perform(get("/files/1").contentType(MediaType.MULTIPART_FORM_DATA));
 
         // then
         perform.andExpect(status().isOk());
