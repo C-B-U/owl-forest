@@ -3,8 +3,8 @@ package com.cbu.backend.studyplan;
 import com.cbu.backend.global.audit.AuditListener;
 import com.cbu.backend.global.audit.Auditable;
 import com.cbu.backend.global.audit.BaseTime;
-
 import com.cbu.backend.global.audit.SoftDeleteSupport;
+
 import lombok.*;
 
 import javax.persistence.*;
