@@ -137,7 +137,7 @@ const PlusSection = styled.div`
   background-color: ${palette('PsWhite')};
 `;
 
-const Log = styled.div`
+const Log = styled(InputStyle)`
   width: 95%;
   height: 20rem;
   display: flex;
@@ -146,6 +146,7 @@ const Log = styled.div`
   margin-left: 1rem;
   margin-bottom: 1rem;
   padding-left: 1rem;
+  border: none;
   background-color: ${palette('PsWhite')};
 `;
 
@@ -175,7 +176,6 @@ function StudyLog() {
   const [description, setDescription] = useState();
   const [assignment, setAssignment] = useState();
   const [members, setMembers] = useState([]);
-  const [studyTime, setStudyTime] = useState();
 
   const studyData = {
     title: `${title}`,
@@ -184,7 +184,10 @@ function StudyLog() {
     description: `${description}`,
     assignment: `${assignment}`,
     members: `${members}`,
-    studyTime: `${studyTime}`,
+    studyTime: {
+      startTime: `${startDate}`,
+      endTime: `${endDate}`,
+    },
   };
 
   const handleSubmit = useEffect(() => {
@@ -235,7 +238,11 @@ function StudyLog() {
               </LogTitle>
               <LogTitle>
                 스터디 차수
-                <SelectBox>
+                <SelectBox
+                  onChange={(e) => {
+                    setWeek(e.target.value);
+                  }}
+                >
                   <option>1</option>
                   <option>2</option>
                 </SelectBox>
@@ -280,14 +287,12 @@ function StudyLog() {
                   />
                 </PlusSection>
               </LogTitle>
-              <LogTitle
+              <LogTitle>활동 내용</LogTitle>
+              <Log
                 onChange={(e) => {
                   setDescription(e.target.value);
                 }}
-              >
-                활동 내용
-              </LogTitle>
-              <Log />
+              />
               <LogTitle>
                 과제
                 <LogInput
