@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import DatePicker from 'react-datepicker';
+import { InputStyle } from '../../Components/Input';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import Btn from '../../Components/Btn';
@@ -112,7 +113,7 @@ const LogTitle = styled.div`
   align-items: center;
 `;
 
-const LogInput = styled.div`
+const LogInput = styled(InputStyle)`
   width: 86%;
   height: 3rem;
   display: flex;
@@ -120,6 +121,7 @@ const LogInput = styled.div`
   font-size: 12pt;
   margin-left: 2rem;
   padding-left: 1rem;
+  border: none;
   background-color: ${palette('PsWhite')};
 `;
 
@@ -229,9 +231,7 @@ function StudyLog() {
                   onChange={(e) => {
                     setTitle(e.target.value);
                   }}
-                >
-                  비대면 zoom
-                </LogInput>
+                />
               </LogTitle>
               <LogTitle>
                 스터디 차수
@@ -257,12 +257,11 @@ function StudyLog() {
               <LogTitle>
                 활동 장소
                 <LogInput
+                  placeholder='비대면 zoom'
                   onChange={(e) => {
                     setPlace(e.target.value);
                   }}
-                >
-                  비대면 zoom
-                </LogInput>
+                />
               </LogTitle>
               <LogTitle>
                 참여 인원
@@ -289,6 +288,14 @@ function StudyLog() {
                 활동 내용
               </LogTitle>
               <Log />
+              <LogTitle>
+                과제
+                <LogInput
+                  onChange={(e) => {
+                    setAssignment(e.target.value);
+                  }}
+                />
+              </LogTitle>
               <LogTitle>
                 활동 사진
                 <PlusSection>
