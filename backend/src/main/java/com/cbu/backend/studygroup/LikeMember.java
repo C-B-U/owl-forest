@@ -6,6 +6,7 @@ import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.domain.Member;
 
 import lombok.*;
+
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;

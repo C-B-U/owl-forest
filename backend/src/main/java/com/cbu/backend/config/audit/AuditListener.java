@@ -2,16 +2,17 @@ package com.cbu.backend.config.audit;
 
 import com.cbu.backend.global.BaseTime;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import java.time.LocalDateTime;
 
 public class AuditListener {
     @PrePersist
     public void setCreatedAt(Auditable auditable) {
         BaseTime baseTime = auditable.getBaseTime();
 
-        if(baseTime == null) {
+        if (baseTime == null) {
             baseTime = new BaseTime();
         }
         baseTime.setCreatedAt(LocalDateTime.now());

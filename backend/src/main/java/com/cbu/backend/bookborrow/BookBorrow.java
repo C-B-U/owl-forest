@@ -10,6 +10,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import org.hibernate.annotations.Where;
 
 import java.time.LocalDate;
@@ -32,6 +33,7 @@ public class BookBorrow implements Auditable {
 
     private String location;
     private LocalDate endDate;
+
     @Setter
     @Embedded
     @Column(nullable = false)

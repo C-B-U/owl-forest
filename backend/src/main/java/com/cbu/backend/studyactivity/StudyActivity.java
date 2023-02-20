@@ -6,6 +6,7 @@ import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.studygroup.StudyMember;
 
 import lombok.*;
+
 import org.hibernate.annotations.Where;
 
 import java.util.HashSet;
@@ -31,6 +32,7 @@ public class StudyActivity implements Auditable {
     @OneToMany private Set<StudyMember> activityMembers = new HashSet<>();
     private Long studyGroupId;
     @Embedded private StudyTime studyTime;
+
     @Setter
     @Embedded
     @Column(nullable = false)

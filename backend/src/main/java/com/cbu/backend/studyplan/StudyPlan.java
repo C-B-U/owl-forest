@@ -5,6 +5,7 @@ import com.cbu.backend.config.audit.Auditable;
 import com.cbu.backend.global.BaseTime;
 
 import lombok.*;
+
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -19,10 +20,12 @@ public class StudyPlan implements Auditable {
     private String title;
     @Lob private String studyRule;
     @Lob private String weekPlan;
+
     @Setter
     @Embedded
     @Column(nullable = false)
     private BaseTime baseTime;
+
     private Long studyGroupId;
 
     @Builder

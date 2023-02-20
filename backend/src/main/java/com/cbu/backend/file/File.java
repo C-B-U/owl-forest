@@ -3,7 +3,9 @@ package com.cbu.backend.file;
 import com.cbu.backend.config.audit.AuditListener;
 import com.cbu.backend.config.audit.Auditable;
 import com.cbu.backend.global.BaseTime;
+
 import lombok.*;
+
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -19,6 +21,7 @@ public class File implements Auditable {
     private String downloadUri;
     private String contentType;
     private Long fileSize;
+
     @Setter
     @Embedded
     @Column(nullable = false)

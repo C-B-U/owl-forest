@@ -10,10 +10,8 @@ import javax.persistence.Embeddable;
 @Getter
 @Embeddable
 public class BaseTime {
-    @Setter
-    private LocalDateTime createdAt;
-    @Setter
-    private LocalDateTime updatedAt;
+    @Setter private LocalDateTime createdAt;
+    @Setter private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
 
     public void delete() {
