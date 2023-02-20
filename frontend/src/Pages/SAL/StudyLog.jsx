@@ -166,16 +166,46 @@ const SelectDate = styled(DatePicker)`
   border: none;
 `;
 
+const PlusBtn = styled.label`
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: ${palette('PsBtn')};
+  color: ${palette('PsYellow')};
+`;
+
 function StudyLog() {
+  const baseurl = process.env.REACT_APP_BASE_URL;
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const baseurl = process.env.REACT_APP_BASE_URL;
+
   const [title, setTitle] = useState();
   const [week, setWeek] = useState();
   const [place, setPlace] = useState();
   const [description, setDescription] = useState();
   const [assignment, setAssignment] = useState();
   const [members, setMembers] = useState([]);
+
+  const [fileImage, setFileImage] = useState('');
+  const [fileIma, setFileIma] = useState('');
+
+  const handleSelect = async (e) => {
+    const file = e.target.files[0];
+    const Image = URL.createObjectURL(file);
+    setFileIma(Image);
+    setFileImage(file);
+  };
+
+  const deleteImage = () => {
+    URL.revokeObjectURL(fileImage);
+    URL.revokeObjectURL(fileIma);
+    setFileIma('');
+    setFileImage('');
+  };
 
   const studyData = {
     title: `${title}`,
@@ -278,6 +308,9 @@ function StudyLog() {
                   }}
                 >
                   <Btn
+                    id='name'
+                    type='file'
+                    onChange={handleSelect}
                     background={palette('PsBtn')}
                     color={palette('PsYellow')}
                     borderStyle='none'
@@ -304,14 +337,27 @@ function StudyLog() {
               <LogTitle>
                 활동 사진
                 <PlusSection>
-                  <Btn
-                    background={palette('PsBtn')}
-                    color={palette('PsYellow')}
-                    borderStyle='none'
-                    width='2rem'
-                    height='2rem'
-                    name='+'
-                  />
+                  <PlusSection>
+                    {fileIma && (
+                      <img
+                        alt='sample'
+                        id='sample'
+                        width='200px'
+                        height='200px'
+                        src={fileIma}
+                      />
+                    )}
+                    <PlusBtn>
+                      +
+                      <input
+                        hidden
+                        id='name'
+                        type='file'
+                        accept='image/*'
+                        onChange={handleSelect}
+                      />
+                    </PlusBtn>
+                  </PlusSection>
                 </PlusSection>
               </LogTitle>
             </LogBox>
