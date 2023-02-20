@@ -120,15 +120,20 @@ const Review = styled.div`
   -webkit-box-orient: vertical;
 `;
 
+const WrapRating = styled.div`
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+`;
 const StarRating = styled.div`
   /* border: 1px solid black; */
-  width: 100%;
+  width: 3.5rem;
   margin-bottom: 0.5rem;
 `;
 
 const Writer = styled.div`
   /* border: 1px solid black; */
-  margin-top: 1.9rem;
+  margin-top: 1.5rem;
   font-size: 0.9rem;
 
   overflow: hidden;
@@ -206,12 +211,15 @@ function ReviewList() {
                   </Review>
                   <LikeButton onClick={Like} />
                 </WrapTop>
-                <StarRating>
-                  난이도 <Rating readonly size={17} initialValue={0} />
-                </StarRating>
-                <StarRating>
-                  평점 <Rating readonly size={17} initialValue={0} />
-                </StarRating>
+                <WrapRating>
+                  <StarRating>난이도</StarRating>
+                  <Rating readonly size={17} initialValue={0} />
+                </WrapRating>
+                <WrapRating>
+                  <StarRating>평점</StarRating>
+                  <Rating readonly size={17} initialValue={0} />
+                </WrapRating>
+
                 <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
                 <PostDate>작성일 | 2022.02.10</PostDate>
               </WrapRight>
