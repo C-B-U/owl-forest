@@ -3,11 +3,10 @@ package com.cbu.backend.studyactivity;
 import com.cbu.backend.global.audit.AuditListener;
 import com.cbu.backend.global.audit.Auditable;
 import com.cbu.backend.global.audit.BaseTime;
+import com.cbu.backend.global.audit.SoftDeleteSupport;
 import com.cbu.backend.studygroup.StudyMember;
 
 import lombok.*;
-
-import org.hibernate.annotations.Where;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +15,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-@Where(clause = "deleted_at is null")
+@SoftDeleteSupport
 @EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyActivity implements Auditable {
@@ -56,7 +55,6 @@ public class StudyActivity implements Auditable {
         this.activityMembers = activityMembers;
         this.studyGroupId = studyGroupId;
         this.studyTime = studyTime;
-        this.baseTime = new BaseTime();
     }
 
     public void update(

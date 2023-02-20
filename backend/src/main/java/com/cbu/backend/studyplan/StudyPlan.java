@@ -4,15 +4,14 @@ import com.cbu.backend.global.audit.AuditListener;
 import com.cbu.backend.global.audit.Auditable;
 import com.cbu.backend.global.audit.BaseTime;
 
+import com.cbu.backend.global.audit.SoftDeleteSupport;
 import lombok.*;
-
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
-@Where(clause = "deleted_at is null")
+@SoftDeleteSupport
 @EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudyPlan implements Auditable {
@@ -34,7 +33,6 @@ public class StudyPlan implements Auditable {
         this.studyRule = studyRule;
         this.weekPlan = weekPlan;
         this.studyGroupId = studyGroupId;
-        this.baseTime = new BaseTime();
     }
 
     public void update(String title, String studyRule, String weekPlan) {

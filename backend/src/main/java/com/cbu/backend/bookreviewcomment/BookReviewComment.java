@@ -4,17 +4,16 @@ import com.cbu.backend.bookreview.BookReview;
 import com.cbu.backend.global.audit.AuditListener;
 import com.cbu.backend.global.audit.Auditable;
 import com.cbu.backend.global.audit.BaseTime;
+import com.cbu.backend.global.audit.SoftDeleteSupport;
 import com.cbu.backend.member.domain.Member;
 
 import lombok.*;
-
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
-@Where(clause = "deleted_at is null")
+@SoftDeleteSupport
 @EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BookReviewComment implements Auditable {
@@ -41,6 +40,5 @@ public class BookReviewComment implements Auditable {
         this.writer = writer;
         this.bookReview = bookReview;
         this.content = content;
-        this.baseTime = new BaseTime();
     }
 }

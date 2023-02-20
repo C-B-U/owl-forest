@@ -4,6 +4,7 @@ import com.cbu.backend.book.Book;
 import com.cbu.backend.global.audit.AuditListener;
 import com.cbu.backend.global.audit.Auditable;
 import com.cbu.backend.global.audit.BaseTime;
+import com.cbu.backend.global.audit.SoftDeleteSupport;
 import com.cbu.backend.member.domain.Member;
 
 import lombok.AccessLevel;
@@ -11,15 +12,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import org.hibernate.annotations.Where;
-
 import java.time.LocalDate;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
-@Where(clause = "deleted_at is null")
+@SoftDeleteSupport
 @EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BookBorrow implements Auditable {
@@ -44,6 +43,5 @@ public class BookBorrow implements Auditable {
         this.writer = writer;
         this.location = location;
         this.endDate = endDate;
-        this.baseTime = new BaseTime();
     }
 }

@@ -4,15 +4,14 @@ import com.cbu.backend.global.audit.AuditListener;
 import com.cbu.backend.global.audit.Auditable;
 import com.cbu.backend.global.audit.BaseTime;
 
+import com.cbu.backend.global.audit.SoftDeleteSupport;
 import lombok.*;
-
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
-@Where(clause = "deleted_at is null")
+@SoftDeleteSupport
 @EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class File implements Auditable {
@@ -42,7 +41,6 @@ public class File implements Auditable {
         this.contentType = contentType;
         this.fileSize = fileSize;
         this.storageType = storageType;
-        this.baseTime = new BaseTime();
     }
 
     public void updateUri() {
