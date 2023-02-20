@@ -1,12 +1,12 @@
 package com.cbu.backend.studyactivity;
 
+import com.cbu.backend.config.audit.AuditListener;
+import com.cbu.backend.config.audit.Auditable;
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.studygroup.StudyMember;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Where;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,8 +15,10 @@ import javax.persistence.*;
 
 @Getter
 @Entity
+@Where(clause = "deleted_at is null")
+@EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StudyActivity {
+public class StudyActivity implements Auditable {
     @Id @GeneratedValue private Long id;
 
     @Column(nullable = false)
@@ -29,7 +31,10 @@ public class StudyActivity {
     @OneToMany private Set<StudyMember> activityMembers = new HashSet<>();
     private Long studyGroupId;
     @Embedded private StudyTime studyTime;
-    @Embedded private BaseTime baseTime;
+    @Setter
+    @Embedded
+    @Column(nullable = false)
+    private BaseTime baseTime;
 
     @Builder
     public StudyActivity(

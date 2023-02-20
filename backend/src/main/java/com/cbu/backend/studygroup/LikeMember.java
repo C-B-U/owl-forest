@@ -1,19 +1,21 @@
 package com.cbu.backend.studygroup;
 
+import com.cbu.backend.config.audit.AuditListener;
+import com.cbu.backend.config.audit.Auditable;
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.domain.Member;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
+@Where(clause = "deleted_at is null")
+@EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class LikeMember {
+public class LikeMember implements Auditable {
     @Id @GeneratedValue private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -23,7 +25,10 @@ public class LikeMember {
     @JoinColumn(name = "study_group_id")
     private StudyGroup studyGroup;
 
-    @Embedded private BaseTime baseTime;
+    @Setter
+    @Embedded
+    @Column(nullable = false)
+    private BaseTime baseTime;
 
     @Builder
     public LikeMember(Member member, StudyGroup studyGroup) {

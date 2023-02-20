@@ -1,20 +1,22 @@
 package com.cbu.backend.bookreview;
 
 import com.cbu.backend.book.Book;
+import com.cbu.backend.config.audit.AuditListener;
+import com.cbu.backend.config.audit.Auditable;
 import com.cbu.backend.global.BaseTime;
 import com.cbu.backend.member.domain.Member;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
+@Where(clause = "deleted_at is null")
+@EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BookReview {
+public class BookReview implements Auditable {
     @Id @GeneratedValue private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -39,6 +41,8 @@ public class BookReview {
     @Column(nullable = false)
     private Integer difficulty;
 
+    @Setter
+    @Embedded
     @Column(nullable = false)
     private BaseTime baseTime;
 
@@ -56,6 +60,7 @@ public class BookReview {
         this.book = book;
         this.score = score;
         this.difficulty = difficulty;
+        this.baseTime = new BaseTime();
     }
 
     public void update(String title, String content, Book book, Integer score, Integer difficulty) {

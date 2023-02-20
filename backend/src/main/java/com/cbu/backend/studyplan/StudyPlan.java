@@ -1,23 +1,28 @@
 package com.cbu.backend.studyplan;
 
+import com.cbu.backend.config.audit.AuditListener;
+import com.cbu.backend.config.audit.Auditable;
 import com.cbu.backend.global.BaseTime;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
+@Where(clause = "deleted_at is null")
+@EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StudyPlan {
+public class StudyPlan implements Auditable {
     @Id @GeneratedValue private Long id;
     private String title;
     @Lob private String studyRule;
     @Lob private String weekPlan;
-    @Embedded private BaseTime baseTime;
+    @Setter
+    @Embedded
+    @Column(nullable = false)
+    private BaseTime baseTime;
     private Long studyGroupId;
 
     @Builder
