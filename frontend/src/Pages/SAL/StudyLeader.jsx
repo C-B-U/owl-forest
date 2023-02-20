@@ -104,18 +104,35 @@ function StudyLeader() {
   const baseurl = process.env.REACT_APP_BASE_URL;
   const [profile, setProfile] = useState();
   const [boxInput, setBoxInput] = useState([]);
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
+  const [members, setMembers] = useState();
 
   useEffect(() => {
-    axios.get(`${baseurl}`).then((response) => {
+    axios.get(`${baseurl}/study-groups/${1}`).then((response) => {
       setProfile(response.data);
+      setBoxInput(response.data);
+      setName(response.data.name);
+      setDescription(response.data.description);
+      setMembers(response.data.members);
     });
   }, []);
+
+  const deleteStudyActivitie = () => {
+    axios
+      .delete(`${baseurl}/study-activities/${1}`)
+      .then(alert('삭제되었습니다.'));
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <Header />
       <MainWrap>
-        <StudyLeaderProfile />
+        <StudyLeaderProfile
+          name={name}
+          description={description}
+          members={members}
+        />
         <RightMainWrap>
           <HeaderWrap>
             <HeaderTitle>활동 일지</HeaderTitle>
@@ -136,6 +153,7 @@ function StudyLeader() {
                   width='7rem'
                   height='3rem'
                   name='일지 삭제'
+                  onClick={deleteStudyActivitie}
                 />
               </BtnItems>
               <BtnItems>
