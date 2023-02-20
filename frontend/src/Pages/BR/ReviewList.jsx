@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
+import { Rating } from 'react-simple-star-rating';
 import axios from 'axios';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
@@ -170,9 +171,16 @@ function ReviewList() {
     }
   };
 
-  // const getReview = useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_BASE_URL}/book-reviews`);
-  // });
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/book-reviews`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div>
@@ -198,8 +206,12 @@ function ReviewList() {
                   </Review>
                   <LikeButton onClick={Like} />
                 </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
+                <StarRating>
+                  난이도 <Rating readonly size={17} initialValue={0} />
+                </StarRating>
+                <StarRating>
+                  평점 <Rating readonly size={17} initialValue={0} />
+                </StarRating>
                 <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
                 <PostDate>작성일 | 2022.02.10</PostDate>
               </WrapRight>

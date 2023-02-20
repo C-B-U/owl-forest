@@ -319,13 +319,14 @@ function BookReg() {
   // 게시하기 기능
   const onClickPost = () => {
     const data = {
-      id: 61,
       book: {
-        id: 88,
-        title: 'test_6388eac6ecce',
-        author: 'test_d88b6fd8b436',
-        publisher: 'test_cf39e4156afb',
-        imageUrl: 'test_f5f474eb74f7',
+        isbn: 'test_b37968fbc666',
+        title: 'test_cb4430e58f78',
+        author: 'test_2f4a5a90f893',
+        publisher: 'test_313ae44e8f14',
+        imageUrl: 'test_8325e39bbe4e',
+        price: 3,
+        publishAt: '2028-08-06',
       },
       writer: {
         id: '3fe36e5e-7090-4653-b086-039a67ae9fa0',
@@ -335,10 +336,10 @@ function BookReg() {
       endDate: '2025-03-22',
     };
     console.log(data);
-    // axios.post();
+    axios.post(`${process.env.REACT_APP_BASE_URL}/book-borrow`, data);
   };
 
-  console.log(startDate);
+  // console.log(startDate);
 
   return (
     <div>
@@ -417,16 +418,29 @@ function BookReg() {
                           locale={ko}
                           dateFormat='yyyy일 MM월 dd일'
                           selected={startDate}
-                          onChange={(date) => setStartDate(date)}
+                          onChange={(date) => {
+                            // const yyyy = date.substring(0, 4);
+                            // const mm = Number(date.substring(5, 7)) - 1;
+                            // const dd = date.substring(8, 10);
+                            // const newdate = `${yyyy}-${mm}-${dd}`;
+                            // console.log(date.toISOString());
+
+                            // date = date
+                            //   .toISOString()
+                            //   .toString()
+                            //   .slice(0, 10);
+                            setStartDate(date);
+                            // console.log(date);
+                          }}
                         />
                       </div>
                     </WrapReturnAlert>
                     <WrapReturnAlert>
-                      <Location>만날 위치</Location>
+                      <Location>만날 장소</Location>
                       <Input
                         width='23rem'
                         height='2.5rem'
-                        placeholder='만날 위치를 적어주세요'
+                        placeholder='만날 장소를 적어주세요'
                         onChange={onChangeLocation}
                       />
                     </WrapReturnAlert>

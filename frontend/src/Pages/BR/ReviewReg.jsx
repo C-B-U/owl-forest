@@ -146,14 +146,14 @@ function ReviewReg() {
     axios
       .post(`${process.env.REACT_APP_BASE_URL}/book-reviews`, review)
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         alert('리뷰가 등록되었습니다.');
         navigate(`/ReviewList`);
       })
       .catch((error) => {
-        // console.log(error);
-        alert('리뷰가 등록에 실패했습니다');
-        navigate(`/ReviewList`);
+        console.log(error);
+        alert('리뷰 등록에 실패했습니다');
+        // navigate(`/ReviewList`);
       });
   };
 
