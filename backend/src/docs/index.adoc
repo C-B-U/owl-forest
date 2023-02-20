@@ -9,7 +9,9 @@
 
 include::book-review.adoc[]
 include::book-review-comment.adoc[]
+include::book-borrow.adoc[]
 include::member.adoc[]
 include::study-group.adoc[]
 include::study-activity.adoc[]
 include::study-plan.adoc[]
+include::file.adoc[]
