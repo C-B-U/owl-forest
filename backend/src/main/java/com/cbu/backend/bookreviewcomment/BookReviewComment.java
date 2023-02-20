@@ -1,9 +1,9 @@
 package com.cbu.backend.bookreviewcomment;
 
 import com.cbu.backend.bookreview.BookReview;
-import com.cbu.backend.config.audit.AuditListener;
-import com.cbu.backend.config.audit.Auditable;
-import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.global.audit.AuditListener;
+import com.cbu.backend.global.audit.Auditable;
+import com.cbu.backend.global.audit.BaseTime;
 import com.cbu.backend.member.domain.Member;
 
 import lombok.*;

@@ -1,6 +1,4 @@
-package com.cbu.backend.config.audit;
-
-import com.cbu.backend.global.BaseTime;
+package com.cbu.backend.global.audit;
 
 public interface Auditable {
     BaseTime getBaseTime();

@@ -1,4 +1,4 @@
-package com.cbu.backend.global;
+package com.cbu.backend.global.audit;
 
 import lombok.Getter;
 import lombok.Setter;

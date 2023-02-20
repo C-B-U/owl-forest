@@ -1,8 +1,8 @@
 package com.cbu.backend.file;
 
-import com.cbu.backend.config.audit.AuditListener;
-import com.cbu.backend.config.audit.Auditable;
-import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.global.audit.AuditListener;
+import com.cbu.backend.global.audit.Auditable;
+import com.cbu.backend.global.audit.BaseTime;
 
 import lombok.*;
 
