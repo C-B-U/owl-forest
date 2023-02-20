@@ -224,6 +224,16 @@ function StudyLog() {
           <Scroll>
             <LogBox>
               <LogTitle>
+                제목
+                <LogInput
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                >
+                  비대면 zoom
+                </LogInput>
+              </LogTitle>
+              <LogTitle>
                 스터디 차수
                 <SelectBox>
                   <option>1</option>
