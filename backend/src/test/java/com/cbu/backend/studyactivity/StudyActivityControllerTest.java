@@ -12,6 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.cbu.backend.global.IdResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityIdResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 import com.cbu.backend.support.docs.RestDocumentTest;
@@ -36,7 +37,7 @@ class StudyActivityControllerTest extends RestDocumentTest {
     @DisplayName("스터디 일지 생성")
     void saveStudyActivity() throws Exception {
         // given
-        StudyActivityIdResponse expected = new StudyActivityIdResponse(1L);
+        IdResponse<Long> expected = new IdResponse<>(1L);
         given(studyActivityService.saveStudyActivity(any())).willReturn(expected);
 
         // when
@@ -93,7 +94,7 @@ class StudyActivityControllerTest extends RestDocumentTest {
     @DisplayName("스터디 일지 삭제")
     void deleteStudyActivity() throws Exception {
         // given
-        StudyActivityIdResponse expected = new StudyActivityIdResponse(1L);
+        IdResponse<Long> expected = new IdResponse<>(1L);
         willDoNothing().given(studyActivityService).deleteStudyActivity(any());
 
         // when
