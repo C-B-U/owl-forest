@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookReviewQueryOption {
-    private String title = "";
-    private String content = "";
-    private String bookname = "";
-    private String writer = "";
+    private String title;
+    private String content;
+    private String bookname;
+    private String writer;
 }
