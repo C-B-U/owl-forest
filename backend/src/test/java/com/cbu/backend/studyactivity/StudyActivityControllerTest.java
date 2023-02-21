@@ -13,7 +13,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.cbu.backend.global.IdResponse;
-import com.cbu.backend.studyactivity.dto.StudyActivityIdResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 import com.cbu.backend.support.docs.RestDocumentTest;
 import com.cbu.backend.support.fixture.studyactivity.dto.StudyActivityRequestFixture;
