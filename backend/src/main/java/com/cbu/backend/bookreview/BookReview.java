@@ -1,20 +1,22 @@
 package com.cbu.backend.bookreview;
 
 import com.cbu.backend.book.Book;
-import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.global.audit.AuditListener;
+import com.cbu.backend.global.audit.Auditable;
+import com.cbu.backend.global.audit.BaseTime;
+import com.cbu.backend.global.audit.SoftDeleteSupport;
 import com.cbu.backend.member.domain.Member;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
+@SoftDeleteSupport
+@EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BookReview {
+public class BookReview implements Auditable {
     @Id @GeneratedValue private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -39,6 +41,8 @@ public class BookReview {
     @Column(nullable = false)
     private Integer difficulty;
 
+    @Setter
+    @Embedded
     @Column(nullable = false)
     private BaseTime baseTime;
 

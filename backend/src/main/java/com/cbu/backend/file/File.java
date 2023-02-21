@@ -1,21 +1,30 @@
 package com.cbu.backend.file;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.cbu.backend.global.audit.AuditListener;
+import com.cbu.backend.global.audit.Auditable;
+import com.cbu.backend.global.audit.BaseTime;
+import com.cbu.backend.global.audit.SoftDeleteSupport;
+
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
+@SoftDeleteSupport
+@EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class File {
+public class File implements Auditable {
     @Id @GeneratedValue private Long id;
     private String filename;
     private String downloadUri;
     private String contentType;
     private Long fileSize;
+
+    @Setter
+    @Embedded
+    @Column(nullable = false)
+    private BaseTime baseTime;
 
     @Enumerated(EnumType.STRING)
     private StorageType storageType;
