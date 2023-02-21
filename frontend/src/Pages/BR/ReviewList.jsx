@@ -164,9 +164,9 @@ function ReviewList() {
   const [background, setBackground] = useState({ EmptyHeart });
   const [reviews, setReviews] = useState();
 
-  const Like = () => {
-    console.log(background);
-    if (background === { EmptyHeart }) {
+  const onClickLike = (e) => {
+    console.log(e.target.value);
+    if (e.target.value === 'empty') {
       // setLike(false);
       console.log('빨간 하트');
       setBackground({ FullHeart });
@@ -182,8 +182,8 @@ function ReviewList() {
       .then((res) => {
         console.log(res);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
@@ -209,11 +209,11 @@ function ReviewList() {
                   <Review>
                     우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
                   </Review>
-                  <LikeButton onClick={Like} />
+                  <LikeButton onClick={onClickLike} value='empty' />
                 </WrapTop>
                 <WrapRating>
                   <StarRating>난이도</StarRating>
-                  <Rating readonly size={17} initialValue={0} />
+                  <Rating readonly size={17} initialValue={2.3} />
                 </WrapRating>
                 <WrapRating>
                   <StarRating>평점</StarRating>
