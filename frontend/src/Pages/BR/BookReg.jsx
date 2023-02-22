@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { ko } from 'date-fns/esm/locale';
 import { palette } from 'styled-tools';
@@ -44,7 +45,7 @@ const WrapBookImage = styled.div`
   width: 15rem;
   height: 19rem;
   background-color: #ffffff;
-  background-image: url('https://shopping-phinf.pstatic.net/main_3248484/32484844663.20230131164114.jpg');
+  background-image: url(${(props) => props.backgroundImage});
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -59,6 +60,7 @@ const WrapRegister = styled.div`
   margin-left: 3rem;
 `;
 const WrapBookTitle = styled.div`
+  width: 38rem;
   margin-bottom: 1rem;
   font-weight: bold;
   font-size: 1.5rem;
@@ -255,60 +257,44 @@ const ReleaseDate = styled.div`
   text-align: center;
 `;
 
+const ImagePopup = styled.div``;
+const PricePopup = styled.div``;
+
 function BookReg() {
+  const navigate = useNavigate();
+
   // 팝업창 x 버튼 기능 구현
   const [isShown, setIsShown] = useState(false);
 
   // 달력 보이기
   const [startDate, setStartDate] = useState(new Date());
 
+  // 달력 값 받기
+  const [endDate, setEndDate] = useState();
+
   // 도서 검색 input 값 받기
   const [bookTitle, setBookTitle] = useState();
 
-  // api 값 저장
+  // book-external api 값 저장
   const [getBook, setGetBook] = useState([]);
 
+  // 장소 input 값 받기
   const [location, setLocation] = useState();
+
+  // 선택한 책 정보 받기
+  const [bookInfo, setBookInfo] = useState([]);
 
   // 팝업 열기
   const openPopup = () => {
-    console.log('open');
     setIsShown(true);
   };
 
   // 팝업 닫기
   const closePopup = () => {
-    console.log('close');
     setIsShown(false);
   };
 
-  const SearchBook = () => {
-    console.log('클릭', bookTitle);
-    const data = {
-      keyword: bookTitle,
-      page: 1,
-      pageSize: 20,
-    };
-    console.log(data);
-    if (!bookTitle) {
-      alert('키워드를 입력해 주세요.');
-    } else {
-      axios
-        .get(`${process.env.REACT_APP_BASE_URL}/externalbooks`, {
-          params: data,
-        })
-        .then((response) => {
-          console.log(response.data);
-          setGetBook(response.data);
-          // console.log('getBook : ', getBook);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
-
-  const onChange = (e) => {
+  const onChangeTitle = (e) => {
     setBookTitle(e.target.value);
   };
 
@@ -316,31 +302,77 @@ function BookReg() {
     setLocation(e.target.value);
   };
 
-  // 게시하기 기능
-  const onClickPost = () => {
+  // 팝업에서 책 제목 찾는 함수
+  const SearchBook = () => {
     const data = {
-      book: {
-        isbn: 'test_b37968fbc666',
-        title: 'test_cb4430e58f78',
-        author: 'test_2f4a5a90f893',
-        publisher: 'test_313ae44e8f14',
-        imageUrl: 'test_8325e39bbe4e',
-        price: 3,
-        publishAt: '2028-08-06',
-      },
-      writer: {
-        id: '3fe36e5e-7090-4653-b086-039a67ae9fa0',
-        name: 'test_d32aef135bfd',
-      },
-      location,
-      endDate: '2025-03-22',
+      keyword: bookTitle,
+      page: 1,
+      pageSize: 20,
     };
-    console.log(data);
-    axios.post(`${process.env.REACT_APP_BASE_URL}/book-borrow`, data);
+    if (!bookTitle) {
+      alert('키워드를 입력해 주세요.');
+    } else {
+      axios
+        .get(`${process.env.REACT_APP_BASE_URL}/externalbooks`, {
+          params: data,
+        })
+        .then((res) => {
+          console.log(res);
+          setGetBook(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
-  // console.log(startDate);
+  // 팝업 리스트에서 하나 클릭했을 때
+  const onClickBook = (e) => {
+    setBookInfo([
+      e.currentTarget.children[0].id, // isbn
+      e.currentTarget.children[0].innerText, // 제목
+      e.currentTarget.children[1].innerText, // 지은이
+      e.currentTarget.children[2].innerText, // 출판사
+      e.currentTarget.children[4].getAttribute('value'), // 이미지
+      e.currentTarget.children[3].innerText, // 출판일
+      e.currentTarget.children[5].getAttribute('value'), // 가격
+    ]);
+    console.log(bookInfo);
+    setIsShown(false);
+  };
 
+  // 게시하기 클릭했을 때
+  const onClickPost = () => {
+    if (!location) {
+      alert('장소를 입력해 주세요.');
+    } else {
+      const book = {
+        book: {
+          isbn: bookInfo[0],
+          title: bookInfo[1],
+          author: bookInfo[2],
+          publisher: bookInfo[3],
+          imageUrl: bookInfo[4],
+          price: Number(bookInfo[6]),
+          publishAt: bookInfo[5],
+        },
+        location,
+        endDate,
+      };
+      console.log(book);
+      axios
+        .post(`${process.env.REACT_APP_BASE_URL}/book-borrows`, book)
+        .then((res) => {
+          console.log(res);
+          alert('도서 등록에 성공했습니다!');
+          navigate('/BorrowList');
+        })
+        .catch((err) => {
+          console.log(err);
+          alert('도서 등록에 실패했습니다!');
+        });
+    }
+  };
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -368,18 +400,20 @@ function BookReg() {
                   height='3.2rem'
                   placeholder='키워드를 적어주세요.'
                   fontSize='1.2rem'
-                  onChange={onChange}
+                  onChange={onChangeTitle}
                 />
                 <WrapSearchIcon onClick={SearchBook} />
               </WrapSearchbar>
 
               <WrapList>
                 {getBook.map((book) => (
-                  <ListPopup key={book.isbn} onClick={onClickPost}>
-                    <TitlePopup>{book.title}</TitlePopup>
-                    <WriterPopup>{book.author}</WriterPopup>
+                  <ListPopup key={book.isbn} onClick={onClickBook}>
+                    <TitlePopup id={book.isbn}>{book.title}</TitlePopup>
+                    <WriterPopup>{book.author.replace('^', ', ')}</WriterPopup>
                     <PublisherPopup>{book.publisher}</PublisherPopup>
                     <ReleaseDate>{book.publishAt}</ReleaseDate>
+                    <ImagePopup value={book.imageUrl} />
+                    <PricePopup value={book.price} />
                   </ListPopup>
                 ))}
               </WrapList>
@@ -392,7 +426,7 @@ function BookReg() {
           <Wrap>
             <Title>도서 등록</Title>
             <WrapContent>
-              <WrapBookImage />
+              <WrapBookImage backgroundImage={bookInfo[4]} />
               <WrapBookSearch>
                 <Button
                   onClick={openPopup}
@@ -407,9 +441,9 @@ function BookReg() {
 
               <WrapRegister>
                 <WrapBookReturn>
-                  <WrapBookTitle>도서 제목</WrapBookTitle>
-                  <WrapBookDetail>작가</WrapBookDetail>
-                  <WrapBookDetail>출판사</WrapBookDetail>
+                  <WrapBookTitle>제목 : {bookInfo[1]}</WrapBookTitle>
+                  <WrapBookDetail>지은이 : {bookInfo[2]}</WrapBookDetail>
+                  <WrapBookDetail>출판사 : {bookInfo[3]}</WrapBookDetail>
                   <WrapWriteForm>
                     <WrapReturnAlert>
                       <Location>반납 마감일</Location>
@@ -419,18 +453,9 @@ function BookReg() {
                           dateFormat='yyyy일 MM월 dd일'
                           selected={startDate}
                           onChange={(date) => {
-                            // const yyyy = date.substring(0, 4);
-                            // const mm = Number(date.substring(5, 7)) - 1;
-                            // const dd = date.substring(8, 10);
-                            // const newdate = `${yyyy}-${mm}-${dd}`;
-                            // console.log(date.toISOString());
-
-                            // date = date
-                            //   .toISOString()
-                            //   .toString()
-                            //   .slice(0, 10);
+                            const newdate = date.toISOString().slice(0, 10);
+                            setEndDate(newdate);
                             setStartDate(date);
-                            // console.log(date);
                           }}
                         />
                       </div>
@@ -445,14 +470,7 @@ function BookReg() {
                       />
                     </WrapReturnAlert>
                   </WrapWriteForm>
-                  {/* <WrapReturnAlert>
-                    <Location>오픈 채팅 주소</Location>
-                    <Input
-                      width='23rem'
-                      height='2.5rem'
-                      placeholder='카카오 오픈 채팅 주소'
-                    />
-                  </WrapReturnAlert> */}
+
                   <WrapRegButton>
                     <Button
                       color='black'

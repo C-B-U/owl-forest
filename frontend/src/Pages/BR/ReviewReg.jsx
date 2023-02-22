@@ -140,9 +140,10 @@ function ReviewReg() {
       },
       title: oneLine.oneLineReview,
       content: detail.detailReview,
-      score: difficultRating,
-      difficulty: scoreRating,
+      score: scoreRating,
+      difficulty: difficultRating,
     };
+    console.log(review);
     axios
       .post(`${process.env.REACT_APP_BASE_URL}/book-reviews`, review)
       .then((res) => {

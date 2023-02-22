@@ -154,7 +154,7 @@ const LikeButton = styled.button`
   width: 1.5rem;
   height: 1.5rem;
   margin: -0.1rem 0rem auto auto;
-  background: no-repeat center url(${EmptyHeart});
+  background-image: url(${(props) => props.backgroundImage}) no-repeat center;
   background-size: 1.5rem;
   border: none;
 `;
@@ -166,14 +166,15 @@ function ReviewList() {
 
   const onClickLike = (e) => {
     console.log(e.target.value);
-    if (e.target.value === 'empty') {
-      // setLike(false);
-      console.log('빨간 하트');
-      setBackground({ FullHeart });
-    } else {
-      // setLike(true);
-      setBackground({ EmptyHeart });
-    }
+    setBackground(background === EmptyHeart ? FullHeart : EmptyHeart);
+    // console.log(e.target.value);
+    // if (e.target.value === 'empty') {
+    //   console.log('빨간 하트');
+    //   e.target.value = 'full';
+    // } else {
+    //   console.log('빈 하트');
+    //   e.target.value = 'empty';
+    // }
   };
 
   useEffect(() => {
@@ -209,7 +210,11 @@ function ReviewList() {
                   <Review>
                     우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
                   </Review>
-                  <LikeButton onClick={onClickLike} value='empty' />
+                  <LikeButton
+                    onClick={onClickLike}
+                    value='empty'
+                    backgroundImage={background}
+                  />
                 </WrapTop>
                 <WrapRating>
                   <StarRating>난이도</StarRating>
