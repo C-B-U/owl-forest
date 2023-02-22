@@ -109,7 +109,7 @@ function StudyLeader() {
   const [log, setLog] = useState([]);
 
   useEffect(() => {
-    axios.get(`${baseurl}/study-groups/${1}`).then((response) => {
+    axios.get(`/study-groups/${1}`).then((response) => {
       setName(response.data.name);
       setDescription(response.data.description);
       setMembers(response.data.members);
@@ -119,7 +119,7 @@ function StudyLeader() {
   useEffect(() => {
     axios
       .get(
-        `${baseurl}/study-groups?page=${0}&size=${20}&sort=numOfStudyActivity`
+        `/study-groups?page=${0}&size=${20}&sort=numOfStudyActivity`
       )
       .then((response) => {
         setLog(response.data);
@@ -128,7 +128,7 @@ function StudyLeader() {
 
   const deleteStudyActivitie = () => {
     axios
-      .delete(`${baseurl}/study-activities/${1}`)
+      .delete(`/study-activities/${1}`)
       .then(alert('삭제되었습니다.'));
   };
 
