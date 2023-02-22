@@ -19,6 +19,6 @@ public class StudyActivityResponse {
     private String assignment;
     private Integer week;
     private String place;
-    private StudyTime studyTime;
+    private StudyTimeResponse studyTime;
     private Set<ActivityMemberResponse> activityMembers;
 }
