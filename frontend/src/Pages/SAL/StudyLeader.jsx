@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
@@ -107,6 +108,7 @@ function StudyLeader() {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [members, setMembers] = useState();
+  const [log, setLog] = useState([]);
 
   useEffect(() => {
     axios.get(`${baseurl}/study-groups/${1}`).then((response) => {
@@ -118,10 +120,25 @@ function StudyLeader() {
     });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(
+        `${baseurl}/study-groups?page=${0}&size=${20}&sort=numOfStudyActivity`
+      )
+      .then((response) => {
+        setLog(response.data);
+      });
+  }, []);
+
   const deleteStudyActivitie = () => {
     axios
       .delete(`${baseurl}/study-activities/${1}`)
       .then(alert('삭제되었습니다.'));
+  };
+
+  const navigate = useNavigate();
+  const goToStudyActivityLog = () => {
+    navigate('/StudyLog');
   };
 
   return (
@@ -144,6 +161,7 @@ function StudyLeader() {
                   width='7rem'
                   height='3rem'
                   name='일지 수정'
+                  onClick={goToStudyActivityLog}
                 />
               </BtnItems>
               <BtnItems>
@@ -163,26 +181,30 @@ function StudyLeader() {
                   width='7rem'
                   height='3rem'
                   name='일지 생성'
+                  onClick={goToStudyActivityLog}
                 />
               </BtnItems>
             </BtnWrap>
           </HeaderWrap>
           <Scroll>
-            <StudyList>
-              <StudyName>1차</StudyName>
-              <StudyInput>
-                날짜 : 2022-9-27
-                <br />
-                <br />
-                시간 : 00:00 ~ 12:00
-                <br />
-                <br />
-                활동 장소 : 비대면 zoom
-                <br />
-                <br />
-                참여 인원 : 가나, 나다, 다라, 마바
-              </StudyInput>
-            </StudyList>
+            {log.map((log) => (
+              <StudyList>
+                <StudyName>{log.name}</StudyName>
+                <StudyInput>
+                  {log.studyTime}
+                  <br />
+                  <br />
+                  {log.studyTime}
+                  <br />
+                  <br />
+                  {log.place}
+                  <br />
+                  <br />
+                  {log.activityMembers}
+                  {/* {log.activityMembers.name} */}
+                </StudyInput>
+              </StudyList>
+            ))}
             <StudyList />
             <StudyList />
             <StudyList />
