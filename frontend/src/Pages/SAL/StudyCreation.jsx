@@ -123,7 +123,7 @@ function StudyCreation() {
 
   const handleSubmit = useEffect(() => {
     axios
-      .post(`${baseurl}/study-groups`, studyData, {
+      .post(`/study-groups`, studyData, {
         headers: {
           'Content-Type': 'application/json',
         },
