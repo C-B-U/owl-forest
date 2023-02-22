@@ -103,8 +103,6 @@ const Scroll = styled.div`
 
 function StudyLeader() {
   const baseurl = process.env.REACT_APP_BASE_URL;
-  const [profile, setProfile] = useState();
-  const [boxInput, setBoxInput] = useState([]);
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [members, setMembers] = useState();
@@ -112,8 +110,6 @@ function StudyLeader() {
 
   useEffect(() => {
     axios.get(`${baseurl}/study-groups/${1}`).then((response) => {
-      setProfile(response.data);
-      setBoxInput(response.data);
       setName(response.data.name);
       setDescription(response.data.description);
       setMembers(response.data.members);
