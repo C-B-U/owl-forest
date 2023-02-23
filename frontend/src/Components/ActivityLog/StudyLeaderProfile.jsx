@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { palette } from 'styled-tools';
 import Btn from '../Btn';
@@ -119,19 +120,50 @@ const BtnItems = styled.div`
   }
 `;
 
-function StudyLeaderProfile() {
+function StudyLeaderProfile({ name, description, members }) {
+  const baseurl = process.env.REACT_APP_BASE_URL;
+
+  const canSubmit = useCallback(
+    () => name !== '' && description !== '',
+    [name, description, members]
+  );
+
+  const handleModification = useEffect(() => {
+    // 수정할 데이터 넣어야 함
+    axios
+      .put(`${baseurl}/study-groups/${1}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [canSubmit]);
+
+  const deleteStudy = () => {
+    axios
+      .delete(`${baseurl}/study-groups/${1}`)
+      .then(alert('스터디가 삭제되었습니다.'));
+  };
+
   return (
     <div>
       <Pf>
-        <StudyTitle>스터디 명</StudyTitle>
+        <StudyTitle>{name}</StudyTitle>
         <StudyOutline>스터디 개요</StudyOutline>
-        <OutlineWrap>이러한 스터디입니다.</OutlineWrap>
+        <OutlineWrap>{description}</OutlineWrap>
         <CrewTitle>부원</CrewTitle>
         <CrewWrap>
-          <Crew>
-            <CrewIcon />
-            <CrewName>부원1</CrewName>
-          </Crew>
+          {/* {members.map((member) => (
+            <Crew>
+              <CrewIcon />
+              <CrewName>{member.name}</CrewName>
+            </Crew>
+          ))} */}
           <Crew>
             <CrewIcon />
             <CrewName>부원2</CrewName>
@@ -143,13 +175,25 @@ function StudyLeaderProfile() {
         </CrewWrap>
         <BtnWrap>
           <BtnItems>
-            <Btn
-              background={palette('PsWhite')}
-              color={palette('PsPurple')}
-              width='13rem'
-              height='3rem'
-              name='스터디 수정'
-            />
+            {/* 테스트 필요 */}
+            {canSubmit() ? (
+              <Btn
+                background={palette('PsWhite')}
+                color={palette('PsPurple')}
+                width='13rem'
+                height='3rem'
+                name='스터디 수정'
+                onClick={handleModification}
+              />
+            ) : (
+              <Btn
+                background={palette('PsWhite')}
+                color={palette('PsPurple')}
+                width='13rem'
+                height='3rem'
+                name='스터디 수정'
+              />
+            )}
           </BtnItems>
           <BtnItems>
             <Btn
@@ -167,6 +211,7 @@ function StudyLeaderProfile() {
               width='13rem'
               height='3rem'
               name='스터디 삭제'
+              onClick={deleteStudy}
             />
           </BtnItems>
         </BtnWrap>
