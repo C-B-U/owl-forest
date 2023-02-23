@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// 데이터 서버로 보내기 위해 submit으로 타입 변경 -> 에러로 다시 button 타입으로 변경
 export const BtnStyle = styled.button`
   //export 추가해서 다른 페이지에서 작업할 때 덮어쓰기 할 수 있게 추가됨.
   font-size: 1rem;
   font-family: 'Noto Sans KR', sans-serif;
   text-align: center;
+  cursor: pointer;
   border-radius: ${(props) => props.borderRadius};
   border-style: ${(props) => props.borderStyle};
   color: ${(props) => props.color};
