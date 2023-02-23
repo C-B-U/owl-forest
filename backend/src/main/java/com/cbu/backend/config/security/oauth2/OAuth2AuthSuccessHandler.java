@@ -1,16 +1,14 @@
 package com.cbu.backend.config.security.oauth2;
 
 import com.cbu.backend.config.security.jwt.JwtSetupService;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * OAuth2 사용지 인증 성공시 진행하는 Handler
@@ -36,6 +34,7 @@ public class OAuth2AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
         jwtSetupService.addJwtTokensInCookie(response, loginUser);
-        response.sendRedirect(redirectUrl);
+        getRedirectStrategy().sendRedirect(request, response, redirectUrl);
+
     }
 }
