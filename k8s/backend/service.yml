@@ -5,8 +5,10 @@ metadata:
 spec:
   ports:
     - port: 8080
+      targetPort: 8080
       protocol: TCP
   selector:
     app: owl-forest-backend
     component: owl-forest-backend
     tier: back
+  clusterIP: None
