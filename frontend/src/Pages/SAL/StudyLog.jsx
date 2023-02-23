@@ -222,7 +222,7 @@ function StudyLog() {
 
   const handleSubmit = useEffect(() => {
     axios
-      .post(`${baseurl}/study-activities/1`, {
+      .post(`study-activities/1`, {
         studyData,
       })
       .then((response) => {
