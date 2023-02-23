@@ -40,7 +40,7 @@ public class RequestParamArgumentResolver implements HandlerMethodArgumentResolv
         return mapper.readValue(json, methodParameter.getParameterType());
     }
 
-    private String qs2json(String a) throws UnsupportedEncodingException {
+    private String qs2json(String a) {
         if (a == null) {
             return "{}";
         }
