@@ -1,6 +1,6 @@
 package com.cbu.backend.studygroup;
 
-import com.cbu.backend.studygroup.dto.StudyGroupIdResponse;
+import com.cbu.backend.global.IdResponse;
 import com.cbu.backend.studygroup.dto.StudyGroupRequest;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 
@@ -22,7 +22,7 @@ public class StudyGroupController {
     private final StudyGroupService studyGroupService;
 
     @PostMapping
-    public ResponseEntity<StudyGroupIdResponse> saveStudyGroup(
+    public ResponseEntity<IdResponse<Long>> saveStudyGroup(
             @RequestBody StudyGroupRequest studyGroupRequest) {
         return ResponseEntity.ok(studyGroupService.saveStudyGroup(studyGroupRequest));
     }

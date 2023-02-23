@@ -6,7 +6,7 @@
 
 == Study Activity
 === 스터디 일지 생성
-operation::save study activity[snippets='http-request,http-response']
+operation::create study activity[snippets='http-request,http-response']
 
 === 스터디 일지 수정
 operation::update study activity[snippets='http-request,http-response']

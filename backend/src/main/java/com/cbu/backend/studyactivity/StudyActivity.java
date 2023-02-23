@@ -1,12 +1,12 @@
 package com.cbu.backend.studyactivity;
 
-import com.cbu.backend.global.BaseTime;
+import com.cbu.backend.global.audit.AuditListener;
+import com.cbu.backend.global.audit.Auditable;
+import com.cbu.backend.global.audit.BaseTime;
+import com.cbu.backend.global.audit.SoftDeleteSupport;
 import com.cbu.backend.studygroup.StudyMember;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,8 +15,10 @@ import javax.persistence.*;
 
 @Getter
 @Entity
+@SoftDeleteSupport
+@EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StudyActivity {
+public class StudyActivity implements Auditable {
     @Id @GeneratedValue private Long id;
 
     @Column(nullable = false)
@@ -29,7 +31,11 @@ public class StudyActivity {
     @OneToMany private Set<StudyMember> activityMembers = new HashSet<>();
     private Long studyGroupId;
     @Embedded private StudyTime studyTime;
-    @Embedded private BaseTime baseTime;
+
+    @Setter
+    @Embedded
+    @Column(nullable = false)
+    private BaseTime baseTime;
 
     @Builder
     public StudyActivity(
@@ -49,7 +55,6 @@ public class StudyActivity {
         this.activityMembers = activityMembers;
         this.studyGroupId = studyGroupId;
         this.studyTime = studyTime;
-        this.baseTime = new BaseTime();
     }
 
     public void update(

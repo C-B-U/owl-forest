@@ -8,7 +8,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/owl_forest?serverTimezone=Asia/Seoul
 
-
   jpa:
     show-sql: true
     hibernate:
@@ -28,6 +27,12 @@ spring:
   redis:
     host: localhost
     port: 6379
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      location: src/main/resources/files
 
   security:
     oauth2:
@@ -76,3 +81,22 @@ client:
 
 national-library:
   key: f8073fe106514559df549dbadbecab35f4f01a7dbb60fd87665d37187d841fdd
+
+cloud:
+  aws:
+    s3:
+      bucket: bidbid
+      dir: /image
+      region:
+        static: ap-northeast-2
+      default-path: images
+      uri: https://bidbid.s3.ap-northeast-2.amazonaws.com/
+
+    credentials:
+      access-key: ${S3_ACCESS_KEY}
+      secret-key: ${S3_SECRET_KEY}
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false

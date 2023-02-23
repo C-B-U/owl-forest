@@ -1,0 +1,16 @@
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+
+
+== Book Borrow
+=== 책 대여 생성
+operation::create book borrow[snippets='http-request,http-response']
+
+=== 책 대여 목록 조회
+operation::find all book borrow[snippets='http-request,http-response']
+
+=== 책 이름이 포함되는 책 대여 목록 조회
+operation::find all book borrow by book name[snippets='http-request,http-response']

@@ -1,6 +1,6 @@
 package com.cbu.backend.studyplan;
 
-import com.cbu.backend.studyplan.dto.StudyPlanIdResponse;
+import com.cbu.backend.global.IdResponse;
 import com.cbu.backend.studyplan.dto.StudyPlanRequest;
 import com.cbu.backend.studyplan.dto.StudyPlanResponse;
 
@@ -18,9 +18,9 @@ public class StudyPlanService {
     private final StudyPlanMapper studyPlanMapper;
     private final StudyPlanRepository studyPlanRepository;
 
-    public StudyPlanIdResponse saveStudyPlan(StudyPlanRequest request) {
+    public IdResponse<Long> saveStudyPlan(StudyPlanRequest request) {
         Long id = studyPlanRepository.save(studyPlanMapper.toEntity(request)).getId();
-        return new StudyPlanIdResponse(id);
+        return new IdResponse<>(id);
     }
 
     @Transactional

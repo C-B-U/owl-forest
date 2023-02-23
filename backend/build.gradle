@@ -48,6 +48,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 
     implementation 'org.mapstruct:mapstruct:1.5.1.Final'
     implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
@@ -104,7 +105,7 @@ bootJar {
 
 asciidoctor {
     inputs.dir snippetsDir
-    configurations 'asciidoctorExt'
+    //configurations 'asciidoctorExt'
     dependsOn test
 }
 

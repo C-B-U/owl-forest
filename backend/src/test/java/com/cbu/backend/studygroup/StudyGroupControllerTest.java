@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.cbu.backend.studygroup.dto.StudyGroupIdResponse;
+import com.cbu.backend.global.IdResponse;
 import com.cbu.backend.studygroup.dto.StudyGroupResponse;
 import com.cbu.backend.support.docs.RestDocumentTest;
 import com.cbu.backend.support.fixture.studygroup.dto.StudyGroupRequestFixture;
@@ -36,7 +36,7 @@ class StudyGroupControllerTest extends RestDocumentTest {
     @DisplayName("스터디 그룹 생성")
     void saveStudyGroup() throws Exception {
         // given
-        StudyGroupIdResponse expected = new StudyGroupIdResponse(1L);
+        IdResponse<Long> expected = new IdResponse<>(1L);
         given(studyGroupService.saveStudyGroup(any())).willReturn(expected);
 
         // when
