@@ -81,8 +81,8 @@ cloud:
       uri: https://bidbid.s3.ap-northeast-2.amazonaws.com/
 
     credentials:
-      access-key: ${S3_ACCESS_KEY}
-      secret-key: ${S3_SECRET_KEY}
+      access-key: 12341234
+      secret-key: 12341234
     region:
       static: ap-northeast-2
       auto: false

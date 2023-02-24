@@ -28,9 +28,7 @@ public interface StudyActivityMapper {
     @Mapping(target = "name", source = "studyParticipant.member.name")
     ActivityMemberResponse map(StudyMember studyParticipant);
 
-    @Mapping(target = "startDate", expression = "java(studyTime.getStartTime().toLocalDate())")
-    @Mapping(target = "startTime", expression = "java(studyTime.getStartTime().toLocalTime())")
-    @Mapping(target = "endDate", expression = "java(studyTime.getEndTime().toLocalDate())")
-    @Mapping(target = "endTime", expression = "java(studyTime.getEndTime().toLocalTime())")
-    StudyTimeResponse map(StudyTime studyTime);
+    default StudyTimeResponse map(StudyTime studyTime) {
+        return new StudyTimeResponse(studyTime);
+    }
 }

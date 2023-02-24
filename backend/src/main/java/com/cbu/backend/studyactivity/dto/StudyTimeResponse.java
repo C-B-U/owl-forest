@@ -1,5 +1,6 @@
 package com.cbu.backend.studyactivity.dto;
 
+import com.cbu.backend.studyactivity.StudyTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,4 +18,11 @@ public class StudyTimeResponse {
     private LocalTime startTime;
     private LocalDate endDate;
     private LocalTime endTime;
+
+    public StudyTimeResponse(StudyTime studyTime) {
+        startDate = studyTime.getStartTime().toLocalDate();
+        startTime = studyTime.getStartTime().toLocalTime();
+        endDate = studyTime.getEndTime().toLocalDate();
+        endTime = studyTime.getEndTime().toLocalTime();
+    }
 }
