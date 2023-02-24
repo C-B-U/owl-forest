@@ -1,7 +1,9 @@
 /* eslint-disable camelcase */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
+import { Rating } from 'react-simple-star-rating';
+import axios from 'axios';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import Search from '../../Components/Search';
@@ -118,15 +120,20 @@ const Review = styled.div`
   -webkit-box-orient: vertical;
 `;
 
+const WrapRating = styled.div`
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+`;
 const StarRating = styled.div`
   /* border: 1px solid black; */
-  width: 100%;
+  width: 3.5rem;
   margin-bottom: 0.5rem;
 `;
 
 const Writer = styled.div`
   /* border: 1px solid black; */
-  margin-top: 1.9rem;
+  margin-top: 1.5rem;
   font-size: 0.9rem;
 
   overflow: hidden;
@@ -147,7 +154,7 @@ const LikeButton = styled.button`
   width: 1.5rem;
   height: 1.5rem;
   margin: -0.1rem 0rem auto auto;
-  background: no-repeat center url(${EmptyHeart});
+  background-image: url(${(props) => props.backgroundImage}) no-repeat center;
   background-size: 1.5rem;
   border: none;
 `;
@@ -155,17 +162,34 @@ const LikeButton = styled.button`
 function ReviewList() {
   // const [like, setLike] = useState(false);
   const [background, setBackground] = useState({ EmptyHeart });
-  const Like = () => {
-    console.log(background);
-    if (background === { EmptyHeart }) {
-      // setLike(false);
-      console.log('빨간 하트');
-      setBackground({ FullHeart });
-    } else {
-      // setLike(true);
-      setBackground({ EmptyHeart });
-    }
+  const [reviews, setReviews] = useState();
+
+  const onClickLike = (e) => {
+    console.log(e.target.value);
+    setBackground(
+      background === { EmptyHeart } ? { FullHeart } : { EmptyHeart }
+    );
+    // console.log(e.target.value);
+    // if (e.target.value === 'empty') {
+    //   console.log('빨간 하트');
+    //   e.target.value = 'full';
+    // } else {
+    //   console.log('빈 하트');
+    //   e.target.value = 'empty';
+    // }
   };
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/book-reviews`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -188,220 +212,21 @@ function ReviewList() {
                   <Review>
                     우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
                   </Review>
-                  <LikeButton onClick={Like} />
+                  <LikeButton
+                    onClick={onClickLike}
+                    value='empty'
+                    backgroundImage={background}
+                  />
                 </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
+                <WrapRating>
+                  <StarRating>난이도</StarRating>
+                  <Rating readonly size={17} initialValue={2.3} />
+                </WrapRating>
+                <WrapRating>
+                  <StarRating>평점</StarRating>
+                  <Rating readonly size={17} initialValue={0} />
+                </WrapRating>
 
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
-
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
-
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
-
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
-
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
-
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
-
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
-
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
-
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
-                <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
-                <PostDate>작성일 | 2022.02.10</PostDate>
-              </WrapRight>
-            </WrapContent>
-
-            <WrapContent>
-              <WrapLeft>
-                <WrapImage />
-                <BookTitle>
-                  유닉스 이론과 실습 어쩌구 저쩌구 테스트테슽스
-                </BookTitle>
-              </WrapLeft>
-              <WrapRight>
-                <WrapTop>
-                  <Review>
-                    우헤헤몇글자까지가능하려나요오오오테스트테스트ㅁㄴㅇㄹㅁㄴㅇㄹ
-                  </Review>
-                  <LikeButton />
-                </WrapTop>
-                <StarRating>난이도 ⭐⭐⭐⭐⭐</StarRating>
-                <StarRating>평점 ⭐⭐⭐⭐⭐</StarRating>
                 <Writer>작성자 | 인포메이션djdjdjddjdjdj</Writer>
                 <PostDate>작성일 | 2022.02.10</PostDate>
               </WrapRight>
