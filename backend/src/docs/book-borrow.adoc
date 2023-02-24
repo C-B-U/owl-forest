@@ -14,3 +14,15 @@ operation::find all book borrow[snippets='http-request,http-response']
 
 === 책 이름이 포함되는 책 대여 목록 조회
 operation::find all book borrow by book name[snippets='http-request,http-response']
+
+=== 책 대여 신청
+operation::borrow book[snippets='http-request,http-response']
+
+=== 책 반납
+operation::return book[snippets='http-request,http-response']
+
+=== 내가 borrow한 도서 대여 목록 조회
+operation::find all my borrow[snippets='http-request,http-response']
+
+=== 내가 lend한 도서 목록 조회
+operation::find all my lend[snippets='http-request,http-response']

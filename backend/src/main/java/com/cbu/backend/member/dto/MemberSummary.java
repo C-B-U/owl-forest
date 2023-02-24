@@ -1,15 +1,13 @@
-package com.cbu.backend.bookreviewcomment.dto;
+package com.cbu.backend.member.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.util.UUID;
 
 @Getter
-@Builder
 @AllArgsConstructor
-public class Writer {
+public class MemberSummary {
     private UUID id;
     private String name;
 }
