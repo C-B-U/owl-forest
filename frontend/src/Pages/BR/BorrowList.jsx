@@ -90,6 +90,10 @@ const BookImage = styled.div`
   width: 11rem;
   height: 15rem;
   background-color: white;
+  background-image: url(${(props) => props.backgroundImage});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 `; // 책 이미지
 
 const BookName = styled.div`
@@ -99,18 +103,22 @@ const BookName = styled.div`
 
 const BookInfos = styled.div`
   margin-top: 0.5rem;
+  margin-bottom: 1rem;
 `; // 책정보 저자 | 출판사
 
 const WrapStarScore = styled.div`
-  width: 100%;
-  padding: 0.5rem 0rem;
+  /* border: 1px solid black; */
+  /* width: 10rem; */
+  /* padding: 0.5rem 0rem; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 `;
 
 const StarScore = styled.div`
+  /* border: 1px solid black; */
   width: 3rem;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
+  margin-bottom: 0.5rem;
 `;
 
 const Deadline = styled.div`
@@ -134,6 +142,9 @@ function BorrowList() {
   };
   const ToNavigateMyBookList = () => {
     navigate(`/MyBookList`);
+  };
+  const ToNavigateBorrow = () => {
+    navigate(`/Borrow`);
   };
   useEffect(() => {
     axios
@@ -199,36 +210,42 @@ function BorrowList() {
             </WrapTop>
             <Wrap>
               {/* // data에 아무것도 없어서 오류 뜸 */}
-              {borrows.map((borrow) => (
-                <WrapContent>
-                  <BookImage />
-                  <WrapInfo>
-                    <BookName>{borrow.book.title}</BookName>
-                    <BookInfos>
-                      {borrow.book.author} <br /> {borrow.title}
-                    </BookInfos>
-                    <WrapStarScore>
-                      <StarScore>난이도</StarScore>
-                      <Rating readonly size={17} initialValue={2.3} />
-                    </WrapStarScore>
-                    <WrapStarScore>
-                      <StarScore>평점</StarScore>
-                      <Rating readonly size={17} initialValue={0} />
-                    </WrapStarScore>
-                    <Deadline>마감일 : 2022-02-22</Deadline>
-                    <BorrowDate>대여일:</BorrowDate>
-                    <BorrowButton
-                      color={palette('PsYellow')}
-                      background={palette('PsBtn')}
-                      width='5.5rem'
-                      height='2.2rem'
-                      name='대여하기'
-                      borderRadius='0.5rem'
-                      fontSize='0.9rem'
-                    />
-                  </WrapInfo>
-                </WrapContent>
-              ))}
+              {/* {borrows.map((borrow) => ( */}
+              <WrapContent>
+                <BookImage
+                // backgroundImage={borrow.book.imageUrl}
+                />
+
+                <WrapInfo>
+                  <BookName>borrow.book.title</BookName>
+                  <BookInfos>
+                    borrow.book.author <br /> borrow.book.author
+                  </BookInfos>
+                  <WrapStarScore>
+                    <StarScore>난이도</StarScore>
+                    <Rating readonly size={17} initialValue={2.3} />
+                  </WrapStarScore>
+                  <WrapStarScore>
+                    <StarScore>평점</StarScore>
+                    <Rating readonly size={17} initialValue={0} />
+                  </WrapStarScore>
+                  <Deadline>마감일 : 2022-02-22</Deadline>
+                  {/* {borrow.endDate} */}
+                  <BorrowDate>게시일 : 2022-02-22</BorrowDate>
+                  {/* {borrow.createAt} */}
+                  <BorrowButton
+                    color={palette('PsYellow')}
+                    background={palette('PsBtn')}
+                    width='5.5rem'
+                    height='2.2rem'
+                    name='대여하기'
+                    borderRadius='0.5rem'
+                    fontSize='0.9rem'
+                    onClick={ToNavigateBorrow}
+                  />
+                </WrapInfo>
+              </WrapContent>
+              {/* ))} */}
             </Wrap>
           </ListWrap>
         </MainWrap>

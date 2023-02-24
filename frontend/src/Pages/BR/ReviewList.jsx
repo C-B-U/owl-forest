@@ -127,7 +127,7 @@ const WrapRating = styled.div`
 `;
 const StarRating = styled.div`
   /* border: 1px solid black; */
-  width: 3.5rem;
+  width: 3.2rem;
   margin-bottom: 0.5rem;
 `;
 
