@@ -166,7 +166,9 @@ function ReviewList() {
 
   const onClickLike = (e) => {
     console.log(e.target.value);
-    setBackground(background === EmptyHeart ? FullHeart : EmptyHeart);
+    setBackground(
+      background === { EmptyHeart } ? { FullHeart } : { EmptyHeart }
+    );
     // console.log(e.target.value);
     // if (e.target.value === 'empty') {
     //   console.log('빨간 하트');
