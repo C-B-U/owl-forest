@@ -6,13 +6,15 @@ import com.cbu.backend.global.audit.Auditable;
 import com.cbu.backend.global.audit.BaseTime;
 import com.cbu.backend.global.audit.SoftDeleteSupport;
 import com.cbu.backend.member.domain.Member;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.time.LocalDate;
+
+import javax.persistence.*;
 
 @Getter
 @Entity
@@ -20,9 +22,7 @@ import java.time.LocalDate;
 @EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BookBorrow implements Auditable {
-    @Id
-    @GeneratedValue
-    private Long id;
+    @Id @GeneratedValue private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
@@ -30,6 +30,7 @@ public class BookBorrow implements Auditable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "lender_id")
     private Member lender;
+
     private String location;
     private LocalDate endDate;
 
@@ -42,7 +43,8 @@ public class BookBorrow implements Auditable {
     @Column(nullable = false)
     private BaseTime baseTime;
 
-    public BookBorrow(Book book, Member lender, String location, LocalDate endDate, Member borrower) {
+    public BookBorrow(
+            Book book, Member lender, String location, LocalDate endDate, Member borrower) {
         this.book = book;
         this.lender = lender;
         this.location = location;

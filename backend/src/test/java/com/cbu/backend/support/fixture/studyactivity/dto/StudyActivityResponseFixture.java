@@ -60,6 +60,12 @@ public enum StudyActivityResponseFixture {
 
     public StudyActivityResponse toStudyActivityResponse() {
         return new StudyActivityResponse(
-                title, description, assignment, week, place, new StudyTimeResponse(studyTime), activityMembers);
+                title,
+                description,
+                assignment,
+                week,
+                place,
+                new StudyTimeResponse(studyTime),
+                activityMembers);
     }
 }
