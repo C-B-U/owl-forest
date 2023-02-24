@@ -203,9 +203,9 @@ function BorrowList() {
                 <WrapContent>
                   <BookImage />
                   <WrapInfo>
-                    <BookName>{borrow.title}</BookName>
+                    <BookName>{borrow.book.title}</BookName>
                     <BookInfos>
-                      저자 <br /> 출판사
+                      {borrow.book.author} <br /> {borrow.title}
                     </BookInfos>
                     <WrapStarScore>
                       <StarScore>난이도</StarScore>
