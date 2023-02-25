@@ -21,7 +21,7 @@ public class LogIntroduction {
     @Pointcut("execution(* com.cbu.backend..*Repository*.*(..))")
     public void allRepository() {}
 
-    @Around("allController() || allService() || allRepository()")
+    @Around("allController()")
     public Object controllerLog(ProceedingJoinPoint joinPoint) {
         log.info(
                 "METHOD : {}, ARGS : {}",
@@ -30,6 +30,21 @@ public class LogIntroduction {
         try {
             Object result = joinPoint.proceed();
             log.info("METHOD : {}, RESULT : {}", joinPoint.getSignature().toShortString(), result);
+            return result;
+        } catch (Throwable e) {
+            return null;
+        }
+    }
+
+    @Around("allService() || allRepository()")
+    public Object serviceAndRepositoryLog(ProceedingJoinPoint joinPoint) {
+        log.debug(
+                "METHOD : {}, ARGS : {}",
+                joinPoint.getSignature().toShortString(),
+                joinPoint.getArgs());
+        try {
+            Object result = joinPoint.proceed();
+            log.debug("METHOD : {}, RESULT : {}", joinPoint.getSignature().toShortString(), result);
             return result;
         } catch (Throwable e) {
             return null;
