@@ -1,6 +1,7 @@
 package com.cbu.backend.global.aspect;
 
 import lombok.extern.slf4j.Slf4j;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,18 +13,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class LogIntroduction {
     @Pointcut("execution(* com.cbu.backend..*Controller*.*(..))")
-    public void allController(){};
+    public void allController() {}
+    ;
 
     @Pointcut("execution(* com.cbu.backend..*Service*.*(..))")
-    public void allService(){};
+    public void allService() {}
+    ;
 
     @Pointcut("execution(* com.cbu.backend..*Repository*.*(..))")
-    public void allRepository(){};
-
+    public void allRepository() {}
+    ;
 
     @Around("allController() || allService() || allRepository()")
     public Object controllerLog(ProceedingJoinPoint joinPoint) {
-        log.info("METHOD : {}, ARGS : {}", joinPoint.getSignature().toShortString(), joinPoint.getArgs());
+        log.info(
+                "METHOD : {}, ARGS : {}",
+                joinPoint.getSignature().toShortString(),
+                joinPoint.getArgs());
         try {
             Object result = joinPoint.proceed();
             log.info("METHOD : {}, RESULT : {}", joinPoint.getSignature().toShortString(), result);
