@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import DatePicker from 'react-datepicker';
+import { InputStyle } from '../../Components/Input';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import Btn from '../../Components/Btn';
@@ -111,7 +113,7 @@ const LogTitle = styled.div`
   align-items: center;
 `;
 
-const LogInput = styled.div`
+const LogInput = styled(InputStyle)`
   width: 86%;
   height: 3rem;
   display: flex;
@@ -119,6 +121,7 @@ const LogInput = styled.div`
   font-size: 12pt;
   margin-left: 2rem;
   padding-left: 1rem;
+  border: none;
   background-color: ${palette('PsWhite')};
 `;
 
@@ -134,7 +137,7 @@ const PlusSection = styled.div`
   background-color: ${palette('PsWhite')};
 `;
 
-const Log = styled.div`
+const Log = styled(InputStyle)`
   width: 95%;
   height: 20rem;
   display: flex;
@@ -143,6 +146,7 @@ const Log = styled.div`
   margin-left: 1rem;
   margin-bottom: 1rem;
   padding-left: 1rem;
+  border: none;
   background-color: ${palette('PsWhite')};
 `;
 
@@ -162,9 +166,73 @@ const SelectDate = styled(DatePicker)`
   border: none;
 `;
 
+const PlusBtn = styled.label`
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: ${palette('PsBtn')};
+  color: ${palette('PsYellow')};
+`;
+
 function StudyLog() {
+  const baseurl = process.env.REACT_APP_BASE_URL;
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+
+  const [title, setTitle] = useState();
+  const [week, setWeek] = useState();
+  const [place, setPlace] = useState();
+  const [description, setDescription] = useState();
+  const [assignment, setAssignment] = useState();
+  const [members, setMembers] = useState([]);
+
+  const [fileImage, setFileImage] = useState('');
+  const [fileIma, setFileIma] = useState('');
+
+  const handleSelect = async (e) => {
+    const file = e.target.files[0];
+    const Image = URL.createObjectURL(file);
+    setFileIma(Image);
+    setFileImage(file);
+  };
+
+  const deleteImage = () => {
+    URL.revokeObjectURL(fileImage);
+    URL.revokeObjectURL(fileIma);
+    setFileIma('');
+    setFileImage('');
+  };
+
+  const studyData = {
+    title: `${title}`,
+    week: `${week}`,
+    place: `${place}`,
+    description: `${description}`,
+    assignment: `${assignment}`,
+    members: `${members}`,
+    studyTime: {
+      startTime: `${startDate}`,
+      endTime: `${endDate}`,
+    },
+  };
+
+  const handleSubmit = useEffect(() => {
+    axios
+      .post(`study-activities/1`, {
+        studyData,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <Header />
@@ -181,6 +249,9 @@ function StudyLog() {
                   width='7rem'
                   height='3rem'
                   name='저장'
+                  onClick={() => {
+                    handleSubmit();
+                  }}
                 />
               </BtnItems>
             </BtnWrap>
@@ -188,8 +259,20 @@ function StudyLog() {
           <Scroll>
             <LogBox>
               <LogTitle>
+                제목
+                <LogInput
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                />
+              </LogTitle>
+              <LogTitle>
                 스터디 차수
-                <SelectBox>
+                <SelectBox
+                  onChange={(e) => {
+                    setWeek(e.target.value);
+                  }}
+                >
                   <option>1</option>
                   <option>2</option>
                 </SelectBox>
@@ -197,7 +280,6 @@ function StudyLog() {
               <LogTitle>
                 활동 일시
                 <DateWrap>
-                  {' '}
                   <SelectDate
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
@@ -210,12 +292,25 @@ function StudyLog() {
                 </DateWrap>
               </LogTitle>
               <LogTitle>
-                활동 장소<LogInput>비대면 zoom</LogInput>
+                활동 장소
+                <LogInput
+                  placeholder='비대면 zoom'
+                  onChange={(e) => {
+                    setPlace(e.target.value);
+                  }}
+                />
               </LogTitle>
               <LogTitle>
                 참여 인원
-                <PlusSection>
+                <PlusSection
+                  onChange={(e) => {
+                    setMembers(e.target.value);
+                  }}
+                >
                   <Btn
+                    id='name'
+                    type='file'
+                    onChange={handleSelect}
                     background={palette('PsBtn')}
                     color={palette('PsYellow')}
                     borderStyle='none'
@@ -226,18 +321,43 @@ function StudyLog() {
                 </PlusSection>
               </LogTitle>
               <LogTitle>활동 내용</LogTitle>
-              <Log />
+              <Log
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+              />
+              <LogTitle>
+                과제
+                <LogInput
+                  onChange={(e) => {
+                    setAssignment(e.target.value);
+                  }}
+                />
+              </LogTitle>
               <LogTitle>
                 활동 사진
                 <PlusSection>
-                  <Btn
-                    background={palette('PsBtn')}
-                    color={palette('PsYellow')}
-                    borderStyle='none'
-                    width='2rem'
-                    height='2rem'
-                    name='+'
-                  />
+                  <PlusSection>
+                    {fileIma && (
+                      <img
+                        alt='sample'
+                        id='sample'
+                        width='200px'
+                        height='200px'
+                        src={fileIma}
+                      />
+                    )}
+                    <PlusBtn>
+                      +
+                      <input
+                        hidden
+                        id='name'
+                        type='file'
+                        accept='image/*'
+                        onChange={handleSelect}
+                      />
+                    </PlusBtn>
+                  </PlusSection>
                 </PlusSection>
               </LogTitle>
             </LogBox>
