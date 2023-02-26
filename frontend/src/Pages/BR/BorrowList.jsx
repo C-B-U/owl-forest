@@ -148,7 +148,7 @@ function BorrowList() {
   };
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/book-borrows`)
+      .get(`${process.env.REACT_APP_BASE_URL}book-borrows`)
       .then((res) => {
         console.log(res);
         setBorrows(res);

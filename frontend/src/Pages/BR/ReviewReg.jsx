@@ -145,7 +145,7 @@ function ReviewReg() {
     };
     console.log(review);
     axios
-      .post(`${process.env.REACT_APP_BASE_URL}/book-reviews`, review)
+      .post(`${process.env.REACT_APP_BASE_URL}book-reviews`, review)
       .then((res) => {
         console.log(res);
         alert('리뷰가 등록되었습니다.');

@@ -181,7 +181,7 @@ function ReviewList() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/book-reviews`)
+      .get(`${process.env.REACT_APP_BASE_URL}book-reviews`)
       .then((res) => {
         console.log(res);
       })

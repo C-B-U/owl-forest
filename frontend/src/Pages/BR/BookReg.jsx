@@ -313,7 +313,7 @@ function BookReg() {
       alert('키워드를 입력해 주세요.');
     } else {
       axios
-        .get(`${process.env.REACT_APP_BASE_URL}/externalbooks`, {
+        .get(`${process.env.REACT_APP_BASE_URL}externalbooks`, {
           params: data,
         })
         .then((res) => {
@@ -361,7 +361,7 @@ function BookReg() {
       };
       console.log(book);
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/book-borrows`, book)
+        .post(`${process.env.REACT_APP_BASE_URL}book-borrows`, book)
         .then((res) => {
           console.log(res);
           alert('도서 등록에 성공했습니다!');
