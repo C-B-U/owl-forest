@@ -113,14 +113,17 @@ function MyBookList() {
     navigate('/ReviewRegister');
   };
 
-  useEffect(axios.get(`${process.env.REACT_APP_BASE_URL}book-borrows/my-lend`))
-    .then((res) => {
-      console.log(res);
-      getMyLend(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  useEffect(
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}book-borrows/my-lend`)
+      .then((res) => {
+        console.log(res);
+        getMyLend(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  );
   console.log(myLend);
   return (
     <ThemeProvider theme={theme}>
