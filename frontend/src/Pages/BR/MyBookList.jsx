@@ -122,7 +122,8 @@ function MyBookList() {
       })
       .catch((err) => {
         console.log(err);
-      })
+      }),
+    []
   );
   console.log(myLend);
   return (
