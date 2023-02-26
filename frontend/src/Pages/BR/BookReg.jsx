@@ -44,7 +44,7 @@ const WrapContent = styled.div`
 const WrapBookImage = styled.div`
   width: 15rem;
   height: 19rem;
-  background-color: #ffffff;
+  background-color: white;
   background-image: url(${(props) => props.backgroundImage});
   background-repeat: no-repeat;
   background-size: contain;
