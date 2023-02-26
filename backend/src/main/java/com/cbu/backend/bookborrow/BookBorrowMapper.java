@@ -12,7 +12,9 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface BookBorrowMapper {
     @Mapping(target = "book", source = "book")
-    BookBorrow toEntity(BookBorrowRequest dto, Book book, Member writer);
+    @Mapping(target = "baseTime", ignore = true)
+    @Mapping(target = "borrower", ignore = true)
+    BookBorrow toEntity(BookBorrowRequest dto, Book book, Member lender);
 
     BookBorrowResponse toResponse(BookBorrow entity);
 }

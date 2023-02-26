@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.cbu.backend.bookborrow.dto.BookBorrowRequest;
 import com.cbu.backend.bookborrow.dto.BookBorrowResponse;
 import com.cbu.backend.bookreview.dto.BookDetail;
-import com.cbu.backend.bookreview.dto.Writer;
+import com.cbu.backend.member.dto.MemberSummary;
 import com.cbu.backend.support.docs.RestDocumentTest;
 import com.cbu.backend.support.fixture.book.BookRequestFixture;
 
@@ -46,7 +46,8 @@ class BookBorrowControllerTest extends RestDocumentTest {
                         new BookBorrowResponse(
                                 5L,
                                 new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
-                                new Writer(UUID.randomUUID(), "작성자"),
+                                new MemberSummary(UUID.randomUUID(), "작성자"),
+                                null,
                                 "인천",
                                 LocalDate.now()));
         // when
@@ -79,19 +80,22 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                     new BookBorrowResponse(
                                             5L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
-                                            new Writer(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
                                             LocalDate.now()),
                                     new BookBorrowResponse(
                                             4L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
-                                            new Writer(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
                                             LocalDate.now()),
                                     new BookBorrowResponse(
                                             2L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
-                                            new Writer(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
                                             LocalDate.now())));
 
@@ -126,19 +130,22 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                     new BookBorrowResponse(
                                             5L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
-                                            new Writer(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
                                             LocalDate.now()),
                                     new BookBorrowResponse(
                                             4L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
-                                            new Writer(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
                                             LocalDate.now()),
                                     new BookBorrowResponse(
                                             2L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
-                                            new Writer(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "작성자"),
+                                            new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
                                             LocalDate.now())));
 
@@ -161,5 +168,119 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                     getDocumentRequest(),
                                     getDocumentResponse()));
         }
+    }
+
+    @Test
+    @DisplayName("책 대여를 수행하는가")
+    void successBookBorrow() throws Exception {
+        // given
+        // when
+        ResultActions perform = mockMvc.perform(post("/book-borrows/{id}/borrow", 1));
+
+        // then
+        perform.andExpect(status().isNoContent());
+
+        // docs
+        perform.andDo(print())
+                .andDo(document("borrow book", getDocumentRequest(), getDocumentResponse()));
+    }
+
+    @Test
+    @DisplayName("책 반납을 수행하는가")
+    void successBookReturn() throws Exception {
+        // given
+        // when
+        ResultActions perform = mockMvc.perform(post("/book-borrows/{id}/return", 1));
+
+        // then
+        perform.andExpect(status().isNoContent());
+
+        // docs
+        perform.andDo(print())
+                .andDo(document("return book", getDocumentRequest(), getDocumentResponse()));
+    }
+
+    @Test
+    @DisplayName("나의 lend 목록을 보여주는가")
+    void successGetMyBookLend() throws Exception {
+        // given
+        MemberSummary lender = new MemberSummary(UUID.randomUUID(), "작성자");
+
+        when(bookBorrowService.findAllMyLend())
+                .thenReturn(
+                        List.of(
+                                new BookBorrowResponse(
+                                        5L,
+                                        new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
+                                        lender,
+                                        new MemberSummary(UUID.randomUUID(), "대여자"),
+                                        "인천",
+                                        LocalDate.now()),
+                                new BookBorrowResponse(
+                                        4L,
+                                        new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
+                                        lender,
+                                        new MemberSummary(UUID.randomUUID(), "대여자"),
+                                        "인천",
+                                        LocalDate.now()),
+                                new BookBorrowResponse(
+                                        2L,
+                                        new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
+                                        lender,
+                                        new MemberSummary(UUID.randomUUID(), "대여자"),
+                                        "인천",
+                                        LocalDate.now())));
+
+        // when
+        ResultActions perform = mockMvc.perform(get("/book-borrows/my-lend"));
+
+        // then
+        perform.andExpect(status().isOk());
+
+        // docs
+        perform.andDo(print())
+                .andDo(document("find all my lend", getDocumentRequest(), getDocumentResponse()));
+    }
+
+    @Test
+    @DisplayName("나의 borrow 목록을 보여주는가")
+    void successGetMyBookBorrow() throws Exception {
+        // given
+        MemberSummary borrower = new MemberSummary(UUID.randomUUID(), "빌린 사람");
+
+        when(bookBorrowService.findAllMyBorrow())
+                .thenReturn(
+                        List.of(
+                                new BookBorrowResponse(
+                                        5L,
+                                        new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
+                                        new MemberSummary(UUID.randomUUID(), "대출자"),
+                                        borrower,
+                                        "인천",
+                                        LocalDate.now()),
+                                new BookBorrowResponse(
+                                        4L,
+                                        new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
+                                        new MemberSummary(UUID.randomUUID(), "대출자"),
+                                        borrower,
+                                        "인천",
+                                        LocalDate.now()),
+                                new BookBorrowResponse(
+                                        2L,
+                                        new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
+                                        new MemberSummary(UUID.randomUUID(), "대출자"),
+                                        borrower,
+                                        "인천",
+                                        LocalDate.now())));
+
+        // when
+        ResultActions perform = mockMvc.perform(get("/book-borrows/my-borrow"));
+
+        // then
+        perform.andExpect(status().isOk());
+
+        // docs
+        perform.andDo(print())
+                .andDo(document("find all my borrow", getDocumentRequest(), getDocumentResponse()));
     }
 }

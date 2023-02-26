@@ -3,6 +3,7 @@ package com.cbu.backend.support.fixture.studyactivity.dto;
 import com.cbu.backend.studyactivity.StudyTime;
 import com.cbu.backend.studyactivity.dto.ActivityMemberResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
+import com.cbu.backend.studyactivity.dto.StudyTimeResponse;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -59,6 +60,12 @@ public enum StudyActivityResponseFixture {
 
     public StudyActivityResponse toStudyActivityResponse() {
         return new StudyActivityResponse(
-                title, description, assignment, week, place, studyTime, activityMembers);
+                title,
+                description,
+                assignment,
+                week,
+                place,
+                new StudyTimeResponse(studyTime),
+                activityMembers);
     }
 }
