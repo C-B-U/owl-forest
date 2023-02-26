@@ -140,7 +140,7 @@ const List = styled.div`
 `;
 
 function MemList() {
-  const [users, setUsers] = useState([]);
+  const [user, setUsers] = useState([]);
   useEffect(() => {
     axios.get('/api/users').then((response) => {
       setUsers(response.data);
@@ -152,11 +152,39 @@ function MemList() {
   //     pathname: '',
   //   });
   // });
+  const users = [
+    {
+      id: '923736cb-5cb6-4192-96c9-69228bfdb2f8',
+      name: '새이름',
+      grade: 2,
+      major: '메카트로닉스공학과',
+      email: 'email.ac.com',
+      blogUrl: 'http://blog.com',
+      githubId: 'phjppo0918',
+      profileUrl: '자기소개입니다',
+      introduction: 'profile',
+    },
+    {
+      id: '923736cb-5cb6-4192-96c9-69228bfdb2f8',
+      name: '성은',
+      grade: 2,
+      major: 'COMPUTER',
+      email: 'email.ac.com',
+      blogUrl: 'http://blog.com',
+      githubId: 'phjppo0918',
+      profileUrl: '자기소개입니다',
+      introduction: 'profile',
+    },
+  ];
   return (
     <div>
       <ThemeProvider theme={theme}>
         <MainWrap>
-          <MLProfile />
+          <MLProfile
+            name={users[0].name}
+            major={users[0].major}
+            grade={users[0].grade}
+          />
 
           <SecondWrap>
             <SearchWrap>
