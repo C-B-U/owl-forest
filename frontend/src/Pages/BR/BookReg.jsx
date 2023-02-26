@@ -5,6 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { ko } from 'date-fns/esm/locale';
 import { palette } from 'styled-tools';
 import axios from 'axios';
+import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import theme from '../../Components/Color';
@@ -302,7 +303,7 @@ function BookReg() {
     setLocation(e.target.value);
   };
   useEffect(() => {
-    const today = startDate.toISOString().slice(0, 10);
+    const today = moment(startDate).format().slice(0, 10);
     setEndDate(today);
   }, []);
 
@@ -457,7 +458,7 @@ function BookReg() {
                           dateFormat='yyyy일 MM월 dd일'
                           selected={startDate}
                           onChange={(date) => {
-                            const newdate = date.toISOString().slice(0, 10);
+                            const newdate = moment(date).format().slice(0, 10);
                             setEndDate(newdate);
                             setStartDate(date);
                           }}
