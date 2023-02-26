@@ -211,42 +211,40 @@ function BorrowList() {
             </WrapTop>
             <Wrap>
               {/* // data에 아무것도 없어서 오류 뜸 */}
-              {/* {borrows.map((borrow) => ( */}
-              <WrapContent>
-                <BookImage
-                // backgroundImage={borrow.book.imageUrl}
-                />
+              {borrows.map((borrow) => (
+                <WrapContent>
+                  <BookImage backgroundImage={borrow.book.imageUrl} />
 
-                <WrapInfo>
-                  <BookName>borrow.book.title</BookName>
-                  <BookInfos>
-                    borrow.book.author <br /> borrow.book.author
-                  </BookInfos>
-                  <WrapStarScore>
-                    <StarScore>난이도</StarScore>
-                    <Rating readonly size={17} initialValue={2.3} />
-                  </WrapStarScore>
-                  <WrapStarScore>
-                    <StarScore>평점</StarScore>
-                    <Rating readonly size={17} initialValue={0} />
-                  </WrapStarScore>
-                  <Deadline>마감일 : 2022-02-22</Deadline>
-                  {/* {borrow.endDate} */}
-                  <BorrowDate>게시일 : 2022-02-22</BorrowDate>
-                  {/* {borrow.createAt} */}
-                  <BorrowButton
-                    color={palette('PsYellow')}
-                    background={palette('PsBtn')}
-                    width='5.5rem'
-                    height='2.2rem'
-                    name='대여하기'
-                    borderRadius='0.5rem'
-                    fontSize='0.9rem'
-                    onClick={ToNavigateBorrow}
-                  />
-                </WrapInfo>
-              </WrapContent>
-              {/* ))} */}
+                  <WrapInfo>
+                    <BookName>{borrow.book.title}</BookName>
+                    <BookInfos>
+                      {borrow.book.author} <br /> {borrow.book.author}
+                    </BookInfos>
+                    <WrapStarScore>
+                      <StarScore>난이도</StarScore>
+                      <Rating readonly size={17} initialValue={2.3} />
+                    </WrapStarScore>
+                    <WrapStarScore>
+                      <StarScore>평점</StarScore>
+                      <Rating readonly size={17} initialValue={0} />
+                    </WrapStarScore>
+                    <Deadline>마감일 : {borrow.endDate}</Deadline>
+                    {/*  */}
+                    <BorrowDate>게시일 : {borrow.createAt}</BorrowDate>
+                    {/*  */}
+                    <BorrowButton
+                      color={palette('PsYellow')}
+                      background={palette('PsBtn')}
+                      width='5.5rem'
+                      height='2.2rem'
+                      name='대여하기'
+                      borderRadius='0.5rem'
+                      fontSize='0.9rem'
+                      onClick={ToNavigateBorrow}
+                    />
+                  </WrapInfo>
+                </WrapContent>
+              ))}
             </Wrap>
           </ListWrap>
         </MainWrap>

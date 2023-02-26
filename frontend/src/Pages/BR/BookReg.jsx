@@ -301,6 +301,8 @@ function BookReg() {
   const onChangeLocation = (e) => {
     setLocation(e.target.value);
   };
+  const today = startDate.toISOString().slice(0, 10);
+  setEndDate(today);
 
   // 팝업에서 책 제목 찾는 함수
   const SearchBook = () => {
