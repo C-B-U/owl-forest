@@ -195,12 +195,12 @@ function ReviewDetail() {
                 <BookPublisher>저자 | 출판사</BookPublisher>
                 <WrapOneLineReview>
                   <ReviewName>한줄평</ReviewName>
-                  <OneLineReview>여긴 한줄평을 적는 곳입니다.</OneLineReview>
+                  <OneLineReview>한줄평을 적는 곳입니다.</OneLineReview>
                 </WrapOneLineReview>
 
                 <WrapDetailReview>
                   <ReviewName>상세평</ReviewName>
-                  <DetailReview>여긴 상세평을 적는 곳입니다.</DetailReview>
+                  <DetailReview>상세평을 적는 곳입니다.</DetailReview>
                   {/* <Input
                     width='40rem'
                     height='7rem'

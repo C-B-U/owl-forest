@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
@@ -106,9 +106,19 @@ const ReturnDate = styled.div`
 
 function MyBookList() {
   const navigate = useNavigate();
+  const [myLend, getMyLend] = useState([]);
+
   const navigateToReview = () => {
     navigate('/ReviewRegister');
   };
+
+  useEffect(`${process.env.REACT_APP_BASE_URL}book-borrows/my-lend`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   return (
     <ThemeProvider theme={theme}>
