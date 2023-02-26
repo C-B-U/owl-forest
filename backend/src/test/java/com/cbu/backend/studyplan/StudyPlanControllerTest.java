@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.cbu.backend.studyplan.dto.StudyPlanIdResponse;
+import com.cbu.backend.global.IdResponse;
 import com.cbu.backend.studyplan.dto.StudyPlanResponse;
 import com.cbu.backend.support.docs.RestDocumentTest;
 import com.cbu.backend.support.fixture.studyplan.dto.StudyPlanRequestFixture;
@@ -34,7 +34,7 @@ class StudyPlanControllerTest extends RestDocumentTest {
     @DisplayName("스터디 계획서 생성")
     void saveStudyPlan() throws Exception {
         // given
-        StudyPlanIdResponse expected = new StudyPlanIdResponse(1L);
+        IdResponse<Long> expected = new IdResponse<>(1L);
         given(studyPlanService.saveStudyPlan(any())).willReturn(expected);
 
         // when

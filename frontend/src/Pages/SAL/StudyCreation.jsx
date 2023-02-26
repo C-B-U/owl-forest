@@ -123,8 +123,10 @@ function StudyCreation() {
 
   const handleSubmit = useEffect(() => {
     axios
-      .post(`${baseurl}`, {
-        studyData,
+      .post(`/study-groups`, studyData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
       .then((response) => {
         console.log(response);
@@ -142,6 +144,7 @@ function StudyCreation() {
         <RightMainWrap>
           <HeaderTitle>스터디 생성</HeaderTitle>
           <ContextWrap>
+            {/* <Center onSubmit={handleSubmit}> */}
             <Center>
               <InputWrapper>
                 <InputTitle>스터디 이름</InputTitle>
@@ -251,9 +254,7 @@ function StudyCreation() {
                   width='100%'
                   height='3.5rem'
                   name='생성하기'
-                  onClick={() => {
-                    handleSubmit();
-                  }}
+                  onClick={handleSubmit}
                 />
               </BtnWrap>
             </Center>

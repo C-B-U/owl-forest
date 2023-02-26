@@ -38,4 +38,26 @@ public class BookBorrowController {
             @RequestParam(name = "book-name") String bookName) {
         return ResponseEntity.ok(bookBorrowService.findAllByBookName(bookName));
     }
+
+    @PostMapping("{id}/borrow")
+    public ResponseEntity<Void> borrow(@PathVariable Long id) {
+        bookBorrowService.borrow(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("{id}/return")
+    public ResponseEntity<Void> returnBook(@PathVariable Long id) {
+        bookBorrowService.returnBook(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("my-borrow")
+    public ResponseEntity<List<BookBorrowResponse>> getAllMyBorrow() {
+        return ResponseEntity.ok(bookBorrowService.findAllMyBorrow());
+    }
+
+    @GetMapping("my-lend")
+    public ResponseEntity<List<BookBorrowResponse>> findAllByMyLend() {
+        return ResponseEntity.ok(bookBorrowService.findAllMyLend());
+    }
 }

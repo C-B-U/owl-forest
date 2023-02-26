@@ -1,6 +1,6 @@
 package com.cbu.backend.studyactivity;
 
-import com.cbu.backend.studyactivity.dto.StudyActivityIdResponse;
+import com.cbu.backend.global.IdResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
 
@@ -19,7 +19,7 @@ public class StudyActivityController {
     private final StudyActivityService studyActivityService;
 
     @PostMapping
-    public ResponseEntity<StudyActivityIdResponse> saveStudyActivity(
+    public ResponseEntity<IdResponse<Long>> saveStudyActivity(
             @RequestBody StudyActivityRequest studyActivityRequest) {
         return ResponseEntity.ok(studyActivityService.saveStudyActivity(studyActivityRequest));
     }

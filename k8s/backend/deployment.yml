@@ -97,3 +97,13 @@ spec:
                 secretKeyRef:
                   name: owl-forest-server-secret
                   key: client.host
+            - name: S3_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: owl-forest-server-secret
+                  key: s3.access.key
+            - name: S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: owl-forest-server-secret
+                  key: s3.secret.key

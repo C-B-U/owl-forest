@@ -28,20 +28,35 @@ public class BookBorrow implements Auditable {
     private Book book;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Member writer;
+    @JoinColumn(nullable = false, name = "lender_id")
+    private Member lender;
 
     private String location;
     private LocalDate endDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "borrower_id")
+    private Member borrower;
 
     @Setter
     @Embedded
     @Column(nullable = false)
     private BaseTime baseTime;
 
-    public BookBorrow(Book book, Member writer, String location, LocalDate endDate) {
+    public BookBorrow(
+            Book book, Member lender, String location, LocalDate endDate, Member borrower) {
         this.book = book;
-        this.writer = writer;
+        this.lender = lender;
         this.location = location;
         this.endDate = endDate;
+        this.borrower = borrower;
+    }
+
+    public void borrow(Member member) {
+        this.borrower = member;
+    }
+
+    public void returnBook() {
+        this.borrower = null;
     }
 }

@@ -11,7 +11,6 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
@@ -40,7 +39,7 @@ public class RequestParamArgumentResolver implements HandlerMethodArgumentResolv
         return mapper.readValue(json, methodParameter.getParameterType());
     }
 
-    private String qs2json(String a) throws UnsupportedEncodingException {
+    private String qs2json(String a) {
         if (a == null) {
             return "{}";
         }

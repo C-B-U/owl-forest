@@ -1,6 +1,6 @@
 package com.cbu.backend.studyplan;
 
-import com.cbu.backend.studyplan.dto.StudyPlanIdResponse;
+import com.cbu.backend.global.IdResponse;
 import com.cbu.backend.studyplan.dto.StudyPlanRequest;
 import com.cbu.backend.studyplan.dto.StudyPlanResponse;
 
@@ -16,7 +16,7 @@ public class StudyPlanController {
     private final StudyPlanService studyPlanService;
 
     @PostMapping
-    public ResponseEntity<StudyPlanIdResponse> saveStudyPlan(
+    public ResponseEntity<IdResponse<Long>> saveStudyPlan(
             @RequestBody StudyPlanRequest studyPlanRequest) {
         return ResponseEntity.ok(studyPlanService.saveStudyPlan(studyPlanRequest));
     }

@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://223.255.205.62:30505/api/v1",
+  "proxy": "http://223.255.205.62:30003/api/v1",
   "dependencies": {
     "@mui/material": "^5.11.4",
     "@mui/styled-engine-sc": "^5.11.0",
@@ -21,6 +21,7 @@
     "react-paypal-express-checkout": "^1.0.5",
     "react-router-dom": "^6.4.1",
     "react-scripts": "^5.0.1",
+    "react-simple-star-rating": "^5.1.7",
     "react-table": "^7.8.0",
     "react-virtualized": "^9.22.3",
     "styled-components": "^5.3.6",

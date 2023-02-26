@@ -3,6 +3,7 @@ package com.cbu.backend.studyactivity;
 import com.cbu.backend.studyactivity.dto.ActivityMemberResponse;
 import com.cbu.backend.studyactivity.dto.StudyActivityRequest;
 import com.cbu.backend.studyactivity.dto.StudyActivityResponse;
+import com.cbu.backend.studyactivity.dto.StudyTimeResponse;
 import com.cbu.backend.studygroup.StudyMember;
 
 import org.mapstruct.IterableMapping;
@@ -26,4 +27,8 @@ public interface StudyActivityMapper {
     @Mapping(target = "id", source = "studyParticipant.member.id")
     @Mapping(target = "name", source = "studyParticipant.member.name")
     ActivityMemberResponse map(StudyMember studyParticipant);
+
+    default StudyTimeResponse map(StudyTime studyTime) {
+        return new StudyTimeResponse(studyTime);
+    }
 }

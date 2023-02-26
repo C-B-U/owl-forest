@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 @Service
 @RequiredArgsConstructor
 public class BookBorrowService {
@@ -42,5 +44,34 @@ public class BookBorrowService {
         return bookBorrowRepository.findAllByBookTitleContaining(bookName).stream()
                 .map(bookBorrowMapper::toResponse)
                 .toList();
+    }
+
+    public List<BookBorrowResponse> findAllMyBorrow() {
+        Member loginUser = authService.getLoginUser();
+        return bookBorrowRepository.findAllByBorrower(loginUser).stream()
+                .map(bookBorrowMapper::toResponse)
+                .toList();
+    }
+
+    public List<BookBorrowResponse> findAllMyLend() {
+        Member loginUser = authService.getLoginUser();
+        return bookBorrowRepository.findAllByLender(loginUser).stream()
+                .map(bookBorrowMapper::toResponse)
+                .toList();
+    }
+
+    @Transactional
+    public void borrow(Long id) {
+        Member loginUser = authService.getLoginUser();
+        getEntity(id).borrow(loginUser);
+    }
+
+    @Transactional
+    public void returnBook(Long id) {
+        getEntity(id).returnBook();
+    }
+
+    private BookBorrow getEntity(Long id) {
+        return bookBorrowRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }
