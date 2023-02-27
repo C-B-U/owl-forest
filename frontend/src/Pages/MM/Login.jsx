@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 
+import MLLogin from '../../Components/MMList/MLLogin';
 import imgfile from '../../Image/Loginlogo.png';
 import googlebtn from '../../Image/googlebtn.png';
 import kakaobtn from '../../Image/kakaobtn.png';
@@ -72,9 +73,9 @@ const NaverSocialImg = styled.img`
 `;
 function Login() {
   const base_url = process.env.REACT_APP_BASE_URL;
-  const KAKAO_AUTH_URL = `${base_url}auth/login/kakao`;
-  const GOOGLE_AUTH_URL = `${base_url}auth/login/google`;
-  const NAVER_AUTH_URL = `${base_url}auth/login/naver`;
+  const KAKAO_AUTH_URL = `${base_url}/auth/login/kakao`;
+  const GOOGLE_AUTH_URL = `${base_url}/auth/login/google`;
+  const NAVER_AUTH_URL = `${base_url}/auth/login/naver`;
 
   // 선언
   return (

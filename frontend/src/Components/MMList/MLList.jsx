@@ -50,37 +50,14 @@ const GradeInfo = styled.div`
 
 function MLList() {
   const [user, setUsers] = useState([]);
-  const users = [
-    {
-      id: '923736cb-5cb6-4192-96c9-69228bfdb2f8',
-      name: '새이름',
-      grade: 2,
-      major: '메카트로닉스공학과',
-      email: 'email.ac.com',
-      blogUrl: 'http://blog.com',
-      githubId: 'phjppo0918',
-      profileUrl: '자기소개입니다',
-      introduction: 'profile',
-    },
-    {
-      id: '923736cb-5cb6-4192-96c9-69228bfdb2f8',
-      name: '성은',
-      grade: 2,
-      major: 'COMPUTER',
-      email: 'email.ac.com',
-      blogUrl: 'http://blog.com',
-      githubId: 'phjppo0918',
-      profileUrl: '자기소개입니다',
-      introduction: 'profile',
-    },
-  ];
   useEffect(() => {
-    axios.get('/api/users').then((response) => {
+    axios.get('/members').then((response) => {
       setUsers(response.data);
+      console.log(response.data);
     });
   }, []);
 
-  const list = users.map((v) => (
+  const list = user.map((v) => (
     <div>
       <List>
         <MemListInput>
