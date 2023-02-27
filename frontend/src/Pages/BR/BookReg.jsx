@@ -274,13 +274,16 @@ function BookReg() {
   const [endDate, setEndDate] = useState();
 
   // 도서 검색 input 값 받기
-  const [bookTitle, setBookTitle] = useState();
+  const [bookTitle, setBookTitle] = useState('');
 
   // book-external api 값 저장
   const [getBook, setGetBook] = useState([]);
 
   // 장소 input 값 받기
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState('');
+
+  // 카카오 오픈채팅 input 값 받기
+  const [kakaoUrl, setKakaoUrl] = useState('');
 
   // 선택한 책 정보 받기
   const [bookInfo, setBookInfo] = useState([]);
@@ -302,6 +305,11 @@ function BookReg() {
   const onChangeLocation = (e) => {
     setLocation(e.target.value);
   };
+
+  const onChangeKakaoUrl = (e) => {
+    setKakaoUrl(e.target.value);
+  };
+
   useEffect(() => {
     const today = moment(startDate).format().slice(0, 10);
     setEndDate(today);
@@ -370,6 +378,7 @@ function BookReg() {
         },
         location,
         endDate,
+        kakaoUrl,
       };
       console.log(book);
       axios
@@ -479,6 +488,15 @@ function BookReg() {
                         height='2.5rem'
                         placeholder='만날 장소를 적어주세요'
                         onChange={onChangeLocation}
+                      />
+                    </WrapReturnAlert>
+                    <WrapReturnAlert>
+                      <Location>채팅 URL</Location>
+                      <Input
+                        width='23rem'
+                        height='2.5rem'
+                        placeholder='카카오톡 오픈채팅 url'
+                        onChange={onChangeKakaoUrl}
                       />
                     </WrapReturnAlert>
                   </WrapWriteForm>
