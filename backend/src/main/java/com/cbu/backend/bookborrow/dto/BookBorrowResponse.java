@@ -19,4 +19,5 @@ public class BookBorrowResponse {
     private MemberSummary borrower;
     private String location;
     private LocalDate endDate;
+    private String kakaoUrl;
 }
