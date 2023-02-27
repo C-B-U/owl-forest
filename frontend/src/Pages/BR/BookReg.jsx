@@ -318,7 +318,7 @@ function BookReg() {
       alert('키워드를 입력해 주세요.');
     } else {
       axios
-        .get(`${process.env.REACT_APP_BASE_URL}externalbooks`, {
+        .get(`${process.env.REACT_APP_BASE_URL}/externalbooks`, {
           params: data,
         })
         .then((res) => {
@@ -333,6 +333,13 @@ function BookReg() {
 
   // 팝업 리스트에서 하나 클릭했을 때
   const onClickBook = (e) => {
+    console.log(e.currentTarget.children[0].id);
+    console.log(e.currentTarget.children[0].innerText);
+    console.log(e.currentTarget.children[1].innerText);
+    console.log(e.currentTarget.children[2].innerText);
+    console.log(e.currentTarget.children[4].getAttribute('value'));
+    console.log(e.currentTarget.children[3].innerText);
+    console.log(e.currentTarget.children[5].getAttribute('value'));
     setBookInfo([
       e.currentTarget.children[0].id, // isbn
       e.currentTarget.children[0].innerText, // 제목
@@ -342,10 +349,10 @@ function BookReg() {
       e.currentTarget.children[3].innerText, // 출판일
       e.currentTarget.children[5].getAttribute('value'), // 가격
     ]);
-    console.log(bookInfo);
+
     setIsShown(false);
   };
-
+  console.log(bookInfo);
   // 게시하기 클릭했을 때
   const onClickPost = () => {
     if (!location) {
@@ -366,7 +373,7 @@ function BookReg() {
       };
       console.log(book);
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}book-borrows`, book)
+        .post(`${process.env.REACT_APP_BASE_URL}/book-borrows`, book)
         .then((res) => {
           console.log(res);
           alert('도서 등록에 성공했습니다!');
