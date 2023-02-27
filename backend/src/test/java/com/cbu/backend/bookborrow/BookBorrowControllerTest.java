@@ -44,7 +44,11 @@ class BookBorrowControllerTest extends RestDocumentTest {
         void successSave() throws Exception {
             // given
             BookBorrowRequest request =
-                    new BookBorrowRequest(BookRequestFixture.HATE.toDto(), "인천", LocalDate.now(), "http://aaa.bb.com");
+                    new BookBorrowRequest(
+                            BookRequestFixture.HATE.toDto(),
+                            "인천",
+                            LocalDate.now(),
+                            "http://aaa.bb.com");
             when(bookBorrowService.create(any()))
                     .thenReturn(
                             new BookBorrowResponse(
@@ -53,7 +57,8 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                     new MemberSummary(UUID.randomUUID(), "작성자"),
                                     null,
                                     "인천",
-                                    LocalDate.now(), "http://aaa.bb.com"));
+                                    LocalDate.now(),
+                                    "http://aaa.bb.com"));
             // when
             ResultActions perform =
                     mockMvc.perform(
@@ -82,7 +87,8 @@ class BookBorrowControllerTest extends RestDocumentTest {
                             new BookRequest(
                                     "asdf", "", "asdf", "asdf", "sdf", 123, LocalDate.now()),
                             "인천",
-                            LocalDate.now(), "http://aaa.bb.com");
+                            LocalDate.now(),
+                            "http://aaa.bb.com");
             when(bookBorrowService.create(any()))
                     .thenReturn(
                             new BookBorrowResponse(
@@ -91,7 +97,8 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                     new MemberSummary(UUID.randomUUID(), "작성자"),
                                     null,
                                     "인천",
-                                    LocalDate.now(), "http://aaa.bb.com"));
+                                    LocalDate.now(),
+                                    "http://aaa.bb.com"));
             // when
             ResultActions perform =
                     mockMvc.perform(
@@ -112,7 +119,11 @@ class BookBorrowControllerTest extends RestDocumentTest {
         void successFindAll() throws Exception {
             // given
             BookBorrowRequest request =
-                    new BookBorrowRequest(BookRequestFixture.HATE.toDto(), "인천", LocalDate.now(), "http://aaa.bb.com");
+                    new BookBorrowRequest(
+                            BookRequestFixture.HATE.toDto(),
+                            "인천",
+                            LocalDate.now(),
+                            "http://aaa.bb.com");
             when(bookBorrowService.findAll(any()))
                     .thenReturn(
                             List.of(
@@ -122,21 +133,24 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                             new MemberSummary(UUID.randomUUID(), "작성자"),
                                             new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
-                                            LocalDate.now(),"http://aaa.bb.com"),
+                                            LocalDate.now(),
+                                            "http://aaa.bb.com"),
                                     new BookBorrowResponse(
                                             4L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
                                             new MemberSummary(UUID.randomUUID(), "작성자"),
                                             new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
-                                            LocalDate.now(), "http://aaa.bb.com"),
+                                            LocalDate.now(),
+                                            "http://aaa.bb.com"),
                                     new BookBorrowResponse(
                                             2L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
                                             new MemberSummary(UUID.randomUUID(), "작성자"),
                                             new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
-                                            LocalDate.now(), "http://aaa.bb.com")));
+                                            LocalDate.now(),
+                                            "http://aaa.bb.com")));
 
             // when
             ResultActions perform =
@@ -162,7 +176,11 @@ class BookBorrowControllerTest extends RestDocumentTest {
         void successFindAllByBookname() throws Exception {
             // given
             BookBorrowRequest request =
-                    new BookBorrowRequest(BookRequestFixture.HATE.toDto(), "인천", LocalDate.now(), "http://aaa.bb.com");
+                    new BookBorrowRequest(
+                            BookRequestFixture.HATE.toDto(),
+                            "인천",
+                            LocalDate.now(),
+                            "http://aaa.bb.com");
             when(bookBorrowService.findAllByBookName(any()))
                     .thenReturn(
                             List.of(
@@ -172,21 +190,24 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                             new MemberSummary(UUID.randomUUID(), "작성자"),
                                             new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
-                                            LocalDate.now(), "http://aaa.bb.com"),
+                                            LocalDate.now(),
+                                            "http://aaa.bb.com"),
                                     new BookBorrowResponse(
                                             4L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
                                             new MemberSummary(UUID.randomUUID(), "작성자"),
                                             new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
-                                            LocalDate.now(), "http://aaa.bb.com"),
+                                            LocalDate.now(),
+                                            "http://aaa.bb.com"),
                                     new BookBorrowResponse(
                                             2L,
                                             new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
                                             new MemberSummary(UUID.randomUUID(), "작성자"),
                                             new MemberSummary(UUID.randomUUID(), "대여자"),
                                             "인천",
-                                            LocalDate.now(), "http://aaa.bb.com")));
+                                            LocalDate.now(),
+                                            "http://aaa.bb.com")));
 
             // when
             ResultActions perform =
@@ -254,21 +275,24 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                         lender,
                                         new MemberSummary(UUID.randomUUID(), "대여자"),
                                         "인천",
-                                        LocalDate.now(), "http://aaa.bb.com"),
+                                        LocalDate.now(),
+                                        "http://aaa.bb.com"),
                                 new BookBorrowResponse(
                                         4L,
                                         new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
                                         lender,
                                         new MemberSummary(UUID.randomUUID(), "대여자"),
                                         "인천",
-                                        LocalDate.now(), "http://aaa.bb.com"),
+                                        LocalDate.now(),
+                                        "http://aaa.bb.com"),
                                 new BookBorrowResponse(
                                         2L,
                                         new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
                                         lender,
                                         new MemberSummary(UUID.randomUUID(), "대여자"),
                                         "인천",
-                                        LocalDate.now(), "http://aaa.bb.com")));
+                                        LocalDate.now(),
+                                        "http://aaa.bb.com")));
 
         // when
         ResultActions perform = mockMvc.perform(get("/book-borrows/my-lend"));
@@ -296,21 +320,24 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                         new MemberSummary(UUID.randomUUID(), "대출자"),
                                         borrower,
                                         "인천",
-                                        LocalDate.now(), "http://aaa.bb.com"),
+                                        LocalDate.now(),
+                                        "http://aaa.bb.com"),
                                 new BookBorrowResponse(
                                         4L,
                                         new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
                                         new MemberSummary(UUID.randomUUID(), "대출자"),
                                         borrower,
                                         "인천",
-                                        LocalDate.now(), "http://aaa.bb.com"),
+                                        LocalDate.now(),
+                                        "http://aaa.bb.com"),
                                 new BookBorrowResponse(
                                         2L,
                                         new BookDetail(5L, "책제목", "작가", "출판사", "책이미지"),
                                         new MemberSummary(UUID.randomUUID(), "대출자"),
                                         borrower,
                                         "인천",
-                                        LocalDate.now(), "http://aaa.bb.com")));
+                                        LocalDate.now(),
+                                        "http://aaa.bb.com")));
 
         // when
         ResultActions perform = mockMvc.perform(get("/book-borrows/my-borrow"));

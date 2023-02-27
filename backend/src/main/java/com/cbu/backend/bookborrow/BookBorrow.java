@@ -6,13 +6,15 @@ import com.cbu.backend.global.audit.Auditable;
 import com.cbu.backend.global.audit.BaseTime;
 import com.cbu.backend.global.audit.SoftDeleteSupport;
 import com.cbu.backend.member.domain.Member;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.time.LocalDate;
+
+import javax.persistence.*;
 
 @Getter
 @Entity
@@ -44,7 +46,12 @@ public class BookBorrow implements Auditable {
     private String kakaoUrl;
 
     public BookBorrow(
-            Book book, Member lender, String location, LocalDate endDate, Member borrower, String kakaoUrl) {
+            Book book,
+            Member lender,
+            String location,
+            LocalDate endDate,
+            Member borrower,
+            String kakaoUrl) {
         this.book = book;
         this.lender = lender;
         this.location = location;
