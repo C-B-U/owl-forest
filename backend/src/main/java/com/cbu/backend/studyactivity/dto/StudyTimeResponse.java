@@ -1,6 +1,7 @@
 package com.cbu.backend.studyactivity.dto;
 
 import com.cbu.backend.studyactivity.StudyTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

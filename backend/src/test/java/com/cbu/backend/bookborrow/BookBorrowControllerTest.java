@@ -1,12 +1,23 @@
 package com.cbu.backend.bookborrow;
 
-import com.cbu.backend.book.BookRequest;
+import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentRequest;
+import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentResponse;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.cbu.backend.bookborrow.dto.BookBorrowRequest;
 import com.cbu.backend.bookborrow.dto.BookBorrowResponse;
 import com.cbu.backend.bookreview.dto.BookDetail;
 import com.cbu.backend.member.dto.MemberSummary;
 import com.cbu.backend.support.docs.RestDocumentTest;
 import com.cbu.backend.support.fixture.book.BookRequestFixture;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -18,16 +29,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
-
-import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentRequest;
-import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentResponse;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BookBorrowController.class)
 @DisplayName("BookBorrowController에서")
@@ -204,49 +205,37 @@ class BookBorrowControllerTest extends RestDocumentTest {
     @Test
     @DisplayName("책 대여를 수행하는가")
     void successBookBorrow() throws Exception {
-        //given
+        // given
         // when
-        ResultActions perform =
-                mockMvc.perform(
-                        post("/book-borrows/{id}/borrow", 1));
+        ResultActions perform = mockMvc.perform(post("/book-borrows/{id}/borrow", 1));
 
         // then
         perform.andExpect(status().isNoContent());
 
         // docs
         perform.andDo(print())
-                .andDo(
-                        document(
-                                "borrow book",
-                                getDocumentRequest(),
-                                getDocumentResponse()));
+                .andDo(document("borrow book", getDocumentRequest(), getDocumentResponse()));
     }
 
     @Test
     @DisplayName("책 반납을 수행하는가")
     void successBookReturn() throws Exception {
-        //given
+        // given
         // when
-        ResultActions perform =
-                mockMvc.perform(
-                        post("/book-borrows/{id}/return", 1));
+        ResultActions perform = mockMvc.perform(post("/book-borrows/{id}/return", 1));
 
         // then
         perform.andExpect(status().isNoContent());
 
         // docs
         perform.andDo(print())
-                .andDo(
-                        document(
-                                "return book",
-                                getDocumentRequest(),
-                                getDocumentResponse()));
+                .andDo(document("return book", getDocumentRequest(), getDocumentResponse()));
     }
 
     @Test
     @DisplayName("나의 lend 목록을 보여주는가")
     void successGetMyBookLend() throws Exception {
-        //given
+        // given
         MemberSummary lender = new MemberSummary(UUID.randomUUID(), "작성자");
 
         when(bookBorrowService.findAllMyLend())
@@ -275,26 +264,20 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                         LocalDate.now())));
 
         // when
-        ResultActions perform =
-                mockMvc.perform(
-                        get("/book-borrows/my-lend"));
+        ResultActions perform = mockMvc.perform(get("/book-borrows/my-lend"));
 
         // then
         perform.andExpect(status().isOk());
 
         // docs
         perform.andDo(print())
-                .andDo(
-                        document(
-                                "find all my lend",
-                                getDocumentRequest(),
-                                getDocumentResponse()));
+                .andDo(document("find all my lend", getDocumentRequest(), getDocumentResponse()));
     }
 
     @Test
     @DisplayName("나의 borrow 목록을 보여주는가")
     void successGetMyBookBorrow() throws Exception {
-        //given
+        // given
         MemberSummary borrower = new MemberSummary(UUID.randomUUID(), "빌린 사람");
 
         when(bookBorrowService.findAllMyBorrow())
@@ -323,21 +306,13 @@ class BookBorrowControllerTest extends RestDocumentTest {
                                         LocalDate.now())));
 
         // when
-        ResultActions perform =
-                mockMvc.perform(
-                        get("/book-borrows/my-borrow"));
+        ResultActions perform = mockMvc.perform(get("/book-borrows/my-borrow"));
 
         // then
         perform.andExpect(status().isOk());
 
         // docs
         perform.andDo(print())
-                .andDo(
-                        document(
-                                "find all my borrow",
-                                getDocumentRequest(),
-                                getDocumentResponse()));
+                .andDo(document("find all my borrow", getDocumentRequest(), getDocumentResponse()));
     }
-
-
 }

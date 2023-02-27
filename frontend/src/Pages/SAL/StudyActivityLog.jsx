@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import StudyBtn from '../../Components/Btn';
-import Input from '../../Components/Input';
 import Header from '../../Components/ActivityLog/Header';
 import Profile from '../../Components/ActivityLog/Profile';
 import EmptyHeart from '../../Image/EmptyHeart.png';
@@ -51,7 +51,7 @@ const ListHeader = styled.header`
   display: flex;
 `;
 
-const StudyList = styled.div`
+const StudyList = styled.ul`
   width: 71rem;
   height: 8rem;
   border-radius: 1rem;
@@ -61,7 +61,7 @@ const StudyList = styled.div`
   background-color: ${palette('PsLightBrown')};
 `;
 
-const StudyName = styled.div`
+const StudyName = styled.li`
   font-size: 15pt;
   font-weight: bold;
   align-items: center;
@@ -69,7 +69,7 @@ const StudyName = styled.div`
   display: flex;
 `;
 
-const StudyInput = styled.div`
+const StudyInput = styled.li`
   font-size: 10pt;
   font-weight: bold;
   display: flex;
@@ -114,16 +114,50 @@ const BtnWrap = styled.div`
 `;
 
 function StudyActivityLog() {
+  const navigate = useNavigate();
+
+  const goStudyCreation = () => {
+    navigate('/StudyCreation');
+  };
+
   const baseurl = process.env.REACT_APP_BASE_URL;
   const [profile, setProfile] = useState();
   const [boxInput, setBoxInput] = useState([]);
   const [like, setLike] = useState();
-  const [sort, setSort] = useState([]);
+  const [latestSort, setLatestSort] = useState([]);
+  const [likeSort, setLikeSort] = useState([]);
+  const [activitiesSort, setActivitiesSort] = useState([]);
 
   useEffect(() => {
-    axios.get(`${baseurl}`).then((response) => {
-      setProfile(response.data);
+    axios.get(`${baseurl}/study-groups/1`).then((response) => {
+      setBoxInput(response.data);
     });
+  }, []);
+
+  const LatestSort = useEffect(() => {
+    axios
+      .get(`${baseurl}/study-groups?page=0&size=20&sort=createdAt,DESC`)
+      .then((response) => {
+        setLatestSort(response.data);
+      });
+  }, []);
+
+  const LikeSort = useEffect(() => {
+    axios
+      .get(`${baseurl}/study-groups?page=0&size=20&sort=numOfLike,DESC`)
+      .then((response) => {
+        setLikeSort(response.data);
+      });
+  }, []);
+
+  const ActivitiesSort = useEffect(() => {
+    axios
+      .get(
+        `${baseurl}/study-groups?page=0&size=20&sort=numOfStudyActivity,DESC`
+      )
+      .then((response) => {
+        setActivitiesSort(response.data);
+      });
   }, []);
 
   return (
@@ -136,38 +170,25 @@ function StudyActivityLog() {
             <ListHeader>
               스터디 목록
               <Nav>
-                <NavItems>최신순</NavItems>
-                <NavItems>활동일지순</NavItems>
-                <NavItems>인기순</NavItems>
+                <NavItems onClick={() => LatestSort}>최신순</NavItems>
+                <NavItems onClick={() => LikeSort}>활동일지순</NavItems>
+                <NavItems onClick={() => ActivitiesSort}>인기순</NavItems>
               </Nav>
             </ListHeader>
             <StudyList>
-              <StudyName>
-                스터디 이름
-                <Heart />
-              </StudyName>
-              <StudyInput>
-                스터디 개요~~~~
-                <br />
-                <br />
-                <br />
-                팀장 : 씨부엉
-                <br />
-                팀원 : 부엉일, 부엉이, 부엉삼, 부엉사
-                <LastStudy>
-                  최근 일지 : 2022년 10월 08일<StudyCnt>활동일지 2개</StudyCnt>
-                </LastStudy>
-              </StudyInput>
+              {boxInput.map((study) => (
+                <StudyName>{study.name}</StudyName>
+              ))}
+              {boxInput.map((study) => (
+                <StudyInput>
+                  {study.description}
+                  {study.likeCount}
+                  {study.studyGroupoStatus}
+                  {study.leader}
+                  {study.members}
+                </StudyInput>
+              ))}
             </StudyList>
-            <StudyList>
-              <Input
-                width='65rem'
-                height='8rem'
-                placeholder='input test'
-                fontSize='12pt'
-              />
-            </StudyList>
-            <StudyList />
             <BtnWrap>
               <StudyBtn
                 background={palette('PsBtn')}
@@ -177,6 +198,7 @@ function StudyActivityLog() {
                 width='74rem'
                 height='3.5rem'
                 name='스터디 생성'
+                onClick={goStudyCreation}
               />
             </BtnWrap>
           </ListWrap>

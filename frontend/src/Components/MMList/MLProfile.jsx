@@ -58,14 +58,16 @@ const Info = styled.li`
   margin-top: 1.2rem;
 `;
 
-function MLProfile() {
+function MLProfile({ name, major, grade }) {
   return (
     <div>
       <Pf>
         <Profilepic />
-        <Name>부엉이</Name>
+        <Name>{name}</Name>
         <ProfileList>
-          <Info>컴퓨터공학과 2학년</Info>
+          <Info>
+            {major} {grade}학년
+          </Info>
           <Info>스터디</Info>
           <Info style={{ height: '14rem' }}>한줄 소개</Info>
           <Btn
