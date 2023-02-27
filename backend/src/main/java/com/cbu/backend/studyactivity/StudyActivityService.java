@@ -11,6 +11,7 @@ import com.cbu.backend.studygroup.StudyMember;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
@@ -64,6 +65,7 @@ public class StudyActivityService {
                         request.getStudyTime());
     }
 
+    @Transactional
     public void deleteStudyActivity(Long id) {
         getEntity(id).delete();
     }
