@@ -65,7 +65,11 @@ class BookBorrowControllerTest extends RestDocumentTest {
 
             // docs
             perform.andDo(print())
-                    .andDo(document("create book borrow", getDocumentRequest(), getDocumentResponse()));
+                    .andDo(
+                            document(
+                                    "create book borrow",
+                                    getDocumentRequest(),
+                                    getDocumentResponse()));
         }
 
         @Test
@@ -73,7 +77,11 @@ class BookBorrowControllerTest extends RestDocumentTest {
         void checkValidation() throws Exception {
             // given
             BookBorrowRequest request =
-                    new BookBorrowRequest(new BookRequest("asdf","","asdf","asdf","sdf",123,LocalDate.now()), "인천", LocalDate.now());
+                    new BookBorrowRequest(
+                            new BookRequest(
+                                    "asdf", "", "asdf", "asdf", "sdf", 123, LocalDate.now()),
+                            "인천",
+                            LocalDate.now());
             when(bookBorrowService.create(any()))
                     .thenReturn(
                             new BookBorrowResponse(
@@ -92,8 +100,6 @@ class BookBorrowControllerTest extends RestDocumentTest {
 
             // then
             perform.andExpect(status().isBadRequest());
-
-
         }
     }
 

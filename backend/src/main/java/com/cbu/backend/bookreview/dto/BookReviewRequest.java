@@ -15,8 +15,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class BookReviewRequest {
-    @Valid
-    private BookRequest book;
+    @Valid private BookRequest book;
     @NotBlank private String title;
     private String content;
     @NotNull private Integer score;
