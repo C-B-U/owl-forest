@@ -43,13 +43,21 @@ public class BookBorrow implements Auditable {
     @Column(nullable = false)
     private BaseTime baseTime;
 
+    private String kakaoUrl;
+
     public BookBorrow(
-            Book book, Member lender, String location, LocalDate endDate, Member borrower) {
+            Book book,
+            Member lender,
+            String location,
+            LocalDate endDate,
+            Member borrower,
+            String kakaoUrl) {
         this.book = book;
         this.lender = lender;
         this.location = location;
         this.endDate = endDate;
         this.borrower = borrower;
+        this.kakaoUrl = kakaoUrl;
     }
 
     public void borrow(Member member) {
