@@ -1,23 +1,12 @@
 package com.cbu.backend.bookborrow;
 
-import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentRequest;
-import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentResponse;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import com.cbu.backend.book.BookRequest;
 import com.cbu.backend.bookborrow.dto.BookBorrowRequest;
 import com.cbu.backend.bookborrow.dto.BookBorrowResponse;
 import com.cbu.backend.bookreview.dto.BookDetail;
 import com.cbu.backend.member.dto.MemberSummary;
 import com.cbu.backend.support.docs.RestDocumentTest;
 import com.cbu.backend.support.fixture.book.BookRequestFixture;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -29,6 +18,16 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+
+import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentRequest;
+import static com.cbu.backend.support.docs.ApiDocumentUtils.getDocumentResponse;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BookBorrowController.class)
 @DisplayName("BookBorrowController에서")
