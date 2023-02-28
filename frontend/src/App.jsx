@@ -26,6 +26,9 @@ import MyBookList from './Pages/BR/MyBookList';
 import ReviewDetail from './Pages/BR/ReviewDetail';
 import ReviewList from './Pages/BR/ReviewList';
 import ReviewReg from './Pages/BR/ReviewReg';
+import KakaoRedirect from './Components/MMList/KakaoRedirect';
+import GoogleRedirect from './Components/MMList/GoogleRedirect';
+import NaverRedirect from './Components/MMList/NaverRedirect';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 axios.defaults.withCredentials = true;
@@ -64,6 +67,10 @@ function App() {
           <Route path='/ReviewDetail' element={<ReviewDetail />} />
           <Route path='/ReviewList' element={<ReviewList />} />
           <Route path='/ReviewRegister' element={<ReviewReg />} />
+          {/* ---- 로그인 리다이렉트 ---- */}
+          <Route path='/auth/login/kakao' element={<KakaoRedirect />} />
+          <Route path='/auth/login/google' element={<GoogleRedirect />} />
+          <Route path='/auth/login/naver' element={<NaverRedirect />} />
         </Routes>
       </Router>
     </div>

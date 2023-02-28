@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 
-import MLLogin from '../../Components/MMList/MLLogin';
+import MLLogin from '../../Components/MMList/NaverRedirect';
 import imgfile from '../../Image/Loginlogo.png';
 import googlebtn from '../../Image/googlebtn.png';
 import kakaobtn from '../../Image/kakaobtn.png';
