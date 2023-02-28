@@ -103,3 +103,5 @@ spec:
                 secretKeyRef:
                   name: owl-forest-server-secret
                   key: s3.secret.key
+            - name: CLIENT_ENDPOINT
+              value: login-success

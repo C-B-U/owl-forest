@@ -21,12 +21,16 @@ import javax.servlet.http.HttpServletResponse;
 public class OAuth2AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     private final JwtSetupService jwtSetupService;
 
-    private final String redirectUrl;
+    private final String clientUrl;
+    private final String redirectEndpoint;
 
     public OAuth2AuthSuccessHandler(
-            JwtSetupService jwtSetupService, @Value("${client.url}") String redirectUrl) {
+            JwtSetupService jwtSetupService,
+            @Value("${client.url}") String clientUrl,
+            @Value("${client.endpoint}") String redirectEndpoint) {
         this.jwtSetupService = jwtSetupService;
-        this.redirectUrl = redirectUrl;
+        this.clientUrl = clientUrl;
+        this.redirectEndpoint = redirectEndpoint;
     }
 
     @Override
@@ -36,6 +40,6 @@ public class OAuth2AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
         jwtSetupService.addJwtTokensInCookie(response, loginUser);
-        getRedirectStrategy().sendRedirect(request, response, redirectUrl);
+        getRedirectStrategy().sendRedirect(request, response, clientUrl + redirectEndpoint);
     }
 }
