@@ -1,6 +1,10 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-plusplus */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
@@ -178,6 +182,25 @@ function Writing() {
     });
   }, []);
 
+  const [value, onChange] = useState(new Date());
+  const [newEvent, setNewEvent] = useState({ title: '', end: '' });
+  const [allEvents, setAllEvents] = useState(events);
+
+  function handleAddEvent() {
+    for (let i = 0; i < allEvents; i++) {
+      const d1 = new Date(allEvents[i].start);
+      const d2 = new Date(newEvent.start);
+      const d3 = new Date(allEvents[i].end);
+      const d4 = new Date(newEvent.end);
+
+      if ((d1 <= d2 && d2 <= d3) || (d1 < d4 && d4 <= d3)) {
+        alert('CRASH');
+        break;
+      }
+    }
+    setAllEvents([...allEvents, newEvent]);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Header />
@@ -222,6 +245,16 @@ function Writing() {
                 <Date>2023/01/16</Date>
                 <Wave>~</Wave>
                 <Date>2023/01/16</Date>
+                <DatePicker
+                  placeholderText='Start Date'
+                  selected={newEvent.start}
+                  onChange={(start) => setNewEvent({ ...newEvent, start })}
+                />
+                <DatePicker
+                  placeholderText='End Date'
+                  selected={newEvent.end}
+                  onChange={(end) => setNewEvent({ ...newEvent, end })}
+                />
               </DateWrap>
               <WritingTitle>활동 내용</WritingTitle>
               <WritingInput />
