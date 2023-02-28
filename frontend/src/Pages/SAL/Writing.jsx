@@ -176,12 +176,6 @@ function Writing() {
   const baseurl = process.env.REACT_APP_BASE_URL;
   const [getWriting, setGetWriting] = useState([]);
 
-  useEffect(() => {
-    axios.get(`${baseurl}`).then((response) => {
-      setGetWriting(response.data);
-    });
-  }, []);
-
   const [value, onChange] = useState(new Date());
   const [newEvent, setNewEvent] = useState({ title: '', end: '' });
   const [allEvents, setAllEvents] = useState(events);
@@ -200,6 +194,19 @@ function Writing() {
     }
     setAllEvents([...allEvents, newEvent]);
   }
+
+  const handleSubmit = useEffect(() => {
+    axios
+      .post(`study-activities/1`, {
+        studyData,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 
   return (
     <ThemeProvider theme={theme}>
