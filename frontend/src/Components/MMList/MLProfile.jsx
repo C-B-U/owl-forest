@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import { palette } from 'styled-tools';
 import profileimg from '../../Image/cbu_circle.png';
 import Btn from '../Btn';
@@ -58,6 +59,7 @@ const Info = styled.li`
   margin-top: 1.2rem;
 `;
 
+
 function MLProfile({ name, major, grade }) {
   return (
     <div>
@@ -69,7 +71,7 @@ function MLProfile({ name, major, grade }) {
             {major} {grade}학년
           </Info>
           <Info>스터디</Info>
-          <Info style={{ height: '14rem' }}>한줄 소개</Info>
+          <Info style={{ height: '14rem' }}>자기소개</Info>
           <Btn
             width='15rem'
             height='2.8rem'

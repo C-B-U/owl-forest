@@ -20,6 +20,7 @@
     "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
     "react-paypal-express-checkout": "^1.0.5",
+    "react-router": "^6.8.1",
     "react-router-dom": "^6.4.1",
     "react-scripts": "^5.0.1",
     "react-simple-star-rating": "^5.1.7",

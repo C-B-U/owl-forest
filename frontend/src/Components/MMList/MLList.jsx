@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { palette } from 'styled-tools';
 import profileimg from '../../Image/cbu_circle.png';
 
@@ -49,7 +50,7 @@ const GradeInfo = styled.div`
 `;
 
 function MLList() {
-  const [user, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
   useEffect(() => {
     axios.get('/members').then((response) => {
       setUsers(response.data);
@@ -57,9 +58,19 @@ function MLList() {
     });
   }, []);
 
-  const list = user.map((v) => (
-    <div>
-      <List>
+  const onChange = e =>{
+    const {name, major, grade}=e.target
+  }
+  
+  const navigate = useNavigate();
+
+  // list에 있는 정보(users) 를 복사해서 넘겨주면 됨 
+  // 클릭할 때마다 변해야 하니까 onchange
+  // event 처리해서 타겟 바꾸는거? 그렇게 쓰면 될듯
+
+  const list = users.map((v) => (
+    <div >
+      <List onClick={navigate('/MLlist',v.target.value)}>
         <MemListInput>
           <Photo />
           <NameInfo>{v.name}</NameInfo>
