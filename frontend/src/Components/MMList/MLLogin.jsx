@@ -18,6 +18,12 @@ function MLLogin() {
       setCookie('accessToken', ACCESS_TOKEN);
       setCookie('refreshToken', REFRESH_TOKEN);
     }
+    NaverLogin();
+    if (cookies !== null) {
+      navigate('/memlist', { replace: true });
+    } else {
+      navigate('/addinfo', { replace: true });
+    }
 
     async function KakaoLogin() {
       const res = await axios.get(
@@ -27,6 +33,12 @@ function MLLogin() {
       const REFRESH_TOKEN = res.headers.refresh_token;
       setCookie('accessToken', ACCESS_TOKEN);
       setCookie('refreshToken', REFRESH_TOKEN);
+    }
+    KakaoLogin();
+    if (cookies !== null) {
+      navigate('/memlist', { replace: true });
+    } else {
+      navigate('/addinfo', { replace: true });
     }
 
     async function GoogleLogin() {
@@ -38,7 +50,13 @@ function MLLogin() {
       setCookie('accessToken', ACCESS_TOKEN);
       setCookie('refreshToken', REFRESH_TOKEN);
     }
-  });
+    GoogleLogin();
+    if (cookies !== null) {
+      navigate('/memlist', { replace: true });
+    } else {
+      navigate('/addinfo', { replace: true });
+    }
+  }, []);
 }
 
 export default MLLogin;
