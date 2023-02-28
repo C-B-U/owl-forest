@@ -19,11 +19,12 @@ function KakaoRedirect() {
       setCookie('refreshToken', REFRESH_TOKEN);
     }
     KakaoLogin();
-    if (cookies !== null) {
-      navigate('/memlist', { replace: true });
-    } else {
-      navigate('/addinfo', { replace: true });
-    }
+    navigate('/memlist', { replace: true });
+    // if (cookies !== null) {
+    //   navigate('/memlist', { replace: true });
+    // } else {
+    //   navigate('/addinfo', { replace: true });
+    // }
   }, []);
 }
 export default KakaoRedirect;
