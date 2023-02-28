@@ -78,6 +78,7 @@ jwt:
 client:
   url: ${CLIENT_URL}
   host: ${CLIENT_HOST}
+  endpoint: ${CLIENT_ENDPOINT}
 
 cloud:
   aws:

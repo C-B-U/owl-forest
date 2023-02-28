@@ -1,16 +1,14 @@
 package com.cbu.backend.config.security.oauth2;
 
 import com.cbu.backend.config.security.jwt.JwtSetupService;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * OAuth2 사용지 인증 성공시 진행하는 Handler
@@ -21,12 +19,15 @@ import javax.servlet.http.HttpServletResponse;
 public class OAuth2AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     private final JwtSetupService jwtSetupService;
 
-    private final String redirectUrl;
+    private final String clientUrl;
+    private final String redirectEndpoint;
 
     public OAuth2AuthSuccessHandler(
-            JwtSetupService jwtSetupService, @Value("${client.url}") String redirectUrl) {
+            JwtSetupService jwtSetupService, @Value("${client.url}") String clientUrl,
+            @Value("${client.endpoint}") String redirectEndpoint) {
         this.jwtSetupService = jwtSetupService;
-        this.redirectUrl = redirectUrl;
+        this.clientUrl = clientUrl;
+        this.redirectEndpoint = redirectEndpoint;
     }
 
     @Override
@@ -36,6 +37,6 @@ public class OAuth2AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
         jwtSetupService.addJwtTokensInCookie(response, loginUser);
-        getRedirectStrategy().sendRedirect(request, response, redirectUrl);
+        getRedirectStrategy().sendRedirect(request, response, clientUrl + redirectEndpoint);
     }
 }

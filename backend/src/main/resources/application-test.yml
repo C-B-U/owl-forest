@@ -68,6 +68,7 @@ jwt:
 
 client:
   url: http://localhost:3000
+  endpoint: 1234
   host: localhost
 
 cloud:
