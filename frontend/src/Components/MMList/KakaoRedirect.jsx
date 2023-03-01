@@ -11,7 +11,7 @@ function KakaoRedirect() {
   useEffect(() => {
     async function KakaoLogin() {
       const res = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}auth/login/kakao/kakao?=${code}&state=${process.env.KAKAO_STATE}`
+        `${process.env.REACT_APP_BASE_URL}/login/oauth2/code/kakao?=${code}&state=${process.env.KAKAO_STATE}`
       );
       const ACCESS_TOKEN = res.headers.authorization;
       const REFRESH_TOKEN = res.headers.refresh_token;
