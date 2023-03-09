@@ -19,7 +19,7 @@ http://cbuforest.shop:30003
 - QueryDsl을 이용하여 복잡한 쿼리 생성, fetch join을 활용한 N+1 문제 해결
 
 ## 시스템 아키텍처
-<img width="303" alt="image" src="https://user-images.githubusercontent.com/55674648/223922079-760c180d-2263-46aa-98c5-64bc41e51538.png">
+<img width="1182" alt="image" src="https://user-images.githubusercontent.com/55674648/223957002-8d499072-862a-4d83-821b-190a09d563e2.png">
 
 
 ## api 문서
