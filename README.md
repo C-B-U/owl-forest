@@ -19,6 +19,8 @@ http://cbuforest.shop:30003
 - QueryDsl을 이용하여 복잡한 쿼리 생성, fetch join을 활용한 N+1 문제 해결
 
 ## 시스템 아키텍처
+<img width="303" alt="image" src="https://user-images.githubusercontent.com/55674648/223922079-760c180d-2263-46aa-98c5-64bc41e51538.png">
+
 
 ## api 문서
 https://c-b-u.github.io/owl-forest-api-docs/
