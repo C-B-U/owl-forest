@@ -81,7 +81,7 @@ public class StudyActivityService {
     }
 
     private void checkStudyTime(StudyActivityRequest studyActivityRequest) {
-        studyActivityRequest.getStudyTime().isValidStudyTime();
+        studyActivityRequest.getStudyTime().validStudyTime();
     }
 
     private StudyActivity getEntity(Long id) {
