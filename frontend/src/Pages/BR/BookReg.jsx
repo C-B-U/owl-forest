@@ -5,6 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { ko } from 'date-fns/esm/locale';
 import { palette } from 'styled-tools';
 import axios from 'axios';
+import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import theme from '../../Components/Color';
@@ -44,7 +45,7 @@ const WrapContent = styled.div`
 const WrapBookImage = styled.div`
   width: 15rem;
   height: 19rem;
-  background-color: #ffffff;
+  background-color: white;
   background-image: url(${(props) => props.backgroundImage});
   background-repeat: no-repeat;
   background-size: contain;
@@ -273,13 +274,16 @@ function BookReg() {
   const [endDate, setEndDate] = useState();
 
   // 도서 검색 input 값 받기
-  const [bookTitle, setBookTitle] = useState();
+  const [bookTitle, setBookTitle] = useState('');
 
   // book-external api 값 저장
   const [getBook, setGetBook] = useState([]);
 
   // 장소 input 값 받기
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState('');
+
+  // 카카오 오픈채팅 input 값 받기
+  const [kakaoUrl, setKakaoUrl] = useState('');
 
   // 선택한 책 정보 받기
   const [bookInfo, setBookInfo] = useState([]);
@@ -302,6 +306,15 @@ function BookReg() {
     setLocation(e.target.value);
   };
 
+  const onChangeKakaoUrl = (e) => {
+    setKakaoUrl(e.target.value);
+  };
+
+  useEffect(() => {
+    const today = moment(startDate).format().slice(0, 10);
+    setEndDate(today);
+  }, []);
+
   // 팝업에서 책 제목 찾는 함수
   const SearchBook = () => {
     const data = {
@@ -313,7 +326,7 @@ function BookReg() {
       alert('키워드를 입력해 주세요.');
     } else {
       axios
-        .get(`${process.env.REACT_APP_BASE_URL}/externalbooks`, {
+        .get(`${process.env.REACT_APP_BASE_URL}externalbooks`, {
           params: data,
         })
         .then((res) => {
@@ -328,6 +341,13 @@ function BookReg() {
 
   // 팝업 리스트에서 하나 클릭했을 때
   const onClickBook = (e) => {
+    console.log(e.currentTarget.children[0].id);
+    console.log(e.currentTarget.children[0].innerText);
+    console.log(e.currentTarget.children[1].innerText);
+    console.log(e.currentTarget.children[2].innerText);
+    console.log(e.currentTarget.children[4].getAttribute('value'));
+    console.log(e.currentTarget.children[3].innerText);
+    console.log(e.currentTarget.children[5].getAttribute('value'));
     setBookInfo([
       e.currentTarget.children[0].id, // isbn
       e.currentTarget.children[0].innerText, // 제목
@@ -337,10 +357,10 @@ function BookReg() {
       e.currentTarget.children[3].innerText, // 출판일
       e.currentTarget.children[5].getAttribute('value'), // 가격
     ]);
-    console.log(bookInfo);
+
     setIsShown(false);
   };
-
+  console.log(bookInfo);
   // 게시하기 클릭했을 때
   const onClickPost = () => {
     if (!location) {
@@ -358,10 +378,11 @@ function BookReg() {
         },
         location,
         endDate,
+        kakaoUrl,
       };
       console.log(book);
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/book-borrows`, book)
+        .post(`${process.env.REACT_APP_BASE_URL}book-borrows`, book)
         .then((res) => {
           console.log(res);
           alert('도서 등록에 성공했습니다!');
@@ -453,7 +474,7 @@ function BookReg() {
                           dateFormat='yyyy일 MM월 dd일'
                           selected={startDate}
                           onChange={(date) => {
-                            const newdate = date.toISOString().slice(0, 10);
+                            const newdate = moment(date).format().slice(0, 10);
                             setEndDate(newdate);
                             setStartDate(date);
                           }}
@@ -467,6 +488,15 @@ function BookReg() {
                         height='2.5rem'
                         placeholder='만날 장소를 적어주세요'
                         onChange={onChangeLocation}
+                      />
+                    </WrapReturnAlert>
+                    <WrapReturnAlert>
+                      <Location>채팅 URL</Location>
+                      <Input
+                        width='23rem'
+                        height='2.5rem'
+                        placeholder='카카오톡 오픈채팅 url'
+                        onChange={onChangeKakaoUrl}
                       />
                     </WrapReturnAlert>
                   </WrapWriteForm>

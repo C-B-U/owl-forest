@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
+import axios from 'axios';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import Button from '../../Components/Btn';
@@ -106,10 +107,25 @@ const ReturnDate = styled.div`
 
 function MyBookList() {
   const navigate = useNavigate();
+  const [myLend, getMyLend] = useState([]);
+
   const navigateToReview = () => {
     navigate('/ReviewRegister');
   };
 
+  useEffect(
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}book-borrows/my-lend`)
+      .then((res) => {
+        console.log(res);
+        getMyLend(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      }),
+    []
+  );
+  console.log(myLend);
   return (
     <ThemeProvider theme={theme}>
       <MainWrap>
