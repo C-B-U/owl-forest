@@ -8,6 +8,7 @@ function KakaoRedirect() {
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
 
+  const onClick = onClick;
   useEffect(() => {
     async function KakaoLogin() {
       const res = await axios.get(
