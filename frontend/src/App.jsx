@@ -68,9 +68,9 @@ function App() {
           <Route path='/ReviewList' element={<ReviewList />} />
           <Route path='/ReviewRegister' element={<ReviewReg />} />
           {/* ---- 로그인 리다이렉트 ---- */}
-          <Route path='/Kakaoredirect' element={<KakaoRedirect />} />
-          <Route path='/Googleredirect' element={<GoogleRedirect />} />
-          <Route path='/Naverredirect' element={<NaverRedirect />} />
+          <Route path='/authkakao' element={<KakaoRedirect />} />
+          <Route path='/authgoogle' element={<GoogleRedirect />} />
+          <Route path='/authnaver' element={<NaverRedirect />} />
         </Routes>
       </Router>
     </div>

@@ -73,9 +73,9 @@ const NaverSocialImg = styled.img`
 `;
 function Login() {
   const base_url = process.env.REACT_APP_BASE_URL;
-  const KAKAO_AUTH_URL = `${base_url}/auth/login/kakao`;
-  const GOOGLE_AUTH_URL = `${base_url}/auth/login/google`;
-  const NAVER_AUTH_URL = `${base_url}/auth/login/naver`;
+  const KAKAO_AUTH_URL = `${base_url}auth/login/kakao`;
+  const GOOGLE_AUTH_URL = `${base_url}auth/login/google`;
+  const NAVER_AUTH_URL = `${base_url}auth/login/naver`;
 
   // 선언
   return (
