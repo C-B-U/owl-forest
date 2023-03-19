@@ -22,7 +22,7 @@ function NaverRedirect() {
     if (cookies !== null) {
       navigate('/memlist', { replace: true });
     } else {
-      navigate('/addinfo', { replace: true });
+      navigate('/addinfo', { replace: false });
     }
   }, []);
 }

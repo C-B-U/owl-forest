@@ -8,7 +8,6 @@ function KakaoRedirect() {
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
 
-  const onClick = onClick;
   useEffect(() => {
     async function KakaoLogin() {
       const res = await axios.get(
@@ -24,7 +23,7 @@ function KakaoRedirect() {
     if (cookies !== null) {
       navigate('/memlist', { replace: true });
     } else {
-      navigate('/addinfo', { replace: true });
+      navigate('/addinfo', { replace: false });
     }
   }, []);
 }
