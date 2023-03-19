@@ -22,8 +22,8 @@ public class StudyTime {
         this.endTime = endTime;
     }
 
-    public void isValidStudyTime() {
-        if (startTime.isBefore(endTime) && endTime.isBefore(LocalDateTime.now())) {
+    public void validStudyTime() {
+        if (startTime.isAfter(endTime) || endTime.isAfter(LocalDateTime.now())) {
             throw new IllegalStudyTimeException();
         }
     }

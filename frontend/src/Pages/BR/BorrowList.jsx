@@ -90,6 +90,10 @@ const BookImage = styled.div`
   width: 11rem;
   height: 15rem;
   background-color: white;
+  background-image: url(${(props) => props.backgroundImage});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 `; // 책 이미지
 
 const BookName = styled.div`
@@ -99,18 +103,22 @@ const BookName = styled.div`
 
 const BookInfos = styled.div`
   margin-top: 0.5rem;
+  margin-bottom: 1rem;
 `; // 책정보 저자 | 출판사
 
 const WrapStarScore = styled.div`
-  width: 100%;
-  padding: 0.5rem 0rem;
+  /* border: 1px solid black; */
+  /* width: 10rem; */
+  /* padding: 0.5rem 0rem; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 `;
 
 const StarScore = styled.div`
+  /* border: 1px solid black; */
   width: 3rem;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
+  margin-bottom: 0.5rem;
 `;
 
 const Deadline = styled.div`
@@ -135,9 +143,12 @@ function BorrowList() {
   const ToNavigateMyBookList = () => {
     navigate(`/MyBookList`);
   };
+  const ToNavigateBorrow = () => {
+    navigate(`/Borrow`);
+  };
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/book-borrows`)
+      .get(`${process.env.REACT_APP_BASE_URL}book-borrows`)
       .then((res) => {
         console.log(res);
         setBorrows(res);
@@ -146,6 +157,7 @@ function BorrowList() {
         console.log(err);
       });
   }, []);
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -201,11 +213,12 @@ function BorrowList() {
               {/* // data에 아무것도 없어서 오류 뜸 */}
               {borrows.map((borrow) => (
                 <WrapContent>
-                  <BookImage />
+                  <BookImage backgroundImage={borrow.book.imageUrl} />
+
                   <WrapInfo>
                     <BookName>{borrow.book.title}</BookName>
                     <BookInfos>
-                      {borrow.book.author} <br /> {borrow.title}
+                      {borrow.book.author} <br /> {borrow.book.author}
                     </BookInfos>
                     <WrapStarScore>
                       <StarScore>난이도</StarScore>
@@ -215,8 +228,10 @@ function BorrowList() {
                       <StarScore>평점</StarScore>
                       <Rating readonly size={17} initialValue={0} />
                     </WrapStarScore>
-                    <Deadline>마감일 : 2022-02-22</Deadline>
-                    <BorrowDate>대여일:</BorrowDate>
+                    <Deadline>마감일 : {borrow.endDate}</Deadline>
+                    {/*  */}
+                    <BorrowDate>게시일 : {borrow.createAt}</BorrowDate>
+                    {/*  */}
                     <BorrowButton
                       color={palette('PsYellow')}
                       background={palette('PsBtn')}
@@ -225,6 +240,7 @@ function BorrowList() {
                       name='대여하기'
                       borderRadius='0.5rem'
                       fontSize='0.9rem'
+                      onClick={ToNavigateBorrow}
                     />
                   </WrapInfo>
                 </WrapContent>
