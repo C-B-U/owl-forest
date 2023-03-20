@@ -322,6 +322,7 @@ function BookReg() {
       page: 1,
       pageSize: 20,
     };
+    console.log(data);
     if (!bookTitle) {
       alert('키워드를 입력해 주세요.');
     } else {
