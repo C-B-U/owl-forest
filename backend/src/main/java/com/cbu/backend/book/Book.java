@@ -1,13 +1,15 @@
 package com.cbu.backend.book;
 
 import com.cbu.backend.member.domain.Member;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDate;
+
+import javax.persistence.*;
 
 @Getter
 @Entity
