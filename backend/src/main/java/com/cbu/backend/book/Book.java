@@ -1,15 +1,13 @@
 package com.cbu.backend.book;
 
 import com.cbu.backend.member.domain.Member;
-
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Entity
@@ -35,7 +33,6 @@ public class Book {
 
     @Builder
     public Book(
-            Long id,
             String title,
             String author,
             String publisher,
@@ -44,7 +41,6 @@ public class Book {
             LocalDate publishAt,
             Member register,
             String isbn) {
-        this.id = id;
         this.title = title;
         this.author = author;
         this.publisher = publisher;
