@@ -148,7 +148,7 @@ function BorrowList() {
   };
   useEffect(() => {
     const data = {
-      page: 1,
+      page: 0,
     };
     axios
       .get(`${process.env.REACT_APP_BASE_URL}book-borrows`, { params: data })
