@@ -147,8 +147,11 @@ function BorrowList() {
     navigate(`/Borrow`);
   };
   useEffect(() => {
+    const data = {
+      page: 1,
+    };
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}book-borrows`)
+      .get(`${process.env.REACT_APP_BASE_URL}book-borrows`, { params: data })
       .then((res) => {
         console.log(res);
         setBorrows(res);
