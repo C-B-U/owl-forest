@@ -341,13 +341,13 @@ function BookReg() {
 
   // 팝업 리스트에서 하나 클릭했을 때
   const onClickBook = (e) => {
-    console.log(e.currentTarget.children[0].id);
-    console.log(e.currentTarget.children[0].innerText);
-    console.log(e.currentTarget.children[1].innerText);
-    console.log(e.currentTarget.children[2].innerText);
-    console.log(e.currentTarget.children[4].getAttribute('value'));
-    console.log(e.currentTarget.children[3].innerText);
-    console.log(e.currentTarget.children[5].getAttribute('value'));
+    // console.log(e.currentTarget.children[0].id);
+    // console.log(e.currentTarget.children[0].innerText);
+    // console.log(e.currentTarget.children[1].innerText);
+    // console.log(e.currentTarget.children[2].innerText);
+    // console.log(e.currentTarget.children[4].getAttribute('value'));
+    // console.log(e.currentTarget.children[3].innerText);
+    // console.log(e.currentTarget.children[5].getAttribute('value'));
     setBookInfo([
       e.currentTarget.children[0].id, // isbn
       e.currentTarget.children[0].innerText, // 제목
@@ -360,7 +360,7 @@ function BookReg() {
 
     setIsShown(false);
   };
-  console.log(bookInfo);
+  // console.log(bookInfo);
   // 게시하기 클릭했을 때
   const onClickPost = () => {
     if (!location) {
@@ -380,7 +380,7 @@ function BookReg() {
         endDate,
         kakaoUrl,
       };
-      console.log(book);
+      // console.log(book);
       axios
         .post(`${process.env.REACT_APP_BASE_URL}book-borrows`, book)
         .then((res) => {
