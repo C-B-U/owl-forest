@@ -11,7 +11,6 @@ import Search from '../../Components/Search';
 import BorrowButton from '../../Components/Btn.jsx';
 
 const MainWrap = styled.div`
-  /* display: inline-block; */
   width: 100%;
   height: 100%;
   background-color: ${palette('PsCocoa', 0)};
@@ -24,9 +23,8 @@ const ListWrap = styled.div`
   width: 100%;
 `;
 const WrapTop = styled.div`
-  float: right;
   /* border: 1px solid black; */
-  /* margin-bottom: 1rem; */
+  float: right;
 `;
 const WrapSearchbar = styled.div`
   margin-left: 300px;
@@ -34,18 +32,17 @@ const WrapSearchbar = styled.div`
 `;
 
 const Wrap = styled.div`
+  /* border: 1px solid black; */
   position: fixed;
   bottom: 0;
   box-sizing: border-box;
   display: grid;
   width: 100%;
-  /* margin-top: 100px; */
   padding: 1rem;
-  /* border: 1px solid black; */
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   min-height: 75vh;
-  /* min-height: 60vh; */
+
   overflow: auto;
   &::-webkit-scrollbar {
     width: 8px;
@@ -69,19 +66,17 @@ const BorrowButtons = styled.div`
   margin-right: 2rem;
 `;
 const WrapContent = styled.div`
+  /* border: 1px solid black; */
   height: fit-content;
   width: fit-content;
-  /* border: 1px solid black; */
   box-sizing: border-box;
   margin-bottom: 1rem;
-  /* padding: 1rem; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 0.9rem;
 `;
 const WrapInfo = styled.div`
-  /* float: left; */
   text-align: left;
   margin-left: 1rem;
   width: 9rem;
@@ -108,16 +103,12 @@ const BookInfos = styled.div`
 
 const WrapStarScore = styled.div`
   /* border: 1px solid black; */
-  /* width: 10rem; */
-  /* padding: 0.5rem 0rem; */
   display: flex;
-  /* flex-direction: column; */
 `;
 
 const StarScore = styled.div`
   /* border: 1px solid black; */
   width: 3rem;
-  /* margin-top: 0.5rem; */
   margin-bottom: 0.5rem;
 `;
 
@@ -130,7 +121,7 @@ const BorrowDate = styled.div`
 `; // 대여일
 
 function BorrowList() {
-  // get으로 받은 리뷰 저장
+  // 책을
   const [borrows, setBorrows] = useState([]);
 
   const navigate = useNavigate();
@@ -153,13 +144,15 @@ function BorrowList() {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}book-borrows`, { params: data })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setBorrows(res);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  console.log(borrows);
 
   return (
     <div>
@@ -213,7 +206,6 @@ function BorrowList() {
               </BorrowButtons>
             </WrapTop>
             <Wrap>
-              {/* // data에 아무것도 없어서 오류 뜸 */}
               {borrows.map((borrow) => (
                 <WrapContent>
                   <BookImage backgroundImage={borrow.book.imageUrl} />
