@@ -61,7 +61,7 @@ const Wrap = styled.div`
 const BorrowButtons = styled.div`
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;
   margin-right: 2rem;
 `;
