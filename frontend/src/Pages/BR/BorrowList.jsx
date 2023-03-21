@@ -152,7 +152,7 @@ function BorrowList() {
       });
   }, []);
 
-  console.log(borrows);
+  console.log(borrows.data);
 
   return (
     <div>
