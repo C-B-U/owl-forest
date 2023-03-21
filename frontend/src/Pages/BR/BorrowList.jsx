@@ -144,7 +144,7 @@ function BorrowList() {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}book-borrows`, { params: data })
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         setBorrows(res);
       })
       .catch((err) => {
@@ -211,7 +211,7 @@ function BorrowList() {
                   <BookImage backgroundImage={borrow.book.imageUrl} />
 
                   <WrapInfo>
-                    <BookName>{borrow.book.title}</BookName>
+                    <BookName>{borrow}</BookName>
                     <BookInfos>
                       {borrow.book.author} <br /> {borrow.book.author}
                     </BookInfos>
