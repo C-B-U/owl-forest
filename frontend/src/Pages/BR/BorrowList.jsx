@@ -94,8 +94,11 @@ const BookImage = styled.div`
 const BookName = styled.div`
   width: 100%;
   font-size: 1rem;
-  font-style: bold;
-  -webkit-line-clamp: 2;
+  font-weight: bold;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   text-overflow: ellipsis;
 `; // 책 이름
 
