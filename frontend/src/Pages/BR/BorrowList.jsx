@@ -213,7 +213,7 @@ function BorrowList() {
                   <WrapInfo>
                     <BookName>{borrow.book.title}</BookName>
                     <BookInfos>
-                      {borrow.book.author} <br /> {borrow.book.author}
+                      {borrow.book.author} <br /> {borrow.book.publisher}
                     </BookInfos>
                     <WrapStarScore>
                       <StarScore>난이도</StarScore>
