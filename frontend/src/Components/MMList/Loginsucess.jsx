@@ -6,7 +6,7 @@ import axios from 'axios';
 function Loginsuccess(){
   const [cookies, setCookie] = useCookies();
   const navigate = useNavigate();
-
+  console.log("test");
   useEffect(()=>{
     async function KakaoLogin() {
       const res = await axios.get(
