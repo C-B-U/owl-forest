@@ -16,9 +16,12 @@ function Loginsuccess(){
       const REFRESH_TOKEN = res.headers.refresh_token;
       setCookie('accessToken', ACCESS_TOKEN);
       setCookie('refreshToken', REFRESH_TOKEN);
+      console.log(ACCESS_TOKEN);
+      console.log(REFRESH_TOKEN);
     }
     KakaoLogin();
     
+
     if(cookies !== null){
         navigate('/memlist', { replace: true });
     }else {
