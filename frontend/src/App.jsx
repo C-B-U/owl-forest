@@ -29,6 +29,7 @@ import ReviewReg from './Pages/BR/ReviewReg';
 import KakaoRedirect from './Components/MMList/KakaoRedirect';
 import GoogleRedirect from './Components/MMList/GoogleRedirect';
 import NaverRedirect from './Components/MMList/NaverRedirect';
+import loginsuccess from './Components/MMList/loginsuccess';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 axios.defaults.withCredentials = true;
@@ -71,6 +72,7 @@ function App() {
           <Route path='/authkakao' element={<KakaoRedirect />} />
           <Route path='/authgoogle' element={<GoogleRedirect />} />
           <Route path='/authnaver' element={<NaverRedirect />} />
+          <Route path='/login-success' element={<loginsuccess />} />
         </Routes>
       </Router>
     </div>
