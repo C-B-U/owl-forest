@@ -66,7 +66,7 @@ const BorrowButtons = styled.div`
   margin-right: 2rem;
 `;
 const WrapContent = styled.div`
-  /* border: 1px solid black; */
+  border: 1px solid black;
   height: fit-content;
   width: fit-content;
   box-sizing: border-box;
