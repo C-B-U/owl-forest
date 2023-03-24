@@ -39,7 +39,7 @@ const Wrap = styled.div`
   display: grid;
   width: 100%;
   padding: 1rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   min-height: 75vh;
 
@@ -61,7 +61,7 @@ const Wrap = styled.div`
 const BorrowButtons = styled.div`
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
   margin-right: 2rem;
 `;
