@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import Welcome from './Pages/Welcome';
 import StudyActivityLog from './Pages/SAL/StudyActivityLog';
 import PlanMake from './Pages/SAL/PlanMake';
@@ -29,7 +30,7 @@ import ReviewReg from './Pages/BR/ReviewReg';
 import KakaoRedirect from './Components/MMList/KakaoRedirect';
 import GoogleRedirect from './Components/MMList/GoogleRedirect';
 import NaverRedirect from './Components/MMList/NaverRedirect';
-import loginsuccess from './Components/MMList/loginsuccess';
+import Loginsuccess from './Components/MMList/Loginsuccess';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 axios.defaults.withCredentials = true;
@@ -37,44 +38,46 @@ axios.defaults.withCredentials = true;
 function App() {
   return (
     <div className='App'>
-      <Router>
-        <Routes>
-          {/* ---- 메인페이지 ---- */}
-          <Route path='/' element={<Welcome />} />
-          {/* ---- 활동일지 ---- */}
-          <Route path='/StudyActivityLog' element={<StudyActivityLog />} />
-          <Route path='/PlanMake' element={<PlanMake />} />
-          <Route path='/StudyCreation' element={<StudyCreation />} />
-          <Route path='/StudyCrew' element={<StudyCrew />} />
-          <Route path='/StudyLeader' element={<StudyLeader />} />
-          <Route path='/StudyLog' element={<StudyLog />} />
-          <Route path='/StudyManage' element={<StudyManage />} />
-          <Route path='/Writing' element={<Writing />} />
-          {/* ---- 회원관리 ---- */}
-          <Route path='/Login' element={<Login />} />
-          <Route path='/FindId' element={<FindId />} />
-          <Route path='/FindPw' element={<FindPw />} />
-          <Route path='/MemList' element={<MemList />} />
-          <Route path='/MemListCon' element={<MemListCon />} />
-          <Route path='/Reg' element={<Reg />} />
-          <Route path='/Profile' element={<Profile />} />
-          <Route path='/ChangePw' element={<ChangePw />} />
-          <Route path='/AddInfo' element={<AddInfo />} />
-          {/* ---- 북리뷰 ---- */}
-          <Route path='/Borrow' element={<Borrow />} />
-          <Route path='/BorrowList' element={<BorrowList />} />
-          <Route path='/BookRegister' element={<BookReg />} />
-          <Route path='/MyBookList' element={<MyBookList />} />
-          <Route path='/ReviewDetail' element={<ReviewDetail />} />
-          <Route path='/ReviewList' element={<ReviewList />} />
-          <Route path='/ReviewRegister' element={<ReviewReg />} />
-          {/* ---- 로그인 리다이렉트 ---- */}
-          <Route path='/authkakao' element={<KakaoRedirect />} />
-          <Route path='/authgoogle' element={<GoogleRedirect />} />
-          <Route path='/authnaver' element={<NaverRedirect />} />
-          <Route path='/login-success' element={<loginsuccess />} />
-        </Routes>
-      </Router>
+      <CookiesProvider>
+        <Router>
+          <Routes>
+            {/* ---- 메인페이지 ---- */}
+            <Route path='/' element={<Welcome />} />
+            {/* ---- 활동일지 ---- */}
+            <Route path='/StudyActivityLog' element={<StudyActivityLog />} />
+            <Route path='/PlanMake' element={<PlanMake />} />
+            <Route path='/StudyCreation' element={<StudyCreation />} />
+            <Route path='/StudyCrew' element={<StudyCrew />} />
+            <Route path='/StudyLeader' element={<StudyLeader />} />
+            <Route path='/StudyLog' element={<StudyLog />} />
+            <Route path='/StudyManage' element={<StudyManage />} />
+            <Route path='/Writing' element={<Writing />} />
+            {/* ---- 회원관리 ---- */}
+            <Route path='/Login' element={<Login />} />
+            <Route path='/FindId' element={<FindId />} />
+            <Route path='/FindPw' element={<FindPw />} />
+            <Route path='/MemList' element={<MemList />} />
+            <Route path='/MemListCon' element={<MemListCon />} />
+            <Route path='/Reg' element={<Reg />} />
+            <Route path='/Profile' element={<Profile />} />
+            <Route path='/ChangePw' element={<ChangePw />} />
+            <Route path='/AddInfo' element={<AddInfo />} />
+            {/* ---- 북리뷰 ---- */}
+            <Route path='/Borrow' element={<Borrow />} />
+            <Route path='/BorrowList' element={<BorrowList />} />
+            <Route path='/BookRegister' element={<BookReg />} />
+            <Route path='/MyBookList' element={<MyBookList />} />
+            <Route path='/ReviewDetail' element={<ReviewDetail />} />
+            <Route path='/ReviewList' element={<ReviewList />} />
+            <Route path='/ReviewRegister' element={<ReviewReg />} />
+            {/* ---- 로그인 리다이렉트 ---- */}
+            <Route path='/authkakao' element={<KakaoRedirect />} />
+            <Route path='/authgoogle' element={<GoogleRedirect />} />
+            <Route path='/authnaver' element={<NaverRedirect />} />
+            <Route path='/login-success' element={<Loginsuccess />} />
+          </Routes>
+        </Router>
+      </CookiesProvider>
     </div>
   );
 }
