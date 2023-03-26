@@ -1,30 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function KakaoRedirect() {
-  const code = new URL(window.location.href).searchParams.get('code');
-  const [cookies, setCookie] = useCookies();
-  const navigate = useNavigate();
+const KakaoRedirect = (props) => {
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
 
-  useEffect(() => {
-    async function KakaoLogin() {
-      const res = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}auth/login/kakao`
-      );
-      const ACCESS_TOKEN = res.headers.authorization;
-      const REFRESH_TOKEN = res.headers.refresh_token;
-      setCookie('accessToken', ACCESS_TOKEN);
-      setCookie('refreshToken', REFRESH_TOKEN);
-    }
-    KakaoLogin();
-    // navigate('/memlist', { replace: true });
-    if (cookies !== null) {
-      navigate('/memlist', { replace: true });
-    } else {
-      navigate('/addinfo', { replace: false });
-    }
-  }, []);
-}
+  const navigate = useNavigate();
+  const token = cookies.Authorization;
+
+  if(token !== null){
+    navigate('/memlist', {replace: true});
+  } else {
+    navigate('/addinfo', {replace: false});
+  }
+};
+
 export default KakaoRedirect;
