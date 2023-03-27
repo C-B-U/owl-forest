@@ -131,6 +131,7 @@ function BorrowList() {
   const [borrows, setBorrows] = useState([]);
 
   const navigate = useNavigate();
+
   const ToNavigateBookReg = () => {
     navigate(`/BookRegister`);
   };
@@ -140,8 +141,8 @@ function BorrowList() {
   const ToNavigateMyBookList = () => {
     navigate(`/MyBookList`);
   };
-  const ToNavigateBorrow = () => {
-    navigate(`/Borrow`);
+  const ToNavigateBorrow = (e) => {
+    navigate(`/Borrow`, { state: e.target.value });
   };
   useEffect(() => {
     const data = {
@@ -157,8 +158,6 @@ function BorrowList() {
         console.log(err);
       });
   }, []);
-
-  // console.log(borrows.data);
 
   return (
     <div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import theme from '../../Components/Color';
@@ -65,6 +66,8 @@ const WrapButton = styled.div`
 `;
 
 function Borrow() {
+  const { state } = useLocation();
+  console.log(state);
   return (
     <div>
       <ThemeProvider theme={theme}>
