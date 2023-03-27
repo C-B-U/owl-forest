@@ -142,7 +142,8 @@ function BorrowList() {
     navigate(`/MyBookList`);
   };
   const ToNavigateBorrow = (e) => {
-    navigate(`/Borrow`, { state: e.target.value });
+    console.log(e.target.value);
+    // navigate(`/Borrow`, { state: e.target.value });
   };
   useEffect(() => {
     const data = {
