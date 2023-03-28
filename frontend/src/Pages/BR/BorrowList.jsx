@@ -41,7 +41,7 @@ const Wrap = styled.div`
   height: calc(100vh - 11rem);
   padding: 1rem;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1.3rem;
   min-height: 75vh;
 
   overflow: auto;
@@ -67,7 +67,7 @@ const BorrowButtons = styled.div`
   margin-right: 2rem;
 `;
 const WrapContent = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: fit-content;
   width: fit-content;
   box-sizing: border-box;
@@ -85,6 +85,7 @@ const WrapInfo = styled.div`
 const BookImage = styled.div`
   width: 11rem;
   height: 15rem;
+  margin-right: 1rem;
   background-color: white;
   background-image: url(${(props) => props.backgroundImage});
   background-repeat: no-repeat;
