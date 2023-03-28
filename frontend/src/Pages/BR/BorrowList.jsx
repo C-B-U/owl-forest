@@ -38,7 +38,7 @@ const Wrap = styled.div`
   box-sizing: border-box;
   display: grid;
   width: 100vw;
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 11rem);
   padding: 1rem;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -79,8 +79,8 @@ const WrapContent = styled.div`
 `;
 const WrapInfo = styled.div`
   text-align: left;
-  margin-left: 1rem;
-  width: 9rem;
+  /* margin-left: 1rem; */
+  min-width: 9rem;
 `;
 const BookImage = styled.div`
   width: 11rem;
