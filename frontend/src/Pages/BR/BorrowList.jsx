@@ -154,6 +154,7 @@ function BorrowList() {
                 <Contents
                   id={borrow.book.id}
                   imageUrl={borrow.book.imageUrl}
+                  title={borrow.book.title}
                   author={borrow.book.author}
                   publisher={borrow.book.publisher}
                   difficulty={2.3}

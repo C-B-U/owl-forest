@@ -62,6 +62,7 @@ const WrapStarScore = styled.div`
 const StarScore = styled.div`
   /* border: 1px solid black; */
   width: 3rem;
+  margin-top: -0.3rem;
   margin-bottom: 0.5rem;
 `;
 
