@@ -98,6 +98,7 @@ const BookImage = styled.div`
 
 const BookName = styled.div`
   width: 100%;
+  min-width: 13rem;
   font-size: 1rem;
   font-weight: bold;
   display: -webkit-box;
