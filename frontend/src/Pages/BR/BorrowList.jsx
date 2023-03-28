@@ -8,6 +8,7 @@ import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import Search from '../../Components/Search';
 import Contents from './Contents';
+import BorrowButton from '../../Components/Btn.jsx';
 
 const MainWrap = styled.div`
   width: 100%;

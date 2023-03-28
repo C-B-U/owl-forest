@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate, useParams, useLink } from 'react-router-dom';
-import axios from 'axios';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+// import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
 import { Rating } from 'react-simple-star-rating';
-import theme from '../../Components/Color';
+// import theme from '../../Components/Color';
 import BorrowButton from '../../Components/Btn.jsx';
 
 const WrapContent = styled.div`
