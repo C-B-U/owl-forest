@@ -1,14 +1,13 @@
 /* eslint-disable camelcase */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams, useLink } from 'react-router-dom';
 import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
-import { Rating } from 'react-simple-star-rating';
 import theme from '../../Components/Color';
 import Header from '../../Components/ActivityLog/Header';
 import Search from '../../Components/Search';
-import BorrowButton from '../../Components/Btn.jsx';
+import Contents from './Contents';
 
 const MainWrap = styled.div`
   width: 100%;
@@ -66,71 +65,6 @@ const BorrowButtons = styled.div`
   grid-gap: 2rem;
   margin-right: 2rem;
 `;
-const WrapContent = styled.div`
-  /* border: 1px solid black; */
-  height: fit-content;
-  width: fit-content;
-  min-width: 23rem;
-  box-sizing: border-box;
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.9rem;
-`;
-const WrapInfo = styled.div`
-  text-align: left;
-  /* margin-left: 1rem; */
-  min-width: 9rem;
-`;
-const BookImage = styled.div`
-  width: 11rem;
-  height: 15rem;
-  min-width: 11rem;
-  min-height: 15rem;
-  margin-right: 1rem;
-  background-color: white;
-  background-image: url(${(props) => props.backgroundImage});
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-`; // 책 이미지
-
-const BookName = styled.div`
-  width: 100%;
-  min-width: 13rem;
-  font-size: 1rem;
-  font-weight: bold;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`; // 책 이름
-
-const BookInfos = styled.div`
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-`; // 책정보 저자 | 출판사
-
-const WrapStarScore = styled.div`
-  /* border: 1px solid black; */
-  display: flex;
-`;
-
-const StarScore = styled.div`
-  /* border: 1px solid black; */
-  width: 3rem;
-  margin-bottom: 0.5rem;
-`;
-
-const Deadline = styled.div`
-  margin: 0.5rem 0rem;
-`; // 마감일
-
-const BorrowDate = styled.div`
-  margin-bottom: 1rem;
-`; // 대여일
 
 function BorrowList() {
   // 책을
@@ -147,10 +81,7 @@ function BorrowList() {
   const ToNavigateMyBookList = () => {
     navigate(`/MyBookList`);
   };
-  const ToNavigateBorrow = (e) => {
-    console.log();
-    // navigate(`/Borrow`, { state: e.target.value });
-  };
+
   useEffect(() => {
     const data = {
       page: 0,
@@ -219,36 +150,17 @@ function BorrowList() {
             </WrapTop>
             <Wrap>
               {borrows.map((borrow) => (
-                <WrapContent key={borrow.id}>
-                  <BookImage backgroundImage={borrow.book.imageUrl} />
-
-                  <WrapInfo>
-                    <BookName>{borrow.book.title}</BookName>
-                    <BookInfos>
-                      {borrow.book.author} <br /> {borrow.book.publisher}
-                    </BookInfos>
-                    <WrapStarScore>
-                      <StarScore>난이도</StarScore>
-                      <Rating readonly size={17} initialValue={2.3} />
-                    </WrapStarScore>
-                    <WrapStarScore>
-                      <StarScore>평점</StarScore>
-                      <Rating readonly size={17} initialValue={0} />
-                    </WrapStarScore>
-                    <Deadline>마감일 : {borrow.endDate}</Deadline>
-                    <BorrowDate>게시일 : {borrow.createAt}</BorrowDate>
-                    <BorrowButton
-                      color={palette('PsYellow')}
-                      background={palette('PsBtn')}
-                      width='5.5rem'
-                      height='2.2rem'
-                      name='대여하기'
-                      borderRadius='0.5rem'
-                      fontSize='0.9rem'
-                      onClick={ToNavigateBorrow}
-                    />
-                  </WrapInfo>
-                </WrapContent>
+                <Contents
+                  id={borrow.book.id}
+                  imageUrl={borrow.book.imageUrl}
+                  author={borrow.book.author}
+                  publisher={borrow.book.publisher}
+                  difficulty={2.3}
+                  rating={5}
+                  endDate={borrow.endDate}
+                  createAt='2023-03-28'
+                  lender={borrow.lender.name}
+                />
               ))}
             </Wrap>
           </ListWrap>
