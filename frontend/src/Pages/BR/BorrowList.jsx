@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, useLink } from 'react-router-dom';
 import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { palette } from 'styled-tools';
@@ -37,7 +37,8 @@ const Wrap = styled.div`
   bottom: 0;
   box-sizing: border-box;
   display: grid;
-  width: 100%;
+  width: 100vw;
+  height: calc(100vh - 10rem);
   padding: 1rem;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -142,7 +143,7 @@ function BorrowList() {
     navigate(`/MyBookList`);
   };
   const ToNavigateBorrow = (e) => {
-    console.log(e.target);
+    console.log();
     // navigate(`/Borrow`, { state: e.target.value });
   };
   useEffect(() => {
@@ -213,7 +214,7 @@ function BorrowList() {
             </WrapTop>
             <Wrap>
               {borrows.map((borrow) => (
-                <WrapContent>
+                <WrapContent key={borrow.id}>
                   <BookImage backgroundImage={borrow.book.imageUrl} />
 
                   <WrapInfo>
@@ -230,9 +231,7 @@ function BorrowList() {
                       <Rating readonly size={17} initialValue={0} />
                     </WrapStarScore>
                     <Deadline>마감일 : {borrow.endDate}</Deadline>
-                    {/*  */}
                     <BorrowDate>게시일 : {borrow.createAt}</BorrowDate>
-                    {/*  */}
                     <BorrowButton
                       color={palette('PsYellow')}
                       background={palette('PsBtn')}
