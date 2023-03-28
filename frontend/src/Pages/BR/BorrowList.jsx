@@ -70,6 +70,7 @@ const WrapContent = styled.div`
   /* border: 1px solid black; */
   height: fit-content;
   width: fit-content;
+  min-width: 23rem;
   box-sizing: border-box;
   margin-bottom: 1rem;
   display: flex;
@@ -85,6 +86,8 @@ const WrapInfo = styled.div`
 const BookImage = styled.div`
   width: 11rem;
   height: 15rem;
+  min-width: 11rem;
+  min-height: 15rem;
   margin-right: 1rem;
   background-color: white;
   background-image: url(${(props) => props.backgroundImage});
