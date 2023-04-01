@@ -39,7 +39,7 @@ const BookImage = styled.div`
 `; // 책 이미지
 
 const WrapInfo = styled.div`
-  /* border: 2px solid black; */
+  border: 2px solid black;
   float: left;
   margin-left: 3rem;
   width: 30rem;
@@ -47,12 +47,12 @@ const WrapInfo = styled.div`
 `;
 
 const BookTitle = styled.h1`
-  /* border: 2px solid red; */
+  border: 2px solid red;
   width: fit-content;
   height: fit-content;
   font-size: 1.5rem;
   text-align: left;
-  margin-top: -0.5rem;
+  /* margin-top: -0.5rem; */
   margin-bottom: 0.5rem;
 `; // 책 이름
 
