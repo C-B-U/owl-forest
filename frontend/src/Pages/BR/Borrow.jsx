@@ -31,7 +31,7 @@ const WrapContent = styled.div`
 const BookImage = styled.div`
   width: 20rem;
   height: 28rem;
-  background-color: transparent;
+  background-color: white;
   background-image: url(${(props) => props.backgroundImage});
   background-repeat: no-repeat;
   background-size: contain;
@@ -39,15 +39,15 @@ const BookImage = styled.div`
 `; // 책 이미지
 
 const WrapInfo = styled.div`
-  border: 2px solid black;
+  /* border: 2px solid black; */
   float: left;
   margin-left: 3rem;
   width: 30rem;
-  height: fit-content;
+  height: 28rem;
 `;
 
 const BookTitle = styled.h1`
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: fit-content;
   height: fit-content;
   font-size: 1.5rem;
@@ -56,7 +56,7 @@ const BookTitle = styled.h1`
 `; // 책 이름
 
 const BookInfo = styled.h1`
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   width: fit-content;
   height: fit-content;
   font-size: 1.1rem;
@@ -64,7 +64,7 @@ const BookInfo = styled.h1`
 `; // 책 저자 | 출판사
 
 const BookLender = styled.div`
-  border: 2px solid green;
+  /* border: 2px solid green; */
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
@@ -72,7 +72,7 @@ const BookLender = styled.div`
 `; // 게시자
 
 const BookEndDate = styled.div`
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
@@ -80,7 +80,7 @@ const BookEndDate = styled.div`
 `; // 반납일
 
 const Location = styled.div`
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
