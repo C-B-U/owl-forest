@@ -46,21 +46,23 @@ const WrapInfo = styled.div`
 `;
 
 const BookTitle = styled.h1`
+  border: 2px solid red;
   width: fit-content;
   height: fit-content;
   font-size: 1.5rem;
-  float: left;
+  text-align: left;
 `; // 책 이름
 
 const BookAuthor = styled.h1`
-  float: left;
+  border: 2px solid blue;
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
   margin-bottom: 2rem;
 `; // 책 저자
+
 const BookPublisher = styled.h1`
-  float: left;
+  border: 2px solid black;
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
@@ -68,7 +70,7 @@ const BookPublisher = styled.h1`
 `; // 책 저자
 
 const BookLender = styled.div`
-  float: left;
+  border: 2px solid green;
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
@@ -76,7 +78,7 @@ const BookLender = styled.div`
 `; // 게시자
 
 const BookEndDate = styled.div`
-  float: left;
+  border: 2px solid purple;
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
@@ -84,7 +86,7 @@ const BookEndDate = styled.div`
 `; // 반납일
 
 const Location = styled.div`
-  float: left;
+  border: 2px solid black;
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
