@@ -28,12 +28,6 @@ const WrapContent = styled.div`
   align-items: center;
 `;
 
-const WrapInfo = styled.div`
-  float: left;
-  margin-left: 3rem;
-  width: 30rem;
-`;
-
 const BookImage = styled.div`
   width: 20rem;
   height: 28rem;
@@ -44,6 +38,13 @@ const BookImage = styled.div`
   background-position: center;
 `; // 책 이미지
 
+const WrapInfo = styled.div`
+  border: 2px solid black;
+  float: left;
+  margin-left: 3rem;
+  width: 30rem;
+`;
+
 const BookTitle = styled.h1`
   width: fit-content;
   height: fit-content;
@@ -51,21 +52,44 @@ const BookTitle = styled.h1`
   float: left;
 `; // 책 이름
 
-const BookInfos = styled.h1`
+const BookAuthor = styled.h1`
   float: left;
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
   margin-bottom: 2rem;
-`; // 책 저자 | 출판사
-
-const AddInfos = styled.div`
+`; // 책 저자
+const BookPublisher = styled.h1`
   float: left;
   width: fit-content;
   height: fit-content;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+`; // 책 저자
+
+const BookLender = styled.div`
+  float: left;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1rem;
   margin-bottom: 1.5rem;
-`; // 게시자, 반납일
+`; // 게시자
+
+const BookEndDate = styled.div`
+  float: left;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+`; // 반납일
+
+const Location = styled.div`
+  float: left;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+`; // 장소
 
 const WrapButton = styled.div`
   margin-top: 9rem;
@@ -86,11 +110,11 @@ function Borrow() {
               <BookImage backgroundImage={state.imageUrl} />
               <WrapInfo>
                 <BookTitle>{state.title}</BookTitle>
-                <BookInfos>{state.author}</BookInfos>
-                <BookInfos>{state.publisher}</BookInfos>
-                <AddInfos>게시자 : {state.lender}</AddInfos>
-                <AddInfos>반납일 : {state.endDate}</AddInfos>
-                <AddInfos>위치 : {state.location}</AddInfos>
+                <BookAuthor>{state.author}</BookAuthor>
+                <BookPublisher>{state.publisher}</BookPublisher>
+                <BookLender>게시자 : {state.lender}</BookLender>
+                <BookEndDate>반납일 : {state.endDate}</BookEndDate>
+                <Location>위치 : {state.location}</Location>
                 <WrapButton>
                   <AskButton
                     color={palette('PsYellow')}
