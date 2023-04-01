@@ -22,6 +22,12 @@ const Wrap = styled.div`
   background-color: ${palette('PsLightBrown')};
 `;
 
+const WrapContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const WrapInfo = styled.div`
   float: left;
   margin-left: 3rem;
@@ -38,38 +44,26 @@ const BookImage = styled.div`
   background-position: center;
 `; // 책 이미지
 
-const BookName = styled.h1`
+const BookTitle = styled.h1`
   width: fit-content;
   height: fit-content;
-  font-size: 20pt;
+  font-size: 1.5rem;
 `; // 책 이름
 
 const BookInfos = styled.h1`
+  float: left;
   width: fit-content;
   height: fit-content;
-  font-size: 15pt;
+  font-size: 1rem;
   margin-bottom: 2rem;
-`; // 책정보 저자 | 출판사
+`; // 책 제목 | 저자 | 출판사
 
-const Publisher = styled.h1`
+const AddInfos = styled.div`
   width: fit-content;
   height: fit-content;
-  font-size: 15pt;
-`; // 책 게시자
-
-const ReturnDate = styled.h1`
-  font-size: 15pt;
-`; // 반납일
-
-const Location = styled.h1`
-  font-size: 15pt;
-`; // 위치
-
-const WrapContent = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+`; // 게시자, 반납일
 
 const WrapButton = styled.div`
   margin-top: 9rem;
@@ -78,6 +72,8 @@ const WrapButton = styled.div`
 function Borrow() {
   const { state } = useLocation();
   console.log(state);
+
+  const url = state.kakaoUrl;
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -87,14 +83,13 @@ function Borrow() {
             <WrapContent>
               <BookImage backgroundImage={state.imageUrl} />
               <WrapInfo>
-                <BookName>{state.title}</BookName>
-                <BookInfos>
-                  {state.author} | {state.Publisher}
-                </BookInfos>
-                <Publisher>게시자 : {state.lender}</Publisher>
-                <ReturnDate>반납일 : {state.endDate}</ReturnDate>
-                <Location>위치 : {state.location}</Location>
-                <Location>카카오톡 : {state.kakaoUrl}</Location>
+                <BookTitle>{state.title}</BookTitle>
+                <BookInfos>{state.author}</BookInfos>
+                <BookInfos>{state.Publisher}</BookInfos>
+                <AddInfos>게시자 : {state.lender}</AddInfos>
+                <AddInfos>반납일 : {state.endDate}</AddInfos>
+                <AddInfos>위치 : {state.location}</AddInfos>
+                {state.kakaoUrl}
                 <WrapButton>
                   <AskButton
                     color={palette('PsYellow')}
@@ -102,7 +97,11 @@ function Borrow() {
                     width='9rem'
                     height='3rem'
                     name='문의 하기'
+                    fontWeight='bold'
                     borderRadius='0.7rem'
+                    onClick={() => {
+                      window.open(url);
+                    }}
                   />
                 </WrapButton>
               </WrapInfo>
