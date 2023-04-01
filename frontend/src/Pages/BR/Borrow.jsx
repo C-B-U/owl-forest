@@ -39,6 +39,7 @@ const BookImage = styled.div`
 `; // 책 이미지
 
 const WrapInfo = styled.div`
+  position: relative;
   /* border: 2px solid black; */
   float: left;
   margin-left: 3rem;
