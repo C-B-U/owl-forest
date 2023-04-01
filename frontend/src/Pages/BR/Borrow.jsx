@@ -31,7 +31,7 @@ const WrapContent = styled.div`
 const BookImage = styled.div`
   width: 20rem;
   height: 28rem;
-  background-color: #ffffff;
+  background-color: transparent;
   background-image: url(${(props) => props.backgroundImage});
   background-repeat: no-repeat;
   background-size: contain;
@@ -43,6 +43,7 @@ const WrapInfo = styled.div`
   float: left;
   margin-left: 3rem;
   width: 30rem;
+  height: fit-content;
 `;
 
 const BookTitle = styled.h1`
@@ -51,30 +52,23 @@ const BookTitle = styled.h1`
   height: fit-content;
   font-size: 1.5rem;
   text-align: left;
+  margin-bottom: 0.5rem;
 `; // 책 이름
 
-const BookAuthor = styled.h1`
+const BookInfo = styled.h1`
   border: 2px solid blue;
   width: fit-content;
   height: fit-content;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 2rem;
-`; // 책 저자
-
-const BookPublisher = styled.h1`
-  border: 2px solid black;
-  width: fit-content;
-  height: fit-content;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-`; // 책 저자
+`; // 책 저자 | 출판사
 
 const BookLender = styled.div`
   border: 2px solid green;
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 `; // 게시자
 
 const BookEndDate = styled.div`
@@ -82,7 +76,7 @@ const BookEndDate = styled.div`
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 `; // 반납일
 
 const Location = styled.div`
@@ -90,7 +84,6 @@ const Location = styled.div`
   width: fit-content;
   height: fit-content;
   font-size: 1rem;
-  margin-bottom: 1.5rem;
 `; // 장소
 
 const WrapButton = styled.div`
@@ -112,8 +105,9 @@ function Borrow() {
               <BookImage backgroundImage={state.imageUrl} />
               <WrapInfo>
                 <BookTitle>{state.title}</BookTitle>
-                <BookAuthor>{state.author}</BookAuthor>
-                <BookPublisher>{state.publisher}</BookPublisher>
+                <BookInfo>
+                  {state.publisher} | {state.author}
+                </BookInfo>
                 <BookLender>게시자 : {state.lender}</BookLender>
                 <BookEndDate>반납일 : {state.endDate}</BookEndDate>
                 <Location>위치 : {state.location}</Location>
