@@ -88,6 +88,7 @@ const Location = styled.div`
 `; // 장소
 
 const WrapButton = styled.div`
+  position: absolute;
   /* margin-top: 9rem; */
   bottom: 0;
 `;
