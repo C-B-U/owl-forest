@@ -48,6 +48,7 @@ const BookTitle = styled.h1`
   width: fit-content;
   height: fit-content;
   font-size: 1.5rem;
+  float: left;
 `; // 책 이름
 
 const BookInfos = styled.h1`
@@ -56,9 +57,10 @@ const BookInfos = styled.h1`
   height: fit-content;
   font-size: 1rem;
   margin-bottom: 2rem;
-`; // 책 제목 | 저자 | 출판사
+`; // 책 저자 | 출판사
 
 const AddInfos = styled.div`
+  float: left;
   width: fit-content;
   height: fit-content;
   font-size: 0.8rem;
@@ -85,11 +87,10 @@ function Borrow() {
               <WrapInfo>
                 <BookTitle>{state.title}</BookTitle>
                 <BookInfos>{state.author}</BookInfos>
-                <BookInfos>{state.Publisher}</BookInfos>
+                <BookInfos>{state.publisher}</BookInfos>
                 <AddInfos>게시자 : {state.lender}</AddInfos>
                 <AddInfos>반납일 : {state.endDate}</AddInfos>
                 <AddInfos>위치 : {state.location}</AddInfos>
-                {state.kakaoUrl}
                 <WrapButton>
                   <AskButton
                     color={palette('PsYellow')}
