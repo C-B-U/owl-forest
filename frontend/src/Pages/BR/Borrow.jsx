@@ -91,7 +91,9 @@ const Location = styled.div`
 const WrapButton = styled.div`
   position: absolute;
   /* margin-top: 9rem; */
-  bottom: 0;
+  transform: translate(-50%, -50%);
+  bottom: 10;
+  left: 50%;
 `;
 
 function Borrow() {
