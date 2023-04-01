@@ -91,7 +91,7 @@ const Location = styled.div`
 const WrapButton = styled.div`
   position: absolute;
   /* margin-top: 9rem; */
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   bottom: 10;
   left: 50%;
 `;
