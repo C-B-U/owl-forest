@@ -162,6 +162,9 @@ function BorrowList() {
                   endDate={borrow.endDate}
                   createAt='2023-03-28'
                   lender={borrow.lender.name}
+                  borrower={borrow.borrower}
+                  kakaoUrl={borrow.kakaoUrl}
+                  location={borrow.location}
                 />
               ))}
             </Wrap>

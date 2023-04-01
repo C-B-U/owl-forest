@@ -75,13 +75,16 @@ function Borrow() {
         <MainWrap>
           <Wrap>
             <WrapContent>
-              <BookImage />
+              <BookImage>{state.imageUrl}</BookImage>
               <WrapInfo>
-                <BookName>책 제목</BookName>
-                <BookInfos>저자 | 출판사</BookInfos>
-                <Publisher>게시자:</Publisher>
-                <ReturnDate>반납일:</ReturnDate>
-                <Location>위치: </Location>
+                <BookName>{state.title}</BookName>
+                <BookInfos>
+                  {state.author} | {state.Publisher}
+                </BookInfos>
+                <Publisher>게시자 : {state.lender}</Publisher>
+                <ReturnDate>반납일 : {state.endDate}</ReturnDate>
+                <Location>위치 : {state.location}</Location>
+                <Location>카카오톡 : {state.kakaoUrl}</Location>
                 <WrapButton>
                   <AskButton
                     color={palette('PsYellow')}
@@ -89,6 +92,7 @@ function Borrow() {
                     width='9rem'
                     height='3rem'
                     name='문의 하기'
+                    borderRadius='0.7rem'
                   />
                 </WrapButton>
               </WrapInfo>

@@ -85,6 +85,9 @@ function Contents({
   endDate,
   createAt,
   lender,
+  borrower,
+  kakaoUrl,
+  location,
 }) {
   const navigate = useNavigate();
   const ToNavigateBorrow = () => {
@@ -92,9 +95,14 @@ function Contents({
       state: {
         id,
         imageUrl,
+        title,
         author,
         publisher,
         lender,
+        endDate,
+        borrower,
+        kakaoUrl,
+        location,
       },
     });
   };
