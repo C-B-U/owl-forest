@@ -43,7 +43,7 @@ const WrapInfo = styled.div`
   float: left;
   margin-left: 3rem;
   width: 30rem;
-  height: 28rem;
+  height: 30rem;
 `;
 
 const BookTitle = styled.h1`
@@ -52,6 +52,7 @@ const BookTitle = styled.h1`
   height: fit-content;
   font-size: 1.5rem;
   text-align: left;
+  margin-top: -0.5rem;
   margin-bottom: 0.5rem;
 `; // 책 이름
 
@@ -110,12 +111,13 @@ function Borrow() {
                 </BookInfo>
                 <BookLender>게시자 : {state.lender}</BookLender>
                 <BookEndDate>반납일 : {state.endDate}</BookEndDate>
+                <BookEndDate>게시일 : {state.createAt}</BookEndDate>
                 <Location>위치 : {state.location}</Location>
                 <WrapButton>
                   <AskButton
                     color={palette('PsYellow')}
                     background={palette('PsBtn')}
-                    width='9rem'
+                    width='11rem'
                     height='3rem'
                     name='문의 하기'
                     fontWeight='bold'
