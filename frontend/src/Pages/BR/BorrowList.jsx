@@ -152,7 +152,7 @@ function BorrowList() {
             <Wrap>
               {borrows.map((borrow) => (
                 <Contents
-                  id={borrow.book.id}
+                  id={borrow.id}
                   imageUrl={borrow.book.imageUrl}
                   title={borrow.book.title}
                   author={borrow.book.author}
