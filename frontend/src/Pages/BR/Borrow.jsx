@@ -14,7 +14,7 @@ const MainWrap = styled.div`
 `;
 
 const Wrap = styled.div`
-  margin: 8rem auto 0rem auto;
+  margin: 5rem auto 0rem auto;
   width: fit-content;
   height: fit-content;
   padding: 3rem;
@@ -23,27 +23,37 @@ const Wrap = styled.div`
 `;
 
 const WrapInfo = styled.div`
-  /* float: center; */
-  margin-left: 6.5rem;
-  width: 18rem;
+  float: left;
+  margin-left: 3rem;
+  width: 30rem;
 `;
 
 const BookImage = styled.div`
   width: 20rem;
   height: 28rem;
   background-color: #ffffff;
+  background-image: url(${(props) => props.backgroundImage});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 `; // 책 이미지
 
 const BookName = styled.h1`
+  width: fit-content;
+  height: fit-content;
   font-size: 20pt;
 `; // 책 이름
 
 const BookInfos = styled.h1`
+  width: fit-content;
+  height: fit-content;
   font-size: 15pt;
   margin-bottom: 2rem;
 `; // 책정보 저자 | 출판사
 
 const Publisher = styled.h1`
+  width: fit-content;
+  height: fit-content;
   font-size: 15pt;
 `; // 책 게시자
 
@@ -75,7 +85,7 @@ function Borrow() {
         <MainWrap>
           <Wrap>
             <WrapContent>
-              <BookImage>{state.imageUrl}</BookImage>
+              <BookImage backgroundImage={state.imageUrl} />
               <WrapInfo>
                 <BookName>{state.title}</BookName>
                 <BookInfos>
