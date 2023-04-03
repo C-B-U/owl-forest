@@ -28,8 +28,10 @@ public class StudyActivity implements Auditable {
     private String assignment;
     private Integer week;
     private String place;
+
     @OneToMany(cascade = CascadeType.ALL)
     private Set<StudyMember> activityMembers = new HashSet<>();
+
     private Long studyGroupId;
     @Embedded private StudyTime studyTime;
 
