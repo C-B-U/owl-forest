@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("study-plans")
@@ -17,13 +19,13 @@ public class StudyPlanController {
 
     @PostMapping
     public ResponseEntity<IdResponse<Long>> saveStudyPlan(
-            @RequestBody StudyPlanRequest studyPlanRequest) {
+            @RequestBody @Valid StudyPlanRequest studyPlanRequest) {
         return ResponseEntity.ok(studyPlanService.saveStudyPlan(studyPlanRequest));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> putStudyPlan(
-            @PathVariable Long id, @RequestBody StudyPlanRequest studyPlanRequest) {
+            @PathVariable Long id, @RequestBody @Valid StudyPlanRequest studyPlanRequest) {
         studyPlanService.updateStudyPlan(id, studyPlanRequest);
         return ResponseEntity.ok().build();
     }

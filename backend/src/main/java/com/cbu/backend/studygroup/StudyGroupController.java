@@ -12,6 +12,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,13 +24,13 @@ public class StudyGroupController {
 
     @PostMapping
     public ResponseEntity<IdResponse<Long>> saveStudyGroup(
-            @RequestBody StudyGroupRequest studyGroupRequest) {
+            @RequestBody @Valid StudyGroupRequest studyGroupRequest) {
         return ResponseEntity.ok(studyGroupService.saveStudyGroup(studyGroupRequest));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> putStudyGroup(
-            @PathVariable Long id, @RequestBody StudyGroupRequest studyGroupRequest) {
+            @PathVariable Long id, @RequestBody @Valid StudyGroupRequest studyGroupRequest) {
         studyGroupService.updateStudyGroup(id, studyGroupRequest);
         return ResponseEntity.ok().build();
     }

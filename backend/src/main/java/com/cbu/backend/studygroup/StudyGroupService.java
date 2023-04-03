@@ -40,7 +40,7 @@ public class StudyGroupService {
                         .save(studyGroupMapper.toEntity(studyGroupRequest, leader, studyMembers))
                         .getId();
 
-        return new IdResponse<Long>(id);
+        return new IdResponse<>(id);
     }
 
     @Transactional

@@ -33,13 +33,13 @@ public class StudyGroup implements Auditable {
     @Enumerated(EnumType.STRING)
     private StudyGroupStatus studyGroupStatus;
 
-    @OneToMany(mappedBy = "studyGroup")
+    @OneToMany(mappedBy = "studyGroup", cascade = CascadeType.ALL)
     private Set<LikeMember> likeMember = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member leader;
 
-    @OneToMany(mappedBy = "studyGroup")
+    @OneToMany(mappedBy = "studyGroup", cascade = CascadeType.ALL)
     private Set<StudyMember> studyMembers = new HashSet<>();
 
     @Formula("(SELECT count(*) FROM study_activity sa WHERE sa.study_group_id = id)")
